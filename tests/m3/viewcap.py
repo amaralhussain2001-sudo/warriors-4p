@@ -1,7 +1,7 @@
 """Record what the player sees when the view switches between merged and split (frame by frame).
 
 Usage: python -I tests/m3/viewcap.py <tag> [--seconds 40] [--nocrop] [--nolayout] [--wait 15] [--slot 0] [--screen]
-                                       [--pattern bots|apart|camera] [--walk 60] [--idle 0] [--every 0] [--around 12]
+                                       [--pattern bots|apart|camera] [--walk 60] [--idle 0] [--every 0] [--around 12] [--cropdelay N]
   --pattern   bots: random seeded bots on both slots (as in M1); apart: player 1 walks away and back again while
               player 2 stands still; camera: player 1 turns the camera briefly every few seconds, nobody walks
   --every     also save every N-th capture as PNG
@@ -80,6 +80,9 @@ def main():
             pattern_file(os.path.join(out_dir, f"bot_slot{slot}.bin"), slot, kind)
         ini = os.path.join(out_dir, f"w4p_slot{slot}.ini")
         m1_run.write_ini(ini, slot, out_dir, args)
+        extra = [f"CropDelayFrames = {opt('--cropdelay', 0)}"] if "--cropdelay" in sys.argv else []
+        if extra:
+            open(ini, "a", encoding="utf-8").write("".join(line + "\n" for line in extra))
         env = dict(os.environ, W4P_CONFIG=ini)
         cmd = [sandbox.FORK_EXE] + sandbox.cmd(n, ["-statefile", state])[1:]
         procs[slot] = subprocess.Popen(cmd, env=env, creationflags=getattr(subprocess, "DETACHED_PROCESS", 0))

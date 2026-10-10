@@ -1,0 +1,86 @@
+{
+ "tag": "g1_user6x",
+ "fps60_patch": true,
+ "ee_cycle_rate": 2,
+ "seconds": 25,
+ "avg_game_fps": 59.15,
+ "gs": {
+  "upscale_multiplier": "6"
+ },
+ "crop": true,
+ "gpu_two_instances": {
+  "util_avg": 67.8,
+  "util_max": 99.0,
+  "mem_mb_max": 5437.0,
+  "power_w_avg": 155
+ },
+ "windows": [
+  {
+   "t": 0.0,
+   "fps": 58.84,
+   "views": 2,
+   "gametime_u32_per_s": 981.8,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 4.0,
+   "fps": 58.57,
+   "views": 2,
+   "gametime_u32_per_s": 981.4,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 8.0,
+   "fps": 60.07,
+   "views": 2,
+   "gametime_u32_per_s": 1002.0,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 12.0,
+   "fps": 59.08,
+   "views": 2,
+   "gametime_u32_per_s": 986.4,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 16.0,
+   "fps": 58.36,
+   "views": 2,
+   "gametime_u32_per_s": 973.7,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 20.1,
+   "fps": 59.85,
+   "views": 2,
+   "gametime_u32_per_s": 997.8,
+   "gametime_f32_per_s": 0.0
+  }
+ ],
+ "motion": {
+  "object": "0x648df0",
+  "moved_in_1s": 1.57,
+  "frames_seen": 362,
+  "consecutive_pairs": 361,
+  "pairs_where_position_changed": 168,
+  "pairs_where_game_clock_advanced": 361,
+  "game_clock_step_ms_values": [
+   8,
+   9,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21
+  ]
+ },
+ "hash_points_common": 39,
+ "hash_mismatches": 0,
+ "environment": "SINGLE-PC, bots, no impairment, native resolution, crop off"
+}

@@ -1,0 +1,61 @@
+{
+ "tag": "f1_fps60_ee0",
+ "fps60_patch": true,
+ "ee_cycle_rate": 0,
+ "seconds": 30,
+ "avg_game_fps": 44.95,
+ "windows": [
+  {
+   "t": 0.0,
+   "fps": 53.85,
+   "views": 2,
+   "gametime_u32_per_s": 1004.1,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 4.0,
+   "fps": 47.35,
+   "views": 2,
+   "gametime_u32_per_s": 994.8,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 8.0,
+   "fps": 40.88,
+   "views": 2,
+   "gametime_u32_per_s": 1000.2,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 12.0,
+   "fps": 42.89,
+   "views": 2,
+   "gametime_u32_per_s": 1000.9,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 16.0,
+   "fps": 42.88,
+   "views": 2,
+   "gametime_u32_per_s": 998.8,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 20.1,
+   "fps": 42.63,
+   "views": 2,
+   "gametime_u32_per_s": 1004.4,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 24.1,
+   "fps": 44.37,
+   "views": 2,
+   "gametime_u32_per_s": 998.6,
+   "gametime_f32_per_s": 0.0
+  }
+ ],
+ "hash_points_common": 39,
+ "hash_mismatches": 0,
+ "environment": "SINGLE-PC, bots, no impairment, native resolution, crop off"
+}

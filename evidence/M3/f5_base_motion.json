@@ -1,0 +1,48 @@
+{
+ "tag": "f5_base_motion",
+ "fps60_patch": false,
+ "ee_cycle_rate": 0,
+ "seconds": 12,
+ "avg_game_fps": 29.88,
+ "windows": [
+  {
+   "t": 0.0,
+   "fps": 29.92,
+   "views": 2,
+   "gametime_u32_per_s": 978.1,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 4.0,
+   "fps": 29.67,
+   "views": 2,
+   "gametime_u32_per_s": 923.2,
+   "gametime_f32_per_s": 0.0
+  }
+ ],
+ "motion": {
+  "object": "0x643560",
+  "moved_in_1s": 2.13,
+  "frames_seen": 182,
+  "consecutive_pairs": 181,
+  "pairs_where_position_changed": 153,
+  "pairs_where_game_clock_advanced": 181,
+  "game_clock_step_ms_values": [
+   15,
+   18,
+   19,
+   22,
+   25,
+   26,
+   27,
+   32,
+   33,
+   34,
+   37,
+   40
+  ]
+ },
+ "hash_points_common": 29,
+ "hash_mismatches": 0,
+ "environment": "SINGLE-PC, bots, no impairment, native resolution, crop off"
+}
