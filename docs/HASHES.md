@@ -40,6 +40,7 @@ in PCSX2's bundled `resources/RedumpDatabase.yaml` (line 67412). Finding F-0001.
 |---|---|---|---|
 | 2026-10-10 | baseline | baseline | initial hashing |
 | 2026-10-10 (end of M1) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-10_m1.json`; 20 files compared, 0 changed |
+| 2026-10-11 (M3 interim) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-11_m3.json`; 20 files compared, 0 changed |
 | 2026-10-10 (end of Stage 1) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-10_end.json`; 20 files compared, 0 changed (ISO, BIOS files, pcsx2-qt.exe) |
 
 ## Experiment artifacts (generated, local only)
@@ -59,3 +60,6 @@ in PCSX2's bundled `resources/RedumpDatabase.yaml` (line 67412). Finding F-0001.
 | `emulator/patches/0003-...stronger-desync-test...patch` | `9e89ab034fcc2e8dbd25fa04b56f7d80e40062bc730d1731a4a5be0799f68e8a` |
 | PCSX2 Windows dependencies 7z (latest-windows-dependencies, 2026-10-07) | `a3133c7841e8fbdab6f4d1d5ad8efec31fb1ecda95ffed39f4d1f36bb7eb0007` |
 | `mod/w4p_m1.pnach` | regenerate with `python -I mod/make_pnach.py`; committed text |
+
+## 2-PC test package
+Built by `tools/make_package.py`; `dist/warriors-4p-test/MANIFEST.txt` lists the SHA-256 of every file (not committed).
