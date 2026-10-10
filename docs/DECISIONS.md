@@ -31,3 +31,20 @@ still the E6 kill test).
 | D7 | "Continue without the player" | replaced companion returns to AI via the game's own release; an added character is removed | approved 2026-10-10 |
 
 ## Made during Stage 2
+
+### After M1 (2026-10-11), user decisions in chat
+
+User's messages (verbatim, in order):
+1. "okay i have better question can we insted of make if the players are near let's make it always the camera on solo unless the player click something then it will switch to the second mode ( if he wants so not depends on players ) is that possable?"
+2. "also the game can you make it 60fps ? or the emulator idk but i don't want to play with 30fps"
+3. "also make sure you choose best settings because i put them randomly i'm not sure if it is best settings so you have to make sure you choose the right oncs if i did not do that to make it use my resource to give me a good quality and fps in the game and without issues"
+4. "switch only when the player click special button on controll to switch it also start do the plan ( i don't have second pc to test right now so i will test tomorrow when you already finish everything)"
+5. "and continue your perivous work i just stopp it by mistake"
+
+| ID | Decision | Choice | Approval |
+|---|---|---|---|
+| D8 | View policy (changes BRIEF §4.5 "shared only when all players are close") | Every player always sees their own camera, full screen. A special controller button switches **only that player's screen** between "my view" and "all players' views" (grid). Presentation-only, so it cannot cause desync. The game's automatic merge is disabled during online sessions (needs a game patch; HYPOTHESIS until tested) | user, 2026-10-11 (messages 1 and 4; option A of the chat question) |
+| D9 | Frame rate | User does not want to play at 30 fps. Pursue a real 60 fps (characters, not only camera/clock). PCSX2's disabled "60 FPS" flag gives 60 rendered frames but characters still update about 30 times per second (`evidence/M3/f4_fps60_ee2_motion.json`) | user, 2026-10-11 (message 2) |
+| D10 | Emulator settings | Claude chooses and measures the settings profile for quality and frame rate on the user's PC (RTX 5090, Ryzen 9 9950X3D, 4K 240 Hz). The user's own PCSX2 installation and its settings stay untouched (protected); the profile applies only to the warriors-4p build | user, 2026-10-11 (message 3) |
+| D11 | Widescreen 16:9 | Recommended option taken (user has accepted recommendations before; not answered explicitly): add PCSX2's native widescreen patch as a session option and test sync with it | recommended, to confirm in the next report |
+| D12 | Milestone stops | User asked to "start do the plan" and to have it finished for a test tomorrow. Work continues past milestone ends without waiting; each milestone still gets its report, tag and hash check. E6 (second PC) will be run by the user tomorrow with a package prepared here | user, 2026-10-11 (message 4) |
