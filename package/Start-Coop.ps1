@@ -81,7 +81,7 @@ if ($Reset -or -not $s.ContainsKey("Player")) {
     $s["Adapter"] = $adapter
     $s["Quality"] = Ask "Picture quality 1-12 (higher = sharper, needs a stronger graphics card)" (Default-Quality $adapter)
     $s["Fps60"] = Ask "60 fps mode? yes/no (must be the same on both PCs)" "yes"
-    $s["Widescreen"] = Ask "Widescreen 16:9? yes/no (must be the same on both PCs)" "no"
+    $s["Widescreen"] = Ask "Widescreen 16:9? yes/no (must be the same on both PCs)" "yes"
     $s["Fullscreen"] = Ask "Start in full screen? yes/no" "yes"
     if (-not $s.ContainsKey("InputDelay")) { $s["InputDelay"] = "2" }
     if (-not $s.ContainsKey("Renderer")) { $s["Renderer"] = "14" }
