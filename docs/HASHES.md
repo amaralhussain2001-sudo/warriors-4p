@@ -39,3 +39,11 @@ in PCSX2's bundled `resources/RedumpDatabase.yaml` (line 67412). Finding F-0001.
 | Date | ISO SHA-256 unchanged | BIOS (SCPH-90001) unchanged | Note |
 |---|---|---|---|
 | 2026-10-10 | baseline | baseline | initial hashing |
+| 2026-10-10 (end of Stage 1) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-10_end.json`; 20 files compared, 0 changed (ISO, BIOS files, pcsx2-qt.exe) |
+
+## Experiment artifacts (generated, local only)
+| Item | SHA-256 |
+|---|---|
+| `local/e1_start_m2.p2s` (Mission 2 start state) | `6d452f807658acbbb8116fbcecd7db84907f2e1cd932642475add158b6bc1a28` |
+| `local/e1_start_rumble.p2s` (Quick Rumble pre-start state) | `da3bb092e9f4b0f54cb4196290cbe293e1647555ead91c18cfd64026aade5d8f` |
+| `tests/experiments/E1_determinism/e1_v2.pnach`, `tests/experiments/E4_extra_player/e4_v3.pnach` | committed text; regenerate with the `make_patch*.py` scripts |

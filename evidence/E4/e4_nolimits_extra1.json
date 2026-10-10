@@ -1,0 +1,392 @@
+{
+ "groups": [
+  "warriors4p base v3"
+ ],
+ "pad": 1,
+ "player_index": 2,
+ "before": {
+  "count": 1,
+  "handles": [
+   "000000cc",
+   "ffffffff",
+   "00003bc3",
+   "0004012f"
+  ],
+  "tick_230": 15299
+ },
+ "pads": [
+  1
+ ],
+ "pad_connected_flag": 0,
+ "pad_owner_before": -1,
+ "candidates": [
+  {
+   "dist": 19.61,
+   "obj": "00641a20",
+   "handle": "000200d2",
+   "pos": [
+    -194.1,
+    108.4,
+    5.63
+   ]
+  }
+ ],
+ "shot_before": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\shots\\e4_before.png 1597x1055 title='The Warriors'",
+ "calls": [
+  {
+   "obj": "00641a20",
+   "pad": 1,
+   "done": 1,
+   "result": 1,
+   "count_after": 2,
+   "handles_after": [
+    "000000cc",
+    "000200d2",
+    "00003c08",
+    "0004012f"
+   ],
+   "playerIdx": 1,
+   "hudslot_380": 1
+  }
+ ],
+ "after": {
+  "count": 2,
+  "handles": [
+   "000000cc",
+   "000200d2",
+   "00003c17",
+   "0004012f"
+  ],
+  "tick_230": 15383,
+  "human_playerIdx": 1,
+  "human_hudslot_380": 1,
+  "controller_pad_19": 4,
+  "pad_owner_42": -1
+ },
+ "shot_after_make": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\shots\\e4_after_make.png 1597x1055 title='The Warriors'",
+ "track": [
+  {
+   "t": 1,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15164,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 2,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15207,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 3,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15237,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 4,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15281,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 5,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15311,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 6,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15356,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 7,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15386,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 8,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15430,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 9,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15460,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 10,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15504,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 11,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15534,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 12,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15577,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 13,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15607,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 14,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15651,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 15,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15681,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 16,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15725,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  },
+  {
+   "t": 17,
+   "new_players": [
+    [
+     -194.1,
+     108.4
+    ]
+   ],
+   "p1": [
+    -193.4,
+    127.5,
+    1.22
+   ],
+   "frame": 15755,
+   "status": "running",
+   "views": 1,
+   "cams": 1
+  }
+ ],
+ "shot_after_drive": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\shots\\e4_after_drive.png 1597x1055 title='The Warriors'",
+ "final_status": "running",
+ "views_rendered": 1,
+ "cameras": 1,
+ "camera_arrays": [
+  "00c46800",
+  "00000000",
+  "00c46800",
+  "00000000",
+  "00cab000",
+  "00000000",
+  "00000000",
+  "00000000",
+  "00000000",
+  "00000000"
+ ],
+ "emulog_tail": "removed from the committed copy (contains game disassembly); see local/pcsx2/inst4/PCSX2/logs/emulog.txt"
+}

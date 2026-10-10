@@ -1,7 +1,7 @@
 """Tiny MIPS (R5900 subset) assembler for Stage 1 experiment code caves.
 
 Supports: lui ori addiu addu subu sll srl srlv and andi sltu slt lw sw lh lhu sh lb lbu sb
-beq bne bltz bgez blez bgtz j jal jr nop move, labels ("name:") and comments (#).
+beq bne bltz bgez blez bgtz j jal jr jalr nop move, labels ("name:") and comments (#).
 Branch targets are labels; the caller must place delay-slot instructions explicitly.
 """
 import re
@@ -83,6 +83,8 @@ def assemble(src, origin):
             w = ({"j": 2, "jal": 3}[op] << 26) | ((t >> 2) & 0x3FFFFFF)
         elif op == "jr":
             w = R(r(a[0]), 0, 0, 0, 0x08)
+        elif op == "jalr":
+            w = R(r(a[0]), 0, 31, 0, 0x09)
         else:
             raise ValueError(f"unknown op {op}")
         out.append(w)

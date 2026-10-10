@@ -1,0 +1,172 @@
+{
+ "groups": [
+  "warriors4p base v3",
+  "warriors4p E4 limits"
+ ],
+ "pad": 1,
+ "player_index": 2,
+ "before": {
+  "count": 1,
+  "handles": [
+   "00000087",
+   "ffffffff",
+   "0000133a",
+   "ffffffff"
+  ],
+  "tick_230": 4922
+ },
+ "pad_connected_flag": 1,
+ "pad_owner_before": -1,
+ "candidate": {
+  "dist": 9.95,
+  "obj": "00641350",
+  "handle": "0001008a",
+  "pos": [
+   -287.8,
+   124.8,
+   -8.53
+  ]
+ },
+ "shot_before": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\shots\\e4_before.png 1597x1055 title='The Warriors'",
+ "call_done": 1,
+ "call_result": 1,
+ "after": {
+  "count": 2,
+  "handles": [
+   "00000087",
+   "0001008a",
+   "0000137c",
+   "ffffffff"
+  ],
+  "tick_230": 4988,
+  "human_playerIdx": 1,
+  "human_hudslot_380": 1,
+  "controller_pad_19": 1,
+  "pad_owner_42": 1
+ },
+ "shot_after_make": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\shots\\e4_after_make.png 1597x1055 title='The Warriors'",
+ "track": [
+  {
+   "t": 1,
+   "p3": [
+    -286.69,
+    126.8,
+    -8.53
+   ],
+   "p1": [
+    -289.03,
+    120.29,
+    0.25
+   ],
+   "frame": 4638,
+   "status": "running"
+  },
+  {
+   "t": 2,
+   "p3": [
+    -283.4,
+    133.88,
+    -8.53
+   ],
+   "p1": [
+    -289.03,
+    120.29,
+    0.25
+   ],
+   "frame": 4668,
+   "status": "running"
+  },
+  {
+   "t": 3,
+   "p3": [
+    -280.1,
+    140.95,
+    -8.53
+   ],
+   "p1": [
+    -289.03,
+    120.29,
+    0.25
+   ],
+   "frame": 4698,
+   "status": "running"
+  },
+  {
+   "t": 4,
+   "p3": [
+    -273.19,
+    138.83,
+    -8.53
+   ],
+   "p1": [
+    -289.03,
+    120.29,
+    0.25
+   ],
+   "frame": 4728,
+   "status": "running"
+  },
+  {
+   "t": 5,
+   "p3": [
+    -266.11,
+    135.54,
+    -8.53
+   ],
+   "p1": [
+    -289.03,
+    120.29,
+    0.25
+   ],
+   "frame": 4758,
+   "status": "running"
+  },
+  {
+   "t": 6,
+   "p3": [
+    -265.17,
+    134.43,
+    -8.53
+   ],
+   "p1": [
+    -289.03,
+    120.29,
+    0.25
+   ],
+   "frame": 4788,
+   "status": "running"
+  },
+  {
+   "t": 7,
+   "p3": [
+    -265.17,
+    134.41,
+    -8.53
+   ],
+   "p1": [
+    -289.03,
+    120.29,
+    0.25
+   ],
+   "frame": 4818,
+   "status": "running"
+  }
+ ],
+ "shot_after_drive": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\shots\\e4_after_drive.png 1597x1055 title='The Warriors'",
+ "final_status": "running",
+ "views_rendered": 1,
+ "cameras": 1,
+ "camera_arrays": [
+  "00cb6400",
+  "00000000",
+  "00cb6400",
+  "00000000",
+  "00cb6400",
+  "00000000",
+  "00000000",
+  "00000000",
+  "00000000",
+  "00000000"
+ ],
+ "emulog_tail": "removed from the committed copy (contains game disassembly); see local/pcsx2/inst4/PCSX2/logs/emulog.txt"
+}
