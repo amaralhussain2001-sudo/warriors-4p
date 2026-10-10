@@ -1,30 +1,22 @@
 # Project state
 
-**Stage:** 1 complete — plan delivered (`docs/plan/STAGE1_PLAN.md`). **Waiting for the user's explicit approval.**
-Stage 2 must not start until a message explicitly approves the plan (e.g. "Approved, proceed with Stage 2").
+**Stage:** 2 — approved by the user on 2026-10-10 (all recommended options; see `docs/DECISIONS.md`).
+**Milestone:** M1 (critical proof of concept), exit criteria in `docs/plan/M1.md`. **Stop and report after M1.**
 
-## Done (Stage 1)
-- Project skeleton, Git, brief copy, CLAUDE.md, hashes of originals (re-verified at the end of Stage 1).
-- Disc extraction to `local/disc`; WAD index; Lua 4.0 disassembler and pseudo-Lua renderer; Ghidra project with the
-  R5900 extension; full decompile (local only); Lua binding map.
-- Runtime tooling: sandbox PCSX2 instances, PINE client, background key input, screenshots, experiment patches
-  (frame barrier, frame-exact input injection, call facility), RAM diff tools.
-- Experiments: E1 (PASS, SINGLE-PC), E2 (camera feeds sim; renderer does not), E3 (in-game wait fails; VM pause
-  passes), E4 (naive 3rd player crashes; what breaks recorded), E5 (savestate cost). E6 designed (needs another PC).
-  E7 (optional transport smoke test) not run.
-- Research notes: PCSX2 capabilities, existing online methods, transport options, static analysis.
-- Mission inventory with classification (MISSIONS.md).
+## Done
+- Stage 1: investigation, experiments E1-E5, plan (`docs/plan/STAGE1_PLAN.md`), tag `stage1-plan`.
+- Approval recorded; toolchain correction recorded (F-0075: Build Tools 2026 already installed).
 
-## In progress
-Nothing. Sandbox instances are stopped.
-
-## Next steps (only after approval)
-M1 proof of concept as defined in the plan §9, after decisions D2 (toolchain) and D6 (testers) are made.
+## In progress (M1)
+1. Get PCSX2 v2.9.115 source and dependencies; build unmodified with MSVC; check it runs the game.
+2. W4P module in the fork (lockstep, gate, input ring, hashing, crop, OSD).
+3. Game patch with ring-indexed input injection.
+4. Two-instance tests against the M1 exit criteria.
 
 ## Questions waiting for the user
-D1-D7 in `docs/plan/STAGE1_PLAN.md` §15.
+None.
 
 ## Notes for the next session
-- Never launch the original PCSX2; the user's own PCSX2 was running during Stage 1 and was not touched.
+- Never launch the original PCSX2; the user's own PCSX2 may be running.
 - Sandbox windows may start with the Arabic keyboard layout; `tools/winkeys.ps1` switches the sandbox window to en-US.
-- Experiment patches live in `tests/experiments/*/` and are NOT part of the mod.
+- Experiment patches in `tests/experiments/*/` are not part of the mod.

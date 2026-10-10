@@ -1,6 +1,7 @@
 # Stage 1 plan: The Warriors (SLUS-21215) four-player online story co-op
 
-Date: 2026-10-10. Status: **Stage 1 complete, waiting for the user's decision. No Stage 2 work has started.**
+Date: 2026-10-10. Status: **Approved by the user on 2026-10-10 with all recommended options (see DECISIONS.md); Stage 2 started with M1; stop and report after M1.**
+Correction after approval: Visual Studio Build Tools 2026 was already installed (F-0075), so D2 needs no new install for an MSVC build.
 Evidence IDs (F-xxxx) refer to `docs/FINDINGS.md`. Experiments are under `tests/experiments/`. Every test so far is
 SINGLE-PC, scripted bot input, no network, no impairment. Nothing here claims that online play works.
 

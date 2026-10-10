@@ -61,3 +61,7 @@ __pycache__/
 .venv/
 node_modules/
 *.log.tmp
+
+# Upstream PCSX2 checkout and its build output (our changes live in emulator/patches/)
+/emulator/pcsx2/
+/emulator/deps/
