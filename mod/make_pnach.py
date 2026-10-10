@@ -65,30 +65,57 @@ def main():
     out.append(f"patch=2,EE,{PADREAD_SITE:08X},word,{jal(CAVE):08X} // was 0C0525DC jal 0x00149770")
     addr, old, new = LAYOUT_SITE
     out.append(f"patch=2,EE,{addr:08X},word,{new:08X} // was {old:08X}: 2x2 layout from 2 views")
+    # The 3D cameras get their view windows from a second copy of the same test (FUN_00120A98). Without this the
+    # quarters are drawn with side-by-side proportions, i.e. stretched 2x horizontally (local/m3/aspect_cmp, F-0098).
+    out.append("patch=2,EE,00120B8C,word,2C420002 // was 2C420003: 2x2 view windows for the 3D cameras")
     # Decision D8: every player always gets their own view. Uses the game's own option "2P Split Screen Merge"
     # (live flag 0x0050B1C4, setter FUN_00418AC8; docs/research/view_merge_rule.md). The saved option is untouched.
     out += ["", "[warriors-4p own view]", "author=warriors-4p",
             "description=Online sessions: never merge the players' views (game option 2P Split Screen Merge off).", "",
             "patch=1,EE,0050B1C4,word,00000000 // live merge option, was 00000001",
             "patch=2,EE,00418AD4,word,AC40B1C4 // was AC45B1C4 (sw a1): the option setter stores 0"]
-    # Each player's radar inside their own quarter of the 2x2 layout (docs/research/hud_layout.md, patches A and B).
-    # Only changes layout mode 2, which exists only with the 2x2 layout patch above.
-    hud = [(0x001AFF30, 0x0803C180, "was 3C030051 lui v1,0x51 -> j 0x000F0600"),
-           (0x001AFF34, 0x00000000, "was C455D430 -> nop (delay slot)"),
-           (0x000F0600, 0xC455D430, "lwc1 f21,-0x2bd0(v0): z = default"),
-           (0x000F0604, 0x24010002, "addiu at,zero,2"),
-           (0x000F0608, 0x14610004, "bne v1,at,+4: not the 2x2 mode"),
-           (0x000F060C, 0xC441D434, "lwc1 f1,-0x2bcc(v0): P1 x (delay slot)"),
-           (0x000F0610, 0x3C013E19, "lui at,0x3e19"),
-           (0x000F0614, 0x3421999A, "ori at,at,0x999a: 0.15"),
-           (0x000F0618, 0x4481A800, "mtc1 at,f21: z = 0.15 in the 2x2 mode"),
-           (0x000F061C, 0xC454D428, "lwc1 f20,-0x2bd8(v0): P2 x"),
-           (0x000F0620, 0x0806BFD2, "j 0x001AFF48"),
-           (0x000F0624, 0x4600A886, "mov.s f2,f21 (delay slot)"),
-           (0x001AA648, 0x00000000, "was E7A00008 swc1 f0,8(sp): widget keeps the caller's height")]
+    # Each player's radar inside their own quarter, at single-player size after the 2x crop (docs/research/hud_scale.md
+    # patch 2A, which replaces hud_layout.md patch A; patch B kept). Only layout mode 2 (our 2x2 patch) changes.
+    hud = [(0x001AFF48, 0x0803C180, "was 3C020051 lui v0,0x51 -> j 0x000F0600"),
+           (0x001AFF4C, 0x00000000, "was 3C013F80 -> nop (delay slot)"),
+           (0x001AFFA4, 0x4600B806, "was C460D42C lwc1 f0,D42C -> mov.s f0,f23 (P2 depth from the cave)"),
+           (0x001AA648, 0x00000000, "was E7A00008 swc1 f0,8(sp): widget keeps the caller's height"),
+           (0x000F0600, 0x3C020051, "lui v0,0x51"),
+           (0x000F0604, 0x3C013F80, "lui at,0x3f80"),
+           (0x000F0608, 0x4481B000, "mtc1 at,f22 (1.0, as 0x001AFF50)"),
+           (0x000F060C, 0xC440D438, "lwc1 f0,D438(v0): P1 depth (as 0x001AFF54)"),
+           (0x000F0610, 0xC457D42C, "lwc1 f23,D42C(v0): P2 depth"),
+           (0x000F0614, 0x8C43B1A4, "lw v1,B1A4(v0): layout mode"),
+           (0x000F0618, 0x24010002, "addiu at,zero,2"),
+           (0x000F061C, 0x14610013, "bne v1,at,0x000F066C: not the 2x2 mode"),
+           (0x000F0620, 0x00000000, "nop"),
+           (0x000F0624, 0xC443B20C, "lwc1 f3,B20C(v0): HUD scale S"),
+           (0x000F0628, 0xC444B208, "lwc1 f4,B208(v0): HUD aspect A"),
+           (0x000F062C, 0x3C013F00, "lui at,0x3f00: 0.5"),
+           (0x000F0630, 0x44812800, "mtc1 at,f5"),
+           (0x000F0634, 0x460518C2, "mul.s f3,f3,f5: Wz = S/2"),
+           (0x000F0638, 0x46032102, "mul.s f4,f4,f3: W = A*S/2"),
+           (0x000F063C, 0xC446D428, "lwc1 f6,D428(v0): xs (single-player radar x)"),
+           (0x000F0640, 0xC447D430, "lwc1 f7,D430(v0): zs"),
+           (0x000F0644, 0x46040202, "mul.s f8,f0,f4"),
+           (0x000F0648, 0x46083041, "sub.s f1,f6,f8: P1 x = xs - d1*W"),
+           (0x000F064C, 0x46030202, "mul.s f8,f0,f3"),
+           (0x000F0650, 0x46083880, "add.s f2,f7,f8: P1 z = zs + d1*Wz"),
+           (0x000F0654, 0x46000000, "add.s f0,f0,f0: P1 depth = 2*d1"),
+           (0x000F0658, 0x4604BA02, "mul.s f8,f23,f4"),
+           (0x000F065C, 0x46083500, "add.s f20,f6,f8: P2 x = xs + d2*W"),
+           (0x000F0660, 0x4603BA02, "mul.s f8,f23,f3"),
+           (0x000F0664, 0x46083D40, "add.s f21,f7,f8: P2 z = zs + d2*Wz"),
+           (0x000F0668, 0x4617BDC0, "add.s f23,f23,f23: P2 depth = 2*d2"),
+           (0x000F066C, 0x0806BFD6, "j 0x001AFF58"),
+           (0x000F0670, 0x00000000, "nop")]
     out += ["", "[warriors-4p hud]", "author=warriors-4p",
-            "description=Online sessions: each player's radar inside their own view (2x2 layout).", ""]
+            "description=Online sessions: each player's radar inside their own view at single-player size (2x2 layout).", ""]
     out += [f"patch=2,EE,{a:08X},word,{w:08X} // {c}" for a, w, c in hud]
+    # Optional, testing: per-view markers (1P/2P) at half size (hud_scale.md 2B).
+    out += ["", "[warriors-4p hud markers]", "author=warriors-4p", "description=Testing: per-view markers at half size.", "",
+            "patch=2,EE,00196370,word,46000506 // was 46160502 mul.s f20,f0,f22 -> mov.s f20,f0",
+            "patch=2,EE,00196398,word,460003C6 // was 461703C2 mul.s f15,f0,f23 -> mov.s f15,f0"]
     # Decision D9: real 60 fps (docs/research/sixty_fps.md, R60-1..4). Experimental until speed parity is tested.
     out += ["", "[warriors-4p 60fps]", "author=warriors-4p",
             "description=Experimental real 60 fps: flip every vblank, game logic every 1/60 s step, logic time step halved.", "",

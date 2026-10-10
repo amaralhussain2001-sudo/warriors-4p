@@ -29,6 +29,7 @@ patch=2,EE,000F0454,word,03E00008
 patch=2,EE,000F0458,word,27BD0020
 patch=2,EE,001498E0,word,0C03C100 // was 0C0525DC jal 0x00149770
 patch=2,EE,00123300,word,2C420002 // was 2C420003: 2x2 layout from 2 views
+patch=2,EE,00120B8C,word,2C420002 // was 2C420003: 2x2 view windows for the 3D cameras
 
 [warriors-4p own view]
 author=warriors-4p
@@ -39,21 +40,48 @@ patch=2,EE,00418AD4,word,AC40B1C4 // was AC45B1C4 (sw a1): the option setter sto
 
 [warriors-4p hud]
 author=warriors-4p
-description=Online sessions: each player's radar inside their own view (2x2 layout).
+description=Online sessions: each player's radar inside their own view at single-player size (2x2 layout).
 
-patch=2,EE,001AFF30,word,0803C180 // was 3C030051 lui v1,0x51 -> j 0x000F0600
-patch=2,EE,001AFF34,word,00000000 // was C455D430 -> nop (delay slot)
-patch=2,EE,000F0600,word,C455D430 // lwc1 f21,-0x2bd0(v0): z = default
-patch=2,EE,000F0604,word,24010002 // addiu at,zero,2
-patch=2,EE,000F0608,word,14610004 // bne v1,at,+4: not the 2x2 mode
-patch=2,EE,000F060C,word,C441D434 // lwc1 f1,-0x2bcc(v0): P1 x (delay slot)
-patch=2,EE,000F0610,word,3C013E19 // lui at,0x3e19
-patch=2,EE,000F0614,word,3421999A // ori at,at,0x999a: 0.15
-patch=2,EE,000F0618,word,4481A800 // mtc1 at,f21: z = 0.15 in the 2x2 mode
-patch=2,EE,000F061C,word,C454D428 // lwc1 f20,-0x2bd8(v0): P2 x
-patch=2,EE,000F0620,word,0806BFD2 // j 0x001AFF48
-patch=2,EE,000F0624,word,4600A886 // mov.s f2,f21 (delay slot)
+patch=2,EE,001AFF48,word,0803C180 // was 3C020051 lui v0,0x51 -> j 0x000F0600
+patch=2,EE,001AFF4C,word,00000000 // was 3C013F80 -> nop (delay slot)
+patch=2,EE,001AFFA4,word,4600B806 // was C460D42C lwc1 f0,D42C -> mov.s f0,f23 (P2 depth from the cave)
 patch=2,EE,001AA648,word,00000000 // was E7A00008 swc1 f0,8(sp): widget keeps the caller's height
+patch=2,EE,000F0600,word,3C020051 // lui v0,0x51
+patch=2,EE,000F0604,word,3C013F80 // lui at,0x3f80
+patch=2,EE,000F0608,word,4481B000 // mtc1 at,f22 (1.0, as 0x001AFF50)
+patch=2,EE,000F060C,word,C440D438 // lwc1 f0,D438(v0): P1 depth (as 0x001AFF54)
+patch=2,EE,000F0610,word,C457D42C // lwc1 f23,D42C(v0): P2 depth
+patch=2,EE,000F0614,word,8C43B1A4 // lw v1,B1A4(v0): layout mode
+patch=2,EE,000F0618,word,24010002 // addiu at,zero,2
+patch=2,EE,000F061C,word,14610013 // bne v1,at,0x000F066C: not the 2x2 mode
+patch=2,EE,000F0620,word,00000000 // nop
+patch=2,EE,000F0624,word,C443B20C // lwc1 f3,B20C(v0): HUD scale S
+patch=2,EE,000F0628,word,C444B208 // lwc1 f4,B208(v0): HUD aspect A
+patch=2,EE,000F062C,word,3C013F00 // lui at,0x3f00: 0.5
+patch=2,EE,000F0630,word,44812800 // mtc1 at,f5
+patch=2,EE,000F0634,word,460518C2 // mul.s f3,f3,f5: Wz = S/2
+patch=2,EE,000F0638,word,46032102 // mul.s f4,f4,f3: W = A*S/2
+patch=2,EE,000F063C,word,C446D428 // lwc1 f6,D428(v0): xs (single-player radar x)
+patch=2,EE,000F0640,word,C447D430 // lwc1 f7,D430(v0): zs
+patch=2,EE,000F0644,word,46040202 // mul.s f8,f0,f4
+patch=2,EE,000F0648,word,46083041 // sub.s f1,f6,f8: P1 x = xs - d1*W
+patch=2,EE,000F064C,word,46030202 // mul.s f8,f0,f3
+patch=2,EE,000F0650,word,46083880 // add.s f2,f7,f8: P1 z = zs + d1*Wz
+patch=2,EE,000F0654,word,46000000 // add.s f0,f0,f0: P1 depth = 2*d1
+patch=2,EE,000F0658,word,4604BA02 // mul.s f8,f23,f4
+patch=2,EE,000F065C,word,46083500 // add.s f20,f6,f8: P2 x = xs + d2*W
+patch=2,EE,000F0660,word,4603BA02 // mul.s f8,f23,f3
+patch=2,EE,000F0664,word,46083D40 // add.s f21,f7,f8: P2 z = zs + d2*Wz
+patch=2,EE,000F0668,word,4617BDC0 // add.s f23,f23,f23: P2 depth = 2*d2
+patch=2,EE,000F066C,word,0806BFD6 // j 0x001AFF58
+patch=2,EE,000F0670,word,00000000 // nop
+
+[warriors-4p hud markers]
+author=warriors-4p
+description=Testing: per-view markers at half size.
+
+patch=2,EE,00196370,word,46000506 // was 46160502 mul.s f20,f0,f22 -> mov.s f20,f0
+patch=2,EE,00196398,word,460003C6 // was 461703C2 mul.s f15,f0,f23 -> mov.s f15,f0
 
 [warriors-4p 60fps]
 author=warriors-4p

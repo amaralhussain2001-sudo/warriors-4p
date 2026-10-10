@@ -1,0 +1,27 @@
+{
+ "p1_hello": [
+  "hello from slot 1: build w4p-m3-1, disc CRC B99A75DE, BIOS 0000021E 'USA     v02.30(20/02/2008)  Console 20080220-17', settings 165b2e15bb9b8810, patches a3ecdcf89d7f7e93, players 2, delay 2, hash every 30"
+ ],
+ "p1_errors": [
+  "ERROR: player 2 differs in: emulation settings"
+ ],
+ "p1_stats": "poll 9906, polls 9907, waits 489, wait total 11136.6 ms, max 7244.5 ms, hashes 330, mismatches 0, kernel-only differences 0",
+ "p1_logdir": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\dist\\warriors-4p-test\\logs\\20261011_013748_player1",
+ "p2_hello": [
+  "hello from slot 0: build w4p-m3-1, disc CRC B99A75DE, BIOS 0000021E 'USA     v02.30(20/02/2008)  Console 20080220-17', settings a91bff052af5cd0a, patches a3ecdcf89d7f7e93, players 2, delay 2, hash every 30"
+ ],
+ "p2_errors": [
+  "ERROR: player 1 differs in: emulation settings"
+ ],
+ "p2_stats": "poll 9756, polls 9757, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 325, mismatches 0, kernel-only differences 0",
+ "p2_logdir": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\dist\\warriors-4p-test\\logs\\20261011_013756_player2",
+ "tag": "p1_boot60",
+ "environment": "SINGLE-PC, package launcher, fresh boot, fresh memory cards, bots, loopback",
+ "args": [
+  "--seconds",
+  "180"
+ ],
+ "hash_points_common": 325,
+ "hash_mismatches": 0,
+ "game_hash_mismatches": 0
+}

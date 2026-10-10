@@ -1,0 +1,232 @@
+From 3ea816bebf16078b196e8ec94c957d6e61c37879 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sun, 11 Oct 2026 01:47:13 +0300
+Subject: [PATCH] warriors-4p: compare settings only after the game started;
+ local player's vibration only; build tag w4p-m3-2
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/SIO/Pad/PadDualshock2.cpp |  4 +-
+ pcsx2/W4P/W4P.cpp               | 96 +++++++++++++++++++++++++++------
+ pcsx2/W4P/W4P.h                 |  4 ++
+ 3 files changed, 88 insertions(+), 16 deletions(-)
+
+diff --git a/pcsx2/SIO/Pad/PadDualshock2.cpp b/pcsx2/SIO/Pad/PadDualshock2.cpp
+index 257a4c2..c3897af 100644
+--- a/pcsx2/SIO/Pad/PadDualshock2.cpp
++++ b/pcsx2/SIO/Pad/PadDualshock2.cpp
+@@ -260,7 +260,9 @@ u8 PadDualshock2::Poll(u8 commandByte)
+ 			}
+ 
+ 			// Order is reversed here - SetPadVibrationIntensity takes large motor first, then small. PS2 orders small motor first, large motor second.
+-			InputManager::SetPadVibrationIntensity(this->unifiedSlot,
++			// warriors-4p: during a session only the local player's rumble reaches this PC's controller
++			if (const int w4p_rumble_pad = W4P::VibrationPadFor(this->unifiedSlot); w4p_rumble_pad >= 0)
++			InputManager::SetPadVibrationIntensity(static_cast<u32>(w4p_rumble_pad),
+ 				std::min(static_cast<float>(largeMotor) * GetVibrationScale(1) * (1.0f / 255.0f), 1.0f),
+ 				// Small motor on the PS2 is either on full power or zero power, it has no variable speed. If the game supplies any value here at all,
+ 				// the pad in turn supplies full power to the motor, or no power at all if zero.
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index b2b0dda..7bb7b78 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -47,7 +47,7 @@ namespace W4P
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+ 		constexpr u16 kProtocolVersion = 2; // 2: hello/fingerprint packet, kernel and game RAM hashes
+-		constexpr char kBuildTag[] = "w4p-m3-1";
++		constexpr char kBuildTag[] = "w4p-m3-2";
+ 		// EE RAM below this address belongs to the BIOS kernel (and our hook cave); the game lives above it.
+ 		constexpr u32 kGameRamStart = 0x00100000;
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+@@ -112,10 +112,13 @@ namespace W4P
+ 			u8 players;
+ 			u8 input_delay;
+ 			u16 hash_interval;
++			u8 started; // 1 = sent after the session started (settings comparable)
++			u8 pad[3];
+ 			char build[16];
+ 			char bios[48];
+ 		};
+ #pragma pack(pop)
++		static_assert(sizeof(PktHello) <= 128);
+ 
+ 		enum : u8
+ 		{
+@@ -177,6 +180,9 @@ namespace W4P
+ 			std::array<std::unordered_map<u32, HashEntry>, kMaxPlayers> remote_hash;
+ 			u64 kernel_mismatches = 0;
+ 			std::array<bool, kMaxPlayers> hello_from = {};
++			std::array<bool, kMaxPlayers> compared_from = {};
++			std::array<bool, kMaxPlayers> pending_valid = {};
++			std::array<std::array<u8, 128>, kMaxPlayers> pending_hello = {};
+ 			double last_hello_ms = 0.0;
+ 			std::vector<u32> pending_compare;
+ 			u64 hashes_compared = 0;
+@@ -340,7 +346,7 @@ namespace W4P
+ 		u64 SettingsFingerprint()
+ 		{
+ 			u64 h = 0xCBF29CE484222325ull;
+-			h = FnvVal(h, EmuConfig.Cpu.bitset);
++			h = FnvVal(h, static_cast<u8>(EmuConfig.Cpu.ExtraMemory)); // the rest of Cpu.bitset is not initialised
+ 			h = FnvVal(h, EmuConfig.Cpu.Recompiler.bitset);
+ 			h = FnvVal(h, EmuConfig.Cpu.FPUFPCR.bitmask);
+ 			h = FnvVal(h, EmuConfig.Cpu.FPUDivFPCR.bitmask);
+@@ -375,30 +381,42 @@ namespace W4P
+ 			pkt.players = static_cast<u8>(s.cfg.players);
+ 			pkt.input_delay = static_cast<u8>(s.cfg.input_delay);
+ 			pkt.hash_interval = static_cast<u16>(s.cfg.hash_interval);
++			pkt.started = s.started ? 1 : 0;
+ 			std::snprintf(pkt.build, sizeof(pkt.build), "%s", kBuildTag);
+ 			std::snprintf(pkt.bios, sizeof(pkt.bios), "%s", BiosDescription.c_str());
+ 			SendToPeers(&pkt, sizeof(pkt));
+ 			s.last_hello_ms = NowMs();
+ 		}
+ 
+-		void HandleHello(const PktHello& in)
++		std::string SettingsDescription()
++		{
++			return fmt::format("extramem {} rec {:08x} fpcr {:08x}/{:08x}/{:08x}/{:08x} speedhacks {:08x} ee {} skip {} gamefixes {:08x} "
++							   "patches {} cheats {} ws {} noint {} fastboot {} fixes {} rtc {} {}-{}-{} {}:{}:{} hostfs {}",
++				static_cast<u32>(EmuConfig.Cpu.ExtraMemory), EmuConfig.Cpu.Recompiler.bitset, EmuConfig.Cpu.FPUFPCR.bitmask, EmuConfig.Cpu.FPUDivFPCR.bitmask,
++				EmuConfig.Cpu.VU0FPCR.bitmask, EmuConfig.Cpu.VU1FPCR.bitmask, EmuConfig.Speedhacks.bitset,
++				static_cast<int>(EmuConfig.Speedhacks.EECycleRate), static_cast<int>(EmuConfig.Speedhacks.EECycleSkip),
++				EmuConfig.Gamefixes.bitset, static_cast<int>(EmuConfig.EnablePatches), static_cast<int>(EmuConfig.EnableCheats),
++				static_cast<int>(EmuConfig.EnableWideScreenPatches), static_cast<int>(EmuConfig.EnableNoInterlacingPatches),
++				static_cast<int>(EmuConfig.EnableFastBoot), static_cast<int>(EmuConfig.EnableGameFixes),
++				static_cast<int>(EmuConfig.ManuallySetRealTimeClock), EmuConfig.RtcYear, EmuConfig.RtcMonth, EmuConfig.RtcDay,
++				EmuConfig.RtcHour, EmuConfig.RtcMinute, EmuConfig.RtcSecond, static_cast<int>(EmuConfig.HostFs));
++		}
++
++		void CompareHello(const PktHello& in)
+ 		{
+ 			Session& s = *s_session;
+ 			const int p = in.h.slot;
+-			const bool first = !s.hello_from[p];
+-			s.hello_from[p] = true;
+-			if (first)
+-				SendHello(); // make sure the peer gets ours even if our earlier one was lost
+-			else
++			if (s.compared_from[p])
+ 				return;
++			s.compared_from[p] = true;
+ 			char bios[sizeof(in.bios) + 1] = {};
+ 			char build[sizeof(in.build) + 1] = {};
+ 			std::memcpy(bios, in.bios, sizeof(in.bios));
+ 			std::memcpy(build, in.build, sizeof(in.build));
+-			Log(fmt::format("hello from slot {}: build {}, disc CRC {:08X}, BIOS {:08X} '{}', settings {:016x}, patches {:016x}, "
+-							"players {}, delay {}, hash every {}",
+-				p, build, in.disc_crc, in.bios_version, bios, in.settings_fp, in.patch_fp, in.players, in.input_delay,
+-				in.hash_interval));
++			Log(fmt::format("player {} (running): build {}, disc CRC {:08X}, BIOS {:08X} '{}', settings {:016x} (ours {:016x}), "
++							"patches {:016x}, players {}, delay {}, hash every {}",
++				p + 1, build, in.disc_crc, in.bios_version, bios, in.settings_fp, SettingsFingerprint(), in.patch_fp, in.players,
++				in.input_delay, in.hash_interval));
+ 			std::string diff;
+ 			if (std::strncmp(build, kBuildTag, sizeof(in.build)) != 0)
+ 				diff += " emulator build,";
+@@ -407,7 +425,7 @@ namespace W4P
+ 			if (in.settings_fp != SettingsFingerprint())
+ 				diff += " emulation settings,";
+ 			if (in.patch_fp != Fnv(0xCBF29CE484222325ull, s.cfg.patch_set.data(), s.cfg.patch_set.size()))
+-				diff += " game patches,";
++				diff += " game patches (60 fps / widescreen),";
+ 			if (in.players != s.cfg.players || in.input_delay != s.cfg.input_delay || in.hash_interval != s.cfg.hash_interval)
+ 				diff += " session options,";
+ 			if (!diff.empty())
+@@ -425,7 +443,33 @@ namespace W4P
+ 			}
+ 			else
+ 			{
+-				Host::AddKeyedOSDMessage(fmt::format("w4p_hello{}", p), fmt::format("Connected to Player {}", p + 1), 5.0f);
++				Log(fmt::format("player {} matches (build, game, BIOS, settings, patches)", p + 1));
++			}
++		}
++
++		void HandleHello(const PktHello& in)
++		{
++			Session& s = *s_session;
++			const int p = in.h.slot;
++			if (!s.hello_from[p])
++			{
++				s.hello_from[p] = true;
++				SendHello(); // make sure the peer gets ours even if our earlier one was lost
++				Log(fmt::format("connected to player {}", p + 1));
++				Host::AddKeyedOSDMessage(fmt::format("w4p_conn{}", p), fmt::format("Connected to Player {}", p + 1), 5.0f);
++			}
++			if (!in.started)
++				return;
++			if (s.started)
++			{
++				if (NowMs() - s.last_hello_ms > 500.0)
++					SendHello(); // the peer keeps asking until it has compared ours
++				CompareHello(in);
++			}
++			else
++			{
++				std::memcpy(s.pending_hello[p].data(), &in, sizeof(in));
++				s.pending_valid[p] = true;
+ 			}
+ 		}
+ 
+@@ -667,6 +711,17 @@ namespace W4P
+ 					Store(p, counter + d, Neutral());
+ 			}
+ 			s.last_stats_ms = NowMs();
++			Log("settings: " + SettingsDescription());
++			SendHello();
++			for (int p = 0; p < s.cfg.players; p++)
++			{
++				if (s.pending_valid[p])
++				{
++					PktHello in;
++					std::memcpy(&in, s.pending_hello[p].data(), sizeof(in));
++					CompareHello(in);
++				}
++			}
+ 			Log(fmt::format("session started at guest poll {} (players {}, local slot {}, delay {}, hash every {})",
+ 				counter, s.cfg.players, s.cfg.local_slot, s.cfg.input_delay, s.cfg.hash_interval));
+ 		}
+@@ -939,6 +994,17 @@ namespace W4P
+ 		Log(all ? "view: all players" : "view: own");
+ 	}
+ 
++	int VibrationPadFor(u32 unified_slot)
++	{
++		if (!s_session)
++			return static_cast<int>(unified_slot);
++		// game pad index = port * 4 + multitap slot; PCSX2 numbering as sioConvertPortAndSlotToPad()
++		const int gp = s_session->cfg.pad_for_slot[s_session->cfg.local_slot];
++		const u32 port = static_cast<u32>(gp / 4), slot = static_cast<u32>(gp % 4);
++		const u32 unified = (slot == 0) ? port : (port == 0 ? slot + 1 : slot + 4);
++		return unified == unified_slot ? 0 : -1;
++	}
++
+ 	bool BlockInSession(const char* what)
+ 	{
+ 		if (!s_session)
+@@ -979,7 +1045,7 @@ namespace W4P
+ 		Receive(0);
+ 		bool all_hello = true;
+ 		for (int p = 0; p < s.cfg.players; p++)
+-			all_hello &= (p == s.cfg.local_slot || s.hello_from[p]);
++			all_hello &= (p == s.cfg.local_slot || (s.hello_from[p] && (!s.started || s.compared_from[p])));
+ 		if (!all_hello && NowMs() - s.last_hello_ms > 1000.0)
+ 			SendHello();
+ 		if (s.started && NowMs() - s.last_send_ms > 50.0)
+diff --git a/pcsx2/W4P/W4P.h b/pcsx2/W4P/W4P.h
+index b993512..f82ec27 100644
+--- a/pcsx2/W4P/W4P.h
++++ b/pcsx2/W4P/W4P.h
+@@ -40,4 +40,8 @@ namespace W4P
+ 	// Returns true (and shows an on-screen message) when an action that would break lockstep must be refused,
+ 	// for example loading a savestate or changing the emulation speed during a session.
+ 	bool BlockInSession(const char* what);
++
++	// Vibration routing during a session: the emulated controller of the LOCAL player drives this PC's controller
++	// (host pad 0); every other emulated controller is muted. Returns the host pad index, or -1 to mute.
++	int VibrationPadFor(u32 unified_slot);
+ } // namespace W4P
+-- 
+2.55.0.windows.3
+
