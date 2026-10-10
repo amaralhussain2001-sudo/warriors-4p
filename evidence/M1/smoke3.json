@@ -1,0 +1,47 @@
+{
+ "tag": "smoke3",
+ "seconds_run": 41,
+ "args": {
+  "delay": 2,
+  "latency": 0,
+  "jitter": 0,
+  "loss": 0.0,
+  "nocrop": false,
+  "corrupt": null,
+  "shots": 100,
+  "state": "m1_start_m9_2p.p2s"
+ },
+ "alive_at_end": {
+  "0": true,
+  "1": true
+ },
+ "hash_points_common": 29,
+ "hash_mismatches": 0,
+ "first_mismatch_poll": null,
+ "last_common_poll": "870",
+ "stats": {
+  "0": "poll 871, polls 872, waits 37, wait total 336.8 ms, max 24.2 ms, hashes 28, mismatches 0",
+  "0_desync_lines": [],
+  "0_errors": [],
+  "1": "poll 871, polls 872, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 29, mismatches 0",
+  "1_desync_lines": [],
+  "1_errors": []
+ },
+ "views_at_end": {
+  "0": {
+   "views": 2,
+   "cams": 2,
+   "counter": 12123
+  },
+  "1": {
+   "views": 2,
+   "cams": 2,
+   "counter": 12122
+  }
+ },
+ "screenshots": [
+  "m1_smoke3_s0_0020",
+  "m1_smoke3_s1_0020"
+ ],
+ "environment": "SINGLE-PC, loopback UDP, scripted bots on both slots, no impairment"
+}

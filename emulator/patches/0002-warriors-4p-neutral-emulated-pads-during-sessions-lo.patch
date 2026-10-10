@@ -1,0 +1,99 @@
+From 0ef48dc199cb795f44bb61d731f32596bc09c721 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sat, 10 Oct 2026 22:48:56 +0300
+Subject: [PATCH 2/3] warriors-4p: neutral emulated pads during sessions;
+ loopback bind; packet counters
+
+---
+ pcsx2/SIO/Pad/PadDualshock2.cpp | 43 ++++++++++++++++++++-------------
+ 1 file changed, 26 insertions(+), 17 deletions(-)
+
+diff --git a/pcsx2/SIO/Pad/PadDualshock2.cpp b/pcsx2/SIO/Pad/PadDualshock2.cpp
+index dfc5c97..257a4c2 100644
+--- a/pcsx2/SIO/Pad/PadDualshock2.cpp
++++ b/pcsx2/SIO/Pad/PadDualshock2.cpp
+@@ -2,6 +2,7 @@
+ // SPDX-License-Identifier: GPL-3.0+
+ 
+ #include "SIO/Pad/PadDualshock2.h"
++#include "W4P/W4P.h"
+ #include "SIO/Pad/Pad.h"
+ #include "SIO/Sio.h"
+ #include "SIO/Sio0.h"
+@@ -210,7 +211,15 @@ u8 PadDualshock2::ButtonQuery(u8 commandByte)
+ 
+ u8 PadDualshock2::Poll(u8 commandByte)
+ {
+-	const u32 buttons = GetButtons();
++	// warriors-4p: during an online session every instance's emulated controllers report a fixed neutral state
++	// to the emulated PS2 (inputs are delivered by the W4P game hook), so host input cannot make instances differ.
++	const bool w4p_neutral = W4P::IsActive();
++	const u32 buttons = w4p_neutral ? 0xffffffffu : GetButtons();
++	const auto pressure = [this, w4p_neutral](u32 index) -> u8 {
++		if (!w4p_neutral)
++			return GetPressure(index);
++		return (index >= Inputs::PAD_L_UP) ? Pad::ANALOG_NEUTRAL_POSITION : 0;
++	};
+ 	u8 largeMotor = 0x00;
+ 	u8 smallMotor = 0x00;
+ 
+@@ -266,40 +275,40 @@ u8 PadDualshock2::Poll(u8 commandByte)
+ 
+ 			return buttons & 0xff;
+ 		case 5:
+-			return GetPressure(Inputs::PAD_R_RIGHT);
++			return pressure(Inputs::PAD_R_RIGHT);
+ 		case 6:
+-			return GetPressure(Inputs::PAD_R_UP);
++			return pressure(Inputs::PAD_R_UP);
+ 		case 7:
+-			return GetPressure(Inputs::PAD_L_RIGHT);
++			return pressure(Inputs::PAD_L_RIGHT);
+ 		case 8:
+ 			// PS1 mode: If the controller reaches this byte, it is in analog mode and has irrefutably reached the last byte.
+ 			// There's simply nothing to check, we know it's done and time to stop acknowledgements.
+ 			g_Sio0.SetAcknowledge(false);
+-			return GetPressure(Inputs::PAD_L_UP);
++			return pressure(Inputs::PAD_L_UP);
+ 		case 9:
+-			return IsButtonBitSet(buttons, 13) ? GetPressure(Inputs::PAD_RIGHT) : 0;
++			return IsButtonBitSet(buttons, 13) ? pressure(Inputs::PAD_RIGHT) : 0;
+ 		case 10:
+-			return IsButtonBitSet(buttons, 15) ? GetPressure(Inputs::PAD_LEFT) : 0;
++			return IsButtonBitSet(buttons, 15) ? pressure(Inputs::PAD_LEFT) : 0;
+ 		case 11:
+-			return IsButtonBitSet(buttons, 12) ? GetPressure(Inputs::PAD_UP) : 0;
++			return IsButtonBitSet(buttons, 12) ? pressure(Inputs::PAD_UP) : 0;
+ 		case 12:
+-			return IsButtonBitSet(buttons, 14) ? GetPressure(Inputs::PAD_DOWN) : 0;
++			return IsButtonBitSet(buttons, 14) ? pressure(Inputs::PAD_DOWN) : 0;
+ 		case 13:
+-			return IsButtonBitSet(buttons, 4) ? GetPressure(Inputs::PAD_TRIANGLE) : 0;
++			return IsButtonBitSet(buttons, 4) ? pressure(Inputs::PAD_TRIANGLE) : 0;
+ 		case 14:
+-			return IsButtonBitSet(buttons, 5) ? GetPressure(Inputs::PAD_CIRCLE) : 0;
++			return IsButtonBitSet(buttons, 5) ? pressure(Inputs::PAD_CIRCLE) : 0;
+ 		case 15:
+-			return IsButtonBitSet(buttons, 6) ? GetPressure(Inputs::PAD_CROSS) : 0;
++			return IsButtonBitSet(buttons, 6) ? pressure(Inputs::PAD_CROSS) : 0;
+ 		case 16:
+-			return IsButtonBitSet(buttons, 7) ? GetPressure(Inputs::PAD_SQUARE) : 0;
++			return IsButtonBitSet(buttons, 7) ? pressure(Inputs::PAD_SQUARE) : 0;
+ 		case 17:
+-			return IsButtonBitSet(buttons, 2) ? GetPressure(Inputs::PAD_L1) : 0;
++			return IsButtonBitSet(buttons, 2) ? pressure(Inputs::PAD_L1) : 0;
+ 		case 18:
+-			return IsButtonBitSet(buttons, 3) ? GetPressure(Inputs::PAD_R1) : 0;
++			return IsButtonBitSet(buttons, 3) ? pressure(Inputs::PAD_R1) : 0;
+ 		case 19:
+-			return IsButtonBitSet(buttons, 0) ? GetPressure(Inputs::PAD_L2) : 0;
++			return IsButtonBitSet(buttons, 0) ? pressure(Inputs::PAD_L2) : 0;
+ 		case 20:
+-			return IsButtonBitSet(buttons, 1) ? GetPressure(Inputs::PAD_R2) : 0;
++			return IsButtonBitSet(buttons, 1) ? pressure(Inputs::PAD_R2) : 0;
+ 	}
+ 	
+ 	Console.Warning("%s(%02X) Did not reach a valid return path! Returning zero as a failsafe!", __FUNCTION__, commandByte);
+-- 
+2.55.0.windows.3
+

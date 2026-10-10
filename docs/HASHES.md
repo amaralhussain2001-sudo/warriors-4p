@@ -39,6 +39,7 @@ in PCSX2's bundled `resources/RedumpDatabase.yaml` (line 67412). Finding F-0001.
 | Date | ISO SHA-256 unchanged | BIOS (SCPH-90001) unchanged | Note |
 |---|---|---|---|
 | 2026-10-10 | baseline | baseline | initial hashing |
+| 2026-10-10 (end of M1) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-10_m1.json`; 20 files compared, 0 changed |
 | 2026-10-10 (end of Stage 1) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-10_end.json`; 20 files compared, 0 changed (ISO, BIOS files, pcsx2-qt.exe) |
 
 ## Experiment artifacts (generated, local only)
@@ -47,3 +48,14 @@ in PCSX2's bundled `resources/RedumpDatabase.yaml` (line 67412). Finding F-0001.
 | `local/e1_start_m2.p2s` (Mission 2 start state) | `6d452f807658acbbb8116fbcecd7db84907f2e1cd932642475add158b6bc1a28` |
 | `local/e1_start_rumble.p2s` (Quick Rumble pre-start state) | `da3bb092e9f4b0f54cb4196290cbe293e1647555ead91c18cfd64026aade5d8f` |
 | `tests/experiments/E1_determinism/e1_v2.pnach`, `tests/experiments/E4_extra_player/e4_v3.pnach` | committed text; regenerate with the `make_patch*.py` scripts |
+
+## M1 artifacts
+| Item | SHA-256 |
+|---|---|
+| `local/m1_start_m9_2p.p2s` (M1 start state, Mission 9, 2 players) | `262b27c556b5e2ee6a36527384cc5d984fd0e89df44b49678d04032db0524687` |
+| `emulator/pcsx2/bin/pcsx2-qtx64.exe` (fork commit 97bbb1d) | `e7df44a54bec1cafb387e56a45cc7249a625626cfd192d667ae07296aa6aba92` |
+| `emulator/patches/0001-...M1-proof-of-concept.patch` | `1233933669eaae23d72eaa2cc1a9f612fde650fc143415b351b5c478e978cde9` |
+| `emulator/patches/0002-...neutral-emulated-pads...patch` | `fca125e92850cf01e2f85d92befad971e2077d0e5c8b7d1f3572598b2530215c` |
+| `emulator/patches/0003-...stronger-desync-test...patch` | `9e89ab034fcc2e8dbd25fa04b56f7d80e40062bc730d1731a4a5be0799f68e8a` |
+| PCSX2 Windows dependencies 7z (latest-windows-dependencies, 2026-10-07) | `a3133c7841e8fbdab6f4d1d5ad8efec31fb1ecda95ffed39f4d1f36bb7eb0007` |
+| `mod/w4p_m1.pnach` | regenerate with `python -I mod/make_pnach.py`; committed text |

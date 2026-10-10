@@ -1,0 +1,31 @@
+gametitle=The Warriors (NTSC-U) (SLUS-21215) - warriors-4p
+
+[warriors-4p M1]
+author=warriors-4p
+description=Online co-op support (requires the warriors-4p PCSX2 build). M1 proof of concept.
+
+patch=2,EE,000F0400,word,27BDFFE0
+patch=2,EE,000F0404,word,AFBF0000
+patch=2,EE,000F0408,word,AFA40004
+patch=2,EE,000F040C,word,0C0525DC
+patch=2,EE,000F0410,word,00000000
+patch=2,EE,000F0414,word,8FA40004
+patch=2,EE,000F0418,word,8C880104
+patch=2,EE,000F041C,word,8C890108
+patch=2,EE,000F0420,word,01095025
+patch=2,EE,000F0424,word,15400005
+patch=2,EE,000F0428,word,00000000
+patch=2,EE,000F042C,word,3C0B000F
+patch=2,EE,000F0430,word,8D6C0500
+patch=2,EE,000F0434,word,258C0001
+patch=2,EE,000F0438,word,AD6C0500
+patch=2,EE,000F043C,word,3C0B000F
+patch=2,EE,000F0440,word,8D650500
+patch=2,EE,000F0444,word,3C035734
+patch=2,EE,000F0448,word,34635030
+patch=2,EE,000F044C,word,0000000C
+patch=2,EE,000F0450,word,8FBF0000
+patch=2,EE,000F0454,word,03E00008
+patch=2,EE,000F0458,word,27BD0020
+patch=2,EE,001498E0,word,0C03C100 // was 0C0525DC jal 0x00149770
+patch=2,EE,00123300,word,2C420002 // was 2C420003: 2x2 layout from 2 views

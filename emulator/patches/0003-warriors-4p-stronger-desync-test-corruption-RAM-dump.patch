@@ -1,0 +1,53 @@
+From 97bbb1d74feafc7cae0cb58cf2a8307143683957 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sat, 10 Oct 2026 23:16:58 +0300
+Subject: [PATCH 3/3] warriors-4p: stronger desync test corruption; RAM dump at
+ a common poll
+
+---
+ pcsx2/W4P/W4P.cpp | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 940d882..d50431b 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -452,10 +452,15 @@ namespace W4P
+ 		void WriteInput(u32 portbuf, Input in, int player, u32 t)
+ 		{
+ 			Session& s = *s_session;
+-			if (s.cfg.corrupt_poll >= 0 && static_cast<s64>(t - s.c0) == s.cfg.corrupt_poll && player == 0)
++			const s64 rel = static_cast<s64>(t - s.c0);
++			if (s.cfg.corrupt_poll >= 0 && rel >= s.cfg.corrupt_poll && rel < s.cfg.corrupt_poll + 30 && player == 0)
+ 			{
+-				in.buttons ^= 0x0080; // deliberate one-poll corruption for the detection test (M1 criterion 6)
+-				Log(fmt::format("TEST: corrupted player 0 input at poll {}", t - s.c0));
++				// deliberate corruption in ONE instance only, for the desync detection test (M1 criterion 6):
++				// player 1's left stick forced hard right for 30 polls
++				in.lx = 0xFF;
++				in.ly = Pad::ANALOG_NEUTRAL_POSITION;
++				if (rel == s.cfg.corrupt_poll)
++					Log(fmt::format("TEST: corrupting player 0 input for polls {}..{}", rel, rel + 29));
+ 			}
+ 			memWrite32(portbuf + kPortOffConnected, 1);
+ 			memWrite8(portbuf + kPortOffSticks + 0, in.lx);
+@@ -556,13 +561,11 @@ namespace W4P
+ 				if (s.log)
+ 					std::fprintf(s.log, "HASH %u %016llx\n", t - s.c0, static_cast<unsigned long long>(h));
+ 				SendHashes();
+-				if (s.first_mismatch_t < 0)
+-				{
+-					// keep a few RAM snapshots near the start of a desync for diffing (only when asked to)
+-				}
+ 			}
+ 			CompareHashes();
+-			if (s.first_mismatch_t >= 0 && static_cast<s64>(t) == s.first_mismatch_t + 1)
++			// Both instances detect the same first mismatching hash point, so dumping a fixed number of polls after
++			// it gives RAM images of the same emulated moment on every instance (for tools/desync_diff.py).
++			if (s.first_mismatch_t >= 0 && static_cast<s64>(t) == s.first_mismatch_t + 8 * s.cfg.hash_interval)
+ 				DumpRam(t);
+ 		}
+ 
+-- 
+2.55.0.windows.3
+

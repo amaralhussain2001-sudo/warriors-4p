@@ -1,0 +1,53 @@
+{
+ "tag": "c4_views",
+ "seconds_run": 47,
+ "args": {
+  "delay": 2,
+  "latency": 0,
+  "jitter": 0,
+  "loss": 0.0,
+  "nocrop": false,
+  "corrupt": null,
+  "shots": 12,
+  "state": "m1_start_m9_2p.p2s"
+ },
+ "alive_at_end": {
+  "0": true,
+  "1": true
+ },
+ "hash_points_common": 39,
+ "hash_mismatches": 0,
+ "first_mismatch_poll": null,
+ "last_common_poll": "1170",
+ "stats": {
+  "0": "poll 1177, polls 1178, waits 3, wait total 9.4 ms, max 6.4 ms, hashes 39, mismatches 0",
+  "0_desync_lines": [],
+  "0_errors": [],
+  "1": "poll 1177, polls 1178, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 39, mismatches 0",
+  "1_desync_lines": [],
+  "1_errors": []
+ },
+ "views_at_end": {
+  "0": {
+   "views": 2,
+   "cams": 2,
+   "counter": 12313
+  },
+  "1": {
+   "views": 2,
+   "cams": 2,
+   "counter": 12311
+  }
+ },
+ "screenshots": [
+  "m1_c4_views_s0_0006",
+  "m1_c4_views_s1_0006",
+  "m1_c4_views_s0_0018",
+  "m1_c4_views_s1_0019",
+  "m1_c4_views_s0_0031",
+  "m1_c4_views_s1_0031",
+  "m1_c4_views_s0_0042",
+  "m1_c4_views_s1_0042"
+ ],
+ "environment": "SINGLE-PC, loopback UDP, scripted bots on both slots, no impairment"
+}

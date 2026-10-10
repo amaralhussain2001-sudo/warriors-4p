@@ -1,0 +1,12 @@
+{
+ "windows": 73,
+ "avg_all": 27.32,
+ "windows_ge_28": 63,
+ "avg_in_gameplay_windows": 29.55,
+ "min": 1.4,
+ "max": 30.07,
+ "session_seconds": 740.7,
+ "stall_total_ms": 6518.4,
+ "stall_fraction_pct": 0.88,
+ "stall_max_ms": 39.4
+}

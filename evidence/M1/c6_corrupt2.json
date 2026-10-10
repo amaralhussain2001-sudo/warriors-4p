@@ -1,0 +1,59 @@
+{
+ "tag": "c6_corrupt2",
+ "seconds_run": 78,
+ "args": {
+  "delay": 2,
+  "latency": 0,
+  "jitter": 0,
+  "loss": 0.0,
+  "nocrop": false,
+  "corrupt": 900,
+  "shots": 200,
+  "state": "m1_start_m9_2p.p2s"
+ },
+ "alive_at_end": {
+  "0": true,
+  "1": true
+ },
+ "hash_points_common": 73,
+ "hash_mismatches": 43,
+ "first_mismatch_poll": "930",
+ "last_common_poll": "2190",
+ "stats": {
+  "0": "poll 2048, polls 2049, waits 577, wait total 3493.6 ms, max 37.7 ms, hashes 68, mismatches 38",
+  "0_desync_lines": [
+   "DESYNC: poll 11909 (rel 930) hash mine d209efbd86493570 slot1 18db9e3961e29684",
+   "DESYNC: poll 11939 (rel 960) hash mine 855bb6d0d9accf66 slot1 a1183ba4a7e86d2f",
+   "DESYNC: poll 11969 (rel 990) hash mine 7276abfbad5f5ffe slot1 5b2ab3bc25a8616a",
+   "DESYNC: poll 11999 (rel 1020) hash mine 87196c3ed9aa7cc5 slot1 c87cc70edc068ae6",
+   "DESYNC: poll 12029 (rel 1050) hash mine 07e948f5a721dd9f slot1 0821a5bb4913923d"
+  ],
+  "0_errors": [],
+  "1": "poll 2050, polls 2051, waits 84, wait total 827.6 ms, max 130.1 ms, hashes 68, mismatches 38",
+  "1_desync_lines": [
+   "DESYNC: poll 11909 (rel 930) hash mine 18db9e3961e29684 slot0 d209efbd86493570",
+   "DESYNC: poll 11939 (rel 960) hash mine a1183ba4a7e86d2f slot0 855bb6d0d9accf66",
+   "DESYNC: poll 11969 (rel 990) hash mine 5b2ab3bc25a8616a slot0 7276abfbad5f5ffe",
+   "DESYNC: poll 11999 (rel 1020) hash mine c87cc70edc068ae6 slot0 87196c3ed9aa7cc5",
+   "DESYNC: poll 12029 (rel 1050) hash mine 0821a5bb4913923d slot0 07e948f5a721dd9f"
+  ],
+  "1_errors": []
+ },
+ "views_at_end": {
+  "0": {
+   "views": 2,
+   "cams": 2,
+   "counter": 13184
+  },
+  "1": {
+   "views": 2,
+   "cams": 2,
+   "counter": 13185
+  }
+ },
+ "screenshots": [
+  "m1_c6_corrupt2_s0_0070",
+  "m1_c6_corrupt2_s1_0070"
+ ],
+ "environment": "SINGLE-PC, loopback UDP, scripted bots on both slots, no impairment"
+}

@@ -1,0 +1,79 @@
+{
+ "tag": "c1_final",
+ "seconds_run": 752,
+ "args": {
+  "delay": 2,
+  "latency": 0,
+  "jitter": 0,
+  "loss": 0.0,
+  "nocrop": false,
+  "corrupt": null,
+  "shots": 45,
+  "state": "m1_start_m9_2p.p2s"
+ },
+ "alive_at_end": {
+  "0": true,
+  "1": true
+ },
+ "hash_points_common": 675,
+ "hash_mismatches": 0,
+ "first_mismatch_poll": null,
+ "last_common_poll": "20250",
+ "stats": {
+  "0": "poll 20253, polls 20254, waits 887, wait total 6518.4 ms, max 39.4 ms, hashes 675, mismatches 0",
+  "0_desync_lines": [],
+  "0_errors": [],
+  "1": "poll 20254, polls 20255, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 675, mismatches 0",
+  "1_desync_lines": [],
+  "1_errors": []
+ },
+ "views_at_end": {
+  "0": {
+   "views": 2,
+   "cams": 2,
+   "counter": 31510
+  },
+  "1": {
+   "views": 2,
+   "cams": 2,
+   "counter": 31508
+  }
+ },
+ "screenshots": [
+  "m1_c1_final_s0_0004",
+  "m1_c1_final_s1_0004",
+  "m1_c1_final_s0_0050",
+  "m1_c1_final_s1_0051",
+  "m1_c1_final_s0_0095",
+  "m1_c1_final_s1_0095",
+  "m1_c1_final_s0_0140",
+  "m1_c1_final_s1_0140",
+  "m1_c1_final_s0_0184",
+  "m1_c1_final_s1_0185",
+  "m1_c1_final_s0_0229",
+  "m1_c1_final_s1_0229",
+  "m1_c1_final_s0_0274",
+  "m1_c1_final_s1_0274",
+  "m1_c1_final_s0_0320",
+  "m1_c1_final_s1_0321",
+  "m1_c1_final_s0_0365",
+  "m1_c1_final_s1_0365",
+  "m1_c1_final_s0_0410",
+  "m1_c1_final_s1_0410",
+  "m1_c1_final_s0_0454",
+  "m1_c1_final_s1_0455",
+  "m1_c1_final_s0_0499",
+  "m1_c1_final_s1_0499",
+  "m1_c1_final_s0_0544",
+  "m1_c1_final_s1_0544",
+  "m1_c1_final_s0_0590",
+  "m1_c1_final_s1_0591",
+  "m1_c1_final_s0_0635",
+  "m1_c1_final_s1_0635",
+  "m1_c1_final_s0_0680",
+  "m1_c1_final_s1_0680",
+  "m1_c1_final_s0_0724",
+  "m1_c1_final_s1_0725"
+ ],
+ "environment": "SINGLE-PC, loopback UDP, scripted bots on both slots, no impairment"
+}

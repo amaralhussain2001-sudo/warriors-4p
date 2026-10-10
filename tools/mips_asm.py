@@ -1,7 +1,7 @@
 """Tiny MIPS (R5900 subset) assembler for Stage 1 experiment code caves.
 
 Supports: lui ori addiu addu subu sll srl srlv and andi sltu slt lw sw lh lhu sh lb lbu sb
-beq bne bltz bgez blez bgtz j jal jr jalr nop move, labels ("name:") and comments (#).
+beq bne bltz bgez blez bgtz j jal jr jalr syscall nop move, labels ("name:") and comments (#).
 Branch targets are labels; the caller must place delay-slot instructions explicitly.
 """
 import re
@@ -55,6 +55,8 @@ def assemble(src, origin):
         R = lambda rs, rt, rd, sh, fn: (rs << 21) | (rt << 16) | (rd << 11) | (sh << 6) | fn  # noqa: E731
         if op == "nop":
             w = 0
+        elif op == "syscall":
+            w = 0x0000000C
         elif op == "move":
             w = R(r(a[1]), 0, r(a[0]), 0, 0x21)
         elif op == "lui":

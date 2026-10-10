@@ -20,7 +20,8 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.abspath(os.path.join(HERE, ".."))
 BASE = os.path.join(PROJ, "local", "pcsx2", "base")
-EXE = os.path.join(BASE, "pcsx2-qt.exe")
+EXE = os.environ.get("W4P_PCSX2_EXE") or os.path.join(BASE, "pcsx2-qt.exe")
+FORK_EXE = os.path.join(PROJ, "emulator", "pcsx2", "bin", "pcsx2-qtx64.exe")
 ISO = r"C:\Users\PC FORCE\Desktop\New folder\Warriors The (USA) (EnFrDeEsIt)\Warriors, The (USA) (En,Fr,De,Es,It).iso"
 BIOS_DIR = os.path.join(BASE, "bios", "SCPH-90001_BIOS_V18_USA_230_(NTSC)")
 PINE_BASE = 28100
@@ -126,7 +127,7 @@ def main():
         pid = int(open(os.path.join(inst_dir(n), "pid.txt")).read())
         # only ever kill a process whose image is the sandbox copy
         out = subprocess.run(["powershell", "-NoProfile", "-Command", f"(Get-Process -Id {pid}).Path"], capture_output=True, text=True).stdout.strip()
-        if os.path.normcase(out) == os.path.normcase(EXE):
+        if os.path.normcase(out) in (os.path.normcase(EXE), os.path.normcase(FORK_EXE), os.path.normcase(os.path.join(BASE, "pcsx2-qt.exe"))):
             subprocess.run(["taskkill", "/PID", str(pid), "/F"], capture_output=True)
             print("killed", pid)
         else:

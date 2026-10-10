@@ -1,0 +1,1243 @@
+From e868c75aff9226dbb2b2470ff5310b5fd07d2b96 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sat, 10 Oct 2026 22:36:10 +0300
+Subject: [PATCH 1/3] warriors-4p: W4P lockstep module (M1 proof of concept)
+
+---
+ pcsx2/CMakeLists.txt                     |   4 +
+ pcsx2/GS/Renderers/Common/GSRenderer.cpp |   9 +
+ pcsx2/R5900OpcodeImpl.cpp                |   8 +
+ pcsx2/VMManager.cpp                      |   5 +
+ pcsx2/W4P/W4P.cpp                        | 752 +++++++++++++++++++++++
+ pcsx2/W4P/W4P.h                          |  36 ++
+ pcsx2/W4P/W4PTransport.cpp               | 232 +++++++
+ pcsx2/W4P/W4PTransport.h                 |  43 ++
+ pcsx2/pcsx2.vcxproj                      |   4 +
+ 9 files changed, 1093 insertions(+)
+ create mode 100644 pcsx2/W4P/W4P.cpp
+ create mode 100644 pcsx2/W4P/W4P.h
+ create mode 100644 pcsx2/W4P/W4PTransport.cpp
+ create mode 100644 pcsx2/W4P/W4PTransport.h
+
+diff --git a/pcsx2/CMakeLists.txt b/pcsx2/CMakeLists.txt
+index 4c8ce81..4917d7c 100644
+--- a/pcsx2/CMakeLists.txt
++++ b/pcsx2/CMakeLists.txt
+@@ -97,6 +97,8 @@ set(pcsx2Sources
+ 	IopIrq.cpp
+ 	IopMem.cpp
+ 	PINE.cpp
++	W4P/W4P.cpp
++	W4P/W4PTransport.cpp
+ 	Mdec.cpp
+ 	Memory.cpp
+ 	MMI.cpp
+@@ -178,6 +180,8 @@ set(pcsx2Headers
+ 	IopMem.h
+ 	LayeredSettingsInterface.h
+ 	PINE.h
++	W4P/W4P.h
++	W4P/W4PTransport.h
+ 	Mdec.h
+ 	MTGS.h
+ 	MTVU.h
+diff --git a/pcsx2/GS/Renderers/Common/GSRenderer.cpp b/pcsx2/GS/Renderers/Common/GSRenderer.cpp
+index b5c7cc6..1772b76 100644
+--- a/pcsx2/GS/Renderers/Common/GSRenderer.cpp
++++ b/pcsx2/GS/Renderers/Common/GSRenderer.cpp
+@@ -14,6 +14,7 @@
+ #include "PerformanceMetrics.h"
+ #include "pcsx2/Config.h"
+ #include "VMManager.h"
++#include "W4P/W4P.h"
+ 
+ #include "common/FileSystem.h"
+ #include "common/Image.h"
+@@ -449,6 +450,14 @@ static GSVector4i CalculateDrawSrcRect(const GSTexture* src, const GSVector2i re
+ 	const int top = static_cast<int>(static_cast<float>(GSConfig.Crop[1] * scale.y) * upscale);
+ 	const int right =  size.x - static_cast<int>(static_cast<float>(GSConfig.Crop[2] * scale.x) * upscale);
+ 	const int bottom = size.y - static_cast<int>(static_cast<float>(GSConfig.Crop[3] * scale.y) * upscale);
++	// warriors-4p: show only the local player's view of the game's split screen (presentation only).
++	float w4p[4];
++	if (W4P::GetPresentationCrop(w4p))
++	{
++		const float w = static_cast<float>(right - left), h = static_cast<float>(bottom - top);
++		return GSVector4i(left + static_cast<int>(w * w4p[0]), top + static_cast<int>(h * w4p[1]),
++			left + static_cast<int>(w * w4p[2]), top + static_cast<int>(h * w4p[3]));
++	}
+ 	return GSVector4i(left, top, right, bottom);
+ }
+ 
+diff --git a/pcsx2/R5900OpcodeImpl.cpp b/pcsx2/R5900OpcodeImpl.cpp
+index 8141d7b..a51bcfd 100644
+--- a/pcsx2/R5900OpcodeImpl.cpp
++++ b/pcsx2/R5900OpcodeImpl.cpp
+@@ -6,6 +6,7 @@
+ #include <float.h>
+ 
+ #include "R5900.h"
++#include "W4P/W4P.h"
+ #include "R5900OpcodeTables.h"
+ #include "GS.h"
+ #include "ps2/BiosTools.h"
+@@ -911,6 +912,13 @@ void SYSCALL()
+ {
+ 	u8 call;
+ 
++	// warriors-4p: game-patch hook (not an upstream syscall). Needs proper testing.
++	if (cpuRegs.GPR.n.v1.UL[0] == W4P::kHookMagic)
++	{
++		W4P::OnGuestHook();
++		return;
++	}
++
+ 	if (cpuRegs.GPR.n.v1.SL[0] < 0)
+ 		call = (u8)(-cpuRegs.GPR.n.v1.SL[0]);
+ 	else
+diff --git a/pcsx2/VMManager.cpp b/pcsx2/VMManager.cpp
+index 082d574..b7de07f 100644
+--- a/pcsx2/VMManager.cpp
++++ b/pcsx2/VMManager.cpp
+@@ -42,6 +42,7 @@
+ #include "USB/USB.h"
+ #include "Vif_Dynarec.h"
+ #include "VMManager.h"
++#include "W4P/W4P.h"
+ #include "ps2/BiosTools.h"
+ 
+ #include "common/Console.h"
+@@ -1679,11 +1680,14 @@ VMBootResult VMManager::Initialize(const VMBootParameters& boot_params, Error* e
+ 
+ 	PerformanceMetrics::Clear();
+ 	MTGS::ResetStats();
++	W4P::OnVMStarted(); // warriors-4p
+ 	return VMBootResult::StartupSuccess;
+ }
+ 
+ void VMManager::Shutdown(bool save_resume_state)
+ {
++	W4P::OnVMShutdown(); // warriors-4p
++
+ 	// we'll probably already be stopping (this is how Qt calls shutdown),
+ 	// but just in case, so any of the stuff we call here knows we don't have a valid VM.
+ 	s_state.store(VMState::Stopping, std::memory_order_release);
+@@ -2969,6 +2973,7 @@ void VMManager::Internal::PollInputOnCPUThread()
+ {
+ 	Host::PumpMessagesOnCPUThread();
+ 	InputManager::PollSources();
++	W4P::OnVsync(); // warriors-4p
+ 
+ 	if (EmuConfig.EnableRecordingTools)
+ 	{
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+new file mode 100644
+index 0000000..940d882
+--- /dev/null
++++ b/pcsx2/W4P/W4P.cpp
+@@ -0,0 +1,752 @@
++// SPDX-FileCopyrightText: 2026 warriors-4p contributors
++// SPDX-License-Identifier: GPL-3.0+
++//
++// warriors-4p lockstep core. Not part of upstream PCSX2; written for one game (The Warriors, SLUS-21215 v1.03,
++// CRC B99A75DE). Needs proper testing; M1 exit criteria in the warriors-4p repository define what is verified.
++
++#include "W4P/W4P.h"
++#include "W4P/W4PTransport.h"
++
++#include "Host.h"
++#include "INISettingsInterface.h"
++#include "Memory.h"
++#include "R5900.h"
++#include "SIO/Pad/Pad.h"
++#include "SIO/Pad/PadBase.h"
++#include "SIO/Pad/PadDualshock2.h"
++#include "VMManager.h"
++
++#include "common/Console.h"
++#include "common/FileSystem.h"
++#include "common/Timer.h"
++
++#include "fmt/format.h"
++
++#include <algorithm>
++#include <array>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <memory>
++#include <mutex>
++#include <string>
++#include <unordered_map>
++#include <vector>
++
++namespace W4P
++{
++	namespace
++	{
++		constexpr u32 kGameCrc = 0xB99A75DEu;
++		constexpr int kMaxPlayers = 4;
++		constexpr u32 kRing = 4096; // polls of history kept per player
++		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
++		constexpr u16 kProtocolVersion = 1;
++		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
++
++		// Game memory used for presentation only (F-0027, docs/research/static_analysis.md).
++		constexpr u32 kViewsRendered = 0x0050B198;
++		constexpr u32 kLayoutRows = 0x0050B1A8;
++		constexpr u32 kLayoutCols = 0x0050B1AA;
++
++		// Offsets inside the game's per-pad port buffer (F-0051).
++		constexpr u32 kPortOffPort = 0x104;
++		constexpr u32 kPortOffSlot = 0x108;
++		constexpr u32 kPortOffConnected = 0x10C;
++		constexpr u32 kPortOffSticks = 0x110; // lx, ly, rx, ry
++		constexpr u32 kPortOffButtons = 0x114; // u16, game codes, 1 = pressed
++		constexpr u32 kPortOffPressure = 0x116; // 12 bytes
++
++#pragma pack(push, 1)
++		struct Input
++		{
++			u16 buttons;
++			u8 lx, ly, rx, ry;
++			u8 pressure[12];
++			u8 valid;
++			u8 reserved;
++		};
++		static_assert(sizeof(Input) == 20);
++
++		struct PktHeader
++		{
++			u32 magic;
++			u16 version;
++			u8 type;
++			u8 slot;
++			u32 c0;
++		};
++		struct PktInputs
++		{
++			PktHeader h;
++			u32 first_t;
++			u16 count;
++		};
++		struct PktHashes
++		{
++			PktHeader h;
++			u16 count;
++		};
++		struct HashEntry
++		{
++			u32 t;
++			u64 hash;
++		};
++#pragma pack(pop)
++
++		enum : u8
++		{
++			kPktInputs = 1,
++			kPktHashes = 2,
++		};
++
++		struct Config
++		{
++			bool enabled = false;
++			int players = 2;
++			int local_slot = 0;
++			std::array<int, kMaxPlayers> pad_for_slot = {0, 4, 1, 2};
++			u16 listen_port = 41000;
++			u32 bind_ipv4 = 0x7F000001u; // loopback by default; LAN/internet needs BindAddress = 0.0.0.0
++			std::array<Endpoint, kMaxPlayers> peers = {};
++			int input_delay = 2;
++			int hash_interval = 30;
++			int wait_warn_s = 60;
++			std::string log_path;
++			std::string dump_dir;
++			std::string bot_path;
++			int latency_ms = 0;
++			int jitter_ms = 0;
++			float loss = 0.0f;
++			u32 seed = 1;
++			bool crop = true;
++			s64 corrupt_poll = -1; // test only: flip a button in this instance at poll (t - c0)
++		};
++
++		struct PlayerRing
++		{
++			std::array<Input, kRing> in = {};
++			std::array<u32, kRing> tag = {}; // t + 1, 0 = empty
++		};
++
++		struct Session
++		{
++			Config cfg;
++			std::unique_ptr<Transport> net;
++			std::FILE* log = nullptr;
++			std::vector<Input> bot;
++
++			bool started = false;
++			u32 c0 = 0;
++			u32 cur_t = 0;
++			u32 local_upto = 0;
++			std::array<PlayerRing, kMaxPlayers> ring;
++			std::array<s64, kMaxPlayers> peer_c0 = {-1, -1, -1, -1};
++			bool c0_mismatch_reported = false;
++
++			std::unordered_map<u32, u64> local_hash;
++			std::array<std::unordered_map<u32, u64>, kMaxPlayers> remote_hash;
++			std::vector<u32> pending_compare;
++			u64 hashes_compared = 0;
++			u64 mismatches = 0;
++			s64 first_mismatch_t = -1;
++
++			u64 hooks = 0;
++			u64 rx = 0, rx_ok = 0, rx_bad = 0, tx = 0;
++			u64 polls = 0;
++			u64 waits = 0;
++			double wait_ms_total = 0.0;
++			double wait_ms_max = 0.0;
++			double last_send_ms = 0.0;
++			double last_stats_ms = 0.0;
++		};
++
++		std::unique_ptr<Session> s_session;
++		std::mutex s_crop_mutex;
++		bool s_crop_on = false;
++		float s_crop[4] = {0.0f, 0.0f, 1.0f, 1.0f};
++
++		double NowMs()
++		{
++			return Common::Timer::ConvertValueToMilliseconds(Common::Timer::GetCurrentValue());
++		}
++
++		void Log(const std::string& line)
++		{
++			if (s_session && s_session->log)
++			{
++				std::fprintf(s_session->log, "[%12.3f] %s\n", NowMs(), line.c_str());
++				std::fflush(s_session->log);
++			}
++			Console.WriteLn("(W4P) %s", line.c_str());
++		}
++
++		Input Neutral()
++		{
++			Input in = {};
++			in.lx = in.ly = in.rx = in.ry = Pad::ANALOG_NEUTRAL_POSITION;
++			in.valid = 1;
++			return in;
++		}
++
++		int PlayerForPad(int pad)
++		{
++			for (int p = 0; p < s_session->cfg.players; p++)
++			{
++				if (s_session->cfg.pad_for_slot[p] == pad)
++					return p;
++			}
++			return -1;
++		}
++
++		void Store(int player, u32 t, const Input& in)
++		{
++			PlayerRing& r = s_session->ring[player];
++			const u32 i = t % kRing;
++			if (r.tag[i] == t + 1)
++				return; // first value wins; inputs never change once sent
++			r.in[i] = in;
++			r.tag[i] = t + 1;
++		}
++
++		bool Has(int player, u32 t)
++		{
++			return s_session->ring[player].tag[t % kRing] == t + 1;
++		}
++
++		const Input& Get(int player, u32 t)
++		{
++			return s_session->ring[player].in[t % kRing];
++		}
++
++		bool HaveAll(u32 t)
++		{
++			for (int p = 0; p < s_session->cfg.players; p++)
++			{
++				if (!Has(p, t))
++					return false;
++			}
++			return true;
++		}
++
++		Input SampleLocal(u32 t)
++		{
++			if (!s_session->bot.empty())
++				return s_session->bot[(t - s_session->c0) % s_session->bot.size()];
++
++			Input in = Neutral();
++			PadBase* pad = Pad::GetPad(0, 0); // the local controller is always bound to port 1, slot A
++			if (!pad)
++				return in;
++			in.buttons = static_cast<u16>(~pad->GetButtons() & 0xFFFFu);
++			const auto [lx, ly] = pad->GetRawLeftAnalog();
++			const auto [rx, ry] = pad->GetRawRightAnalog();
++			in.lx = lx;
++			in.ly = ly;
++			in.rx = rx;
++			in.ry = ry;
++			// libpad pressure order: right, left, up, down, triangle, circle, cross, square, L1, R1, L2, R2
++			static constexpr u32 order[12] = {PadDualshock2::PAD_RIGHT, PadDualshock2::PAD_LEFT, PadDualshock2::PAD_UP,
++				PadDualshock2::PAD_DOWN, PadDualshock2::PAD_TRIANGLE, PadDualshock2::PAD_CIRCLE, PadDualshock2::PAD_CROSS,
++				PadDualshock2::PAD_SQUARE, PadDualshock2::PAD_L1, PadDualshock2::PAD_R1, PadDualshock2::PAD_L2,
++				PadDualshock2::PAD_R2};
++			for (int i = 0; i < 12; i++)
++				in.pressure[i] = pad->GetPressure(order[i]);
++			return in;
++		}
++
++		void FillHeader(PktHeader* h, u8 type)
++		{
++			h->magic = kPktMagic;
++			h->version = kProtocolVersion;
++			h->type = type;
++			h->slot = static_cast<u8>(s_session->cfg.local_slot);
++			h->c0 = s_session->c0;
++		}
++
++		void SendToPeers(const void* data, size_t size)
++		{
++			for (int p = 0; p < s_session->cfg.players; p++)
++			{
++				if (p != s_session->cfg.local_slot && s_session->cfg.peers[p].IsValid())
++				{
++					s_session->net->SendTo(s_session->cfg.peers[p], data, size);
++					s_session->tx++;
++				}
++			}
++		}
++
++		void SendInputs()
++		{
++			Session& s = *s_session;
++			if (!s.started)
++				return;
++			const u32 last = s.local_upto;
++			const u32 first = (last - s.c0 + 1 > static_cast<u32>(kResendBurst)) ? last - kResendBurst + 1 : s.c0;
++			const u16 count = static_cast<u16>(last - first + 1);
++			std::vector<u8> buf(sizeof(PktInputs) + count * sizeof(Input));
++			PktInputs* pkt = reinterpret_cast<PktInputs*>(buf.data());
++			FillHeader(&pkt->h, kPktInputs);
++			pkt->first_t = first;
++			pkt->count = count;
++			Input* out = reinterpret_cast<Input*>(buf.data() + sizeof(PktInputs));
++			for (u32 i = 0; i < count; i++)
++				out[i] = Get(s.cfg.local_slot, first + i);
++			SendToPeers(buf.data(), buf.size());
++			s.last_send_ms = NowMs();
++		}
++
++		void SendHashes()
++		{
++			Session& s = *s_session;
++			std::vector<HashEntry> recent;
++			for (const auto& [t, h] : s.local_hash)
++			{
++				if (t + static_cast<u32>(s.cfg.hash_interval) * 8 >= s.cur_t)
++					recent.push_back({t, h});
++			}
++			if (recent.empty())
++				return;
++			std::vector<u8> buf(sizeof(PktHashes) + recent.size() * sizeof(HashEntry));
++			PktHashes* pkt = reinterpret_cast<PktHashes*>(buf.data());
++			FillHeader(&pkt->h, kPktHashes);
++			pkt->count = static_cast<u16>(recent.size());
++			std::memcpy(buf.data() + sizeof(PktHashes), recent.data(), recent.size() * sizeof(HashEntry));
++			SendToPeers(buf.data(), buf.size());
++		}
++
++		void HandlePacket(const u8* data, int size, const Endpoint& from)
++		{
++			Session& s = *s_session;
++			s.rx++;
++			s.rx_bad++; // decremented below once the datagram is accepted
++			if (size < static_cast<int>(sizeof(PktHeader)))
++				return;
++			PktHeader h;
++			std::memcpy(&h, data, sizeof(h));
++			if (h.magic != kPktMagic || h.version != kProtocolVersion || h.slot >= s.cfg.players ||
++				h.slot == s.cfg.local_slot)
++				return;
++			// Only accept datagrams from the configured address of that slot (no other source can inject input).
++			if (!(from == s.cfg.peers[h.slot]))
++			{
++				if (s.rx_bad < 5)
++					Log(fmt::format("rejected datagram from {} claiming slot {}", from.ToString(), h.slot));
++				return;
++			}
++			s.rx_bad--;
++			s.rx_ok++;
++			s.peer_c0[h.slot] = h.c0;
++			if (s.started && h.c0 != s.c0 && !s.c0_mismatch_reported)
++			{
++				s.c0_mismatch_reported = true;
++				Log(fmt::format("ERROR: peer slot {} started at poll {} but we started at {} (different start state)", h.slot, h.c0, s.c0));
++				Host::AddKeyedOSDMessage("w4p_c0", "W4P: players started from different states", 10.0f);
++			}
++			if (h.type == kPktInputs && size >= static_cast<int>(sizeof(PktInputs)))
++			{
++				PktInputs pkt;
++				std::memcpy(&pkt, data, sizeof(pkt));
++				if (pkt.count > 256 || size != static_cast<int>(sizeof(PktInputs) + pkt.count * sizeof(Input)))
++					return;
++				for (u32 i = 0; i < pkt.count; i++)
++				{
++					Input in;
++					std::memcpy(&in, data + sizeof(PktInputs) + i * sizeof(Input), sizeof(Input));
++					if (in.valid == 1)
++						Store(h.slot, pkt.first_t + i, in);
++				}
++			}
++			else if (h.type == kPktHashes && size >= static_cast<int>(sizeof(PktHashes)))
++			{
++				PktHashes pkt;
++				std::memcpy(&pkt, data, sizeof(pkt));
++				if (pkt.count > 64 || size != static_cast<int>(sizeof(PktHashes) + pkt.count * sizeof(HashEntry)))
++					return;
++				for (u32 i = 0; i < pkt.count; i++)
++				{
++					HashEntry e;
++					std::memcpy(&e, data + sizeof(PktHashes) + i * sizeof(HashEntry), sizeof(e));
++					s.remote_hash[h.slot][e.t] = e.hash;
++				}
++			}
++		}
++
++		void Receive(int timeout_ms)
++		{
++			u8 buf[8192];
++			Endpoint from;
++			int n = s_session->net->Receive(buf, sizeof(buf), &from, timeout_ms);
++			while (n > 0)
++			{
++				HandlePacket(buf, n, from);
++				n = s_session->net->Receive(buf, sizeof(buf), &from, 0);
++			}
++		}
++
++		u64 HashMainRam()
++		{
++			// Fast non-cryptographic 64-bit hash of all EE main RAM; only used to detect divergence.
++			const u64* p = reinterpret_cast<const u64*>(eeMem->Main);
++			const size_t n = Ps2MemSize::MainRam / sizeof(u64);
++			u64 h1 = 0x9E3779B97F4A7C15ull, h2 = 0xC2B2AE3D27D4EB4Full;
++			for (size_t i = 0; i < n; i += 2)
++			{
++				h1 = (h1 ^ p[i]) * 0x100000001B3ull;
++				h2 = (h2 ^ p[i + 1]) * 0x880355F21E6D1965ull;
++			}
++			return h1 ^ (h2 >> 1) ^ (h2 << 63);
++		}
++
++		void DumpRam(u32 t)
++		{
++			if (s_session->cfg.dump_dir.empty())
++				return;
++			const std::string path = fmt::format("{}\\w4p_slot{}_t{}.bin", s_session->cfg.dump_dir, s_session->cfg.local_slot, t);
++			if (std::FILE* f = FileSystem::OpenCFile(path.c_str(), "wb"))
++			{
++				std::fwrite(eeMem->Main, 1, Ps2MemSize::MainRam, f);
++				std::fclose(f);
++				Log(fmt::format("dumped RAM to {}", path));
++			}
++		}
++
++		void CompareHashes()
++		{
++			Session& s = *s_session;
++			for (auto it = s.pending_compare.begin(); it != s.pending_compare.end();)
++			{
++				const u32 t = *it;
++				bool all = true;
++				for (int p = 0; p < s.cfg.players && all; p++)
++				{
++					if (p != s.cfg.local_slot && s.remote_hash[p].find(t) == s.remote_hash[p].end())
++						all = false;
++				}
++				if (!all)
++				{
++					++it;
++					continue;
++				}
++				const u64 mine = s.local_hash[t];
++				for (int p = 0; p < s.cfg.players; p++)
++				{
++					if (p == s.cfg.local_slot)
++						continue;
++					s.hashes_compared++;
++					if (s.remote_hash[p][t] != mine)
++					{
++						s.mismatches++;
++						Log(fmt::format("DESYNC: poll {} (rel {}) hash mine {:016x} slot{} {:016x}", t, t - s.c0, mine, p, s.remote_hash[p][t]));
++						if (s.first_mismatch_t < 0)
++						{
++							s.first_mismatch_t = t;
++							Host::AddKeyedOSDMessage("w4p_desync", fmt::format("W4P: DESYNC detected at poll {}", t - s.c0), 15.0f);
++						}
++					}
++				}
++				it = s.pending_compare.erase(it);
++			}
++		}
++
++		void WriteInput(u32 portbuf, Input in, int player, u32 t)
++		{
++			Session& s = *s_session;
++			if (s.cfg.corrupt_poll >= 0 && static_cast<s64>(t - s.c0) == s.cfg.corrupt_poll && player == 0)
++			{
++				in.buttons ^= 0x0080; // deliberate one-poll corruption for the detection test (M1 criterion 6)
++				Log(fmt::format("TEST: corrupted player 0 input at poll {}", t - s.c0));
++			}
++			memWrite32(portbuf + kPortOffConnected, 1);
++			memWrite8(portbuf + kPortOffSticks + 0, in.lx);
++			memWrite8(portbuf + kPortOffSticks + 1, in.ly);
++			memWrite8(portbuf + kPortOffSticks + 2, in.rx);
++			memWrite8(portbuf + kPortOffSticks + 3, in.ry);
++			memWrite16(portbuf + kPortOffButtons, in.buttons);
++			for (u32 i = 0; i < 12; i++)
++				memWrite8(portbuf + kPortOffPressure + i, in.pressure[i]);
++		}
++
++		void Start(u32 counter)
++		{
++			Session& s = *s_session;
++			s.started = true;
++			s.c0 = counter;
++			s.cur_t = counter - 1;
++			s.local_upto = counter + s.cfg.input_delay - 1;
++			for (int p = 0; p < s.cfg.players; p++)
++			{
++				for (int d = 0; d < s.cfg.input_delay; d++)
++					Store(p, counter + d, Neutral());
++			}
++			s.last_stats_ms = NowMs();
++			Log(fmt::format("session started at guest poll {} (players {}, local slot {}, delay {}, hash every {})",
++				counter, s.cfg.players, s.cfg.local_slot, s.cfg.input_delay, s.cfg.hash_interval));
++		}
++
++		void NewPoll(u32 t)
++		{
++			Session& s = *s_session;
++			s.cur_t = t;
++			s.polls++;
++			while (static_cast<s32>(s.local_upto - (t + s.cfg.input_delay)) < 0)
++			{
++				s.local_upto++;
++				Store(s.cfg.local_slot, s.local_upto, SampleLocal(s.local_upto));
++			}
++			SendInputs();
++			Receive(0);
++
++			if (!HaveAll(t))
++			{
++				const double start = NowMs();
++				double last_pump = start;
++				double last_osd = 0.0;
++				s.waits++;
++				while (!HaveAll(t))
++				{
++					Receive(2);
++					const double now = NowMs();
++					if (now - s.last_send_ms > 15.0)
++						SendInputs();
++					if (now - start > 500.0 && now - last_osd > 1000.0)
++					{
++						last_osd = now;
++						std::string who;
++						for (int p = 0; p < s.cfg.players; p++)
++						{
++							if (!Has(p, t))
++								who += fmt::format(" {}", p + 1);
++						}
++						Host::AddKeyedOSDMessage("w4p_wait",
++							fmt::format("Waiting for Player{}... {:.0f}s", who, (now - start) / 1000.0), 1.5f);
++						Log(fmt::format("waiting for players{} at poll {}: rx {} accepted {} rejected {} tx {}", who, t - s.c0, s.rx, s.rx_ok, s.rx_bad, s.tx));
++						if ((now - start) / 1000.0 > s.cfg.wait_warn_s)
++							Log(fmt::format("still waiting for players{} at poll {} after {:.0f} s", who, t - s.c0, (now - start) / 1000.0));
++					}
++					if (now - start > 2000.0 && now - last_pump > 250.0)
++					{
++						// Lets the UI ask the VM to stop while we wait (otherwise closing the window would hang).
++						last_pump = now;
++						Host::PumpMessagesOnCPUThread();
++						const VMState st = VMManager::GetState();
++						if (st == VMState::Stopping || st == VMState::Shutdown)
++						{
++							Log("VM stopping while waiting; giving up on this poll");
++							for (int p = 0; p < s.cfg.players; p++)
++							{
++								if (!Has(p, t))
++									Store(p, t, Neutral());
++							}
++							break;
++						}
++					}
++				}
++				const double waited = NowMs() - start;
++				s.wait_ms_total += waited;
++				if (waited > s.wait_ms_max)
++					s.wait_ms_max = waited;
++			}
++
++			if (s.cfg.hash_interval > 0 && t != s.c0 && (t - s.c0) % static_cast<u32>(s.cfg.hash_interval) == 0)
++			{
++				const u64 h = HashMainRam();
++				s.local_hash[t] = h;
++				s.pending_compare.push_back(t);
++				if (s.log)
++					std::fprintf(s.log, "HASH %u %016llx\n", t - s.c0, static_cast<unsigned long long>(h));
++				SendHashes();
++				if (s.first_mismatch_t < 0)
++				{
++					// keep a few RAM snapshots near the start of a desync for diffing (only when asked to)
++				}
++			}
++			CompareHashes();
++			if (s.first_mismatch_t >= 0 && static_cast<s64>(t) == s.first_mismatch_t + 1)
++				DumpRam(t);
++		}
++
++		void LoadBot(const std::string& path)
++		{
++			std::FILE* f = FileSystem::OpenCFile(path.c_str(), "rb");
++			if (!f)
++			{
++				Log(fmt::format("cannot open bot file {}", path));
++				return;
++			}
++			Input in;
++			while (std::fread(&in, sizeof(in), 1, f) == 1)
++			{
++				in.valid = 1;
++				s_session->bot.push_back(in);
++			}
++			std::fclose(f);
++			Log(fmt::format("bot input: {} polls from {}", s_session->bot.size(), path));
++		}
++
++		void UpdateCrop()
++		{
++			bool on = false;
++			float r[4] = {0.0f, 0.0f, 1.0f, 1.0f};
++			if (s_session->cfg.crop)
++			{
++				const u32 views = memRead32(kViewsRendered);
++				const u32 cols = memRead16(kLayoutCols);
++				const u32 rows = memRead16(kLayoutRows);
++				const u32 idx = static_cast<u32>(s_session->cfg.local_slot);
++				if (views >= 2 && cols >= 1 && rows >= 1 && cols * rows >= 2 && idx < views && cols <= 2 && rows <= 2)
++				{
++					const u32 col = idx % cols, row = idx / cols;
++					r[0] = static_cast<float>(col) / cols;
++					r[1] = static_cast<float>(row) / rows;
++					r[2] = static_cast<float>(col + 1) / cols;
++					r[3] = static_cast<float>(row + 1) / rows;
++					on = true;
++				}
++			}
++			std::lock_guard<std::mutex> lock(s_crop_mutex);
++			s_crop_on = on;
++			std::memcpy(s_crop, r, sizeof(r));
++		}
++	} // namespace
++
++	void OnVMStarted()
++	{
++		s_session.reset();
++		const char* path = std::getenv("W4P_CONFIG");
++		if (!path || !*path)
++			return;
++		INISettingsInterface ini(path);
++		if (!ini.Load())
++		{
++			Console.Error("(W4P) cannot read config %s", path);
++			return;
++		}
++		auto s = std::make_unique<Session>();
++		Config& c = s->cfg;
++		c.enabled = ini.GetBoolValue("W4P", "Enabled", false);
++		c.players = std::clamp(ini.GetIntValue("W4P", "Players", 2), 1, kMaxPlayers);
++		c.local_slot = std::clamp(ini.GetIntValue("W4P", "LocalSlot", 0), 0, c.players - 1);
++		for (int p = 0; p < kMaxPlayers; p++)
++		{
++			c.pad_for_slot[p] = ini.GetIntValue("W4P", fmt::format("PadForSlot{}", p).c_str(), c.pad_for_slot[p]);
++			std::string ep = ini.GetStringValue("W4P", fmt::format("Peer{}", p).c_str(), "");
++			if (!ep.empty() && !ParseEndpoint(ep, &c.peers[p]))
++				Console.Error("(W4P) bad peer address %s", ep.c_str());
++		}
++		c.listen_port = static_cast<u16>(ini.GetIntValue("W4P", "ListenPort", 41000));
++		{
++			Endpoint b;
++			if (ParseEndpoint(ini.GetStringValue("W4P", "BindAddress", "127.0.0.1") + ":1", &b))
++				c.bind_ipv4 = b.ipv4;
++		}
++		c.input_delay = std::clamp(ini.GetIntValue("W4P", "InputDelay", 2), 1, 60);
++		c.hash_interval = std::max(0, ini.GetIntValue("W4P", "HashInterval", 30));
++		c.wait_warn_s = ini.GetIntValue("W4P", "WaitWarnSeconds", 60);
++		c.log_path = ini.GetStringValue("W4P", "LogFile", "");
++		c.dump_dir = ini.GetStringValue("W4P", "DumpDir", "");
++		c.bot_path = ini.GetStringValue("W4P", "BotInput", "");
++		c.latency_ms = ini.GetIntValue("W4P", "ImpairLatencyMs", 0);
++		c.jitter_ms = ini.GetIntValue("W4P", "ImpairJitterMs", 0);
++		c.loss = ini.GetFloatValue("W4P", "ImpairLoss", 0.0f);
++		c.seed = static_cast<u32>(ini.GetIntValue("W4P", "ImpairSeed", 1));
++		c.crop = ini.GetBoolValue("W4P", "Crop", true);
++		c.corrupt_poll = ini.GetIntValue("W4P", "TestCorruptPoll", -1);
++		if (!c.enabled)
++			return;
++		if (VMManager::GetDiscCRC() != kGameCrc)
++		{
++			Console.Warning("(W4P) disc CRC %08X is not The Warriors (USA) v1.03; W4P stays off", VMManager::GetDiscCRC());
++			return;
++		}
++		s_session = std::move(s);
++		if (!c.log_path.empty())
++			s_session->log = FileSystem::OpenCFile(c.log_path.c_str(), "wb");
++		std::string error;
++		auto udp = CreateUdpTransport(c.bind_ipv4, c.listen_port, &error);
++		if (!udp)
++		{
++			Log("transport error: " + error);
++			s_session.reset();
++			return;
++		}
++		if (c.latency_ms > 0 || c.jitter_ms > 0 || c.loss > 0.0f)
++		{
++			s_session->net = CreateImpairedTransport(std::move(udp), c.latency_ms, c.jitter_ms, c.loss, c.seed);
++			Log(fmt::format("impairment: latency {} ms, jitter {} ms, loss {:.3f}, seed {}", c.latency_ms, c.jitter_ms, c.loss, c.seed));
++		}
++		else
++		{
++			s_session->net = std::move(udp);
++		}
++		if (!c.bot_path.empty())
++			LoadBot(c.bot_path);
++		Log(fmt::format("enabled: {} players, local slot {}, listen UDP {}", c.players, c.local_slot, c.listen_port));
++	}
++
++	void OnVMShutdown()
++	{
++		if (!s_session)
++			return;
++		Session& s = *s_session;
++		Log(fmt::format("shutdown: polls {}, waits {}, wait total {:.1f} ms, wait max {:.1f} ms, hashes compared {}, mismatches {}",
++			s.polls, s.waits, s.wait_ms_total, s.wait_ms_max, s.hashes_compared, s.mismatches));
++		if (s.log)
++			std::fclose(s.log);
++		s_session.reset();
++		std::lock_guard<std::mutex> lock(s_crop_mutex);
++		s_crop_on = false;
++	}
++
++	bool IsActive()
++	{
++		return s_session != nullptr;
++	}
++
++	void OnGuestHook()
++	{
++		if (!s_session)
++			return;
++		Session& s = *s_session;
++		const u32 portbuf = cpuRegs.GPR.n.a0.UL[0];
++		const u32 counter = cpuRegs.GPR.n.a1.UL[0];
++		const int pad = static_cast<int>(memRead32(portbuf + kPortOffPort) * 4 + memRead32(portbuf + kPortOffSlot));
++		s.hooks++;
++		const int player = PlayerForPad(pad);
++		if (player < 0)
++			return;
++		if (!s.started)
++			Start(counter);
++		if (counter != s.cur_t)
++			NewPoll(counter);
++		WriteInput(portbuf, Get(player, counter), player, counter);
++	}
++
++	void OnVsync()
++	{
++		if (!s_session)
++			return;
++		Session& s = *s_session;
++		Receive(0);
++		if (s.started && NowMs() - s.last_send_ms > 50.0)
++			SendInputs();
++		CompareHashes();
++		UpdateCrop();
++		const double now = NowMs();
++		if (s.started && now - s.last_stats_ms > 10000.0)
++		{
++			s.last_stats_ms = now;
++			Log(fmt::format("stats: poll {}, polls {}, waits {}, wait total {:.1f} ms, max {:.1f} ms, hashes {}, mismatches {}",
++				s.cur_t - s.c0, s.polls, s.waits, s.wait_ms_total, s.wait_ms_max, s.hashes_compared, s.mismatches));
++		}
++	}
++
++	bool GetPresentationCrop(float* out4)
++	{
++		std::lock_guard<std::mutex> lock(s_crop_mutex);
++		if (!s_crop_on)
++			return false;
++		std::memcpy(out4, s_crop, sizeof(s_crop));
++		return true;
++	}
++} // namespace W4P
+diff --git a/pcsx2/W4P/W4P.h b/pcsx2/W4P/W4P.h
+new file mode 100644
+index 0000000..42be452
+--- /dev/null
++++ b/pcsx2/W4P/W4P.h
+@@ -0,0 +1,36 @@
++// SPDX-FileCopyrightText: 2026 warriors-4p contributors
++// SPDX-License-Identifier: GPL-3.0+
++//
++// warriors-4p (W4P): emulator-side delay-based lockstep for The Warriors (SLUS-21215) online co-op.
++// Not part of upstream PCSX2. Needs proper testing; see the warriors-4p repository docs/plan/M1.md.
++//
++// The game patch calls a SYSCALL with v1 == kHookMagic right after the game's libpad read
++// (a0 = the game's per-pad port buffer, a1 = a guest poll counter that is part of emulated state).
++// OnGuestHook() then blocks the CPU thread (the whole emulated machine) until every player's input for that
++// poll has arrived, and writes the inputs into the port buffer. Blocking the CPU thread freezes all emulated
++// time, which keeps instances deterministic (Stage 1 experiment E3c).
++
++#pragma once
++
++#include "common/Pcsx2Types.h"
++
++namespace W4P
++{
++	static constexpr u32 kHookMagic = 0x57345030u; // "W4P0"
++
++	// Reads the session config named by the W4P_CONFIG environment variable (INI). No-op if unset.
++	void OnVMStarted();
++	void OnVMShutdown();
++
++	// Called from the EE SYSCALL handler when v1 == kHookMagic. Uses cpuRegs a0/a1.
++	void OnGuestHook();
++
++	// Called once per vsync on the CPU thread after host input polling.
++	void OnVsync();
++
++	bool IsActive();
++
++	// Presentation-only crop of the displayed frame, as fractions of the frame (x0, y0, x1, y1).
++	// Returns false when the whole frame should be shown. Safe to call from the GS thread.
++	bool GetPresentationCrop(float* out4);
++} // namespace W4P
+diff --git a/pcsx2/W4P/W4PTransport.cpp b/pcsx2/W4P/W4PTransport.cpp
+new file mode 100644
+index 0000000..8401d44
+--- /dev/null
++++ b/pcsx2/W4P/W4PTransport.cpp
+@@ -0,0 +1,232 @@
++// SPDX-FileCopyrightText: 2026 warriors-4p contributors
++// SPDX-License-Identifier: GPL-3.0+
++
++#include "W4P/W4PTransport.h"
++
++#include "common/Timer.h"
++
++#include "fmt/format.h"
++
++#include <algorithm>
++#include <deque>
++#include <random>
++#include <vector>
++
++#ifdef _WIN32
++#include <winsock2.h>
++#include <ws2tcpip.h>
++#else
++#include <arpa/inet.h>
++#include <netinet/in.h>
++#include <poll.h>
++#include <sys/socket.h>
++#include <unistd.h>
++#endif
++
++namespace W4P
++{
++	std::string Endpoint::ToString() const
++	{
++		return fmt::format("{}.{}.{}.{}:{}", (ipv4 >> 24) & 0xFF, (ipv4 >> 16) & 0xFF, (ipv4 >> 8) & 0xFF, ipv4 & 0xFF, port);
++	}
++
++	bool ParseEndpoint(const std::string& text, Endpoint* out)
++	{
++		const size_t colon = text.rfind(':');
++		if (colon == std::string::npos)
++			return false;
++		unsigned a = 0, b = 0, c = 0, d = 0;
++		if (std::sscanf(text.substr(0, colon).c_str(), "%u.%u.%u.%u", &a, &b, &c, &d) != 4 || a > 255 || b > 255 ||
++			c > 255 || d > 255)
++			return false;
++		const int port = std::atoi(text.c_str() + colon + 1);
++		if (port <= 0 || port > 65535)
++			return false;
++		out->ipv4 = (a << 24) | (b << 16) | (c << 8) | d;
++		out->port = static_cast<u16>(port);
++		return true;
++	}
++
++	namespace
++	{
++#ifdef _WIN32
++		using SocketHandle = SOCKET;
++		constexpr SocketHandle kInvalidSocket = INVALID_SOCKET;
++		void CloseSocket(SocketHandle s) { closesocket(s); }
++#else
++		using SocketHandle = int;
++		constexpr SocketHandle kInvalidSocket = -1;
++		void CloseSocket(SocketHandle s) { close(s); }
++#endif
++
++		class UdpTransport final : public Transport
++		{
++		public:
++			~UdpTransport() override
++			{
++				if (m_socket != kInvalidSocket)
++					CloseSocket(m_socket);
++#ifdef _WIN32
++				if (m_wsa_started)
++					WSACleanup();
++#endif
++			}
++
++			bool Open(u32 bind_ipv4, u16 port, std::string* error)
++			{
++#ifdef _WIN32
++				WSADATA wsa;
++				if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
++				{
++					*error = "WSAStartup failed";
++					return false;
++				}
++				m_wsa_started = true;
++#endif
++				m_socket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
++				if (m_socket == kInvalidSocket)
++				{
++					*error = "socket() failed";
++					return false;
++				}
++				sockaddr_in addr = {};
++				addr.sin_family = AF_INET;
++				addr.sin_addr.s_addr = htonl(bind_ipv4);
++				addr.sin_port = htons(port);
++				if (bind(m_socket, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) != 0)
++				{
++					*error = fmt::format("bind() to UDP port {} failed", port);
++					return false;
++				}
++				return true;
++			}
++
++			bool SendTo(const Endpoint& to, const void* data, size_t size) override
++			{
++				sockaddr_in addr = {};
++				addr.sin_family = AF_INET;
++				addr.sin_addr.s_addr = htonl(to.ipv4);
++				addr.sin_port = htons(to.port);
++				return sendto(m_socket, static_cast<const char*>(data), static_cast<int>(size), 0,
++						   reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) == static_cast<int>(size);
++			}
++
++			int Receive(void* buffer, size_t capacity, Endpoint* from, int timeout_ms) override
++			{
++#ifdef _WIN32
++				WSAPOLLFD pfd = {m_socket, POLLRDNORM, 0};
++				const int r = WSAPoll(&pfd, 1, timeout_ms);
++#else
++				pollfd pfd = {m_socket, POLLIN, 0};
++				const int r = poll(&pfd, 1, timeout_ms);
++#endif
++				if (r <= 0)
++					return r < 0 ? -1 : 0;
++				sockaddr_in addr = {};
++#ifdef _WIN32
++				int len = sizeof(addr);
++#else
++				socklen_t len = sizeof(addr);
++#endif
++				const int n = recvfrom(m_socket, static_cast<char*>(buffer), static_cast<int>(capacity), 0,
++					reinterpret_cast<sockaddr*>(&addr), &len);
++				if (n < 0)
++					return 0; // e.g. ICMP port unreachable on Windows: ignore
++				from->ipv4 = ntohl(addr.sin_addr.s_addr);
++				from->port = ntohs(addr.sin_port);
++				return n;
++			}
++
++		private:
++			SocketHandle m_socket = kInvalidSocket;
++#ifdef _WIN32
++			bool m_wsa_started = false;
++#endif
++		};
++
++		class ImpairedTransport final : public Transport
++		{
++		public:
++			ImpairedTransport(std::unique_ptr<Transport> inner, int latency_ms, int jitter_ms, float loss, u32 seed)
++				: m_inner(std::move(inner))
++				, m_latency_ms(latency_ms)
++				, m_jitter_ms(jitter_ms)
++				, m_loss(loss)
++				, m_rng(seed)
++			{
++			}
++
++			bool SendTo(const Endpoint& to, const void* data, size_t size) override
++			{
++				if (m_loss > 0.0f && std::uniform_real_distribution<float>(0.0f, 1.0f)(m_rng) < m_loss)
++					return true; // dropped
++				const int jitter = m_jitter_ms > 0 ? std::uniform_int_distribution<int>(-m_jitter_ms, m_jitter_ms)(m_rng) : 0;
++				const double due = Common::Timer::ConvertValueToMilliseconds(Common::Timer::GetCurrentValue()) +
++								   std::max(0, m_latency_ms + jitter);
++				Pending p;
++				p.due_ms = due;
++				p.to = to;
++				p.data.assign(static_cast<const u8*>(data), static_cast<const u8*>(data) + size);
++				// keep sorted by due time (jitter may reorder: that is intended)
++				auto it = std::upper_bound(m_queue.begin(), m_queue.end(), due,
++					[](double v, const Pending& e) { return v < e.due_ms; });
++				m_queue.insert(it, std::move(p));
++				Flush();
++				return true;
++			}
++
++			int Receive(void* buffer, size_t capacity, Endpoint* from, int timeout_ms) override
++			{
++				Flush();
++				int wait = timeout_ms;
++				if (!m_queue.empty())
++				{
++					const double now = Common::Timer::ConvertValueToMilliseconds(Common::Timer::GetCurrentValue());
++					wait = std::clamp(static_cast<int>(m_queue.front().due_ms - now), 0, timeout_ms);
++				}
++				const int n = m_inner->Receive(buffer, capacity, from, wait);
++				Flush();
++				return n;
++			}
++
++		private:
++			struct Pending
++			{
++				double due_ms;
++				Endpoint to;
++				std::vector<u8> data;
++			};
++
++			void Flush()
++			{
++				const double now = Common::Timer::ConvertValueToMilliseconds(Common::Timer::GetCurrentValue());
++				while (!m_queue.empty() && m_queue.front().due_ms <= now)
++				{
++					m_inner->SendTo(m_queue.front().to, m_queue.front().data.data(), m_queue.front().data.size());
++					m_queue.pop_front();
++				}
++			}
++
++			std::unique_ptr<Transport> m_inner;
++			int m_latency_ms;
++			int m_jitter_ms;
++			float m_loss;
++			std::mt19937 m_rng;
++			std::deque<Pending> m_queue;
++		};
++	} // namespace
++
++	std::unique_ptr<Transport> CreateUdpTransport(u32 bind_ipv4, u16 listen_port, std::string* error)
++	{
++		auto t = std::make_unique<UdpTransport>();
++		if (!t->Open(bind_ipv4, listen_port, error))
++			return nullptr;
++		return t;
++	}
++
++	std::unique_ptr<Transport> CreateImpairedTransport(std::unique_ptr<Transport> inner, int latency_ms,
++		int jitter_ms, float loss, u32 seed)
++	{
++		return std::make_unique<ImpairedTransport>(std::move(inner), latency_ms, jitter_ms, loss, seed);
++	}
++} // namespace W4P
+diff --git a/pcsx2/W4P/W4PTransport.h b/pcsx2/W4P/W4PTransport.h
+new file mode 100644
+index 0000000..7cbdea5
+--- /dev/null
++++ b/pcsx2/W4P/W4PTransport.h
+@@ -0,0 +1,43 @@
++// SPDX-FileCopyrightText: 2026 warriors-4p contributors
++// SPDX-License-Identifier: GPL-3.0+
++//
++// warriors-4p transport layer: datagram transport behind an interface so the lockstep core does not depend on
++// the concrete network method (UDP today; ICE/relay later). Includes a deterministic impairment wrapper for tests.
++
++#pragma once
++
++#include "common/Pcsx2Types.h"
++
++#include <memory>
++#include <string>
++
++namespace W4P
++{
++	struct Endpoint
++	{
++		u32 ipv4 = 0; // host byte order
++		u16 port = 0; // host byte order
++		bool operator==(const Endpoint& o) const { return ipv4 == o.ipv4 && port == o.port; }
++		bool IsValid() const { return port != 0; }
++		std::string ToString() const;
++	};
++
++	bool ParseEndpoint(const std::string& text, Endpoint* out);
++
++	class Transport
++	{
++	public:
++		virtual ~Transport() = default;
++		virtual bool SendTo(const Endpoint& to, const void* data, size_t size) = 0;
++		// Waits up to timeout_ms for one datagram. Returns its size, 0 on timeout, -1 on error.
++		virtual int Receive(void* buffer, size_t capacity, Endpoint* from, int timeout_ms) = 0;
++	};
++
++	// bind_ipv4 = 0 binds all interfaces (LAN/internet; may trigger a firewall prompt), 0x7F000001 loopback only.
++	std::unique_ptr<Transport> CreateUdpTransport(u32 bind_ipv4, u16 listen_port, std::string* error);
++
++	// Delays outgoing datagrams by latency_ms +/- jitter_ms (uniform) and drops them with probability loss
++	// (0..1). Uses a seeded generator so a test run is reproducible from the seed.
++	std::unique_ptr<Transport> CreateImpairedTransport(std::unique_ptr<Transport> inner, int latency_ms,
++		int jitter_ms, float loss, u32 seed);
++} // namespace W4P
+diff --git a/pcsx2/pcsx2.vcxproj b/pcsx2/pcsx2.vcxproj
+index f7d9924..9a7ea36 100644
+--- a/pcsx2/pcsx2.vcxproj
++++ b/pcsx2/pcsx2.vcxproj
+@@ -370,6 +370,8 @@
+     <ClCompile Include="IopGte.cpp" />
+     <ClCompile Include="LayeredSettingsInterface.cpp" />
+     <ClCompile Include="PINE.cpp" />
++    <ClCompile Include="W4P\W4P.cpp" />
++    <ClCompile Include="W4P\W4PTransport.cpp" />
+     <ClCompile Include="FW.cpp" />
+     <ClCompile Include="PerformanceMetrics.cpp" />
+     <ClCompile Include="Recording\InputRecording.cpp" />
+@@ -817,6 +819,8 @@
+     <ClInclude Include="IPU\mpeg2_vlc.h" />
+     <ClInclude Include="LayeredSettingsInterface.h" />
+     <ClInclude Include="PINE.h" />
++    <ClInclude Include="W4P\W4P.h" />
++    <ClInclude Include="W4P\W4PTransport.h" />
+     <ClInclude Include="FW.h" />
+     <ClInclude Include="PerformanceMetrics.h" />
+     <ClInclude Include="Recording\InputRecording.h" />
+-- 
+2.55.0.windows.3
+

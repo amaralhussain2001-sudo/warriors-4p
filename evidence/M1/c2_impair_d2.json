@@ -1,0 +1,51 @@
+{
+ "tag": "c2_impair_d2",
+ "seconds_run": 371,
+ "args": {
+  "delay": 2,
+  "latency": 60,
+  "jitter": 10,
+  "loss": 0.01,
+  "nocrop": false,
+  "corrupt": null,
+  "shots": 120,
+  "state": "m1_start_m9_2p.p2s"
+ },
+ "alive_at_end": {
+  "0": true,
+  "1": true
+ },
+ "hash_points_common": 317,
+ "hash_mismatches": 0,
+ "first_mismatch_poll": null,
+ "last_common_poll": "9510",
+ "stats": {
+  "0": "poll 9537, polls 9538, waits 87, wait total 742.2 ms, max 32.7 ms, hashes 317, mismatches 0",
+  "0_desync_lines": [],
+  "0_errors": [],
+  "1": "poll 9537, polls 9538, waits 44, wait total 582.7 ms, max 28.7 ms, hashes 317, mismatches 0",
+  "1_desync_lines": [],
+  "1_errors": []
+ },
+ "views_at_end": {
+  "0": {
+   "views": 2,
+   "cams": 2,
+   "counter": 20540
+  },
+  "1": {
+   "views": 2,
+   "cams": 2,
+   "counter": 20540
+  }
+ },
+ "screenshots": [
+  "m1_c2_impair_d2_s0_0020",
+  "m1_c2_impair_d2_s1_0020",
+  "m1_c2_impair_d2_s0_0140",
+  "m1_c2_impair_d2_s1_0141",
+  "m1_c2_impair_d2_s0_0261",
+  "m1_c2_impair_d2_s1_0261"
+ ],
+ "environment": "SINGLE-PC, loopback UDP, scripted bots on both slots, impairment on"
+}

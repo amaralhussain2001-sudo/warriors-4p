@@ -1,0 +1,36 @@
+{
+ "tag": "smoke1",
+ "seconds_run": 11,
+ "args": {
+  "delay": 2,
+  "latency": 0,
+  "jitter": 0,
+  "loss": 0.0,
+  "nocrop": false,
+  "corrupt": null,
+  "shots": 30,
+  "state": "m1_start_m9_2p.p2s"
+ },
+ "alive_at_end": {
+  "0": true,
+  "1": false
+ },
+ "hash_points_common": 0,
+ "hash_mismatches": 0,
+ "first_mismatch_poll": null,
+ "last_common_poll": null,
+ "stats": {
+  "0": null,
+  "0_desync_lines": [],
+  "0_errors": [],
+  "1": null,
+  "1_desync_lines": [],
+  "1_errors": []
+ },
+ "views_at_end": {
+  "0": "ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",
+  "1": "ConnectionRefusedError(10061, 'No connection could be made because the target machine actively refused it', None, 10061, None)"
+ },
+ "screenshots": [],
+ "environment": "SINGLE-PC, loopback UDP, scripted bots on both slots, no impairment"
+}

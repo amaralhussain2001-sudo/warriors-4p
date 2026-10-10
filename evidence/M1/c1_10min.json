@@ -1,0 +1,67 @@
+{
+ "tag": "c1_10min",
+ "seconds_run": 662,
+ "args": {
+  "delay": 2,
+  "latency": 0,
+  "jitter": 0,
+  "loss": 0.0,
+  "nocrop": false,
+  "corrupt": null,
+  "shots": 60,
+  "state": "m1_start_m9_2p.p2s"
+ },
+ "alive_at_end": {
+  "0": true,
+  "1": true
+ },
+ "hash_points_common": 586,
+ "hash_mismatches": 0,
+ "first_mismatch_poll": null,
+ "last_common_poll": "17580",
+ "stats": {
+  "0": "poll 17587, polls 17588, waits 485, wait total 2327.0 ms, max 24.1 ms, hashes 586, mismatches 0",
+  "0_desync_lines": [],
+  "0_errors": [],
+  "1": "poll 17587, polls 17588, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 586, mismatches 0",
+  "1_desync_lines": [],
+  "1_errors": []
+ },
+ "views_at_end": {
+  "0": {
+   "views": 2,
+   "cams": 2,
+   "counter": 28851
+  },
+  "1": {
+   "views": 2,
+   "cams": 2,
+   "counter": 28850
+  }
+ },
+ "screenshots": [
+  "m1_c1_10min_s0_0020",
+  "m1_c1_10min_s1_0020",
+  "m1_c1_10min_s0_0080",
+  "m1_c1_10min_s1_0081",
+  "m1_c1_10min_s0_0141",
+  "m1_c1_10min_s1_0141",
+  "m1_c1_10min_s0_0200",
+  "m1_c1_10min_s1_0200",
+  "m1_c1_10min_s0_0260",
+  "m1_c1_10min_s1_0261",
+  "m1_c1_10min_s0_0321",
+  "m1_c1_10min_s1_0321",
+  "m1_c1_10min_s0_0380",
+  "m1_c1_10min_s1_0380",
+  "m1_c1_10min_s0_0440",
+  "m1_c1_10min_s1_0441",
+  "m1_c1_10min_s0_0501",
+  "m1_c1_10min_s1_0501",
+  "m1_c1_10min_s0_0560",
+  "m1_c1_10min_s1_0560",
+  "m1_c1_10min_s0_0620",
+  "m1_c1_10min_s1_0621"
+ ],
+ "environment": "SINGLE-PC, loopback UDP, scripted bots on both slots, no impairment"
+}

@@ -1,0 +1,47 @@
+{
+ "tag": "c6_corrupt",
+ "seconds_run": 77,
+ "args": {
+  "delay": 2,
+  "latency": 0,
+  "jitter": 0,
+  "loss": 0.0,
+  "nocrop": false,
+  "corrupt": 900,
+  "shots": 200,
+  "state": "m1_start_m9_2p.p2s"
+ },
+ "alive_at_end": {
+  "0": true,
+  "1": true
+ },
+ "hash_points_common": 68,
+ "hash_mismatches": 0,
+ "first_mismatch_poll": null,
+ "last_common_poll": "2040",
+ "stats": {
+  "0": "poll 2049, polls 2050, waits 483, wait total 1605.7 ms, max 34.9 ms, hashes 68, mismatches 0",
+  "0_desync_lines": [],
+  "0_errors": [],
+  "1": "poll 2049, polls 2050, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 68, mismatches 0",
+  "1_desync_lines": [],
+  "1_errors": []
+ },
+ "views_at_end": {
+  "0": {
+   "views": 2,
+   "cams": 2,
+   "counter": 13187
+  },
+  "1": {
+   "views": 2,
+   "cams": 2,
+   "counter": 13187
+  }
+ },
+ "screenshots": [
+  "m1_c6_corrupt_s0_0070",
+  "m1_c6_corrupt_s1_0070"
+ ],
+ "environment": "SINGLE-PC, loopback UDP, scripted bots on both slots, no impairment"
+}
