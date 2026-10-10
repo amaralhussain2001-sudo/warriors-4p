@@ -1,0 +1,108 @@
+{
+ "save": [
+  {
+   "wall_s_until_file_stable": 0.253,
+   "size": 14379655
+  },
+  {
+   "wall_s_until_file_stable": 0.276,
+   "size": 14332701
+  },
+  {
+   "wall_s_until_file_stable": 0.231,
+   "size": 14869824
+  },
+  {
+   "wall_s_until_file_stable": 0.244,
+   "size": 15452708
+  },
+  {
+   "wall_s_until_file_stable": 0.302,
+   "size": 15965807
+  }
+ ],
+ "load": [
+  {
+   "pine_ack_s": 0.0003
+  },
+  {
+   "pine_ack_s": 0.0005
+  },
+  {
+   "pine_ack_s": 0.0004
+  },
+  {
+   "pine_ack_s": 0.0005
+  },
+  {
+   "pine_ack_s": 0.0003
+  }
+ ],
+ "members": {
+  "PCSX2 Savestate Version.id": {
+   "uncompressed": 36,
+   "compressed": 36
+  },
+  "PCSX2 Internal Structures.dat": {
+   "uncompressed": 8066250,
+   "compressed": 1794024
+  },
+  "eeMemory.bin": {
+   "uncompressed": 33554432,
+   "compressed": 10885062
+  },
+  "iopMemory.bin": {
+   "uncompressed": 2097152,
+   "compressed": 890237
+  },
+  "eeHwRegs.bin": {
+   "uncompressed": 65536,
+   "compressed": 240
+  },
+  "iopHwRegs.bin": {
+   "uncompressed": 65536,
+   "compressed": 230
+  },
+  "Scratchpad.bin": {
+   "uncompressed": 16384,
+   "compressed": 4087
+  },
+  "vu0Memory.bin": {
+   "uncompressed": 4096,
+   "compressed": 18
+  },
+  "vu1Memory.bin": {
+   "uncompressed": 16384,
+   "compressed": 4342
+  },
+  "vu0MicroMem.bin": {
+   "uncompressed": 4096,
+   "compressed": 18
+  },
+  "vu1MicroMem.bin": {
+   "uncompressed": 16384,
+   "compressed": 4426
+  },
+  "SPU2.bin": {
+   "uncompressed": 2178992,
+   "compressed": 1554414
+  },
+  "USB.bin": {
+   "uncompressed": 8491,
+   "compressed": 85
+  },
+  "PAD.bin": {
+   "uncompressed": 257,
+   "compressed": 99
+  },
+  "GS.bin": {
+   "uncompressed": 4194813,
+   "compressed": 466218
+  },
+  "Screenshot.png": {
+   "uncompressed": 360599,
+   "compressed": 360599
+  }
+ },
+ "total_uncompressed": 50649438
+}

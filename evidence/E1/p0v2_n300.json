@@ -1,0 +1,70 @@
+{
+ "tag": "p0v2_n300",
+ "profile": "default",
+ "N": 300,
+ "counter_at_load": {
+  "2": 2677,
+  "3": 2677
+ },
+ "target": 3127,
+ "seconds_to_reach": 15.2,
+ "differing_bytes": 113,
+ "ranges": [
+  {
+   "start": "000010c0",
+   "len": 35
+  },
+  {
+   "start": "00001100",
+   "len": 200
+  },
+  {
+   "start": "000011e0",
+   "len": 83
+  },
+  {
+   "start": "000193c0",
+   "len": 115
+  },
+  {
+   "start": "0001a7c0",
+   "len": 2
+  },
+  {
+   "start": "00081ef0",
+   "len": 2
+  },
+  {
+   "start": "00081f11",
+   "len": 50
+  },
+  {
+   "start": "00081f60",
+   "len": 18
+  },
+  {
+   "start": "00519ea0",
+   "len": 1
+  },
+  {
+   "start": "005de418",
+   "len": 1
+  },
+  {
+   "start": "005de498",
+   "len": 1
+  },
+  {
+   "start": "005de918",
+   "len": 1
+  },
+  {
+   "start": "005de998",
+   "len": 1
+  }
+ ],
+ "range_count": 13,
+ "environment": "SINGLE-PC, scripted bot input on pad 0 (seeded brawl script), no impairment, PCSX2 v2.9.115 sandbox",
+ "input_seed": 7,
+ "input_base_frame": 2827
+}

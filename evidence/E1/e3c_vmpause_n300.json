@@ -1,0 +1,43 @@
+{
+ "tag": "e3c_vmpause_n300",
+ "N": 300,
+ "pauses_done": 10,
+ "pause_ms": 150,
+ "status_while_paused": [
+  "paused",
+  "paused",
+  "paused",
+  "paused",
+  "paused",
+  "paused",
+  "paused",
+  "paused",
+  "paused",
+  "paused"
+ ],
+ "differing_bytes": 9,
+ "range_count": 5,
+ "ranges": [
+  {
+   "start": "00519ea0",
+   "len": 1
+  },
+  {
+   "start": "005de418",
+   "len": 2
+  },
+  {
+   "start": "005de498",
+   "len": 2
+  },
+  {
+   "start": "005de918",
+   "len": 2
+  },
+  {
+   "start": "005de998",
+   "len": 2
+  }
+ ],
+ "environment": "SINGLE-PC, scripted bot input pad 0, whole-VM pauses on B via hotkey, PCSX2 v2.9.115 sandbox"
+}

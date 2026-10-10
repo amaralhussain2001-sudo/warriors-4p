@@ -6,7 +6,7 @@ directory under local/pcsx2/inst<N>/ with its own settings, memory cards,
 savestates, logs and PINE slot.
 
 Usage:
-    python -I tools/sandbox.py make <N> [--profile default|det] [--pad2]
+    python -I tools/sandbox.py make <N> [--profile default|det] [--pad2] [--patch <file.pnach> "<group;group>"]
     python -I tools/sandbox.py cmd <N> [extra pcsx2 args]     # print the launch command
     python -I tools/sandbox.py launch <N> [extra pcsx2 args]  # start detached, record pid
     python -I tools/sandbox.py kill <N>                       # stop it (sandbox exe only)
@@ -43,6 +43,16 @@ def inst_dir(n):
 def data_root(n):
     # PCSX2 appends "PCSX2" to the -datapath argument (observed: emulog "DataRoot Directory").
     return os.path.join(inst_dir(n), "PCSX2")
+
+
+def install_patch(n, pnach_path, enable_names):
+    """Copy an experiment pnach into the instance and enable the named groups (per-game settings)."""
+    d = data_root(n)
+    shutil.copyfile(pnach_path, os.path.join(d, "patches", "SLUS-21215_B99A75DE.pnach"))
+    body = "[Patches]\n" + "".join(f"Enable = {e}\n" for e in enable_names)
+    for name in ("SLUS-21215_B99A75DE.ini", "B99A75DE.ini"):
+        with open(os.path.join(d, "gamesettings", name), "w", encoding="utf-8") as fh:
+            fh.write(body)
 
 
 def make(n, profile="default", pad2=False):
@@ -100,6 +110,9 @@ def main():
         n = int(sys.argv[2])
         prof = sys.argv[sys.argv.index("--profile") + 1] if "--profile" in sys.argv else "default"
         print(make(n, prof, "--pad2" in sys.argv))
+        if "--patch" in sys.argv:
+            i = sys.argv.index("--patch")
+            install_patch(n, sys.argv[i + 1], sys.argv[i + 2].split(";"))
     elif sys.argv[1] == "cmd":
         print(cmd(int(sys.argv[2]), sys.argv[3:]))
     elif sys.argv[1] == "launch":

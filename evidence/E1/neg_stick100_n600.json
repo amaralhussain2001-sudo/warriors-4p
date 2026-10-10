@@ -1,0 +1,182 @@
+{
+ "tag": "neg_stick100_n600",
+ "profile": "default",
+ "N": 600,
+ "counter_at_load": {
+  "2": 2675,
+  "3": 2677
+ },
+ "target": 3427,
+ "seconds_to_reach": 25.3,
+ "differing_bytes": 77,
+ "ranges": [
+  {
+   "start": "00019420",
+   "len": 2
+  },
+  {
+   "start": "0001a7c0",
+   "len": 2
+  },
+  {
+   "start": "00081ef0",
+   "len": 2
+  },
+  {
+   "start": "00081f11",
+   "len": 50
+  },
+  {
+   "start": "00081f60",
+   "len": 18
+  },
+  {
+   "start": "00099902",
+   "len": 2
+  },
+  {
+   "start": "00099942",
+   "len": 2
+  },
+  {
+   "start": "00099982",
+   "len": 2
+  },
+  {
+   "start": "000999c2",
+   "len": 2
+  },
+  {
+   "start": "00099a02",
+   "len": 1
+  },
+  {
+   "start": "00099a42",
+   "len": 1
+  },
+  {
+   "start": "00099a82",
+   "len": 1
+  },
+  {
+   "start": "00099ac2",
+   "len": 1
+  },
+  {
+   "start": "00099b02",
+   "len": 1
+  },
+  {
+   "start": "00099b42",
+   "len": 1
+  },
+  {
+   "start": "00099b82",
+   "len": 1
+  },
+  {
+   "start": "00099bc2",
+   "len": 1
+  },
+  {
+   "start": "00099c02",
+   "len": 1
+  },
+  {
+   "start": "00099c42",
+   "len": 1
+  },
+  {
+   "start": "00099c82",
+   "len": 1
+  },
+  {
+   "start": "00099cc2",
+   "len": 1
+  },
+  {
+   "start": "00099d02",
+   "len": 1
+  },
+  {
+   "start": "00099d42",
+   "len": 2
+  },
+  {
+   "start": "00099d82",
+   "len": 2
+  },
+  {
+   "start": "00099dc2",
+   "len": 2
+  },
+  {
+   "start": "00099e02",
+   "len": 2
+  },
+  {
+   "start": "00099e42",
+   "len": 2
+  },
+  {
+   "start": "00099e82",
+   "len": 2
+  },
+  {
+   "start": "00099ec2",
+   "len": 2
+  },
+  {
+   "start": "00099f02",
+   "len": 2
+  },
+  {
+   "start": "00099f42",
+   "len": 2
+  },
+  {
+   "start": "00099f82",
+   "len": 2
+  },
+  {
+   "start": "00099fc2",
+   "len": 2
+  },
+  {
+   "start": "0009a002",
+   "len": 2
+  },
+  {
+   "start": "0009a042",
+   "len": 2
+  },
+  {
+   "start": "00519ea0",
+   "len": 1
+  },
+  {
+   "start": "005de418",
+   "len": 1
+  },
+  {
+   "start": "005de498",
+   "len": 1
+  },
+  {
+   "start": "005de918",
+   "len": 1
+  },
+  {
+   "start": "005de998",
+   "len": 1
+  }
+ ],
+ "range_count": 40,
+ "environment": "SINGLE-PC, scripted bot input on pad 0 (seeded brawl script), no impairment, PCSX2 v2.9.115 sandbox",
+ "input_seed": 7,
+ "input_base_frame": 2827,
+ "perturbation": {
+  "frame_offset": 100,
+  "change": "pad0 left stick forced right for 30 frames in instance B"
+ }
+}

@@ -1,0 +1,170 @@
+{
+ "tag": "neg_stick10_n300",
+ "profile": "default",
+ "N": 300,
+ "counter_at_load": {
+  "2": 2677,
+  "3": 2677
+ },
+ "target": 3127,
+ "seconds_to_reach": 15.3,
+ "differing_bytes": 41,
+ "ranges": [
+  {
+   "start": "00081f80",
+   "len": 3
+  },
+  {
+   "start": "00081fa0",
+   "len": 3
+  },
+  {
+   "start": "00098282",
+   "len": 1
+  },
+  {
+   "start": "000982c2",
+   "len": 1
+  },
+  {
+   "start": "00098302",
+   "len": 1
+  },
+  {
+   "start": "00098342",
+   "len": 1
+  },
+  {
+   "start": "00098382",
+   "len": 1
+  },
+  {
+   "start": "000983c2",
+   "len": 1
+  },
+  {
+   "start": "00098402",
+   "len": 1
+  },
+  {
+   "start": "00098442",
+   "len": 1
+  },
+  {
+   "start": "00098482",
+   "len": 1
+  },
+  {
+   "start": "000984c2",
+   "len": 1
+  },
+  {
+   "start": "00098502",
+   "len": 1
+  },
+  {
+   "start": "00098542",
+   "len": 1
+  },
+  {
+   "start": "00098582",
+   "len": 1
+  },
+  {
+   "start": "000985c2",
+   "len": 1
+  },
+  {
+   "start": "00098602",
+   "len": 1
+  },
+  {
+   "start": "00098642",
+   "len": 1
+  },
+  {
+   "start": "00098682",
+   "len": 1
+  },
+  {
+   "start": "000986c2",
+   "len": 1
+  },
+  {
+   "start": "00098702",
+   "len": 1
+  },
+  {
+   "start": "00098742",
+   "len": 1
+  },
+  {
+   "start": "00098782",
+   "len": 1
+  },
+  {
+   "start": "000987c2",
+   "len": 1
+  },
+  {
+   "start": "00098802",
+   "len": 1
+  },
+  {
+   "start": "00098842",
+   "len": 1
+  },
+  {
+   "start": "00098882",
+   "len": 1
+  },
+  {
+   "start": "000988c2",
+   "len": 1
+  },
+  {
+   "start": "00098902",
+   "len": 1
+  },
+  {
+   "start": "00098942",
+   "len": 1
+  },
+  {
+   "start": "00098982",
+   "len": 1
+  },
+  {
+   "start": "000989c2",
+   "len": 1
+  },
+  {
+   "start": "00519ea0",
+   "len": 1
+  },
+  {
+   "start": "005de418",
+   "len": 1
+  },
+  {
+   "start": "005de498",
+   "len": 1
+  },
+  {
+   "start": "005de918",
+   "len": 1
+  },
+  {
+   "start": "005de998",
+   "len": 1
+  }
+ ],
+ "range_count": 37,
+ "environment": "SINGLE-PC, scripted bot input on pad 0 (seeded brawl script), no impairment, PCSX2 v2.9.115 sandbox",
+ "input_seed": 7,
+ "input_base_frame": 2827,
+ "perturbation": {
+  "frame_offset": 10,
+  "change": "pad0 left stick forced right for 30 frames in instance B"
+ }
+}

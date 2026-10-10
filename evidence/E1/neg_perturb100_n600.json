@@ -1,0 +1,50 @@
+{
+ "tag": "neg_perturb100_n600",
+ "profile": "default",
+ "N": 600,
+ "counter_at_load": {
+  "2": 2677,
+  "3": 2677
+ },
+ "target": 3427,
+ "seconds_to_reach": 25.5,
+ "differing_bytes": 11,
+ "ranges": [
+  {
+   "start": "00081f80",
+   "len": 3
+  },
+  {
+   "start": "00081fa0",
+   "len": 3
+  },
+  {
+   "start": "00519ea0",
+   "len": 1
+  },
+  {
+   "start": "005de418",
+   "len": 1
+  },
+  {
+   "start": "005de498",
+   "len": 1
+  },
+  {
+   "start": "005de918",
+   "len": 1
+  },
+  {
+   "start": "005de998",
+   "len": 1
+  }
+ ],
+ "range_count": 7,
+ "environment": "SINGLE-PC, scripted bot input on pad 0 (seeded brawl script), no impairment, PCSX2 v2.9.115 sandbox",
+ "input_seed": 7,
+ "input_base_frame": 2827,
+ "perturbation": {
+  "frame_offset": 100,
+  "change": "pad0 +Square on one frame in instance B"
+ }
+}

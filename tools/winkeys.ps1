@@ -16,6 +16,9 @@ public static class WinKeys {
   [DllImport("user32.dll")] public static extern int GetWindowText(IntPtr h, StringBuilder s, int n);
   [DllImport("user32.dll")] public static extern bool PostMessage(IntPtr h, uint m, IntPtr w, IntPtr l);
   [DllImport("user32.dll")] public static extern uint MapVirtualKey(uint c, uint t);
+  [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr h, out uint pid);
+  [DllImport("user32.dll")] public static extern IntPtr GetKeyboardLayout(uint tid);
+  [DllImport("user32.dll")] public static extern IntPtr LoadKeyboardLayout(string id, uint flags);
   [StructLayout(LayoutKind.Sequential)] public struct RECT { public int L, T, R, B; }
   [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr h, out RECT r);
   public static List<IntPtr> Children(IntPtr p) {
@@ -36,6 +39,15 @@ if ($List) {
     "{0} class={1} text='{2}' size={3}x{4}" -f $h, $c, $t, ($r.R - $r.L), ($r.B - $r.T)
   }
   return
+}
+# The sandbox window may start with a non-English layout (observed: Arabic 0x0401), which makes Qt read
+# letter keys as other characters. Ask only this window to switch to en-US (0x0409) before sending keys.
+$wpid = 0
+$tid = [WinKeys]::GetWindowThreadProcessId($main, [ref]$wpid)
+if (([int64][WinKeys]::GetKeyboardLayout($tid) -band 0xFFFF) -ne 0x0409) {
+  $hkl = [WinKeys]::LoadKeyboardLayout("00000409", 0)
+  foreach ($h in $targets) { [WinKeys]::PostMessage($h, 0x50, [IntPtr]0, $hkl) | Out-Null }   # WM_INPUTLANGCHANGEREQUEST
+  Start-Sleep -Milliseconds 200
 }
 function Send($vk, $down) {
   $scan = [WinKeys]::MapVirtualKey($vk, 0)

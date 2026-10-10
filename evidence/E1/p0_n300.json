@@ -1,0 +1,36 @@
+{
+ "tag": "p0_n300",
+ "profile": "default",
+ "N": 300,
+ "counter_at_load": {
+  "2": 14978,
+  "3": 14978
+ },
+ "target": 15278,
+ "seconds_to_reach": 10.8,
+ "differing_bytes": 5,
+ "ranges": [
+  {
+   "start": "00519ea0",
+   "len": 1
+  },
+  {
+   "start": "005de418",
+   "len": 1
+  },
+  {
+   "start": "005de498",
+   "len": 1
+  },
+  {
+   "start": "005de918",
+   "len": 1
+  },
+  {
+   "start": "005de998",
+   "len": 1
+  }
+ ],
+ "range_count": 5,
+ "environment": "SINGLE-PC, scripted (no input), no impairment, PCSX2 v2.9.115 sandbox"
+}

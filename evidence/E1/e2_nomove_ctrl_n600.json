@@ -1,0 +1,40 @@
+{
+ "tag": "e2_nomove_ctrl_n600",
+ "profile": "default",
+ "N": 600,
+ "counter_at_load": {
+  "2": 2677,
+  "3": 2676
+ },
+ "target": 3427,
+ "seconds_to_reach": 26.1,
+ "differing_bytes": 10,
+ "ranges": [
+  {
+   "start": "00519ea0",
+   "len": 2
+  },
+  {
+   "start": "005de418",
+   "len": 2
+  },
+  {
+   "start": "005de498",
+   "len": 2
+  },
+  {
+   "start": "005de918",
+   "len": 2
+  },
+  {
+   "start": "005de998",
+   "len": 2
+  }
+ ],
+ "range_count": 5,
+ "environment": "SINGLE-PC, scripted bot input on pad 0 (seeded brawl script), no impairment, PCSX2 v2.9.115 sandbox",
+ "input_seed": 7,
+ "script": "brawl_nomove",
+ "input_base_frame": 2827,
+ "perturbation": null
+}

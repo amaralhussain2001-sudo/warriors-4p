@@ -1,0 +1,34 @@
+gametitle=The Warriors (NTSC-U) (SLUS-21215) - warriors-4p Stage 1 experiment E1
+
+[warriors4p E1 barrier]
+author=warriors-4p (Stage 1 experiment, temporary)
+description=Frame barrier code cave for determinism experiment E1. Not part of the mod.
+
+patch=2,EE,000F0000,word,27BDFFF0
+patch=2,EE,000F0004,word,AFBF0000
+patch=2,EE,000F0008,word,0C055A70
+patch=2,EE,000F000C,word,00000000
+patch=2,EE,000F0010,word,3C08000F
+patch=2,EE,000F0014,word,8D090100
+patch=2,EE,000F0018,word,1120000B
+patch=2,EE,000F001C,word,00000000
+patch=2,EE,000F0020,word,3C0A0051
+patch=2,EE,000F0024,word,8D4BC654
+patch=2,EE,000F0028,word,15690007
+patch=2,EE,000F002C,word,00000000
+patch=2,EE,000F0030,word,AD0B0104
+patch=2,EE,000F0034,word,8D0C0108
+patch=2,EE,000F0038,word,1180FFFE
+patch=2,EE,000F003C,word,00000000
+patch=2,EE,000F0040,word,AD000108
+patch=2,EE,000F0044,word,AD000100
+patch=2,EE,000F0048,word,8FBF0000
+patch=2,EE,000F004C,word,03E00008
+patch=2,EE,000F0050,word,27BD0010
+patch=2,EE,00158CD0,word,0C03C000
+patch=2,EE,00159908,word,0C03C000
+patch=2,EE,0015CA54,word,0C03C000
+patch=2,EE,0015D270,word,0C03C000
+patch=2,EE,0015DA8C,word,0C03C000
+patch=2,EE,0015E44C,word,0C03C000
+patch=2,EE,0015EFFC,word,0C03C000

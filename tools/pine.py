@@ -51,6 +51,17 @@ class Pine:
     def write32(self, a, v):
         self._xfer(struct.pack("<BII", OP["write32"], a, v))
 
+    def batch_write32(self, pairs, chunk=60000):
+        """Write many (addr, u32) pairs; split into requests under the 650,000-byte limit."""
+        for i in range(0, len(pairs), chunk):
+            part = pairs[i:i + chunk]
+            self._xfer(b"".join(struct.pack("<BII", OP["write32"], a, v) for a, v in part))
+
+    def write_bytes(self, addr, data):
+        """Write a byte string (length padded to 4) as u32 words."""
+        data = data + b"\x00" * (-len(data) % 4)
+        self.batch_write32([(addr + i, struct.unpack_from("<I", data, i)[0]) for i in range(0, len(data), 4)])
+
     def string(self, op):
         r = self._xfer(bytes([OP[op]]))
         n = struct.unpack_from("<I", r)[0]
