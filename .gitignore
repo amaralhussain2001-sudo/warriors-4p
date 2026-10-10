@@ -1,0 +1,63 @@
+# Never commit copyrighted or bulky local material (brief §2.4).
+/local/
+/build/
+/dist/
+
+# Game images, BIOS, executables extracted from the disc
+*.iso
+*.ISO
+*.bin
+*.BIN
+*.img
+*.mdf
+*.chd
+*.cso
+*.zso
+*.gz.iso
+*.ROM0
+*.ROM1
+*.ROM2
+*.EROM
+*.NVM
+*.MEC
+*.DIFF
+SLUS_*
+SCUS_*
+*.elf
+*.ELF
+*.irx
+*.IRX
+
+# Ghidra databases (contain disassembled copyrighted code)
+*.gpr
+*.rep/
+*.lock
+*.lock~
+
+# Emulator state, memory cards, media
+*.p2s
+*.ps2
+*.mcd
+*.mc2
+*.p2m2
+*.png
+*.jpg
+*.mp4
+*.mkv
+*.wav
+*.gs
+*.gs.xz
+*.gs.zst
+
+# Large evidence media stays local; manifests are committed
+/evidence/media/
+/evidence/**/*.raw
+/evidence/**/*.dump
+/evidence/**/*.memdump
+
+# Tooling noise
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+*.log.tmp

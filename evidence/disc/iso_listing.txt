@@ -1,0 +1,63 @@
+
+7-Zip 26.04 (x64) : Copyright (c) 1999-2026 Igor Pavlov : 2026-10-05
+
+Scanning the drive for archives:
+1 file, 4295917568 bytes (4097 MiB)
+
+Listing archive: C:\Users\PC FORCE\Desktop\New folder\Warriors The (USA) (EnFrDeEsIt)\Warriors, The (USA) (En,Fr,De,Es,It).iso
+
+--
+Path = C:\Users\PC FORCE\Desktop\New folder\Warriors The (USA) (EnFrDeEsIt)\Warriors, The (USA) (En,Fr,De,Es,It).iso
+Type = Iso
+Physical Size = 4295917568
+Comment = 
+{
+System: PLAYSTATION
+Volume: THEWARRIORS
+VolumeSet: THEWARRIORS
+Publisher: ROCKSTAR GAMES
+Preparer: ROCKSTAR GAMES
+Application: PLAYSTATION
+Copyright: ROCKSTAR GAMES
+VolumeSpaceSize: 4295917568
+VolumeSetSize: 1
+VolumeSequenceNumber: 1
+}
+Created = 2005-09-25 14:50:11.00
+
+   Date      Time    Attr         Size   Compressed  Name
+------------------- ----- ------------ ------------  ------------------------
+2005-09-25 05:35:41 D....                            MODULES
+2005-07-19 09:09:46 .....       143132       143132  MODULES\IOP.IRX
+2005-05-16 13:57:35 .....       275345       275345  MODULES\IOPRP300.IMG
+2005-05-16 13:57:35 .....        28661        28661  MODULES\LIBSD.IRX
+2005-05-16 13:57:35 .....        95909        95909  MODULES\MCMAN.IRX
+2005-05-16 13:57:35 .....         7417         7417  MODULES\MCSERV.IRX
+2005-05-16 13:57:35 .....        44869        44869  MODULES\PADMAN.IRX
+2005-05-16 13:57:35 .....         6641         6641  MODULES\SIO2MAN.IRX
+2005-09-24 23:26:55 .....       128428       128428  WARRIORS.DIR
+2005-09-24 23:26:55 .....   1495371776   1495371776  WARRIORS.WAD
+2005-09-25 14:33:38 .....      4903976      4903976  SLUS_212.15
+2005-09-25 05:33:38 D....                            IOP
+2005-09-24 20:10:47 .....   1402861568   1402861568  IOP\BFW.SND
+2005-09-24 20:16:58 .....    960063488    960063488  IOP\MUSIC.SND
+2005-09-25 05:37:57 D....                            PSS
+2005-09-22 09:14:54 .....     58558968     58558968  PSS\L1_IN.BIK
+2005-09-18 15:55:00 .....     16767680     16767680  PSS\L31_IN.BIK
+2005-09-18 15:55:02 .....     19479396     19479396  PSS\L31_OUT.BIK
+2005-09-18 15:55:09 .....     22788160     22788160  PSS\L34_OUT.BIK
+2005-09-23 21:01:24 .....    140089108    140089108  PSS\L51_IN.BIK
+2005-09-18 15:55:39 .....     11607724     11607724  PSS\L81_OUT.BIK
+2005-09-18 15:55:41 .....     12819700     12819700  PSS\L87_OUT.BIK
+2005-09-22 10:01:52 .....     21897112     21897112  PSS\L99_IN.BIK
+2005-09-18 15:55:48 .....     34138400     34138400  PSS\L9_IN.BIK
+2005-09-18 15:55:49 .....      4933168      4933168  PSS\L9_OUT.BIK
+2005-09-22 08:11:31 .....       303228       303228  PSS\LOGO.BIK
+2005-09-18 14:14:42 .....     25638616     25638616  PSS\TRAILER.BIK
+2005-09-18 15:55:37 .....     22345988     22345988  PSS\L52_IN.BIK
+2005-09-18 15:55:38 .....     15270360     15270360  PSS\L54_IN.BIK
+2005-09-11 17:16:46 .....       139516       139516  PSS\L84_OUT.BIK
+2005-09-23 15:21:06 .....      3560952      3560952  PSS\PLOGO.BIK
+2005-09-25 05:42:11 .....           57           57  SYSTEM.CNF
+------------------- ----- ------------ ------------  ------------------------
+2005-09-25 14:33:38         4274269343   4274269343  29 files, 3 folders
