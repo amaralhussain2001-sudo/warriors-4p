@@ -83,3 +83,9 @@ Human trial on this PC (you play player 1, a bot plays player 2):
 
 ## Originals
 ISO SHA-256 `e79a4cea…e96e` and all BIOS hashes unchanged (see criterion 7).
+
+## Corrections after the report (2026-10-11)
+- Criterion 4 ("own HUD"): the radar is not visible in the cropped view, because the 2x2 layout draws it in the
+  bottom quarter (F-0095). The objective bar is visible. HUD placement moves to M3.
+- The user's trial reported the view switch as "not smooth". Measured cause: the crop switches about 0.1 s before
+  the picture (F-0093).

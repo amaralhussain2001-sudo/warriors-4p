@@ -1,0 +1,20 @@
+{
+ "tag": "v2_apart_nocrop",
+ "args": {
+  "delay": 2,
+  "latency": 0,
+  "jitter": 0,
+  "loss": 0.0,
+  "nocrop": true,
+  "corrupt": null
+ },
+ "nolayout": false,
+ "pattern": "apart",
+ "captured_slot": 0,
+ "capture": "1804 captures in 40 s (45.1 per second), display 1575x930, saved 0 PNGs",
+ "view_changes": 0,
+ "changes": [],
+ "hash_points_common": 49,
+ "hash_mismatches": 0,
+ "environment": "SINGLE-PC, bots, no impairment"
+}
