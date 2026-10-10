@@ -1,0 +1,240 @@
+{
+ "tag": "x1_mixed_gfx",
+ "fps60_patch": false,
+ "ee_cycle_rate": 2,
+ "seconds": 120,
+ "avg_game_fps": 41.71,
+ "gs": {
+  "upscale_multiplier": "8",
+  "accurate_blending_unit": "3",
+  "Renderer": "14"
+ },
+ "crop": true,
+ "gpu_two_instances": {
+  "util_avg": 9.8,
+  "util_max": 32.0,
+  "mem_mb_max": 5175.0,
+  "power_w_avg": 66
+ },
+ "windows": [
+  {
+   "t": 0.0,
+   "fps": 60.09,
+   "views": 2,
+   "gametime_u32_per_s": 1002.6,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 4.0,
+   "fps": 59.83,
+   "views": 2,
+   "gametime_u32_per_s": 998.2,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 8.0,
+   "fps": 58.56,
+   "views": 2,
+   "gametime_u32_per_s": 977.1,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 12.0,
+   "fps": 60.11,
+   "views": 2,
+   "gametime_u32_per_s": 1002.4,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 16.0,
+   "fps": 60.09,
+   "views": 2,
+   "gametime_u32_per_s": 1002.6,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 20.1,
+   "fps": 59.58,
+   "views": 2,
+   "gametime_u32_per_s": 998.4,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 24.1,
+   "fps": 60.09,
+   "views": 2,
+   "gametime_u32_per_s": 998.4,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 28.1,
+   "fps": 59.82,
+   "views": 2,
+   "gametime_u32_per_s": 1002.3,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 32.1,
+   "fps": 59.83,
+   "views": 2,
+   "gametime_u32_per_s": 998.2,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 36.1,
+   "fps": 60.31,
+   "views": 2,
+   "gametime_u32_per_s": 1001.6,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 40.1,
+   "fps": 59.84,
+   "views": 2,
+   "gametime_u32_per_s": 998.6,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 44.1,
+   "fps": 59.58,
+   "views": 2,
+   "gametime_u32_per_s": 999.7,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 48.1,
+   "fps": 60.08,
+   "views": 2,
+   "gametime_u32_per_s": 996.5,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 52.1,
+   "fps": 9.72,
+   "views": 2,
+   "gametime_u32_per_s": 162.5,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 56.2,
+   "fps": 0.0,
+   "views": 2,
+   "gametime_u32_per_s": 0.0,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 60.2,
+   "fps": 0.0,
+   "views": 2,
+   "gametime_u32_per_s": 0.0,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 64.2,
+   "fps": 0.0,
+   "views": 2,
+   "gametime_u32_per_s": 0.0,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 68.2,
+   "fps": 0.0,
+   "views": 2,
+   "gametime_u32_per_s": 0.0,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 72.2,
+   "fps": 0.0,
+   "views": 2,
+   "gametime_u32_per_s": 1070714876.8,
+   "gametime_f32_per_s": -0.0
+  },
+  {
+   "t": 76.2,
+   "fps": 0.0,
+   "views": 0,
+   "gametime_u32_per_s": 0.0,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 80.2,
+   "fps": 0.0,
+   "views": 1,
+   "gametime_u32_per_s": 0.0,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 84.2,
+   "fps": 1.5,
+   "views": 1,
+   "gametime_u32_per_s": 25.4,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 88.3,
+   "fps": 51.35,
+   "views": 2,
+   "gametime_u32_per_s": 40.6,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 92.3,
+   "fps": 60.07,
+   "views": 2,
+   "gametime_u32_per_s": 556.6,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 96.3,
+   "fps": 53.83,
+   "views": 1,
+   "gametime_u32_per_s": 892.7,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 100.3,
+   "fps": 59.83,
+   "views": 2,
+   "gametime_u32_per_s": 999.1,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 104.3,
+   "fps": 59.56,
+   "views": 2,
+   "gametime_u32_per_s": 992.5,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 108.3,
+   "fps": 60.08,
+   "views": 2,
+   "gametime_u32_per_s": 998.1,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 112.3,
+   "fps": 60.06,
+   "views": 2,
+   "gametime_u32_per_s": 1002.1,
+   "gametime_f32_per_s": 0.0
+  }
+ ],
+ "motion": {
+  "object": "0x6427c0",
+  "moved_in_1s": 2.75,
+  "frames_seen": 361,
+  "consecutive_pairs": 360,
+  "pairs_where_position_changed": 341,
+  "pairs_where_game_clock_advanced": 360,
+  "game_clock_step_ms_values": [
+   16,
+   17
+  ]
+ },
+ "walk": null,
+ "hash_points_common": 217,
+ "hash_mismatches": 0,
+ "environment": "SINGLE-PC, bots, no impairment, native resolution, crop off"
+}

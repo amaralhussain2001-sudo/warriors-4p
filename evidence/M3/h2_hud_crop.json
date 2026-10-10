@@ -1,0 +1,43 @@
+{
+ "tag": "h2_hud_crop",
+ "fps60_patch": false,
+ "ee_cycle_rate": 0,
+ "seconds": 8,
+ "avg_game_fps": 29.99,
+ "gs": {
+  "upscale_multiplier": "4",
+  "accurate_blending_unit": "3"
+ },
+ "crop": true,
+ "gpu_two_instances": {
+  "util_avg": 3.4,
+  "util_max": 7.0,
+  "mem_mb_max": 5276.0,
+  "power_w_avg": 60
+ },
+ "windows": [
+  {
+   "t": 0.0,
+   "fps": 29.68,
+   "views": 2,
+   "gametime_u32_per_s": 992.3,
+   "gametime_f32_per_s": 0.0
+  }
+ ],
+ "motion": {
+  "object": "0x642e90",
+  "moved_in_1s": 5.5,
+  "frames_seen": 181,
+  "consecutive_pairs": 180,
+  "pairs_where_position_changed": 162,
+  "pairs_where_game_clock_advanced": 180,
+  "game_clock_step_ms_values": [
+   33,
+   34
+  ]
+ },
+ "walk": null,
+ "hash_points_common": 19,
+ "hash_mismatches": 0,
+ "environment": "SINGLE-PC, bots, no impairment, native resolution, crop off"
+}

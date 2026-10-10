@@ -1,0 +1,388 @@
+From 933d9707d099a6a3575191996cf1283bf0507f2a Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sun, 11 Oct 2026 01:33:35 +0300
+Subject: [PATCH] warriors-4p: hello/fingerprint handshake, kernel and game RAM
+ hashes (protocol 2), rows/cols fix, clearer OSD
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/W4P/W4P.cpp | 217 +++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 194 insertions(+), 23 deletions(-)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index e8618f7..b2b0dda 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -17,6 +17,7 @@
+ #include "SIO/Pad/PadBase.h"
+ #include "SIO/Pad/PadDualshock2.h"
+ #include "VMManager.h"
++#include "ps2/BiosTools.h"
+ 
+ #include "common/Console.h"
+ #include "common/FileSystem.h"
+@@ -45,13 +46,16 @@ namespace W4P
+ 		constexpr int kMaxPlayers = 4;
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+-		constexpr u16 kProtocolVersion = 1;
++		constexpr u16 kProtocolVersion = 2; // 2: hello/fingerprint packet, kernel and game RAM hashes
++		constexpr char kBuildTag[] = "w4p-m3-1";
++		// EE RAM below this address belongs to the BIOS kernel (and our hook cave); the game lives above it.
++		constexpr u32 kGameRamStart = 0x00100000;
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+ 
+ 		// Game memory used for presentation only (F-0027, docs/research/static_analysis.md).
+ 		constexpr u32 kViewsRendered = 0x0050B198;
+-		constexpr u32 kLayoutRows = 0x0050B1A8;
+-		constexpr u32 kLayoutCols = 0x0050B1AA;
++		constexpr u32 kLayoutRows = 0x0050B1AA;
++		constexpr u32 kLayoutCols = 0x0050B1A8;
+ 		constexpr u32 kFrameCounter = 0x0050C654; // game frames, advanced by FrameStats (F-0042)
+ 
+ 		// Offsets inside the game's per-pad port buffer (F-0051).
+@@ -95,7 +99,21 @@ namespace W4P
+ 		struct HashEntry
+ 		{
+ 			u32 t;
+-			u64 hash;
++			u64 kernel; // EE RAM below kGameRamStart
++			u64 game; // EE RAM from kGameRamStart
++		};
++		struct PktHello
++		{
++			PktHeader h;
++			u32 disc_crc;
++			u32 bios_version;
++			u64 settings_fp; // emulation settings that change the simulation
++			u64 patch_fp; // game patch set (from the launcher)
++			u8 players;
++			u8 input_delay;
++			u16 hash_interval;
++			char build[16];
++			char bios[48];
+ 		};
+ #pragma pack(pop)
+ 
+@@ -103,6 +121,7 @@ namespace W4P
+ 		{
+ 			kPktInputs = 1,
+ 			kPktHashes = 2,
++			kPktHello = 3,
+ 		};
+ 
+ 		struct Config
+@@ -125,6 +144,7 @@ namespace W4P
+ 			float loss = 0.0f;
+ 			u32 seed = 1;
+ 			bool crop = true;
++			std::string patch_set; // e.g. pnach SHA-256 + enabled groups, written by the launcher
+ 			// The game's view count changes about 4 game frames before the matching picture is shown (F-0093).
+ 			// The crop uses the layout from this many game frames ago and travels through the GS queue.
+ 			int crop_delay_frames = 3;
+@@ -153,8 +173,11 @@ namespace W4P
+ 			std::array<s64, kMaxPlayers> peer_c0 = {-1, -1, -1, -1};
+ 			bool c0_mismatch_reported = false;
+ 
+-			std::unordered_map<u32, u64> local_hash;
+-			std::array<std::unordered_map<u32, u64>, kMaxPlayers> remote_hash;
++			std::unordered_map<u32, HashEntry> local_hash;
++			std::array<std::unordered_map<u32, HashEntry>, kMaxPlayers> remote_hash;
++			u64 kernel_mismatches = 0;
++			std::array<bool, kMaxPlayers> hello_from = {};
++			double last_hello_ms = 0.0;
+ 			std::vector<u32> pending_compare;
+ 			u64 hashes_compared = 0;
+ 			u64 mismatches = 0;
+@@ -298,6 +321,114 @@ namespace W4P
+ 			}
+ 		}
+ 
++		u64 Fnv(u64 h, const void* data, size_t n)
++		{
++			const u8* b = static_cast<const u8*>(data);
++			for (size_t i = 0; i < n; i++)
++				h = (h ^ b[i]) * 0x100000001B3ull;
++			return h;
++		}
++
++		template <typename T>
++		u64 FnvVal(u64 h, T v)
++		{
++			return Fnv(h, &v, sizeof(v));
++		}
++
++		// Emulation settings that change what the emulated machine computes. Graphics settings are not included
++		// (they do not affect the simulation; evidence/M3/x1_mixed_gfx.json).
++		u64 SettingsFingerprint()
++		{
++			u64 h = 0xCBF29CE484222325ull;
++			h = FnvVal(h, EmuConfig.Cpu.bitset);
++			h = FnvVal(h, EmuConfig.Cpu.Recompiler.bitset);
++			h = FnvVal(h, EmuConfig.Cpu.FPUFPCR.bitmask);
++			h = FnvVal(h, EmuConfig.Cpu.FPUDivFPCR.bitmask);
++			h = FnvVal(h, EmuConfig.Cpu.VU0FPCR.bitmask);
++			h = FnvVal(h, EmuConfig.Cpu.VU1FPCR.bitmask);
++			h = FnvVal(h, EmuConfig.Speedhacks.bitset);
++			h = FnvVal(h, EmuConfig.Speedhacks.EECycleRate);
++			h = FnvVal(h, EmuConfig.Speedhacks.EECycleSkip);
++			h = FnvVal(h, EmuConfig.Gamefixes.bitset);
++			const bool flags[] = {EmuConfig.EnablePatches, EmuConfig.EnableCheats, EmuConfig.EnableWideScreenPatches,
++				EmuConfig.EnableNoInterlacingPatches, EmuConfig.EnableFastBoot, EmuConfig.EnableGameFixes,
++				EmuConfig.ManuallySetRealTimeClock, EmuConfig.HostFs};
++			h = Fnv(h, flags, sizeof(flags));
++			if (EmuConfig.ManuallySetRealTimeClock)
++			{
++				const int rtc[] = {EmuConfig.RtcYear, EmuConfig.RtcMonth, EmuConfig.RtcDay, EmuConfig.RtcHour,
++					EmuConfig.RtcMinute, EmuConfig.RtcSecond};
++				h = Fnv(h, rtc, sizeof(rtc));
++			}
++			return h;
++		}
++
++		void SendHello()
++		{
++			Session& s = *s_session;
++			PktHello pkt = {};
++			FillHeader(&pkt.h, kPktHello);
++			pkt.disc_crc = VMManager::GetDiscCRC();
++			pkt.bios_version = BiosVersion;
++			pkt.settings_fp = SettingsFingerprint();
++			pkt.patch_fp = Fnv(0xCBF29CE484222325ull, s.cfg.patch_set.data(), s.cfg.patch_set.size());
++			pkt.players = static_cast<u8>(s.cfg.players);
++			pkt.input_delay = static_cast<u8>(s.cfg.input_delay);
++			pkt.hash_interval = static_cast<u16>(s.cfg.hash_interval);
++			std::snprintf(pkt.build, sizeof(pkt.build), "%s", kBuildTag);
++			std::snprintf(pkt.bios, sizeof(pkt.bios), "%s", BiosDescription.c_str());
++			SendToPeers(&pkt, sizeof(pkt));
++			s.last_hello_ms = NowMs();
++		}
++
++		void HandleHello(const PktHello& in)
++		{
++			Session& s = *s_session;
++			const int p = in.h.slot;
++			const bool first = !s.hello_from[p];
++			s.hello_from[p] = true;
++			if (first)
++				SendHello(); // make sure the peer gets ours even if our earlier one was lost
++			else
++				return;
++			char bios[sizeof(in.bios) + 1] = {};
++			char build[sizeof(in.build) + 1] = {};
++			std::memcpy(bios, in.bios, sizeof(in.bios));
++			std::memcpy(build, in.build, sizeof(in.build));
++			Log(fmt::format("hello from slot {}: build {}, disc CRC {:08X}, BIOS {:08X} '{}', settings {:016x}, patches {:016x}, "
++							"players {}, delay {}, hash every {}",
++				p, build, in.disc_crc, in.bios_version, bios, in.settings_fp, in.patch_fp, in.players, in.input_delay,
++				in.hash_interval));
++			std::string diff;
++			if (std::strncmp(build, kBuildTag, sizeof(in.build)) != 0)
++				diff += " emulator build,";
++			if (in.disc_crc != VMManager::GetDiscCRC())
++				diff += " game version,";
++			if (in.settings_fp != SettingsFingerprint())
++				diff += " emulation settings,";
++			if (in.patch_fp != Fnv(0xCBF29CE484222325ull, s.cfg.patch_set.data(), s.cfg.patch_set.size()))
++				diff += " game patches,";
++			if (in.players != s.cfg.players || in.input_delay != s.cfg.input_delay || in.hash_interval != s.cfg.hash_interval)
++				diff += " session options,";
++			if (!diff.empty())
++			{
++				diff.pop_back();
++				Log(fmt::format("ERROR: player {} differs in:{}", p + 1, diff));
++				Host::AddKeyedOSDMessage(fmt::format("w4p_hello{}", p),
++					fmt::format("Player {} uses different{}. The game will go out of sync.", p + 1, diff), 30.0f);
++			}
++			else if (in.bios_version != BiosVersion)
++			{
++				Log(fmt::format("WARNING: player {} uses a different BIOS version ({:08X}, ours {:08X})", p + 1, in.bios_version, BiosVersion));
++				Host::AddKeyedOSDMessage(fmt::format("w4p_hello{}", p),
++					fmt::format("Player {} uses a different PS2 BIOS version. This may cause desync.", p + 1), 15.0f);
++			}
++			else
++			{
++				Host::AddKeyedOSDMessage(fmt::format("w4p_hello{}", p), fmt::format("Connected to Player {}", p + 1), 5.0f);
++			}
++		}
++
+ 		void SendInputs()
+ 		{
+ 			Session& s = *s_session;
+@@ -322,10 +453,10 @@ namespace W4P
+ 		{
+ 			Session& s = *s_session;
+ 			std::vector<HashEntry> recent;
+-			for (const auto& [t, h] : s.local_hash)
++			for (const auto& [t, e] : s.local_hash)
+ 			{
+ 				if (t + static_cast<u32>(s.cfg.hash_interval) * 8 >= s.cur_t)
+-					recent.push_back({t, h});
++					recent.push_back(e);
+ 			}
+ 			if (recent.empty())
+ 				return;
+@@ -346,6 +477,11 @@ namespace W4P
+ 				return;
+ 			PktHeader h;
+ 			std::memcpy(&h, data, sizeof(h));
++			if (h.magic == kPktMagic && h.version != kProtocolVersion && s.rx_bad < 3)
++			{
++				Log(fmt::format("rejected datagram with protocol version {} (ours {})", h.version, kProtocolVersion));
++				Host::AddKeyedOSDMessage("w4p_version", "The other player uses a different version of the online co-op build", 15.0f);
++			}
+ 			if (h.magic != kPktMagic || h.version != kProtocolVersion || h.slot >= s.cfg.players ||
+ 				h.slot == s.cfg.local_slot)
+ 				return;
+@@ -358,6 +494,13 @@ namespace W4P
+ 			}
+ 			s.rx_bad--;
+ 			s.rx_ok++;
++			if (h.type == kPktHello && size == static_cast<int>(sizeof(PktHello)))
++			{
++				PktHello pkt;
++				std::memcpy(&pkt, data, sizeof(pkt));
++				HandleHello(pkt);
++				return;
++			}
+ 			s.peer_c0[h.slot] = h.c0;
+ 			if (s.started && h.c0 != s.c0 && !s.c0_mismatch_reported)
+ 			{
+@@ -389,7 +532,7 @@ namespace W4P
+ 				{
+ 					HashEntry e;
+ 					std::memcpy(&e, data + sizeof(PktHashes) + i * sizeof(HashEntry), sizeof(e));
+-					s.remote_hash[h.slot][e.t] = e.hash;
++					s.remote_hash[h.slot][e.t] = e;
+ 				}
+ 			}
+ 		}
+@@ -406,13 +549,11 @@ namespace W4P
+ 			}
+ 		}
+ 
+-		u64 HashMainRam()
++		u64 HashRange(const u64* p, size_t n)
+ 		{
+-			// Fast non-cryptographic 64-bit hash of all EE main RAM; only used to detect divergence.
+-			const u64* p = reinterpret_cast<const u64*>(eeMem->Main);
+-			const size_t n = Ps2MemSize::MainRam / sizeof(u64);
++			// Fast non-cryptographic 64-bit hash; only used to detect divergence.
+ 			u64 h1 = 0x9E3779B97F4A7C15ull, h2 = 0xC2B2AE3D27D4EB4Full;
+-			for (size_t i = 0; i < n; i += 2)
++			for (size_t i = 0; i + 1 < n; i += 2)
+ 			{
+ 				h1 = (h1 ^ p[i]) * 0x100000001B3ull;
+ 				h2 = (h2 ^ p[i + 1]) * 0x880355F21E6D1965ull;
+@@ -420,6 +561,18 @@ namespace W4P
+ 			return h1 ^ (h2 >> 1) ^ (h2 << 63);
+ 		}
+ 
++		HashEntry HashMainRam(u32 t)
++		{
++			const u64* p = reinterpret_cast<const u64*>(eeMem->Main);
++			const size_t k = kGameRamStart / sizeof(u64);
++			return {t, HashRange(p, k), HashRange(p + k, Ps2MemSize::MainRam / sizeof(u64) - k)};
++		}
++
++		u64 Combined(const HashEntry& e)
++		{
++			return e.kernel ^ ((e.game << 1) | (e.game >> 63));
++		}
++
+ 		void DumpRam(u32 t)
+ 		{
+ 			if (s_session->cfg.dump_dir.empty())
+@@ -450,20 +603,27 @@ namespace W4P
+ 					++it;
+ 					continue;
+ 				}
+-				const u64 mine = s.local_hash[t];
++				const HashEntry mine = s.local_hash[t];
+ 				for (int p = 0; p < s.cfg.players; p++)
+ 				{
+ 					if (p == s.cfg.local_slot)
+ 						continue;
+ 					s.hashes_compared++;
+-					if (s.remote_hash[p][t] != mine)
++					const HashEntry& other = s.remote_hash[p][t];
++					if (other.game == mine.game && other.kernel != mine.kernel)
++					{
++						if (s.kernel_mismatches++ == 0)
++							Log(fmt::format("NOTE: poll {} (rel {}): game memory equal, BIOS kernel memory differs from slot{} (different BIOS?)", t, t - s.c0, p));
++					}
++					if (other.game != mine.game)
+ 					{
+ 						s.mismatches++;
+-						Log(fmt::format("DESYNC: poll {} (rel {}) hash mine {:016x} slot{} {:016x}", t, t - s.c0, mine, p, s.remote_hash[p][t]));
++						Log(fmt::format("DESYNC: poll {} (rel {}) game hash mine {:016x} slot{} {:016x}; kernel mine {:016x} slot{} {:016x}", t, t - s.c0,
++							mine.game, p, other.game, mine.kernel, p, other.kernel));
+ 						if (s.first_mismatch_t < 0)
+ 						{
+ 							s.first_mismatch_t = t;
+-							Host::AddKeyedOSDMessage("w4p_desync", fmt::format("W4P: DESYNC detected at poll {}", t - s.c0), 15.0f);
++							Host::AddKeyedOSDMessage("w4p_desync", fmt::format("OUT OF SYNC with Player {} (poll {}). Please keep playing a little, then save the logs.", p + 1, t - s.c0), 60.0f);
+ 						}
+ 					}
+ 				}
+@@ -577,11 +737,15 @@ namespace W4P
+ 
+ 			if (s.cfg.hash_interval > 0 && t != s.c0 && (t - s.c0) % static_cast<u32>(s.cfg.hash_interval) == 0)
+ 			{
+-				const u64 h = HashMainRam();
+-				s.local_hash[t] = h;
++				const HashEntry e = HashMainRam(t);
++				s.local_hash[t] = e;
+ 				s.pending_compare.push_back(t);
+ 				if (s.log)
+-					std::fprintf(s.log, "HASH %u %016llx\n", t - s.c0, static_cast<unsigned long long>(h));
++				{
++					std::fprintf(s.log, "HASH %u %016llx\n", t - s.c0, static_cast<unsigned long long>(Combined(e)));
++					std::fprintf(s.log, "GHASH %u %016llx %016llx\n", t - s.c0, static_cast<unsigned long long>(e.game),
++						static_cast<unsigned long long>(e.kernel));
++				}
+ 				SendHashes();
+ 			}
+ 			CompareHashes();
+@@ -711,6 +875,7 @@ namespace W4P
+ 		c.loss = ini.GetFloatValue("W4P", "ImpairLoss", 0.0f);
+ 		c.seed = static_cast<u32>(ini.GetIntValue("W4P", "ImpairSeed", 1));
+ 		c.crop = ini.GetBoolValue("W4P", "Crop", true);
++		c.patch_set = ini.GetStringValue("W4P", "PatchSet", "");
+ 		c.crop_delay_frames = ini.GetIntValue("W4P", "CropDelayFrames", c.crop_delay_frames);
+ 		c.crop_inset = std::clamp(ini.GetFloatValue("W4P", "CropInset", c.crop_inset), 0.0f, 0.1f);
+ 		s_show_all.store(ini.GetBoolValue("W4P", "ShowAllViews", false));
+@@ -720,6 +885,7 @@ namespace W4P
+ 		if (VMManager::GetDiscCRC() != kGameCrc)
+ 		{
+ 			Console.Warning("(W4P) disc CRC %08X is not The Warriors (USA) v1.03; W4P stays off", VMManager::GetDiscCRC());
++			Host::AddKeyedOSDMessage("w4p_crc", "Online co-op is OFF: this disc is not The Warriors (USA) version 1.03", 60.0f);
+ 			return;
+ 		}
+ 		s_session = std::move(s);
+@@ -811,6 +977,11 @@ namespace W4P
+ 			return;
+ 		Session& s = *s_session;
+ 		Receive(0);
++		bool all_hello = true;
++		for (int p = 0; p < s.cfg.players; p++)
++			all_hello &= (p == s.cfg.local_slot || s.hello_from[p]);
++		if (!all_hello && NowMs() - s.last_hello_ms > 1000.0)
++			SendHello();
+ 		if (s.started && NowMs() - s.last_send_ms > 50.0)
+ 			SendInputs();
+ 		CompareHashes();
+@@ -819,8 +990,8 @@ namespace W4P
+ 		if (s.started && now - s.last_stats_ms > 10000.0)
+ 		{
+ 			s.last_stats_ms = now;
+-			Log(fmt::format("stats: poll {}, polls {}, waits {}, wait total {:.1f} ms, max {:.1f} ms, hashes {}, mismatches {}",
+-				s.cur_t - s.c0, s.polls, s.waits, s.wait_ms_total, s.wait_ms_max, s.hashes_compared, s.mismatches));
++			Log(fmt::format("stats: poll {}, polls {}, waits {}, wait total {:.1f} ms, max {:.1f} ms, hashes {}, mismatches {}, kernel-only differences {}",
++				s.cur_t - s.c0, s.polls, s.waits, s.wait_ms_total, s.wait_ms_max, s.hashes_compared, s.mismatches, s.kernel_mismatches));
+ 		}
+ 	}
+ 
+-- 
+2.55.0.windows.3
+

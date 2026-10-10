@@ -5,6 +5,9 @@ Usage: python -I tests/m3/fps_probe.py <tag> [--seconds 40] [--ee 0] [--fps60] [
                                          [--gs key=value,key=value] [--shot-scale 0.5]
   --gs      extra EmuCore/GS settings on both instances (default: the user's settings, upscale 1x)
   --crop    show each player's own view (default: crop off)
+  --gs1     EmuCore/GS settings for the second instance only (applied after --gs)
+  --walk    player 1 walks straight ahead from the start, player 2 stands still; reports player 1's speed
+  --groups  extra pnach groups, separated by ';' (e.g. "warriors-4p 60fps")
   --fps60   add PCSX2's disabled "60 FPS" line (EE byte 0x00596D70 = 1, applied every vsync)
   --ee N    EmuCore/Speedhacks EECycleRate on both instances (0 = 100 %, 1 = 130 %, 2 = 180 %, 3 = 300 %)
 Writes local/m3/<tag>/ and evidence/M3/<tag>.json. Environment: SINGLE-PC, bots, no impairment, native resolution.
@@ -85,6 +88,32 @@ def measure_motion(p, secs):
             "game_clock_step_ms_values": sorted(set(clock_steps))[:12]}
 
 
+def player_pos(p, idx):
+    """Player idx's position via GameMgr (0x0051489C) +0x228 handle -> object table 0x006EBD38 (F-0020, F-0022)."""
+    f = lambda v: struct.unpack("<f", struct.pack("<I", v))[0]  # noqa: E731
+    gm = p.read32(0x0051489C)
+    h = p.read32(gm + 0x228 + 4 * idx)
+    obj = p.read32(0x006EBD38 + 8 * (h >> 16))
+    return tuple(f(p.read32(obj + 0x10 + 4 * i)) for i in range(3))
+
+
+def player_track(p, secs):
+    """Player 1's ground speed (units per second of real time and of game time) while walking."""
+    t0 = time.perf_counter()
+    clock = p.read32(GAMECLOCK_PTR)
+    a, g0 = player_pos(p, 0), p.read32(clock + 0x48)
+    path, last = 0.0, a
+    while time.perf_counter() - t0 < secs:
+        time.sleep(0.05)
+        b = player_pos(p, 0)
+        path += ((b[0] - last[0]) ** 2 + (b[2] - last[2]) ** 2) ** 0.5
+        last = b
+    dt = time.perf_counter() - t0
+    dg = (p.read32(clock + 0x48) - g0) / 1000.0
+    return {"path_units": round(path, 3), "real_s": round(dt, 2), "game_s": round(dg, 2),
+            "speed_per_real_s": round(path / dt, 3), "speed_per_game_s": round(path / dg, 3) if dg else None}
+
+
 def main():
     tag = sys.argv[1]
     seconds, wait, ee = opt("--seconds", 40), opt("--wait", 12), opt("--ee", 0)
@@ -111,10 +140,18 @@ def main():
         set_ini(n, "EmuCore/GS", "OsdShowVPS", "true")
         for k, v in gs.items():
             set_ini(n, "EmuCore/GS", k, v)
-        sandbox.install_patch(n, patch, ["warriors-4p M1"])
+        if slot == 1:  # per-instance graphics differences (graphics must not affect sync)
+            for kv in opt("--gs1", "", str).split(","):
+                if kv:
+                    set_ini(n, "EmuCore/GS", *kv.split("=", 1))
+        sandbox.install_patch(n, patch, ["warriors-4p M1"] + [g for g in opt("--groups", "", str).split(";") if g])
         for m in ("Mcd001.ps2", "Mcd002.ps2"):
             shutil.copyfile(os.path.join(PROJ, "local", m), os.path.join(sandbox.data_root(n), "memcards", m))
-        m1_run.bot_file(os.path.join(out_dir, f"bot_slot{slot}.bin"), 1000 + slot, 40000)
+        if "--walk" in sys.argv:  # player 1 walks straight ahead, player 2 stands still (speed parity)
+            open(os.path.join(out_dir, f"bot_slot{slot}.bin"), "wb").write(
+                (m1_run.record(ly=0x00) if slot == 0 else m1_run.record()) * 40000)
+        else:
+            m1_run.bot_file(os.path.join(out_dir, f"bot_slot{slot}.bin"), 1000 + slot, 40000)
         ini = os.path.join(out_dir, f"w4p_slot{slot}.ini")
         m1_run.write_ini(ini, slot, out_dir, args)
         env = dict(os.environ, W4P_CONFIG=ini)
@@ -123,6 +160,7 @@ def main():
         open(os.path.join(d, "pid.txt"), "w").write(str(procs[slot].pid))
     time.sleep(wait)
     p = Pine(sandbox.PINE_BASE + m1_run.INSTS[0])
+    walk = player_track(p, 3.0) if "--walk" in sys.argv else None
     smi = subprocess.Popen(["nvidia-smi", "--query-gpu=utilization.gpu,memory.used,power.draw", "--format=csv,noheader,nounits",
                             "-lms", "500"], stdout=subprocess.PIPE, text=True)
     samples = []
@@ -166,7 +204,7 @@ def main():
     common = sorted(set(hashes[0]) & set(hashes[1]), key=int)
     total_fps = (samples[-1][1] - samples[0][1]) / (samples[-1][0] - samples[0][0])
     summary = {"tag": tag, "fps60_patch": fps60, "ee_cycle_rate": ee, "seconds": seconds, "avg_game_fps": round(total_fps, 2),
-               "gs": gs, "crop": "--crop" in sys.argv, "gpu_two_instances": gpu_stats, "windows": windows, "motion": motion, "hash_points_common": len(common),
+               "gs": gs, "crop": "--crop" in sys.argv, "gpu_two_instances": gpu_stats, "windows": windows, "motion": motion, "walk": walk, "hash_points_common": len(common),
                "hash_mismatches": sum(1 for t in common if hashes[0][t] != hashes[1][t]),
                "environment": "SINGLE-PC, bots, no impairment, native resolution, crop off"}
     os.makedirs(os.path.join(PROJ, "evidence", "M3"), exist_ok=True)
@@ -175,6 +213,7 @@ def main():
     for w in windows:
         print("  ", w)
     print("  motion:", motion)
+    print("  walk:", walk)
     print("  gpu (both instances together):", gpu_stats)
 
 

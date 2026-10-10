@@ -29,3 +29,54 @@ patch=2,EE,000F0454,word,03E00008
 patch=2,EE,000F0458,word,27BD0020
 patch=2,EE,001498E0,word,0C03C100 // was 0C0525DC jal 0x00149770
 patch=2,EE,00123300,word,2C420002 // was 2C420003: 2x2 layout from 2 views
+
+[warriors-4p own view]
+author=warriors-4p
+description=Online sessions: never merge the players' views (game option 2P Split Screen Merge off).
+
+patch=1,EE,0050B1C4,word,00000000 // live merge option, was 00000001
+patch=2,EE,00418AD4,word,AC40B1C4 // was AC45B1C4 (sw a1): the option setter stores 0
+
+[warriors-4p hud]
+author=warriors-4p
+description=Online sessions: each player's radar inside their own view (2x2 layout).
+
+patch=2,EE,001AFF30,word,0803C180 // was 3C030051 lui v1,0x51 -> j 0x000F0600
+patch=2,EE,001AFF34,word,00000000 // was C455D430 -> nop (delay slot)
+patch=2,EE,000F0600,word,C455D430 // lwc1 f21,-0x2bd0(v0): z = default
+patch=2,EE,000F0604,word,24010002 // addiu at,zero,2
+patch=2,EE,000F0608,word,14610004 // bne v1,at,+4: not the 2x2 mode
+patch=2,EE,000F060C,word,C441D434 // lwc1 f1,-0x2bcc(v0): P1 x (delay slot)
+patch=2,EE,000F0610,word,3C013E19 // lui at,0x3e19
+patch=2,EE,000F0614,word,3421999A // ori at,at,0x999a: 0.15
+patch=2,EE,000F0618,word,4481A800 // mtc1 at,f21: z = 0.15 in the 2x2 mode
+patch=2,EE,000F061C,word,C454D428 // lwc1 f20,-0x2bd8(v0): P2 x
+patch=2,EE,000F0620,word,0806BFD2 // j 0x001AFF48
+patch=2,EE,000F0624,word,4600A886 // mov.s f2,f21 (delay slot)
+patch=2,EE,001AA648,word,00000000 // was E7A00008 swc1 f0,8(sp): widget keeps the caller's height
+
+[warriors-4p 60fps]
+author=warriors-4p
+description=Experimental real 60 fps: flip every vblank, game logic every 1/60 s step, logic time step halved.
+
+patch=1,EE,00596D70,byte,01 // R60-1 swap interval 1 (was 2 from 0x0050CDB0)
+patch=2,EE,003A2F08,word,3C02004A // R60-2 SimAdvance: one 1/60 s step per pass (was 3C020095)
+patch=2,EE,003A2F30,word,3C17004A // R60-2 (was 3C170095)
+patch=2,EE,003A2F94,word,2E420001 // R60-2 (was 2E420002)
+patch=2,EE,0024912C,word,30640000 // R60-3 SimStep: logic on every step (was 30640001)
+patch=2,EE,005102CC,word,3C888889 // R60-4 LogicDt 1/60 (was 3D088889 = 1/30)
+patch=2,EE,0023B7C8,word,3C013C88 // R60-4 LogicDt writer (was 3C013D08)
+patch=2,EE,0023B7FC,word,3C013C88 // R60-4 (was 3C013D08)
+patch=2,EE,0030C8CC,word,3C013C08 // R60-4 (was 3C013C88)
+patch=2,EE,0030C924,word,3C013B88 // R60-4 (was 3C013C08)
+patch=2,EE,0030C94C,word,3C013C88 // R60-4 (was 3C013D08)
+patch=2,EE,0041AB40,word,3C013C88 // R60-4 (was 3C013D08)
+patch=2,EE,0041ABA4,word,3C013C88 // R60-4 (was 3C013D08)
+patch=2,EE,00249B44,word,3C013C88 // R60-4 camera clamp in SimStep (was 3C013D08)
+
+[warriors-4p widescreen]
+gsaspectratio=16:9
+author=CRASHARKI (PCSX2 patches)
+description=Native 16:9 widescreen (copied from PCSX2's patch list).
+
+patch=1,EE,007AA05C,byte,01 // was 00

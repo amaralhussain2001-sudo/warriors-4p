@@ -1,0 +1,67 @@
+{
+ "tag": "w30",
+ "fps60_patch": false,
+ "ee_cycle_rate": 0,
+ "seconds": 15,
+ "avg_game_fps": 29.95,
+ "gs": {},
+ "crop": false,
+ "gpu_two_instances": {
+  "util_avg": 17.7,
+  "util_max": 20.0,
+  "mem_mb_max": 5136.0,
+  "power_w_avg": 69
+ },
+ "windows": [
+  {
+   "t": 0.0,
+   "fps": 29.92,
+   "views": 2,
+   "gametime_u32_per_s": 978.2,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 4.0,
+   "fps": 29.92,
+   "views": 2,
+   "gametime_u32_per_s": 985.1,
+   "gametime_f32_per_s": 0.0
+  },
+  {
+   "t": 8.0,
+   "fps": 30.16,
+   "views": 2,
+   "gametime_u32_per_s": 986.9,
+   "gametime_f32_per_s": 0.0
+  }
+ ],
+ "motion": {
+  "object": "0x64c470",
+  "moved_in_1s": 1.57,
+  "frames_seen": 181,
+  "consecutive_pairs": 180,
+  "pairs_where_position_changed": 60,
+  "pairs_where_game_clock_advanced": 180,
+  "game_clock_step_ms_values": [
+   14,
+   15,
+   18,
+   19,
+   22,
+   30,
+   33,
+   34,
+   40
+  ]
+ },
+ "walk": {
+  "path_units": 2.632,
+  "real_s": 3.05,
+  "game_s": 2.96,
+  "speed_per_real_s": 0.863,
+  "speed_per_game_s": 0.889
+ },
+ "hash_points_common": 28,
+ "hash_mismatches": 0,
+ "environment": "SINGLE-PC, bots, no impairment, native resolution, crop off"
+}

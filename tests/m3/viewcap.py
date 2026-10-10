@@ -70,7 +70,7 @@ def main():
         if os.path.exists(d):
             shutil.rmtree(d)
         sandbox.make(n, "default", pad2=True)
-        sandbox.install_patch(n, patch, ["warriors-4p M1"])
+        sandbox.install_patch(n, patch, ["warriors-4p M1"] + [g for g in opt("--groups", "", str).split(";") if g])
         for m in ("Mcd001.ps2", "Mcd002.ps2"):
             shutil.copyfile(os.path.join(PROJ, "local", m), os.path.join(sandbox.data_root(n), "memcards", m))
         kind = opt("--pattern", "bots", str)
