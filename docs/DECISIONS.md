@@ -48,3 +48,9 @@ User's messages (verbatim, in order):
 | D10 | Emulator settings | Claude chooses and measures the settings profile for quality and frame rate on the user's PC (RTX 5090, Ryzen 9 9950X3D, 4K 240 Hz). The user's own PCSX2 installation and its settings stay untouched (protected); the profile applies only to the warriors-4p build | user, 2026-10-11 (message 3) |
 | D11 | Widescreen 16:9 | Recommended option taken (user has accepted recommendations before; not answered explicitly): add PCSX2's native widescreen patch as a session option and test sync with it | recommended, to confirm in the next report |
 | D12 | Milestone stops | User asked to "start do the plan" and to have it finished for a test tomorrow. Work continues past milestone ends without waiting; each milestone still gets its report, tag and hash check. E6 (second PC) will be run by the user tomorrow with a package prepared here | user, 2026-10-11 (message 4) |
+
+User message 2026-10-11 (verbatim): "if you are copy player one to player 3 and 4 ( make sure only the first player control the ganstar not all of them )"
+
+| ID | Decision | Choice | Approval |
+|---|---|---|---|
+| D13 | Gang commands with 3-4 players | Only player 1 commands the gang. Players 3-4 (companions taken over or spawned copies of player 1's character) never get gang commands. Player 2: keep the original 2-player behaviour unless it already differs; reported to the user (research `m2_gang_command.md`) | user, 2026-10-11 |
