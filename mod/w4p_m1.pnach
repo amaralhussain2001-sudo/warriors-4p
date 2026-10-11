@@ -786,12 +786,31 @@ patch=2,EE,000F0B74,word,00000000 // reset cave: nop
 patch=2,EE,000F0B78,word,2403FFFF // reset cave: addiu v1,zero,-1     (moved from 0x00418F64)
 patch=2,EE,000F0B7C,word,03E00008 // reset cave: jr ra                (ra = 0x00418F6C)
 patch=2,EE,000F0B80,word,3C020051 // reset cave: lui v0,0x0051        (moved from 0x00418F68)
+patch=2,EE,0041B180,word,0803C3B4 // was 8E030000 lw v1,0(s0) -> j 0x000F0ED0
+patch=2,EE,0041B184,word,00000000 // was 84640028 lh a0,40(v1) -> nop (delay slot; moved into the cave)
+patch=2,EE,000F0ED0,word,12600005 // beq s3,zero,cont: leave events (joined == 0) pass unchanged
+patch=2,EE,000F0ED4,word,00000000 // nop
+patch=2,EE,000F0ED8,word,820101B0 // lb at,0x1B0(s0): joining human's player index
+patch=2,EE,000F0EDC,word,28210002 // slti at,at,2
+patch=2,EE,000F0EE0,word,10200004 // beq at,zero,skip: players 3-4 (index >= 2): no Lua join event
+patch=2,EE,000F0EE4,word,00000000 // nop
+patch=2,EE,000F0EE8,word,8E030000 // lw v1,0(s0): displaced 0x0041B180
+patch=2,EE,000F0EEC,word,08106C62 // j 0x0041B188
+patch=2,EE,000F0EF0,word,84640028 // lh a0,40(v1): displaced 0x0041B184 (delay slot)
+patch=2,EE,000F0EF4,word,08106C9A // j 0x0041B268: original exit path
+patch=2,EE,000F0EF8,word,7BB00050 // lq s0,80(sp): as the original exit's delay slot
 
 [warriors-4p test level99 join]
 author=warriors-4p
 description=Test only: join search also in level 99.
 
 patch=2,EE,0022A85C,word,24047FFF // was 24040063 addiu a0,zero,99 -> 0x7FFF (no such level)
+
+[warriors-4p test force split]
+author=warriors-4p
+description=Test only: views never forced to camera 0.
+
+patch=1,EE,0050B1C0,word,00000001 // SplitAllowed
 
 [warriors-4p test call]
 author=warriors-4p

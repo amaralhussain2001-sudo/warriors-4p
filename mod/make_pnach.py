@@ -138,11 +138,12 @@ def main():
     # M2 (experimental): four genuine players. GameMgr storage and limits (docs/research/m2_gamemgr.md) and the engine
     # tables below GameMgr: pads, cameras, ScreenEffects, listener buffer, camera flags (m2_pads_cameras.md); the 0x5C
     # per-player records (m2_gamemgr_records.md); interim HUD guards, no HUD for players 3-4 (m2_hud_players34.md (A));
-    # MakePlayer clears a dead-brain flag, and the per-player block +0x414..+0x42F widened (m2_player_control.md P-1, P-2).
+    # MakePlayer clears a dead-brain flag, and the per-player block +0x414..+0x42F widened (m2_player_control.md P-1, P-2);
+    # the mission join script event (player-2 scenes) is not sent for players 3-4 (m2_black_screen.md).
     # Lines extracted by tools/note_patches.py and checked against the ELF. New data at 0x000F0800-0x000F093F is
     # zeroed once at startup (place 0; never place 1/2 for live data).
     frag = []
-    for name in ("gamemgr.txt", "engine.txt", "records.txt", "hud34.txt", "control.txt"):
+    for name in ("gamemgr.txt", "engine.txt", "records.txt", "hud34.txt", "control.txt", "joinevent.txt"):
         frag += [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
     out += ["", "[warriors-4p 4p]", "author=warriors-4p",
             "description=Experimental: four players (engine tables for 4; players 3-4 join with Start).", ""]
@@ -152,6 +153,10 @@ def main():
     # where player 1's squad holds only players 1 and 2; this lets players 3-4 take over other Warriors there.
     out += ["", "[warriors-4p test level99 join]", "author=warriors-4p", "description=Test only: join search also in level 99.", "",
             "patch=2,EE,0022A85C,word,24047FFF // was 24040063 addiu a0,zero,99 -> 0x7FFF (no such level)"]
+    # TEST ONLY: keep SplitAllowed (0x0050B1C0, Lua CamEnable(3, ...)) on, to see every player's view in scripted
+    # sections that draw only camera 0 (view_merge_rule.md). Not a session policy (cut-scenes need the shared camera).
+    out += ["", "[warriors-4p test force split]", "author=warriors-4p", "description=Test only: views never forced to camera 0.", "",
+            "patch=1,EE,0050B1C0,word,00000001 // SplitAllowed"]
     # TEST ONLY (single-instance engine tests): call a game function on the game's main thread right after
     # FrameStats, from a mailbox at 0x000F0300 written over PINE (+0 function, +4..+0x10 a0..a3, +0x14 v0, +0x18 done).
     # As Stage 1 experiment E4 (tests/experiments/E4_extra_player/make_patch_v3.py), without the barrier. Never in

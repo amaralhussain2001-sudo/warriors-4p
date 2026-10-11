@@ -27,10 +27,11 @@ from pine import Pine  # noqa: E402
 INSTS = {0: 6, 1: 7, 2: 8, 3: 9}
 PORTS = {s: 41200 + s for s in INSTS}
 GROUPS = ["warriors-4p M1", "warriors-4p own view", "warriors-4p hud", "warriors-4p 4p", "warriors-4p test call"]
-# session-relative polls (session starts at guest poll 1): same creation sequence as local/m2/m2o
+# session-relative polls (session starts at guest poll 1): MakePlayer, camera, layout (no join script event: the
+# mission join scripts are written for player 2, m2_black_screen.md)
 CALLS = ("4299:00229C40:0x641a20:1:0xffffffff:0xffffffff,4309:001222B0:0x641a20:1,4319:0011EAF0:2,"
-         "4329:0041B148:GM:0x641a20:1,4339:00122ED0,4399:00229C40:0x6420f0:2:0xffffffff:0xffffffff,"
-         "4409:001222B0:0x6420f0:1,4419:0011EAF0:3,4429:0041B148:GM:0x6420f0:1,4439:00122ED0")
+         "4339:00122ED0,4399:00229C40:0x6420f0:2:0xffffffff:0xffffffff,"
+         "4409:001222B0:0x6420f0:1,4419:0011EAF0:3,4439:00122ED0")
 POLLS = 40000
 
 
@@ -77,8 +78,15 @@ def main():
         procs[slot] = subprocess.Popen(cmd, env=env, creationflags=getattr(subprocess, "DETACHED_PROCESS", 0))
         open(os.path.join(d, "pid.txt"), "w").write(str(procs[slot].pid))
     t0 = time.time()
+    next_shot = t0 + 30
     while time.time() - t0 < seconds and all(p.poll() is None for p in procs.values()):
         time.sleep(5)
+        if time.time() >= next_shot:  # slot 0's picture every 30 s
+            next_shot += 30
+            subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
+                            os.path.join(PROJ, "tools", "winshot.ps1"), "-ProcessId", str(procs[0].pid),
+                            "-Out", os.path.join(out_dir, f"s0_t{int(time.time() - t0):04d}.png"), "-Scale", "0.4"],
+                           capture_output=True)
     state = {}
     for slot, n in INSTS.items():
         try:

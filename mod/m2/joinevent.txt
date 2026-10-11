@@ -1,0 +1,14 @@
+// extracted from docs\research\m2_black_screen.md
+patch=2,EE,0041B180,word,0803C3B4 // was 8E030000 lw v1,0(s0) -> j 0x000F0ED0
+patch=2,EE,0041B184,word,00000000 // was 84640028 lh a0,40(v1) -> nop (delay slot; moved into the cave)
+patch=2,EE,000F0ED0,word,12600005 // beq s3,zero,cont: leave events (joined == 0) pass unchanged
+patch=2,EE,000F0ED4,word,00000000 // nop
+patch=2,EE,000F0ED8,word,820101B0 // lb at,0x1B0(s0): joining human's player index
+patch=2,EE,000F0EDC,word,28210002 // slti at,at,2
+patch=2,EE,000F0EE0,word,10200004 // beq at,zero,skip: players 3-4 (index >= 2): no Lua join event
+patch=2,EE,000F0EE4,word,00000000 // nop
+patch=2,EE,000F0EE8,word,8E030000 // lw v1,0(s0): displaced 0x0041B180
+patch=2,EE,000F0EEC,word,08106C62 // j 0x0041B188
+patch=2,EE,000F0EF0,word,84640028 // lh a0,40(v1): displaced 0x0041B184 (delay slot)
+patch=2,EE,000F0EF4,word,08106C9A // j 0x0041B268: original exit path
+patch=2,EE,000F0EF8,word,7BB00050 // lq s0,80(sp): as the original exit's delay slot
