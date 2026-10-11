@@ -82,7 +82,10 @@ def main():
         with open(ini_path, "w", encoding="utf-8") as fh:
             cp.write(fh, space_around_delimiters=True)
     groups = ["warriors-4p M1"] + [g for g in opt("--groups", "", str).split(";") if g]
-    sandbox.install_patch(INST, m1_run.PATCH, groups)  # memory cards: fresh (created by PCSX2)
+    sandbox.install_patch(INST, m1_run.PATCH, groups)  # memory cards: fresh (created by PCSX2) unless --memcards
+    if "--memcards" in sys.argv:  # the user's memory card copies in local/ (never committed or shared)
+        for m in ("Mcd001.ps2", "Mcd002.ps2"):
+            shutil.copyfile(os.path.join(PROJ, "local", m), os.path.join(sandbox.data_root(INST), "memcards", m))
     open(os.path.join(out, "bot0.bin"), "wb").write(build_inputs(script))
     lines = ["[W4P]", "Enabled = true", f"Players = {players}", "LocalSlot = 0",
              f"ListenPort = {PORT}", "InputDelay = 2", "HashInterval = 30", f"LogFile = {os.path.join(out, 'w4p.log')}",
@@ -118,6 +121,8 @@ def main():
                 row = [pine.read32(0x000F0500)]
                 for o in track:
                     row += [round(struct.unpack("<f", struct.pack("<I", pine.read32(o + 0x10 + 4 * i)))[0], 2) for i in range(3)]
+                for pad in (0, 1, 2, 4):  # what the game sees: port buffer sticks (+0x110) and buttons (+0x114)
+                    row += [hex(pine.read32(0x005DE3C0 + pad * 0x140 + 0x110)), hex(pine.read32(0x005DE3C0 + pad * 0x140 + 0x114) & 0xFFFF)]
                 track_rows.append(row)
             except Exception:  # noqa: BLE001
                 pine = None

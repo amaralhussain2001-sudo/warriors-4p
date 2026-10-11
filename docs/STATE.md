@@ -12,9 +12,13 @@ run the 2-PC test (E6) with the package.
 - 2-PC package: `python -I tools/make_package.py` -> `dist/warriors-4p-test(.zip)`; self-test
   `python -I tests/m3/package_selftest.py <tag>`.
 
+## In progress
+- M2 (four players): `docs/reports/M2_progress.md`. Four players exist and stay up in Mission 1; players 3-4 do not
+  move yet (research `docs/research/m2_player_control.md`).
+
 ## Next steps
 1. E6 with the user's second PC (package README). Compare logs: both `logs/<date>_playerN/w4p.log` folders.
-2. M2: four genuine players (GameMgr arrays, pads 3-4, cameras, HUD, scripts). Exit criteria to be written first.
+2. M2: make players 3-4 controllable, 4 views + HUD, 4-instance lockstep (`docs/plan/M2.md`).
 3. HUD: health/rage panel size in own view; centred text; 60 fps tick audit; pause policy; connection layer (D5).
 
 ## Questions waiting for the user
