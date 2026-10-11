@@ -21,7 +21,10 @@ run the 2-PC test (E6) with the package.
 
 ## Next steps
 1. E6 with the user's second PC (package README). Compare logs: both `logs/<date>_playerN/w4p.log` folders.
-2. M2: make players 3-4 controllable, 4 views + HUD, 4-instance lockstep (`docs/plan/M2.md`).
+2. M2 open items (`docs/reports/M2_progress.md`): controlled combat test for players 3-4 (criterion 3); second nameless
+   panel per quarter (R5 failed, F-0133); R7 radar raise (touches the 2-player `[hud]` group); 4-view frame rate
+   (~29 fps with MTVU off; deterministic MTVU idea F-0124); name of spawned copies; inventory for players 3-4.
+3. Then: session policies (pause/skip/disconnect), connection layer (D5), 4-player package and lobby.
 3. HUD: health/rage panel size in own view; centred text; 60 fps tick audit; pause policy; connection layer (D5).
 
 ## Questions waiting for the user
