@@ -1,0 +1,40 @@
+From 133c5902ad502de44168707200f5e94921bd66a6 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sun, 11 Oct 2026 22:44:28 +0300
+Subject: [PATCH] warriors-4p: reset skip votes when a movie's frame counter
+ restarts (not effective yet, see F-0175)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/W4P/W4P.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 698a4f3..e91065a 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -287,6 +287,7 @@ namespace W4P
+ 			u32 votes = 0;
+ 			bool cut_prev = false;
+ 			u32 cut_id_prev = 0;
++			u32 movie_frame_prev = 0xFFFFFFFFu;
+ 			bool paused_prev = false;
+ 		};
+ 
+@@ -1159,7 +1160,12 @@ namespace W4P
+ 			const bool movie_skip = (movie & 3) == 3;
+ 			const u32 cut_id = movie_skip ? 1u : SkippableScene();
+ 			const bool cut = cut_id != 0;
+-			if (cut_id != s.cut_id_prev)
++			// Two movies can follow each other without any pad read in between (mission end movie -> next intro), so a
++			// new movie is also recognised by its frame counter starting again (0x0051545C, session_policies.md 2.1).
++			const u32 movie_frame = movie_skip ? memRead32(0x0051545C) : 0xFFFFFFFFu;
++			const bool new_movie = movie_skip && s.movie_frame_prev != 0xFFFFFFFFu && movie_frame < s.movie_frame_prev;
++			s.movie_frame_prev = movie_frame;
++			if (cut_id != s.cut_id_prev || new_movie)
+ 				s.votes = 0; // a new movie or scene: everybody votes again (each scene of a chain separately, U3 A)
+ 			s.cut_id_prev = cut_id;
+ 			if (cut)
+-- 
+2.55.0.windows.3
+

@@ -1,0 +1,79 @@
+{
+ "tag": "d5b_p2leave",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot",
+ "seconds": 607,
+ "state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 9303,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30242"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16322,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x20168",
+    "0x30242",
+    "0x10165"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16334,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x20168",
+    "0x30242",
+    "0x10165"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 16196, polls 16197, waits 205, wait total 17621.4 ms, max 15084.0 ms, hashes 1387, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 50% gs 10% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 3
+  },
+  "1": {
+   "last": "poll 9291, polls 9292, waits 201, wait total 2432.7 ms, max 73.5 ms, hashes 927, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 56% gs 11% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 2
+  },
+  "2": {
+   "last": "poll 16195, polls 16196, waits 1, wait total 15088.5 ms, max 15088.5 ms, hashes 1387, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 49% gs 9% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 3
+  },
+  "3": {
+   "last": "poll 16196, polls 16197, waits 234, wait total 18509.4 ms, max 15135.5 ms, hashes 1387, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 49% gs 9% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 3
+  }
+ },
+ "hash_points_common": 310,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "last_common": "9300",
+ "leaver_slot": 1,
+ "remaining_common": 539,
+ "remaining_mismatches": 0,
+ "remaining_points_after_leave": 229,
+ "remaining_last_common": "16170"
+}

@@ -2,7 +2,7 @@
 
 **Stage:** 2 (approved 2026-10-10; decisions D1-D16 in `docs/DECISIONS.md`).
 **Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5 (session policies + transport) in
-progress**: exit criteria `docs/plan/M5.md`. Findings up to **F-0173**. The user continues without stopping between
+progress**: exit criteria `docs/plan/M5.md`. Findings up to **F-0175**. The user continues without stopping between
 milestones (D12). Fork build **w4p-m5-1** (fork commit 76f7c1d, patch `emulator/patches/0014`; protocol version 3).
 
 ## Waiting on the user
@@ -19,9 +19,9 @@ milestones (D12). Fork build **w4p-m5-1** (fork commit 76f7c1d, patch `emulator/
 | # | Criterion | Status | Evidence |
 |---|---|---|---|
 | 1 | Pause | **met**: any player's Start -> pause on all at the same poll, "Paused by Player N", only pauser/host resumes; Esc request not tested | F-0171 |
-| 2 | Cutscene skip | **met**: "k/N want to skip", movie and scene skipped only after the last vote; vote reset per scene fixed after the test (re-test) | F-0171 |
+| 2 | Cutscene skip | **partly**: "k/N want to skip", skip only after the last vote (F-0171); **defect**: votes are not reset per cutscene (a vote from an earlier scene still counts), W4P apparently does not see the S1 movie flag (F-0175) | F-0171, F-0175 |
 | 3 | Disconnect, back in time | **met** (20 s outage, 0 mismatches); countdown visible on screen | F-0164, F-0167 |
-| 4 | Timeout choice | **met** for a dropped player 3/4: continue without (LEAVE, 3 players/3 views) and restart; dropped player 2 variant (2-player flag call) not tested | F-0165, F-0169, F-0170 |
+| 4 | Timeout choice | **met** for a dropped player 3/4 (continue without, restart); **defect for a dropped player 2**: after LEAVE(1) Fox is bound to the dropped pad 4 and his own pad 2 becomes free, so his next Start re-joins him as a new character (F-0174) | F-0165, F-0169, F-0170, F-0174 |
 | 5 | Host leaving | **met** ("host left, session over", no hang) | F-0167 |
 | 6 | Join only in the lobby | open (launcher/lobby not built) | - |
 | 7 | Saving (co-op save separate, identical at start) | open | - |
@@ -29,16 +29,19 @@ milestones (D12). Fork build **w4p-m5-1** (fork commit 76f7c1d, patch `emulator/
 | 9 | Originals unchanged | checked at M2 end (20 files); re-check at M5 end | HASHES.md |
 
 ## Next steps (in this order)
-1. Re-test the vote reset (two scenes in a chain) and the Esc pause request; dropped player 2 (RestartCalls with
-   `0:00419AC0:GM:0,2:00160D78:GM+0x124`, session_policies.md 4.3) and a dropped player whose index shifts (crop check
-   with a pad-owner probe).
-2. Launcher + lobby (Start-Coop for 2-4 players): host/join with w4p-net codes, slot list, version check, input delay,
+1. **F-0174 (dropped player 2):** find who re-binds pad 4 to index 1 after LEAVE(1) (2-entry HUD menu-controller records,
+   FUN_001AE8D8; compare single-instance C3 without the unplugged pad); fix in the LEAVE cave (`mod/m2/session.txt`,
+   0x000E7100) or in W4P; re-test d5b (`m2_run4 ... --w4p-slot1 TestDrop=9300:0 --sample-every 10 --leaver 1`).
+2. **F-0175 (skip votes):** probe at W4P's hook during L9_IN: 0x000E70F0 and the scene slot table 0x006EBA18; then make
+   the cutscene identity reliable (e.g. ignore scene slots whose data belongs to the previous level, read the S1 flag
+   where W4P can see it); re-test p4 (`--script1..4 tests/m2/nav/pol_p1..4.txt --w4p SessionPolicies=true`).
+3. Not yet tested: Esc as pause request; restart with a dropped player 2 (`RestartCalls = 0:00419AC0:GM:0,2:00160D78:GM+0x124`).
+4. Launcher + lobby (Start-Coop for 2-4 players): host/join with w4p-net codes, slot list, version check, input delay,
    session INI (`SessionPolicies = true`, `LeaveCalls = 0:000E7100:P`, `RestartCalls = 0:00160D78:GM+0x124`, groups incl.
    `[warriors-4p session]` and the call mailbox), join only in the lobby (criterion 6).
-3. Saving policy (criterion 7): co-op memory card per group, identical at session start, never the user's own cards.
-4. T1g (outage through the helpers), impairment runs through the helpers; then the 4-player test package for the user
-   (LAN first, T2), then internet with friends (T3/T4) - needs the user.
-5. M6: all story missions (companions, starting items for players 3-4, extra-model memory R-28, pocket clearing R-29,
+5. Saving policy (criterion 7); T1g and impairment through the helpers; then the 4-player test package (LAN first, T2),
+   then internet with friends (T3/T4) - needs the user.
+6. M6: all story missions (companions, starting items for players 3-4, extra-model memory R-28, pocket clearing R-29,
    money bank F-0158, GAME OVER menu input F-0155). Optional: R-31 / R-22.
 
 ## How to run things (quick reference)
@@ -109,5 +112,5 @@ milestones (D12). Fork build **w4p-m5-1** (fork commit 76f7c1d, patch `emulator/
 - Sandbox windows may start with the Arabic keyboard layout; `tools/winkeys.ps1` switches the window to en-US.
 
 ## Result line for the last run of this session
-- t1f_helpers (4 instances through 4 w4p-net helpers on loopback, Mission 13, M2 groups, MTVU off, build w4p-m5-1, 605 s):
+- last runs: p4_policies (vote reset still wrong, F-0175), d5b_p2leave (F-0174). Before that, t1f_helpers (4 instances through 4 w4p-net helpers on loopback, Mission 13, M2 groups, MTVU off, build w4p-m5-1, 605 s):
   **549 common hash points, 0 mismatches, 4 players / 4 views** (F-0173).

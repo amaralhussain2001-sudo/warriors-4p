@@ -6,6 +6,7 @@ Usage: python -I tests/m2/m2_run4.py <tag> [--seconds 420] [--bots-from 4700] [-
        [--w4p KEY=VALUE ...] [--w4p-slotN KEY=VALUE ...]  (extra W4P ini keys for every slot / for slot N, e.g.
        --w4p DisconnectTimeoutS=15 --w4p-slot3 TestDrop=9500:0 --w4p-slot0 TestHostChoice=continue)
        [--peer-base 46100]  (peers through the w4p-net helpers; start them first)
+       [--sample-every 10]  (PINE state of slot 0 every N s -> samples.json)
        [--leaver N]  (slot that leaves: the summary also compares the other slots after his last hash point)
 --polls: length of every input file (the files wrap around after it, so runs longer than about polls/28 s need more).
 --script-bots-from: slots with a --scriptN file play seeded random bot input from poll N on, plus a Start press every
@@ -124,8 +125,23 @@ def main():
     next_shot = t0 + 30
     shot_slots = [int(x) for x in opt("--shot-slots", "0", str).split(",")]  # e.g. 0,1,2,3: one slot per shot, in turn
     shots = 0
+    sample_every = opt("--sample-every", 0)  # seconds; PINE reads of slot 0: count, handles, pad owners
+    samples, next_sample = [], t0 + sample_every
     while time.time() - t0 < seconds and all(p.poll() is None for p in procs.values()):
         time.sleep(5)
+        if sample_every and time.time() >= next_sample:
+            next_sample += sample_every
+            try:
+                pn = Pine(sandbox.PINE_BASE + INSTS[0], timeout=3)
+                gm = pn.read32(0x0051489C)
+                samples.append({"t": round(time.time() - t0), "poll": pn.read32(0x000F0500),
+                                "players": pn.read32(gm + 0x224) & 0xFFFF,
+                                "handles": [hex(pn.read32(gm + 0x228 + 4 * i)) for i in range(4)],
+                                "pad_owner": [(lambda v: v - 0x10000 if v & 0x8000 else v)((pn.read32((0x005DD810 + pad * 0x50 + 0x40)) >> 16) & 0xFFFF) for pad in range(8)],
+                                "views": pn.read32(0x0050B198)})
+            except Exception as e:  # noqa: BLE001
+                samples.append({"t": round(time.time() - t0), "error": repr(e)})
+            json.dump(samples, open(os.path.join(out_dir, "samples.json"), "w"), indent=1)
         if time.time() >= next_shot:  # one picture every --shot-every s (30; slot 0 by default)
             next_shot += opt("--shot-every", 30)
             ss = shot_slots[shots % len(shot_slots)]
