@@ -54,3 +54,10 @@ User message 2026-10-11 (verbatim): "if you are copy player one to player 3 and 
 | ID | Decision | Choice | Approval |
 |---|---|---|---|
 | D13 | Gang commands with 3-4 players | Only player 1 commands the gang. Players 3-4 (companions taken over or spawned copies of player 1's character) never get gang commands. Player 2: keep the original 2-player behaviour unless it already differs; reported to the user (research `m2_gang_command.md`) | user, 2026-10-11 |
+
+User message 2026-10-11 (verbatim, session start): "My decision on player 4's name in Mission 13: option A (load one
+extra Warrior model so player 4 has their own body and name)."
+
+| ID | Decision | Choice | Approval |
+|---|---|---|---|
+| D14 | Player 4's body and name when no other Warrior model is loaded (Mission 13, F-0143) | A: load one extra Warrior model when a fourth player joins, so player 4 gets their own body and HUD name (not a Rembrandt copy). Needs research on the game's model loading and a memory check; if it proves impossible, report back before any fallback (B/C/D) | user, 2026-10-11 |

@@ -75,7 +75,12 @@ def main():
     out += ["", "[warriors-4p own view]", "author=warriors-4p",
             "description=Online sessions: never merge the players' views (game option 2P Split Screen Merge off).", "",
             "patch=1,EE,0050B1C4,word,00000000 // live merge option, was 00000001",
-            "patch=2,EE,00418AD4,word,AC40B1C4 // was AC45B1C4 (sw a1): the option setter stores 0"]
+            "patch=2,EE,00418AD4,word,AC40B1C4 // was AC45B1C4 (sw a1): the option setter stores 0",
+            # A downed player (no item 6) or an 'out' player loses their view in FUN_00121888 (F-0148; FUN_00123500).
+            # Our crop picks view = player index, so a dropped view shifts every PC's picture. Keep both flags at 1;
+            # the rest of FUN_00121888 is unchanged (it re-lays out when the flags were changed elsewhere).
+            "patch=2,EE,00121AE0,word,24130001 // was 8C64B1D8 lw a0,-0x4e28(v1) -> addiu s3,zero,1: player 2 view flag = 1",
+            "patch=2,EE,00121AEC,word,00A0882D // was 00A4880A movz s1,a1,a0 -> daddu s1,a1,zero: player 1 view flag = 1 (a1 = 1)"]
     # Each player's radar inside their own quarter, at single-player size after the 2x crop (docs/research/hud_scale.md
     # patch 2A, which replaces hud_layout.md patch A; patch B kept). Only layout mode 2 (our 2x2 patch) changes.
     hud = [(0x001AFF48, 0x0803C180, "was 3C020051 lui v0,0x51 -> j 0x000F0600"),

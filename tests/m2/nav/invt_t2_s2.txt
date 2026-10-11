@@ -1,0 +1,13 @@
+# T2 pick-up (docs/research/m2_inventory_tests.md). Use as --script3: W4P slot 2 = pad 1 = game player 4.
+# Join Starts identical to cal_p3.txt up to 8800, then player 4 walks out and back over the Flash dropped at 9600.
+7000 START:4
+7300 START:4
+7600 START:4
+7900 START:4
+8200 START:4
+8500 START:4
+8800 START:4
+9800 LUP:15
+9830 LDOWN:15
+9860 LUP:8
+9890 LDOWN:8

@@ -1,0 +1,101 @@
+{
+ "tag": "q13_m13_30min",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot",
+ "seconds": 2006,
+ "state": {
+  "0": {
+   "poll": 29923,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30242"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "1": {
+   "poll": 29923,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30242"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 29923,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30242"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 29920,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30240"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 29752, polls 29753, waits 8756, wait total 157569.9 ms, max 4191.7 ms, hashes 2973, mismatches 913, kernel-only differences 0, mtvu on (flag events 0), thread use ee 40% gs 19% vu 29%",
+   "desync": [
+    "DESYNC: poll 2371 (rel 2370) game hash mine 200fdadc96e85b10 slot3 6a34c236afd09643; kernel mine 824df26ff980912e slot3 35e61dc9102804a2",
+    "DESYNC: poll 2401 (rel 2400) game hash mine 18116207eb98ca92 slot3 ccebbee513197385; kernel mine 343d439621bcea4b slot3 c23e2dde4c5f9147",
+    "DESYNC: poll 2431 (rel 2430) game hash mine f3a4c1723b31661d slot3 baa25b793a894e78; kernel mine 135f6e478958f08f slot3 624b5815fabf3d09"
+   ],
+   "errors": [],
+   "calls": 2
+  },
+  "1": {
+   "last": "poll 29757, polls 29758, waits 10904, wait total 199368.9 ms, max 4198.9 ms, hashes 2973, mismatches 913, kernel-only differences 0, mtvu on (flag events 0), thread use ee 38% gs 17% vu 26%",
+   "desync": [
+    "DESYNC: poll 2371 (rel 2370) game hash mine 200fdadc96e85b10 slot3 6a34c236afd09643; kernel mine 824df26ff980912e slot3 35e61dc9102804a2",
+    "DESYNC: poll 2401 (rel 2400) game hash mine 18116207eb98ca92 slot3 ccebbee513197385; kernel mine 343d439621bcea4b slot3 c23e2dde4c5f9147",
+    "DESYNC: poll 2431 (rel 2430) game hash mine f3a4c1723b31661d slot3 baa25b793a894e78; kernel mine 135f6e478958f08f slot3 624b5815fabf3d09"
+   ],
+   "errors": [],
+   "calls": 2
+  },
+  "2": {
+   "last": "poll 29759, polls 29760, waits 10057, wait total 168103.1 ms, max 4175.9 ms, hashes 2973, mismatches 913, kernel-only differences 0, mtvu on (flag events 0), thread use ee 37% gs 17% vu 26%",
+   "desync": [
+    "DESYNC: poll 2371 (rel 2370) game hash mine 200fdadc96e85b10 slot3 6a34c236afd09643; kernel mine 824df26ff980912e slot3 35e61dc9102804a2",
+    "DESYNC: poll 2401 (rel 2400) game hash mine 18116207eb98ca92 slot3 ccebbee513197385; kernel mine 343d439621bcea4b slot3 c23e2dde4c5f9147",
+    "DESYNC: poll 2431 (rel 2430) game hash mine f3a4c1723b31661d slot3 baa25b793a894e78; kernel mine 135f6e478958f08f slot3 624b5815fabf3d09"
+   ],
+   "errors": [],
+   "calls": 2
+  },
+  "3": {
+   "last": "poll 29919, polls 29920, waits 5044, wait total 125891.0 ms, max 4246.2 ms, hashes 2991, mismatches 2757, kernel-only differences 0, mtvu on (flag events 0), thread use ee 26% gs 2% vu 0%",
+   "desync": [
+    "DESYNC: poll 2371 (rel 2370) game hash mine 6a34c236afd09643 slot0 200fdadc96e85b10; kernel mine 35e61dc9102804a2 slot0 824df26ff980912e",
+    "DESYNC: poll 2371 (rel 2370) game hash mine 6a34c236afd09643 slot1 200fdadc96e85b10; kernel mine 35e61dc9102804a2 slot1 824df26ff980912e",
+    "DESYNC: poll 2371 (rel 2370) game hash mine 6a34c236afd09643 slot2 200fdadc96e85b10; kernel mine 35e61dc9102804a2 slot2 824df26ff980912e"
+   ],
+   "errors": [],
+   "calls": 2
+  }
+ },
+ "hash_points_common": 997,
+ "hash_mismatches": 919,
+ "first_mismatch": "2370",
+ "last_common": "29910"
+}

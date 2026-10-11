@@ -1,0 +1,15 @@
+# T4 partner revive (docs/research/m2_inventory_tests.md). Use as --script3: W4P slot 2 = pad 1 = game player 4 (reviver).
+# Join Starts identical to cal_p3.txt up to 8800; D-pad Left = action 39 (AddCommand(39, 2, 32768, 0), WAD 4106 main_3) = revive;
+# five presses 60 polls apart (a press during the revive or after it does nothing).
+7000 START:4
+7300 START:4
+7600 START:4
+7900 START:4
+8200 START:4
+8500 START:4
+8800 START:4
+9500 LEFT:4
+9560 LEFT:4
+9620 LEFT:4
+9680 LEFT:4
+9740 LEFT:4

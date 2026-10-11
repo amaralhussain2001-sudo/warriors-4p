@@ -1,0 +1,9 @@
+# T4 partner revive (docs/research/m2_inventory_tests.md). Use as --script4: W4P slot 3 = pad 2 = game player 3 (downed).
+# Join Starts identical to cal_p4.txt up to 8950, nothing else.
+7150 START:4
+7450 START:4
+7750 START:4
+8050 START:4
+8350 START:4
+8650 START:4
+8950 START:4

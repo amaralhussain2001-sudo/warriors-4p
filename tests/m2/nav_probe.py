@@ -7,6 +7,9 @@ Usage: python -I tests/m2/nav_probe.py <tag> <script.txt> [--seconds 120] [--eve
                                         [--fight 7400]  (controlled combat probe for players 3-4, tests/m2/fightlib.py)
                                         [--hud-diag 10000]  (per-view sprite clone table, tests/m2/hudlib.py)
                                         [--probe module:function:poll]  (read-only check, result in probes.json)
+                                        [--patch file.pnach]  (default mod/w4p_m1.pnach)
+                                        [--state file.p2s]  (start from a savestate, e.g. made with statesave.py)
+                                        [--random-bots]  (every slot plays seeded random bot input instead of scripts)
                                         [--callat "4000:0041ABC0:1,4010:00160D78:0x01FD9F9C"]  (exact polls, W4P CallAt)
   --call  needs the "warriors-4p test call" group: at each poll, call function(a0, a1, ...) on the game thread;
           "GM" = the GameMgr pointer. Results go to calls.txt.
@@ -100,11 +103,15 @@ def main():
         with open(ini_path, "w", encoding="utf-8") as fh:
             cp.write(fh, space_around_delimiters=True)
     groups = ["warriors-4p M1"] + [g for g in opt("--groups", "", str).split(";") if g]
-    sandbox.install_patch(INST, m1_run.PATCH, groups)  # memory cards: fresh (created by PCSX2) unless --memcards
+    sandbox.install_patch(INST, opt("--patch", m1_run.PATCH, str), groups)  # --patch: e.g. an older pnach for A/B tests  # memory cards: fresh (created by PCSX2) unless --memcards
     if "--memcards" in sys.argv:  # the user's memory card copies in local/ (never committed or shared)
         for m in ("Mcd001.ps2", "Mcd002.ps2"):
             shutil.copyfile(os.path.join(PROJ, "local", m), os.path.join(sandbox.data_root(INST), "memcards", m))
-    open(os.path.join(out, "bot0.bin"), "wb").write(build_inputs(script))
+    rnd = "--random-bots" in sys.argv  # seeded random bots on every slot (m1_run.bot_file; never presses Start)
+    if rnd:
+        m1_run.bot_file(os.path.join(out, "bot0.bin"), 3000, 40000)
+    else:
+        open(os.path.join(out, "bot0.bin"), "wb").write(build_inputs(script))
     lines = ["[W4P]", "Enabled = true", f"Players = {players}", "LocalSlot = 0",
              f"ListenPort = {PORT}", "InputDelay = 2", "HashInterval = 30", f"LogFile = {os.path.join(out, 'w4p.log')}",
              f"BotInput = {os.path.join(out, 'bot0.bin')}", "Crop = false"]
@@ -118,12 +125,15 @@ def main():
         sc = opt(f"--script{i}", "", str)
         if i <= players:
             path = os.path.join(out, f"bot{i - 1}.bin")
-            open(path, "wb").write(build_inputs(sc) if sc else m1_run.record() * 40000)
+            if rnd:
+                m1_run.bot_file(path, 3000 + i - 1, 40000)
+            else:
+                open(path, "wb").write(build_inputs(sc) if sc else m1_run.record() * 40000)
             lines.append(f"LocalBot{i - 1} = {path}")
     ini = os.path.join(out, "w4p.ini")
     open(ini, "w", encoding="utf-8").write("\n".join(lines) + "\n")
     env = dict(os.environ, W4P_CONFIG=ini)
-    cmd = [sandbox.FORK_EXE] + sandbox.cmd(INST, [])[1:]
+    cmd = [sandbox.FORK_EXE] + sandbox.cmd(INST, ["-statefile", os.path.abspath(opt("--state", "", str))] if "--state" in sys.argv else [])[1:]
     p = subprocess.Popen(cmd, env=env, creationflags=getattr(subprocess, "DETACHED_PROCESS", 0))
     open(os.path.join(d, "pid.txt"), "w").write(str(p.pid))
     t0 = time.time()

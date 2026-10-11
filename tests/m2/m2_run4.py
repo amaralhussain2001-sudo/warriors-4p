@@ -2,6 +2,10 @@
 
 Usage: python -I tests/m2/m2_run4.py <tag> [--seconds 420] [--bots-from 4700] [--crop] [--force-split]
        [--calls "poll:fn:args,..."] [--groups "extra;groups"] [--script1..4 file] [--ini Section/Key=Value]
+       [--polls 40000] [--script-bots-from N] [--shot-slots 0,1,2,3]
+--polls: length of every input file (the files wrap around after it, so runs longer than about polls/28 s need more).
+--script-bots-from: slots with a --scriptN file play seeded random bot input from poll N on, plus a Start press every
+300 polls so that players 3-4 re-join after a mission restart (Start does not pause for them).
 Slot 0 runs the boot-to-Mission-1 script, slot 1 joins at the menu; players 3-4 are created at fixed session polls on
 every instance with W4P CallAt + the "warriors-4p test call" group (test-only: the game's own join has no companion
 in Mission 1, F-0109). From --bots-from on, every slot plays seeded random bot input (m1_run.bot_file).
@@ -33,11 +37,13 @@ GROUPS = ["warriors-4p M1", "warriors-4p own view", "warriors-4p hud", "warriors
 CALLS = ("4299:00229C40:0x641a20:1:0xffffffff:0xffffffff,4309:001222B0:0x641a20:1,4319:0011EAF0:2,"
          "4339:00122ED0,4399:00229C40:0x6420f0:2:0xffffffff:0xffffffff,"
          "4409:001222B0:0x6420f0:1,4419:0011EAF0:3,4439:00122ED0")
-POLLS = 40000
 
 
 def opt(name, default, cast=int):
     return cast(sys.argv[sys.argv.index(name) + 1]) if name in sys.argv else default
+
+
+POLLS = opt("--polls", 40000)
 
 
 def inputs_for(slot, out_dir, bots_from):
@@ -45,7 +51,17 @@ def inputs_for(slot, out_dir, bots_from):
     custom = opt(f"--script{slot + 1}", "", str)  # full input script for this slot (replaces nav + random bot)
     if custom:
         path = os.path.join(out_dir, f"bot_slot{slot}.bin")
-        open(path, "wb").write(nav_probe.build_inputs(custom, POLLS))
+        data = bytearray(nav_probe.build_inputs(custom, POLLS))
+        script_bots = opt("--script-bots-from", 0)
+        if script_bots:
+            tmp = os.path.join(out_dir, f"rand{slot}.bin")
+            m1_run.bot_file(tmp, 3000 + slot, POLLS)
+            rnd = bytearray(open(tmp, "rb").read()[: POLLS * 20])
+            for t in range(script_bots, POLLS, 300):  # re-join after a restart
+                for i in range(t, min(POLLS, t + 4)):
+                    rnd[i * 20: i * 20 + 2] = (int.from_bytes(rnd[i * 20: i * 20 + 2], "little") | 0x800).to_bytes(2, "little")
+            data[script_bots * 20:] = rnd[script_bots * 20:]
+        open(path, "wb").write(bytes(data))
         return path
     base = bytearray(nav_probe.build_inputs(os.path.join(HERE, "nav", nav), POLLS) if nav else m1_run.record() * POLLS)
     tmp = os.path.join(out_dir, f"rand{slot}.bin")
@@ -99,13 +115,17 @@ def main():
         open(os.path.join(d, "pid.txt"), "w").write(str(procs[slot].pid))
     t0 = time.time()
     next_shot = t0 + 30
+    shot_slots = [int(x) for x in opt("--shot-slots", "0", str).split(",")]  # e.g. 0,1,2,3: one slot per shot, in turn
+    shots = 0
     while time.time() - t0 < seconds and all(p.poll() is None for p in procs.values()):
         time.sleep(5)
-        if time.time() >= next_shot:  # slot 0's picture every 30 s
+        if time.time() >= next_shot:  # one picture every 30 s (slot 0 by default)
             next_shot += 30
+            ss = shot_slots[shots % len(shot_slots)]
+            shots += 1
             subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
-                            os.path.join(PROJ, "tools", "winshot.ps1"), "-ProcessId", str(procs[0].pid),
-                            "-Out", os.path.join(out_dir, f"s0_t{int(time.time() - t0):04d}.png"), "-Scale", "0.4"],
+                            os.path.join(PROJ, "tools", "winshot.ps1"), "-ProcessId", str(procs[ss].pid),
+                            "-Out", os.path.join(out_dir, f"s{ss}_t{int(time.time() - t0):04d}.png"), "-Scale", "0.4"],
                            capture_output=True)
     state = {}
     for slot, n in INSTS.items():
