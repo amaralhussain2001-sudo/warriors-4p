@@ -61,3 +61,10 @@ extra Warrior model so player 4 has their own body and name)."
 | ID | Decision | Choice | Approval |
 |---|---|---|---|
 | D14 | Player 4's body and name when no other Warrior model is loaded (Mission 13, F-0143) | A: load one extra Warrior model when a fourth player joins, so player 4 gets their own body and HUD name (not a Rembrandt copy). Needs research on the game's model loading and a memory check; if it proves impossible, report back before any fallback (B/C/D) | user, 2026-10-11 |
+
+User message 2026-10-11 (verbatim, answer to the M2 report questions): "Q1 A, Q2 A, continue"
+
+| ID | Decision | Choice | Approval |
+|---|---|---|---|
+| D15 | Revive blocked by a teammate standing between reviver and downed player (game's own sight sweep FUN_0021C0A8, F-0157, R-30) | A: keep the original rule (no patch); players step aside | user, 2026-10-11 |
+| D16 | Widescreen 16:9 default (confirms D11) | A: widescreen on by default in the package/session profile | user, 2026-10-11 |

@@ -1,0 +1,6 @@
+# test C, player 4: drop-in join (retries for the extra model); after player 3 left (index shift) walk right;
+# no Start after the restart (player 4 stays out)
+8350 START:4
+8650 START:4
+8950 START:4
+9300 LRIGHT:60

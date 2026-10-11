@@ -1,0 +1,4 @@
+# session policies test B2 (cutscene skip), player 2: join in the boot menus, then Start during the
+# Mission 13 intro cinematic (expect: skip, Start sets the skip-all flag GameMgr+0x56E4)
+2300 START
+5600 START

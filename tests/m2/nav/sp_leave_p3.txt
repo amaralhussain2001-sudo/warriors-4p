@@ -1,0 +1,16 @@
+# session policies test C (leave), player 3: drop-in join; after the checkpoint restart (reload at 10300)
+# Start every 300 polls to re-join (player 4 stays out = 'restart without that player')
+8200 START:4
+8500 START:4
+11000 START:4
+11300 START:4
+11600 START:4
+11900 START:4
+12200 START:4
+12500 START:4
+12800 START:4
+13100 START:4
+13400 START:4
+13700 START:4
+14000 START:4
+14300 START:4

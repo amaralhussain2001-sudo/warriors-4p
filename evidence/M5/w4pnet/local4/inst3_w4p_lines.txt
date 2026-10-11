@@ -1,0 +1,10 @@
+[W4P]
+Enabled = true
+Players = 4
+LocalSlot = 3
+BindAddress = 127.0.0.1
+ListenPort = 46003
+Peer0 = 127.0.0.1:46130
+Peer1 = 127.0.0.1:46131
+Peer2 = 127.0.0.1:46132
+Peer3 =

@@ -1,0 +1,871 @@
+From 76f7c1d75b095970a59d3c8cf6b24e5a73d19ca7 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sun, 11 Oct 2026 21:51:36 +0300
+Subject: [PATCH] warriors-4p: disconnect handling (protocol 3), pause and
+ skip-vote policies (build w4p-m5-1)
+
+- 60 s countdown, host's choice (continue without / restart), common drop poll with input relay,
+  session game calls (LeaveCalls / RestartCalls), host-left message, dropped pad shown unplugged
+- the last frame is re-presented while waiting so the messages are visible
+- SessionPolicies: any player's Start pauses on pad 0 ("Paused by Player N"), only the pauser or
+  the host resumes; skip votes ("k/N want to skip") for movies (patch S1) and scenes; Esc in a
+  session becomes a pause request instead of an emulator pause
+- test keys: TestDrop, TestHostChoice, DisconnectTimeoutS
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/VMManager.cpp |   3 +
+ pcsx2/W4P/W4P.cpp   | 596 ++++++++++++++++++++++++++++++++++++++++++--
+ pcsx2/W4P/W4P.h     |   5 +
+ 3 files changed, 589 insertions(+), 15 deletions(-)
+
+diff --git a/pcsx2/VMManager.cpp b/pcsx2/VMManager.cpp
+index 537b206..fe35793 100644
+--- a/pcsx2/VMManager.cpp
++++ b/pcsx2/VMManager.cpp
+@@ -2835,6 +2835,9 @@ void VMManager::SetPaused(bool paused)
+ 	if (!HasValidVM())
+ 		return;
+ 
++	if (paused && W4P::RequestPauseInSession()) // warriors-4p
++		return;
++
+ 	Console.WriteLn(paused ? "(VMManager) Pausing..." : "(VMManager) Resuming...");
+ 	SetState(paused ? VMState::Paused : VMState::Running);
+ }
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 2f83367..698a4f3 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -32,6 +32,7 @@
+ #include <algorithm>
+ #include <array>
+ #include <atomic>
++#include <cmath>
+ #include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
+@@ -50,8 +51,8 @@ namespace W4P
+ 		constexpr int kMaxPlayers = 4;
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+-		constexpr u16 kProtocolVersion = 2; // 2: hello/fingerprint packet, kernel and game RAM hashes
+-		constexpr char kBuildTag[] = "w4p-m3-7";
++		constexpr u16 kProtocolVersion = 3; // 2: hello/fingerprint packet, kernel and game RAM hashes; 3: disconnect handling (status, drop, relay)
++		constexpr char kBuildTag[] = "w4p-m5-1";
+ 		// EE RAM below this address belongs to the BIOS kernel; the game and our patch caves live above it.
+ 		constexpr u32 kGameRamStart = 0x000A0000; // includes the warriors-4p data/caves (0x000A0000+); 0x81000-0x95FFF holds BIOS/loader leftovers (F-0125)
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+@@ -121,6 +122,29 @@ namespace W4P
+ 			char build[16];
+ 			char bios[48];
+ 		};
++		struct PktStatus // sent while waiting for a missing player (disconnect handling, docs/plan/M5.md)
++		{
++			PktHeader h;
++			u32 stall_t; // poll this instance is stalled at
++			u8 timed_out; // 1 = the disconnect timeout has passed here; inputs of missing players are no longer accepted
++			u8 pad[3];
++		};
++		struct PktDrop // the host's decision: a player leaves; his input is neutral from poll from_t on
++		{
++			PktHeader h;
++			u8 player;
++			u8 choice; // 1 = continue without him, 2 = restart from the last checkpoint without him
++			u16 pad;
++			u32 from_t;
++		};
++		struct PktRelay // a leaving player's inputs held by this instance, so every instance has them up to from_t
++		{
++			PktHeader h;
++			u8 player;
++			u8 pad;
++			u16 count;
++			u32 first_t;
++		};
+ #pragma pack(pop)
+ 		static_assert(sizeof(PktHello) <= 128);
+ 
+@@ -129,6 +153,9 @@ namespace W4P
+ 			kPktInputs = 1,
+ 			kPktHashes = 2,
+ 			kPktHello = 3,
++			kPktStatus = 4,
++			kPktDrop = 5,
++			kPktRelay = 6,
+ 		};
+ 
+ 		// Test only: a game function call placed in the test-call mailbox (0x000F0300, pnach group
+@@ -139,6 +166,10 @@ namespace W4P
+ 			u32 fn = 0;
+ 			std::array<u32, 4> args = {};
+ 			std::array<bool, 4> gamemgr = {}; // argument is the GameMgr pointer ("GM")
++			// Session calls (disconnect handling): 1 = GameMgr + args[i] ("GM+0x124"), 2 = handle of the player who owns
++			// pad `pad` ("H"), 3 = that player's game index ("P"). Resolved when the call is made (same poll everywhere).
++			std::array<u8, 4> kind = {};
++			int pad = -1;
+ 			bool done = false;
+ 		};
+ 
+@@ -172,6 +203,15 @@ namespace W4P
+ 			int crop_delay_frames = 3;
+ 			float crop_inset = 0.01f; // trimmed from edges shared with another view (fraction of the full frame)
+ 			s64 corrupt_poll = -1; // test only: flip a button in this instance at poll (t - c0)
++			// Disconnect handling (BRIEF 4.6, docs/plan/M5.md criteria 3-5).
++			int disconnect_timeout_s = 60;
++			std::string leave_calls; // game calls for "continue without": offset:fn:args, args may be P, H, GM, GM+0x..
++			std::string restart_calls; // game calls for "restart from the last checkpoint without him"
++			s64 test_drop_poll = -1; // test only: this instance stops sending/receiving at session poll ...
++			int test_drop_s = 0; // ... for this many seconds (0 = for good)
++			int test_host_choice = 0; // test only: the host decides by itself (1 continue without, 2 restart)
++			// Pause and cutscene-skip policies (BRIEF 4.6, docs/research/session_policies.md 1.6 / 2.5).
++			bool session_policies = false;
+ 		};
+ 
+ 		struct PlayerRing
+@@ -217,6 +257,37 @@ namespace W4P
+ 			double wait_ms_max = 0.0;
+ 			double last_send_ms = 0.0;
+ 			double last_stats_ms = 0.0;
++
++			// Disconnect handling.
++			std::array<bool, kMaxPlayers> dropped = {};
++			std::array<u32, kMaxPlayers> drop_from = {};
++			std::array<u8, kMaxPlayers> drop_choice = {};
++			std::array<bool, kMaxPlayers> no_accept = {}; // timed out here: inputs of this player are not accepted
++			std::array<s64, kMaxPlayers> status_t = {-1, -1, -1, -1};
++			std::array<u8, kMaxPlayers> status_timed_out = {};
++			std::array<double, kMaxPlayers> status_ms = {};
++			int announce_player = -1;
++			double announce_until_ms = 0.0;
++			double last_announce_ms = 0.0;
++			double last_status_ms = 0.0;
++			bool test_silent = false;
++			double test_silent_until_ms = 0.0; // 0 = for good
++			bool host_left_logged = false;
++			std::array<double, kMaxPlayers> last_rx_ms = {};
++
++			// Session policies: effective inputs of the current poll after the pause / skip filter. Everything here is
++			// derived from synchronised inputs and game RAM at that poll only, so it is the same on every PC.
++			std::array<Input, kMaxPlayers> eff = {};
++			u32 eff_t = 0;
++			bool eff_valid = false;
++			std::array<u16, kMaxPlayers> prev_buttons = {};
++			u16 prev_eff0_buttons = 0;
++			int pauser = -1;
++			u32 pause_pending_until = 0;
++			u32 votes = 0;
++			bool cut_prev = false;
++			u32 cut_id_prev = 0;
++			bool paused_prev = false;
+ 		};
+ 
+ 		std::unique_ptr<Session> s_session;
+@@ -236,6 +307,7 @@ namespace W4P
+ 		bool s_sent_on = false;
+ 		float s_sent[4] = {};
+ 		std::atomic<bool> s_show_all{false}; // player's choice: all players' views instead of their own
++		std::atomic<bool> s_local_start_request{false}; // pause hotkey in a session: one Start press for the local player
+ 
+ 		double NowMs()
+ 		{
+@@ -270,8 +342,15 @@ namespace W4P
+ 			return -1;
+ 		}
+ 
++		bool IsDropped(int player, u32 t)
++		{
++			return s_session->dropped[player] && static_cast<s32>(t - s_session->drop_from[player]) >= 0;
++		}
++
+ 		void Store(int player, u32 t, const Input& in)
+ 		{
++			if (IsDropped(player, t))
++				return; // a player who left plays neutral input from his drop poll on
+ 			PlayerRing& r = s_session->ring[player];
+ 			const u32 i = t % kRing;
+ 			if (r.tag[i] == t + 1)
+@@ -280,13 +359,21 @@ namespace W4P
+ 			r.tag[i] = t + 1;
+ 		}
+ 
+-		bool Has(int player, u32 t)
++		bool HasReal(int player, u32 t)
+ 		{
+ 			return s_session->ring[player].tag[t % kRing] == t + 1;
+ 		}
+ 
++		bool Has(int player, u32 t)
++		{
++			return IsDropped(player, t) || HasReal(player, t);
++		}
++
+ 		const Input& Get(int player, u32 t)
+ 		{
++			static const Input neutral = Neutral();
++			if (IsDropped(player, t))
++				return neutral;
+ 			return s_session->ring[player].in[t % kRing];
+ 		}
+ 
+@@ -304,6 +391,7 @@ namespace W4P
+ 		{
+ 			if (!s_session->bot.empty())
+ 				return s_session->bot[(t - s_session->c0) % s_session->bot.size()];
++			const bool start_request = s_local_start_request.exchange(false);
+ 
+ 			Input in = Neutral();
+ 			PadBase* pad = Pad::GetPad(0, 0); // the local controller is always bound to port 1, slot A
+@@ -323,6 +411,8 @@ namespace W4P
+ 				PadDualshock2::PAD_R2};
+ 			for (int i = 0; i < 12; i++)
+ 				in.pressure[i] = pad->GetPressure(order[i]);
++			if (start_request)
++				in.buttons |= 0x0800; // pause hotkey (RequestPauseInSession)
+ 			return in;
+ 		}
+ 
+@@ -343,9 +433,11 @@ namespace W4P
+ 
+ 		void SendToPeers(const void* data, size_t size)
+ 		{
++			if (s_session->test_silent)
++				return; // test only: simulated network loss
+ 			for (int p = 0; p < s_session->cfg.players; p++)
+ 			{
+-				if (p != s_session->cfg.local_slot && s_session->cfg.peers[p].IsValid())
++				if (p != s_session->cfg.local_slot && s_session->cfg.peers[p].IsValid() && !s_session->dropped[p])
+ 				{
+ 					s_session->net->SendTo(s_session->cfg.peers[p], data, size);
+ 					s_session->tx++;
+@@ -538,6 +630,214 @@ namespace W4P
+ 			SendToPeers(buf.data(), buf.size());
+ 		}
+ 
++		// ---- Disconnect handling (BRIEF 4.6: 60 s countdown, then the host chooses; docs/plan/M5.md) ----
++
++		void ScheduleCalls(const std::string& spec, u32 from_t, int pad)
++		{
++			Session& s = *s_session;
++			for (const std::string_view item : StringUtil::SplitString(spec, ','))
++			{
++				const std::vector<std::string_view> f = StringUtil::SplitString(StringUtil::StripWhitespace(item), ':');
++				if (f.size() < 2)
++					continue;
++				CallSpec cs;
++				// from_t is the furthest stall poll among the remaining instances, and an instance stalled there has
++				// already passed its call check for that poll; so offset 0 means the poll after from_t.
++				cs.poll = from_t + 1 - s.c0 + static_cast<u32>(std::strtoul(std::string(f[0]).c_str(), nullptr, 0));
++				cs.fn = static_cast<u32>(std::strtoul(std::string(f[1]).c_str(), nullptr, 16));
++				cs.pad = pad;
++				for (size_t i = 2; i < f.size() && i < 6; i++)
++				{
++					const std::string a(f[i]);
++					if (a == "GM")
++						cs.gamemgr[i - 2] = true;
++					else if (a.rfind("GM+", 0) == 0)
++					{
++						cs.kind[i - 2] = 1;
++						cs.args[i - 2] = static_cast<u32>(std::strtoul(a.c_str() + 3, nullptr, 0));
++					}
++					else if (a == "H")
++						cs.kind[i - 2] = 2;
++					else if (a == "P")
++						cs.kind[i - 2] = 3;
++					else
++						cs.args[i - 2] = static_cast<u32>(std::strtoul(a.c_str(), nullptr, 0));
++				}
++				s.cfg.calls.push_back(cs);
++				Log(fmt::format("session call scheduled at poll {}: {:08x}", cs.poll, cs.fn));
++			}
++		}
++
++		void SendDrop(int player)
++		{
++			Session& s = *s_session;
++			PktDrop pkt = {};
++			FillHeader(&pkt.h, kPktDrop);
++			pkt.player = static_cast<u8>(player);
++			pkt.choice = s.drop_choice[player];
++			pkt.from_t = s.drop_from[player];
++			SendToPeers(&pkt, sizeof(pkt));
++		}
++
++		// The leaving player's inputs this instance holds just before his drop poll, for instances that lack some.
++		void SendRelay(int player)
++		{
++			Session& s = *s_session;
++			const u32 end = s.drop_from[player];
++			const u32 span = std::min<u32>(64, end - s.c0);
++			if (span == 0)
++				return;
++			const u32 first = end - span;
++			std::vector<u8> buf(sizeof(PktRelay) + span * sizeof(Input));
++			PktRelay* pkt = reinterpret_cast<PktRelay*>(buf.data());
++			FillHeader(&pkt->h, kPktRelay);
++			pkt->player = static_cast<u8>(player);
++			pkt->count = static_cast<u16>(span);
++			pkt->first_t = first;
++			Input* out = reinterpret_cast<Input*>(buf.data() + sizeof(PktRelay));
++			for (u32 i = 0; i < span; i++)
++			{
++				out[i] = s.ring[player].in[(first + i) % kRing];
++				out[i].valid = HasReal(player, first + i) ? 1 : 0;
++			}
++			SendToPeers(buf.data(), buf.size());
++		}
++
++		void ApplyDrop(int player, u32 from_t, u8 choice, bool decided_here)
++		{
++			Session& s = *s_session;
++			if (s.dropped[player])
++				return;
++			s.dropped[player] = true;
++			s.drop_from[player] = from_t;
++			s.drop_choice[player] = choice;
++			s.no_accept[player] = true;
++			s.announce_player = player;
++			s.announce_until_ms = NowMs() + 5000.0;
++			s.last_announce_ms = 0.0;
++			Log(fmt::format("player {} leaves the session from poll {} (rel {}): {} ({})", player + 1, from_t, from_t - s.c0,
++				choice == 1 ? "continue without him" : "restart from the last checkpoint without him",
++				decided_here ? "decided here" : "the host's decision"));
++			Host::AddKeyedOSDMessage("w4p_wait",
++				choice == 1 ? fmt::format("Player {} left. The game continues without him.", player + 1) :
++							  fmt::format("Player {} left. Restarting from the last checkpoint without him.", player + 1),
++				8.0f);
++			ScheduleCalls(choice == 2 ? s.cfg.restart_calls : s.cfg.leave_calls, from_t, s.cfg.pad_for_slot[player]);
++		}
++
++		void DisconnectTick(u32 t, double waited_ms)
++		{
++			Session& s = *s_session;
++			const double now = NowMs();
++			if (s.test_silent && s.test_silent_until_ms > 0.0 && now >= s.test_silent_until_ms)
++			{
++				s.test_silent = false;
++				Log("test: network back");
++			}
++			if (s.announce_player >= 0 && now < s.announce_until_ms && now - s.last_announce_ms > 250.0)
++			{
++				s.last_announce_ms = now;
++				SendDrop(s.announce_player);
++				SendRelay(s.announce_player);
++			}
++			if (waited_ms < 500.0)
++				return;
++			// "Gone" = nothing received from him for 2 s; a player who is only behind still sends.
++			std::vector<int> gone;
++			for (int p = 0; p < s.cfg.players; p++)
++			{
++				if (!IsLocalSlot(p) && !s.dropped[p] && now - s.last_rx_ms[p] > 2000.0)
++					gone.push_back(p);
++			}
++			const double timeout_ms = s.cfg.disconnect_timeout_s * 1000.0;
++			bool timed_out = false;
++			double oldest = now;
++			for (const int p : gone)
++			{
++				oldest = std::min(oldest, s.last_rx_ms[p]);
++				if (now - s.last_rx_ms[p] >= timeout_ms)
++				{
++					timed_out = true;
++					s.no_accept[p] = true; // from now on his late inputs would split the instances
++				}
++			}
++			if (now - s.last_status_ms > 250.0)
++			{
++				s.last_status_ms = now;
++				PktStatus pkt = {};
++				FillHeader(&pkt.h, kPktStatus);
++				pkt.stall_t = t;
++				pkt.timed_out = timed_out ? 1 : 0;
++				SendToPeers(&pkt, sizeof(pkt));
++			}
++			std::string who;
++			for (int p = 0; p < s.cfg.players; p++)
++			{
++				if (!Has(p, t))
++					who += fmt::format(" {}", p + 1);
++			}
++			if (gone.empty() || !timed_out)
++			{
++				const double left_s = gone.empty() ? 0.0 : std::ceil((timeout_ms - (now - oldest)) / 1000.0);
++				Host::AddKeyedOSDMessage("w4p_wait", gone.empty() ? fmt::format("Waiting for Player{}...", who) :
++															  fmt::format("Waiting for Player{}... {:.0f}s", who, left_s),
++					1.5f);
++				return;
++			}
++			const int m = gone.front();
++			if (m == 0)
++			{
++				if (!s.host_left_logged)
++				{
++					s.host_left_logged = true;
++					Log("the host did not come back: the session is over");
++				}
++				Host::AddKeyedOSDMessage("w4p_wait", "The host (Player 1) has left. The session is over - you can close the game.", 2.0f);
++				return;
++			}
++			if (s.cfg.local_slot != 0)
++			{
++				Host::AddKeyedOSDMessage("w4p_wait", fmt::format("Player {} did not come back. Waiting for the host's choice...", m + 1), 2.0f);
++				return;
++			}
++			int choice = s.cfg.test_host_choice;
++			if (choice == 0)
++			{
++				InputManager::PollSources();
++				if (PadBase* pad = Pad::GetPad(0, 0))
++				{
++					const u16 b = static_cast<u16>(~pad->GetButtons() & 0xFFFFu);
++					if (b & 0x40)
++						choice = 1; // Cross
++					else if (b & 0x20)
++						choice = 2; // Circle
++				}
++			}
++			// Every other remaining player must report that his timeout has passed too, so nobody still accepts the
++			// leaving player's inputs; the drop poll is the furthest any of them got.
++			u32 from_t = t;
++			std::string not_ready;
++			for (int p = 0; p < s.cfg.players; p++)
++			{
++				if (p == s.cfg.local_slot || s.dropped[p] || std::find(gone.begin(), gone.end(), p) != gone.end())
++					continue;
++				if (s.status_t[p] < 0 || !s.status_timed_out[p] || now - s.status_ms[p] > 2000.0)
++					not_ready += fmt::format(" {}", p + 1);
++				else if (static_cast<s32>(static_cast<u32>(s.status_t[p]) - from_t) > 0)
++					from_t = static_cast<u32>(s.status_t[p]);
++			}
++			if (choice == 0 || !not_ready.empty())
++			{
++				Host::AddKeyedOSDMessage("w4p_wait",
++					fmt::format("Player {} did not come back. Press Cross: continue without Player {}. Press Circle: restart "
++								"from the last checkpoint without Player {}.{}",
++						m + 1, m + 1, m + 1, not_ready.empty() ? "" : fmt::format(" (waiting for Player{})", not_ready)),
++					2.0f);
++				return;
++			}
++			ApplyDrop(m, from_t, static_cast<u8>(choice), true);
++		}
++
+ 		void HandlePacket(const u8* data, int size, const Endpoint& from)
+ 		{
+ 			Session& s = *s_session;
+@@ -564,6 +864,43 @@ namespace W4P
+ 			}
+ 			s.rx_bad--;
+ 			s.rx_ok++;
++			s.last_rx_ms[h.slot] = NowMs();
++			if (s.dropped[h.slot])
++				return; // he left the session; nothing from him is used any more
++			if (h.type == kPktStatus && size == static_cast<int>(sizeof(PktStatus)))
++			{
++				PktStatus pkt;
++				std::memcpy(&pkt, data, sizeof(pkt));
++				s.status_t[h.slot] = pkt.stall_t;
++				s.status_timed_out[h.slot] = pkt.timed_out;
++				s.status_ms[h.slot] = NowMs();
++				return;
++			}
++			if (h.type == kPktDrop && size == static_cast<int>(sizeof(PktDrop)))
++			{
++				PktDrop pkt;
++				std::memcpy(&pkt, data, sizeof(pkt));
++				// Only the host (slot 0) decides; the others repeat his decision (covers a lost datagram).
++				if (pkt.player > 0 && pkt.player < s.cfg.players && pkt.player != s.cfg.local_slot && (pkt.choice == 1 || pkt.choice == 2))
++					ApplyDrop(pkt.player, pkt.from_t, pkt.choice, false);
++				return;
++			}
++			if (h.type == kPktRelay && size >= static_cast<int>(sizeof(PktRelay)))
++			{
++				PktRelay pkt;
++				std::memcpy(&pkt, data, sizeof(pkt));
++				if (pkt.count > 256 || pkt.player >= s.cfg.players || pkt.player == s.cfg.local_slot ||
++					size != static_cast<int>(sizeof(PktRelay) + pkt.count * sizeof(Input)))
++					return;
++				for (u32 i = 0; i < pkt.count; i++)
++				{
++					Input in;
++					std::memcpy(&in, data + sizeof(PktRelay) + i * sizeof(Input), sizeof(Input));
++					if (in.valid == 1)
++						Store(pkt.player, pkt.first_t + i, in);
++				}
++				return;
++			}
+ 			if (h.type == kPktHello && size == static_cast<int>(sizeof(PktHello)))
+ 			{
+ 				PktHello pkt;
+@@ -578,7 +915,7 @@ namespace W4P
+ 				Log(fmt::format("ERROR: peer slot {} started at poll {} but we started at {} (different start state)", h.slot, h.c0, s.c0));
+ 				Host::AddKeyedOSDMessage("w4p_c0", "W4P: players started from different states", 10.0f);
+ 			}
+-			if (h.type == kPktInputs && size >= static_cast<int>(sizeof(PktInputs)))
++			if (h.type == kPktInputs && size >= static_cast<int>(sizeof(PktInputs)) && !s.no_accept[h.slot])
+ 			{
+ 				PktInputs pkt;
+ 				std::memcpy(&pkt, data, sizeof(pkt));
+@@ -614,7 +951,8 @@ namespace W4P
+ 			int n = s_session->net->Receive(buf, sizeof(buf), &from, timeout_ms);
+ 			while (n > 0)
+ 			{
+-				HandlePacket(buf, n, from);
++				if (!s_session->test_silent) // test only: simulated network loss drops everything received
++					HandlePacket(buf, n, from);
+ 				n = s_session->net->Receive(buf, sizeof(buf), &from, 0);
+ 			}
+ 		}
+@@ -665,7 +1003,7 @@ namespace W4P
+ 				bool all = true;
+ 				for (int p = 0; p < s.cfg.players && all; p++)
+ 				{
+-					if (!IsLocalSlot(p) && s.remote_hash[p].find(t) == s.remote_hash[p].end())
++					if (!IsLocalSlot(p) && !s.dropped[p] && s.remote_hash[p].find(t) == s.remote_hash[p].end())
+ 						all = false;
+ 				}
+ 				if (!all)
+@@ -676,7 +1014,7 @@ namespace W4P
+ 				const HashEntry mine = s.local_hash[t];
+ 				for (int p = 0; p < s.cfg.players; p++)
+ 				{
+-					if (IsLocalSlot(p))
++					if (IsLocalSlot(p) || s.dropped[p])
+ 						continue;
+ 					s.hashes_compared++;
+ 					const HashEntry& other = s.remote_hash[p][t];
+@@ -714,7 +1052,9 @@ namespace W4P
+ 				if (rel == s.cfg.corrupt_poll)
+ 					Log(fmt::format("TEST: corrupting player 0 input for polls {}..{}", rel, rel + 29));
+ 			}
+-			memWrite32(portbuf + kPortOffConnected, 1);
++			// A player who left the session shows as an unplugged pad, so the game never binds a companion to it later
++			// (session_policies.md 3.4).
++			memWrite32(portbuf + kPortOffConnected, IsDropped(player, t) ? 0 : 1);
+ 			memWrite8(portbuf + kPortOffSticks + 0, in.lx);
+ 			memWrite8(portbuf + kPortOffSticks + 1, in.ly);
+ 			memWrite8(portbuf + kPortOffSticks + 2, in.rx);
+@@ -752,6 +1092,190 @@ namespace W4P
+ 				counter, s.cfg.players, s.cfg.local_slot, s.cfg.input_delay, s.cfg.hash_interval));
+ 		}
+ 
++		// ---- Pause and cutscene-skip policies (session_policies.md 1.6 and 2.5) ----
++		constexpr u16 kBtnStart = 0x0800;
++		constexpr u16 kBtnCross = 0x0040;
++
++		// Scene player of the open skippable scene (0 = none); identifies the scene for the vote.
++		u32 SkippableScene()
++		{
++			for (u32 k = 0; k < 12; k++)
++			{
++				const u32 slot = 0x006EBA18 + k * 0x40;
++				const u32 player = memRead32(slot + 0x24);
++				const u32 data = memRead32(slot);
++				if (player < 0x00100000 || player >= 0x02000000 || data < 0x00100000 || data >= 0x02000000)
++					continue;
++				const u16 st = memRead16(data + 0x1C);
++				if ((st == 4 || st == 5) && memRead8(player + 0xE5) == 1 && memRead8(player + 0xE4) == 0)
++					return player;
++			}
++			return 0;
++		}
++
++		int CountBits(u32 v)
++		{
++			int n = 0;
++			for (; v; v &= v - 1)
++				n++;
++			return n;
++		}
++
++		void ApplyPolicies(u32 t)
++		{
++			Session& s = *s_session;
++			s.eff_valid = false;
++			if (!s.cfg.session_policies)
++				return;
++			const int n = s.cfg.players;
++			std::array<u16, kMaxPlayers> raw = {};
++			u32 connected = 0;
++			for (int p = 0; p < n; p++)
++			{
++				s.eff[p] = Get(p, t);
++				raw[p] = s.eff[p].buttons;
++				if (!s.dropped[p])
++					connected |= 1u << p;
++			}
++			auto edge = [&](int p, u16 b) { return (raw[p] & b) != 0 && (s.prev_buttons[p] & b) == 0; };
++			const u32 top = memRead32(0x0050C784);
++			const u32 top_mode = top < 64 ? memRead32(0x005E66A0 + 4 * top) : 0;
++			const bool paused = top_mode == 0x005E6550u;
++			// Only in a mission (top of the mode stack = the in-game mode, or the pause mode above it): the boot logos,
++			// menus and the 2-player selection keep the game's own input handling (session_policies.md 1.1).
++			if (top_mode != 0x005E56B8u && !paused)
++			{
++				s.votes = 0;
++				s.pauser = -1;
++				s.cut_prev = false;
++				s.cut_id_prev = 0;
++				s.paused_prev = false;
++				for (int p = 0; p < n; p++)
++					s.prev_buttons[p] = raw[p];
++				s.prev_eff0_buttons = raw[0];
++				return; // eff_valid stays false: the raw inputs are written
++			}
++			const u32 movie = memRead32(0x000E70F0); // patch S1: 2 = movie pad read, +1 = skippable
++			const bool movie_skip = (movie & 3) == 3;
++			const u32 cut_id = movie_skip ? 1u : SkippableScene();
++			const bool cut = cut_id != 0;
++			if (cut_id != s.cut_id_prev)
++				s.votes = 0; // a new movie or scene: everybody votes again (each scene of a chain separately, U3 A)
++			s.cut_id_prev = cut_id;
++			if (cut)
++			{
++				// Skip vote: a new press of Cross or Start (movie: any button) is a vote; nobody skips alone.
++				for (int p = 0; p < n; p++)
++				{
++					if (!(connected >> p & 1))
++						continue;
++					const bool vote = movie_skip ? (raw[p] & ~s.prev_buttons[p]) != 0 : (edge(p, kBtnCross) || edge(p, kBtnStart));
++					if (vote && !(s.votes >> p & 1))
++					{
++						s.votes |= 1u << p;
++						Log(fmt::format("skip vote by player {} at poll {}", p + 1, t - s.c0));
++					}
++				}
++				for (int p = 0; p < n; p++)
++				{
++					s.eff[p].buttons = movie_skip ? 0 : static_cast<u16>(s.eff[p].buttons & ~(kBtnCross | kBtnStart));
++					if (movie_skip)
++						std::memset(s.eff[p].pressure, 0, sizeof(s.eff[p].pressure));
++				}
++				const int k = CountBits(s.votes & connected);
++				const int all = CountBits(connected);
++				const bool go = (s.votes & connected) == connected;
++				if (go)
++				{
++					s.eff[0].buttons |= kBtnCross; // Cross skips only the current scene (U3 A), Start would skip a chain
++					s.eff[0].pressure[6] = 0xFF;
++				}
++				if ((t - s.c0) % 15 == 0 || go != ((s.votes & connected) == connected))
++					Host::AddKeyedOSDMessage("w4p_skip", go ? std::string("Skipping...") : fmt::format("{}/{} want to skip", k, all), 1.0f);
++			}
++			else
++			{
++				if (s.cut_prev)
++					s.votes = 0;
++				if (!paused)
++				{
++					// Any player's Start opens the pause on player 1's pad (the menu then belongs to pad 0 on every PC).
++					int request = -1;
++					for (int p = 0; p < n; p++)
++					{
++						if (!(connected >> p & 1) || !edge(p, kBtnStart))
++							continue;
++						const s16 owner = static_cast<s16>(memRead16(0x005DD810 + static_cast<u32>(s.cfg.pad_for_slot[p]) * 0x50 + 0x42));
++						if (owner < 0)
++							continue; // not a player yet: Start is the game's drop-in join
++						s.eff[p].buttons &= ~kBtnStart;
++						if (request < 0)
++							request = p;
++					}
++					if (request >= 0)
++					{
++						if (!(s.prev_eff0_buttons & kBtnStart))
++							s.eff[0].buttons |= kBtnStart;
++						s.pauser = request;
++						s.pause_pending_until = t + 10;
++						Log(fmt::format("pause requested by player {} at poll {}", request + 1, t - s.c0));
++					}
++					else if (s.pauser >= 0 && static_cast<s32>(t - s.pause_pending_until) > 0)
++					{
++						s.pauser = -1; // closed, or the game refused (prompt, GAME OVER, cooldown)
++					}
++				}
++				else
++				{
++					// Paused: the host steers the menu; the player who paused may only resume with Start (U1 A); every
++					// other input is neutral.
++					if (s.pauser < 0)
++						s.pauser = 0;
++					s.pause_pending_until = t + 10;
++					Input e0 = s.eff[0];
++					if (s.pauser != 0 && (raw[s.pauser] & kBtnStart))
++						e0.buttons |= kBtnStart;
++					for (int p = 0; p < n; p++)
++						s.eff[p] = Neutral();
++					s.eff[0] = e0;
++					if (!s.paused_prev || (t - s.c0) % 15 == 0)
++						Host::AddKeyedOSDMessage("w4p_pause", fmt::format("Paused by Player {}", s.pauser + 1), 1.0f);
++				}
++			}
++			if (paused != s.paused_prev)
++				Log(fmt::format("game {} at poll {}", paused ? "paused" : "resumed", t - s.c0));
++			s.paused_prev = paused;
++			s.cut_prev = cut;
++			for (int p = 0; p < n; p++)
++				s.prev_buttons[p] = raw[p];
++			s.prev_eff0_buttons = s.eff[0].buttons;
++			s.eff_t = t;
++			s.eff_valid = true;
++		}
++
++		const Input& EffInput(int player, u32 t)
++		{
++			Session& s = *s_session;
++			return (s.eff_valid && s.eff_t == t) ? s.eff[player] : Get(player, t);
++		}
++
++		u32 ArgValue(const CallSpec& cs, int i, u32 gm)
++		{
++			if (cs.gamemgr[i])
++				return gm;
++			if (cs.kind[i] == 1)
++				return gm + cs.args[i];
++			if (cs.kind[i] == 2 || cs.kind[i] == 3)
++			{
++				// game player index that owns the pad (pad state +0x42, as in CropFor), then his handle (GameMgr+0x228)
++				const s16 owner = cs.pad >= 0 ? static_cast<s16>(memRead16(0x005DD810 + static_cast<u32>(cs.pad) * 0x50 + 0x42)) : -1;
++				if (cs.kind[i] == 3)
++					return static_cast<u32>(static_cast<s32>(owner));
++				return owner >= 0 ? memRead32(gm + 0x228 + 4 * static_cast<u32>(owner)) : 0xFFFFFFFFu;
++			}
++			return cs.args[i];
++		}
++
+ 		void NewPoll(u32 t)
+ 		{
+ 			Session& s = *s_session;
+@@ -763,13 +1287,23 @@ namespace W4P
+ 					continue;
+ 				cs.done = true;
+ 				const u32 gm = memRead32(0x0051489C);
++				u32 a[4];
+ 				for (int i = 0; i < 4; i++)
+-					memWrite32(0x000F0304 + 4 * i, cs.gamemgr[i] ? gm : cs.args[i]);
++				{
++					a[i] = ArgValue(cs, i, gm);
++					memWrite32(0x000F0304 + 4 * i, a[i]);
++				}
+ 				memWrite32(0x000F0318, 0);
+ 				memWrite32(0x000F0300, cs.fn);
+-				Log(fmt::format("test call at poll {}: {:08x}({:08x}, {:08x}, {:08x}, {:08x})", cs.poll, cs.fn,
+-					cs.gamemgr[0] ? gm : cs.args[0], cs.gamemgr[1] ? gm : cs.args[1], cs.args[2], cs.args[3]));
++				Log(fmt::format("test call at poll {}: {:08x}({:08x}, {:08x}, {:08x}, {:08x})", cs.poll, cs.fn, a[0], a[1], a[2], a[3]));
++			}
++			if (s.cfg.test_drop_poll >= 0 && static_cast<s64>(t - s.c0) == s.cfg.test_drop_poll && !s.test_silent)
++			{
++				s.test_silent = true;
++				s.test_silent_until_ms = s.cfg.test_drop_s > 0 ? NowMs() + s.cfg.test_drop_s * 1000.0 : 0.0;
++				Log(fmt::format("test: network lost at poll {} for {}", t - s.c0, s.cfg.test_drop_s > 0 ? fmt::format("{} s", s.cfg.test_drop_s) : std::string("good")));
+ 			}
++			DisconnectTick(t, 0.0);
+ 			while (static_cast<s32>(s.local_upto - (t + s.cfg.input_delay)) < 0)
+ 			{
+ 				s.local_upto++;
+@@ -788,6 +1322,7 @@ namespace W4P
+ 				const double start = NowMs();
+ 				double last_pump = start;
+ 				double last_osd = 0.0;
++				double last_present = 0.0;
+ 				s.waits++;
+ 				while (!HaveAll(t))
+ 				{
+@@ -795,6 +1330,14 @@ namespace W4P
+ 					const double now = NowMs();
+ 					if (now - s.last_send_ms > 15.0)
+ 						SendInputs();
++					DisconnectTick(t, now - start);
++					if (now - start > 500.0 && now - last_present > 200.0)
++					{
++						// The EE is held here, so no new frame is presented; re-present the last one so the waiting /
++						// countdown / host's-choice messages are visible (presentation only, no effect on the game).
++						last_present = now;
++						MTGS::PresentCurrentFrame();
++					}
+ 					if (now - start > 500.0 && now - last_osd > 1000.0)
+ 					{
+ 						last_osd = now;
+@@ -804,8 +1347,6 @@ namespace W4P
+ 							if (!Has(p, t))
+ 								who += fmt::format(" {}", p + 1);
+ 						}
+-						Host::AddKeyedOSDMessage("w4p_wait",
+-							fmt::format("Waiting for Player{}... {:.0f}s", who, (now - start) / 1000.0), 1.5f);
+ 						Log(fmt::format("waiting for players{} at poll {}: rx {} accepted {} rejected {} tx {}", who, t - s.c0, s.rx, s.rx_ok, s.rx_bad, s.tx));
+ 						if ((now - start) / 1000.0 > s.cfg.wait_warn_s)
+ 							Log(fmt::format("still waiting for players{} at poll {} after {:.0f} s", who, t - s.c0, (now - start) / 1000.0));
+@@ -834,6 +1375,7 @@ namespace W4P
+ 					s.wait_ms_max = waited;
+ 			}
+ 
++			ApplyPolicies(t);
+ 			if (s.cfg.hash_interval > 0 && t != s.c0 && (t - s.c0) % static_cast<u32>(s.cfg.hash_interval) == 0)
+ 			{
+ 				const HashEntry e = HashMainRam(t);
+@@ -1017,6 +1559,21 @@ namespace W4P
+ 		c.crop_inset = std::clamp(ini.GetFloatValue("W4P", "CropInset", c.crop_inset), 0.0f, 0.1f);
+ 		s_show_all.store(ini.GetBoolValue("W4P", "ShowAllViews", false));
+ 		c.corrupt_poll = ini.GetIntValue("W4P", "TestCorruptPoll", -1);
++		c.disconnect_timeout_s = std::clamp(ini.GetIntValue("W4P", "DisconnectTimeoutS", 60), 3, 600);
++		c.session_policies = ini.GetBoolValue("W4P", "SessionPolicies", false);
++		c.leave_calls = ini.GetStringValue("W4P", "LeaveCalls", "");
++		c.restart_calls = ini.GetStringValue("W4P", "RestartCalls", "");
++		{
++			const std::string td = ini.GetStringValue("W4P", "TestDrop", ""); // test only: poll:seconds (0 = for good)
++			const size_t colon = td.find(':');
++			if (!td.empty())
++			{
++				c.test_drop_poll = std::strtoll(td.substr(0, colon).c_str(), nullptr, 0);
++				c.test_drop_s = colon == std::string::npos ? 0 : std::atoi(td.c_str() + colon + 1);
++			}
++			const std::string hc = ini.GetStringValue("W4P", "TestHostChoice", "");
++			c.test_host_choice = hc == "continue" ? 1 : hc == "restart" ? 2 : 0;
++		}
+ 		if (!c.enabled)
+ 			return;
+ 		if (VMManager::GetDiscCRC() != kGameCrc)
+@@ -1117,6 +1674,15 @@ namespace W4P
+ 		return false;
+ 	}
+ 
++	bool RequestPauseInSession()
++	{
++		if (!s_session || !s_session->started || !s_session->cfg.session_policies)
++			return false;
++		s_local_start_request.store(true);
++		Host::AddKeyedOSDMessage("w4p_pause_req", "Pause requested (the game pauses for every player)", 2.0f);
++		return true;
++	}
++
+ 	bool BlockInSession(const char* what)
+ 	{
+ 		if (!s_session)
+@@ -1146,7 +1712,7 @@ namespace W4P
+ 			Start(counter);
+ 		if (counter != s.cur_t)
+ 			NewPoll(counter);
+-		WriteInput(portbuf, Get(player, counter), player, counter);
++		WriteInput(portbuf, EffInput(player, counter), player, counter);
+ 	}
+ 
+ 	void OnVsync()
+diff --git a/pcsx2/W4P/W4P.h b/pcsx2/W4P/W4P.h
+index 213433a..efa001f 100644
+--- a/pcsx2/W4P/W4P.h
++++ b/pcsx2/W4P/W4P.h
+@@ -41,6 +41,11 @@ namespace W4P
+ 	// for example loading a savestate or changing the emulation speed during a session.
+ 	bool BlockInSession(const char* what);
+ 
++	// Session policies: instead of pausing the emulator (which would stall every other PC), the pause hotkey sends
++	// a Start press through the lockstep, so the game pauses on every PC ("Paused by Player N"). Returns true when
++	// the emulator pause must not happen.
++	bool RequestPauseInSession();
++
+ 	// Vibration routing during a session: the emulated controller of the LOCAL player drives this PC's controller
+ 	// (host pad 0); every other emulated controller is muted. Returns the host pad index, or -1 to mute.
+ 	int VibrationPadFor(u32 unified_slot);
+-- 
+2.55.0.windows.3
+

@@ -1,0 +1,130 @@
+{
+ "test": "T1c",
+ "players": 2,
+ "paste_reply": false,
+ "env": "SINGLE-PC loopback, no STUN",
+ "started": "2026-10-11 21:22:22",
+ "ready_s": {
+  "h0": 1.0600839999970049,
+  "j1": 0.6731213000020944
+ },
+ "host_paths": [
+  "path b 1"
+ ],
+ "joined": [
+  "joined 1 b 531.4"
+ ],
+ "link_events": {
+  "h0": [
+   {
+    "t": 0.622,
+    "peer": 1,
+    "what": "connected",
+    "args": [
+     "562.5",
+     "1",
+     "b"
+    ]
+   }
+  ],
+  "j1": [
+   {
+    "t": 0.533,
+    "peer": 0,
+    "what": "connected",
+    "args": [
+     "502.3",
+     "1",
+     "j"
+    ]
+   }
+  ]
+ },
+ "probe": {
+  "rate": 60,
+  "size": 200,
+  "seconds": 10.0,
+  "done": {
+   "h0": true,
+   "j1": true
+  }
+ },
+ "links": [
+  {
+   "helper": "h0",
+   "slot": 0,
+   "peer": 1,
+   "kind": "host-joiner",
+   "path": "b",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 562.507,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45400",
+   "sel_remote": "prflx IPv4 loopback port 45401",
+   "ping_n": 47,
+   "ping_p50": 0.107,
+   "ping_p95": 0.195,
+   "ping_max": 0.254,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j1",
+   "slot": 1,
+   "peer": 0,
+   "kind": "joiner-host",
+   "path": "j",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 502.278,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45401",
+   "sel_remote": "host IPv4 loopback port 45400",
+   "ping_n": 47,
+   "ping_p50": 0.107,
+   "ping_p95": 0.174,
+   "ping_max": 0.19,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  }
+ ],
+ "probe_streams": [
+  {
+   "from": 0,
+   "to": 1,
+   "sent": 600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 600,
+   "rtt_p50_ms": 0.108,
+   "rtt_p95_ms": 0.166,
+   "rtt_p99_ms": 0.198,
+   "rtt_max_ms": 0.228
+  },
+  {
+   "from": 1,
+   "to": 0,
+   "sent": 600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 600,
+   "rtt_p50_ms": 0.109,
+   "rtt_p95_ms": 0.169,
+   "rtt_p99_ms": 0.197,
+   "rtt_max_ms": 0.228
+  }
+ ]
+}

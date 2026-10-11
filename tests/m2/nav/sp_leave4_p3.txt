@@ -1,0 +1,12 @@
+# session policies test C4, slot 2: drop-in join; after player 2 left, the 2-player flag was cleared and the
+# level restarted: Start every 300 polls to re-join
+8200 START:4
+8500 START:4
+11000 START:4
+11300 START:4
+11600 START:4
+11900 START:4
+12200 START:4
+12500 START:4
+12800 START:4
+13100 START:4

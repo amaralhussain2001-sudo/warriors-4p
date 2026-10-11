@@ -1,0 +1,86 @@
+[    0.001] w4p-net (helper protocol 1, libjuice 1.7.4), role joiner
+[    0.001] STUN: disabled (--no-stun)
+[    0.001] options: players 4, ICE port 46403, bind loopback, emulator port 46003, slot ports 46130-46133, connect window 60 min
+[    0.001] join code read: 1 host candidate(s); joiner id fcf0
+[    0.001]   host candidate: host IPv4 loopback port 46400
+[    0.001] ICE socket: UDP port 46403 (MUX mode, one socket for all links), bind loopback
+[    0.001] @listen 46403
+[    0.001] juice[info]: Changing state to gathering
+[    0.001] juice[info]: Changing state to connecting
+[    0.002] juice[info]: Candidate gathering done
+[    0.002] juice[info]: Connectivity timer started
+[    0.002] link 0 (joiner-host, peer slot 0, controlled): agent #1 started, 1 remote candidate(s)
+[    0.002]   remote candidate: host IPv4 loopback port 46400
+[    0.002] local candidate: host IPv4 loopback port 46403
+[    0.002] reply code issued: 45 characters, 1 candidate(s)
+[    0.002] emulator bridge: emulator at loopback port 46003, helper slot ports 46130-46133 (W4P Peer<p> = 127.0.0.1:46130+p)
+[    0.002] link 0 (peer slot 0): connecting (0.1 ms after agent #1 started)
+[    0.073] juice[info]: Changing state to connected
+[    0.073] juice[info]: Changing state to completed
+[    0.088] link 0 (peer slot 0): completed (71.5 ms after agent #1 started)
+[    0.088] link 0 connected: 71.5 ms after the first agent start (attempt 1); selected pair: local host IPv4 loopback port 46403, remote host IPv4 loopback port 46400
+[    0.088] @link 0 connected 71.5 1 j
+[    0.088] Connected to the host (71.5 ms).
+[    0.120] @slot 3
+[    0.120] Connected to the host. You are Player 4.
+[    0.120] introduced to Player 2 by the host (1 candidate(s))
+[    0.120] juice[info]: Changing state to gathering
+[    0.120] juice[info]: Changing state to connecting
+[    0.120] juice[info]: Candidate gathering done
+[    0.120] juice[info]: Connectivity timer started
+[    0.120] link 1 (joiner-joiner, peer slot 1, controlled): agent #1 started, 1 remote candidate(s)
+[    0.120]   remote candidate: host IPv4 loopback port 46401
+[    0.120] introduced to Player 3 by the host (1 candidate(s))
+[    0.121] juice[info]: Changing state to gathering
+[    0.121] juice[info]: Changing state to connecting
+[    0.121] juice[info]: Candidate gathering done
+[    0.121] juice[info]: Connectivity timer started
+[    0.121] link 2 (joiner-joiner, peer slot 2, controlled): agent #1 started, 1 remote candidate(s)
+[    0.121]   remote candidate: host IPv4 loopback port 46402
+[    0.121] link 1 (peer slot 1): connecting (0.1 ms after agent #1 started)
+[    0.121] link 2 (peer slot 2): connecting (0.1 ms after agent #1 started)
+[    0.121] juice[info]: Changing state to connected
+[    0.121] juice[info]: Changing state to completed
+[    0.135] link 2 (peer slot 2): completed (0.5 ms after agent #1 started)
+[    0.136] link 2 connected: 0.4 ms after the first agent start (attempt 1); selected pair: local host IPv4 loopback port 46403, remote host IPv4 loopback port 46402
+[    0.136] @link 2 connected 0.4 1 i
+[    0.182] juice[info]: Changing state to connected
+[    0.182] juice[info]: Changing state to completed
+[    0.198] link 1 (peer slot 1): completed (62.5 ms after agent #1 started)
+[    0.198] link 1 connected: 62.5 ms after the first agent start (attempt 1); selected pair: local host IPv4 loopback port 46403, remote host IPv4 loopback port 46401
+[    0.198] @link 1 connected 62.5 1 i
+[    0.198] @ready 197.6
+[   10.017] ---- periodic summary (role joiner, slot 3) ----
+[   10.017] link 0 joiner-host peer slot 0 path j: state completed, attempts 1, selected local host IPv4 loopback port 46403 / remote host IPv4 loopback port 46400; ping RTT n=38 p50=0.162 p95=0.252 max=0.364 ms; sent 507 dgr/286981 B, received 504 dgr/286824 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   10.018] link 1 joiner-joiner peer slot 1 path i: state completed, attempts 1, selected local host IPv4 loopback port 46403 / remote host IPv4 loopback port 46401; ping RTT n=38 p50=0.116 p95=0.207 max=0.306 ms; sent 495 dgr/286590 B, received 495 dgr/286590 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   10.018] link 2 joiner-joiner peer slot 2 path i: state completed, attempts 1, selected local host IPv4 loopback port 46403 / remote host IPv4 loopback port 46402; ping RTT n=38 p50=0.100 p95=0.174 max=0.272 ms; sent 495 dgr/286590 B, received 495 dgr/286590 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   10.018] slot 0: emulator data sent 419 (0 through the host, 0 without route), received 419 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   10.018] slot 1: emulator data sent 419 (0 through the host, 0 without route), received 419 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   10.018] slot 2: emulator data sent 419 (0 through the host, 0 without route), received 419 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   10.018] emulator bridge: from emulator 1257, to emulator 1257, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   20.022] ---- periodic summary (role joiner, slot 3) ----
+[   20.023] link 0 joiner-host peer slot 0 path j: state completed, attempts 1, selected local host IPv4 loopback port 46403 / remote host IPv4 loopback port 46400; ping RTT n=77 p50=0.159 p95=0.249 max=0.364 ms; sent 1196 dgr/697373 B, received 1188 dgr/696991 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   20.023] link 1 joiner-joiner peer slot 1 path i: state completed, attempts 1, selected local host IPv4 loopback port 46403 / remote host IPv4 loopback port 46401; ping RTT n=77 p50=0.117 p95=0.207 max=0.306 ms; sent 1174 dgr/696642 B, received 1174 dgr/696642 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   20.023] link 2 joiner-joiner peer slot 2 path i: state completed, attempts 1, selected local host IPv4 loopback port 46403 / remote host IPv4 loopback port 46402; ping RTT n=77 p50=0.102 p95=0.174 max=0.272 ms; sent 1174 dgr/696642 B, received 1174 dgr/696642 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   20.023] slot 0: emulator data sent 1020 (0 through the host, 0 without route), received 1020 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   20.023] slot 1: emulator data sent 1020 (0 through the host, 0 without route), received 1020 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   20.023] slot 2: emulator data sent 1020 (0 through the host, 0 without route), received 1020 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   20.023] emulator bridge: from emulator 3060, to emulator 3060, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   24.211] The host closed the game.
+[   24.211] @host_left
+[   24.320] Player 2 left.
+[   24.320] @left 1
+[   24.445] Player 3 left.
+[   24.446] @left 2
+[   24.649] ---- final summary (role joiner, slot 3) ----
+[   24.649] link 0 joiner-host peer slot 0 path j: state completed, attempts 1, selected local host IPv4 loopback port 46403 / remote host IPv4 loopback port 46400; ping RTT n=94 p50=0.155 p95=0.249 max=0.364 ms; sent 1418 dgr/821437 B, received 1406 dgr/820898 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   24.649]   ping RTT histogram (ms): <0.5:94 0.5-1:0 1-2:0 2-5:0 5-10:0 10-20:0 20-50:0 50-100:0 100-200:0 >=200:0
+[   24.649] link 1 joiner-joiner peer slot 1 path i: state completed, attempts 1, selected local host IPv4 loopback port 46403 / remote host IPv4 loopback port 46401; ping RTT n=94 p50=0.114 p95=0.186 max=0.306 ms; sent 1391 dgr/820536 B, received 1390 dgr/820503 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   24.649]   ping RTT histogram (ms): <0.5:94 0.5-1:0 1-2:0 2-5:0 5-10:0 10-20:0 20-50:0 50-100:0 100-200:0 >=200:0
+[   24.649] link 2 joiner-joiner peer slot 2 path i: state completed, attempts 1, selected local host IPv4 loopback port 46403 / remote host IPv4 loopback port 46402; ping RTT n=95 p50=0.103 p95=0.174 max=0.272 ms; sent 1391 dgr/820536 B, received 1391 dgr/820536 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   24.649]   ping RTT histogram (ms): <0.5:95 0.5-1:0 1-2:0 2-5:0 5-10:0 10-20:0 20-50:0 50-100:0 100-200:0 >=200:0
+[   24.649] slot 0: emulator data sent 1201 (0 through the host, 0 without route), received 1201 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   24.649] slot 1: emulator data sent 1201 (0 through the host, 0 without route), received 1201 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   24.649] slot 2: emulator data sent 1201 (0 through the host, 0 without route), received 1201 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   24.649] emulator bridge: from emulator 3603, to emulator 3603, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   24.650] exit

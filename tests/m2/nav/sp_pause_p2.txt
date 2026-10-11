@@ -1,0 +1,8 @@
+# test A, player 2: join in the boot menus (as p2_join.txt), then pause tests
+2300 START
+9450 START   # P2 tries to close P1's pause
+9520 DOWN    # P2 tries to move P1's pause menu
+10100 START  # P2 opens the pause
+10400 START  # P2 closes it
+11450 START  # P2 opens the pause while P1 is downed
+11600 START  # P2 closes it

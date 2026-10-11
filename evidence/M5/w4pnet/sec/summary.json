@@ -1,0 +1,17 @@
+{
+ "test": "SEC",
+ "env": "SINGLE-PC loopback, no STUN",
+ "good_joiner_ready": true,
+ "foreign_joiner_connected": false,
+ "host_log_foreign_rejections": 4,
+ "host_ice_strangers": 4,
+ "host_links_created": 1,
+ "foreign_reply_paste": "error paste session",
+ "mistyped_reply_paste": "error paste 5",
+ "loopback_strangers_counted": 10,
+ "host_slot1_data_tx": 0,
+ "mistyped_join_exit_code": 3,
+ "mistyped_join_events": [
+  "error code 4"
+ ]
+}

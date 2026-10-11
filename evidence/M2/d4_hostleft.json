@@ -1,0 +1,90 @@
+{
+ "tag": "d4_hostleft",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot",
+ "seconds": 485,
+ "state": {
+  "0": {
+   "poll": 9302,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30240"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "1": {
+   "poll": 9303,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30240"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 9303,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30240"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 9303,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30240"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 9282, polls 9283, waits 170, wait total 2781.4 ms, max 176.6 ms, hashes 927, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 57% gs 12% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 2
+  },
+  "1": {
+   "last": "poll 9287, polls 9288, waits 205, wait total 1860.1 ms, max 98.7 ms, hashes 927, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 59% gs 13% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 2
+  },
+  "2": {
+   "last": "poll 9289, polls 9290, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 927, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 59% gs 12% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 2
+  },
+  "3": {
+   "last": "poll 9284, polls 9285, waits 979, wait total 7198.0 ms, max 185.5 ms, hashes 927, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 54% gs 13% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 2
+  }
+ },
+ "hash_points_common": 310,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "last_common": "9300",
+ "leaver_slot": 0,
+ "remaining_common": 310,
+ "remaining_mismatches": 0,
+ "remaining_points_after_leave": 0,
+ "remaining_last_common": "9300"
+}

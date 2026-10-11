@@ -1,0 +1,131 @@
+[    0.001] w4p-net (helper protocol 1, libjuice 1.7.4), role joiner
+[    0.001] STUN: disabled (--no-stun)
+[    0.001] options: players 4, ICE port 45401, bind loopback, emulator port 45210, slot ports 45310-45313, connect window 10 min
+[    0.001] join code read: 1 host candidate(s); joiner id 7628
+[    0.001]   host candidate: host IPv4 loopback port 45400
+[    0.001] ICE socket: UDP port 45401 (MUX mode, one socket for all links), bind loopback
+[    0.001] @listen 45401
+[    0.001] juice[info]: Changing state to gathering
+[    0.001] juice[info]: Changing state to connecting
+[    0.002] juice[info]: Candidate gathering done
+[    0.002] juice[info]: Connectivity timer started
+[    0.002] link 0 (joiner-host, peer slot 0, controlled): agent #1 started, 1 remote candidate(s)
+[    0.002]   remote candidate: host IPv4 loopback port 45400
+[    0.002] local candidate: host IPv4 loopback port 45401
+[    0.002] reply code issued: 45 characters, 1 candidate(s)
+[    0.002] emulator bridge: emulator at loopback port 45210, helper slot ports 45310-45313 (W4P Peer<p> = 127.0.0.1:45310+p)
+[    0.002] link 0 (peer slot 0): connecting (0.4 ms after agent #1 started)
+[   10.006] ---- periodic summary (role joiner, slot 255) ----
+[   10.006] link 0 joiner-host peer slot 0 path j: state connecting, attempts 1, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   10.006] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   20.009] ---- periodic summary (role joiner, slot 255) ----
+[   20.009] link 0 joiner-host peer slot 0 path j: state connecting, attempts 1, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   20.009] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   30.017] ---- periodic summary (role joiner, slot 255) ----
+[   30.017] link 0 joiner-host peer slot 0 path j: state connecting, attempts 1, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   30.017] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   39.552] juice[info]: Connectivity timer expired
+[   39.552] juice[info]: Changing state to failed
+[   39.567] link 0 (peer slot 0): failed (39550.7 ms after agent #1 started)
+[   39.568] @link 0 failed 1
+[   39.568] link 0: agent #1 failed; re-creating it with the same port, credentials and remote description
+[   39.568] juice[info]: Changing state to gathering
+[   39.568] juice[info]: Changing state to connecting
+[   39.568] juice[info]: Candidate gathering done
+[   39.568] juice[info]: Connectivity timer started
+[   39.568] link 0 (joiner-host, peer slot 0, controlled): agent #2 started, 1 remote candidate(s)
+[   39.584] link 0 (peer slot 0): connecting (0.1 ms after agent #2 started)
+[   40.021] ---- periodic summary (role joiner, slot 255) ----
+[   40.021] link 0 joiner-host peer slot 0 path j: state connecting, attempts 2, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   40.021] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   50.033] ---- periodic summary (role joiner, slot 255) ----
+[   50.033] link 0 joiner-host peer slot 0 path j: state connecting, attempts 2, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   50.033] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   60.041] ---- periodic summary (role joiner, slot 255) ----
+[   60.041] link 0 joiner-host peer slot 0 path j: state connecting, attempts 2, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   60.041] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   70.045] ---- periodic summary (role joiner, slot 255) ----
+[   70.045] link 0 joiner-host peer slot 0 path j: state connecting, attempts 2, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   70.045] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   79.108] juice[info]: Connectivity timer expired
+[   79.108] juice[info]: Changing state to failed
+[   79.108] link 0 (peer slot 0): failed (39540.3 ms after agent #2 started)
+[   79.108] @link 0 failed 2
+[   79.108] link 0: agent #2 failed; re-creating it with the same port, credentials and remote description
+[   79.108] juice[info]: Changing state to gathering
+[   79.108] juice[info]: Changing state to connecting
+[   79.108] juice[info]: Candidate gathering done
+[   79.108] juice[info]: Connectivity timer started
+[   79.108] link 0 (joiner-host, peer slot 0, controlled): agent #3 started, 1 remote candidate(s)
+[   79.124] link 0 (peer slot 0): connecting (0.1 ms after agent #3 started)
+[   80.047] ---- periodic summary (role joiner, slot 255) ----
+[   80.047] link 0 joiner-host peer slot 0 path j: state connecting, attempts 3, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   80.047] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   90.055] ---- periodic summary (role joiner, slot 255) ----
+[   90.055] link 0 joiner-host peer slot 0 path j: state connecting, attempts 3, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   90.055] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  100.062] ---- periodic summary (role joiner, slot 255) ----
+[  100.062] link 0 joiner-host peer slot 0 path j: state connecting, attempts 3, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  100.062] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  110.073] ---- periodic summary (role joiner, slot 255) ----
+[  110.073] link 0 joiner-host peer slot 0 path j: state connecting, attempts 3, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  110.073] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  118.640] juice[info]: Connectivity timer expired
+[  118.640] juice[info]: Changing state to failed
+[  118.655] link 0 (peer slot 0): failed (39531.7 ms after agent #3 started)
+[  118.655] @link 0 failed 3
+[  118.655] link 0: agent #3 failed; re-creating it with the same port, credentials and remote description
+[  118.655] juice[info]: Changing state to gathering
+[  118.656] juice[info]: Changing state to connecting
+[  118.656] juice[info]: Candidate gathering done
+[  118.656] juice[info]: Connectivity timer started
+[  118.656] link 0 (joiner-host, peer slot 0, controlled): agent #4 started, 1 remote candidate(s)
+[  118.671] link 0 (peer slot 0): connecting (0.1 ms after agent #4 started)
+[  120.077] ---- periodic summary (role joiner, slot 255) ----
+[  120.077] link 0 joiner-host peer slot 0 path j: state connecting, attempts 4, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  120.077] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  130.088] ---- periodic summary (role joiner, slot 255) ----
+[  130.089] link 0 joiner-host peer slot 0 path j: state connecting, attempts 4, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  130.089] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  140.089] ---- periodic summary (role joiner, slot 255) ----
+[  140.089] link 0 joiner-host peer slot 0 path j: state connecting, attempts 4, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  140.089] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  150.103] ---- periodic summary (role joiner, slot 255) ----
+[  150.103] link 0 joiner-host peer slot 0 path j: state connecting, attempts 4, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  150.103] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  158.237] juice[info]: Connectivity timer expired
+[  158.237] juice[info]: Changing state to failed
+[  158.252] link 0 (peer slot 0): failed (39581.1 ms after agent #4 started)
+[  158.252] @link 0 failed 4
+[  158.252] link 0: agent #4 failed; re-creating it with the same port, credentials and remote description
+[  158.252] juice[info]: Changing state to gathering
+[  158.252] juice[info]: Changing state to connecting
+[  158.252] juice[info]: Candidate gathering done
+[  158.252] juice[info]: Connectivity timer started
+[  158.253] link 0 (joiner-host, peer slot 0, controlled): agent #5 started, 1 remote candidate(s)
+[  158.267] link 0 (peer slot 0): connecting (0.1 ms after agent #5 started)
+[  160.110] ---- periodic summary (role joiner, slot 255) ----
+[  160.110] link 0 joiner-host peer slot 0 path j: state connecting, attempts 5, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  160.110] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  170.111] ---- periodic summary (role joiner, slot 255) ----
+[  170.111] link 0 joiner-host peer slot 0 path j: state connecting, attempts 5, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  170.111] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  180.071] juice[info]: Changing state to connected
+[  180.072] juice[info]: Changing state to completed
+[  180.087] link 0 (peer slot 0): completed (21819.2 ms after agent #5 started)
+[  180.087] link 0 connected: 180070.2 ms after the first agent start (attempt 5); selected pair: local host IPv4 loopback port 45401, remote host IPv4 loopback port 45400
+[  180.087] @link 0 connected 180070.2 5 j
+[  180.087] Connected to the host (180070.2 ms).
+[  180.118] @slot 1
+[  180.118] Connected to the host. You are Player 2.
+[  180.118] @ready 180117.8
+[  180.118] ---- periodic summary (role joiner, slot 1) ----
+[  180.118] link 0 joiner-host peer slot 0 path j: state completed, attempts 5, selected local host IPv4 loopback port 45401 / remote host IPv4 loopback port 45400; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 1 dgr/31 B, received 2 dgr/47 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  180.118] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  180.385] The host closed the game.
+[  180.385] @host_left
+[  180.589] ---- final summary (role joiner, slot 1) ----
+[  180.589] link 0 joiner-host peer slot 0 path j: state completed, attempts 5, selected local host IPv4 loopback port 45401 / remote host IPv4 loopback port 45400; ping RTT n=2 p50=0.104 p95=0.131 max=0.131 ms; sent 6 dgr/185 B, received 6 dgr/167 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  180.589]   ping RTT histogram (ms): <0.5:2 0.5-1:0 1-2:0 2-5:0 5-10:0 10-20:0 20-50:0 50-100:0 100-200:0 >=200:0
+[  180.589] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  180.590] exit

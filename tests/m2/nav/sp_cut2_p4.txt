@@ -1,0 +1,5 @@
+# test B2, player 4 (pad 2, not a player yet): Start during the cinematic (expect: no skip), then drop-in join
+5400 START
+8350 START:4
+8650 START:4
+8950 START:4

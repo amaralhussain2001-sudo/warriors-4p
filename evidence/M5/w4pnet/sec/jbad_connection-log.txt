@@ -1,0 +1,5 @@
+[    0.001] w4p-net (helper protocol 1, libjuice 1.7.4), role joiner
+[    0.001] STUN: disabled (--no-stun)
+[    0.001] options: players 4, ICE port 45408, bind loopback, emulator port 45280, slot ports 45380-45383, connect window 10 min
+[    0.001] This code is incomplete or mistyped. Copy it again.
+[    0.001] @error code 4

@@ -1,0 +1,18 @@
+PASS: SipHash-2-4 empty message = 726fdb47dd0e0e31
+PASS: SipHash-2-4 15-byte message = a129ca6149be45e5
+PASS: CRC-16/CCITT-FALSE("123456789") = 29B1
+descriptions: 10000 (seed 20261011), code length min 32 / avg 90.7 / max 230 characters
+round trip: 10000/10000 plain, 10000/10000 inside other text, 10000/10000 lower case, 10000/10000 line break after a dash
+substitutions: tried 58981455, detected 58324228, same description 657227, UNDETECTED 0
+deletions:     tried 907407, detected 907407, same description 0, UNDETECTED 0
+swaps:         tried 877494, detected 877494, same description 0, UNDETECTED 0
+PASS: round trip of every description (plain, embedded, lower case, wrapped)
+PASS: every single-character substitution detected or harmless
+PASS: every single-character deletion detected or harmless
+PASS: every adjacent swap detected or harmless
+size: join code, 1 LAN + 1 public IPv4: 29 bytes, 61 characters
+size: reply code, 1 LAN + 1 public IPv4: 28 bytes, 58 characters
+size: join code, + 1 IPv6: 48 bytes, 97 characters
+example join code (documentation addresses): W4P1-24R00-00000-00000-00000-6060N-00H98-GW235-G0W87-M8E02-8011P-W0000-00093-8NKRK-AYDXW-523HZ-X8
+time: 99.4 s
+RESULT PASS (0 failed checks)

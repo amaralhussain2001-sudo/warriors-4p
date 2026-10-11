@@ -1,0 +1,372 @@
+{
+ "players": 4,
+ "seconds": 23.6,
+ "emu_ports": [
+  46000,
+  46001,
+  46002,
+  46003
+ ],
+ "slot_bases": [
+  46100,
+  46110,
+  46120,
+  46130
+ ],
+ "block": [],
+ "direct_dial": false,
+ "helpers": {
+  "h0": {
+   "slot": 0,
+   "emu_rx": 3603,
+   "emu_tx": 3603,
+   "emu_drop": 0,
+   "loopback_strangers": 0,
+   "per_slot": [
+    {
+     "slot": 0,
+     "data_tx": 0,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 0,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 1,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 2,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 3,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    }
+   ],
+   "links": [
+    {
+     "peer": 1,
+     "kind": "host-joiner",
+     "attempts": 1,
+     "connect_ms": 0.633,
+     "state": "completed",
+     "ping_p50": 0.171,
+     "ping_p95": 0.306,
+     "ping_max": 0.442,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    },
+    {
+     "peer": 2,
+     "kind": "host-joiner",
+     "attempts": 1,
+     "connect_ms": 0.405,
+     "state": "completed",
+     "ping_p50": 0.125,
+     "ping_p95": 0.281,
+     "ping_max": 0.305,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    },
+    {
+     "peer": 3,
+     "kind": "host-joiner",
+     "attempts": 1,
+     "connect_ms": 0.317,
+     "state": "completed",
+     "ping_p50": 0.116,
+     "ping_p95": 0.212,
+     "ping_max": 0.272,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    }
+   ]
+  },
+  "j1": {
+   "slot": 1,
+   "emu_rx": 3603,
+   "emu_tx": 3603,
+   "emu_drop": 0,
+   "loopback_strangers": 0,
+   "per_slot": [
+    {
+     "slot": 0,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 1,
+     "data_tx": 0,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 0,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 2,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 3,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    }
+   ],
+   "links": [
+    {
+     "peer": 0,
+     "kind": "joiner-host",
+     "attempts": 1,
+     "connect_ms": 86.358,
+     "state": "completed",
+     "ping_p50": 0.171,
+     "ping_p95": 0.308,
+     "ping_max": 0.389,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    },
+    {
+     "peer": 2,
+     "kind": "joiner-joiner",
+     "attempts": 1,
+     "connect_ms": 0.394,
+     "state": "completed",
+     "ping_p50": 0.114,
+     "ping_p95": 0.233,
+     "ping_max": 0.301,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    },
+    {
+     "peer": 3,
+     "kind": "joiner-joiner",
+     "attempts": 1,
+     "connect_ms": 0.567,
+     "state": "completed",
+     "ping_p50": 0.107,
+     "ping_p95": 0.237,
+     "ping_max": 0.287,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    }
+   ]
+  },
+  "j2": {
+   "slot": 2,
+   "emu_rx": 3603,
+   "emu_tx": 3603,
+   "emu_drop": 0,
+   "loopback_strangers": 0,
+   "per_slot": [
+    {
+     "slot": 0,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 1,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 2,
+     "data_tx": 0,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 0,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 3,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    }
+   ],
+   "links": [
+    {
+     "peer": 0,
+     "kind": "joiner-host",
+     "attempts": 1,
+     "connect_ms": 87.05,
+     "state": "completed",
+     "ping_p50": 0.163,
+     "ping_p95": 0.273,
+     "ping_max": 0.374,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    },
+    {
+     "peer": 1,
+     "kind": "joiner-joiner",
+     "attempts": 1,
+     "connect_ms": 0.355,
+     "state": "completed",
+     "ping_p50": 0.111,
+     "ping_p95": 0.222,
+     "ping_max": 0.288,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    },
+    {
+     "peer": 3,
+     "kind": "joiner-joiner",
+     "attempts": 1,
+     "connect_ms": 0.326,
+     "state": "completed",
+     "ping_p50": 0.109,
+     "ping_p95": 0.194,
+     "ping_max": 0.264,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    }
+   ]
+  },
+  "j3": {
+   "slot": 3,
+   "emu_rx": 3603,
+   "emu_tx": 3603,
+   "emu_drop": 0,
+   "loopback_strangers": 0,
+   "per_slot": [
+    {
+     "slot": 0,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 1,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 2,
+     "data_tx": 1201,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 1201,
+     "data_rx_via_host": 0
+    },
+    {
+     "slot": 3,
+     "data_tx": 0,
+     "data_tx_via_host": 0,
+     "data_no_route": 0,
+     "data_rx": 0,
+     "data_rx_via_host": 0
+    }
+   ],
+   "links": [
+    {
+     "peer": 0,
+     "kind": "joiner-host",
+     "attempts": 1,
+     "connect_ms": 71.523,
+     "state": "completed",
+     "ping_p50": 0.155,
+     "ping_p95": 0.249,
+     "ping_max": 0.364,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    },
+    {
+     "peer": 1,
+     "kind": "joiner-joiner",
+     "attempts": 1,
+     "connect_ms": 62.466,
+     "state": "completed",
+     "ping_p50": 0.114,
+     "ping_p95": 0.186,
+     "ping_max": 0.306,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    },
+    {
+     "peer": 2,
+     "kind": "joiner-joiner",
+     "attempts": 1,
+     "connect_ms": 0.443,
+     "state": "completed",
+     "ping_p50": 0.103,
+     "ping_p95": 0.174,
+     "ping_max": 0.272,
+     "fwd_out": 0,
+     "bad_tag": 0,
+     "bad_mac": 0,
+     "bad_src": 0,
+     "send_err": 0
+    }
+   ]
+  }
+ }
+}

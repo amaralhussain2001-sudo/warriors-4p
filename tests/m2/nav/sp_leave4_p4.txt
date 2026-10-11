@@ -1,0 +1,12 @@
+# test C4, slot 3: drop-in join (retries for the extra model); Start every 300 polls after the restart
+8350 START:4
+8650 START:4
+8950 START:4
+11150 START:4
+11450 START:4
+11750 START:4
+12050 START:4
+12350 START:4
+12650 START:4
+12950 START:4
+13250 START:4

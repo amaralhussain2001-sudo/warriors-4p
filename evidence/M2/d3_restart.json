@@ -1,0 +1,90 @@
+{
+ "tag": "d3_restart",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot",
+ "seconds": 603,
+ "state": {
+  "0": {
+   "poll": 16071,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30240"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "1": {
+   "poll": 16081,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30240"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16094,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30240"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 9305,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10165",
+    "0x20168",
+    "0x30240"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 15886, polls 15887, waits 393, wait total 19267.0 ms, max 15071.3 ms, hashes 1367, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 53% gs 14% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 2
+  },
+  "1": {
+   "last": "poll 15886, polls 15887, waits 378, wait total 19001.1 ms, max 15100.5 ms, hashes 1367, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 54% gs 14% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 2
+  },
+  "2": {
+   "last": "poll 15888, polls 15889, waits 222, wait total 17364.9 ms, max 15097.3 ms, hashes 1367, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 54% gs 14% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 2
+  },
+  "3": {
+   "last": "poll 9183, polls 9184, waits 233, wait total 2589.1 ms, max 186.5 ms, hashes 918, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 53% gs 11% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 2
+  }
+ },
+ "hash_points_common": 310,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "last_common": "9300",
+ "leaver_slot": 3,
+ "remaining_common": 529,
+ "remaining_mismatches": 0,
+ "remaining_points_after_leave": 219,
+ "remaining_last_common": "15870"
+}

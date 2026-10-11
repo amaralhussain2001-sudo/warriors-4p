@@ -1,0 +1,6 @@
+2300 START
+# M5 pause/skip policy test (4 instances, SessionPolicies = true): votes during the L9_IN movie and the cinematic, then pause requests
+4500 X:4
+5450 X:4
+9400 START:4
+9800 START:4

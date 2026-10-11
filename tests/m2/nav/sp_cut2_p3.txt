@@ -1,0 +1,6 @@
+# test B2, player 3 (pad 1, not a player yet): Cross during the L9_IN movie (expect: movie skipped, any pad),
+# Cross during the cinematic (expect: no skip, not a player), then the usual drop-in join
+4500 X
+5200 X
+8200 START:4
+8500 START:4

@@ -2,7 +2,11 @@
 
 Usage: python -I tests/m2/m2_run4.py <tag> [--seconds 420] [--bots-from 4700] [--crop] [--force-split]
        [--calls "poll:fn:args,..."] [--groups "extra;groups"] [--script1..4 file] [--ini Section/Key=Value]
-       [--polls 40000] [--script-bots-from N] [--shot-slots 0,1,2,3]
+       [--polls 40000] [--script-bots-from N] [--shot-slots 0,1,2,3] [--shot-every 30]
+       [--w4p KEY=VALUE ...] [--w4p-slotN KEY=VALUE ...]  (extra W4P ini keys for every slot / for slot N, e.g.
+       --w4p DisconnectTimeoutS=15 --w4p-slot3 TestDrop=9500:0 --w4p-slot0 TestHostChoice=continue)
+       [--peer-base 46100]  (peers through the w4p-net helpers; start them first)
+       [--leaver N]  (slot that leaves: the summary also compares the other slots after his last hash point)
 --polls: length of every input file (the files wrap around after it, so runs longer than about polls/28 s need more).
 --script-bots-from: slots with a --scriptN file play seeded random bot input from poll N on, plus a Start press every
 300 polls so that players 3-4 re-join after a mission restart (Start does not pause for them).
@@ -106,7 +110,10 @@ def main():
                  "PadForSlot2 = 1", "PadForSlot3 = 2", f"ListenPort = {PORTS[slot]}", "InputDelay = 2", "HashInterval = 30",
                  f"LogFile = {os.path.join(out_dir, f'w4p_slot{slot}.log')}", f"DumpDir = {out_dir}", f"BotInput = {bot}",
                  f"Crop = {'true' if '--crop' in sys.argv else 'false'}", f"CallAt = {opt('--calls', CALLS, str)}"]
-        lines += [f"Peer{o} = 127.0.0.1:{PORTS[o]}" for o in INSTS if o != slot]
+        peer_base = opt("--peer-base", 0)  # through w4p-net helpers (net/w4p-net/tests/local4.py): 127.0.0.1:base+10*slot+o
+        lines += [f"Peer{o} = 127.0.0.1:{(peer_base + 10 * slot + o) if peer_base else PORTS[o]}" for o in INSTS if o != slot]
+        extra = [a for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] in ("--w4p", f"--w4p-slot{slot}")]
+        lines += [f"{k.strip()} = {v.strip()}" for k, v in (e.split("=", 1) for e in extra)]
         ini = os.path.join(out_dir, f"w4p_slot{slot}.ini")
         open(ini, "w", encoding="utf-8").write("\n".join(lines) + "\n")
         env = dict(os.environ, W4P_CONFIG=ini)
@@ -119,8 +126,8 @@ def main():
     shots = 0
     while time.time() - t0 < seconds and all(p.poll() is None for p in procs.values()):
         time.sleep(5)
-        if time.time() >= next_shot:  # one picture every 30 s (slot 0 by default)
-            next_shot += 30
+        if time.time() >= next_shot:  # one picture every --shot-every s (30; slot 0 by default)
+            next_shot += opt("--shot-every", 30)
             ss = shot_slots[shots % len(shot_slots)]
             shots += 1
             subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
@@ -157,12 +164,22 @@ def main():
                        "calls": len(re.findall(r"test call at poll", txt))}
     common = sorted(set.intersection(*(set(h) for h in hashes.values())), key=int)
     mism = [t for t in common if len({hashes[s][t] for s in INSTS}) > 1]
+    leaver = opt("--leaver", -1)
+    rest = [x for x in INSTS if x != leaver]
+    common_rest = sorted(set.intersection(*(set(hashes[x]) for x in rest)), key=int) if leaver >= 0 else []
+    mism_rest = [t for t in common_rest if len({hashes[x][t] for x in rest}) > 1]
+    after = [t for t in common_rest if not common or int(t) > int(common[-1])]
     summary = {"tag": tag, "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot", "seconds": round(time.time() - t0),
                "state": state, "stats": stats, "hash_points_common": len(common), "hash_mismatches": len(mism),
                "first_mismatch": mism[0] if mism else None, "last_common": common[-1] if common else None}
+    if leaver >= 0:
+        summary.update({"leaver_slot": leaver, "remaining_common": len(common_rest), "remaining_mismatches": len(mism_rest),
+                        "remaining_points_after_leave": len(after), "remaining_last_common": common_rest[-1] if common_rest else None})
     os.makedirs(os.path.join(PROJ, "evidence", "M2"), exist_ok=True)
     json.dump(summary, open(os.path.join(PROJ, "evidence", "M2", f"{tag}.json"), "w"), indent=1)
-    print(json.dumps({k: summary[k] for k in ("hash_points_common", "hash_mismatches", "first_mismatch", "last_common", "state")}, indent=1))
+    print(json.dumps({k: summary[k] for k in ("hash_points_common", "hash_mismatches", "first_mismatch", "last_common", "state",
+                                              "leaver_slot", "remaining_common", "remaining_mismatches",
+                                              "remaining_points_after_leave", "remaining_last_common") if k in summary}, indent=1))
     for slot in INSTS:
         print(slot, stats[slot])
 

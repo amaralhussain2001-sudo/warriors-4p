@@ -1,0 +1,75 @@
+[    0.001] w4p-net (helper protocol 1, libjuice 1.7.4), role host
+[    0.001] STUN: disabled (--no-stun)
+[    0.001] options: players 2, ICE port 45400, bind loopback, emulator port 45200, slot ports 45300-45303, connect window 10 min, TEST --test-no-direct-dial
+[    0.001] ICE socket: UDP port 45400 (MUX mode, one socket for all links), bind loopback
+[    0.001] @listen 45400
+[    0.001] juice[info]: Changing state to gathering
+[    0.001] juice[info]: Changing state to connecting
+[    0.002] juice[info]: Candidate gathering done
+[    0.002] host candidates gathered in 1.7 ms (gathering done)
+[    0.002] local candidate: host IPv4 loopback port 45400
+[    0.002] join code issued: 48 characters, 1 candidate(s), for 2 players
+[    0.002] emulator bridge: emulator at loopback port 45200, helper slot ports 45300-45303 (W4P Peer<p> = 127.0.0.1:45300+p)
+[    0.020] direct dial from joiner 7628 ignored [TEST SWITCH --test-no-direct-dial]
+[   10.006] ---- periodic summary (role host, slot 0) ----
+[   10.006] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   20.009] ---- periodic summary (role host, slot 0) ----
+[   20.009] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   30.017] ---- periodic summary (role host, slot 0) ----
+[   30.017] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   40.020] ---- periodic summary (role host, slot 0) ----
+[   40.020] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   50.033] ---- periodic summary (role host, slot 0) ----
+[   50.033] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   60.041] ---- periodic summary (role host, slot 0) ----
+[   60.041] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   70.045] ---- periodic summary (role host, slot 0) ----
+[   70.045] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   80.046] ---- periodic summary (role host, slot 0) ----
+[   80.046] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   90.054] ---- periodic summary (role host, slot 0) ----
+[   90.054] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  100.061] ---- periodic summary (role host, slot 0) ----
+[  100.061] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  110.073] ---- periodic summary (role host, slot 0) ----
+[  110.073] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  120.077] ---- periodic summary (role host, slot 0) ----
+[  120.077] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  130.088] ---- periodic summary (role host, slot 0) ----
+[  130.088] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  140.088] ---- periodic summary (role host, slot 0) ----
+[  140.088] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  150.104] ---- periodic summary (role host, slot 0) ----
+[  150.104] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  160.110] ---- periodic summary (role host, slot 0) ----
+[  160.110] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  170.110] ---- periodic summary (role host, slot 0) ----
+[  170.111] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  180.024] reply code accepted: joiner 7628, 1 candidate(s), reserved slot 1 (path a)
+[  180.024] juice[info]: Changing state to gathering
+[  180.024] juice[info]: Changing state to connecting
+[  180.024] juice[info]: Candidate gathering done
+[  180.024] juice[info]: Connectivity timer started
+[  180.024] link 0 (host-joiner, peer slot 1, controlling): agent #1 started, 1 remote candidate(s)
+[  180.024]   remote candidate: host IPv4 loopback port 45401
+[  180.024] @path a 1
+[  180.024] Reply code accepted (Player 2). Connecting...
+[  180.024] link 0 (peer slot 1): connecting (0.1 ms after agent #1 started)
+[  180.025] juice[info]: Changing state to connected
+[  180.025] juice[info]: Changing state to completed
+[  180.039] link 0 (peer slot 1): completed (0.8 ms after agent #1 started)
+[  180.039] link 0 connected: 0.7 ms after the first agent start (attempt 1); selected pair: local host IPv4 loopback port 45400, remote host IPv4 loopback port 45401
+[  180.039] @link 1 connected 0.7 1 a
+[  180.117] Player 2 joined (path a; connected 0.7 ms after the agent started).
+[  180.118] @joined 1 a 93.6
+[  180.118]   player 2 candidate: host IPv4 loopback port 45401
+[  180.118] ---- periodic summary (role host, slot 0) ----
+[  180.118] link 0 host-joiner peer slot 1 path a: state completed, attempts 1, selected local host IPv4 loopback port 45400 / remote host IPv4 loopback port 45401; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 2 dgr/47 B, received 1 dgr/31 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  180.118] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  180.353] @ready 180353.3
+[  180.353] All 2 players are connected. (Press Start in the launcher.)
+[  180.462] ---- final summary (role host, slot 0) ----
+[  180.463] link 0 host-joiner peer slot 1 path a: state completed, attempts 1, selected local host IPv4 loopback port 45400 / remote host IPv4 loopback port 45401; ping RTT n=1 p50=0.109 p95=0.109 max=0.109 ms; sent 6 dgr/167 B, received 5 dgr/164 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[  180.463]   ping RTT histogram (ms): <0.5:1 0.5-1:0 1-2:0 2-5:0 5-10:0 10-20:0 20-50:0 50-100:0 100-200:0 >=200:0
+[  180.463] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[  180.463] exit

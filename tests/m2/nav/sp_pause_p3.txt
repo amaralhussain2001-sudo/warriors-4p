@@ -1,0 +1,4 @@
+# test A, player 3: drop-in join (as cal_p3.txt), then one Start in gameplay
+8200 START:4
+8500 START:4
+10700 START  # P3 Start in gameplay (expect: no pause)

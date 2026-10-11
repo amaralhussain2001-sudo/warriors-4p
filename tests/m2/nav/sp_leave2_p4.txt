@@ -1,0 +1,5 @@
+# test C2, slot 3: drop-in join (retries for the extra model), walk up after player 2 left; no Start after the restart
+8350 START:4
+8650 START:4
+8950 START:4
+9500 LUP:60

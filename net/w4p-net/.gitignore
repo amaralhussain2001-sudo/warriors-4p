@@ -1,0 +1,2 @@
+# CMake/Ninja build output (build.ps1 builds into net/w4p-net/build/); the repo-root .gitignore only ignores /build/.
+/build/

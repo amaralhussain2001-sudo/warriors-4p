@@ -183,7 +183,8 @@ def main():
                               ("spawn_leave.txt", "4p spawn leave", "delete an added Warrior when its player leaves (m2_spawn_companion.md)"),
                               ("inventory.txt", "4p inventory", "items, money and Flash revives for players 3-4; needs 4p and 4p hud B1 (m2_inventory34.md)"),
                               ("fx34.txt", "4p fx", "fades, flashes, blur and game-over black for views 3-4; needs 4p (m2_fx34.md)"),
-                              ("fx34_fog.txt", "4p fx fog", "optional: 3D fog on views 3-4 (2 extra fog systems; m2_fx34.md B-opt)")):
+                              ("fx34_fog.txt", "4p fx fog", "optional: 3D fog on views 3-4 (2 extra fog systems; m2_fx34.md B-opt)"),
+                              ("session.txt", "session", "session policies - movie flag, pause by a downed player 1, no Player 2 drop-out in Quit, LEAVE(index); needs 4p spawn and spawn leave (session_policies.md)")):
         lines = [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
         out += ["", f"[warriors-4p {title}]", "author=warriors-4p", f"description=Experimental: {desc}.", ""] + lines
     # TEST ONLY (M2 engine tests in Mission 1): PickJoinCompanion (FUN_0022A770) skips its gang-wide search in level 99,

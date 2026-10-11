@@ -1,0 +1,65 @@
+{
+ "test": "T1d",
+ "delay_s": 5.0,
+ "env": "SINGLE-PC loopback, no STUN, host --test-no-direct-dial",
+ "reply_printed_s": 0.035,
+ "pasted_s": 5.035,
+ "host_connected_s": 5.061,
+ "connected_after_paste_ms": 26.2,
+ "joiner_connected_event": "link 0 connected 5075.0 1 j",
+ "joiner_failed_events": [],
+ "joiner_listen_events": [
+  "listen 45401"
+ ],
+ "joiner_reply_codes_printed": 1,
+ "ready_s": {
+  "h0": 6.083390300016617,
+  "j1": 5.13854420001735
+ },
+ "links": [
+  {
+   "helper": "h0",
+   "slot": 0,
+   "peer": 1,
+   "kind": "host-joiner",
+   "path": "a",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 0.553,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45400",
+   "sel_remote": "host IPv4 loopback port 45401",
+   "ping_n": 4,
+   "ping_p50": 0.17,
+   "ping_p95": 0.209,
+   "ping_max": 0.209,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j1",
+   "slot": 1,
+   "peer": 0,
+   "kind": "joiner-host",
+   "path": "j",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 5075.023,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45401",
+   "sel_remote": "host IPv4 loopback port 45400",
+   "ping_n": 5,
+   "ping_p50": 0.169,
+   "ping_p95": 0.225,
+   "ping_max": 0.225,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  }
+ ]
+}

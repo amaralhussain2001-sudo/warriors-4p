@@ -1,47 +1,52 @@
-# Project state (handoff, updated 2026-10-11 night)
+# Project state (handoff, updated 2026-10-11 late night)
 
-**Stage:** 2 (approved 2026-10-10; decisions D1-D14 in `docs/DECISIONS.md`).
-**Milestone:** **M2 complete** - report `docs/reports/M2_report.md`, tag `m2`. All 7 exit criteria have evidence
-(caveat: 30 fps mode dips to 27.4-28.7 in one heavy Mission 1 4-view scene, R-31). Findings up to **F-0161**.
-The user continues without stopping between milestones (D12). Next: session policies (see Next steps).
+**Stage:** 2 (approved 2026-10-10; decisions D1-D16 in `docs/DECISIONS.md`).
+**Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5 (session policies + transport) in
+progress**: exit criteria `docs/plan/M5.md`. Findings up to **F-0173**. The user continues without stopping between
+milestones (D12). Fork build **w4p-m5-1** (fork commit 76f7c1d, patch `emulator/patches/0014`; protocol version 3).
 
 ## Waiting on the user
-- **E6 2-PC test** with `dist/warriors-4p-test.zip` (2-player package, self-test p6: 445 points, 0 mismatches). Ask for:
-  the `logs` folder from both PCs, each PC's CPU/GPU, how controls and 60 fps felt. Do NOT rebuild the zip before that
-  test unless asked. The zip does not contain this session's fixes (downed-player view, R8, extra model) - on purpose.
-- **Q1 (M2 report):** revive blocked by a teammate standing in between (game's own rule, F-0157): (A) keep (recommended)
-  / (B) teammates do not block.
-- **Q2 (M2 report):** widescreen on by default (D11): (A) yes (recommended) / (B) no.
+- **E6 2-PC test** with `dist/warriors-4p-test.zip` (2-player package, old build w4p-m3-7). Ask for the `logs` folder
+  from both PCs, each PC's CPU/GPU, how controls and 60 fps felt. Do NOT rebuild that zip unless asked.
+- **Session-policy details (implemented with the recommended option A, to confirm):** U1 a non-host who paused may only
+  resume (Start); U2 Esc in a session = pause request instead of an emulator pause; U3 a completed skip vote skips only
+  the current scene (each scene of a chain votes again).
+- **Network questions (m5_connection_design.md section 7):** B automatic router port opening (UPnP) - recommended off;
+  C public message service ntfy.sh to remove the reply code - recommended no; D when the LAN test (second PC) and the
+  internet test with friends can happen (T2-T4). (A: helper process - taken as recommended, within the approved plan.)
 
-## What this session did (2026-10-11 evening/night)
-- D14 recorded (user: option A, load an extra Warrior model). Implemented and verified: player 4 joins as **SWAN** in
-  Mission 13 with own model and HUD name, also in 4-instance lockstep (F-0154, F-0160).
-- MTVU desync again with fork 0011/0013 (q13, F-0150): **MTVU stays off; no more MTVU work.**
-- Downed player keeps own view: 2 words in `[own view]` (F-0151); GAME OVER text now in all four quarters (F-0152).
-- **Level-end crash** (restart / last checkpoint / mission complete) with players 3-4: HUD slot release used the
-  2-entry table; fix R8, 18 words in `[4p hud B1]` (F-0153, `docs/research/m2_hud_release.md`).
-- Inventory tests: pick-up (F-0156), checkpoint (F-0155), revive (F-0157) pass; money bank inconclusive (F-0158).
-- 30-min 4-instance lockstep with the final set: **q15, 2007 s, 1,876 points, 0 mismatches, 0 crashes** (F-0160).
-- 60 fps with 4 views: median 59.84, min 59.14 (F-0161). Originals: 20 files unchanged (HASHES.md).
-- Step 5 (bottom-row radar sliver with R7): no neighbouring radar in any q14/q15 bottom-row screenshot (F-0160).
+## M5 status (all SINGLE-PC, 4 instances on loopback unless noted)
+| # | Criterion | Status | Evidence |
+|---|---|---|---|
+| 1 | Pause | **met**: any player's Start -> pause on all at the same poll, "Paused by Player N", only pauser/host resumes; Esc request not tested | F-0171 |
+| 2 | Cutscene skip | **met**: "k/N want to skip", movie and scene skipped only after the last vote; vote reset per scene fixed after the test (re-test) | F-0171 |
+| 3 | Disconnect, back in time | **met** (20 s outage, 0 mismatches); countdown visible on screen | F-0164, F-0167 |
+| 4 | Timeout choice | **met** for a dropped player 3/4: continue without (LEAVE, 3 players/3 views) and restart; dropped player 2 variant (2-player flag call) not tested | F-0165, F-0169, F-0170 |
+| 5 | Host leaving | **met** ("host left, session over", no hang) | F-0167 |
+| 6 | Join only in the lobby | open (launcher/lobby not built) | - |
+| 7 | Saving (co-op save separate, identical at start) | open | - |
+| 8 | Connection | w4p-net helper built; loopback tests T1a-T1e pass; 4 emulators through the helpers in sync (T1f); LAN/internet need the user | F-0172, F-0173 |
+| 9 | Originals unchanged | checked at M2 end (20 files); re-check at M5 end | HASHES.md |
 
 ## Next steps (in this order)
-1. **Session policies** (BRIEF §4.6; risk R-24): pause by any player for everyone with "Paused by Player N", only that
-   player or the host unpauses; cutscene skip only when all connected players pressed skip, vote shown on every
-   screen ("2/4 want to skip"); disconnect freeze with a 60 s countdown, then host chooses continue-without (D7) or
-   restart from checkpoint; host leaving ends the session. Start with research (how the game pauses, cutscene skip
-   input, W4P side) - write exit criteria first (new milestone plan).
-2. Connection layer (D5: ICE + STUN + join code), then the 4-player package + lobby (players join only in the lobby).
-3. M6: all story missions (companions per mission, starting items for players 3-4, extra-model memory per level R-28,
-   pocket clearing R-29, money bank via the real mission summary F-0158, GAME OVER menu input question F-0155).
-4. Optional: EE 180 % in 30 fps mode for 4-player sessions (R-31); 60 fps tick audit (R-22).
+1. Re-test the vote reset (two scenes in a chain) and the Esc pause request; dropped player 2 (RestartCalls with
+   `0:00419AC0:GM:0,2:00160D78:GM+0x124`, session_policies.md 4.3) and a dropped player whose index shifts (crop check
+   with a pad-owner probe).
+2. Launcher + lobby (Start-Coop for 2-4 players): host/join with w4p-net codes, slot list, version check, input delay,
+   session INI (`SessionPolicies = true`, `LeaveCalls = 0:000E7100:P`, `RestartCalls = 0:00160D78:GM+0x124`, groups incl.
+   `[warriors-4p session]` and the call mailbox), join only in the lobby (criterion 6).
+3. Saving policy (criterion 7): co-op memory card per group, identical at session start, never the user's own cards.
+4. T1g (outage through the helpers), impairment runs through the helpers; then the 4-player test package for the user
+   (LAN first, T2), then internet with friends (T3/T4) - needs the user.
+5. M6: all story missions (companions, starting items for players 3-4, extra-model memory R-28, pocket clearing R-29,
+   money bank F-0158, GAME OVER menu input F-0155). Optional: R-31 / R-22.
 
 ## How to run things (quick reference)
 - Build the fork: `powershell -File emulator\build.ps1` (log `local/logs/build_Release.log`). Build tag now
-  **w4p-m3-7**; fork commits are exported to `emulator/patches/0001..0013` (author `warriors-4p <w4p@localhost>`).
+  **w4p-m5-1**; fork commits are exported to `emulator/patches/0001..0014` (author `warriors-4p <w4p@localhost>`).
   Do not build while a test instance runs (the exe is locked).
 - Patch file: edit `mod/m2/*.txt` or `mod/make_pnach.py`, then `python -I mod/make_pnach.py > mod/w4p_m1.pnach` and
-  `python -I tools/note_patches.py check mod/w4p_m1.pnach` (expected: **2676 addresses, 6 problems** = the known `[4p hud A]` vs
+  `python -I tools/note_patches.py check mod/w4p_m1.pnach` (expected: **2810 addresses, 6 problems** = the known `[4p hud A]` vs
   `[4p hud B1]` alternatives; anything more is new).
 - Groups for a full 4-player test: `warriors-4p own view;warriors-4p hud;warriors-4p 4p;warriors-4p 4p hud B1;
   warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;
@@ -78,6 +83,13 @@ The user continues without stopping between milestones (D12). Next: session poli
   state), `gameover_probe`, `p4_identity` (char ids, extra-model words, `force_panels` test aid), `extra_survey`
   (model pool), `inv_tests` (+ `inv_t2b`, `inv_t2c`, `revive_probe`), `statesave` (save state to local/m2/states/),
   `sixty_probe`. Only one nav_probe per --inst; the next run deletes that sandbox (copy emulog.txt first).
+- M5 tests (4 instances): `m2_run4.py ... --w4p DisconnectTimeoutS=15 --w4p-slot3 TestDrop=9300:0 --w4p-slot0
+  TestHostChoice=continue --w4p "LeaveCalls=0:000E7100:P" --leaver 3` (groups + `warriors-4p session`); pause/skip:
+  `--script1..4 tests/m2/nav/pol_p1..4.txt --w4p SessionPolicies=true`; through w4p-net: start
+  `python -I net/w4p-net/tests/local4.py --emu-ports 41200,41201,41202,41203 --stop-file local/m5/stop_helpers`, wait
+  for HELPERS READY, then `m2_run4.py ... --peer-base 46100`, then create the stop file. w4p-net build:
+  `powershell -File net\w4p-net\build.ps1` (README in net/w4p-net). `--shot-every 5` for OSD screenshots.
+- Rebuilding the fork while other agents run emulators: ask them to pause runs first (the exe is locked).
 - 4-player Mission 13 savestate (made with pnach_prefrag + the 10 groups, EE 100 %): `local/m2/states/m13_4p_state.p2s`.
   60 fps measurement: `nav_probe.py sx2_60 tests/m2/nav/empty.txt --inst 10 --players 4 --random-bots --state <state>
   --groups "<10 groups>;warriors-4p 60fps" --patch local/m2/pnach_prefrag.pnach --ee 2 --seconds 200`.
@@ -97,5 +109,5 @@ The user continues without stopping between milestones (D12). Next: session poli
 - Sandbox windows may start with the Arabic keyboard layout; `tools/winkeys.ps1` switches the window to en-US.
 
 ## Result line for the last run of this session
-- q15 (4 instances, Mission 13, final patch set, MTVU off, build w4p-m3-7, 2007 s): **1,876 common hash points,
-  0 mismatches, 0 TLB misses, 4 players / 4 views, player 4 = SWAN, survived GAME OVER + level restart** (F-0160).
+- t1f_helpers (4 instances through 4 w4p-net helpers on loopback, Mission 13, M2 groups, MTVU off, build w4p-m5-1, 605 s):
+  **549 common hash points, 0 mismatches, 4 players / 4 views** (F-0173).

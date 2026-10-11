@@ -1,0 +1,25 @@
+# session policies (docs/research/session_policies.md) test A, player 1: boot to Mission 1 (as boot_to_m1_2p.txt),
+# then pause tests in Mission 13 (level jump by --callat at 4000/4010)
+1100 START
+1760 START
+1900 X
+2120 RIGHT
+2200 X
+2580 X
+2660 X
+2700 DOWN
+2730 DOWN
+2760 DOWN
+2790 LEFT
+2820 LEFT
+2880 X
+3050 X
+3200 X
+3350 X
+3500 X
+3650 X
+3800 X
+9300 START   # P1 opens the pause
+9700 START   # P1 closes it
+10250 START  # P1 tries to close P2's pause
+11300 START  # P1 (downed by kill_p1 at 11100) tries to pause

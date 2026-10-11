@@ -1,0 +1,195 @@
+{
+ "mode": "lockstep",
+ "seconds": 20.0,
+ "rate": 60,
+ "size": 658,
+ "delay": 2,
+ "endpoints": [
+  {
+   "slot": 0,
+   "frames_run": 1200,
+   "stall_s": 0.0,
+   "stall_pct": 0.0,
+   "max_stall_ms": 0.0,
+   "rejected": 0,
+   "gaps_over_32": 0
+  },
+  {
+   "slot": 1,
+   "frames_run": 1200,
+   "stall_s": 0.0,
+   "stall_pct": 0.0,
+   "max_stall_ms": 0.0,
+   "rejected": 0,
+   "gaps_over_32": 0
+  },
+  {
+   "slot": 2,
+   "frames_run": 1200,
+   "stall_s": 0.0,
+   "stall_pct": 0.0,
+   "max_stall_ms": 0.0,
+   "rejected": 0,
+   "gaps_over_32": 0
+  },
+  {
+   "slot": 3,
+   "frames_run": 1200,
+   "stall_s": 0.0,
+   "stall_pct": 0.0,
+   "max_stall_ms": 0.0,
+   "rejected": 0,
+   "gaps_over_32": 0
+  }
+ ],
+ "pairs": [
+  {
+   "from": 1,
+   "to": 0,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.182,
+   "lat_p95_ms": 0.226,
+   "lat_p99_ms": 0.288,
+   "lat_max_ms": 0.415,
+   "over_33ms": 0
+  },
+  {
+   "from": 2,
+   "to": 0,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.142,
+   "lat_p95_ms": 0.192,
+   "lat_p99_ms": 0.239,
+   "lat_max_ms": 0.372,
+   "over_33ms": 0
+  },
+  {
+   "from": 3,
+   "to": 0,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.096,
+   "lat_p95_ms": 0.169,
+   "lat_p99_ms": 0.213,
+   "lat_max_ms": 0.333,
+   "over_33ms": 0
+  },
+  {
+   "from": 0,
+   "to": 1,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.28,
+   "lat_p95_ms": 0.354,
+   "lat_p99_ms": 0.436,
+   "lat_max_ms": 0.578,
+   "over_33ms": 0
+  },
+  {
+   "from": 2,
+   "to": 1,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.14,
+   "lat_p95_ms": 0.216,
+   "lat_p99_ms": 0.271,
+   "lat_max_ms": 0.378,
+   "over_33ms": 0
+  },
+  {
+   "from": 3,
+   "to": 1,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.097,
+   "lat_p95_ms": 0.198,
+   "lat_p99_ms": 0.23,
+   "lat_max_ms": 0.327,
+   "over_33ms": 0
+  },
+  {
+   "from": 0,
+   "to": 2,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.246,
+   "lat_p95_ms": 0.308,
+   "lat_p99_ms": 0.379,
+   "lat_max_ms": 0.511,
+   "over_33ms": 0
+  },
+  {
+   "from": 1,
+   "to": 2,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.199,
+   "lat_p95_ms": 0.256,
+   "lat_p99_ms": 0.318,
+   "lat_max_ms": 0.44,
+   "over_33ms": 0
+  },
+  {
+   "from": 3,
+   "to": 2,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.094,
+   "lat_p95_ms": 0.209,
+   "lat_p99_ms": 0.258,
+   "lat_max_ms": 0.344,
+   "over_33ms": 0
+  },
+  {
+   "from": 0,
+   "to": 3,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.242,
+   "lat_p95_ms": 0.306,
+   "lat_p99_ms": 0.398,
+   "lat_max_ms": 0.515,
+   "over_33ms": 0
+  },
+  {
+   "from": 1,
+   "to": 3,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.197,
+   "lat_p95_ms": 0.267,
+   "lat_p99_ms": 0.337,
+   "lat_max_ms": 0.451,
+   "over_33ms": 0
+  },
+  {
+   "from": 2,
+   "to": 3,
+   "sent": 1200,
+   "received_unique": 1200,
+   "loss_pct": 0.0,
+   "lat_p50_ms": 0.147,
+   "lat_p95_ms": 0.234,
+   "lat_p99_ms": 0.291,
+   "lat_max_ms": 0.389,
+   "over_33ms": 0
+  }
+ ],
+ "all_lat_p50_ms": 0.169,
+ "all_lat_p95_ms": 0.287,
+ "all_lat_p99_ms": 0.355,
+ "all_lat_max_ms": 0.578
+}

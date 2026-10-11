@@ -1,0 +1,612 @@
+{
+ "test": "T1b",
+ "players": 4,
+ "paste_reply": true,
+ "env": "SINGLE-PC loopback, no STUN",
+ "started": "2026-10-11 21:21:10",
+ "ready_s": {
+  "h0": 1.082800500007579,
+  "j1": 0.12896490001003258,
+  "j2": 0.12920199998188764,
+  "j3": 0.1292688000248745
+ },
+ "host_paths": [
+  "path a 1",
+  "path a 2",
+  "path a 3"
+ ],
+ "joined": [
+  "joined 1 a 94.2",
+  "joined 2 a 94.1",
+  "joined 3 a 94.5"
+ ],
+ "link_events": {
+  "h0": [
+   {
+    "t": 0.052,
+    "peer": 1,
+    "what": "connected",
+    "args": [
+     "0.6",
+     "1",
+     "a"
+    ]
+   },
+   {
+    "t": 0.052,
+    "peer": 2,
+    "what": "connected",
+    "args": [
+     "0.4",
+     "1",
+     "a"
+    ]
+   },
+   {
+    "t": 0.083,
+    "peer": 3,
+    "what": "connected",
+    "args": [
+     "0.5",
+     "1",
+     "a"
+    ]
+   }
+  ],
+  "j1": [
+   {
+    "t": 0.097,
+    "peer": 0,
+    "what": "connected",
+    "args": [
+     "65.7",
+     "1",
+     "j"
+    ]
+   },
+   {
+    "t": 0.161,
+    "peer": 2,
+    "what": "connected",
+    "args": [
+     "0.6",
+     "1",
+     "i"
+    ]
+   },
+   {
+    "t": 0.176,
+    "peer": 3,
+    "what": "connected",
+    "args": [
+     "0.6",
+     "1",
+     "i"
+    ]
+   }
+  ],
+  "j2": [
+   {
+    "t": 0.097,
+    "peer": 0,
+    "what": "connected",
+    "args": [
+     "66.3",
+     "1",
+     "j"
+    ]
+   },
+   {
+    "t": 0.129,
+    "peer": 1,
+    "what": "connected",
+    "args": [
+     "0.6",
+     "1",
+     "i"
+    ]
+   },
+   {
+    "t": 0.221,
+    "peer": 3,
+    "what": "connected",
+    "args": [
+     "61.8",
+     "1",
+     "i"
+    ]
+   }
+  ],
+  "j3": [
+   {
+    "t": 0.097,
+    "peer": 0,
+    "what": "connected",
+    "args": [
+     "66.5",
+     "1",
+     "j"
+    ]
+   },
+   {
+    "t": 0.129,
+    "peer": 1,
+    "what": "connected",
+    "args": [
+     "0.4",
+     "1",
+     "i"
+    ]
+   },
+   {
+    "t": 0.129,
+    "peer": 2,
+    "what": "connected",
+    "args": [
+     "0.1",
+     "1",
+     "i"
+    ]
+   }
+  ]
+ },
+ "probe": {
+  "rate": 60,
+  "size": 200,
+  "seconds": 60,
+  "done": {
+   "h0": true,
+   "j1": true,
+   "j2": true,
+   "j3": true
+  }
+ },
+ "links": [
+  {
+   "helper": "h0",
+   "slot": 0,
+   "peer": 1,
+   "kind": "host-joiner",
+   "path": "a",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 0.649,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45400",
+   "sel_remote": "host IPv4 loopback port 45401",
+   "ping_n": 247,
+   "ping_p50": 0.101,
+   "ping_p95": 0.186,
+   "ping_max": 0.507,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "h0",
+   "slot": 0,
+   "peer": 2,
+   "kind": "host-joiner",
+   "path": "a",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 0.353,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45400",
+   "sel_remote": "host IPv4 loopback port 45402",
+   "ping_n": 247,
+   "ping_p50": 0.071,
+   "ping_p95": 0.134,
+   "ping_max": 0.328,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "h0",
+   "slot": 0,
+   "peer": 3,
+   "kind": "host-joiner",
+   "path": "a",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 0.506,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45400",
+   "sel_remote": "host IPv4 loopback port 45403",
+   "ping_n": 247,
+   "ping_p50": 0.066,
+   "ping_p95": 0.119,
+   "ping_max": 0.199,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j1",
+   "slot": 1,
+   "peer": 0,
+   "kind": "joiner-host",
+   "path": "j",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 65.655,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45401",
+   "sel_remote": "host IPv4 loopback port 45400",
+   "ping_n": 247,
+   "ping_p50": 0.097,
+   "ping_p95": 0.18,
+   "ping_max": 0.402,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j1",
+   "slot": 1,
+   "peer": 2,
+   "kind": "joiner-joiner",
+   "path": "i",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 0.605,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45401",
+   "sel_remote": "host IPv4 loopback port 45402",
+   "ping_n": 247,
+   "ping_p50": 0.07,
+   "ping_p95": 0.146,
+   "ping_max": 0.293,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j1",
+   "slot": 1,
+   "peer": 3,
+   "kind": "joiner-joiner",
+   "path": "i",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 0.625,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45401",
+   "sel_remote": "host IPv4 loopback port 45403",
+   "ping_n": 247,
+   "ping_p50": 0.065,
+   "ping_p95": 0.122,
+   "ping_max": 0.188,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j2",
+   "slot": 2,
+   "peer": 0,
+   "kind": "joiner-host",
+   "path": "j",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 66.289,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45402",
+   "sel_remote": "host IPv4 loopback port 45400",
+   "ping_n": 247,
+   "ping_p50": 0.101,
+   "ping_p95": 0.187,
+   "ping_max": 0.363,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j2",
+   "slot": 2,
+   "peer": 1,
+   "kind": "joiner-joiner",
+   "path": "i",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 0.561,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45402",
+   "sel_remote": "host IPv4 loopback port 45401",
+   "ping_n": 248,
+   "ping_p50": 0.071,
+   "ping_p95": 0.138,
+   "ping_max": 0.327,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j2",
+   "slot": 2,
+   "peer": 3,
+   "kind": "joiner-joiner",
+   "path": "i",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 61.781,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45402",
+   "sel_remote": "host IPv4 loopback port 45403",
+   "ping_n": 248,
+   "ping_p50": 0.062,
+   "ping_p95": 0.124,
+   "ping_max": 0.229,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j3",
+   "slot": 3,
+   "peer": 0,
+   "kind": "joiner-host",
+   "path": "j",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 66.494,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45403",
+   "sel_remote": "host IPv4 loopback port 45400",
+   "ping_n": 247,
+   "ping_p50": 0.097,
+   "ping_p95": 0.182,
+   "ping_max": 0.351,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j3",
+   "slot": 3,
+   "peer": 1,
+   "kind": "joiner-joiner",
+   "path": "i",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 0.374,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45403",
+   "sel_remote": "host IPv4 loopback port 45401",
+   "ping_n": 248,
+   "ping_p50": 0.07,
+   "ping_p95": 0.144,
+   "ping_max": 0.302,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  },
+  {
+   "helper": "j3",
+   "slot": 3,
+   "peer": 2,
+   "kind": "joiner-joiner",
+   "path": "i",
+   "blocked": false,
+   "attempts": 1,
+   "connect_ms": 0.129,
+   "state": "completed",
+   "sel_local": "host IPv4 loopback port 45403",
+   "sel_remote": "host IPv4 loopback port 45402",
+   "ping_n": 248,
+   "ping_p50": 0.062,
+   "ping_p95": 0.12,
+   "ping_max": 0.215,
+   "fwd_out": 0,
+   "bad_tag": 0,
+   "bad_mac": 0,
+   "bad_src": 0,
+   "send_err": 0
+  }
+ ],
+ "probe_streams": [
+  {
+   "from": 0,
+   "to": 1,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.174,
+   "rtt_p95_ms": 0.281,
+   "rtt_p99_ms": 0.327,
+   "rtt_max_ms": 0.51
+  },
+  {
+   "from": 0,
+   "to": 2,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.134,
+   "rtt_p95_ms": 0.216,
+   "rtt_p99_ms": 0.266,
+   "rtt_max_ms": 0.459
+  },
+  {
+   "from": 0,
+   "to": 3,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.105,
+   "rtt_p95_ms": 0.189,
+   "rtt_p99_ms": 0.227,
+   "rtt_max_ms": 0.314
+  },
+  {
+   "from": 1,
+   "to": 0,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.178,
+   "rtt_p95_ms": 0.285,
+   "rtt_p99_ms": 0.332,
+   "rtt_max_ms": 0.502
+  },
+  {
+   "from": 1,
+   "to": 2,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.128,
+   "rtt_p95_ms": 0.213,
+   "rtt_p99_ms": 0.257,
+   "rtt_max_ms": 0.359
+  },
+  {
+   "from": 1,
+   "to": 3,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.107,
+   "rtt_p95_ms": 0.187,
+   "rtt_p99_ms": 0.222,
+   "rtt_max_ms": 0.386
+  },
+  {
+   "from": 2,
+   "to": 0,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.166,
+   "rtt_p95_ms": 0.272,
+   "rtt_p99_ms": 0.319,
+   "rtt_max_ms": 0.512
+  },
+  {
+   "from": 2,
+   "to": 1,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.133,
+   "rtt_p95_ms": 0.216,
+   "rtt_p99_ms": 0.257,
+   "rtt_max_ms": 0.353
+  },
+  {
+   "from": 2,
+   "to": 3,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.093,
+   "rtt_p95_ms": 0.168,
+   "rtt_p99_ms": 0.196,
+   "rtt_max_ms": 0.318
+  },
+  {
+   "from": 3,
+   "to": 0,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.155,
+   "rtt_p95_ms": 0.274,
+   "rtt_p99_ms": 0.32,
+   "rtt_max_ms": 0.454
+  },
+  {
+   "from": 3,
+   "to": 1,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.126,
+   "rtt_p95_ms": 0.219,
+   "rtt_p99_ms": 0.263,
+   "rtt_max_ms": 0.36
+  },
+  {
+   "from": 3,
+   "to": 2,
+   "sent": 3600,
+   "via_host": 0,
+   "no_route": 0,
+   "received_unique": 3600,
+   "dup": 0,
+   "loss_pct": 0.0,
+   "echoes": 3600,
+   "rtt_p50_ms": 0.101,
+   "rtt_p95_ms": 0.187,
+   "rtt_p99_ms": 0.233,
+   "rtt_max_ms": 0.311
+  }
+ ]
+}

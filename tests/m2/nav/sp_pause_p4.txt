@@ -1,0 +1,5 @@
+# test A, player 4: drop-in join (as cal_p4.txt; retries for the extra model), then one Start in gameplay
+8350 START:4
+8650 START:4
+8950 START:4
+10850 START  # P4 Start in gameplay (expect: no pause)
