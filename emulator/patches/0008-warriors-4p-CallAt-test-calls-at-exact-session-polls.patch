@@ -1,0 +1,87 @@
+From 96e56d2e87bcd8ad1889225b88e559a10129328a Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sun, 11 Oct 2026 04:42:34 +0300
+Subject: [PATCH] warriors-4p: CallAt test calls at exact session polls
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/W4P/W4P.cpp | 42 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 270268e..5de23c4 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -129,6 +129,17 @@ namespace W4P
+ 			kPktHello = 3,
+ 		};
+ 
++		// Test only: a game function call placed in the test-call mailbox (0x000F0300, pnach group
++		// "warriors-4p test call") at an exact session poll, so every instance makes it at the same emulated moment.
++		struct CallSpec
++		{
++			u32 poll = 0;
++			u32 fn = 0;
++			std::array<u32, 4> args = {};
++			std::array<bool, 4> gamemgr = {}; // argument is the GameMgr pointer ("GM")
++			bool done = false;
++		};
++
+ 		struct Config
+ 		{
+ 			bool enabled = false;
+@@ -153,6 +164,7 @@ namespace W4P
+ 			bool crop = true;
+ 			std::string patch_set; // e.g. pnach SHA-256 + enabled groups, written by the launcher
+ 			std::vector<std::pair<u32, u32>> watches; // debug: write watchpoints (start, end)
++			std::vector<CallSpec> calls; // test only: CallAt = poll:fn:a0:a1:a2:a3,...
+ 			// The game's view count changes about 4 game frames before the matching picture is shown (F-0093).
+ 			// The crop uses the layout from this many game frames ago and travels through the GS queue.
+ 			int crop_delay_frames = 3;
+@@ -743,6 +755,19 @@ namespace W4P
+ 			Session& s = *s_session;
+ 			s.cur_t = t;
+ 			s.polls++;
++			for (CallSpec& cs : s.cfg.calls)
++			{
++				if (cs.done || t - s.c0 != cs.poll)
++					continue;
++				cs.done = true;
++				const u32 gm = memRead32(0x0051489C);
++				for (int i = 0; i < 4; i++)
++					memWrite32(0x000F0304 + 4 * i, cs.gamemgr[i] ? gm : cs.args[i]);
++				memWrite32(0x000F0318, 0);
++				memWrite32(0x000F0300, cs.fn);
++				Log(fmt::format("test call at poll {}: {:08x}({:08x}, {:08x}, {:08x}, {:08x})", cs.poll, cs.fn,
++					cs.gamemgr[0] ? gm : cs.args[0], cs.gamemgr[1] ? gm : cs.args[1], cs.args[2], cs.args[3]));
++			}
+ 			while (static_cast<s32>(s.local_upto - (t + s.cfg.input_delay)) < 0)
+ 			{
+ 				s.local_upto++;
+@@ -951,6 +976,23 @@ namespace W4P
+ 		c.seed = static_cast<u32>(ini.GetIntValue("W4P", "ImpairSeed", 1));
+ 		c.crop = ini.GetBoolValue("W4P", "Crop", true);
+ 		c.patch_set = ini.GetStringValue("W4P", "PatchSet", "");
++		for (const std::string_view item : StringUtil::SplitString(ini.GetStringValue("W4P", "CallAt", ""), ','))
++		{
++			const std::vector<std::string_view> f = StringUtil::SplitString(StringUtil::StripWhitespace(item), ':');
++			if (f.size() < 2)
++				continue;
++			CallSpec cs;
++			cs.poll = static_cast<u32>(std::strtoul(std::string(f[0]).c_str(), nullptr, 0));
++			cs.fn = static_cast<u32>(std::strtoul(std::string(f[1]).c_str(), nullptr, 16));
++			for (size_t i = 2; i < f.size() && i < 6; i++)
++			{
++				if (f[i] == "GM")
++					cs.gamemgr[i - 2] = true;
++				else
++					cs.args[i - 2] = static_cast<u32>(std::strtoul(std::string(f[i]).c_str(), nullptr, 0));
++			}
++			c.calls.push_back(cs);
++		}
+ 		for (const std::string_view item : StringUtil::SplitString(ini.GetStringValue("W4P", "DebugWatch", ""), ','))
+ 		{
+ 			const std::string w(StringUtil::StripWhitespace(item));
+-- 
+2.55.0.windows.3
+
