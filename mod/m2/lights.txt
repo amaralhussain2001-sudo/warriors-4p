@@ -1,0 +1,8 @@
+// extracted from docs/research/m2_views34.md (+ the reset-loop word missed from m2_pads_cameras.md section 3)
+patch=2,EE,0017D494,word,0C03C3F0 // was 0C05F9FA (jal 0x0017E7E8) -> jal 0x000F0FC0; delay slot daddu a0,s3,zero kept
+patch=2,EE,000F0FC0,word,8C8800B0 // lw t0,0xb0(a0)   slot of view 0
+patch=2,EE,000F0FC4,word,AC8800B8 // sw t0,0xb8(a0)   view 2 uses it
+patch=2,EE,000F0FC8,word,8C8800B4 // lw t0,0xb4(a0)   slot of view 1
+patch=2,EE,000F0FCC,word,0805F9FA // j 0x0017E7E8     original call; returns to 0x0017D49C
+patch=2,EE,000F0FD0,word,AC8800BC // sw t0,0xbc(a0)   view 3 uses it (delay slot)
+patch=2,EE,0018C154,word,2EA70004 // was 2EA70002: ScreenEffects reset loop over 4 entries (missing from engine.txt)

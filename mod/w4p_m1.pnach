@@ -844,6 +844,13 @@ patch=2,EE,000F0FA8,word,0041900B // movn s2,v0,at  players 3-4: flag = 1
 patch=2,EE,000F0FAC,word,080487A0 // j 0x00121E80  (jalr ra,v1 with its delay slot)
 patch=2,EE,000F0FB0,word,00000000 // nop
 patch=2,EE,00121E60,word,0803C3E0 // was 8E250000; FUN_00121E30 (camera vtable +0x28C, 'has own view'): lw a1,0(s1) -> j 0x000F0F80 (delay slot lui v1,0x51 unchanged)
+patch=2,EE,0017D494,word,0C03C3F0 // was 0C05F9FA (jal 0x0017E7E8) -> jal 0x000F0FC0; delay slot daddu a0,s3,zero kept
+patch=2,EE,000F0FC0,word,8C8800B0 // lw t0,0xb0(a0)   slot of view 0
+patch=2,EE,000F0FC4,word,AC8800B8 // sw t0,0xb8(a0)   view 2 uses it
+patch=2,EE,000F0FC8,word,8C8800B4 // lw t0,0xb4(a0)   slot of view 1
+patch=2,EE,000F0FCC,word,0805F9FA // j 0x0017E7E8     original call; returns to 0x0017D49C
+patch=2,EE,000F0FD0,word,AC8800BC // sw t0,0xbc(a0)   view 3 uses it (delay slot)
+patch=2,EE,0018C154,word,2EA70004 // was 2EA70002: ScreenEffects reset loop over 4 entries (missing from engine.txt)
 
 [warriors-4p test level99 join]
 author=warriors-4p
