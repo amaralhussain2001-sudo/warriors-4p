@@ -72,6 +72,19 @@ def main():
     if os.path.exists(d):
         shutil.rmtree(d)
     sandbox.make(INST, "default", pad2=True)
+    for item in [a for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] == "--ini"]:  # Section/Key=Value
+        import configparser
+        sec_key, val = item.split("=", 1)
+        sec, key = sec_key.rsplit("/", 1)
+        ini_path = os.path.join(sandbox.data_root(INST), "inis", "PCSX2.ini")
+        cp = configparser.ConfigParser(interpolation=None, strict=False)
+        cp.optionxform = str
+        cp.read(ini_path, encoding="utf-8")
+        if not cp.has_section(sec):
+            cp.add_section(sec)
+        cp.set(sec, key, val)
+        with open(ini_path, "w", encoding="utf-8") as fh:
+            cp.write(fh, space_around_delimiters=True)
     if "--ee" in sys.argv:  # EmuCore/Speedhacks EECycleRate (2 = 180 %, needed by the 60 fps patch)
         import configparser
         ini_path = os.path.join(sandbox.data_root(INST), "inis", "PCSX2.ini")
