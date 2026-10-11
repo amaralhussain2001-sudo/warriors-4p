@@ -7,10 +7,10 @@ instance, scripted input (W4P LocalBot slots), players 3-4 created with the game
 ## Exit criteria status (docs/plan/M2.md)
 | # | Criterion | Status | Evidence |
 |---|---|---|---|
-| 1 | Four players exist | **met** (players created with the game's functions; the game's own join needs companions, F-0109) | F-0111 |
+| 1 | Four players exist | **met**, also through the game's own Start-join in Mission 13 (companion + spawned Warrior) in 4-instance lockstep | F-0111, F-0128, F-0130 |
 | 2 | Independent input | **met** (one instance) | F-0112 |
 | 3 | Same systems as players 1-2 (attack, grab, damage, enemies target 3-4) | not tested | - |
-| 4 | Four views + own HUD per view | **half met**: four own full-screen views in 4 lockstep instances (F-0121, SplitAllowed forced in the tutorial); no HUD for players 3-4; centred text cut | F-0121 |
+| 4 | Four views + own HUD per view | **mostly met**: four own full-screen views with own radar in Mission 13, 4 instances (F-0130); centred text per quarter (F-0126); health panels of players 3-4 drawn only after events (not yet seen); cosmetic band | F-0121, F-0126, F-0130 |
 | 5 | 4 instances in lockstep >= 30 min, 0 mismatches, no crash | **met**: 33 min, four views, MTVU off, 1,855 points, 0 mismatches (also 35 min with 1 view, MTVU on) | F-0123, F-0118 |
 | 6 | >= 29 fps (30 fps mode) | **not met with 4 views + MTVU off**: single instance median 29.07, min 27.4 (host-bound); met with 1 view (29.97). Options: deterministic MTVU mode (F-0124), lighter settings | F-0123 |
 | 7 | Originals unchanged | to check at the end of M2 | - |

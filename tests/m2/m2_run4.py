@@ -1,6 +1,7 @@
 """M2: four instances in lockstep (loopback), four players, from a fresh boot.
 
 Usage: python -I tests/m2/m2_run4.py <tag> [--seconds 420] [--bots-from 4700] [--crop] [--force-split]
+       [--calls "poll:fn:args,..."] [--groups "extra;groups"] [--script1..4 file] [--ini Section/Key=Value]
 Slot 0 runs the boot-to-Mission-1 script, slot 1 joins at the menu; players 3-4 are created at fixed session polls on
 every instance with W4P CallAt + the "warriors-4p test call" group (test-only: the game's own join has no companion
 in Mission 1, F-0109). From --bots-from on, every slot plays seeded random bot input (m1_run.bot_file).
@@ -41,6 +42,11 @@ def opt(name, default, cast=int):
 
 def inputs_for(slot, out_dir, bots_from):
     nav = {0: "boot_to_m1_2p.txt", 1: "p2_join.txt"}.get(slot)
+    custom = opt(f"--script{slot + 1}", "", str)  # full input script for this slot (replaces nav + random bot)
+    if custom:
+        path = os.path.join(out_dir, f"bot_slot{slot}.bin")
+        open(path, "wb").write(nav_probe.build_inputs(custom, POLLS))
+        return path
     base = bytearray(nav_probe.build_inputs(os.path.join(HERE, "nav", nav), POLLS) if nav else m1_run.record() * POLLS)
     tmp = os.path.join(out_dir, f"rand{slot}.bin")
     m1_run.bot_file(tmp, 3000 + slot, POLLS)
@@ -64,7 +70,8 @@ def main():
         if os.path.exists(d):
             shutil.rmtree(d)
         sandbox.make(n, "default", pad2=True)
-        sandbox.install_patch(n, m1_run.PATCH, GROUPS + (["warriors-4p test force split"] if "--force-split" in sys.argv else []))
+        extra_groups = [g for g in opt("--groups", "", str).split(";") if g]
+        sandbox.install_patch(n, m1_run.PATCH, GROUPS + (["warriors-4p test force split"] if "--force-split" in sys.argv else []) + extra_groups)
         for item in [a for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] == "--ini"]:  # Section/Key=Value
             sec_key, val = item.split("=", 1)
             sec, key = sec_key.rsplit("/", 1)
@@ -82,7 +89,7 @@ def main():
         lines = ["[W4P]", "Enabled = true", "Players = 4", f"LocalSlot = {slot}", "PadForSlot0 = 0", "PadForSlot1 = 4",
                  "PadForSlot2 = 1", "PadForSlot3 = 2", f"ListenPort = {PORTS[slot]}", "InputDelay = 2", "HashInterval = 30",
                  f"LogFile = {os.path.join(out_dir, f'w4p_slot{slot}.log')}", f"DumpDir = {out_dir}", f"BotInput = {bot}",
-                 f"Crop = {'true' if '--crop' in sys.argv else 'false'}", f"CallAt = {CALLS}"]
+                 f"Crop = {'true' if '--crop' in sys.argv else 'false'}", f"CallAt = {opt('--calls', CALLS, str)}"]
         lines += [f"Peer{o} = 127.0.0.1:{PORTS[o]}" for o in INSTS if o != slot]
         ini = os.path.join(out_dir, f"w4p_slot{slot}.ini")
         open(ini, "w", encoding="utf-8").write("\n".join(lines) + "\n")
