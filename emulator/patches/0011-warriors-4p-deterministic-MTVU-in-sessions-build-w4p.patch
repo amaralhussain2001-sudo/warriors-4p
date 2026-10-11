@@ -1,0 +1,147 @@
+From b12e20612f3b8da10c21ae529a4177f4669847c6 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sun, 11 Oct 2026 14:55:13 +0300
+Subject: [PATCH] warriors-4p: deterministic MTVU in sessions (build w4p-m3-5)
+
+VU-thread changes (GS SIGNAL/FINISH/LABEL from XGKICK, T-bit) reach the EE only
+after the EE waited for the VU thread (vsync start, vu1Finish, VIF1 VPU_STAT
+path), never at ExecuteVU, so every instance applies them at the same cycle.
+Counts applied changes in the W4P stats line.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/MTVU.cpp     | 14 ++++++++++++--
+ pcsx2/MTVU.h       |  1 +
+ pcsx2/Vif1_Dma.cpp |  3 +++
+ pcsx2/W4P/W4P.cpp  | 15 ++++++++++++---
+ 4 files changed, 28 insertions(+), 5 deletions(-)
+
+diff --git a/pcsx2/MTVU.cpp b/pcsx2/MTVU.cpp
+index 3f261dc..75ad2bb 100644
+--- a/pcsx2/MTVU.cpp
++++ b/pcsx2/MTVU.cpp
+@@ -6,6 +6,7 @@
+ #include "MTVU.h"
+ #include "VMManager.h"
+ #include "Vif_Dynarec.h"
++#include "W4P/W4P.h"
+ 
+ #include <thread>
+ 
+@@ -354,6 +355,8 @@ void VU_Thread::Get_MTVUChanges()
+ 	u32 interrupts = mtvuInterrupts.load(std::memory_order_relaxed);
+ 	if (!interrupts)
+ 		return;
++	if (interrupts & (InterruptFlagSignal | InterruptFlagFinish | InterruptFlagLabel | InterruptFlagVUTBit))
++		w4pFlagEvents++;
+ 
+ 	if (interrupts & InterruptFlagSignal)
+ 	{
+@@ -441,7 +444,13 @@ void VU_Thread::WaitVU()
+ void VU_Thread::ExecuteVU(u32 vu_addr, u32 vif_top, u32 vif_itop, u32 fbrst)
+ {
+ 	MTVU_LOG("MTVU - ExecuteVU!");
+-	Get_MTVUChanges(); // Clear any pending interrupts
++	// warriors-4p: in a lockstep session, changes from the VU thread (GS SIGNAL/FINISH/LABEL from XGKICK, T-bit) must
++	// reach the EE at the same emulated moment on every PC. They are applied only where the EE has waited for the
++	// VU thread (vu1Finish, W4P::OnVsync, the VIF1 path in Vif1_Dma.cpp), never here, where VU thread progress is
++	// host timing.
++	const bool deterministic = W4P::IsActive();
++	if (!deterministic)
++		Get_MTVUChanges(); // Clear any pending interrupts
+ 	ReserveSpace(5);
+ 	Write(MTVU_VU_EXECUTE);
+ 	Write(vu_addr);
+@@ -455,7 +464,8 @@ void VU_Thread::ExecuteVU(u32 vu_addr, u32 vif_top, u32 vif_itop, u32 fbrst)
+ 	u32 skip_cycles = std::min(cycles, 3000u);
+ 	cpuRegs.cycle += skip_cycles * EmuConfig.Speedhacks.EECycleSkip;
+ 	VU0.cycle += skip_cycles * EmuConfig.Speedhacks.EECycleSkip;
+-	Get_MTVUChanges();
++	if (!deterministic)
++		Get_MTVUChanges();
+ 
+ 	if (!INSTANT_VU1)
+ 	{
+diff --git a/pcsx2/MTVU.h b/pcsx2/MTVU.h
+index 5634601..d4c47b9 100644
+--- a/pcsx2/MTVU.h
++++ b/pcsx2/MTVU.h
+@@ -49,6 +49,7 @@ public:
+ 	std::atomic<u32> mtvuInterrupts; // Used for GS Signal, Finish etc, plus VU End/T-Bit
+ 	std::atomic<u64> gsLabel; // Used for GS Label command
+ 	std::atomic<u64> gsSignal; // Used for GS Signal command
++	u32 w4pFlagEvents = 0; // warriors-4p: SIGNAL/FINISH/LABEL/T-bit changes applied on the EE thread (statistics)
+ 
+ 	VU_Thread();
+ 	~VU_Thread();
+diff --git a/pcsx2/Vif1_Dma.cpp b/pcsx2/Vif1_Dma.cpp
+index c85af24..5b30221 100644
+--- a/pcsx2/Vif1_Dma.cpp
++++ b/pcsx2/Vif1_Dma.cpp
+@@ -8,6 +8,7 @@
+ #include "VUmicro.h"
+ #include "Vif_Dma.h"
+ #include "Vif_Dynarec.h"
++#include "W4P/W4P.h"
+ 
+ u32 g_vif1Cycles = 0;
+ 
+@@ -232,6 +233,8 @@ __fi void vif1VUFinish()
+ 
+ 	if (VU0.VI[REG_VPU_STAT].UL & 0x500)
+ 	{
++		if (THREAD_VU1 && W4P::IsActive())
++			vu1Thread.WaitVU(); // warriors-4p: deterministic MTVU (see VU_Thread::ExecuteVU)
+ 		vu1Thread.Get_MTVUChanges();
+ 
+ 		if (THREAD_VU1 && !INSTANT_VU1 && (VU0.VI[REG_VPU_STAT].UL & 0x100))
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 7d62766..95ad2a2 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -11,6 +11,7 @@
+ #include "INISettingsInterface.h"
+ #include "Input/InputManager.h"
+ #include "MTGS.h"
++#include "MTVU.h"
+ #include "Memory.h"
+ #include "R5900.h"
+ #include "SIO/Pad/Pad.h"
+@@ -49,7 +50,7 @@ namespace W4P
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+ 		constexpr u16 kProtocolVersion = 2; // 2: hello/fingerprint packet, kernel and game RAM hashes
+-		constexpr char kBuildTag[] = "w4p-m3-4";
++		constexpr char kBuildTag[] = "w4p-m3-5";
+ 		// EE RAM below this address belongs to the BIOS kernel; the game and our patch caves live above it.
+ 		constexpr u32 kGameRamStart = 0x000A0000; // includes the warriors-4p data/caves (0x000A0000+); 0x81000-0x95FFF holds BIOS/loader leftovers (F-0125)
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+@@ -1147,6 +1148,13 @@ namespace W4P
+ 	{
+ 		if (!s_session)
+ 			return;
++		// Deterministic MTVU: apply the VU thread's pending GS/T-bit changes at a fixed emulated point (vsync start),
++		// after waiting for the VU thread, so every instance sees them at the same cycle (F-0120, F-0124).
++		if (THREAD_VU1)
++		{
++			vu1Thread.WaitVU();
++			vu1Thread.Get_MTVUChanges();
++		}
+ 		Session& s = *s_session;
+ 		Receive(0);
+ 		bool all_hello = true;
+@@ -1162,8 +1170,9 @@ namespace W4P
+ 		if (s.started && now - s.last_stats_ms > 10000.0)
+ 		{
+ 			s.last_stats_ms = now;
+-			Log(fmt::format("stats: poll {}, polls {}, waits {}, wait total {:.1f} ms, max {:.1f} ms, hashes {}, mismatches {}, kernel-only differences {}",
+-				s.cur_t - s.c0, s.polls, s.waits, s.wait_ms_total, s.wait_ms_max, s.hashes_compared, s.mismatches, s.kernel_mismatches));
++			Log(fmt::format("stats: poll {}, polls {}, waits {}, wait total {:.1f} ms, max {:.1f} ms, hashes {}, mismatches {}, kernel-only differences {}, mtvu {} (flag events {})",
++				s.cur_t - s.c0, s.polls, s.waits, s.wait_ms_total, s.wait_ms_max, s.hashes_compared, s.mismatches, s.kernel_mismatches,
++				THREAD_VU1 ? "on" : "off", vu1Thread.w4pFlagEvents));
+ 		}
+ 	}
+ 
+-- 
+2.55.0.windows.3
+

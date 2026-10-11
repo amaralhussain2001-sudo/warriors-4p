@@ -232,10 +232,7 @@ patch=2,EE,00182DE4,word,00000000 // was 7FB10020 sq s1,32(sp); nop (delay slot;
 patch=2,EE,001B1BB4,word,0C03831A // was 0060F809 jalr ra,v1; PlayerHUD 0/1 Draw with the HUD player context
 patch=2,EE,001AF568,word,0C038327 // was 24050001 addiu a1,zero,1; 2-player divider segments: hidden in the 2x2 mode
 patch=2,EE,001AFEB8,word,0C038327 // was 24050001 addiu a1,zero,1; 2-player divider segments: hidden in the 2x2 mode
-patch=2,EE,000E0CB0,word,C447D430
-patch=2,EE,000E0CB4,word,3C013D4C
-patch=2,EE,000E0CB8,word,3421CCCD
-patch=2,EE,000E0CBC,word,44812800
-patch=2,EE,000E0CC0,word,460539C0
-patch=2,EE,000E0CC4,word,0803C192
-patch=2,EE,000E0CC8,word,00000000
+// R5b (2026-10-11, F-0137): the level-exit reset FUN_00185AE0 frees every sprite from handle 13 up, which freed the
+// per-view copies made at boot (handles 13-20) and let the level reuse their slots. Start the reset at handle 21.
+patch=2,EE,00185AEC,word,24902274 // was 24901EB4 addiu s0,a0,0x1EB4 (item 13) -> addiu s0,a0,0x2274 (item 21)
+patch=2,EE,00185AF4,word,24110015 // was 2411000D addiu s1,zero,13 -> addiu s1,zero,21

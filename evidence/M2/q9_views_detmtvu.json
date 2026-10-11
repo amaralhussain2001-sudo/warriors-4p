@@ -1,0 +1,85 @@
+{
+ "tag": "q9_views_detmtvu",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot",
+ "seconds": 605,
+ "state": {
+  "0": {
+   "poll": 16351,
+   "players": 4,
+   "handles": [
+    "0x87",
+    "0x1008a",
+    "0x20090",
+    "0x30091"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "1": {
+   "poll": 16363,
+   "players": 4,
+   "handles": [
+    "0x87",
+    "0x1008a",
+    "0x20090",
+    "0x30091"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16375,
+   "players": 4,
+   "handles": [
+    "0x87",
+    "0x1008a",
+    "0x20090",
+    "0x30091"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16384,
+   "players": 4,
+   "handles": [
+    "0x87",
+    "0x1008a",
+    "0x20090",
+    "0x30091"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 16170, polls 16171, waits 940, wait total 13849.0 ms, max 176.1 ms, hashes 1617, mismatches 0, kernel-only differences 0, mtvu on (flag events 0)",
+   "desync": [],
+   "errors": [],
+   "calls": 8
+  },
+  "1": {
+   "last": "poll 16173, polls 16174, waits 1180, wait total 22146.7 ms, max 183.7 ms, hashes 1617, mismatches 0, kernel-only differences 0, mtvu on (flag events 0)",
+   "desync": [],
+   "errors": [],
+   "calls": 8
+  },
+  "2": {
+   "last": "poll 16183, polls 16184, waits 2609, wait total 45241.2 ms, max 109.3 ms, hashes 1617, mismatches 0, kernel-only differences 0, mtvu on (flag events 0)",
+   "desync": [],
+   "errors": [],
+   "calls": 8
+  },
+  "3": {
+   "last": "poll 16175, polls 16176, waits 2675, wait total 49756.7 ms, max 186.9 ms, hashes 1617, mismatches 0, kernel-only differences 0, mtvu on (flag events 0)",
+   "desync": [],
+   "errors": [],
+   "calls": 8
+  }
+ },
+ "hash_points_common": 539,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "last_common": "16170"
+}

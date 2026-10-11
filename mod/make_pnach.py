@@ -98,7 +98,7 @@ def main():
            (0x000F0634, 0x460518C2, "mul.s f3,f3,f5: Wz = S/2"),
            (0x000F0638, 0x46032102, "mul.s f4,f4,f3: W = A*S/2"),
            (0x000F063C, 0xC446D428, "lwc1 f6,D428(v0): xs (single-player radar x)"),
-           (0x000F0640, 0xC447D430, "lwc1 f7,D430(v0): zs"),
+           (0x000F0640, 0x0803C1A0, "j 0x000F0680 (TOPZ: zs, raised when 3+ views; 0x000F0644 runs in the delay slot)"),
            (0x000F0644, 0x46040202, "mul.s f8,f0,f4"),
            (0x000F0648, 0x46083041, "sub.s f1,f6,f8: P1 x = xs - d1*W"),
            (0x000F064C, 0x46030202, "mul.s f8,f0,f3"),
@@ -110,7 +110,20 @@ def main():
            (0x000F0664, 0x46083D40, "add.s f21,f7,f8: P2 z = zs + d2*Wz"),
            (0x000F0668, 0x4617BDC0, "add.s f23,f23,f23: P2 depth = 2*d2"),
            (0x000F066C, 0x0806BFD6, "j 0x001AFF58"),
-           (0x000F0670, 0x00000000, "nop")]
+           (0x000F0670, 0x00000000, "nop"),
+           # TOPZ (m2_hud_full.md addendum 2, R7; only with 3+ views, so 2-player sessions are unchanged): top-row radars
+           # 0.05 higher so the disc's lower edge stays inside the top quarters (no sliver at the top of the bottom row)
+           (0x000F0680, 0xC447D430, "lwc1 f7,D430(v0): zs"),
+           (0x000F0684, 0x8C41B198, "lw at,B198(v0): view count (0x0050B198)"),
+           (0x000F0688, 0x28210003, "slti at,at,3"),
+           (0x000F068C, 0x14200005, "bne at,zero,0x000F06A4: fewer than 3 views, zs unchanged"),
+           (0x000F0690, 0x00000000, "nop"),
+           (0x000F0694, 0x3C013D4C, "lui at,0x3d4c"),
+           (0x000F0698, 0x3421CCCD, "ori at,at,0xcccd: 0.05"),
+           (0x000F069C, 0x44812800, "mtc1 at,f5"),
+           (0x000F06A0, 0x460539C0, "add.s f7,f7,f5: zs + 0.05"),
+           (0x000F06A4, 0x0803C192, "j 0x000F0648"),
+           (0x000F06A8, 0x00000000, "nop")]
     out += ["", "[warriors-4p hud]", "author=warriors-4p",
             "description=Online sessions: each player's radar inside their own view at single-player size (2x2 layout).", ""]
     out += [f"patch=2,EE,{a:08X},word,{w:08X} // {c}" for a, w, c in hud]
@@ -162,7 +175,8 @@ def main():
     for name, title, desc in (("hud_b1.txt", "4p hud B1", "players 3-4 PlayerHUD and radar (m2_hud_full.md)"),
                               ("hud_b2.txt", "4p hud B2", "per-view HUD at single-player size (m2_hud_full.md)"),
                               ("spawn.txt", "4p spawn", "spawn a Warrior when no companion is free for player 3-4 (m2_spawn_companion.md)"),
-                              ("spawn_leave.txt", "4p spawn leave", "delete an added Warrior when its player leaves (m2_spawn_companion.md)")):
+                              ("spawn_leave.txt", "4p spawn leave", "delete an added Warrior when its player leaves (m2_spawn_companion.md)"),
+                              ("inventory.txt", "4p inventory", "items, money and Flash revives for players 3-4; needs 4p and 4p hud B1 (m2_inventory34.md)")):
         lines = [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
         out += ["", f"[warriors-4p {title}]", "author=warriors-4p", f"description=Experimental: {desc}.", ""] + lines
     # TEST ONLY (M2 engine tests in Mission 1): PickJoinCompanion (FUN_0022A770) skips its gang-wide search in level 99,

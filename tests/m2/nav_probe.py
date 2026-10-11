@@ -4,6 +4,9 @@
 Usage: python -I tests/m2/nav_probe.py <tag> <script.txt> [--seconds 120] [--every 4] [--groups "a;b"] [--players 1]
                                         [--script2 p2.txt] [--script3 p3.txt] [--script4 p4.txt] [--pads 0,4,1,2]
                                         [--call "4300:0041A460:GM:1,4400:0041A460:GM:2"] [--track 0x641a20,0x6420f0] [--poke poll:addr:value,...]
+                                        [--fight 7400]  (controlled combat probe for players 3-4, tests/m2/fightlib.py)
+                                        [--hud-diag 10000]  (per-view sprite clone table, tests/m2/hudlib.py)
+                                        [--probe module:function:poll]  (read-only check, result in probes.json)
   --call  needs the "warriors-4p test call" group: at each poll, call function(a0, a1, ...) on the game thread;
           "GM" = the GameMgr pointer. Results go to calls.txt.
   Other players' scripts are simulated in the same instance (W4P LocalBotN, test only).
@@ -23,6 +26,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, os.path.join(PROJ, "tools"))
 sys.path.insert(0, os.path.join(PROJ, "tests", "m1"))
+sys.path.insert(0, HERE)
 import m1_run  # noqa: E402
 import sandbox  # noqa: E402
 from pine import Pine  # noqa: E402
@@ -128,8 +132,41 @@ def main():
     pokes = sorted([tuple(int(v, 0) for v in item.split(":")) for item in opt("--poke", "", str).split(",") if item])  # poll:addr:value
     track = [int(x, 0) for x in opt("--track", "", str).split(",") if x]  # human objects: log poll + x,y,z
     track_rows = []
+    fight = None
+    if "--fight" in sys.argv:  # controlled combat probe for players 3-4 (fightlib.py; needs the test call group)
+        import fightlib
+        fight = fightlib.Fight(os.path.join(out, "fight.jsonl"), opt("--fight", 7400, int))
+    hud_rows, next_hud = [], 0.0
+    probes = [a.split(":") for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] == "--probe"]  # module:func:poll
+    probe_out = {}
     while time.time() - t0 < seconds and p.poll() is None:
         time.sleep(0.25)
+        if "--hud-diag" in sys.argv and time.time() >= next_hud and len(hud_rows) < 30:  # R5 clone table (hudlib.py)
+            try:
+                import hudlib
+                pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
+                next_hud = time.time() + 2.0
+                if pine.read32(0x000F0500) >= opt("--hud-diag", 10000, int):
+                    hud_rows.append(hudlib.diag(pine))
+            except Exception as e:  # noqa: BLE001
+                pine = None
+                hud_rows.append({"error": repr(e)})
+        for pr in [x for x in probes if f"{x[0]}.{x[1]}@{x[2]}" not in probe_out]:  # read-only checks at a poll
+            try:
+                pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
+                if pine.read32(0x000F0500) >= int(pr[2]):
+                    import importlib
+                    probe_out[f"{pr[0]}.{pr[1]}@{pr[2]}"] = getattr(importlib.import_module(pr[0]), pr[1])(pine)
+            except Exception as e:  # noqa: BLE001
+                pine = None
+                probe_out.setdefault("errors", []).append(repr(e))
+        if fight:
+            try:
+                pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
+                fight.step(pine, time.sleep)
+            except Exception as e:  # noqa: BLE001
+                pine = None
+                fight.events.append({"error": repr(e)})
         if pokes:  # test only: PINE writes at given polls (not deterministic; single instance)
             try:
                 pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
@@ -274,6 +311,14 @@ def main():
     if combat_rows:
         import json as _json
         open(os.path.join(out, "combat.jsonl"), "w").write("".join(_json.dumps(r) + chr(10) for r in combat_rows))
+    if fight:
+        fight.save()
+    if probe_out:
+        import json as _json
+        open(os.path.join(out, "probes.json"), "w").write(_json.dumps(probe_out, indent=1) + chr(10))
+    if hud_rows:
+        import json as _json
+        open(os.path.join(out, "hud_diag.jsonl"), "w").write("".join(_json.dumps(r) + chr(10) for r in hud_rows))
     if track_rows:
         open(os.path.join(out, "track.csv"), "w").write("".join(",".join(map(str, r)) + chr(10) for r in track_rows))
     print("state:", st)

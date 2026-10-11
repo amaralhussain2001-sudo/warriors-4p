@@ -62,7 +62,7 @@ patch=2,EE,000F0630,word,44812800 // mtc1 at,f5
 patch=2,EE,000F0634,word,460518C2 // mul.s f3,f3,f5: Wz = S/2
 patch=2,EE,000F0638,word,46032102 // mul.s f4,f4,f3: W = A*S/2
 patch=2,EE,000F063C,word,C446D428 // lwc1 f6,D428(v0): xs (single-player radar x)
-patch=2,EE,000F0640,word,C447D430 // lwc1 f7,D430(v0): zs
+patch=2,EE,000F0640,word,0803C1A0 // j 0x000F0680 (TOPZ: zs, raised when 3+ views; 0x000F0644 runs in the delay slot)
 patch=2,EE,000F0644,word,46040202 // mul.s f8,f0,f4
 patch=2,EE,000F0648,word,46083041 // sub.s f1,f6,f8: P1 x = xs - d1*W
 patch=2,EE,000F064C,word,46030202 // mul.s f8,f0,f3
@@ -75,6 +75,17 @@ patch=2,EE,000F0664,word,46083D40 // add.s f21,f7,f8: P2 z = zs + d2*Wz
 patch=2,EE,000F0668,word,4617BDC0 // add.s f23,f23,f23: P2 depth = 2*d2
 patch=2,EE,000F066C,word,0806BFD6 // j 0x001AFF58
 patch=2,EE,000F0670,word,00000000 // nop
+patch=2,EE,000F0680,word,C447D430 // lwc1 f7,D430(v0): zs
+patch=2,EE,000F0684,word,8C41B198 // lw at,B198(v0): view count (0x0050B198)
+patch=2,EE,000F0688,word,28210003 // slti at,at,3
+patch=2,EE,000F068C,word,14200005 // bne at,zero,0x000F06A4: fewer than 3 views, zs unchanged
+patch=2,EE,000F0690,word,00000000 // nop
+patch=2,EE,000F0694,word,3C013D4C // lui at,0x3d4c
+patch=2,EE,000F0698,word,3421CCCD // ori at,at,0xcccd: 0.05
+patch=2,EE,000F069C,word,44812800 // mtc1 at,f5
+patch=2,EE,000F06A0,word,460539C0 // add.s f7,f7,f5: zs + 0.05
+patch=2,EE,000F06A4,word,0803C192 // j 0x000F0648
+patch=2,EE,000F06A8,word,00000000 // nop
 
 [warriors-4p hud markers]
 author=warriors-4p
@@ -1739,13 +1750,8 @@ patch=2,EE,00182DE4,word,00000000 // was 7FB10020 sq s1,32(sp); nop (delay slot;
 patch=2,EE,001B1BB4,word,0C03831A // was 0060F809 jalr ra,v1; PlayerHUD 0/1 Draw with the HUD player context
 patch=2,EE,001AF568,word,0C038327 // was 24050001 addiu a1,zero,1; 2-player divider segments: hidden in the 2x2 mode
 patch=2,EE,001AFEB8,word,0C038327 // was 24050001 addiu a1,zero,1; 2-player divider segments: hidden in the 2x2 mode
-patch=2,EE,000E0CB0,word,C447D430
-patch=2,EE,000E0CB4,word,3C013D4C
-patch=2,EE,000E0CB8,word,3421CCCD
-patch=2,EE,000E0CBC,word,44812800
-patch=2,EE,000E0CC0,word,460539C0
-patch=2,EE,000E0CC4,word,0803C192
-patch=2,EE,000E0CC8,word,00000000
+patch=2,EE,00185AEC,word,24902274 // was 24901EB4 addiu s0,a0,0x1EB4 (item 13) -> addiu s0,a0,0x2274 (item 21)
+patch=2,EE,00185AF4,word,24110015 // was 2411000D addiu s1,zero,13 -> addiu s1,zero,21
 
 [warriors-4p 4p spawn]
 author=warriors-4p
@@ -1883,6 +1889,66 @@ patch=2,EE,000E1278,word,0040202D // move a0,v0
 patch=2,EE,000E127C,word,8FBF0000 // lw ra,0(sp)
 patch=2,EE,000E1280,word,03E00008 // jr ra
 patch=2,EE,000E1284,word,27BD0010 // addiu sp,sp,16
+
+[warriors-4p 4p inventory]
+author=warriors-4p
+description=Experimental: items, money and Flash revives for players 3-4; needs 4p and 4p hud B1 (m2_inventory34.md).
+
+patch=2,EE,0041E3D8,word,2CA20004 // was 2CA20002 sltiu v0,a1,2 -> sltiu v0,a1,4; FUN_0041e3d8 (has item)
+patch=2,EE,0041E420,word,2CA20004 // was 2CA20002 sltiu v0,a1,2 -> sltiu v0,a1,4; FUN_0041e420 (get count)
+patch=2,EE,0041E5E0,word,2E620004 // was 2E620002 sltiu v0,s3,2 -> sltiu v0,s3,4; FUN_0041e5b0 (add count)
+patch=2,EE,0041EA00,word,2E220004 // was 2E220002 sltiu v0,s1,2 -> sltiu v0,s1,4; FUN_0041e9d8 (set count)
+patch=2,EE,0041EC6C,word,2E020004 // was 2E020002 sltiu v0,s0,2 -> sltiu v0,s0,4; FUN_0041ec60 (clear slot, ReleasePlayer)
+patch=2,EE,0041DFE4,word,2C620004 // was 2C620002 sltiu v0,v1,2 -> sltiu v0,v1,4; FUN_0041df40 ctor: init 4 records
+patch=2,EE,0041E098,word,28C20004 // was 28C20002 slti v0,a2,2 -> slti v0,a2,4; FUN_0041e040: clear counts of 4 records
+patch=2,EE,0041E290,word,26360FD0 // was 263607E8 addiu s6,s1,0x7e8 -> addiu s6,s1,0xfd0; FUN_0041e250 (CfgInventoryItem): define item in 4 records
+patch=2,EE,0041E0B8,word,3C05000E // was 248507EC addiu a1,a0,0x7ec -> lui a1,0x000e
+patch=2,EE,0041E0C0,word,34A54000 // was 00651025 or v0,v1,a1 -> ori a1,a1,0x4000 (dst 0x000E4000)
+patch=2,EE,0041E0C4,word,24840FD4 // was 30420007 andi v0,v0,7 -> addiu a0,a0,0xfd4 (src end)
+patch=2,EE,0041E0C8,word,8C620000 // was 10400016 beq v0,zero,0x0041e124 -> loop: lw v0,0(v1)
+patch=2,EE,0041E0CC,word,24630004 // was 248407E4 addiu a0,a0,0x7e4 -> addiu v1,v1,4
+patch=2,EE,0041E0D0,word,ACA20000 // was 68620007 ldl v0,7(v1) -> sw v0,0(a1)
+patch=2,EE,0041E0D4,word,24A50004 // was 6C620000 ldr v0,0(v1) -> addiu a1,a1,4
+patch=2,EE,0041E0D8,word,1464FFFB // was 6866000F ldl a2,15(v1) -> bne v1,a0,0x0041e0c8
+patch=2,EE,0041E0DC,word,00000000 // was 6C660008 ldr a2,8(v1) -> nop (delay; loop is 6 instructions, R5900 short-loop rule)
+patch=2,EE,0041E0E0,word,03E00008 // was 68670017 ldl a3,23(v1) -> jr ra
+patch=2,EE,0041E0E4,word,00000000 // was 6C670010 ldr a3,16(v1) -> nop
+patch=2,EE,0041E16C,word,3C03000E // was 248307EC addiu v1,a0,0x7ec -> lui v1,0x000e
+patch=2,EE,0041E170,word,34634000 // was 00651025 or v0,v1,a1 -> ori v1,v1,0x4000 (src 0x000E4000)
+patch=2,EE,0041E174,word,24840FD4 // was 30420007 andi v0,v0,7 -> addiu a0,a0,0xfd4 (dst end)
+patch=2,EE,0041E178,word,8C620000 // was 10400016 beq v0,zero,0x0041e1d4 -> loop: lw v0,0(v1)
+patch=2,EE,0041E17C,word,24630004 // was 24840FCC addiu a0,a0,0xfcc -> addiu v1,v1,4
+patch=2,EE,0041E180,word,ACA20000 // was 68620007 ldl v0,7(v1) -> sw v0,0(a1)
+patch=2,EE,0041E184,word,24A50004 // was 6C620000 ldr v0,0(v1) -> addiu a1,a1,4
+patch=2,EE,0041E188,word,14A4FFFB // was 6866000F ldl a2,15(v1) -> bne a1,a0,0x0041e178
+patch=2,EE,0041E18C,word,00000000 // was 6C660008 ldr a2,8(v1) -> nop (delay)
+patch=2,EE,0041E190,word,03E00008 // was 68670017 ldl a3,23(v1) -> jr ra
+patch=2,EE,0041E194,word,00000000 // was 6C670010 ldr a3,16(v1) -> nop
+patch=2,EE,0041E21C,word,3C06000E // was 248407EC addiu a0,a0,0x7ec -> lui a2,0x000e
+patch=2,EE,0041E224,word,00852021 // was 0000182D move v1,zero -> addu a0,a0,a1 (I + slot*0x3F4)
+patch=2,EE,0041E228,word,00C53021 // was 00A42821 addu a1,a1,a0 -> addu a2,a2,a1 (0x000E0000 + slot*0x3F4)
+patch=2,EE,0041E22C,word,248303F4 // was 00000000 nop -> addiu v1,a0,0x3f4 (end = 23 items)
+patch=2,EE,0041E230,word,AC800024 // was ACA0F838 sw zero,-0x7c8(a1) -> loop: sw zero,0x24(a0) (live count, item+0x20)
+patch=2,EE,0041E234,word,ACC04020 // was 24630001 addiu v1,v1,1 -> sw zero,0x4020(a2) (copy count at 0x000E4000+...+0x20)
+patch=2,EE,0041E238,word,2484002C // was ACA00020 sw zero,0x20(a1) -> addiu a0,a0,0x2c
+patch=2,EE,0041E23C,word,24C6002C // was 2C620017 sltiu v0,v1,23 -> addiu a2,a2,0x2c
+patch=2,EE,0041E240,word,1483FFFB // was 1440FFFB bne v0,zero,0x0041e230 -> bne a0,v1,0x0041e230
+patch=2,EE,0041E244,word,00000000 // was 24A5002C addiu a1,a1,0x2c -> nop (delay)
+patch=2,EE,0028430C,word,3C02000F // was 3C020060 lui v0,0x60 -> lui v0,0xf; FUN_00284280 (Flash use) (delay slot; v0 dead on the taken path)
+patch=2,EE,00284314,word,24420890 // was 2442DEB8 addiu v0,v0,-0x2148 -> addiu v0,v0,0x890; FUN_00284280 table 0x000F0890
+patch=2,EE,00236E34,word,3C02000F // was 3C020060 lui v0,0x60 -> lui v0,0xf; FUN_00236d28 (rage start effect, mode 2)
+patch=2,EE,00236E3C,word,24420890 // was 2442DEB8 addiu v0,v0,-0x2148 -> addiu v0,v0,0x890; FUN_00236d28 table 0x000F0890
+patch=2,EE,0023700C,word,3C03000F // was 3C030060 lui v1,0x60 -> lui v1,0xf; FUN_00236fb8 (delay slot shared by both paths)
+patch=2,EE,00237014,word,24630890 // was 2463DEB8 addiu v1,v1,-0x2148 -> addiu v1,v1,0x890; FUN_00236fb8 path s1 != 0 (mode 3)
+patch=2,EE,00237038,word,24630890 // was 2463DEB8 addiu v1,v1,-0x2148 -> addiu v1,v1,0x890; FUN_00236fb8 path s1 == 0 (mode 2)
+patch=2,EE,0015D3F4,word,0C039400 // was 0C0554C2 jal 0x00155308 -> jal 0x000E5000 (cave, then j 0x00155308)
+patch=2,EE,000E5000,word,8E020000 // lw v0,0(s0)       bank (inventory+0)
+patch=2,EE,000E5004,word,8E030864 // lw v1,0x864(s0)   slot 2 money
+patch=2,EE,000E5008,word,00431021 // addu v0,v0,v1
+patch=2,EE,000E500C,word,8E030C58 // lw v1,0xc58(s0)   slot 3 money
+patch=2,EE,000E5010,word,00431021 // addu v0,v0,v1
+patch=2,EE,000E5014,word,080554C2 // j 0x00155308 (SSMC_StartSaveSequence core, as the original jal)
+patch=2,EE,000E5018,word,AE020000 // sw v0,0(s0) (delay)
 
 [warriors-4p test level99 join]
 author=warriors-4p
