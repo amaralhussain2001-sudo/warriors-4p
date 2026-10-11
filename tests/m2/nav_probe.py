@@ -124,6 +124,7 @@ def main():
     calls = [c.split(":") for c in opt("--call", "", str).split(",") if c]
     call_log = []
     next_shot = time.time() + every
+    combat_rows = []
     pokes = sorted([tuple(int(v, 0) for v in item.split(":")) for item in opt("--poke", "", str).split(",") if item])  # poll:addr:value
     track = [int(x, 0) for x in opt("--track", "", str).split(",") if x]  # human objects: log poll + x,y,z
     track_rows = []
@@ -137,6 +138,41 @@ def main():
                     _, addr, val = pokes.pop(0)
                     pine.write32(addr, val)
             except Exception:  # noqa: BLE001
+                pine = None
+        if "--combat" in sys.argv:  # m2_combat34.md section 5: players' and enemies' health/flags, enemy target lists
+            try:
+                pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
+                poll_now = pine.read32(0x000F0500)
+                if poll_now > 6000:
+                    gm = pine.read32(0x0051489C)
+                    def hp(o):
+                        st_ = pine.read32(o + 0xD4)
+                        if not (0x00100000 <= st_ < 0x02000000):
+                            return None
+                        v = pine.read32(st_ + 0x144)
+                        lo, hi = v & 0xFFFF, (v >> 16) & 0xFFFF
+                        f = pine.batch_read64([st_])[0]
+                        return [lo - 65536 if lo & 0x8000 else lo, hi - 65536 if hi & 0x8000 else hi, hex(f)]
+                    row = {"poll": poll_now, "players": [], "enemies": []}
+                    phandles = [pine.read32(gm + 0x228 + 4 * i) for i in range(4)]
+                    for h in phandles:
+                        o = pine.read32(0x006EBD38 + 8 * ((h >> 16) & 0xFFFF)) if h not in (0, 0xFFFFFFFF) else 0
+                        row["players"].append([hex(h), hex(o), hp(o) if o else None])
+                    for k in range(-40, 160):
+                        o = 0x00640C80 + k * 0x6D0
+                        if not (0x00597200 <= o and o + 0x6D0 <= 0x00715B5C):
+                            continue
+                        b = pine.read32(o + 0x1B0)
+                        if (b & 0xFF) != 0xFF:
+                            continue
+                        h_ = hp(o)
+                        if not h_ or h_[1] <= 0:
+                            continue
+                        brain = 0x006D53F0 + ((pine.read32(o + 0x90) >> 16) & 0xFFFF) * 0x2F0
+                        tl = [pine.read32(brain + 0x164 + 4 * i) for i in range(16)]
+                        row["enemies"].append([hex(o), h_, [hex(t) for t in tl if t not in (0, 0xFFFFFFFF)]])
+                    combat_rows.append(row)
+            except Exception as e:  # noqa: BLE001
                 pine = None
         if track:
             try:
@@ -235,6 +271,9 @@ def main():
     except Exception as e:  # noqa: BLE001
         st = {"error": repr(e)}
     open(os.path.join(out, "state.txt"), "w").write(repr(st) + chr(10))
+    if combat_rows:
+        import json as _json
+        open(os.path.join(out, "combat.jsonl"), "w").write("".join(_json.dumps(r) + chr(10) for r in combat_rows))
     if track_rows:
         open(os.path.join(out, "track.csv"), "w").write("".join(",".join(map(str, r)) + chr(10) for r in track_rows))
     print("state:", st)

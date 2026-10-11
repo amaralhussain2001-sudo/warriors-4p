@@ -1649,3 +1649,468 @@ rm_done:
   - R3 makes radars 3-4 follow P2's radar on/off state.
 - **Checks:** no new conflicts besides the 2 intended replacements.
 - **The large P1/P2 discs are the expected single-player-size radar** (about 1/3 of the quarter, as in F-0103).
+
+
+---
+
+## Addendum: runtime results 2 (2026-10-11)
+
+**The run (reported by the coordinator).** Radars now appear in all four quarters in Mission 13, and a 4-instance
+lockstep run stays in sync (F-0130). Three bugs remain:
+1. **Duplicate panel:** with all four force-show flags set, each quarter shows its owner's panel plus a nameless panel
+   (health bar, score, money) at the opposite top corner (`local/m2/m13e/t0402_p10689.png`).
+2. **Dark band:** a thin dark horizontal band appears in every quarter.
+3. **Radar overlap:** a radar edge shows at the top of the bottom-row crops.
+
+This addendum is static analysis only. Section numbers continue from addendum 1 (C1-C7).
+
+### C1. Duplicate panel: diagnosis
+| Finding | Label |
+|---|---|
+| **The global HUD sprites are untagged.** Sprites 0-12 are created once at boot by `FUN_00184918`, called from `FUN_00160DF8` at 0x00161114. Every call passes view 0xFF (`sw s3,0(sp)` with s3 = 255, the 9th argument of `FUN_0018AEC0`). Handles start at 0, because the next-handle field +0x903C is set to 254 at 0x001858E8/0x001858F0. Sprite 3 = "part_page0" (0x400 instances); sprite 6 = "big_font" (0x800 instances). | VERIFIED (disassembly 0x00184A40-0x00184C18) |
+| **A sprite item is a batch, drawn with a single view byte.** `FUN_00182DE0` appends one quad to an item (count +0x1C). Each frame the item registers in the flush list (`FUN_00197000`). The flush draws it once with its view byte +0x42 (`FUN_00197168`). | VERIFIED (decompile) |
+| **The panels draw into those shared batches.** The health bar is drawn by `FUN_001A1138` into global sprite 3. Init sets the bar up with `FUN_001A0FD0(..., 0x30036, ...)`, i.e. handle 3 at +0x2E and frame 0x36. The rage bars of the +0x3480 child also use `FUN_001A1138`. The score and money texts (`FUN_001CD288` → `FUN_00179C30`) append glyph quads to the font sprite named at text object +0xA0; `FUN_00179C30` special-cases big_font = 6. | VERIFIED (code) / HYPOTHESIS (which font each panel text uses) |
+| **Result: every quarter shows every player's bars and numbers.** The bars and numbers of all four players land in the same untagged batches, and B2's SHARED draws each such item once per view. P1 and P3 overlap at the left layout position and P2 and P4 at the right, which is the nameless panel at the column partner's corner. In P1's quarter the nameless bar is shorter than P1's, as expected for another player's health. Names use per-PlayerHUD sprites created inside the claim (tagged by ETAG/VTAG), so each name appears only in its owner's quarter. | VERIFIED (code; matches the screenshot) |
+| **Second, smaller gap: PlayerHUD 0-1 Draw has no player context.** It runs with CUR = -1 (VCALL01 wraps only Update), so a sprite created during their Draw is untagged too, e.g. text widgets `FUN_001BB038` → `FUN_001B9600` → `FUN_0018AEC0`. | VERIFIED (code) |
+| **Correction to section 2.2 (merged view).** For items without their view, the flush's global path calls `FUN_00197168(item, views - 1)`, which draws only view 0xFF or views - 1. So in merged view, items tagged 1-3 are **not drawn at all**; they do not fall back to the table position as section 2.2 says. | VERIFIED (0x00185F30-0x00185F50, decompile) |
+
+### C2. Dark band: diagnosis
+| Finding | Label |
+|---|---|
+| **The band is the 2-player split divider.** It consists of the 19 elements at HUD+0x137E0 (0x00614020, stride 0x100). HudUpdate places them in two loops, 0x001AF4D8 and 0x001AFE28, and shows them with vtable +0x54 = 1 at 0x001AF568 / 0x001AFEB8. In layout modes other than 0 they form a **horizontal dashed line at y = 0.5**: x = -0.08 + k*0.06, y = D488 = 0.5, size D494/D498, rotated by pi/2. `FUN_001B1688` and `FUN_001567F8` draw them while the screen is split. | VERIFIED (code, ELF constants) |
+| **Why it appears in every quarter.** The divider's sprites are untagged, so SHARED draws the full-screen divider once per view. The line therefore sits at the middle of each quarter; with 2 views it sits at the middle of each view (`local/m2/m13b/f00002.png`). Before B2 it lay on the row boundary. | VERIFIED (code) / screenshots |
+| **Recommendation: skip it in the 2x2 mode.** The crop hides the row boundary anyway, and a single horizontal line cannot mark a 2x2 grid. Drawing it once full-frame instead would need a third path in SHARED. Fix R6 hides it in mode 2 only; modes 0-1 are unchanged. | recommendation |
+
+### C3. Radar overlap: diagnosis
+- **The single-player radar disc runs slightly past the bottom and right edges of the screen.** In single player the
+  screen edge cuts that part off.
+- **In the 2x2 layout nothing cuts it.** The radars are drawn on the global HUD camera, which does not clip to the
+  quarter. So the lower cap of a top-row disc is drawn into the quarter below. The sliver at the top of
+  `local/m2/q8_m13/f00003.png`/`f00004.png` sits at the radar's x (about 85 % across). (VERIFIED: draw path)
+- **Size of the overflow:** estimated from pixels in f00001/f00003 at about 2-4 % of a quarter's height. (HYPOTHESIS)
+- **Bottom-row discs** overflow off the screen and are cut, as in single player.
+- **The left-column discs** also overflow about 1 % to the right. This was not reported and is not fixed here.
+- **Fix R7:** top-row radars go 0.05 camera units higher, which is 5 % of a quarter's height in 4:3 at depth 2d.
+  - The disc's lower edge stays inside its quarter and the disc is no longer cut.
+  - The margin is the float built at TOPZ+4/+8 (`lui at,0x3D4C` / `ori at,at,0xCCCD`).
+
+### C4. Fix R5-R7 (fragments below)
+- **R5, panels per view (add to `[warriors-4p 4p hud B2]`):**
+  - **CLONES** (boot, 0x00161114, after `FUN_00184918`):
+    - creates one copy per view 0-3 of global sprites 3 and 6, with `FUN_00184918`'s own arguments but view = v,
+      and with capacities 128 and 256 instances;
+    - activates each copy with `FUN_001972B0`, as `FUN_00184918` does for sprites 0-11;
+    - fills the table at 0x000E0A60: per sprite, the original item followed by its copies for views 0-3; the table
+      ends with 0.
+  - **REDIR** (entry of `FUN_00182DE0`, 0x00182DE0/0x00182DE4): while CUR is 0-3, a quad for a cloned sprite goes to
+    the copy for view CUR, but only if that copy is active (+0x11).
+  - **DCALL01** (0x001B1BB4): runs PlayerHUD 0-1 Draw with CUR = slot. In that loop s1 is 0 for slot 0 and -1 for
+    slot 1.
+  - **Result:** each player's bars and numbers land in an item tagged with their view, and the flush draws it once
+    through that view's HUD camera. Shared items still go through SHARED.
+- **R6, divider (add to B2):** 0x001AF568 and 0x001AFEB8 (`addiu a1,zero,1`) become `jal DIVVIS`, which sets
+  a1 = (layout mode != 2).
+- **R7, radar margin (`[warriors-4p hud]`):** replace the 2A cave word at 0x000F0640 (`lwc1 f7,D430(v0)`) with
+  `j TOPZ`. TOPZ loads zs + 0.05 and returns to 0x000F0648; 0x000F0644 runs in the delay slot.
+- **Space:** 0x000E0A60-0x000E0A9F holds the clone table (runtime data). Code is at 0x000E0AA0-0x000E0CCB
+  (139 words; R7's TOPZ is the last 7). Nothing else uses 0x000E0A58-0x000E0FFF; other groups use 0x000E1000+.
+- **Risks (HYPOTHESIS):**
+  - **Sprite slots:** the copies take 8 of the 255 slots.
+  - **Packet memory:** the copies add packets for 1,536 more instances (`FUN_0044EB58`); the free headroom is
+    unknown.
+  - **Handle numbers:** sprites created after boot get handles shifted by 8. No fixed handle above 12 was found.
+  - **Fallback if activation fails:** REDIR leaves the quad in the original item, so the duplicate stays but nothing
+    is lost.
+- **If something still shows twice after R5:** find its sprite (C5) and add a table entry. CL_ENTRY covers sprites
+  created with a3 = t0 = t1 = 0, t2 = 2 (sprites 3 and 6). Others need those arguments passed in (table in C6).
+- **Checks** (`python -I tools/note_patches.py check ...`):
+
+  | Files checked | Result | Meaning |
+  |---|---|---|
+  | `mod/w4p_m1.pnach` alone | 6 problems | the existing group A vs B1 alternatives |
+  | pnach + the B2 part | 6 problems | no new conflicts |
+  | pnach + the B2 part + the hud part | 7 problems | the 6 above + the intended 0x000F0640 |
+  | pnach without its 0x000F0640 line + both parts | 6 problems | only the A/B1 alternatives |
+  | `mod/m2/hud_b1.txt` + `mod/m2/hud_b2.txt` + the B2 part | 0 problems | |
+
+  Every "was" word was read from `local/disc/SLUS_212.15`, and the caves were disassembled back from the encoded
+  words.
+- **Test order (all HYPOTHESIS until run):**
+  1. **R6:** the band is gone in every quarter.
+  2. **R7:** no sliver at the top of the bottom-row crops; top-row discs sit slightly higher and are fully round.
+  3. **R5:**
+     - first DCALL01 alone, to see whether any duplicates come from sprites created during Draw;
+     - then all of R5 with the four force-show flags set: each quarter should show only its owner's panel.
+  4. **Lockstep:** a 4-instance run with 0 hash mismatches.
+
+### C5. PINE reads
+| Address | Expected |
+|---|---|
+| 0x000E0A60-0x000E0A87 (after boot) | item(3), its 4 copies, item(6), its 4 copies; 0 at 0x000E0A88. item(h) = read32(0x0050CD4C) + 0x189C + h*0x78 |
+| each copy: u8 +0x11 / u8 +0x42 / u32 +0x18 / u32 +0x04 | 1 (active) / 0, 1, 2, 3 (view) / 128 or 256 (capacity) / non-zero (packet) |
+| u8 at mgr + 0x18DC + i*0x78, i < 255 (slot in use) | the number of used slots stays below 255 in a busy level |
+| u32 at 0x00619970 + {0x2A0, 0xE70, 0x12A0, 0x16D0, 0x1B00} + 0xA0 (font sprite of each PlayerHUD 0 text) | 6. Any other value needs its own copy |
+| 0x000E0010 (CUR) between frames | 0xFFFFFFFF |
+| float 0x00604748 (P1 radar z, HUD+0x15D0+0x2938) in the 2x2 mode | zs + d*Wz + 0.05; with the ELF values -0.31 + 0.5 + 0.05 = 0.24 |
+
+### C6. Global HUD sprites (from `FUN_00184918`)
+All are created with view 0xFF. Sprites 3 and 6 were checked against the disassembly; the other rows are taken from
+the decompile.
+
+| Handle | Page | Instances | a3 t0 t1 t2 | f12 |
+|---|---|---|---|---|
+| 0 | part_page1 | 0x280 | 1 0 2 1 | 0x462BE000 |
+| 1 | part_page1 | 400 | 1 0 0 1 | 0x461C4000 |
+| 2 | part_page0 | 0x40 | 0 0 1 2 | 0x462BE000 |
+| 3 | part_page0 | 0x400 | 0 0 0 2 | 0x461C4000 |
+| 4 | part_page1 | 200 | 1 0 1 1 | 0x461C4000 |
+| 5 | part_page0 | 1 | 1 0 0 1 | 0x461C4000 |
+| 6 | big_font | 0x800 | 0 0 0 2 | 0x460CA000 |
+| 7, 8 | lighting | 0x20 | 1 0 1 1 | 0x461C4000 |
+| 9, 10 | part_page1 | 0x20 | 1 0 2 1 | 0x462BE000 |
+| 11 | hud_minigames | 0x20 | 0 0 1 2 | 0x462BE000 |
+| 12 | part_fire | 0x100 | 1 0 0 1 | 0x461C4000 |
+
+### Fragment R5-R6: add to `[warriors-4p 4p hud B2]` (139 lines)
+```
+// HUD option (B) fix 2 (R5 panels per view, R6 divider), add to [warriors-4p 4p hud B2] (m2_hud_full.md addendum 2). Static design, untested.
+patch=0,EE,000E0A60,word,00000000 // clone table empty at load (CLONES fills it at boot)
+patch=2,EE,000E0AA0,word,27BDFF60
+patch=2,EE,000E0AA4,word,FFBF0020
+patch=2,EE,000E0AA8,word,7FB00030
+patch=2,EE,000E0AAC,word,7FB10040
+patch=2,EE,000E0AB0,word,7FB20050
+patch=2,EE,000E0AB4,word,7FB30060
+patch=2,EE,000E0AB8,word,7FB40070
+patch=2,EE,000E0ABC,word,7FB50080
+patch=2,EE,000E0AC0,word,0C061246
+patch=2,EE,000E0AC4,word,00000000
+patch=2,EE,000E0AC8,word,AFA00010
+patch=2,EE,000E0ACC,word,AFA00014
+patch=2,EE,000E0AD0,word,AFA00018
+patch=2,EE,000E0AD4,word,3C013F80
+patch=2,EE,000E0AD8,word,AFA1001C
+patch=2,EE,000E0ADC,word,3C11000E
+patch=2,EE,000E0AE0,word,26310A60
+patch=2,EE,000E0AE4,word,24120003
+patch=2,EE,000E0AE8,word,3C130055
+patch=2,EE,000E0AEC,word,26732B78
+patch=2,EE,000E0AF0,word,3C14461C
+patch=2,EE,000E0AF4,word,36944000
+patch=2,EE,000E0AF8,word,0C0382D1
+patch=2,EE,000E0AFC,word,24150080
+patch=2,EE,000E0B00,word,24120006
+patch=2,EE,000E0B04,word,3C130055
+patch=2,EE,000E0B08,word,26732B88
+patch=2,EE,000E0B0C,word,3C14460C
+patch=2,EE,000E0B10,word,3694A000
+patch=2,EE,000E0B14,word,0C0382D1
+patch=2,EE,000E0B18,word,24150100
+patch=2,EE,000E0B1C,word,AE200000
+patch=2,EE,000E0B20,word,DFBF0020
+patch=2,EE,000E0B24,word,7BB00030
+patch=2,EE,000E0B28,word,7BB10040
+patch=2,EE,000E0B2C,word,7BB20050
+patch=2,EE,000E0B30,word,7BB30060
+patch=2,EE,000E0B34,word,7BB40070
+patch=2,EE,000E0B38,word,7BB50080
+patch=2,EE,000E0B3C,word,03E00008
+patch=2,EE,000E0B40,word,27BD00A0
+patch=2,EE,000E0B44,word,FFBF0090
+patch=2,EE,000E0B48,word,3C020051
+patch=2,EE,000E0B4C,word,8C44CD4C
+patch=2,EE,000E0B50,word,0C0616AC
+patch=2,EE,000E0B54,word,0240282D
+patch=2,EE,000E0B58,word,AE220000
+patch=2,EE,000E0B5C,word,0000802D
+patch=2,EE,000E0B60,word,3C04005E
+patch=2,EE,000E0B64,word,248491E0
+patch=2,EE,000E0B68,word,0C050FDA
+patch=2,EE,000E0B6C,word,0260282D
+patch=2,EE,000E0B70,word,0040282D
+patch=2,EE,000E0B74,word,3C020051
+patch=2,EE,000E0B78,word,8C44CD4C
+patch=2,EE,000E0B7C,word,02A0302D
+patch=2,EE,000E0B80,word,0000382D
+patch=2,EE,000E0B84,word,0000402D
+patch=2,EE,000E0B88,word,0000482D
+patch=2,EE,000E0B8C,word,240A0002
+patch=2,EE,000E0B90,word,27AB0010
+patch=2,EE,000E0B94,word,AFB00000
+patch=2,EE,000E0B98,word,44946000
+patch=2,EE,000E0B9C,word,0C062BB0
+patch=2,EE,000E0BA0,word,00000000
+patch=2,EE,000E0BA4,word,240100FF
+patch=2,EE,000E0BA8,word,1041000C
+patch=2,EE,000E0BAC,word,0040282D
+patch=2,EE,000E0BB0,word,3C020051
+patch=2,EE,000E0BB4,word,0C0616AC
+patch=2,EE,000E0BB8,word,8C44CD4C
+patch=2,EE,000E0BBC,word,00100880
+patch=2,EE,000E0BC0,word,02210821
+patch=2,EE,000E0BC4,word,AC220004
+patch=2,EE,000E0BC8,word,0040202D
+patch=2,EE,000E0BCC,word,0C065CAC
+patch=2,EE,000E0BD0,word,24050001
+patch=2,EE,000E0BD4,word,10000004
+patch=2,EE,000E0BD8,word,00000000
+patch=2,EE,000E0BDC,word,00100880
+patch=2,EE,000E0BE0,word,02210821
+patch=2,EE,000E0BE4,word,AC200004
+patch=2,EE,000E0BE8,word,26100001
+patch=2,EE,000E0BEC,word,2A010004
+patch=2,EE,000E0BF0,word,1420FFDB
+patch=2,EE,000E0BF4,word,00000000
+patch=2,EE,000E0BF8,word,DFBF0090
+patch=2,EE,000E0BFC,word,03E00008
+patch=2,EE,000E0C00,word,26310014
+patch=2,EE,000E0C04,word,3C01000E
+patch=2,EE,000E0C08,word,8C220010
+patch=2,EE,000E0C0C,word,04400013
+patch=2,EE,000E0C10,word,2C430004
+patch=2,EE,000E0C14,word,10600011
+patch=2,EE,000E0C18,word,00021080
+patch=2,EE,000E0C1C,word,24210A60
+patch=2,EE,000E0C20,word,8C230000
+patch=2,EE,000E0C24,word,1060000D
+patch=2,EE,000E0C28,word,00000000
+patch=2,EE,000E0C2C,word,14640009
+patch=2,EE,000E0C30,word,00221821
+patch=2,EE,000E0C34,word,8C630004
+patch=2,EE,000E0C38,word,10600008
+patch=2,EE,000E0C3C,word,00000000
+patch=2,EE,000E0C40,word,90620011
+patch=2,EE,000E0C44,word,10400005
+patch=2,EE,000E0C48,word,00000000
+patch=2,EE,000E0C4C,word,10000003
+patch=2,EE,000E0C50,word,0060202D
+patch=2,EE,000E0C54,word,1000FFF2
+patch=2,EE,000E0C58,word,24210014
+patch=2,EE,000E0C5C,word,27BDFFC0
+patch=2,EE,000E0C60,word,08060B7A
+patch=2,EE,000E0C64,word,7FB10020
+patch=2,EE,000E0C68,word,27BDFFF0
+patch=2,EE,000E0C6C,word,AFBF0000
+patch=2,EE,000E0C70,word,3C01000E
+patch=2,EE,000E0C74,word,00111023
+patch=2,EE,000E0C78,word,AC220010
+patch=2,EE,000E0C7C,word,0060F809
+patch=2,EE,000E0C80,word,00000000
+patch=2,EE,000E0C84,word,3C01000E
+patch=2,EE,000E0C88,word,2402FFFF
+patch=2,EE,000E0C8C,word,AC220010
+patch=2,EE,000E0C90,word,8FBF0000
+patch=2,EE,000E0C94,word,03E00008
+patch=2,EE,000E0C98,word,27BD0010
+patch=2,EE,000E0C9C,word,3C050051
+patch=2,EE,000E0CA0,word,8CA5B1A4
+patch=2,EE,000E0CA4,word,38A50002
+patch=2,EE,000E0CA8,word,03E00008
+patch=2,EE,000E0CAC,word,0005282B
+patch=2,EE,00161114,word,0C0382A8 // was 0C061246 jal 0x00184918; boot: create the HUD sprite manager, then per-view copies of global sprites 3 and 6
+patch=2,EE,00182DE0,word,08038301 // was 27BDFFC0 addiu sp,sp,-64; FUN_00182DE0 entry -> REDIR (append in a HUD player context goes to that view's copy)
+patch=2,EE,00182DE4,word,00000000 // was 7FB10020 sq s1,32(sp); nop (delay slot; REDIR runs both original instructions)
+patch=2,EE,001B1BB4,word,0C03831A // was 0060F809 jalr ra,v1; PlayerHUD 0/1 Draw with the HUD player context
+patch=2,EE,001AF568,word,0C038327 // was 24050001 addiu a1,zero,1; 2-player divider segments: hidden in the 2x2 mode
+patch=2,EE,001AFEB8,word,0C038327 // was 24050001 addiu a1,zero,1; 2-player divider segments: hidden in the 2x2 mode
+```
+
+### Fragment R7: add the TOPZ cave to `[warriors-4p hud]` and replace its 0x000F0640 line
+```
+// HUD option (B) fix 2 (R7 radar margin): TOPZ cave (add to [warriors-4p hud]) and 1 replaced word of the 2A cave.
+patch=2,EE,000E0CB0,word,C447D430
+patch=2,EE,000E0CB4,word,3C013D4C
+patch=2,EE,000E0CB8,word,3421CCCD
+patch=2,EE,000E0CBC,word,44812800
+patch=2,EE,000E0CC0,word,460539C0
+patch=2,EE,000E0CC4,word,0803C192
+patch=2,EE,000E0CC8,word,00000000
+patch=2,EE,000F0640,word,0803832C // 2A cave: [warriors-4p hud] had C447D430 (lwc1 f7,D430(v0)); j TOPZ (0x000F0644 runs in the delay slot)
+```
+
+### Cave source (code at 0x000E0AA0)
+```
+# ---------- CLONES: boot, FUN_00160DF8 at 0x00161114 (was jal 0x00184918 = create the HUD sprite manager and the
+# global sprites 0-12). Then, for global sprites 3 (part_page0, bars) and 6 (big_font, text), create one copy per view
+# 0..3 with the same arguments as FUN_00184918 but view = v, activate it (FUN_001972B0, as FUN_00184918 does), and
+# fill the clone table at 0x000e0a60
+CLONES:
+  addiu sp,sp,-160
+  sd ra,32(sp)
+  sq s0,48(sp)
+  sq s1,64(sp)
+  sq s2,80(sp)
+  sq s3,96(sp)
+  sq s4,112(sp)
+  sq s5,128(sp)
+  jal 0x00184918              # original call
+  nop
+  sw zero,16(sp)              # vec (0, 0, 0, 1.0), as FUN_00184918
+  sw zero,20(sp)
+  sw zero,24(sp)
+  lui at,0x3F80
+  sw at,28(sp)
+  lui s1,0x000E
+  addiu s1,s1,0xa60      # clone table entry 0
+  addiu s2,zero,3             # handle 3: "part_page0", 0x400 instances, f12 10000.0
+  lui s3,0x0055
+  addiu s3,s3,0x2B78
+  lui s4,0x461C
+  ori s4,s4,0x4000
+  jal CL_ENTRY
+  addiu s5,zero,0x80          # copies: 128 instances each
+  addiu s2,zero,6             # handle 6: "big_font", 0x800 instances, f12 9000.0
+  lui s3,0x0055
+  addiu s3,s3,0x2B88
+  lui s4,0x460C
+  ori s4,s4,0xA000
+  jal CL_ENTRY
+  addiu s5,zero,0x100         # copies: 256 instances each
+  sw zero,0(s1)               # terminator
+  ld ra,32(sp)
+  lq s0,48(sp)
+  lq s1,64(sp)
+  lq s2,80(sp)
+  lq s3,96(sp)
+  lq s4,112(sp)
+  lq s5,128(sp)
+  jr ra
+  addiu sp,sp,160
+
+# CL_ENTRY (uses CLONES' frame): s1 = table entry, s2 = handle, s3 = page name, s4 = f12 bits, s5 = capacity
+CL_ENTRY:
+  sd ra,144(sp)
+  lui v0,0x0051
+  lw a0,-0x32B4(v0)           # sprite manager [0x0050CD4C]
+  jal 0x00185AB0              # item of handle s2
+  daddu a1,s2,zero
+  sw v0,0(s1)                 # entry.orig
+  daddu s0,zero,zero          # v = 0
+ce_loop:
+  lui a0,0x005E
+  addiu a0,a0,-0x6E20         # 0x005D91E0 (as FUN_00184918)
+  jal 0x00143F68              # page resource
+  daddu a1,s3,zero
+  daddu a1,v0,zero
+  lui v0,0x0051
+  lw a0,-0x32B4(v0)
+  daddu a2,s5,zero
+  daddu a3,zero,zero
+  daddu t0,zero,zero
+  daddu t1,zero,zero
+  addiu t2,zero,2
+  addiu t3,sp,16              # vec
+  sw s0,0(sp)                 # 9th argument: view = v
+  mtc1 s4,f12
+  jal 0x0018AEC0              # new sprite (returns 0xFF when the manager is full)
+  nop
+  addiu at,zero,0xFF
+  beq v0,at,ce_none
+  daddu a1,v0,zero
+  lui v0,0x0051
+  jal 0x00185AB0
+  lw a0,-0x32B4(v0)
+  sll at,s0,2
+  addu at,s1,at
+  sw v0,4(at)                 # entry.clone[v]
+  daddu a0,v0,zero
+  jal 0x001972B0              # activate (texture, DMA packet)
+  addiu a1,zero,1
+  beq zero,zero,ce_next
+  nop
+ce_none:
+  sll at,s0,2
+  addu at,s1,at
+  sw zero,4(at)
+ce_next:
+  addiu s0,s0,1
+  slti at,s0,4
+  bne at,zero,ce_loop
+  nop
+  ld ra,144(sp)
+  jr ra
+  addiu s1,s1,20              # next entry
+
+# ---------- REDIR: FUN_00182DE0 entry (append one quad to sprite item a0). In a HUD player context (CUR 0..3) a quad
+# for a cloned global sprite goes to that view's copy
+REDIR:
+  lui at,0x000E
+  lw v0,0x0010(at)            # CUR
+  bltz v0,rd_go
+  sltiu v1,v0,4
+  beq v1,zero,rd_go
+  sll v0,v0,2
+  addiu at,at,0xa60
+rd_scan:
+  lw v1,0(at)                 # entry.orig (0 = end)
+  beq v1,zero,rd_go
+  nop
+  bne v1,a0,rd_nx
+  addu v1,at,v0
+  lw v1,4(v1)                 # entry.clone[CUR]
+  beq v1,zero,rd_go
+  nop
+  lbu v0,0x11(v1)             # copy active (texture and packet)? otherwise keep the original item
+  beq v0,zero,rd_go
+  nop
+  beq zero,zero,rd_go
+  daddu a0,v1,zero
+rd_nx:
+  beq zero,zero,rd_scan
+  addiu at,at,20
+rd_go:
+  .word 0x27BDFFC0            # addiu sp,sp,-64 (original 0x00182DE0)
+  j 0x00182DE8
+  .word 0x7FB10020            # sq s1,32(sp) (original 0x00182DE4)
+
+# ---------- DCALL01: FUN_001B1688 at 0x001B1BB4 (was jalr ra,v1 = PlayerHUD 0/1 Draw); s1 = 0 for slot 0, -1 for slot 1
+DCALL01:
+  addiu sp,sp,-16
+  sw ra,0(sp)
+  lui at,0x000E
+  subu v0,zero,s1
+  sw v0,0x0010(at)            # CUR = slot
+  jalr v1
+  nop
+  lui at,0x000E
+  addiu v0,zero,-1
+  sw v0,0x0010(at)            # CUR = -1
+  lw ra,0(sp)
+  jr ra
+  addiu sp,sp,16
+
+# ---------- DIVVIS: HudUpdate at 0x001AF568 / 0x001AFEB8 (was addiu a1,zero,1 = show the 19 divider segments of the
+# 2-player split). a1 = (layout mode != 2): the divider stays in modes 0-1 and is hidden in the 2x2 mode
+DIVVIS:
+  lui a1,0x0051
+  lw a1,-0x4E5C(a1)           # 0x0050B1A4
+  xori a1,a1,2
+  jr ra
+  sltu a1,zero,a1
+
+# ---------- TOPZ: 2A radar cave at 0x000F0640 (was lwc1 f7,D430(v0) = zs; v0 = 0x00510000). Top-row radars: z + margin,
+# so the disc's lower edge (which a single-player screen cuts off) stays inside the top quarters
+TOPZ:
+  lwc1 f7,-0x2BD0(v0)         # zs (original)
+  lui at,0x3D4C
+  ori at,at,0xCCCD            # margin 0.05 (camera units at depth 2d; 5 % of a quarter's height in 4:3)
+  mtc1 at,f5
+  add.s f7,f7,f5
+  j 0x000F0648                # 0x000F0644 already ran in the delay slot of the hook
+  nop
+```
+
+### Summary (addendum 2)
+- **Duplicate panel (VERIFIED):**
+  - Health bars and panel numbers are batched into global HUD sprites that are created once at boot with view 0xFF
+    (sprite 3 = part_page0, font sprite 6 = big_font).
+  - SHARED draws each such batch in every quarter, so each quarter shows all players' bars and numbers. Names use
+    per-player sprites, which is why they appear only once.
+  - **R5:** at boot, make per-view copies of sprites 3 and 6. While a player HUD is drawing, redirect its quads
+    (`FUN_00182DE0` entry) to that player's copy, and give PlayerHUD 0-1 Draw the player context.
+- **Band (VERIFIED):** it is the 2-player divider (19 segments at HUD+0x137E0, a horizontal line at y = 0.5), now
+  drawn in every quarter. **R6** hides it in the 2x2 mode only.
+- **Radar sliver:** the single-player disc runs past the screen bottom, and on the global camera that part shows in
+  the quarter below. **R7** raises the top-row radars by 5 % of a quarter's height.
+- **Checks:** no new conflicts except the intended 0x000F0640. R5's slot and memory costs need a runtime check (C5).
+- **Correction:** in merged view, items tagged 1-3 are not drawn at all.

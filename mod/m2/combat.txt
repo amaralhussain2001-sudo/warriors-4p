@@ -1,0 +1,22 @@
+// extracted from docs\research\m2_combat34.md
+patch=2,EE,002F034C,word,84850224 // was 84820224 lh v0,0x224(a0) -> lh a1,0x224(a0)
+patch=2,EE,002F0350,word,28A20002 // was 28420002 slti v0,v0,2 -> slti v0,a1,2
+patch=2,EE,002F036C,word,00000000 // was 24050002 addiu a1,zero,2 -> nop (a1 = player count)
+patch=2,EE,002403A0,word,822201B0 // was 8E04489C lw a0,0x489C(s0) -> lb v0,0x1B0(s1)
+patch=2,EE,002403A4,word,04420013 // was 0C0E409A jal 0x00390268 -> bltzl v0,0x002403F4 (not a player)
+patch=2,EE,002403A8,word,8E230000 // was 2484022C addiu a0,a0,556 -> lw v1,0(s1) (likely-delay, as the original bnel)
+patch=2,EE,002403AC,word,00000000 // was 54510011 bnel v0,s1,0x002403F4 -> nop
+patch=2,EE,002403B0,word,00000000 // was 8E230000 lw v1,0(s1) -> nop
+patch=2,EE,004228A0,word,08038C40 // was 8CA20380 lw v0,0x380(a1) -> j 0x000E3100
+patch=2,EE,004228A4,word,8CA20380 // was 240300C0 addiu v1,zero,0xC0 -> lw v0,0x380(a1) (delay slot)
+patch=2,EE,000E3100,word,2C430002 // sltiu v1,v0,2
+patch=2,EE,000E3104,word,14600004 // bne v1,zero,0x000E3118
+patch=2,EE,000E3108,word,240300C0 // addiu v1,zero,0xC0 (delay slot)
+patch=2,EE,000E310C,word,3C04000E // lui a0,0x000E
+patch=2,EE,000E3110,word,34843000 // ori a0,a0,0x3000   scratch record
+patch=2,EE,000E3114,word,00001021 // addu v0,zero,zero  record 0 of the scratch
+patch=2,EE,000E3118,word,00432818 // mult a1,v0,v1
+patch=2,EE,000E311C,word,03E00008 // jr ra
+patch=2,EE,000E3120,word,00A41021 // addu v0,a1,a0
+patch=2,EE,0041B7FC,word,8C620380 // was 806201B0 lb v0,0x1B0(v1) -> lw v0,0x380(v1)
+patch=2,EE,0041B800,word,2C420002 // was 00021027 nor v0,zero,v0 -> sltiu v0,v0,2
