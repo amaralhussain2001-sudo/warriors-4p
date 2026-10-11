@@ -18,13 +18,14 @@ instance, scripted input (W4P LocalBot slots), players 3-4 created with the game
   companion handling (D7, R-26).
 - First 4-player attempt crashed in HUD code and corrupted player 4's handle (F-0110); fixed by the records relocation
   and HUD guards (F-0111).
-- **Players 3-4 do not move** although their controller input reaches the game (R-27, `local/m2/m2m/track.csv`);
-  research in progress (`docs/research/m2_player_control.md`).
+- Players 3-4 did not move at first (R-27): the test characters were tutorial enemies with switched-off brains.
+  Fixed (m2_player_control.md P-1, P-2); **independent input for all four players now VERIFIED** in one instance
+  (F-0112). Players 3-4 cover less distance than players 1-2 (cause not checked).
 - Views: Mission 1's tutorial keeps one view; four separate views not yet seen.
 - No HUD for players 3-4 yet (interim guards).
 - A 60 fps version of the boot script does not work yet (menu timing differs at 60 fps; R-22).
 
 ## Next
-1. Make players 3-4 controllable (control path research), then criterion 2 (independent input).
+1. Deterministic creation of players 3-4 (W4P CallAt) and a 4-instance lockstep run (criterion 5).
 2. A mission with free split views and companions; 4 views and HUD per view.
 3. Four instances in lockstep (criterion 5), frame rate (criterion 6).

@@ -695,6 +695,97 @@ patch=2,EE,000F0EC0,word,08069B10 // j 001A6C40
 patch=2,EE,000F0EC4,word,00000000 // nop
 patch=2,EE,001A6C38,word,0803C3A4 // was 27BDFFF0; entry -> j guard 000F0E90
 patch=2,EE,001A6C3C,word,00000000 // was FFBF0000; entry+4 -> nop (moved to the guard)
+patch=2,EE,00229F30,word,0C03C2D0 // was 0C0A33AE jal 0x0028CEB8 -> jal 0x000F0B40 (MakePlayer: clear brain-dead first)
+patch=2,EE,000F0B40,word,A0800009 // brain cave: sb zero,9(a0)  brain+9 (brain-dead flag) = 0; a0 = brain (delay slot 0x00229F34)
+patch=2,EE,000F0B44,word,080A33AE // brain cave: j 0x0028CEB8 (set brain mode a1 = 0 = player; recompute)
+patch=2,EE,000F0B48,word,00000000 // brain cave: nop
+patch=2,EE,00165008,word,A04058F4 // was A040042E; GM+0x42E -> GM+0x58F4; FUN_00164c20
+patch=2,EE,00165018,word,906258CC // was 9062041A; GM+0x41A -> GM+0x58CC; FUN_00164c20
+patch=2,EE,0016503C,word,244258D6 // was 24420420; GM+0x420 -> GM+0x58D6; FUN_00164c20
+patch=2,EE,00165090,word,A04058F4 // was A040042E; GM+0x42E -> GM+0x58F4; FUN_00164c20
+patch=2,EE,001650A0,word,906258CC // was 9062041A; GM+0x41A -> GM+0x58CC; FUN_00164c20
+patch=2,EE,001650C4,word,244258D6 // was 24420420; GM+0x420 -> GM+0x58D6; FUN_00164c20
+patch=2,EE,0016510C,word,A05058D6 // was A0500420; GM+0x420 -> GM+0x58D6; FUN_00164c20
+patch=2,EE,001A6CB0,word,908258D4 // was 9082041E; GM+0x41E -> GM+0x58D4; FUN_001a6c58
+patch=2,EE,001A6CF0,word,A06258D0 // was A062041C; GM+0x41C -> GM+0x58D0; FUN_001a6c58
+patch=2,EE,001A7FE8,word,904458F4 // was 9044042E; GM+0x42E -> GM+0x58F4; FUN_001a7e48
+patch=2,EE,001A8028,word,904458C0 // was 90440414; GM+0x414 -> GM+0x58C0; FUN_001a7e48
+patch=2,EE,001A80C0,word,908258D4 // was 9082041E; GM+0x41E -> GM+0x58D4; FUN_001a7e48
+patch=2,EE,001A8640,word,908258D4 // was 9082041E; GM+0x41E -> GM+0x58D4; FUN_001a8590
+patch=2,EE,001A8694,word,908258D4 // was 9082041E; GM+0x41E -> GM+0x58D4; FUN_001a8590
+patch=2,EE,001A8760,word,908258D4 // was 9082041E; GM+0x41E -> GM+0x58D4; FUN_001a8590
+patch=2,EE,001A8A38,word,904558D0 // was 9045041C; GM+0x41C -> GM+0x58D0; FUN_001a8988
+patch=2,EE,00239A40,word,904658CC // was 9046041A; GM+0x41A -> GM+0x58CC; FUN_002398b0
+patch=2,EE,0023E894,word,905058CC // was 9050041A; GM+0x41A -> GM+0x58CC; FUN_0023e7e0
+patch=2,EE,0023EA24,word,904358CC // was 9043041A; GM+0x41A -> GM+0x58CC; FUN_0023e7e0
+patch=2,EE,00273AC0,word,904358CC // was 9043041A; GM+0x41A -> GM+0x58CC; FUN_00273a68
+patch=2,EE,00284530,word,906258F4 // was 9062042E; GM+0x42E -> GM+0x58F4; FUN_002843f8
+patch=2,EE,0028459C,word,906258F4 // was 9062042E; GM+0x42E -> GM+0x58F4; FUN_002843f8
+patch=2,EE,002B622C,word,906458CC // was 9064041A; GM+0x41A -> GM+0x58CC; FUN_002b60c0
+patch=2,EE,002F4558,word,904358CC // was 9043041A; GM+0x41A -> GM+0x58CC; FUN_002f42c0
+patch=2,EE,002F5248,word,904358CC // was 9043041A; GM+0x41A -> GM+0x58CC; FUN_002f4e10
+patch=2,EE,002FA16C,word,907058CC // was 9070041A; GM+0x41A -> GM+0x58CC; FUN_002fa0e0
+patch=2,EE,003039FC,word,A04058F4 // was A040042E; GM+0x42E -> GM+0x58F4; FUN_00303988
+patch=2,EE,00303A20,word,905058CC // was 9050041A; GM+0x41A -> GM+0x58CC; FUN_00303988
+patch=2,EE,00303CD8,word,906258F0 // was 9062042C; GM+0x42C -> GM+0x58F0; FUN_00303988
+patch=2,EE,003061CC,word,904358C8 // was 90430418; GM+0x418 -> GM+0x58C8; FUN_00306190
+patch=2,EE,0030629C,word,906458CC // was 9064041A; GM+0x41A -> GM+0x58CC; FUN_00306190
+patch=2,EE,003062D8,word,A05158F4 // was A051042E; GM+0x42E -> GM+0x58F4; FUN_00306190
+patch=2,EE,0030D30C,word,904458CC // was 9044041A; GM+0x41A -> GM+0x58CC; FUN_0030d208
+patch=2,EE,00310668,word,906258C4 // was 90620416; GM+0x416 -> GM+0x58C4; FUN_00310618
+patch=2,EE,003111F8,word,906258C4 // was 90620416; GM+0x416 -> GM+0x58C4; FUN_003111a8
+patch=2,EE,003139A4,word,906258C4 // was 90620416; GM+0x416 -> GM+0x58C4; FUN_00313958
+patch=2,EE,00319F14,word,906258C4 // was 90620416; GM+0x416 -> GM+0x58C4; FUN_00319ec8
+patch=2,EE,0032093C,word,906258C4 // was 90620416; GM+0x416 -> GM+0x58C4; FUN_003208e8
+patch=2,EE,003211F4,word,906258C4 // was 90620416; GM+0x416 -> GM+0x58C4; FUN_003211a8
+patch=2,EE,0039FF58,word,A04058F4 // was A040042E; GM+0x42E -> GM+0x58F4; FUN_0039f450
+patch=2,EE,004185BC,word,262358CC // was 2623041A; GM+0x41A -> GM+0x58CC; ctor FUN_00418588 (loop stays 2; [2..3] by reset cave)
+patch=2,EE,00418CE8,word,264258C4 // was 26420416; GM+0x416 -> GM+0x58C4; reset FUN_00418c68
+patch=2,EE,00418D00,word,264258C8 // was 26420418; GM+0x418 -> GM+0x58C8; reset
+patch=2,EE,00418D10,word,265E58C0 // was 265E0414; GM+0x414 -> GM+0x58C0; reset
+patch=2,EE,00418D14,word,265658F4 // was 2656042E; GM+0x42E -> GM+0x58F4; reset
+patch=2,EE,00418D20,word,265558D4 // was 2655041E; GM+0x41E -> GM+0x58D4; reset
+patch=2,EE,0041996C,word,904358C0 // was 90430414; GM+0x414 -> GM+0x58C0; FUN_004197a8
+patch=2,EE,0041C3EC,word,263658C0 // was 26360414; GM+0x414 -> GM+0x58C0; FUN_0041c338
+patch=2,EE,0041C494,word,A06058C0 // was A0600414; GM+0x414 -> GM+0x58C0; FUN_0041c338
+patch=2,EE,0041C4D0,word,A04658CC // was A046041A; GM+0x41A -> GM+0x58CC; FUN_0041c4c8
+patch=2,EE,0041C4D8,word,A08758F0 // was A087042C; GM+0x42C -> GM+0x58F0; FUN_0041c4c8
+patch=2,EE,0041C580,word,906258F4 // was 9062042E; GM+0x42E -> GM+0x58F4; FUN_0041c4e0
+patch=2,EE,0041C59C,word,904358D4 // was 9043041E; GM+0x41E -> GM+0x58D4; FUN_0041c4e0
+patch=2,EE,0041C5C4,word,A05E58D0 // was A05E041C; GM+0x41C -> GM+0x58D0; FUN_0041c4e0
+patch=2,EE,0041C620,word,904358CC // was 9043041A; GM+0x41A -> GM+0x58CC; FUN_0041c4e0
+patch=2,EE,0041CC10,word,248458D3 // was 2484041D; GM+0x41D -> GM+0x58D3; FUN_0041cc10 (start at entry 3)
+patch=2,EE,0041CC7C,word,904458CC // was 9044041A; GM+0x41A -> GM+0x58CC; FUN_0041cc40
+patch=2,EE,0041CE60,word,A05058C4 // was A0500416; GM+0x416 -> GM+0x58C4; FUN_0041cc40
+patch=2,EE,0041DB98,word,A05258D4 // was A052041E; GM+0x41E -> GM+0x58D4; FUN_0041db08 (loop stays 2: HUD table)
+patch=2,EE,0041DC40,word,A09058D4 // was A090041E; GM+0x41E -> GM+0x58D4; FUN_0041dbe8
+patch=2,EE,0041DD2C,word,A07058C8 // was A0700418; GM+0x418 -> GM+0x58C8; FUN_0041dcf0
+patch=2,EE,00418EC0,word,24060004 // was 24060002; reset: memset GM+0x58C0 (old +0x414) size 2 -> 4
+patch=2,EE,00418ED0,word,24060004 // was 24060002; reset: memset GM+0x58C4 (old +0x416) size 2 -> 4
+patch=2,EE,00418EE0,word,24060004 // was 24060002; reset: memset GM+0x58C8 (old +0x418) size 2 -> 4
+patch=2,EE,0041CC18,word,24020003 // was 24020001; FUN_0041cc10: 4 entries (counts 3..0)
+patch=2,EE,00418F64,word,0C03C2D4 // was 2403FFFF; reset: after the i<2 loop, jal 0x000F0B50 (init entries 2..3)
+patch=2,EE,00418F68,word,00000000 // was 3C020051; reset: nop (the cave re-executes addiu v1,-1 / lui v0,0x51)
+patch=2,EE,0041DC44,word,2CA20002 // was 80C201B0; EnableCommand FUN_0041dbe8: sltiu v0,a1,2 (a1 = player index)
+patch=2,EE,0041DC48,word,10400007 // was 3C030060; beq v0,zero,0x0041DC68: no PlayerHUD call for players 3-4
+patch=2,EE,0041DC4C,word,00051080 // was 24630840; sll v0,a1,2
+patch=2,EE,0041DC50,word,3C030060 // was 0200282D; lui v1,0x0060
+patch=2,EE,0041DC54,word,00621821 // was 00021080; addu v1,v1,v0
+patch=2,EE,0041DC58,word,8C640848 // was 00621821; lw a0,0x848(v1)  (PlayerHUD 0x00600848[p], as before)
+patch=2,EE,0041DC5C,word,0200282D // was 8C640008; daddu a1,s0,zero
+patch=2,EE,000F0B50,word,A64058CE // reset cave: sh zero,0x58CE(s2)   old +0x41A[2..3] = 0
+patch=2,EE,000F0B54,word,A64058F2 // reset cave: sh zero,0x58F2(s2)   old +0x42C[2..3] = 0
+patch=2,EE,000F0B58,word,A64058F6 // reset cave: sh zero,0x58F6(s2)   old +0x42E[2..3] = 0
+patch=2,EE,000F0B5C,word,24080001 // reset cave: addiu t0,zero,1
+patch=2,EE,000F0B60,word,264358E2 // reset cave: addiu v1,s2,0x58E2   old +0x41E[2][0]
+patch=2,EE,000F0B64,word,264258F0 // reset cave: addiu v0,s2,0x58F0   end of old +0x41E[3][6]
+patch=2,EE,000F0B68,word,A0680000 // reset cave: sb t0,0(v1)          slots of players 3-4 = 1 (as the reset loop)
+patch=2,EE,000F0B6C,word,24630001 // reset cave: addiu v1,v1,1
+patch=2,EE,000F0B70,word,1462FFFD // reset cave: bne v1,v0,0x000F0B68
+patch=2,EE,000F0B74,word,00000000 // reset cave: nop
+patch=2,EE,000F0B78,word,2403FFFF // reset cave: addiu v1,zero,-1     (moved from 0x00418F64)
+patch=2,EE,000F0B7C,word,03E00008 // reset cave: jr ra                (ra = 0x00418F6C)
+patch=2,EE,000F0B80,word,3C020051 // reset cave: lui v0,0x0051        (moved from 0x00418F68)
 
 [warriors-4p test level99 join]
 author=warriors-4p
