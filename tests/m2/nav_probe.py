@@ -3,7 +3,7 @@
 
 Usage: python -I tests/m2/nav_probe.py <tag> <script.txt> [--seconds 120] [--every 4] [--groups "a;b"] [--players 1]
                                         [--script2 p2.txt] [--script3 p3.txt] [--script4 p4.txt] [--pads 0,4,1,2]
-                                        [--call "4300:0041A460:GM:1,4400:0041A460:GM:2"] [--track 0x641a20,0x6420f0]
+                                        [--call "4300:0041A460:GM:1,4400:0041A460:GM:2"] [--track 0x641a20,0x6420f0] [--poke poll:addr:value,...]
   --call  needs the "warriors-4p test call" group: at each poll, call function(a0, a1, ...) on the game thread;
           "GM" = the GameMgr pointer. Results go to calls.txt.
   Other players' scripts are simulated in the same instance (W4P LocalBotN, test only).
@@ -124,10 +124,20 @@ def main():
     calls = [c.split(":") for c in opt("--call", "", str).split(",") if c]
     call_log = []
     next_shot = time.time() + every
+    pokes = sorted([tuple(int(v, 0) for v in item.split(":")) for item in opt("--poke", "", str).split(",") if item])  # poll:addr:value
     track = [int(x, 0) for x in opt("--track", "", str).split(",") if x]  # human objects: log poll + x,y,z
     track_rows = []
     while time.time() - t0 < seconds and p.poll() is None:
         time.sleep(0.25)
+        if pokes:  # test only: PINE writes at given polls (not deterministic; single instance)
+            try:
+                pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
+                now_poll = pine.read32(0x000F0500)
+                while pokes and now_poll >= pokes[0][0]:
+                    _, addr, val = pokes.pop(0)
+                    pine.write32(addr, val)
+            except Exception:  # noqa: BLE001
+                pine = None
         if track:
             try:
                 pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
