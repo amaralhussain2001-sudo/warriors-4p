@@ -1,0 +1,27 @@
+// extracted from docs/research/m2_views34.md, Addendum: still dark
+patch=2,EE,0012842C,word,0803C2E4 // was 0050102A slt v0,v0,s0 -> j 0x000F0B90 (v0 = player index from the +0x27C call)
+patch=2,EE,00128430,word,00000000 // was 1040000D beq v0,zero,0x00128468 -> nop (compare moved into the cave)
+patch=2,EE,000F0B90,word,24010002 // addiu at,zero,2
+patch=2,EE,000F0B94,word,0041082A // slt at,v0,at            p < 2 ?
+patch=2,EE,000F0B98,word,1420000E // bne at,zero,normal (0x000F0BD4)
+patch=2,EE,000F0B9C,word,00000000 // nop
+patch=2,EE,000F0BA0,word,3C080051 // lui t0,0x51
+patch=2,EE,000F0BA4,word,8D08489C // lw t0,0x489c(t0)        GameMgr
+patch=2,EE,000F0BA8,word,00024880 // sll t1,v0,2
+patch=2,EE,000F0BAC,word,01094021 // addu t0,t0,t1
+patch=2,EE,000F0BB0,word,0C0E409A // jal 0x00390268          resolve handle
+patch=2,EE,000F0BB4,word,25040228 // addiu a0,t0,0x228        &GameMgr.handle[p] (delay slot)
+patch=2,EE,000F0BB8,word,AE220314 // sw v0,0x314(s1)          target
+patch=2,EE,000F0BBC,word,10400003 // beq v0,zero,notarget
+patch=2,EE,000F0BC0,word,24080001 // addiu t0,zero,1
+patch=2,EE,000F0BC4,word,0804A12D // j 0x001284B4
+patch=2,EE,000F0BC8,word,A6280444 // sh t0,0x444(s1)          count = 1
+patch=2,EE,000F0BCC,word,0804A12D // notarget: j 0x001284B4
+patch=2,EE,000F0BD0,word,A6200444 // sh zero,0x444(s1)        count = 0 (original fallback)
+patch=2,EE,000F0BD4,word,0050102A // normal: slt v0,v0,s0      (original 0x0012842C)
+patch=2,EE,000F0BD8,word,10400003 // beq v0,zero,isfalse
+patch=2,EE,000F0BDC,word,00000000 // nop
+patch=2,EE,000F0BE0,word,0804A10D // j 0x00128434             (original fall-through incl. its delay slot lui v0,0x51)
+patch=2,EE,000F0BE4,word,00000000 // nop
+patch=2,EE,000F0BE8,word,0804A11A // isfalse: j 0x00128468
+patch=2,EE,000F0BEC,word,3C020051 // lui v0,0x51              (original delay slot, needed at 0x00128468)

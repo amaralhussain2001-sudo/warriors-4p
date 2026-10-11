@@ -138,6 +138,19 @@ def main():
         sandbox.make(n, "default", pad2=True)
         set_ini(n, "EmuCore/Speedhacks", "EECycleRate", str(ee))
         set_ini(n, "EmuCore/GS", "OsdShowVPS", "true")
+        for item in [a for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] == "--ini"]:  # Section/Key=Value
+            sec_key, val = item.split("=", 1)
+            sec, key = sec_key.rsplit("/", 1)
+            ini_path = os.path.join(sandbox.data_root(n), "inis", "PCSX2.ini")
+            import configparser
+            cp = configparser.ConfigParser(interpolation=None, strict=False)
+            cp.optionxform = str
+            cp.read(ini_path, encoding="utf-8")
+            if not cp.has_section(sec):
+                cp.add_section(sec)
+            cp.set(sec, key, val)
+            with open(ini_path, "w", encoding="utf-8") as fh:
+                cp.write(fh, space_around_delimiters=True)
         for k, v in gs.items():
             set_ini(n, "EmuCore/GS", k, v)
         if slot == 1:  # per-instance graphics differences (graphics must not affect sync)

@@ -10,8 +10,8 @@ instance, scripted input (W4P LocalBot slots), players 3-4 created with the game
 | 1 | Four players exist | **met** (players created with the game's functions; the game's own join needs companions, F-0109) | F-0111 |
 | 2 | Independent input | **met** (one instance) | F-0112 |
 | 3 | Same systems as players 1-2 (attack, grab, damage, enemies target 3-4) | not tested | - |
-| 4 | Four views + own HUD per view | **not met**: 4 views counted (F-0117) but views 3-4 dark (F-0119); no HUD for players 3-4 | F-0117, F-0119 |
-| 5 | 4 instances in lockstep >= 30 min, 0 mismatches, no crash | **met** with 1 view (Mission 1 tutorial): 35 min, 2,069 points, 0 mismatches | F-0118 |
+| 4 | Four views + own HUD per view | **half met**: four own full-screen views in 4 lockstep instances (F-0121, SplitAllowed forced in the tutorial); no HUD for players 3-4; centred text cut | F-0121 |
+| 5 | 4 instances in lockstep >= 30 min, 0 mismatches, no crash | **met** with 1 view (Mission 1 tutorial, MTVU on): 35 min, 2,069 points, 0 mismatches; MTVU later found nondeterministic (F-0120) -> repeat with MTVU off and 4 views | F-0118, F-0120 |
 | 6 | >= 29 fps (30 fps mode) | **met with 1 view**: median 29.97, 97 % of 10 s windows >= 29; 4 drawn views not measured; 60 fps mode not measured | `local/m2/q3_long/w4p_slot0.log` |
 | 7 | Originals unchanged | to check at the end of M2 | - |
 

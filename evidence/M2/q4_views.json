@@ -1,0 +1,101 @@
+{
+ "tag": "q4_views",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot",
+ "seconds": 336,
+ "state": {
+  "0": {
+   "poll": 1520,
+   "players": 0,
+   "handles": [
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  },
+  "1": {
+   "poll": 1517,
+   "players": 0,
+   "handles": [
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  },
+  "2": {
+   "poll": 1520,
+   "players": 0,
+   "handles": [
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  },
+  "3": {
+   "poll": 1520,
+   "players": 0,
+   "handles": [
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 1507, polls 1508, waits 186, wait total 2873.3 ms, max 177.1 ms, hashes 150, mismatches 49, kernel-only differences 0",
+   "desync": [
+    "DESYNC: poll 61 (rel 60) game hash mine 6445259b8de77134 slot1 f3918a7fb92cf2df; kernel mine e89628fcd2f9ddb7 slot1 e89628fcd2f9ddb7",
+    "DESYNC: poll 91 (rel 90) game hash mine 5d309c46e63ef58b slot1 d4d35d55ae353adc; kernel mine b73391dc2214d59f slot1 b73391dc2214d59f",
+    "DESYNC: poll 121 (rel 120) game hash mine 1063f8bd4537512a slot1 cf8baa74fc1b1ac9; kernel mine 44bdad666ec2c48d slot1 44bdad666ec2c48d"
+   ],
+   "errors": [],
+   "calls": 0
+  },
+  "1": {
+   "last": "poll 1516, polls 1517, waits 203, wait total 2288.0 ms, max 88.5 ms, hashes 150, mismatches 147, kernel-only differences 0",
+   "desync": [
+    "DESYNC: poll 61 (rel 60) game hash mine f3918a7fb92cf2df slot0 6445259b8de77134; kernel mine e89628fcd2f9ddb7 slot0 e89628fcd2f9ddb7",
+    "DESYNC: poll 61 (rel 60) game hash mine f3918a7fb92cf2df slot2 6445259b8de77134; kernel mine e89628fcd2f9ddb7 slot2 e89628fcd2f9ddb7",
+    "DESYNC: poll 61 (rel 60) game hash mine f3918a7fb92cf2df slot3 6445259b8de77134; kernel mine e89628fcd2f9ddb7 slot3 e89628fcd2f9ddb7"
+   ],
+   "errors": [],
+   "calls": 1
+  },
+  "2": {
+   "last": "poll 1509, polls 1510, waits 85, wait total 54.2 ms, max 1.3 ms, hashes 150, mismatches 49, kernel-only differences 0",
+   "desync": [
+    "DESYNC: poll 61 (rel 60) game hash mine 6445259b8de77134 slot1 f3918a7fb92cf2df; kernel mine e89628fcd2f9ddb7 slot1 e89628fcd2f9ddb7",
+    "DESYNC: poll 91 (rel 90) game hash mine 5d309c46e63ef58b slot1 d4d35d55ae353adc; kernel mine b73391dc2214d59f slot1 b73391dc2214d59f",
+    "DESYNC: poll 121 (rel 120) game hash mine 1063f8bd4537512a slot1 cf8baa74fc1b1ac9; kernel mine 44bdad666ec2c48d slot1 44bdad666ec2c48d"
+   ],
+   "errors": [],
+   "calls": 0
+  },
+  "3": {
+   "last": "poll 1509, polls 1510, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 150, mismatches 49, kernel-only differences 0",
+   "desync": [
+    "DESYNC: poll 61 (rel 60) game hash mine 6445259b8de77134 slot1 f3918a7fb92cf2df; kernel mine e89628fcd2f9ddb7 slot1 e89628fcd2f9ddb7",
+    "DESYNC: poll 91 (rel 90) game hash mine 5d309c46e63ef58b slot1 d4d35d55ae353adc; kernel mine b73391dc2214d59f slot1 b73391dc2214d59f",
+    "DESYNC: poll 121 (rel 120) game hash mine 1063f8bd4537512a slot1 cf8baa74fc1b1ac9; kernel mine 44bdad666ec2c48d slot1 44bdad666ec2c48d"
+   ],
+   "errors": [],
+   "calls": 0
+  }
+ },
+ "hash_points_common": 50,
+ "hash_mismatches": 49,
+ "first_mismatch": "60",
+ "last_common": "1500"
+}

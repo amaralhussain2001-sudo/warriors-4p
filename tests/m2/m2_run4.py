@@ -1,6 +1,6 @@
 """M2: four instances in lockstep (loopback), four players, from a fresh boot.
 
-Usage: python -I tests/m2/m2_run4.py <tag> [--seconds 420] [--bots-from 4700] [--crop]
+Usage: python -I tests/m2/m2_run4.py <tag> [--seconds 420] [--bots-from 4700] [--crop] [--force-split]
 Slot 0 runs the boot-to-Mission-1 script, slot 1 joins at the menu; players 3-4 are created at fixed session polls on
 every instance with W4P CallAt + the "warriors-4p test call" group (test-only: the game's own join has no companion
 in Mission 1, F-0109). From --bots-from on, every slot plays seeded random bot input (m1_run.bot_file).
@@ -64,7 +64,20 @@ def main():
         if os.path.exists(d):
             shutil.rmtree(d)
         sandbox.make(n, "default", pad2=True)
-        sandbox.install_patch(n, m1_run.PATCH, GROUPS)
+        sandbox.install_patch(n, m1_run.PATCH, GROUPS + (["warriors-4p test force split"] if "--force-split" in sys.argv else []))
+        for item in [a for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] == "--ini"]:  # Section/Key=Value
+            sec_key, val = item.split("=", 1)
+            sec, key = sec_key.rsplit("/", 1)
+            ini_path = os.path.join(sandbox.data_root(n), "inis", "PCSX2.ini")
+            import configparser
+            cp = configparser.ConfigParser(interpolation=None, strict=False)
+            cp.optionxform = str
+            cp.read(ini_path, encoding="utf-8")
+            if not cp.has_section(sec):
+                cp.add_section(sec)
+            cp.set(sec, key, val)
+            with open(ini_path, "w", encoding="utf-8") as fh:
+                cp.write(fh, space_around_delimiters=True)
         bot = inputs_for(slot, out_dir, bots_from)
         lines = ["[W4P]", "Enabled = true", "Players = 4", f"LocalSlot = {slot}", "PadForSlot0 = 0", "PadForSlot1 = 4",
                  "PadForSlot2 = 1", "PadForSlot3 = 2", f"ListenPort = {PORTS[slot]}", "InputDelay = 2", "HashInterval = 30",
