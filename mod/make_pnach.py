@@ -140,11 +140,12 @@ def main():
     # per-player records (m2_gamemgr_records.md); interim HUD guards, no HUD for players 3-4 (m2_hud_players34.md (A));
     # MakePlayer clears a dead-brain flag, and the per-player block +0x414..+0x42F widened (m2_player_control.md P-1, P-2);
     # the mission join script event (player-2 scenes) is not sent for players 3-4 (m2_black_screen.md); split-view
-    # camera lookups for players without a camera yet fall back safely (m2_hud_players34.md addendum).
+    # camera lookups for players without a camera yet fall back safely (m2_hud_players34.md addendum); players 3-4
+    # count as having their own view (addendum 2).
     # Lines extracted by tools/note_patches.py and checked against the ELF. New data at 0x000F0800-0x000F093F is
     # zeroed once at startup (place 0; never place 1/2 for live data).
     frag = []
-    for name in ("gamemgr.txt", "engine.txt", "records.txt", "hud34.txt", "control.txt", "joinevent.txt", "camsafe.txt"):
+    for name in ("gamemgr.txt", "engine.txt", "records.txt", "hud34.txt", "control.txt", "joinevent.txt", "camsafe.txt", "views4.txt"):
         frag += [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
     out += ["", "[warriors-4p 4p]", "author=warriors-4p",
             "description=Experimental: four players (engine tables for 4; players 3-4 join with Start).", ""]

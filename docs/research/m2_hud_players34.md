@@ -572,3 +572,110 @@ patch=2,EE,00244A80,word,0C03C3D0 // was 0C047E6C; FUN_00244770 player camera bl
     enough there.
 - **Other split-only paths** were checked and are safe or already covered by (A).
 - **Remaining risk (HYPOTHESIS):** `FUN_0023DC58` if count == views while a lower player is not rendered.
+
+
+## Addendum 2: only two views with 4 players and 4 cameras
+
+Static analysis only (2026-10-11). Observed (run v4b/v4c):
+- 4 players and cameras 0x0050B19C = 4, but views 0x0050B198 = 2. Only P1 and P2 are drawn; the bottom row is empty.
+- The test forces SplitAllowed 0x0050B1C0 = 1 and the own-view option 0x0050B1C4 = 0, and applies both 2x2 layout
+  words.
+
+### B.1 Why players 3-4 are not views (VERIFIED)
+1. **LayoutViewports adds a camera as a view only if a check passes.** In `LayoutViewports` (0x00122ED0, decompile
+   lines 106-128), for each player 1..count-1:
+   - cameras is incremented whenever active camera[i] exists. That is why cameras = 4, so the relocated arrays and the
+     count bound work.
+   - A **view** is added only when three conditions hold:
+     - the camera's vtable **+0x28C** ("has own view") returns non-zero;
+     - SplitAllowed != 0;
+     - no merge was detected (`iStack_bc == 0`, true with 0x0050B1C4 = 0).
+2. **The follow camera's +0x28C check reads a per-player flag.** The follow camera (class built by `FUN_00124778`,
+   vtable 0x00535D50) has slot +0x28C = **`FUN_00121E30`**:
+   - `idx = vtable +0x27C` gives the camera's player index, set by `FUN_0011F9E0(i,1)` via +0x274;
+   - `flag = (&DAT_0050B1E8)[idx]` (0x00121E64-0x00121E7C);
+   - it returns 1 only if `flag != 0` and camera+0x1D6 != 0 (set to 1 by the base constructor `FUN_00120868`);
+   - for idx != 0 it also needs 0x0050B1D8 != 0 (`FUN_004DB2D8`). That holds already, since player 2 gets a view.
+3. **0x0050B1E8 has only 2 entries.** It is a per-player "view enabled" flag array.
+   - Writers: the init loop in `FUN_00122B80` (2 iterations, 0x00122BC0) and the merge code `FUN_00121888`, at fixed
+     [0]/[1].
+   - For idx 2/3, `FUN_00121E30` reads **0x0050B1F0/0x0050B1F4**. Those are entries [0]/[1] of the next per-player
+     array, which `FUN_00129050` reads as camera flags. They are 0 in the ELF and at runtime.
+   - So players 3-4's cameras answer "no own view" and are never added.
+   - This corrects `m2_pads_cameras.md` §5/§6 ("merge state, fixed indices"): `FUN_00121E30` indexes this array by
+     player. A scan of every `0xB1E8` access shows it is the only per-player-indexed user; the Lua hits at 0x003802EC
+     and 0x00383858 are other addresses (0x0057B1E8 / 0x0037B1E8).
+4. **Ruled out** (VERIFIED):
+   - **The loop bound:** it is the player count, 4.
+   - **Camera readiness and type:** cameras = 4, +0x1D6 is set in the base constructor, 0x0050B1D8 is set.
+   - **The missing `DAT_0050B194 = FUN_004DAD40(0x005D91A8)` step:**
+     - `FUN_004DAD40` only compacts the 4-entry tracked-humans handle list at 0x005D91A8 and returns its count, the
+       number of humans the shared camera frames;
+     - LayoutViewports does not read 0x0050B194.
+
+     For parity with `FUN_0041A460` you can still add it to the test: call `0x004DAD40(0x005D91A8)` and store v0
+     at 0x0050B194 (PINE write, test only).
+   - **A second `FUN_00122ED0` call cannot help.** The check is evaluated again on every call and still fails.
+
+### B.2 Patch: treat players 3-4's view flag as enabled (14 words; VERIFIED)
+How the patch works:
+- `FUN_00121E30` at 0x00121E60 jumps to a cave at 0x000F0F80. The delay slot 0x00121E64, `lui v1,0x51`, is unchanged
+  and is used by the cave.
+- The cave repeats the original 0x00121E60-0x00121E7C, then sets `s2 = 1` when idx is 2 or 3 (`movn`), and jumps back
+  to 0x00121E80 (`jalr ra,v1`). Index 0/1 and any other value keep their original behaviour.
+- Writes to [2]/[3] never happen; there are no indexed writers.
+
+Checks:
+- No branch, jump or data word targets 0x00121E64-0x00121E7C.
+- ra is unaffected: the cave is reached with `j`, and the function saves ra at sp+0 anyway.
+- The `movz`/`movn` instructions are already used by this function.
+- `note_patches.py check <block> mod/w4p_m1.pnach`: 847 addresses, 0 problems. The cave lies after CAMSKIP, which ends
+  at 0x000F0F74.
+
+```
+patch=2,EE,000F0F80,word,8E250000 // lw a1,0(s1)  (original 0x00121E60)
+patch=2,EE,000F0F84,word,2470B1E8 // addiu s0,v1,-0x4e18  s0 = 0x0050B1E8 (v1 = 0x510000 from the delay slot 0x00121E64)
+patch=2,EE,000F0F88,word,2441FFFE // addiu at,v0,-2  v0 = camera's player index (vtable +0x27C)
+patch=2,EE,000F0F8C,word,2C210002 // sltiu at,at,2  at = index is 2 or 3
+patch=2,EE,000F0F90,word,00021080 // sll v0,v0,2  (original)
+patch=2,EE,000F0F94,word,84A401E8 // lh a0,0x1e8(a1)  (original)
+patch=2,EE,000F0F98,word,00501021 // addu v0,v0,s0  (original)
+patch=2,EE,000F0F9C,word,8CA301EC // lw v1,0x1ec(a1)  (original)
+patch=2,EE,000F0FA0,word,8C520000 // lw s2,0(v0)  view flag[index] (original)
+patch=2,EE,000F0FA4,word,24020001 // addiu v0,zero,1
+patch=2,EE,000F0FA8,word,0041900B // movn s2,v0,at  players 3-4: flag = 1
+patch=2,EE,000F0FAC,word,080487A0 // j 0x00121E80  (jalr ra,v1 with its delay slot)
+patch=2,EE,000F0FB0,word,00000000 // nop
+patch=2,EE,00121E60,word,0803C3E0 // was 8E250000; FUN_00121E30 (camera vtable +0x28C, 'has own view'): lw a1,0(s1) -> j 0x000F0F80 (delay slot lui v1,0x51 unchanged)
+```
+
+**Expected result after `FUN_00122ED0`** (HYPOTHESIS until runtime):
+- views = 4, the 2x2 layout, and render[2]/[3] = players 3-4.
+- CAMSAFE/CAMSKIP then return the real cameras.
+
+The same flag is checked every frame wherever `LayoutViewports` runs, so no extra call is needed beyond the existing
+sequence.
+
+**For (B)/sessions:**
+- If Lua `CamEnable` or the merge code is ever used with 4 players, the flag array must be relocated to 4 entries
+  instead of this constant.
+- Its fixed-index users are listed by the scan above: `FUN_0011DAA8`, `FUN_0011EE08`, `FUN_00121888`, `FUN_00122B80`,
+  `FUN_00122ED0`, `FUN_001282A0`, `FUN_0013B7B8`, `FUN_00158728`.
+
+### Addendum 2 summary
+**The cause:** LayoutViewports counts every active camera (cameras = 4), but adds a view only when the camera's vtable
++0x28C returns true.
+- For the follow camera that function is `FUN_00121E30`, which reads the per-player "view enabled" flag
+  `(&0x0050B1E8)[playerIndex]`.
+- That array has 2 entries. For players 3-4 it reads 0x0050B1F0/0x0050B1F4, which belong to the next per-player array
+  and are 0.
+- So their cameras report "no own view", and views stays 2.
+
+**Not the cause:** the loop bound, camera readiness, the 0x5D91A8 tracked list or DAT_0050B194 (LayoutViewports does
+not read it), or the number of LayoutViewports calls.
+
+**The fix (14 words, VERIFIED, 0 conflicts):**
+- 0x00121E60 jumps to a cave at 0x000F0F80, which repeats the original lines and sets the flag to 1 for indices 2-3.
+- Expected: views = 4 in the 2x2 layout after the next `FUN_00122ED0`.
+
+**Optional, for join parity:** add `FUN_004DAD40(0x005D91A8)` and write the result to 0x0050B194.
