@@ -126,7 +126,7 @@ def main():
             "patch=2,EE,003A2F30,word,3C17004A // R60-2 (was 3C170095)",
             "patch=2,EE,003A2F94,word,2E420001 // R60-2 (was 2E420002)",
             "patch=2,EE,0024912C,word,30640000 // R60-3 SimStep: logic on every step (was 30640001)",
-            "patch=0,EE,005102CC,word,3C888889 // R60-4 LogicDt 1/60 (was 3D088889 = 1/30); data: startup only, the game rescales it for slow motion",
+            "patch=2,EE,005102CC,word,3C888889 // R60-4 LogicDt 1/60 (was 3D088889 = 1/30); every frame: tested (w60_ee2); may undo slow-motion scaling (R-22). Startup-only (place 0) is untested from boot.",
             "patch=2,EE,0023B7C8,word,3C013C88 // R60-4 LogicDt writer (was 3C013D08)",
             "patch=2,EE,0023B7FC,word,3C013C88 // R60-4 (was 3C013D08)",
             "patch=2,EE,0030C8CC,word,3C013C08 // R60-4 (was 3C013C88)",
@@ -136,11 +136,12 @@ def main():
             "patch=2,EE,0041ABA4,word,3C013C88 // R60-4 (was 3C013D08)",
             "patch=2,EE,00249B44,word,3C013C88 // R60-4 camera clamp in SimStep (was 3C013D08)"]
     # M2 (experimental): four genuine players. GameMgr storage and limits (docs/research/m2_gamemgr.md) and the engine
-    # tables below GameMgr: pads, cameras, ScreenEffects, listener buffer, camera flags (m2_pads_cameras.md).
+    # tables below GameMgr: pads, cameras, ScreenEffects, listener buffer, camera flags (m2_pads_cameras.md); the 0x5C
+    # per-player records (m2_gamemgr_records.md); interim HUD guards, no HUD for players 3-4 (m2_hud_players34.md (A)).
     # Lines extracted by tools/note_patches.py and checked against the ELF. New data at 0x000F0800-0x000F093F is
     # zeroed once at startup (place 0; never place 1/2 for live data).
     frag = []
-    for name in ("gamemgr.txt", "engine.txt"):
+    for name in ("gamemgr.txt", "engine.txt", "records.txt", "hud34.txt"):
         frag += [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
     out += ["", "[warriors-4p 4p]", "author=warriors-4p",
             "description=Experimental: four players (engine tables for 4; players 3-4 join with Start).", ""]

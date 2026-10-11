@@ -3,7 +3,7 @@
 
 Usage: python -I tests/m2/nav_probe.py <tag> <script.txt> [--seconds 120] [--every 4] [--groups "a;b"] [--players 1]
                                         [--script2 p2.txt] [--script3 p3.txt] [--script4 p4.txt] [--pads 0,4,1,2]
-                                        [--call "4300:0041A460:GM:1,4400:0041A460:GM:2"]
+                                        [--call "4300:0041A460:GM:1,4400:0041A460:GM:2"] [--track 0x641a20,0x6420f0]
   --call  needs the "warriors-4p test call" group: at each poll, call function(a0, a1, ...) on the game thread;
           "GM" = the GameMgr pointer. Results go to calls.txt.
   Other players' scripts are simulated in the same instance (W4P LocalBotN, test only).
@@ -14,6 +14,7 @@ Writes local/m2/<tag>/ (screenshots with poll numbers, logs). Environment: SINGL
 """
 import os
 import shutil
+import struct
 import subprocess
 import sys
 import time
@@ -71,6 +72,15 @@ def main():
     if os.path.exists(d):
         shutil.rmtree(d)
     sandbox.make(INST, "default", pad2=True)
+    if "--ee" in sys.argv:  # EmuCore/Speedhacks EECycleRate (2 = 180 %, needed by the 60 fps patch)
+        import configparser
+        ini_path = os.path.join(sandbox.data_root(INST), "inis", "PCSX2.ini")
+        cp = configparser.ConfigParser(interpolation=None, strict=False)
+        cp.optionxform = str
+        cp.read(ini_path, encoding="utf-8")
+        cp.set("EmuCore/Speedhacks", "EECycleRate", opt("--ee", "0", str))
+        with open(ini_path, "w", encoding="utf-8") as fh:
+            cp.write(fh, space_around_delimiters=True)
     groups = ["warriors-4p M1"] + [g for g in opt("--groups", "", str).split(";") if g]
     sandbox.install_patch(INST, m1_run.PATCH, groups)  # memory cards: fresh (created by PCSX2)
     open(os.path.join(out, "bot0.bin"), "wb").write(build_inputs(script))
@@ -98,8 +108,19 @@ def main():
     calls = [c.split(":") for c in opt("--call", "", str).split(",") if c]
     call_log = []
     next_shot = time.time() + every
+    track = [int(x, 0) for x in opt("--track", "", str).split(",") if x]  # human objects: log poll + x,y,z
+    track_rows = []
     while time.time() - t0 < seconds and p.poll() is None:
         time.sleep(0.25)
+        if track:
+            try:
+                pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
+                row = [pine.read32(0x000F0500)]
+                for o in track:
+                    row += [round(struct.unpack("<f", struct.pack("<I", pine.read32(o + 0x10 + 4 * i)))[0], 2) for i in range(3)]
+                track_rows.append(row)
+            except Exception:  # noqa: BLE001
+                pine = None
         if calls:
             try:
                 pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
@@ -169,6 +190,8 @@ def main():
     except Exception as e:  # noqa: BLE001
         st = {"error": repr(e)}
     open(os.path.join(out, "state.txt"), "w").write(repr(st) + chr(10))
+    if track_rows:
+        open(os.path.join(out, "track.csv"), "w").write("".join(",".join(map(str, r)) + chr(10) for r in track_rows))
     print("state:", st)
     subprocess.run([sys.executable, "-I", os.path.join(PROJ, "tools", "sandbox.py"), "kill", str(INST)], capture_output=True)
     print("\n".join(sorted(os.listdir(out))))

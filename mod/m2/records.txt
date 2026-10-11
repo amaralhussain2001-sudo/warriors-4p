@@ -1,0 +1,15 @@
+// extracted from docs\research\m2_gamemgr_records.md
+patch=2,EE,00161130,word,24065A80 // was 240657C0; GameMgr allocation 0x57C0 -> 0x5A80 (supersedes 24065A00)
+patch=2,EE,0041861C,word,24030003 // was 24030001; ctor: 4 records
+patch=2,EE,00418624,word,26225900 // was 26220168; ctor: record base +0x168 -> +0x5900
+patch=2,EE,00418F38,word,24845900 // was 24840168; level reset: record base
+patch=2,EE,00222AE8,word,808201B0 // was 8C820380; getter A: index by +0x1B0
+patch=2,EE,00222AFC,word,24425900 // was 24420168; getter A: base
+patch=2,EE,00222B10,word,24425900 // was 24420168; getter A: fallback base
+patch=2,EE,00222B28,word,808201B0 // was 8C820380; getter B: index by +0x1B0
+patch=2,EE,00222B3C,word,24425900 // was 24420168; getter B: base
+patch=2,EE,00222B50,word,24425900 // was 24420168; getter B: fallback base
+patch=2,EE,00255018,word,E4605914 // was E460017C; FUN_00254e78 record+0x14
+patch=2,EE,00264E68,word,9062591A // was 90620182; FUN_00264cf8 record+0x1A
+patch=2,EE,00264E9C,word,C4415914 // was C441017C; FUN_00264cf8 record+0x14
+patch=2,EE,00265F54,word,24845910 // was 24840178; FUN_00265dd0 &record+0x10

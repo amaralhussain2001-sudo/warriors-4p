@@ -1,5 +1,4 @@
 // extracted from docs\research\m2_gamemgr.md
-patch=2,EE,00161130,word,24065A00 // was 240657C0 addiu a2,zero,0x57c0; GameMgr allocation 0x57C0 -> 0x5A00
 patch=2,EE,004187BC,word,AE2057C0 // was AE200230 sw zero,0x230(s1); frame tick +0x230 -> +0x57C0
 patch=2,EE,00419978,word,8E2457C0 // was 8E240230 lw a0,0x230(s1); frame tick +0x230 -> +0x57C0
 patch=2,EE,0041A380,word,8E0257C0 // was 8E020230 lw v0,0x230(s0); frame tick +0x230 -> +0x57C0
