@@ -66,7 +66,7 @@ def main():
         txt = open(os.path.join(d, "w4p.log"), encoding="utf-8", errors="replace").read()
         hashes[player] = dict(re.findall(r"^HASH (\d+) ([0-9a-f]+)$", txt, re.M))
         ghashes[player] = {t: (g, k) for t, g, k in re.findall(r"^GHASH (\d+) ([0-9a-f]+) ([0-9a-f]+)$", txt, re.M)}
-        res[f"p{player}_hello"] = re.findall(r"(?:connected to player|matches (build).*$", txt, re.M)[:2]
+        res[f"p{player}_hello"] = re.findall(r"(?:connected to player|player \d matches|ERROR: player).*$", txt, re.M)[:2]
         res[f"p{player}_errors"] = re.findall(r"(?:ERROR|WARNING|DESYNC|NOTE).*$", txt, re.M)[:5]
         st = re.findall(r"stats: (.*)$", txt, re.M)
         res[f"p{player}_stats"] = st[-1] if st else None
