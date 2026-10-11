@@ -431,3 +431,144 @@ Confidence:
 - a relocated PlayerHUD pointer table (about 30 sites);
 - 4-entry copies of 5 static tables and of the marker globals;
 - then the 6 limit words in section 4.2, plus per-view HUD drawing.
+
+
+## Addendum: split-view crash (FUN_0024A230, views >= 2)
+
+Static analysis only (2026-10-11). The test: `[warriors-4p test force split]` keeps SplitAllowed 0x0050B1C0 = 1, so
+views = 2 already exists before players 3-4. Right after `MakePlayer(0x641A20, pad 1, -1, -1)` (poll 4302: players 3,
+views 2, cameras 2) the emulog shows:
+- `TLB Miss, pc=0x24a5a8 addr=0x0`, then `addr=0xa8/0xac`, then `pc=0x0`.
+
+### A.1 Which object is NULL (VERIFIED)
+**The NULL object is the render camera (view) for index 2.** Here is how the marker reaches it.
+
+**The marker picks a camera by player index.** In the marker code `FUN_0024A230` (0x0024A570-0x0024A5BC):
+- `lb v0,0x1B0(s2)` reads the player index, and `nor`/`beq` checks it is not -1;
+- `jal 0x0011EAE0` returns views = 0x0050B198, and `sltiu v0,v0,2` / `beql` tests it;
+- only when views >= 2 is `s0 = player index` used; otherwise s0 = 0;
+- then `a0 = s0` and `jal 0x0011F9B0` runs. `FUN_0011F9B0(i)` returns render camera[i]; that array was relocated by
+  `engine.txt` to **0x000F0810 + 4*i**, from 0x005D9150 originally.
+
+**The NULL value is then used as an object:**
+- 0x0024A5AC `lw a2,0(v0)` loads vtable = *NULL, which is the `addr=0x0` miss;
+- 0x0024A5B4/B8 `lh a1,0xA8(a2)` and `lw v1,0xAC(a2)` give the misses at 0xa8 and 0xac;
+- `jalr` then jumps to pc 0.
+
+The recompiler reports the block start 0x0024A5A8, the return point of the `jal`. This matches the log exactly.
+
+**Why render camera[2] is NULL (VERIFIED, `LayoutViewports` 0x00122ED0, decompile lines 106-128):**
+- `LayoutViewports` rebuilds the render array **compactly**.
+- For players 1..count-1 it first clears `render[i] = 0` (`*puVar12 = 0`).
+- It then appends `active[i]` only if that camera exists, its vtable +0x28C ("ready") returns non-zero, and
+  SplitAllowed != 0.
+- Finally it sets views = the number of render entries and cameras = 0x0050B19C.
+- So with count 3 and only 2 rendered views, render[2] = 0 until player 3's camera exists (`FUN_0011EAF0`) and a later
+  `LayoutViewports` adds it.
+- It is **not** PlayerHUD slot -1, and not the marker globals: those are already covered by (A) at
+  0x0024A2D4/0x0024ABD8.
+- With views = 1 the code always uses render[0], so it never crashed before.
+
+**Is this a test artifact?** Partly; HYPOTHESIS.
+- In the game's own join `FUN_0041A460`, MakePlayer, the camera creation and `LayoutViewports` run in one call, so
+  there is no frame gap there.
+- But a camera that is not "ready" on its first frame (vtable +0x28C) is left out, and render[2] stays 0.
+- So the window can also occur in real joins.
+
+**Note for (B):**
+- Because of the compaction, render index = player index only while every lower player is rendered.
+- The game assumes the two are equal, which is true for 2 players.
+- With always-own-view (D8) all players are rendered, so the assumption holds once every camera is ready.
+
+### A.2 Guard patch (31 words; originals and free space VERIFIED)
+Two caves, plus three call sites:
+- **CAMSAFE (0x000F0F00, 14 words)** replaces `FUN_0011F9B0` at the marker call sites.
+  - It returns render camera[i] when `i < views` (unsigned, so -1 fails) and the entry is non-NULL.
+  - Otherwise it returns render camera[0]. That is exactly what the code does for non-players and in merged view, so
+    players without a view are drawn relative to view 0, and nothing crashes.
+  - It clobbers only v0 and at. The original also clobbered a0; all callers reload a0.
+- **CAMSKIP (0x000F0F40, 14 words)** is for the player camera block in `FUN_00244770`.
+  - That block calls render camera[index] (vtable +0x1EC), then `FUN_0011F9E0(index, 0)` (vtable +0x24C/+0x21C) with
+    no NULL checks. Substituting camera 0 there would still crash on the second array.
+  - So when the camera is missing, CAMSKIP returns to 0x00244BB0 (`lb a0,0x1B0(s3)`, then 0x00244BB4). That is the
+    function's own "views != cameras" skip path; `bnel` at 0x00244A78 lands at the same place with the same a0.
+  - It is safe to change ra here: `FUN_00244770` saves ra (`ld ra,0x50(sp)` before its `jr ra` at 0x00244E6C).
+- **Sites:**
+  - 0x0024A5A0 in `FUN_0024A230`: this is the crash;
+  - 0x00249F98 in `FUN_00249CB0`: the second marker routine, called from `FUN_0024A230` at 0x0024A310; it has the
+    identical "index if views >= 2" pattern at 0x00249F80-0x00249FAC;
+  - 0x00244A80 in `FUN_00244770`.
+
+  The delay slots stay unchanged: `lui s7,0x51`, `addiu s0,sp,176` and `daddu a0,a2,zero` (a0 = index).
+- **Checks:**
+  - `python -I tools/note_patches.py check <block> mod/w4p_m1.pnach`: 833 addresses, 0 problems;
+  - 0x000F0F00-0x000F0FFF is unused (the highest current low-RAM patch is 0x000F0EF8);
+  - none of the three sites is patched yet.
+
+```
+patch=2,EE,000F0F00,word,3C020051 // CAMSAFE: lui v0,0x51
+patch=2,EE,000F0F04,word,8C42B198 // lw v0,-0x4e68(v0)  views 0x0050B198
+patch=2,EE,000F0F08,word,0082082B // sltu at,a0,v0  index < views (unsigned: -1 fails)
+patch=2,EE,000F0F0C,word,10200006 // beq at,zero,+6 -> camera 0
+patch=2,EE,000F0F10,word,3C02000F // lui v0,0xf (delay)
+patch=2,EE,000F0F14,word,00040880 // sll at,a0,2
+patch=2,EE,000F0F18,word,00220821 // addu at,at,v0
+patch=2,EE,000F0F1C,word,8C210810 // lw at,0x810(at)  render camera[index] (relocated 0x005D9150)
+patch=2,EE,000F0F20,word,14200003 // bne at,zero,+3 -> return it
+patch=2,EE,000F0F24,word,00000000 // nop
+patch=2,EE,000F0F28,word,03E00008 // jr ra
+patch=2,EE,000F0F2C,word,8C420810 // lw v0,0x810(v0)  render camera[0] (delay)
+patch=2,EE,000F0F30,word,03E00008 // jr ra
+patch=2,EE,000F0F34,word,0020102D // daddu v0,at,zero (delay)
+patch=2,EE,000F0F40,word,3C020051 // CAMSKIP: lui v0,0x51
+patch=2,EE,000F0F44,word,8C42B198 // lw v0,-0x4e68(v0)  views
+patch=2,EE,000F0F48,word,0082082B // sltu at,a0,v0
+patch=2,EE,000F0F4C,word,10200006 // beq at,zero,+6 -> skip
+patch=2,EE,000F0F50,word,3C02000F // lui v0,0xf (delay)
+patch=2,EE,000F0F54,word,00040880 // sll at,a0,2
+patch=2,EE,000F0F58,word,00220821 // addu at,at,v0
+patch=2,EE,000F0F5C,word,8C220810 // lw v0,0x810(at)  render camera[index]
+patch=2,EE,000F0F60,word,14400003 // bne v0,zero,+3 -> normal return with v0
+patch=2,EE,000F0F64,word,00000000 // nop
+patch=2,EE,000F0F68,word,3C1F0024 // skip: lui ra,0x24
+patch=2,EE,000F0F6C,word,37FF4BB0 // ori ra,ra,0x4bb0  resume at 0x00244BB0
+patch=2,EE,000F0F70,word,03E00008 // jr ra
+patch=2,EE,000F0F74,word,00000000 // nop
+patch=2,EE,0024A5A0,word,0C03C3C0 // was 0C047E6C; FUN_0024a230 marker: jal 0x0011F9B0 -> jal CAMSAFE (the crash site)
+patch=2,EE,00249F98,word,0C03C3C0 // was 0C047E6C; FUN_00249cb0 marker: jal 0x0011F9B0 -> jal CAMSAFE
+patch=2,EE,00244A80,word,0C03C3D0 // was 0C047E6C; FUN_00244770 player camera block: jal 0x0011F9B0 -> jal CAMSKIP
+```
+
+### A.3 Split-view-only paths that use a player index for per-player or per-view data (task 3)
+| # | Function (our label) | Split-view condition | Index use | Players 3-4 | Status |
+|---|---|---|---|---|---|
+| 1 | `FUN_0024A230` overhead marker | views >= 2 (0x0024A588) | render camera[index] | **NULL crash** | CAMSAFE 0x0024A5A0 |
+| 2 | `FUN_00249CB0` marker (called by #1 when `FUN_0041D160(GameMgr) != 0`) | views >= 2 (0x00249F88) | render camera[index] | NULL crash, same pattern | CAMSAFE 0x00249F98 |
+| 3 | `FUN_00244770` (player update, not HUD) | views == cameras (0x00244A78), true when every camera has a view | render camera[index], then `FUN_0011F9E0(index,0)` | NULL crash during the window (views 2 = cameras 2 while player 3 has none) | CAMSKIP 0x00244A80 |
+| 4 | `FUN_0024B780` (marker loop) | views > 1 (0x0024B95C, 0x0024BD3C) | passes index as the view argument of `FUN_0024A230`, used for sprite layer `index + 9` via `FUN_00185AB0` | safe: 32 layers (`FUN_001852D8` init loop `< 0x20`), and an inactive layer returns 0, NULL-checked at 0x0024A2BC; layers 11/12 may be other layer types (cosmetic, HYPOTHESIS) | no change |
+| 5 | `FUN_0023DC58` (player update) | count == views and `FUN_00122248(h)` (has a camera) | render camera[index] (no NULL check) | not reached in the window (count 3 != views 2); once count == views, every player has a view | no change; add CAMSAFE if a crash shows `FUN_0023DC58` |
+| 6 | `FUN_00158728` main loop | loop `i < views` | render camera[i] | i < views is always filled | safe |
+| 7 | `FUN_00158728` per-player block | | `FUN_0011F9B0(player)` | NULL-checked (default position) | safe |
+| 8 | HudUpdate `FUN_001AF010` | fixed loop `< 2` | render camera[0/1] | exist when views >= 2 | safe |
+| 9 | `FUN_001673B8` | views > 1 | camera by index | NULL-checked, falls back to camera 0 | safe |
+| 10 | `FUN_001C5210` radar update | views >= 2 | radar's own index (0/1) | radars exist only for players 1-2 | safe |
+| 11 | `FUN_00214138` panel layout | views >= 2, slot 1, mode 1 | PlayerHUD's own slot | | safe |
+| 12 | `FUN_0023EAB8` radar visibility | `count < 2 || views != 1` | radar[player index] | | already (A) S6/S7 |
+| 13 | `FUN_0024B2A8` "1P/2P" marker | views < 2 only (merged) | own handle | not split-only | safe |
+
+### Addendum summary
+- **The NULL object** is render camera (view) [2], relocated to 0x000F0818.
+  - In split view, the overhead marker `FUN_0024A230` picks its camera by player index.
+  - `LayoutViewports` keeps the render array compact and clears unused entries.
+  - So between MakePlayer and the moment the new player's camera is created, ready and added by `LayoutViewports`,
+    render[2] is 0.
+- **The crash:** `lw` of vtable 0 (addr 0), then +0xA8/+0xAC, then `jalr` to 0. That is exactly the log.
+- **The fix, 31 words (VERIFIED, 0 conflicts):**
+  - CAMSAFE (0x000F0F00) replaces the camera getter at 0x0024A5A0 and 0x00249F98 (the second marker routine has the
+    same pattern). It returns camera[i] only when i < views and non-NULL, otherwise camera 0, as the game does for
+    non-players.
+  - CAMSKIP (0x000F0F40) at 0x00244A80 skips `FUN_00244770`'s per-player camera block via the function's own
+    0x00244BB0 path when the camera is missing. That block also needs a second per-player array, so camera 0 is not
+    enough there.
+- **Other split-only paths** were checked and are safe or already covered by (A).
+- **Remaining risk (HYPOTHESIS):** `FUN_0023DC58` if count == views while a lower player is not rendered.

@@ -28,8 +28,8 @@ import sandbox  # noqa: E402
 from pine import Pine  # noqa: E402
 
 BTN = dict(m1_run.BTN, START=0x0800, SELECT=0x0100)
-INST = 6
-PORT = 41100
+INST = int(sys.argv[sys.argv.index('--inst') + 1]) if '--inst' in sys.argv else 6
+PORT = 41100 + INST
 
 
 def opt(name, default, cast=str):
