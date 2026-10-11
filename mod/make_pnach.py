@@ -146,7 +146,7 @@ def main():
     # Lines extracted by tools/note_patches.py and checked against the ELF. New data at 0x000F0800-0x000F093F is
     # zeroed once at startup (place 0; never place 1/2 for live data).
     frag = []
-    for name in ("gamemgr.txt", "engine.txt", "records.txt", "hud34.txt", "control.txt", "joinevent.txt", "camsafe.txt", "views4.txt", "lights.txt", "camtarget.txt"):
+    for name in ("gamemgr.txt", "engine.txt", "records.txt", "hud34.txt", "control.txt", "joinevent.txt", "camsafe.txt", "views4.txt", "lights.txt", "camtarget.txt", "gangcmd.txt"):
         frag += [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
     out += ["", "[warriors-4p 4p]", "author=warriors-4p",
             "description=Experimental: four players (engine tables for 4; players 3-4 join with Start).", ""]

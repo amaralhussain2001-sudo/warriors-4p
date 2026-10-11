@@ -871,6 +871,8 @@ patch=2,EE,000F0BE0,word,0804A10D // j 0x00128434             (original fall-thr
 patch=2,EE,000F0BE4,word,00000000 // nop
 patch=2,EE,000F0BE8,word,0804A11A // isfalse: j 0x00128468
 patch=2,EE,000F0BEC,word,3C020051 // lui v0,0x51              (original delay slot, needed at 0x00128468)
+patch=2,EE,0028451C,word,2C820002 // was 00041027: issue path, player index 0/1 only
+patch=2,EE,00284588,word,2C820002 // was 00041027: open path, player index 0/1 only
 
 [warriors-4p 4p hud A]
 author=warriors-4p
