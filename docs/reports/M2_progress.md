@@ -1,4 +1,6 @@
-# M2 progress note (four genuine players) — 2026-10-11, in progress (updated evening)
+# M2 progress note (four genuine players) — 2026-10-11 (superseded by `docs/reports/M2_report.md`)
+
+**Final status: see `docs/reports/M2_report.md`** (all criteria with evidence; q15 = criterion 5, F-0160; 60 fps F-0161).
 
 Exit criteria: `docs/plan/M2.md`. Status: **not met yet**: criteria 1-4 shown on one instance; 5 met with MTVU off; 6 being measured; see table. Everything SINGLE-PC, one
 instance, scripted input (W4P LocalBot slots), players 3-4 created with the game's own functions on the game thread

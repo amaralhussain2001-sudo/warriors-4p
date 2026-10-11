@@ -75,3 +75,9 @@ mission-critical if the script gives it objectives, unique dialogue (`HuSpeak` w
 goals, scene roles (`SuperRunScene` Humans lists), or game-over conditions (death callbacks). Otherwise "replaceable".
 `player2` is already a companion that the second human takes over (F-0024); the same mechanism is the default for
 players 3 and 4 (F-0062 showed the engine binding a companion to a new pad).
+
+## M2 note (2026-10-11): Mission 13 is the four-player test mission
+Mission 13 (level9, All-City) was used for every M2 four-player test (SINGLE-PC, bots): four players via the game's own
+Start-join (Fox taken over, player 4 spawned as Swan with his own model, F-0154), combat for players 3-4, items
+(pick-up, Flash, revive, checkpoint copy), game over, level restart and checkpoint reload, 33-minute 4-instance lockstep
+(F-0160). This is **not** a final mission status: per-mission work and statuses are M6.
