@@ -160,7 +160,9 @@ def main():
     out += ["", "[warriors-4p 4p hud A]", "author=warriors-4p",
             "description=Experimental: interim HUD guards (no HUD for players 3-4). Use either this or 4p hud B1.", ""] + hud_a
     for name, title, desc in (("hud_b1.txt", "4p hud B1", "players 3-4 PlayerHUD and radar (m2_hud_full.md)"),
-                              ("hud_b2.txt", "4p hud B2", "per-view HUD at single-player size (m2_hud_full.md)")):
+                              ("hud_b2.txt", "4p hud B2", "per-view HUD at single-player size (m2_hud_full.md)"),
+                              ("spawn.txt", "4p spawn", "spawn a Warrior when no companion is free for player 3-4 (m2_spawn_companion.md)"),
+                              ("spawn_leave.txt", "4p spawn leave", "delete an added Warrior when its player leaves (m2_spawn_companion.md)")):
         lines = [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
         out += ["", f"[warriors-4p {title}]", "author=warriors-4p", f"description=Experimental: {desc}.", ""] + lines
     # TEST ONLY (M2 engine tests in Mission 1): PickJoinCompanion (FUN_0022A770) skips its gang-wide search in level 99,

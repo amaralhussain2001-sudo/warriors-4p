@@ -1,0 +1,20 @@
+// docs/research/m2_spawn_companion.md Appendix B
+patch=2,EE,0041A868,word,0C038490 // was 0C106C52 jal 0x0041B148 (leave script event) -> jal 0x000E1240 LEAVEHOOK; delay slot sh v0,1110(s1) kept
+patch=2,EE,000E1240,word,27BDFFF0 // addiu sp,sp,-16
+patch=2,EE,000E1244,word,AFBF0000 // sw ra,0(sp)
+patch=2,EE,000E1248,word,0C106C52 // jal 0x0041B148
+patch=2,EE,000E124C,word,00000000 // nop
+patch=2,EE,000E1250,word,820301B1 // lb v1,0x1b1(s0)
+patch=2,EE,000E1254,word,24010007 // addiu at,zero,7
+patch=2,EE,000E1258,word,14610008 // bne v1,at,lh_out
+patch=2,EE,000E125C,word,00000000 // nop
+patch=2,EE,000E1260,word,8E030000 // lw v1,0(s0)
+patch=2,EE,000E1264,word,84640028 // lh a0,0x28(v1)
+patch=2,EE,000E1268,word,8C62002C // lw v0,0x2c(v1)
+patch=2,EE,000E126C,word,0040F809 // jalr ra,v0
+patch=2,EE,000E1270,word,02042021 // addu a0,s0,a0
+patch=2,EE,000E1274,word,0C038460 // jal 0x000E1180
+patch=2,EE,000E1278,word,0040202D // move a0,v0
+patch=2,EE,000E127C,word,8FBF0000 // lw ra,0(sp)
+patch=2,EE,000E1280,word,03E00008 // jr ra
+patch=2,EE,000E1284,word,27BD0010 // addiu sp,sp,16

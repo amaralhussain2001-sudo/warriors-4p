@@ -1277,3 +1277,375 @@ intended supersedes of (A)/P-2 lines). All of it is untested (static analysis on
 - **(A):** keep MIN2, the pause cave, the marker words and S1-S7; replace V1-V4; change 2 words of P-2.
 - Confidence: high for the code facts and encodings; medium for the visual result (view = slot assumption, merged-view
   overlap, free-RAM assumption). Test order: B0, B1a, B1b, B1c, B2a, B2b, then a 4-instance lockstep run.
+
+
+---
+
+## Addendum: runtime results 1 (2026-10-11)
+
+**The run (reported by the coordinator).** SINGLE-PC, one instance, scripted input, MTVU off. Build w4p-m3-4 with
+`kGameRamStart` = 0x000A0000. Groups: own view, hud, 4p, 4p hud B1, 4p hud B2.
+- **Mission 1 with 4 players works (F-0126).**
+- **Mission 13 (level9):** loaded from Mission 1 with `MenuLoadLevel`; the game's own drop-in made Fox player 3
+  (F-0127). The game ran 3 views in the 2x2 layout.
+- **The T_A table check passes:** entry 2 has slot 2, column 0, and is active.
+- **The problem:** player 3's quarter shows **no radar and no panel** (`local/m2/m13b/f00003.png` to `f00006.png`).
+
+This addendum explains why and gives the fix. It is static analysis only; nothing was run for it.
+
+### A1. Diagnosis
+| # | Question | Finding | Label |
+|---|---|---|---|
+| 1 | Panel | **Player 3's panel is never drawn. This is the cause of the missing panel.** `FUN_001B1688` (HUD draw) calls PlayerHUD Draw (vtable +0x3C = `FUN_00213290`) only for HUD+8 and HUD+0xC, in a fixed 2-pass loop at 0x001B1B90-0x001B1BC0 (`addiu s1,zero,1` ... `bgezl s1`). B1 added the per-frame Update for slots 2-3 (UPD34) but no Draw. | VERIFIED (disassembly, decompile) |
+| 2 | Panel only shown on events | **The panel appears only after an event, for all players.** `FUN_00213290` draws only while +0x4138 (updated once), +0x40FC (shown) and +0x40F8 (active) are all set. It then draws for 2000 time units (0x00510070 = 0x7D0) after its timer +0x411C restarts, and fades out over 1000 more (0x00510074 = 0x3E8). After that it returns without drawing. The timer restarts when +0x411C = 0. That happens on the first draw after Init, when the health/inventory children write +0x411C = 0, and every frame while +0x4104 = 1 (`ForceShowPlayerHud`, `FUN_001B20E0`). **This is why players 1-2 show no panel either** in f00003-f00006: there was no recent event. After fix R1, player 3's panel will also appear only on events. HYPOTHESIS: the time unit is milliseconds. | VERIFIED (decompile, ELF words, screenshots) |
+| 3 | Radar 3 | **The radar did not re-initialise in level9 and kept Mission 1's textures and sprite handles.** RDRAW does call `FUN_001C60B0(radar 3)`: P2's radar is drawn (so 0x001B1A20 runs), the count is 3 and +0 = 1. RADAR_UPDATE's one-time `FUN_001C4388` also makes the flag checks (+0, +4, +8, !+0xC) pass. What remains is the disc sprite check: `FUN_00185AB0(0x0050CD4C, +0x96)` must return a sprite whose byte +0x11 != 0. **Most likely, the stale Mission 1 handle fails this check, so nothing is drawn.** How it got stale: radar init `FUN_001C3DE0` sets +0 = 1 whether or not that player exists, and B_INIT ran it in Mission 1. Radars are released only at HUD level exit (`FUN_001AE980`, which calls `FUN_001C41A0` for HUD+0x15D0 and HUD+0x3F10 only, at 0x001AEB2C/0x001AEB34). RCONSTRUCT (like `FUN_001AD588` for radars 1-2) re-initialises only when +0 == 0, so in level9 it skipped radar 3. The old handles are the textures at +0x48..+0x60, the map sprite +0x94 and the disc sprite +0x96. | VERIFIED (mechanism) / HYPOTHESIS (that the stale handle is the failing check; see A3) |
+| 4 | Radar on/off | **Radars 3-4 ignore every later on/off change.** RADAR_UPDATE switches radar 3 on once per init and copies only +4 from P1. `HideHud`/`ShowHud` (`FUN_001B1F38`/`FUN_001B20F8`), `HUDTurnOffRadar` and the merged-view path (`FUN_001C4448` on P2's radar) never touch radars 3-4. So radar 3 would stay visible in cutscenes and in merged view. Not the cause here; fix R3 covers it. | VERIFIED (decompile) |
+| 5 | Latent bug, same family | **Player 3's panel would break in every level after the first one where they joined.** `FUN_001AE980` shuts down only PlayerHUD 0-1, through vtable +0x1C = `FUN_002131F0`, which calls `FUN_0020DBE0` (+0x40F8 = +0x40FC = +0x4100 = 0, sprites released). PlayerHUD 2-3 keep +0x4100 = 1 into the next level, so the next claim skips Init and uses stale elements. Not the cause in m13b, because PlayerHUD 2 was first claimed in level9. | VERIFIED (decompile) |
+| 6 | Not causes | UPD34 runs (count 3). Update needs +0x40FC, which MakePlayer sets through `FUN_001B23D0(HUD, human+0x380)` at 0x0022A160 (B1 rewrote it to read T_A). `ForceShowPlayerHud` (scripts pass 0/1) and the 2-pass loops in `HideHud`/`ShowHud`, `FUN_001B2030`/`FUN_001B2088` (+0x4108) and `FUN_001B2330`/`FUN_001B2380` (show/hide all) never touch PlayerHUD 2. They don't hide player 3, they just don't control them (A4). Human +0x380 = 2 follows from the claim. | VERIFIED (code) / HYPOTHESIS (the +0x380 value; PINE in A3) |
+| 7 | Large disc on P1/P2 | **Expected: this is the single-player-size radar.** With 2A each disc is centred about 85 % across and 80 % down its quarter, and is about 1/3 of the quarter wide (about 80 of 247 px in f00003). The cropped single-player-size radar in `local/m3/v1_hud2/slot0_end.png` (F-0103) is also about 1/3 of the view wide. The disc contents (map texture, blips) were not checked. | VERIFIED (screenshots, approximate pixel measurement) |
+
+### A2. Fix R1-R3
+- **R1, draw the panels of players 3-4.**
+  - Site: 0x001B1BC4, the `jal 0x001BB1C0` right after the PlayerHUD 0-1 draw loop, now calls DRAW34.
+  - DRAW34: if the player count (GameMgr+0x224) is >= 3, Draw PlayerHUD 2; if >= 4, Draw PlayerHUD 3. Each Draw
+    runs with CUR = slot. It then jumps to the original call.
+- **R2, level exit for players 3-4.**
+  - Site: 0x001AEB34, the `jal 0x001C41A0` that releases radar 2, now calls LEXIT.
+  - LEXIT runs the original call, then:
+    - vtable +0x1C on PlayerHUD 2-3, if constructed (vtable 0x0053EDF8);
+    - `FUN_001C41A0` on radars 3-4, if +0 != 0.
+  - Each level then re-initialises them exactly as for players 1-2. This fixes both A1.3 and A1.5.
+- **R3, radars 3-4 follow P2's radar.** Two words of B1's RADAR_UPDATE (0x000E04A0/0x000E04A4) now jump to RMIRROR.
+  RMIRROR:
+  - copies P2's +4 (0x00604754);
+  - if P2's radar is drawn (+8 set, +0xC clear) and this one is not, calls `FUN_001C4388` (show);
+  - in the opposite case, calls `FUN_001C4448` (hide, as HudUpdate does for P2 in merged view).
+  - It replaces the one-time switch-on; the flags at 0x000E0014/0x000E0018 become unused.
+  - Why P2 and not P1: P2's radar is the one the game hides in merged view.
+- **Space:** caves at 0x000E0600-0x000E07AF (108 words), below T_A[-1] at 0x000E0844. No patch line used
+  0x000E0600-0x000E0843 before.
+- **Checks** (`python -I tools/note_patches.py check ...`):
+
+  | Files checked | Result | Meaning |
+  |---|---|---|
+  | `mod/w4p_m1.pnach` alone | 6 problems | the existing group A vs B1 alternatives: 0x001C0648, 0x001C7890, 0x001A6D28, 0x001A6C38, 0x0041DC44, 0x0041DC50 |
+  | pnach + the add fragment | the same 6 | the add fragment introduces no new conflicts |
+  | pnach + add fragment + the 2 replacement lines | 8 | the 6 above + the intended 0x000E04A0/0x000E04A4 |
+  | pnach with the 2 old B1 lines removed + both parts | 6 | only the A/B1 alternatives |
+
+  - Extracting this note now also gives the same 2 intended conflicts: Appendix C still holds the old words.
+  - Every "was" word was read from `local/disc/SLUS_212.15`, and the caves were disassembled back from the encoded
+    words.
+- **Test order (all HYPOTHESIS until run):**
+  1. **R1:** player 3's panel appears for about 3 s when they join. To keep it on screen, write32(0x000A4104, 1)
+     (test only; write 0 afterwards).
+  2. **R2:** repeat the m13b path (Mission 1, then level9). Radar 3 should be drawn bottom-right in player 3's
+     quarter.
+  3. **R3:** in a cutscene, radar 3 should hide together with P2's radar.
+
+### A3. PINE reads (static addresses unless marked)
+| Address | Field | Expected now (m13b state) | Expected after R1-R3 |
+|---|---|---|---|
+| 0x000A0000+0x40F8 / +0x40FC / +0x4100 / +0x4108 | PlayerHUD 2: active / shown / inited / enabled | 1 / 1 / 1 / 1 | same in play. During loading after a level exit: 0 / 0 / 0 |
+| 0x000A0000+0x4138 | Update ran past its early returns | 1 | 1 |
+| 0x000A0000+0x411C | panel timer start | **0** (Draw never ran). PlayerHUD 0 (0x00619970+0x411C) has a time value | a time value from the first frame after the claim |
+| 0x000A0000+0x4104 | force show | 0 | 0 (test aid: 1) |
+| 0x000A9500 +0x00 / +0x04 / +0x08 / +0x0C / +0x90 | radar 3: inited / visible / shown / off / player index | 1 / 1 / 1 / 0 / 2 | 1 / =P2 / =P2 / =P2 / 2 (P2 = radar 2 at 0x00604750+4/+8/+0xC) |
+| u16 0x000A9500+0x94 / +0x96 | radar 3 map / disc sprite handles | **unchanged since Mission 1** (read them at the end of Mission 1 and again in level9) | change at every level |
+| u16 0x00601E10+0x96, 0x00604750+0x96 | radar 1 / radar 2 disc sprite | fresh level9 handles, for comparison | same |
+| float 0x000A9500+0x2930..+0x293C | position | (xs - d*W, 2d, zs - d*Wz, 1.0); with the ELF values (A 4/3, S 1.0, xs 0.49, d 1.0, zs -0.31): (-0.177, 2.0, -0.81, 1.0) | same |
+| 0x000E0014 | old one-time flag, index 2 | 1 | not used |
+| 0x00641A20+0x380 (dynamic, from state.txt) | player 3's HUD slot | 2 | 2 |
+
+**How to read the results:**
+- If radar 3 shows +0..+0xC = 1/1/1/0 and the handles are unchanged since Mission 1, the stale-handle diagnosis
+  (A1.3) holds.
+- If they changed, the radar cause is elsewhere and A1.3 stays open.
+
+### A4. Still open after R1-R3
+- **Players 3-4 do not follow these script controls:** `HideHud`/`ShowHud` (for the panels), `ForceShowPlayerHud`,
+  the +0x4108 enable, and show/hide all.
+  - Each is a 2-pass loop from HUD+8: `FUN_001B1F38`, `FUN_001B20F8`, `FUN_001B2030`, `FUN_001B2088`, `FUN_001B2330`,
+    `FUN_001B2380`.
+  - Fix idea (R4, not encoded): set the loop base to T_B (`lui sX,0x000E`) and the count to 3.
+  - R4 also needs place-0 data lines that point T_A/T_B[2..3] at the zeroed objects, so that these loops are safe
+    before the first B_INIT.
+- **HUD-level per-player panels are still 2 entries** (inventory/weapon/special at HUD+0xEBC0/0xF420/0xFEA0/0x114C0;
+  S-guards).
+- **The dark band (F-0126) is not analysed here.**
+
+### Fragment R1-R3, part 1: add to `[warriors-4p 4p hud B1]` (110 lines)
+```
+// HUD option (B) fix 1 (R1-R3), add to [warriors-4p 4p hud B1] (docs/research/m2_hud_full.md addendum). Static design, untested.
+patch=2,EE,000E0600,word,27BDFFF0
+patch=2,EE,000E0604,word,AFBF0000
+patch=2,EE,000E0608,word,AFA40004
+patch=2,EE,000E060C,word,3C020051
+patch=2,EE,000E0610,word,8C42489C
+patch=2,EE,000E0614,word,84420224
+patch=2,EE,000E0618,word,AFA20008
+patch=2,EE,000E061C,word,28410003
+patch=2,EE,000E0620,word,14200009
+patch=2,EE,000E0624,word,00000000
+patch=2,EE,000E0628,word,0C038196
+patch=2,EE,000E062C,word,24040002
+patch=2,EE,000E0630,word,8FA20008
+patch=2,EE,000E0634,word,28410004
+patch=2,EE,000E0638,word,14200003
+patch=2,EE,000E063C,word,00000000
+patch=2,EE,000E0640,word,0C038196
+patch=2,EE,000E0644,word,24040003
+patch=2,EE,000E0648,word,8FA40004
+patch=2,EE,000E064C,word,8FBF0000
+patch=2,EE,000E0650,word,0806EC70
+patch=2,EE,000E0654,word,27BD0010
+patch=2,EE,000E0658,word,27BDFFF0
+patch=2,EE,000E065C,word,AFBF0000
+patch=2,EE,000E0660,word,3C08000E
+patch=2,EE,000E0664,word,00041080
+patch=2,EE,000E0668,word,01021021
+patch=2,EE,000E066C,word,8C420848
+patch=2,EE,000E0670,word,1040000A
+patch=2,EE,000E0674,word,00000000
+patch=2,EE,000E0678,word,AD040010
+patch=2,EE,000E067C,word,8C434120
+patch=2,EE,000E0680,word,84610038
+patch=2,EE,000E0684,word,8C63003C
+patch=2,EE,000E0688,word,0060F809
+patch=2,EE,000E068C,word,00412021
+patch=2,EE,000E0690,word,3C08000E
+patch=2,EE,000E0694,word,2401FFFF
+patch=2,EE,000E0698,word,AD010010
+patch=2,EE,000E069C,word,8FBF0000
+patch=2,EE,000E06A0,word,03E00008
+patch=2,EE,000E06A4,word,27BD0010
+patch=2,EE,000E06A8,word,27BDFFF0
+patch=2,EE,000E06AC,word,AFBF0000
+patch=2,EE,000E06B0,word,0C071068
+patch=2,EE,000E06B4,word,00000000
+patch=2,EE,000E06B8,word,0C0381BB
+patch=2,EE,000E06BC,word,24040002
+patch=2,EE,000E06C0,word,0C0381BB
+patch=2,EE,000E06C4,word,24040003
+patch=2,EE,000E06C8,word,3C04000B
+patch=2,EE,000E06CC,word,0C0381CC
+patch=2,EE,000E06D0,word,24849500
+patch=2,EE,000E06D4,word,3C04000B
+patch=2,EE,000E06D8,word,0C0381CC
+patch=2,EE,000E06DC,word,2484BE40
+patch=2,EE,000E06E0,word,8FBF0000
+patch=2,EE,000E06E4,word,03E00008
+patch=2,EE,000E06E8,word,27BD0010
+patch=2,EE,000E06EC,word,3C08000E
+patch=2,EE,000E06F0,word,00041080
+patch=2,EE,000E06F4,word,01021021
+patch=2,EE,000E06F8,word,8C440848
+patch=2,EE,000E06FC,word,1080000A
+patch=2,EE,000E0700,word,00000000
+patch=2,EE,000E0704,word,8C824120
+patch=2,EE,000E0708,word,3C010054
+patch=2,EE,000E070C,word,2421EDF8
+patch=2,EE,000E0710,word,14410005
+patch=2,EE,000E0714,word,00000000
+patch=2,EE,000E0718,word,84410018
+patch=2,EE,000E071C,word,8C43001C
+patch=2,EE,000E0720,word,00600008
+patch=2,EE,000E0724,word,00812021
+patch=2,EE,000E0728,word,03E00008
+patch=2,EE,000E072C,word,00000000
+patch=2,EE,000E0730,word,8C820000
+patch=2,EE,000E0734,word,10400003
+patch=2,EE,000E0738,word,00000000
+patch=2,EE,000E073C,word,08071068
+patch=2,EE,000E0740,word,00000000
+patch=2,EE,000E0744,word,03E00008
+patch=2,EE,000E0748,word,00000000
+patch=2,EE,000E074C,word,3C010060
+patch=2,EE,000E0750,word,8C224754
+patch=2,EE,000E0754,word,AD020004
+patch=2,EE,000E0758,word,8C224758
+patch=2,EE,000E075C,word,8C23475C
+patch=2,EE,000E0760,word,0002102B
+patch=2,EE,000E0764,word,2C630001
+patch=2,EE,000E0768,word,00431024
+patch=2,EE,000E076C,word,8D030008
+patch=2,EE,000E0770,word,8D01000C
+patch=2,EE,000E0774,word,0003182B
+patch=2,EE,000E0778,word,2C210001
+patch=2,EE,000E077C,word,00611824
+patch=2,EE,000E0780,word,10430009
+patch=2,EE,000E0784,word,00000000
+patch=2,EE,000E0788,word,14400005
+patch=2,EE,000E078C,word,0100202D
+patch=2,EE,000E0790,word,0C071112
+patch=2,EE,000E0794,word,00000000
+patch=2,EE,000E0798,word,08038131
+patch=2,EE,000E079C,word,00000000
+patch=2,EE,000E07A0,word,0C0710E2
+patch=2,EE,000E07A4,word,00000000
+patch=2,EE,000E07A8,word,08038131
+patch=2,EE,000E07AC,word,00000000
+patch=2,EE,001B1BC4,word,0C038180 // was 0C06EC70 jal 0x001bb1c0; FUN_001B1688 after the PlayerHUD 0-1 draw loop -> DRAW34 (PlayerHUD 2-3 draw)
+patch=2,EE,001AEB34,word,0C0381AA // was 0C071068 jal 0x001c41a0; FUN_001AE980 radar-2 release -> LEXIT (level exit for PlayerHUD 2-3, radars 3-4)
+```
+
+### Fragment R1-R3, part 2: replace these 2 lines of `[warriors-4p 4p hud B1]` (the old words are in the comments)
+```
+patch=2,EE,000E04A0,word,080381D3 // RADAR_UPDATE: B1 had 3C01000E (lui at,0x000E); j RMIRROR
+patch=2,EE,000E04A4,word,00000000 // RADAR_UPDATE: B1 had 00041080 (sll v0,a0,2); nop (delay slot)
+```
+
+### Cave source (assembled at 0x000E0600)
+```
+# ---------- DRAW34: FUN_001B1688 at 0x001B1BC4 (was jal 0x001BB1C0; delay slot set a0 = s5), right after the loop that
+# draws PlayerHUD 0-1 (vtable +0x3C, FUN_00213290); draws PlayerHUD 2-3 the same way
+DRAW34:
+  addiu sp,sp,-16
+  sw ra,0(sp)
+  sw a0,4(sp)
+  lui v0,0x0051
+  lw v0,0x489C(v0)
+  lh v0,0x224(v0)             # player count (GameMgr+0x224), same gate as UPD34
+  sw v0,8(sp)
+  slti at,v0,3
+  bne at,zero,dr_done
+  nop
+  jal PHUD_DRAW
+  addiu a0,zero,2
+  lw v0,8(sp)
+  slti at,v0,4
+  bne at,zero,dr_done
+  nop
+  jal PHUD_DRAW
+  addiu a0,zero,3
+dr_done:
+  lw a0,4(sp)
+  lw ra,0(sp)
+  j 0x001BB1C0
+  addiu sp,sp,16
+
+# ---------- PHUD_DRAW(a0 = HUD slot): PlayerHUD::Draw with the HUD player context (it returns at once unless the
+# PlayerHUD is active +0x40F8 and shown +0x40FC)
+PHUD_DRAW:
+  addiu sp,sp,-16
+  sw ra,0(sp)
+  lui t0,0x000E
+  sll v0,a0,2
+  addu v0,t0,v0
+  lw v0,0x0848(v0)            # T_A[slot]
+  beq v0,zero,pd_done
+  nop
+  sw a0,0x0010(t0)            # CUR = slot
+  lw v1,0x4120(v0)
+  lh at,0x38(v1)
+  lw v1,0x3C(v1)
+  jalr v1
+  addu a0,v0,at
+  lui t0,0x000E
+  addiu at,zero,-1
+  sw at,0x0010(t0)            # CUR = -1
+pd_done:
+  lw ra,0(sp)
+  jr ra
+  addiu sp,sp,16
+
+# ---------- LEXIT: FUN_001AE980 (HUD level exit) at 0x001AEB34 (was jal 0x001C41A0 = release radar 2; delay slot set
+# a0 = HUD+0x3F10). Does the same level-exit work for PlayerHUD 2-3 and radars 3-4 as the game does for 0-1
+LEXIT:
+  addiu sp,sp,-16
+  sw ra,0(sp)
+  jal 0x001C41A0              # radar 2 (original call)
+  nop
+  jal PHUD_SHUT
+  addiu a0,zero,2
+  jal PHUD_SHUT
+  addiu a0,zero,3
+  lui a0,0x000B
+  jal RREL
+  addiu a0,a0,-27392          # radar 3 (0x000A9500)
+  lui a0,0x000B
+  jal RREL
+  addiu a0,a0,-16832          # radar 4 (0x000ABE40)
+  lw ra,0(sp)
+  jr ra
+  addiu sp,sp,16
+
+# PHUD_SHUT(a0 = slot): vtable +0x1C (FUN_002131F0: clears active/shown/inited, releases the sprites) if constructed
+PHUD_SHUT:
+  lui t0,0x000E
+  sll v0,a0,2
+  addu v0,t0,v0
+  lw a0,0x0848(v0)
+  beq a0,zero,ps_ret
+  nop
+  lw v0,0x4120(a0)
+  lui at,0x0054
+  addiu at,at,-4616           # 0x0053EDF8 (normal PlayerHUD vtable)
+  bne v0,at,ps_ret
+  nop
+  lh at,0x18(v0)
+  lw v1,0x1C(v0)
+  jr v1
+  addu a0,a0,at
+ps_ret:
+  jr ra
+  nop
+
+# RREL(a0 = radar): FUN_001C41A0 (sets +0 = 0, frees the textures) if initialised, so the next level re-inits it
+RREL:
+  lw v0,0(a0)
+  beq v0,zero,rr_ret
+  nop
+  j 0x001C41A0
+  nop
+rr_ret:
+  jr ra
+  nop
+
+# ---------- RMIRROR: entered from RADAR_UPDATE (0x000e04a0, replaces the one-time activation; t0 = radar 3/4).
+# Radars 3-4 follow P2's radar (HUD+0x3F10 = 0x00604750): visible +4, shown +8, off +0xC
+RMIRROR:
+  lui at,0x0060
+  lw v0,0x4754(at)            # P2 radar +4
+  sw v0,4(t0)
+  lw v0,0x4758(at)            # P2 radar +8 (shown)
+  lw v1,0x475C(at)            # P2 radar +0xC (off)
+  sltu v0,zero,v0
+  sltiu v1,v1,1
+  and v0,v0,v1                # P2 radar drawn?
+  lw v1,8(t0)
+  lw at,0xC(t0)
+  sltu v1,zero,v1
+  sltiu at,at,1
+  and v1,v1,at                # this radar drawn?
+  beq v0,v1,rm_done
+  nop
+  bne v0,zero,rm_on
+  daddu a0,t0,zero
+  jal 0x001C4448              # hide (+8 = 0), as HudUpdate does for P2's radar in merged view
+  nop
+  j 0xe04c4
+  nop
+rm_on:
+  jal 0x001C4388              # show (+0xC = 0, +8 = 1; needs +4)
+  nop
+rm_done:
+  j 0xe04c4
+  nop
+```
+
+### Summary (addendum 1)
+- **Panel (VERIFIED):** the HUD draw function calls PlayerHUD Draw only for slots 0-1, and B1 added only Update for
+  slots 2-3. Player 3's panel was never drawn.
+- **Panels only appear on events (VERIFIED):** each panel shows for 2000 units after an event, then fades over 1000.
+  That is why players 1-2 have no panel in the screenshots either.
+- **Radar 3:** it was initialised in Mission 1 and never released, because the level exit releases only radars 1-2.
+  So level9 skipped its init and kept Mission 1's sprite handles. The draw is called; most likely the stale disc
+  sprite fails its check (HYPOTHESIS; PINE reads in A3).
+- **Latent:** PlayerHUD 2-3 are also never shut down at level exit, which would break later levels.
+- **Fix, 110 new lines + 2 replaced B1 words:**
+  - R1 draws PlayerHUD 2-3 after the 0-1 draw loop (0x001B1BC4);
+  - R2 shuts down PlayerHUD 2-3 and releases radars 3-4 at level exit (0x001AEB34);
+  - R3 makes radars 3-4 follow P2's radar on/off state.
+- **Checks:** no new conflicts besides the 2 intended replacements.
+- **The large P1/P2 discs are the expected single-player-size radar** (about 1/3 of the quarter, as in F-0103).
