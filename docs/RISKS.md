@@ -25,3 +25,11 @@ Scale: likelihood / impact = Low, Medium, High. "Kill" = could make a core requi
 | R-19 | One quarter of the frame shown full screen looks soft at native resolution | H | Low | M1 screenshots (native resolution) | GS upscaling; measure cost in M3 |
 | R-20 | Local player's controller vibration not routed (game vibrates the emulated port of that player) | H | Low | M1 design | Route vibration of the local player's port to the local device (M3/M5) |
 | R-21 | The M1 pnach crashes stock PCSX2 (unknown SYSCALL) if a user applies it without our build | M | Medium | hook design | Our build applies the patch itself; never ship the pnach separately (M8) |
+| R-19 update | Mitigated: 8x upscale measured at about 4 % GPU per instance with High blending (F-0102); user's view sharp in screenshots | - | Low | F-0102 | settings profile 8x on the user's PC |
+| R-20 update | Mitigated in code: only the local player's rumble reaches the local controller (fork patch 0006); not yet tested with a real controller | M | Low | patch 0006 | test with the user's controller |
+| R-22 | 60 fps patch: code that counts game ticks instead of time may run at double speed; the LogicDt patch is applied every frame and may undo slow-motion moments; the startup-only variant is untested from boot | H | Medium | F-0100; sixty_fps.md R60-5/6 | human feel test; tick audit; boot-based 60 fps test (menu script for 60 fps not yet working) |
+| R-23 | HUD in the player's own view: health/rage panel twice too large; players 3-4 have no HUD yet (interim guards) | H | Medium | F-0103, F-0111 | HUD per-view work (m2_hud_scripts.md, m2_hud_players34.md (B)) |
+| R-24 | Pause (Esc) on one PC stalls the other PCs ("Waiting for Player N") instead of the agreed pause policy | H | Low | design | session policies milestone |
+| R-25 | 2-PC package works only on the same home network (no NAT traversal yet) | H | Medium | D5 | connection layer (M5) |
+| R-26 | Players 3-4 need companions to take over; Mission 1's squad has none and the game's own picker finds none (F-0109); per-mission companion handling (D7) required | H | High | F-0109 | M2/M6: spawn or assign companions per mission |
+| R-27 | Players 3-4 created in Mission 1 do not move with their (correctly delivered) input (m2m) | H | High | local/m2/m2m/track.csv | m2_player_control.md (in progress) |
