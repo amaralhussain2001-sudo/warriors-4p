@@ -1,0 +1,27 @@
+{
+ "p1_hello": [
+  "connected to player 2",
+  "player 2 matches (build, game, BIOS, settings, patches)"
+ ],
+ "p1_errors": [],
+ "p1_stats": "poll 13485, polls 13486, waits 568, wait total 12241.7 ms, max 7609.7 ms, hashes 449, mismatches 0, kernel-only differences 0",
+ "p1_logdir": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\dist\\warriors-4p-test\\logs\\20261011_072230_player1",
+ "p2_hello": [
+  "connected to player 1",
+  "player 1 matches (build, game, BIOS, settings, patches)"
+ ],
+ "p2_errors": [],
+ "p2_stats": "poll 13356, polls 13357, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 445, mismatches 0, kernel-only differences 0",
+ "p2_logdir": "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\dist\\warriors-4p-test\\logs\\20261011_072238_player2",
+ "tag": "p6_boot60_wide",
+ "environment": "SINGLE-PC, package launcher, fresh boot, fresh memory cards, bots, loopback",
+ "args": [
+  "--seconds",
+  "240",
+  "--wide",
+  "yes"
+ ],
+ "hash_points_common": 445,
+ "hash_mismatches": 0,
+ "game_hash_mismatches": 0
+}
