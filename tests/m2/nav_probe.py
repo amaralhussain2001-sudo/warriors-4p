@@ -205,6 +205,23 @@ def main():
                 if (b & 0xFF) != 0 or ((b >> 8) & 0xFF) != 0:
                     humans.append((hex(o), (b & 0xFF) - 256 if b & 0x80 else b & 0xFF, (b >> 8) & 0xFF))
         st["humans_pidx_prio"] = humans[:40]
+        for item in [a for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] == "--peek"]:  # addr:words
+            a, _, n = item.partition(":")
+            a = int(a, 0)
+            st.setdefault("peek", {})[hex(a)] = [hex(pine.read32(a + 4 * k)) for k in range(int(n or "1", 0))]
+        hud_ptrs = [pine.read32(0x000E0848 + 4 * k) for k in range(4)]  # m2_hud_full.md T_A (only with "4p hud B1")
+        st["hud_TA"] = [hex(v) for v in hud_ptrs]
+        st["hud_TA_fields"] = [(hex(pine.read32(v + 0x4120)), pine.read32(v + 0x40F4), pine.read32(v + 0x40F0), pine.read32(v + 0x40F8))
+                               if 0x00080000 <= v < 0x02000000 else None for v in hud_ptrs]
+        if "--freecheck" in sys.argv:  # is low RAM 0x00080000-0x000EFFFF untouched? (planned HUD objects/caves)
+            blob = pine.dump(0x00080000, 0x00070000)
+            nz = [i for i in range(0, len(blob), 4) if blob[i:i + 4] != bytes(4)]
+            st["lowram_nonzero_words"] = len(nz)
+            st["lowram_nonzero_first"] = [hex(0x00080000 + i) for i in nz[:8]]
+            pages = {}
+            for i in nz:
+                pages[(0x00080000 + i) & ~0xFFF] = pages.get((0x00080000 + i) & ~0xFFF, 0) + 1
+            st["lowram_nonzero_pages_4k"] = {hex(k): v for k, v in sorted(pages.items())}
     except Exception as e:  # noqa: BLE001
         st = {"error": repr(e)}
     open(os.path.join(out, "state.txt"), "w").write(repr(st) + chr(10))

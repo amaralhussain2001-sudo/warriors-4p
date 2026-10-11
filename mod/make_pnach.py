@@ -151,7 +151,18 @@ def main():
     out += ["", "[warriors-4p 4p]", "author=warriors-4p",
             "description=Experimental: four players (engine tables for 4; players 3-4 join with Start).", ""]
     out += [f"patch=0,EE,{a:08X},word,00000000 // M2 data block, zero at startup" for a in range(0x000F0800, 0x000F0940, 4)]
+    # Lines replaced by the full HUD (m2_hud_full.md section 4) go to their own group "4p hud A" (interim: no HUD for
+    # players 3-4); "4p hud B1" (players 3-4 PlayerHUD + radar) and "4p hud B2" (per-view HUD) replace them.
+    superseded = ("001C0648", "001C7890", "001A6D28", "001A6C38", "0041DC44", "0041DC50")
+    hud_a = [l for l in frag if l.split(",")[2].upper() in superseded]
+    frag = [l for l in frag if l.split(",")[2].upper() not in superseded]
     out += frag
+    out += ["", "[warriors-4p 4p hud A]", "author=warriors-4p",
+            "description=Experimental: interim HUD guards (no HUD for players 3-4). Use either this or 4p hud B1.", ""] + hud_a
+    for name, title, desc in (("hud_b1.txt", "4p hud B1", "players 3-4 PlayerHUD and radar (m2_hud_full.md)"),
+                              ("hud_b2.txt", "4p hud B2", "per-view HUD at single-player size (m2_hud_full.md)")):
+        lines = [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
+        out += ["", f"[warriors-4p {title}]", "author=warriors-4p", f"description=Experimental: {desc}.", ""] + lines
     # TEST ONLY (M2 engine tests in Mission 1): PickJoinCompanion (FUN_0022A770) skips its gang-wide search in level 99,
     # where player 1's squad holds only players 1 and 2; this lets players 3-4 take over other Warriors there.
     out += ["", "[warriors-4p test level99 join]", "author=warriors-4p", "description=Test only: join search also in level 99.", "",
