@@ -1,0 +1,46 @@
+From d2325d07fe9feeb437f4c0c5636d93734feba563 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Mon, 12 Oct 2026 00:18:44 +0300
+Subject: [PATCH] warriors-4p: RestartCallsP2 - separate restart calls when the
+ dropped player was game player 2
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/W4P/W4P.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 90dd617..2bf11ed 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -207,6 +207,7 @@ namespace W4P
+ 			int disconnect_timeout_s = 60;
+ 			std::string leave_calls; // game calls for "continue without": offset:fn:args, args may be P, H, GM, GM+0x..
+ 			std::string restart_calls; // game calls for "restart from the last checkpoint without him"
++			std::string restart_calls_p2; // the same when he was game player 2 (the 2-player flag must be cleared first)
+ 			s64 test_drop_poll = -1; // test only: this instance stops sending/receiving at session poll ...
+ 			int test_drop_s = 0; // ... for this many seconds (0 = for good)
+ 			int test_host_choice = 0; // test only: the host decides by itself (1 continue without, 2 restart)
+@@ -728,7 +729,10 @@ namespace W4P
+ 				choice == 1 ? fmt::format("Player {} left. The game continues without him.", player + 1) :
+ 							  fmt::format("Player {} left. Restarting from the last checkpoint without him.", player + 1),
+ 				8.0f);
+-			ScheduleCalls(choice == 2 ? s.cfg.restart_calls : s.cfg.leave_calls, from_t, s.cfg.pad_for_slot[player]);
++			// His game player index (owner of his pad) does not change while every instance is stalled for him.
++			const s16 game_index = static_cast<s16>(memRead16(0x005DD810 + static_cast<u32>(s.cfg.pad_for_slot[player]) * 0x50 + 0x42));
++			const std::string& restart = (game_index == 1 && !s.cfg.restart_calls_p2.empty()) ? s.cfg.restart_calls_p2 : s.cfg.restart_calls;
++			ScheduleCalls(choice == 2 ? restart : s.cfg.leave_calls, from_t, s.cfg.pad_for_slot[player]);
+ 		}
+ 
+ 		void DisconnectTick(u32 t, double waited_ms)
+@@ -1609,6 +1613,7 @@ namespace W4P
+ 		c.session_policies = ini.GetBoolValue("W4P", "SessionPolicies", false);
+ 		c.leave_calls = ini.GetStringValue("W4P", "LeaveCalls", "");
+ 		c.restart_calls = ini.GetStringValue("W4P", "RestartCalls", "");
++		c.restart_calls_p2 = ini.GetStringValue("W4P", "RestartCallsP2", "");
+ 		{
+ 			const std::string td = ini.GetStringValue("W4P", "TestDrop", ""); // test only: poll:seconds (0 = for good)
+ 			const size_t colon = td.find(':');
+-- 
+2.55.0.windows.3
+

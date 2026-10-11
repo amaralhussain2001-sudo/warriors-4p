@@ -68,3 +68,15 @@ User message 2026-10-11 (verbatim, answer to the M2 report questions): "Q1 A, Q2
 |---|---|---|---|
 | D15 | Revive blocked by a teammate standing between reviver and downed player (game's own sight sweep FUN_0021C0A8, F-0157, R-30) | A: keep the original rule (no patch); players step aside | user, 2026-10-11 |
 | D16 | Widescreen 16:9 default (confirms D11) | A: widescreen on by default in the package/session profile | user, 2026-10-11 |
+
+User message 2026-10-11 (verbatim): "U1 A U2 A U3 A, B A, C A, continue"
+
+| ID | Decision | Choice | Approval |
+|---|---|---|---|
+| D17 | U1: rights of a non-host player who paused | A: he may only resume (Start); the host controls the pause menu (session_policies.md 1.6) | user, 2026-10-11 |
+| D18 | U2: Esc in an online session | A: Esc becomes a pause request for everyone (Start through the lockstep), never an emulator pause (R-24) | user, 2026-10-11 |
+| D19 | U3: skipping a chain of cutscenes | A: a completed vote skips only the current scene (injected Cross); every scene of a chain is voted on separately | user, 2026-10-11 |
+| D20 | B: automatic router port opening (UPnP/PCP) | A: off; connections use ICE + STUN + join/reply codes only (m5_connection_design.md 7) | user, 2026-10-11 |
+| D21 | C: public message service (ntfy.sh) to remove the reply-code step | A: not now; reply codes stay | user, 2026-10-11 |
+
+Open from the same list: D (dates for the LAN test with the second PC and the internet test with friends) - not answered yet.

@@ -1,0 +1,104 @@
+From 4865f5e091f70170a9ff5e11894e96e84fed0c43 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Mon, 12 Oct 2026 00:06:02 +0300
+Subject: [PATCH] warriors-4p: skip votes - movies detected by the Bink frame
+ counter, new scene by its countdown, filter view log
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/W4P/W4P.cpp | 58 +++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 49 insertions(+), 9 deletions(-)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index e91065a..90dd617 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -288,6 +288,11 @@ namespace W4P
+ 			bool cut_prev = false;
+ 			u32 cut_id_prev = 0;
+ 			u32 movie_frame_prev = 0xFFFFFFFFu;
++			bool movie_seen = false;
++			bool movie_changed = false;
++			u32 movie_change_t = 0;
++			s32 scene_countdown_prev = 0;
++			u32 dbg_top = 0, dbg_movie = 0, dbg_scene = 0;
+ 			bool paused_prev = false;
+ 		};
+ 
+@@ -1142,6 +1147,19 @@ namespace W4P
+ 			const u32 top = memRead32(0x0050C784);
+ 			const u32 top_mode = top < 64 ? memRead32(0x005E66A0 + 4 * top) : 0;
+ 			const bool paused = top_mode == 0x005E6550u;
++			{
++				// Diagnostics (F-0175): log what the filter sees whenever it changes.
++				const u32 mv = memRead32(0x000E70F0);
++				const u32 sc = SkippableScene();
++				if (top_mode != s.dbg_top || mv != s.dbg_movie || sc != s.dbg_scene)
++				{
++					Log(fmt::format("policy view at poll {}: top mode {:08x}, movie flag {:x}, scene {:08x}, movie frame {}", t - s.c0,
++						top_mode, mv, sc, memRead32(0x0051545C)));
++					s.dbg_top = top_mode;
++					s.dbg_movie = mv;
++					s.dbg_scene = sc;
++				}
++			}
+ 			// Only in a mission (top of the mode stack = the in-game mode, or the pause mode above it): the boot logos,
+ 			// menus and the 2-player selection keep the game's own input handling (session_policies.md 1.1).
+ 			if (top_mode != 0x005E56B8u && !paused)
+@@ -1151,22 +1169,44 @@ namespace W4P
+ 				s.cut_prev = false;
+ 				s.cut_id_prev = 0;
+ 				s.paused_prev = false;
++				s.movie_frame_prev = memRead32(0x0051545C); // boot logos etc. must not look like an in-game movie later
++				s.movie_seen = true;
++				s.movie_changed = false;
+ 				for (int p = 0; p < n; p++)
+ 					s.prev_buttons[p] = raw[p];
+ 				s.prev_eff0_buttons = raw[0];
+ 				return; // eff_valid stays false: the raw inputs are written
+ 			}
++			// Movie: the S1 flag is not visible at this hook (F-0175), so a movie counts as playing while the Bink frame
++			// counter 0x0051545C has advanced within the last 10 polls (in-game movies L%d_IN / L%d_OUT are skippable);
++			// it starting again means a new movie.
++			const u32 movie_frame = memRead32(0x0051545C);
++			bool new_cut = false;
++			if (!s.movie_seen)
++			{
++				s.movie_seen = true;
++				s.movie_frame_prev = movie_frame;
++			}
++			else if (movie_frame != s.movie_frame_prev)
++			{
++				new_cut |= movie_frame < s.movie_frame_prev;
++				s.movie_frame_prev = movie_frame;
++				s.movie_change_t = t;
++				s.movie_changed = true;
++			}
+ 			const u32 movie = memRead32(0x000E70F0); // patch S1: 2 = movie pad read, +1 = skippable
+-			const bool movie_skip = (movie & 3) == 3;
+-			const u32 cut_id = movie_skip ? 1u : SkippableScene();
++			const bool movie_skip = (movie & 3) == 3 || (s.movie_changed && static_cast<s32>(t - s.movie_change_t) <= 10);
++			const u32 scene = movie_skip ? 0u : SkippableScene();
++			// A scene object can be reallocated at the same address (Mission 1 -> Mission 13, F-0175): a new scene is also
++			// recognised by its start countdown (+0xE0, 60 -> below 0) going up again.
++			const s32 countdown = scene ? static_cast<s32>(memRead32(scene + 0xE0)) : 0;
++			if (scene && scene == s.cut_id_prev && countdown > s.scene_countdown_prev)
++				new_cut = true;
++			s.scene_countdown_prev = countdown;
++			const u32 cut_id = movie_skip ? 1u : scene;
+ 			const bool cut = cut_id != 0;
+-			// Two movies can follow each other without any pad read in between (mission end movie -> next intro), so a
+-			// new movie is also recognised by its frame counter starting again (0x0051545C, session_policies.md 2.1).
+-			const u32 movie_frame = movie_skip ? memRead32(0x0051545C) : 0xFFFFFFFFu;
+-			const bool new_movie = movie_skip && s.movie_frame_prev != 0xFFFFFFFFu && movie_frame < s.movie_frame_prev;
+-			s.movie_frame_prev = movie_frame;
+-			if (cut_id != s.cut_id_prev || new_movie)
+-				s.votes = 0; // a new movie or scene: everybody votes again (each scene of a chain separately, U3 A)
++			if (cut_id != s.cut_id_prev || new_cut)
++				s.votes = 0; // a new movie or scene: everybody votes again (each scene of a chain separately, D19)
+ 			s.cut_id_prev = cut_id;
+ 			if (cut)
+ 			{
+-- 
+2.55.0.windows.3
+

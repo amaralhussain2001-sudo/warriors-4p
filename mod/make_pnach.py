@@ -230,6 +230,14 @@ nocall:
     out += [f"patch=2,EE,{0x000F0000 + 4 * k:08X},word,{w:08X}" for k, w in enumerate(cw)]
     for site in (0x00158CD0, 0x00159908, 0x0015CA54, 0x0015D270, 0x0015DA8C, 0x0015E44C, 0x0015EFFC):
         out.append(f"patch=2,EE,{site:08X},word,{jal(0x000F0000):08X} // was jal 0x001569C0 (FrameStats)")
+    # Online sessions: the same call mailbox for the W4P session layer (LeaveCalls / RestartCalls at an agreed poll;
+    # docs/research/m5_disconnect.md). Identical words to the test group, so enabling both is harmless. The fork
+    # writes only the configured session calls into it; PINE is not used in sessions.
+    out += ["", "[warriors-4p session call]", "author=warriors-4p",
+            "description=Online sessions: game calls requested by the W4P session layer (player leave, checkpoint restart).", ""]
+    out += [f"patch=2,EE,{0x000F0000 + 4 * k:08X},word,{w:08X}" for k, w in enumerate(cw)]
+    for site in (0x00158CD0, 0x00159908, 0x0015CA54, 0x0015D270, 0x0015DA8C, 0x0015E44C, 0x0015EFFC):
+        out.append(f"patch=2,EE,{site:08X},word,{jal(0x000F0000):08X} // was jal 0x001569C0 (FrameStats)")
     # PCSX2's own widescreen entry for this game (resources/patches.zip, SLUS-21215_B99A75DE.pnach, by CRASHARKI).
     out += ["", "[warriors-4p widescreen]", "gsaspectratio=16:9", "author=CRASHARKI (PCSX2 patches)",
             "description=Native 16:9 widescreen (copied from PCSX2's patch list).", "",
