@@ -1,0 +1,29 @@
+From c14935294f6e835d228d6eec0e510ef2e830031f Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sun, 11 Oct 2026 07:22:19 +0300
+Subject: [PATCH] warriors-4p: game hash from 0x000A0000 (build w4p-m3-4)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/W4P/W4P.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 5de23c4..96de186 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -49,9 +49,9 @@ namespace W4P
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+ 		constexpr u16 kProtocolVersion = 2; // 2: hello/fingerprint packet, kernel and game RAM hashes
+-		constexpr char kBuildTag[] = "w4p-m3-3";
++		constexpr char kBuildTag[] = "w4p-m3-4";
+ 		// EE RAM below this address belongs to the BIOS kernel; the game and our patch caves live above it.
+-		constexpr u32 kGameRamStart = 0x000F0000; // includes the warriors-4p caves and data (0x000F0400+)
++		constexpr u32 kGameRamStart = 0x000A0000; // includes the warriors-4p data/caves (0x000A0000+); 0x81000-0x95FFF holds BIOS/loader leftovers (F-0125)
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+ 
+ 		// Game memory used for presentation only (F-0027, docs/research/static_analysis.md).
+-- 
+2.55.0.windows.3
+
