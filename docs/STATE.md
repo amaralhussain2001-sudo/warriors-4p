@@ -13,8 +13,11 @@ run the 2-PC test (E6) with the package.
   `python -I tests/m3/package_selftest.py <tag>`.
 
 ## In progress
-- M2 (four players): `docs/reports/M2_progress.md`. Four players exist and stay up in Mission 1; players 3-4 do not
-  move yet (research `docs/research/m2_player_control.md`).
+- M2 (four players): `docs/reports/M2_progress.md` (criteria table). Four players with independent input and four own
+  views in 4-instance lockstep (tag `m2-four-views`); 33 min, 0 mismatches with MTVU off. Open: HUD of players 3-4
+  (B1/B2 groups; player 3's HUD not drawn in Mission 13), 4th player in missions with too few companions (spawn
+  research `m2_spawn_companion.md`), combat checks, 4-view frame rate (~29 fps, host-bound with MTVU off).
+- Level jump for tests: `level_jump.md` (MenuLoadLevel with the table entry's name pointer).
 
 ## Next steps
 1. E6 with the user's second PC (package README). Compare logs: both `logs/<date>_playerN/w4p.log` folders.
@@ -24,6 +27,9 @@ run the 2-PC test (E6) with the package.
 ## Questions waiting for the user
 - E6 results (logs from both PCs, which CPU/GPU each PC has, how the controls felt).
 - Confirm widescreen as default (D11, taken as recommended).
+
+## Important settings
+- MTVU (`vuThread`) must be OFF in sessions (F-0120); the package profile does this and the handshake compares it.
 
 ## Notes for the next session
 - Never launch the original PCSX2; the user's own PCSX2 may be running.

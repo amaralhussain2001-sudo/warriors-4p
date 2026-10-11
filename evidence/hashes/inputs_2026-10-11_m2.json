@@ -1,0 +1,128 @@
+{
+  "generated_utc": "2026-10-11T04:55:02.579252+00:00",
+  "files": [
+    {
+      "role": "game image (ISO)",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\Warriors The (USA) (EnFrDeEsIt)\\Warriors, The (USA) (En,Fr,De,Es,It).iso",
+      "size": 4295917568,
+      "sha256": "e79a4cea561c78ee33a3b310421bf3dd2174928ebd278efcf23f7f080b8ae96e",
+      "md5": "56a021f03e5718aa3e4760eb0dc179cd",
+      "sha1": "3b68f15cc0c831597467b477ecd9c0944b08c17f",
+      "crc32": "1009fa84"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\.DS_Store",
+      "size": 6148,
+      "sha256": "f82ea9a1164e958f400031c7f02a29a1b35f6bc290f3c93cc9a51521def73262"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-39001_BIOS_V7_USA_160_(NTSC)\\SCPH-39001_BIOS_V7_USA_160.BIN",
+      "size": 4194304,
+      "sha256": "f4c948e61a291d4b3f92a141e550cf8357204287a31ff784caccbedaef910c9d"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-39001_BIOS_V7_USA_160_(NTSC)\\SCPH-39001_BIOS_V7_USA_160.MEC",
+      "size": 4,
+      "sha256": "fbbfc6c156266ac7e9afb37f0cc53fb78fadf2f09f580e56b2da57e6539e463b"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-39001_BIOS_V7_USA_160_(NTSC)\\SCPH-39001_BIOS_V7_USA_160.NVM",
+      "size": 1024,
+      "sha256": "20ea5a0b33828c8312034e1436e4e3d6d5635866feeadabc742cab512aeba5dc"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-70012_BIOS_V12_USA_200_(NTSC)\\SCPH-70012_BIOS_V12_USA_200.BIN",
+      "size": 4194304,
+      "sha256": "6d23d001daf2a0fa8b381a5d49f51753c36e3622d0f04be46af1a0c548be4744"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-70012_BIOS_V12_USA_200_(NTSC)\\SCPH-70012_BIOS_V12_USA_200.MEC",
+      "size": 4,
+      "sha256": "fbbfc6c156266ac7e9afb37f0cc53fb78fadf2f09f580e56b2da57e6539e463b"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-70012_BIOS_V12_USA_200_(NTSC)\\SCPH-70012_BIOS_V12_USA_200.NVM",
+      "size": 1024,
+      "sha256": "5ec0f857bdcf888a9bbda0641d97066abaa286b6604d38afd51ed857c9e086e5"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-77001_BIOS_V15_USA_220_(NTSC)\\SCPH-77001_BIOS_V15_USA_220.DIFF",
+      "size": 4194304,
+      "sha256": "46c5ce6d2a0be00505c2a6eb34b7ead8bf4cef64477703ef99ec1a495ee91f84"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-77001_BIOS_V15_USA_220_(NTSC)\\SCPH-77001_BIOS_V15_USA_220.MEC",
+      "size": 4,
+      "sha256": "fbbfc6c156266ac7e9afb37f0cc53fb78fadf2f09f580e56b2da57e6539e463b"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-77001_BIOS_V15_USA_220_(NTSC)\\SCPH-77001_BIOS_V15_USA_220.NVM",
+      "size": 1024,
+      "sha256": "f5cb88adc91c766dd9ee0a480359fe29df7133aa7088897d92539f19b9c8138b"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-77001_BIOS_V15_USA_220_(NTSC)\\SCPH-77001_BIOS_V15_USA_220.ROM0",
+      "size": 4194304,
+      "sha256": "c7628a01da23d7d38851aec8403e535581d0f2a781fee5b86b1c648b13a9970d"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-77001_BIOS_V15_USA_220_(NTSC)\\SCPH-77001_BIOS_V15_USA_220.ROM1",
+      "size": 4194304,
+      "sha256": "98da02e0b2d264a438b4c3a918dd533641dcd9363e902413d1f424b0dbd2deb9"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-90001_BIOS_V18_USA_230_(NTSC)\\SCPH-90001_BIOS_V18_USA_230.DIFF",
+      "size": 4194304,
+      "sha256": "46c5ce6d2a0be00505c2a6eb34b7ead8bf4cef64477703ef99ec1a495ee91f84"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-90001_BIOS_V18_USA_230_(NTSC)\\SCPH-90001_BIOS_V18_USA_230.INF",
+      "size": 567,
+      "sha256": "4e10aea5fb66bea8c5006f6edd42c4356be2aea62c6488ea1f88e48ed3249072"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-90001_BIOS_V18_USA_230_(NTSC)\\SCPH-90001_BIOS_V18_USA_230.MEC",
+      "size": 4,
+      "sha256": "fbbfc6c156266ac7e9afb37f0cc53fb78fadf2f09f580e56b2da57e6539e463b"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-90001_BIOS_V18_USA_230_(NTSC)\\SCPH-90001_BIOS_V18_USA_230.NVM",
+      "size": 1024,
+      "sha256": "e017efa804f1f7d4d3da82b67d7370c5be062b4860f1cff4f898f93437d691a0"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-90001_BIOS_V18_USA_230_(NTSC)\\SCPH-90001_BIOS_V18_USA_230.ROM0",
+      "size": 4194304,
+      "sha256": "f609ed1ca62437519828cdd824b5ea79417fd756e71a4178443483e3781fedd2"
+    },
+    {
+      "role": "BIOS set file",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\bios\\SCPH-90001_BIOS_V18_USA_230_(NTSC)\\SCPH-90001_BIOS_V18_USA_230.ROM1",
+      "size": 4194304,
+      "sha256": "98da02e0b2d264a438b4c3a918dd533641dcd9363e902413d1f424b0dbd2deb9"
+    },
+    {
+      "role": "PCSX2 executable",
+      "path": "C:\\Users\\PC FORCE\\Desktop\\New folder\\pcsx2-v2.9.115-windows-x64-Qt\\pcsx2-qt.exe",
+      "size": 15397376,
+      "sha256": "8a317829eef3adf452569a89ae08935c15f9f553d3312f332d4a2db906b9a424"
+    }
+  ]
+}
