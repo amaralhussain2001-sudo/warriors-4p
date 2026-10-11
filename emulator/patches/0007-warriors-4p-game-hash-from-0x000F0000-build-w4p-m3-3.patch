@@ -1,0 +1,250 @@
+From 31cf2d5d017f0a23c6132d4148844bb4595f77e1 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sun, 11 Oct 2026 03:30:42 +0300
+Subject: [PATCH] warriors-4p: game hash from 0x000F0000 (build w4p-m3-3);
+ LocalBotN test slots; DebugWatch logged write watchpoints
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/W4P/W4P.cpp            | 78 +++++++++++++++++++++++++++++++-----
+ pcsx2/W4P/W4P.h              |  4 ++
+ pcsx2/x86/ix86-32/iR5900.cpp |  4 ++
+ 3 files changed, 77 insertions(+), 9 deletions(-)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 7bb7b78..270268e 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -17,10 +17,12 @@
+ #include "SIO/Pad/PadBase.h"
+ #include "SIO/Pad/PadDualshock2.h"
+ #include "VMManager.h"
++#include "DebugTools/Breakpoints.h"
+ #include "ps2/BiosTools.h"
+ 
+ #include "common/Console.h"
+ #include "common/FileSystem.h"
++#include "common/StringUtil.h"
+ #include "common/Timer.h"
+ 
+ #include "fmt/format.h"
+@@ -47,9 +49,9 @@ namespace W4P
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+ 		constexpr u16 kProtocolVersion = 2; // 2: hello/fingerprint packet, kernel and game RAM hashes
+-		constexpr char kBuildTag[] = "w4p-m3-2";
+-		// EE RAM below this address belongs to the BIOS kernel (and our hook cave); the game lives above it.
+-		constexpr u32 kGameRamStart = 0x00100000;
++		constexpr char kBuildTag[] = "w4p-m3-3";
++		// EE RAM below this address belongs to the BIOS kernel; the game and our patch caves live above it.
++		constexpr u32 kGameRamStart = 0x000F0000; // includes the warriors-4p caves and data (0x000F0400+)
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+ 
+ 		// Game memory used for presentation only (F-0027, docs/research/static_analysis.md).
+@@ -142,12 +144,15 @@ namespace W4P
+ 			std::string log_path;
+ 			std::string dump_dir;
+ 			std::string bot_path;
++			// Test only: other player slots simulated in this instance from input files (no peer for that slot).
++			std::array<std::string, kMaxPlayers> local_bot_paths = {};
+ 			int latency_ms = 0;
+ 			int jitter_ms = 0;
+ 			float loss = 0.0f;
+ 			u32 seed = 1;
+ 			bool crop = true;
+ 			std::string patch_set; // e.g. pnach SHA-256 + enabled groups, written by the launcher
++			std::vector<std::pair<u32, u32>> watches; // debug: write watchpoints (start, end)
+ 			// The game's view count changes about 4 game frames before the matching picture is shown (F-0093).
+ 			// The crop uses the layout from this many game frames ago and travels through the GS queue.
+ 			int crop_delay_frames = 3;
+@@ -167,6 +172,7 @@ namespace W4P
+ 			std::unique_ptr<Transport> net;
+ 			std::FILE* log = nullptr;
+ 			std::vector<Input> bot;
++			std::array<std::vector<Input>, kMaxPlayers> local_bots = {};
+ 
+ 			bool started = false;
+ 			u32 c0 = 0;
+@@ -306,6 +312,12 @@ namespace W4P
+ 			return in;
+ 		}
+ 
++		// True for the local slot and for slots simulated here from a test input file.
++		bool IsLocalSlot(int p)
++		{
++			return p == s_session->cfg.local_slot || !s_session->local_bots[p].empty();
++		}
++
+ 		void FillHeader(PktHeader* h, u8 type)
+ 		{
+ 			h->magic = kPktMagic;
+@@ -639,7 +651,7 @@ namespace W4P
+ 				bool all = true;
+ 				for (int p = 0; p < s.cfg.players && all; p++)
+ 				{
+-					if (p != s.cfg.local_slot && s.remote_hash[p].find(t) == s.remote_hash[p].end())
++					if (!IsLocalSlot(p) && s.remote_hash[p].find(t) == s.remote_hash[p].end())
+ 						all = false;
+ 				}
+ 				if (!all)
+@@ -650,7 +662,7 @@ namespace W4P
+ 				const HashEntry mine = s.local_hash[t];
+ 				for (int p = 0; p < s.cfg.players; p++)
+ 				{
+-					if (p == s.cfg.local_slot)
++					if (IsLocalSlot(p))
+ 						continue;
+ 					s.hashes_compared++;
+ 					const HashEntry& other = s.remote_hash[p][t];
+@@ -735,6 +747,11 @@ namespace W4P
+ 			{
+ 				s.local_upto++;
+ 				Store(s.cfg.local_slot, s.local_upto, SampleLocal(s.local_upto));
++				for (int p = 0; p < s.cfg.players; p++)
++				{
++					if (p != s.cfg.local_slot && !s.local_bots[p].empty())
++						Store(p, s.local_upto, s.local_bots[p][(s.local_upto - s.c0) % s.local_bots[p].size()]);
++				}
+ 			}
+ 			SendInputs();
+ 			Receive(0);
+@@ -810,8 +827,9 @@ namespace W4P
+ 				DumpRam(t);
+ 		}
+ 
+-		void LoadBot(const std::string& path)
++		void LoadBot(const std::string& path, std::vector<Input>* into = nullptr)
+ 		{
++			std::vector<Input>& dst = into ? *into : s_session->bot;
+ 			std::FILE* f = FileSystem::OpenCFile(path.c_str(), "rb");
+ 			if (!f)
+ 			{
+@@ -822,10 +840,10 @@ namespace W4P
+ 			while (std::fread(&in, sizeof(in), 1, f) == 1)
+ 			{
+ 				in.valid = 1;
+-				s_session->bot.push_back(in);
++				dst.push_back(in);
+ 			}
+ 			std::fclose(f);
+-			Log(fmt::format("bot input: {} polls from {}", s_session->bot.size(), path));
++			Log(fmt::format("bot input: {} polls from {}", dst.size(), path));
+ 		}
+ 
+ 		bool CropFor(const LayoutRec& l, float* r)
+@@ -925,12 +943,24 @@ namespace W4P
+ 		c.log_path = ini.GetStringValue("W4P", "LogFile", "");
+ 		c.dump_dir = ini.GetStringValue("W4P", "DumpDir", "");
+ 		c.bot_path = ini.GetStringValue("W4P", "BotInput", "");
++		for (int p = 0; p < kMaxPlayers; p++)
++			c.local_bot_paths[p] = ini.GetStringValue("W4P", fmt::format("LocalBot{}", p).c_str(), "");
+ 		c.latency_ms = ini.GetIntValue("W4P", "ImpairLatencyMs", 0);
+ 		c.jitter_ms = ini.GetIntValue("W4P", "ImpairJitterMs", 0);
+ 		c.loss = ini.GetFloatValue("W4P", "ImpairLoss", 0.0f);
+ 		c.seed = static_cast<u32>(ini.GetIntValue("W4P", "ImpairSeed", 1));
+ 		c.crop = ini.GetBoolValue("W4P", "Crop", true);
+ 		c.patch_set = ini.GetStringValue("W4P", "PatchSet", "");
++		for (const std::string_view item : StringUtil::SplitString(ini.GetStringValue("W4P", "DebugWatch", ""), ','))
++		{
++			const std::string w(StringUtil::StripWhitespace(item));
++			if (w.empty())
++				continue;
++			const size_t colon = w.find(':');
++			const u32 a = static_cast<u32>(std::strtoul(w.substr(0, colon).c_str(), nullptr, 0));
++			const u32 n = colon == std::string::npos ? 4u : static_cast<u32>(std::strtoul(w.substr(colon + 1).c_str(), nullptr, 0));
++			c.watches.emplace_back(a, a + n);
++		}
+ 		c.crop_delay_frames = ini.GetIntValue("W4P", "CropDelayFrames", c.crop_delay_frames);
+ 		c.crop_inset = std::clamp(ini.GetFloatValue("W4P", "CropInset", c.crop_inset), 0.0f, 0.1f);
+ 		s_show_all.store(ini.GetBoolValue("W4P", "ShowAllViews", false));
+@@ -965,6 +995,16 @@ namespace W4P
+ 		}
+ 		if (!c.bot_path.empty())
+ 			LoadBot(c.bot_path);
++		for (const auto& [a, e] : c.watches)
++		{
++			CBreakPoints::AddMemCheck(BREAKPOINT_EE, a, e, MEMCHECK_WRITE, MEMCHECK_BREAK);
++			Log(fmt::format("debug watch on writes to {:08x}..{:08x}", a, e));
++		}
++		for (int p = 0; p < c.players; p++)
++		{
++			if (p != c.local_slot && !c.local_bot_paths[p].empty())
++				LoadBot(c.local_bot_paths[p], &s_session->local_bots[p]);
++		}
+ 		Log(fmt::format("enabled: {} players, local slot {}, listen UDP {}", c.players, c.local_slot, c.listen_port));
+ 	}
+ 
+@@ -1005,6 +1045,26 @@ namespace W4P
+ 		return unified == unified_slot ? 0 : -1;
+ 	}
+ 
++	bool OnDebugMemcheck(u32 pc, u32 start)
++	{
++		if (!s_session)
++			return false;
++		for (const auto& [a, e] : s_session->cfg.watches)
++		{
++			if (a != start)
++				continue;
++			// The check runs before the store: log the instruction, the register it stores and the old value.
++			const u32 op = memRead32(pc);
++			const u32 rt = (op >> 16) & 31;
++			const u32 opc = op >> 26;
++			const u64 val = (opc == 0x39 || opc == 0x31) ? fpuRegs.fpr[rt].UL : cpuRegs.GPR.r[rt].UD[0];
++			Log(fmt::format("WATCH write pc {:08x} op {:08x} ra {:08x} value {:016x} old {:08x} poll {}", pc, op,
++				cpuRegs.GPR.n.ra.UL[0], val, memRead32(a), s_session->cur_t - s_session->c0));
++			return true;
++		}
++		return false;
++	}
++
+ 	bool BlockInSession(const char* what)
+ 	{
+ 		if (!s_session)
+@@ -1045,7 +1105,7 @@ namespace W4P
+ 		Receive(0);
+ 		bool all_hello = true;
+ 		for (int p = 0; p < s.cfg.players; p++)
+-			all_hello &= (p == s.cfg.local_slot || (s.hello_from[p] && (!s.started || s.compared_from[p])));
++			all_hello &= (IsLocalSlot(p) || (s.hello_from[p] && (!s.started || s.compared_from[p])));
+ 		if (!all_hello && NowMs() - s.last_hello_ms > 1000.0)
+ 			SendHello();
+ 		if (s.started && NowMs() - s.last_send_ms > 50.0)
+diff --git a/pcsx2/W4P/W4P.h b/pcsx2/W4P/W4P.h
+index f82ec27..213433a 100644
+--- a/pcsx2/W4P/W4P.h
++++ b/pcsx2/W4P/W4P.h
+@@ -44,4 +44,8 @@ namespace W4P
+ 	// Vibration routing during a session: the emulated controller of the LOCAL player drives this PC's controller
+ 	// (host pad 0); every other emulated controller is muted. Returns the host pad index, or -1 to mute.
+ 	int VibrationPadFor(u32 unified_slot);
++
++	// Debug only (config DebugWatch = addr[:size],...): memory write watchpoints that are logged instead of pausing.
++	// Returns true when the hit was ours and execution should continue.
++	bool OnDebugMemcheck(u32 pc, u32 start);
+ } // namespace W4P
+diff --git a/pcsx2/x86/ix86-32/iR5900.cpp b/pcsx2/x86/ix86-32/iR5900.cpp
+index 026197c..9bb5a00 100644
+--- a/pcsx2/x86/ix86-32/iR5900.cpp
++++ b/pcsx2/x86/ix86-32/iR5900.cpp
+@@ -4,6 +4,7 @@
+ #include "Common.h"
+ #include "CDVD/CDVD.h"
+ #include "DebugTools/Breakpoints.h"
++#include "W4P/W4P.h"
+ #include "Elfheader.h"
+ #include "GS.h"
+ #include "Host.h"
+@@ -1572,6 +1573,9 @@ void dynarecMemcheck(size_t i)
+ 
+ 	const auto mc = CBreakPoints::GetMemChecks(BREAKPOINT_EE)[i];
+ 
++	if (W4P::OnDebugMemcheck(cpuRegs.pc, mc.start)) // warriors-4p: logged debug watch, keep running
++		return;
++
+ 	if (mc.hasCond)
+ 	{
+ 		if (!mc.cond.Evaluate())
+-- 
+2.55.0.windows.3
+

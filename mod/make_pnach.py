@@ -14,6 +14,8 @@ Usage: python -I mod/make_pnach.py > mod/w4p_m1.pnach
 import os
 import sys
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "tools"))
 from mips_asm import assemble  # noqa: E402
 
@@ -124,7 +126,7 @@ def main():
             "patch=2,EE,003A2F30,word,3C17004A // R60-2 (was 3C170095)",
             "patch=2,EE,003A2F94,word,2E420001 // R60-2 (was 2E420002)",
             "patch=2,EE,0024912C,word,30640000 // R60-3 SimStep: logic on every step (was 30640001)",
-            "patch=2,EE,005102CC,word,3C888889 // R60-4 LogicDt 1/60 (was 3D088889 = 1/30)",
+            "patch=0,EE,005102CC,word,3C888889 // R60-4 LogicDt 1/60 (was 3D088889 = 1/30); data: startup only, the game rescales it for slow motion",
             "patch=2,EE,0023B7C8,word,3C013C88 // R60-4 LogicDt writer (was 3C013D08)",
             "patch=2,EE,0023B7FC,word,3C013C88 // R60-4 (was 3C013D08)",
             "patch=2,EE,0030C8CC,word,3C013C08 // R60-4 (was 3C013C88)",
@@ -133,6 +135,56 @@ def main():
             "patch=2,EE,0041AB40,word,3C013C88 // R60-4 (was 3C013D08)",
             "patch=2,EE,0041ABA4,word,3C013C88 // R60-4 (was 3C013D08)",
             "patch=2,EE,00249B44,word,3C013C88 // R60-4 camera clamp in SimStep (was 3C013D08)"]
+    # M2 (experimental): four genuine players. GameMgr storage and limits (docs/research/m2_gamemgr.md) and the engine
+    # tables below GameMgr: pads, cameras, ScreenEffects, listener buffer, camera flags (m2_pads_cameras.md).
+    # Lines extracted by tools/note_patches.py and checked against the ELF. New data at 0x000F0800-0x000F093F is
+    # zeroed once at startup (place 0; never place 1/2 for live data).
+    frag = []
+    for name in ("gamemgr.txt", "engine.txt"):
+        frag += [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
+    out += ["", "[warriors-4p 4p]", "author=warriors-4p",
+            "description=Experimental: four players (engine tables for 4; players 3-4 join with Start).", ""]
+    out += [f"patch=0,EE,{a:08X},word,00000000 // M2 data block, zero at startup" for a in range(0x000F0800, 0x000F0940, 4)]
+    out += frag
+    # TEST ONLY (M2 engine tests in Mission 1): PickJoinCompanion (FUN_0022A770) skips its gang-wide search in level 99,
+    # where player 1's squad holds only players 1 and 2; this lets players 3-4 take over other Warriors there.
+    out += ["", "[warriors-4p test level99 join]", "author=warriors-4p", "description=Test only: join search also in level 99.", "",
+            "patch=2,EE,0022A85C,word,24047FFF // was 24040063 addiu a0,zero,99 -> 0x7FFF (no such level)"]
+    # TEST ONLY (single-instance engine tests): call a game function on the game's main thread right after
+    # FrameStats, from a mailbox at 0x000F0300 written over PINE (+0 function, +4..+0x10 a0..a3, +0x14 v0, +0x18 done).
+    # As Stage 1 experiment E4 (tests/experiments/E4_extra_player/make_patch_v3.py), without the barrier. Never in
+    # online sessions: PINE writes are not part of the lockstep.
+    call_cave = """
+  addiu sp, sp, -16
+  sw ra, 0(sp)
+  jal 0x1569c0
+  nop
+  lui t0, 0x000F
+  lw t9, 0x300(t0)
+  beq t9, zero, nocall
+  nop
+  lw a0, 0x304(t0)
+  lw a1, 0x308(t0)
+  lw a2, 0x30c(t0)
+  lw a3, 0x310(t0)
+  sw zero, 0x300(t0)
+  jalr t9
+  nop
+  lui t0, 0x000F
+  sw v0, 0x314(t0)
+  addiu t1, zero, 1
+  sw t1, 0x318(t0)
+nocall:
+  lw ra, 0(sp)
+  jr ra
+  addiu sp, sp, 16
+"""
+    cw, _ = assemble(call_cave, 0x000F0000)
+    assert 0x000F0000 + 4 * len(cw) <= 0x000F0300
+    out += ["", "[warriors-4p test call]", "author=warriors-4p", "description=Test only: call a game function from PINE.", ""]
+    out += [f"patch=2,EE,{0x000F0000 + 4 * k:08X},word,{w:08X}" for k, w in enumerate(cw)]
+    for site in (0x00158CD0, 0x00159908, 0x0015CA54, 0x0015D270, 0x0015DA8C, 0x0015E44C, 0x0015EFFC):
+        out.append(f"patch=2,EE,{site:08X},word,{jal(0x000F0000):08X} // was jal 0x001569C0 (FrameStats)")
     # PCSX2's own widescreen entry for this game (resources/patches.zip, SLUS-21215_B99A75DE.pnach, by CRASHARKI).
     out += ["", "[warriors-4p widescreen]", "gsaspectratio=16:9", "author=CRASHARKI (PCSX2 patches)",
             "description=Native 16:9 widescreen (copied from PCSX2's patch list).", "",

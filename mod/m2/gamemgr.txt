@@ -1,0 +1,44 @@
+// extracted from docs\research\m2_gamemgr.md
+patch=2,EE,00161130,word,24065A00 // was 240657C0 addiu a2,zero,0x57c0; GameMgr allocation 0x57C0 -> 0x5A00
+patch=2,EE,004187BC,word,AE2057C0 // was AE200230 sw zero,0x230(s1); frame tick +0x230 -> +0x57C0
+patch=2,EE,00419978,word,8E2457C0 // was 8E240230 lw a0,0x230(s1); frame tick +0x230 -> +0x57C0
+patch=2,EE,0041A380,word,8E0257C0 // was 8E020230 lw v0,0x230(s0); frame tick +0x230 -> +0x57C0
+patch=2,EE,0041A38C,word,AE0257C0 // was AE020230 sw v0,0x230(s0); frame tick +0x230 -> +0x57C0
+patch=2,EE,0041A390,word,8E0457C0 // was 8E040230 lw a0,0x230(s0); frame tick +0x230 -> +0x57C0
+patch=2,EE,00419A70,word,A48557C4 // was A4850222 sh a1,0x222(a0); s16 +0x222 -> +0x57C4 (ctor 0x004186A8 left as is: now zeroes flags[2..3])
+patch=2,EE,0041A644,word,862257C4 // was 86220222 lh v0,0x222(s1); s16 +0x222 -> +0x57C4 (ctor 0x004186A8 left as is: now zeroes flags[2..3])
+patch=2,EE,0041A688,word,862257C4 // was 86220222 lh v0,0x222(s1); s16 +0x222 -> +0x57C4 (ctor 0x004186A8 left as is: now zeroes flags[2..3])
+patch=2,EE,00419040,word,261157C8 // was 26110234 addiu s1,s0,0x234; music handle +0x234 -> +0x57C8 (ctor 0x004186F8 left as is: now handle[3] = -1)
+patch=2,EE,00419074,word,AE0257C8 // was AE020234 sw v0,0x234(s0); music handle +0x234 -> +0x57C8 (ctor 0x004186F8 left as is: now handle[3] = -1)
+patch=2,EE,0041911C,word,260457C8 // was 26040234 addiu a0,s0,0x234; music handle +0x234 -> +0x57C8 (ctor 0x004186F8 left as is: now handle[3] = -1)
+patch=2,EE,00419128,word,8E0557C8 // was 8E050234 lw a1,0x234(s0); music handle +0x234 -> +0x57C8 (ctor 0x004186F8 left as is: now handle[3] = -1)
+patch=2,EE,00419160,word,261157C8 // was 26110234 addiu s1,s0,0x234; music handle +0x234 -> +0x57C8 (ctor 0x004186F8 left as is: now handle[3] = -1)
+patch=2,EE,00419258,word,260457C8 // was 26040234 addiu a0,s0,0x234; music handle +0x234 -> +0x57C8 (ctor 0x004186F8 left as is: now handle[3] = -1)
+patch=2,EE,00419384,word,260457C8 // was 26040234 addiu a0,s0,0x234; music handle +0x234 -> +0x57C8 (ctor 0x004186F8 left as is: now handle[3] = -1)
+patch=2,EE,004185D8,word,26375800 // was 26375740 addiu s7,s1,0x5740; records +0x5740 -> +0x5800 (4 x 0x30)
+patch=2,EE,004188C8,word,26325800 // was 26325740 addiu s2,s1,0x5740; records +0x5740 -> +0x5800 (4 x 0x30)
+patch=2,EE,00244BC4,word,24845800 // was 24845740 addiu a0,a0,0x5740; records +0x5740 -> +0x5800 (4 x 0x30)
+patch=2,EE,00419BDC,word,24845800 // was 24845740 addiu a0,a0,0x5740; records +0x5740 -> +0x5800 (4 x 0x30)
+patch=2,EE,00419C24,word,24845800 // was 24845740 addiu a0,a0,0x5740; records +0x5740 -> +0x5800 (4 x 0x30)
+patch=2,EE,00419DCC,word,24115800 // was 24115740 addiu s1,zero,0x5740; records +0x5740 -> +0x5800 (4 x 0x30)
+patch=2,EE,001287F8,word,24C65810 // was 24C65750 addiu a2,a2,0x5750; records +0x5740 -> +0x5800 (4 x 0x30)
+patch=2,EE,0012B77C,word,78625810 // was 78625750 lq v0,0x5750(v1); records +0x5740 -> +0x5800 (4 x 0x30)
+patch=2,EE,00128750,word,78435820 // was 78435760 lq v1,0x5760(v0); records +0x5740 -> +0x5800 (4 x 0x30)
+patch=2,EE,004186EC,word,24120003 // was 24120001 addiu s2,zero,0x1; ctor: construct 4 records (loop count 1 -> 3, counts down to -1)
+patch=2,EE,004188D0,word,24130003 // was 24130001 addiu s3,zero,0x1; ctor: reset 4 records
+patch=2,EE,0041AB80,word,2CC20004 // was 2CC20002 sltiu v0,a2,0x2; slow-motion flags +0x220: scan 4 players
+patch=2,EE,0041AB98,word,2CC20004 // was 2CC20002 sltiu v0,a2,0x2; slow-motion flags +0x220: scan 4 players
+patch=2,EE,00419B48,word,2A020004 // was 2A020002 slti v0,s0,0x2; AddPlayer: refuse at 4 instead of 2
+patch=2,EE,0041A540,word,0803C1C0 // was 12750039 beq s3,s5,0x0041a628; join: beq s3,s5(=2) -> j 0x000F0700 (cave: skip join when count >= 4)
+patch=2,EE,0041870C,word,0C03C1C8 // was 0C1077D0 jal 0x0041df40; ctor: jal 0x0041DF40 -> jal 0x000F0720 (cave inits new fields, then j 0x0041DF40)
+patch=2,EE,000F0700,word,2A610004 // slti at,s3,0x4
+patch=2,EE,000F0704,word,10200003 // beq at,zero,0x000f0714
+patch=2,EE,000F0708,word,00000000 // nop
+patch=2,EE,000F070C,word,08106952 // j 0x0041a548
+patch=2,EE,000F0710,word,00000000 // nop
+patch=2,EE,000F0714,word,0810698A // j 0x0041a628
+patch=2,EE,000F0718,word,00000000 // nop
+patch=2,EE,000F0720,word,AE220230 // sw v0,0x230(s1)
+patch=2,EE,000F0724,word,AE2257C8 // sw v0,0x57c8(s1)
+patch=2,EE,000F0728,word,081077D0 // j 0x0041df40
+patch=2,EE,000F072C,word,FE2057C0 // sd zero,0x57c0(s1)
