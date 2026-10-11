@@ -1,0 +1,10 @@
+# inv2: Start every 300 polls (joined players ignore it, cal1), Flash (D-pad Right (game tutorial: 'right directional button')) after the health write at 9300
+7000 START:4
+7300 START:4
+7600 START:4
+7900 START:4
+8200 START:4
+8500 START:4
+8800 START:4
+9500 RIGHT:4
+9800 RIGHT:4

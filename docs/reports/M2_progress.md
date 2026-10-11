@@ -1,6 +1,6 @@
-# M2 progress note (four genuine players) — 2026-10-11, in progress
+# M2 progress note (four genuine players) — 2026-10-11, in progress (updated evening)
 
-Exit criteria: `docs/plan/M2.md`. Status: **not met yet** (criteria 1 partly; 2-6 open). Everything SINGLE-PC, one
+Exit criteria: `docs/plan/M2.md`. Status: **not met yet**: criteria 1-4 shown on one instance; 5 met with MTVU off; 6 being measured; see table. Everything SINGLE-PC, one
 instance, scripted input (W4P LocalBot slots), players 3-4 created with the game's own functions on the game thread
 (test-only call facility), Mission 1 "New Blood".
 
@@ -9,10 +9,10 @@ instance, scripted input (W4P LocalBot slots), players 3-4 created with the game
 |---|---|---|---|
 | 1 | Four players exist | **met**, also through the game's own Start-join in Mission 13 (companion + spawned Warrior) in 4-instance lockstep | F-0111, F-0128, F-0130 |
 | 2 | Independent input | **met** (one instance) | F-0112 |
-| 3 | Same systems as players 1-2 (attack, grab, damage, enemies target 3-4) | **not shown yet**: code says targeting is gang-based (should work); two probes inconclusive; fixes C1-C4 added untested | F-0132 |
-| 4 | Four views + own HUD per view | **mostly met**: four own full-screen views with own radar in Mission 13, 4 instances (F-0130); centred text per quarter (F-0126); all four health panels drawn (forced, F-0131) but a second nameless panel per quarter (R5 failed, F-0133); dark band fixed | F-0121, F-0126, F-0130 |
-| 5 | 4 instances in lockstep >= 30 min, 0 mismatches, no crash | **met**: 33 min, four views, MTVU off, 1,855 points, 0 mismatches (also 35 min with 1 view, MTVU on) | F-0123, F-0118 |
-| 6 | >= 29 fps (30 fps mode) | **not met with 4 views + MTVU off**: single instance median 29.07, min 27.4 (host-bound); met with 1 view (29.97). Options: deterministic MTVU mode (F-0124), lighter settings | F-0123 |
+| 3 | Same systems as players 1-2 (attack, grab, damage, enemies target 3-4) | **met (one instance)**: players 3 and 4 both take damage, are knocked down and get up, are targeted, land hits and grab, with players 1-2 120 units away (controlled probe, Mission 13). Flash heal works for players 3-4 with `[4p inventory]` | F-0139, F-0142, F-0144, F-0141 |
+| 4 | Four views + own HUD per view | **met (one instance)**: four own views with own radar and own health panel; duplicate nameless panel fixed (R5b); game-over fade covers all four views (`[4p fx]`), but the GAME OVER text is missing in quarter 4 (open) | F-0130, F-0137, F-0145 |
+| 5 | 4 instances in lockstep >= 30 min, 0 mismatches, no crash | **met** with MTVU off (33 min, F-0123). New patch set (inventory, fx, R5b, chooser) with MTVU on: 10 min, 0 mismatches (q11); a 30-min run with the final set is still to do | F-0123, F-0140 |
+| 6 | >= 29 fps (30 fps mode) | in measurement: deterministic MTVU (fork 0011) allows MTVU on in sessions (q9, q11 in sync) | F-0123, F-0138 |
 | 7 | Originals unchanged | to check at the end of M2 | - |
 
 ## Done

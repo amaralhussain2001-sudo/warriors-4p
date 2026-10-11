@@ -1,0 +1,53 @@
+From afeca719a5a3ff3f7c52a6a6ef98d0bf56430925 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Sun, 11 Oct 2026 15:31:31 +0300
+Subject: [PATCH] warriors-4p: keep CallAt/DebugWatch strings alive while
+ parsing (build w4p-m3-6)
+
+SplitString returned views into a temporary std::string that was freed before
+the loop body ran; one instance parsed a CallAt entry as poll 0 / function 0,
+skipped the level jump and desynced (test q10).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/W4P/W4P.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 95ad2a2..a56dd46 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -50,7 +50,7 @@ namespace W4P
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+ 		constexpr u16 kProtocolVersion = 2; // 2: hello/fingerprint packet, kernel and game RAM hashes
+-		constexpr char kBuildTag[] = "w4p-m3-5";
++		constexpr char kBuildTag[] = "w4p-m3-6";
+ 		// EE RAM below this address belongs to the BIOS kernel; the game and our patch caves live above it.
+ 		constexpr u32 kGameRamStart = 0x000A0000; // includes the warriors-4p data/caves (0x000A0000+); 0x81000-0x95FFF holds BIOS/loader leftovers (F-0125)
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+@@ -981,7 +981,9 @@ namespace W4P
+ 		c.seed = static_cast<u32>(ini.GetIntValue("W4P", "ImpairSeed", 1));
+ 		c.crop = ini.GetBoolValue("W4P", "Crop", true);
+ 		c.patch_set = ini.GetStringValue("W4P", "PatchSet", "");
+-		for (const std::string_view item : StringUtil::SplitString(ini.GetStringValue("W4P", "CallAt", ""), ','))
++		// Keep the string alive: SplitString returns views into it (a temporary would be freed before the loop).
++		const std::string call_at = ini.GetStringValue("W4P", "CallAt", "");
++		for (const std::string_view item : StringUtil::SplitString(call_at, ','))
+ 		{
+ 			const std::vector<std::string_view> f = StringUtil::SplitString(StringUtil::StripWhitespace(item), ':');
+ 			if (f.size() < 2)
+@@ -998,7 +1000,9 @@ namespace W4P
+ 			}
+ 			c.calls.push_back(cs);
+ 		}
+-		for (const std::string_view item : StringUtil::SplitString(ini.GetStringValue("W4P", "DebugWatch", ""), ','))
++		// Keep the string alive: SplitString returns views into it (a temporary would be freed before the loop).
++		const std::string debug_watch = ini.GetStringValue("W4P", "DebugWatch", "");
++		for (const std::string_view item : StringUtil::SplitString(debug_watch, ','))
+ 		{
+ 			const std::string w(StringUtil::StripWhitespace(item));
+ 			if (w.empty())
+-- 
+2.55.0.windows.3
+

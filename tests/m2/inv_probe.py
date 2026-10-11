@@ -37,3 +37,38 @@ def inventory(p):
             out["players"].append(None)
     out["fx_mirror"] = [hex(p.read32(0x000F0890 + 4 * i)) for i in range(4)]
     return out
+
+
+def _player_obj(p, i):
+    gm = p.read32(0x0051489C)
+    h = p.read32(gm + 0x228 + 4 * i)
+    if h in (0, 0xFFFFFFFF):
+        return 0
+    idx = (h >> 16) & 0xFFFF
+    return p.read32(0x006EBD38 + 8 * idx) if p.read32(0x006EBD38 + 8 * idx + 4) & 0xFFFF == h & 0xFFFF else 0
+
+
+def _hurt(p, i, hp=500, flashes=3):
+    """Test only (single instance): player i+1 gets `flashes` Flash items (slot = its HUD slot) and health `hp`."""
+    o = _player_obj(p, i)
+    if not o:
+        return {"error": f"no player {i + 1}"}
+    gm = p.read32(0x0051489C)
+    slot = p.read32(o + 0x380)
+    st = p.read32(o + 0xD4)
+    before = p.read32(st + 0x144)
+    p.write32(gm + 0x480 + 0x24 + slot * 0x3F4 + 1 * 0x2C, flashes)
+    p.write32(st + 0x144, (before & 0xFFFF0000) | hp)
+    return {"player": i + 1, "slot": slot, "hp_before": before & 0xFFFF, "max": before >> 16, "hp_set": hp, "flashes": flashes}
+
+
+def hurt_p1(p):
+    return _hurt(p, 0)
+
+
+def hurt_p3(p):
+    return _hurt(p, 2)
+
+
+def hurt_p4(p):
+    return _hurt(p, 3)

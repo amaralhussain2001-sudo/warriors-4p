@@ -2114,3 +2114,31 @@ TOPZ:
   the quarter below. **R7** raises the top-row radars by 5 % of a quarter's height.
 - **Checks:** no new conflicts except the intended 0x000F0640. R5's slot and memory costs need a runtime check (C5).
 - **Correction:** in merged view, items tagged 1-3 are not drawn at all.
+
+## Addendum: runtime results 3 (2026-10-11)
+
+### D1. Why R5 failed (VERIFIED, PINE reads in Mission 13, `local/m2/m13h/hud_diag.jsonl`)
+- The clone table at 0x000E0A60 was filled at boot: copies of sprite 3 got handles 13-16, copies of sprite 6 got 17-20.
+- In the level, those items were no longer ours: handles 13 and 14 were active with capacity 1 and view 3, handles
+  15-20 were inactive.
+- Cause: the level-exit reset **FUN_00185AE0(manager)** frees every sprite from handle 13 up (loop `s1 = 13 .. 254`,
+  item = manager + 0x189C + 13*0x78 = +0x1EB4). It is called from FUN_001607B8. The level then reused the slots, so
+  REDIR sent quads into foreign sprites (or kept them in the shared batch when the copy was inactive).
+- Side result: the PlayerHUD 0 texts read at C5 use sprite **3** (all five +0xA0 fields = 3), not 6.
+
+### D2. Fix R5b (2 words, `[warriors-4p 4p hud B2]`)
+```
+patch=2,EE,00185AEC,word,24902274 // was 24901EB4 addiu s0,a0,0x1EB4 (item 13) -> addiu s0,a0,0x2274 (item 21)
+patch=2,EE,00185AF4,word,24110015 // was 2411000D addiu s1,zero,13 -> addiu s1,zero,21
+```
+- The copies (handles 13-20) now live as long as the global sprites 0-12; the level allocates from 21 up.
+- Runtime (m13i, `local/m2/m13i/hud_diag.jsonl`): copies 13-16 views 0-3 capacity 128, 17-20 views 0-3 capacity
+  256, all active; 168 slots used. **Each quarter shows only its owner's panel** (`local/m2/m13i/t0402_p10726.png`).
+  VERIFIED (SINGLE-PC, one instance).
+- Risk (HYPOTHESIS): 8 slots fewer for levels (247 instead of 255); the busiest level reading was 168.
+
+### D3. R7 applied only with 3+ views (`[warriors-4p hud]`)
+- The 2-player package uses the same 2A cave, so R7 is now conditional: TOPZ at 0x000F0680 adds the 0.05 margin
+  only when the view count 0x0050B198 is 3 or more (`lw at,-0x4E68(v0)`, `slti at,at,3`, `bne`). With 1-2 views
+  the cave computes exactly what it did before. The unused TOPZ words at 0x000E0CB0-0x000E0CC8 were removed from B2.
+- Visual check of the bottom-row crops still to do (4 instances).

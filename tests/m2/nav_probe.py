@@ -7,6 +7,7 @@ Usage: python -I tests/m2/nav_probe.py <tag> <script.txt> [--seconds 120] [--eve
                                         [--fight 7400]  (controlled combat probe for players 3-4, tests/m2/fightlib.py)
                                         [--hud-diag 10000]  (per-view sprite clone table, tests/m2/hudlib.py)
                                         [--probe module:function:poll]  (read-only check, result in probes.json)
+                                        [--callat "4000:0041ABC0:1,4010:00160D78:0x01FD9F9C"]  (exact polls, W4P CallAt)
   --call  needs the "warriors-4p test call" group: at each poll, call function(a0, a1, ...) on the game thread;
           "GM" = the GameMgr pointer. Results go to calls.txt.
   Other players' scripts are simulated in the same instance (W4P LocalBotN, test only).
@@ -109,6 +110,8 @@ def main():
              f"BotInput = {os.path.join(out, 'bot0.bin')}", "Crop = false"]
     if "--watch" in sys.argv:  # debug: log writes to these addresses (W4P DebugWatch, slow)
         lines.append(f"DebugWatch = {opt('--watch', '', str)}")
+    if "--callat" in sys.argv:  # game function calls at exact session polls (W4P CallAt; deterministic, unlike --call)
+        lines.append(f"CallAt = {opt('--callat', '', str)}")
     pads = opt("--pads", "0,4,1,2", str).split(",")
     lines += [f"PadForSlot{i} = {pads[i]}" for i in range(4)]
     for i in range(2, 5):

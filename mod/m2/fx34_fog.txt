@@ -1,0 +1,5 @@
+// docs/research/m2_fx34.md, optional block B-opt
+// ---- B-opt. Start3DFog on four views (spawns 2 extra fog particle systems; test before shipping)
+patch=2,EE,0018E14C,word,3C07000F // was 3C070060 lui a3,0x60 -> lui a3,0xf; FUN_0018E148
+patch=2,EE,0018E160,word,24F30890 // was 24F3DEB8 addiu s3,a3,-8520 -> addiu s3,a3,2192; FUN_0018E148
+patch=2,EE,0018E29C,word,2E420004 // was 2E420002 sltiu v0,s2,2 -> sltiu v0,s2,4; FUN_0018E148
