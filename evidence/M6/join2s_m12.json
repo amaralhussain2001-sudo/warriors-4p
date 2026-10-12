@@ -1,0 +1,102 @@
+{
+ "mission": 12,
+ "level": 14,
+ "name": "Set Up",
+ "run": "join2s_m12",
+ "policies": true,
+ "seconds": 608,
+ "hash_points": 444,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 13320,
+   "players": 4,
+   "handles": [
+    "0x10155",
+    "0x150",
+    "0x1a07bb",
+    "0x1b081c"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 13327,
+   "players": 4,
+   "handles": [
+    "0x10155",
+    "0x150",
+    "0x1a07bb",
+    "0x1b081c"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 13334,
+   "players": 4,
+   "handles": [
+    "0x10155",
+    "0x150",
+    "0x1a07bb",
+    "0x1b081c"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 9008,
+ "auto_joins_scheduled": 14,
+ "w4p_events": [
+  "[231728189.953] auto join for player 2 (pad 4) scheduled at poll 3511",
+  "[231728189.980] auto join for player 3 (pad 1) scheduled at poll 3514",
+  "[231728189.986] auto join for player 4 (pad 2) scheduled at poll 3517",
+  "[231734946.664] auto join for player 2 (pad 4) scheduled at poll 3571",
+  "[231734946.694] auto join for player 3 (pad 1) scheduled at poll 3574",
+  "[231734946.700] auto join for player 4 (pad 2) scheduled at poll 3577",
+  "[231843755.180] auto join for player 2 (pad 4) scheduled at poll 6511",
+  "[231843755.220] auto join for player 3 (pad 1) scheduled at poll 6514",
+  "[231843755.229] auto join for player 4 (pad 2) scheduled at poll 6517",
+  "[231849510.900] auto join for player 2 (pad 4) scheduled at poll 6571",
+  "[231849510.929] auto join for player 3 (pad 1) scheduled at poll 6574",
+  "[231849510.935] auto join for player 4 (pad 2) scheduled at poll 6577",
+  "[231933508.066] auto join for player 3 (pad 1) scheduled at poll 8731",
+  "[231933508.119] auto join for player 4 (pad 2) scheduled at poll 8734"
+ ],
+ "last_sample": {
+  "t": 602,
+  "poll": 13264,
+  "players": 4,
+  "handles": [
+   "0x10155",
+   "0x150",
+   "0x1a07bb",
+   "0x1b081c"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

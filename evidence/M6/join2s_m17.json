@@ -1,0 +1,102 @@
+{
+ "mission": 17,
+ "level": 55,
+ "name": null,
+ "run": "join2s_m17",
+ "policies": true,
+ "seconds": 607,
+ "hash_points": 559,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16773,
+   "players": 4,
+   "handles": [
+    "0x10078",
+    "0x2007d",
+    "0xf00c9",
+    "0x80157"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16782,
+   "players": 4,
+   "handles": [
+    "0x10078",
+    "0x2007d",
+    "0xf00c9",
+    "0x80157"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16796,
+   "players": 4,
+   "handles": [
+    "0x10078",
+    "0x2007d",
+    "0xf00c9",
+    "0x80157"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "first_poll_with_4": 8733,
+ "auto_joins_scheduled": 13,
+ "w4p_events": [
+  "[232336694.389] auto join for player 2 (pad 4) scheduled at poll 3511",
+  "[232336694.419] auto join for player 3 (pad 1) scheduled at poll 3514",
+  "[232336694.425] auto join for player 4 (pad 2) scheduled at poll 3517",
+  "[232343451.109] auto join for player 2 (pad 4) scheduled at poll 3571",
+  "[232343451.138] auto join for player 3 (pad 1) scheduled at poll 3574",
+  "[232343451.143] auto join for player 4 (pad 2) scheduled at poll 3577",
+  "[232452042.688] auto join for player 2 (pad 4) scheduled at poll 6511",
+  "[232452042.715] auto join for player 3 (pad 1) scheduled at poll 6514",
+  "[232452042.723] auto join for player 4 (pad 2) scheduled at poll 6517",
+  "[232457264.580] auto join for player 2 (pad 4) scheduled at poll 6571",
+  "[232457264.607] auto join for player 3 (pad 1) scheduled at poll 6574",
+  "[232457264.613] auto join for player 4 (pad 2) scheduled at poll 6577",
+  "[232527797.196] auto join for player 3 (pad 1) scheduled at poll 8371"
+ ],
+ "last_sample": {
+  "t": 601,
+  "poll": 16670,
+  "players": 4,
+  "handles": [
+   "0x10078",
+   "0x2007d",
+   "0xf00c9",
+   "0x80157"
+  ],
+  "pad_owner": [
+   0,
+   3,
+   2,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

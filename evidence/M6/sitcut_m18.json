@@ -1,0 +1,86 @@
+{
+ "mission": 18,
+ "level": 84,
+ "name": null,
+ "run": "sitcut_m18",
+ "policies": true,
+ "seconds": 606,
+ "hash_points": 542,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16357,
+   "players": 2,
+   "handles": [
+    "0xe00db",
+    "0xf00e0",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 2
+  },
+  "2": {
+   "poll": 16368,
+   "players": 2,
+   "handles": [
+    "0xe00db",
+    "0xf00e0",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 2
+  },
+  "3": {
+   "poll": 16379,
+   "players": 2,
+   "handles": [
+    "0xe00db",
+    "0xf00e0",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 2
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2
+ ],
+ "first_poll_with_4": null,
+ "auto_joins_scheduled": 0,
+ "w4p_events": [],
+ "last_sample": {
+  "t": 601,
+  "poll": 16267,
+  "players": 2,
+  "handles": [
+   "0xe00db",
+   "0xf00e0",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "pad_owner": [
+   0,
+   -1,
+   -1,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 1
+ }
+}
