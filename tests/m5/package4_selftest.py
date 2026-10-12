@@ -66,6 +66,10 @@ PRESETS = {
                 "rand_from": 59000, "test_call": False},
     "m1_60x2": {"fps60": True, "scripts": ["../../m5/nav/boot_m1_2p_60x2.txt", "../../m5/nav/p2_join_60x2.txt"], "cut": None,
                 "rand_from": 13000, "test_call": False},
+    # m13 at 60 fps (after F-0186 the menus run one logic step per drawn frame, so every poll time and hold doubles)
+    "m13_60": {"fps60": True, "scripts": ["pol_p1.txt", "pol_p2.txt", "pol_p3.txt", "pol_p4.txt"], "cut": 9000,
+               "rand_from": 18000, "test_call": True, "scale": 2,
+               "calls": "CallAt = 7998:0041ABC0:1,8018:00160D78:0x01FD9F9C"},
 }
 
 
@@ -133,6 +137,23 @@ def bot_file(path, preset, slot):
                     continue
                 f.write(line)
         script = cut
+    if p.get("scale"):  # 60 fps variant of a 30 fps script: poll times and hold lengths times the scale
+        scaled = os.path.join(os.path.dirname(path), f"script_slot{slot}_x{p['scale']}.txt")
+        with open(scaled, "w", encoding="utf-8") as f:
+            for line in open(script, encoding="utf-8"):
+                body = line.split("#")[0].strip()
+                if not body:
+                    continue
+                parts = body.split()
+                out = [str(int(parts[0]) * p["scale"])]
+                for b in parts[1:]:
+                    if ":" in b:
+                        name, hold = b.split(":", 1)
+                        out.append(f"{name}:{int(hold) * p['scale']}")
+                    else:
+                        out.append(f"{b}:{3 * p['scale']}")  # nav_probe default hold = 3 polls
+                f.write(" ".join(out) + chr(10))
+        script = scaled
     data = bytearray(nav_probe.build_inputs(script, POLLS))
     tmp = path + ".rand"
     m1_run.bot_file(tmp, 5000 + slot, POLLS)
@@ -318,7 +339,7 @@ def main():
             del ans["botFile"]  # real keyboard input path for player 1
         if p["test_call"]:  # test-only: level jump to Mission 13 at fixed polls (never in the package)
             ans["extraGroups"] = ["warriors-4p test call"]
-            ans["extraW4P"] = [TEST_CALLS]
+            ans["extraW4P"] = [p.get("calls", TEST_CALLS)]
         pc["answers"] = ans
     summary["saves_before"] = {f"pc{pc['k']}": sorted(os.listdir(pc["saves"])) for pc in pcs}
     n = wait_for_slots(4)
