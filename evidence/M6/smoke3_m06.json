@@ -1,0 +1,90 @@
+{
+ "mission": 6,
+ "level": 3,
+ "name": "Writer's Block",
+ "run": "smoke3_m06",
+ "policies": true,
+ "seconds": 607,
+ "hash_points": 554,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16586,
+   "players": 4,
+   "handles": [
+    "0x30168",
+    "0x20163",
+    "0x1015d",
+    "0x158"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16598,
+   "players": 4,
+   "handles": [
+    "0x30168",
+    "0x20163",
+    "0x1015d",
+    "0x158"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16607,
+   "players": 4,
+   "handles": [
+    "0x30168",
+    "0x20163",
+    "0x1015d",
+    "0x158"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 7478,
+ "auto_joins_scheduled": 2,
+ "w4p_events": [
+  "[206301484.551] auto join for player 3 (pad 1) scheduled at poll 7051",
+  "[206301484.584] auto join for player 4 (pad 2) scheduled at poll 7054"
+ ],
+ "last_sample": {
+  "t": 601,
+  "poll": 16487,
+  "players": 4,
+  "handles": [
+   "0x30168",
+   "0x20163",
+   "0x1015d",
+   "0x158"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

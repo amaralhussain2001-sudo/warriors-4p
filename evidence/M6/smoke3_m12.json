@@ -1,0 +1,93 @@
+{
+ "mission": 12,
+ "level": 14,
+ "name": "Set Up",
+ "run": "smoke3_m12",
+ "policies": true,
+ "seconds": 607,
+ "hash_points": 555,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16623,
+   "players": 4,
+   "handles": [
+    "0x10155",
+    "0x150",
+    "0x24099c",
+    "0x250b31"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16633,
+   "players": 4,
+   "handles": [
+    "0x10155",
+    "0x150",
+    "0x24099c",
+    "0x250b31"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16645,
+   "players": 4,
+   "handles": [
+    "0x10155",
+    "0x150",
+    "0x24099c",
+    "0x250b31"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 9567,
+ "auto_joins_scheduled": 5,
+ "w4p_events": [
+  "[210007308.864] auto join for player 3 (pad 1) scheduled at poll 8851",
+  "[210007308.901] auto join for player 4 (pad 2) scheduled at poll 8854",
+  "[210017320.276] auto join for player 3 (pad 1) scheduled at poll 9151",
+  "[210017320.363] auto join for player 4 (pad 2) scheduled at poll 9154",
+  "[210027564.306] auto join for player 4 (pad 2) scheduled at poll 9451"
+ ],
+ "last_sample": {
+  "t": 601,
+  "poll": 16525,
+  "players": 4,
+  "handles": [
+   "0x10155",
+   "0x150",
+   "0x24099c",
+   "0x250b31"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

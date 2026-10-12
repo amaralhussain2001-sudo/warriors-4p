@@ -1,0 +1,90 @@
+{
+ "mission": 8,
+ "level": 81,
+ "name": "Encore",
+ "run": "smoke3_m08",
+ "policies": true,
+ "seconds": 607,
+ "hash_points": 461,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 13818,
+   "players": 4,
+   "handles": [
+    "0x100ea",
+    "0x60103",
+    "0x70108",
+    "0xe5"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 13826,
+   "players": 4,
+   "handles": [
+    "0x100ea",
+    "0x60103",
+    "0x70108",
+    "0xe5"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 13834,
+   "players": 4,
+   "handles": [
+    "0x100ea",
+    "0x60103",
+    "0x70108",
+    "0xe5"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 8622,
+ "auto_joins_scheduled": 2,
+ "w4p_events": [
+  "[207565922.140] auto join for player 3 (pad 1) scheduled at poll 8551",
+  "[207565922.170] auto join for player 4 (pad 2) scheduled at poll 8554"
+ ],
+ "last_sample": {
+  "t": 601,
+  "poll": 13739,
+  "players": 4,
+  "handles": [
+   "0x100ea",
+   "0x60103",
+   "0x70108",
+   "0xe5"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "mission": 11,
+ "level": 31,
+ "name": "Boys In Blue",
+ "run": "smoke3_m11",
+ "policies": true,
+ "seconds": 607,
+ "hash_points": 535,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16034,
+   "players": 4,
+   "handles": [
+    "0x20148",
+    "0x13d",
+    "0x10142",
+    "0x70676"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16045,
+   "players": 4,
+   "handles": [
+    "0x20148",
+    "0x13d",
+    "0x10142",
+    "0x70676"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16057,
+   "players": 4,
+   "handles": [
+    "0x20148",
+    "0x13d",
+    "0x10142",
+    "0x70676"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 9578,
+ "auto_joins_scheduled": 4,
+ "w4p_events": [
+  "[209409780.350] auto join for player 3 (pad 1) scheduled at poll 9151",
+  "[209409780.384] auto join for player 4 (pad 2) scheduled at poll 9154",
+  "[209574579.436] auto join for player 3 (pad 1) scheduled at poll 13351",
+  "[209574579.478] auto join for player 4 (pad 2) scheduled at poll 13354"
+ ],
+ "last_sample": {
+  "t": 601,
+  "poll": 15934,
+  "players": 4,
+  "handles": [
+   "0x20148",
+   "0x13d",
+   "0x10142",
+   "0x70676"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

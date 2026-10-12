@@ -110,4 +110,4 @@ TLB misses; 4P = four players reached). Final statuses (BRIEF §8.4) only after 
 | 18 | 84 | Come Out To Play | X13 (cp1-2 car chase is 2 players by design), sit-out screen | smoke 0/0 (players 3-4 wait) | players 3-4 join in cp3 (human run) |
 | hub | 95 | hideout interludes | X12 waiting screen (F-0185) | hub_cp2 0/0 | a real hub after a finished mission; cp3 burner objective |
 
-smoke3 (all fixes, policies on) is running; this table is updated with its results.
+smoke3 (2026-10-12, all fixes up to F-0197, policies on, players 3-4 join only through X11): **all 18 missions 0 mismatches, 0 TLB misses; 4 players in all except M2 and M18 (join off by script at their start)** - F-0201. M17's crash is fixed (4 players).
