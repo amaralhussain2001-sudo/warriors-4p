@@ -1,0 +1,1669 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "cam_camD_probe.m13_mark@4600": {
+  "poll": 4901,
+  "status": 1,
+  "done": 0,
+  "values": {
+   "W4P_R": [
+    "lua status",
+    1
+   ]
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d13m) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_D13K) and 1 or 0)"
+ },
+ "cam_camD_probe.m13_mark@6000": {
+  "poll": 6351,
+  "status": 1,
+  "done": 0,
+  "values": {
+   "W4P_R": [
+    "lua status",
+    1
+   ]
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d13m) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_D13K) and 1 or 0)"
+ },
+ "cam_camD_probe.join34@6000": {
+  "poll": 6351,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 0,
+    "v0": 1,
+    "poll": 6473
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 6548
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_after": 2
+ },
+ "cam_camD_probe.join34@6500": {
+  "poll": 6548,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 6548
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 6549
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_after": 2
+ },
+ "cam_camD_probe.join34@7000": {
+  "poll": 7006,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [],
+  "cinematic_410": 3,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "skipped": "not quiet"
+ },
+ "cam_camD_probe.join34@7500": {
+  "poll": 7500,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [],
+  "cinematic_410": 3,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "skipped": "not quiet"
+ },
+ "cam_camD_probe.join34@8000": {
+  "poll": 8000,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [],
+  "cinematic_410": 3,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "skipped": "not quiet"
+ },
+ "cam_camD_probe.join34@8500": {
+  "poll": 8503,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 8504
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 8505
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": -1,
+   "4": 1
+  },
+  "count_after": 3
+ },
+ "cam_camD_probe.m13_state@8700": {
+  "poll": 8705,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100,
+   "W4P_R2": 11
+  },
+  "src": "local s = W4P_D13S[2] W4P_R = 0 if s then W4P_R = (s.m or 0) * 100 + (s[1] and 10 or 0) + (s[4] and 1 or 0) end W4P_R2 = (bMainCam or 0) * 10 + (bMainCam2 or 0)",
+  "snap": {
+   "poll": 8705,
+   "gm": {
+    "gm": "0x1fd8400",
+    "players": 3,
+    "checkpoint": 1,
+    "level_idx": 13,
+    "gm_14c": 0,
+    "powerup_full_hp_ok_56e5": 1,
+    "bank": 0,
+    "level_name_124": "level9"
+   },
+   "cams": {
+    "poll": 8705,
+    "views": 3,
+    "checkpoint": 1,
+    "0": {
+     "active": "0xcc6000",
+     "render": "0xcc6000",
+     "follow": "0xcc6000",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "1": {
+     "active": "0xcf9800",
+     "render": "0xcf9800",
+     "follow": "0xcf9800",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "2": {
+     "active": "0xcf8400",
+     "render": "0xcf8400",
+     "follow": "0xcf8400",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "3": {
+     "active": 0,
+     "render": 0,
+     "follow": 0,
+     "rail": 0,
+     "blend": 0,
+     "kind": "none"
+    }
+   },
+   "players": {
+    "count": 3,
+    "1": {
+     "handle": "0x162",
+     "obj": "0x640c80",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      73.37,
+      381.275,
+      4.795
+     ]
+    },
+    "2": {
+     "handle": "0x10167",
+     "obj": "0x641350",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      74.138,
+      382.255,
+      4.795
+     ]
+    },
+    "3": {
+     "handle": "0x3023b",
+     "obj": "0x6420f0",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      71.993,
+      384.601,
+      4.795
+     ]
+    },
+    "4": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    }
+   },
+   "lc_names_newest_first": [
+    "level9_chap1_radio.lua",
+    "level9.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": -1,
+    "4": 1
+   }
+  },
+  "follow2_words_240_270": [
+   "0x428ffc51",
+   "0x43c07fe8",
+   "0x40c63b04",
+   "0x428ffc51",
+   "0x43c04cf0",
+   "0x40c63b04"
+  ],
+  "follow0_words_240_270": [
+   "0x4292fb17",
+   "0x43be6c08",
+   "0x40c63b04",
+   "0x4292bdae",
+   "0x43bea337",
+   "0x40c63b04"
+  ]
+ },
+ "cam_camD_probe.m13_in_train@8800": {
+  "poll": 8804,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 101
+  },
+  "src": "W4P_D13OB = W4P_D13OB or IsInsideBox W4P_D13IB = function(b, h) if b == vbInTrain[1] and h == HuGetPlayer(2) then return 1 end return W4P_D13OB(b, h) end W4P_R = 100 + (W4P_D13K or 0)",
+  "before": {
+   "poll": 8804,
+   "views": 3,
+   "checkpoint": 1,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xcf9800",
+    "render": "0xcf9800",
+    "follow": "0xcf9800",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcf8400",
+    "render": "0xcf8400",
+    "follow": "0xcf8400",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "rail": 0,
+    "blend": 0,
+    "kind": "none"
+   }
+  }
+ },
+ "cam_camD_probe.m13_state@9000": {
+  "poll": 9007,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 10,
+   "W4P_R2": 11
+  },
+  "src": "local s = W4P_D13S[2] W4P_R = 0 if s then W4P_R = (s.m or 0) * 100 + (s[1] and 10 or 0) + (s[4] and 1 or 0) end W4P_R2 = (bMainCam or 0) * 10 + (bMainCam2 or 0)",
+  "snap": {
+   "poll": 9007,
+   "gm": {
+    "gm": "0x1fd8400",
+    "players": 3,
+    "checkpoint": 1,
+    "level_idx": 13,
+    "gm_14c": 0,
+    "powerup_full_hp_ok_56e5": 1,
+    "bank": 0,
+    "level_name_124": "level9"
+   },
+   "cams": {
+    "poll": 9007,
+    "views": 3,
+    "checkpoint": 1,
+    "0": {
+     "active": "0xcc6000",
+     "render": "0xcc6000",
+     "follow": "0xcc6000",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "1": {
+     "active": "0xcf9800",
+     "render": "0xcf9800",
+     "follow": "0xcf9800",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "2": {
+     "active": "0xc55800",
+     "render": "0xc55800",
+     "follow": "0xcf8400",
+     "rail": "0xc55800",
+     "blend": 0,
+     "kind": "rail",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0,
+     "rail_target_340": 3
+    },
+    "3": {
+     "active": 0,
+     "render": 0,
+     "follow": 0,
+     "rail": 0,
+     "blend": 0,
+     "kind": "none"
+    }
+   },
+   "players": {
+    "count": 3,
+    "1": {
+     "handle": "0x162",
+     "obj": "0x640c80",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      73.37,
+      381.275,
+      4.795
+     ]
+    },
+    "2": {
+     "handle": "0x10167",
+     "obj": "0x641350",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      74.138,
+      382.255,
+      4.795
+     ]
+    },
+    "3": {
+     "handle": "0x3023b",
+     "obj": "0x6420f0",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      71.993,
+      384.601,
+      4.795
+     ]
+    },
+    "4": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    }
+   },
+   "lc_names_newest_first": [
+    "level9_chap1_radio.lua",
+    "level9.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": -1,
+    "4": 1
+   }
+  },
+  "follow2_words_240_270": [
+   "0x428ffc51",
+   "0x43c07fe8",
+   "0x40c63b04",
+   "0x428ffc51",
+   "0x43c04cf0",
+   "0x40c63b04"
+  ],
+  "follow0_words_240_270": [
+   "0x4292fb17",
+   "0x43be6c08",
+   "0x40c63b04",
+   "0x4292bdae",
+   "0x43bea337",
+   "0x40c63b04"
+  ]
+ },
+ "cam_camD_probe.m13_in_main@9100": {
+  "poll": 9105,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 101
+  },
+  "src": "W4P_D13OB = W4P_D13OB or IsInsideBox W4P_D13IB = function(b, h) if b == vbMainCam[1] and h == HuGetPlayer(2) then return 1 end return W4P_D13OB(b, h) end W4P_R = 100 + (W4P_D13K or 0)",
+  "before": {
+   "poll": 9105,
+   "views": 3,
+   "checkpoint": 1,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xcf9800",
+    "render": "0xcf9800",
+    "follow": "0xcf9800",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xc55800",
+    "render": "0xc55800",
+    "follow": "0xcf8400",
+    "rail": "0xc55800",
+    "blend": 0,
+    "kind": "rail",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0,
+    "rail_target_340": 3
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "rail": 0,
+    "blend": 0,
+    "kind": "none"
+   }
+  }
+ },
+ "cam_camD_probe.m13_state@9300": {
+  "poll": 9305,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 101,
+   "W4P_R2": 11
+  },
+  "src": "local s = W4P_D13S[2] W4P_R = 0 if s then W4P_R = (s.m or 0) * 100 + (s[1] and 10 or 0) + (s[4] and 1 or 0) end W4P_R2 = (bMainCam or 0) * 10 + (bMainCam2 or 0)",
+  "snap": {
+   "poll": 9305,
+   "gm": {
+    "gm": "0x1fd8400",
+    "players": 3,
+    "checkpoint": 1,
+    "level_idx": 13,
+    "gm_14c": 0,
+    "powerup_full_hp_ok_56e5": 1,
+    "bank": 0,
+    "level_name_124": "level9"
+   },
+   "cams": {
+    "poll": 9305,
+    "views": 3,
+    "checkpoint": 1,
+    "0": {
+     "active": "0xcc6000",
+     "render": "0xcc6000",
+     "follow": "0xcc6000",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "1": {
+     "active": "0xcf9800",
+     "render": "0xcf9800",
+     "follow": "0xcf9800",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "2": {
+     "active": "0xcf8400",
+     "render": "0xcf8400",
+     "follow": "0xcf8400",
+     "rail": "0xc55800",
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0,
+     "rail_target_340": 3
+    },
+    "3": {
+     "active": 0,
+     "render": 0,
+     "follow": 0,
+     "rail": 0,
+     "blend": 0,
+     "kind": "none"
+    }
+   },
+   "players": {
+    "count": 3,
+    "1": {
+     "handle": "0x162",
+     "obj": "0x640c80",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      73.37,
+      381.275,
+      4.795
+     ]
+    },
+    "2": {
+     "handle": "0x10167",
+     "obj": "0x641350",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      74.138,
+      382.255,
+      4.795
+     ]
+    },
+    "3": {
+     "handle": "0x3023b",
+     "obj": "0x6420f0",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      71.993,
+      384.601,
+      4.795
+     ]
+    },
+    "4": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    }
+   },
+   "lc_names_newest_first": [
+    "level9_chap1_radio.lua",
+    "level9.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": -1,
+    "4": 1
+   }
+  },
+  "follow2_words_240_270": [
+   "0x428ffc51",
+   "0x43c07bc5",
+   "0x40c63b04",
+   "0x428ffc51",
+   "0x43c04cf0",
+   "0x40c63b04"
+  ],
+  "follow0_words_240_270": [
+   "0x4292fb17",
+   "0x43be6c08",
+   "0x40c63b04",
+   "0x4292bdae",
+   "0x43bea337",
+   "0x40c63b04"
+  ]
+ },
+ "cam_camD_probe.m13_unstub@9400": {
+  "poll": 9411,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "if W4P_D13OB then W4P_D13IB = W4P_D13OB end W4P_R = 100"
+ },
+ "cam_camD_probe.m13_state@9500": {
+  "poll": 9503,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100,
+   "W4P_R2": 11
+  },
+  "src": "local s = W4P_D13S[2] W4P_R = 0 if s then W4P_R = (s.m or 0) * 100 + (s[1] and 10 or 0) + (s[4] and 1 or 0) end W4P_R2 = (bMainCam or 0) * 10 + (bMainCam2 or 0)",
+  "snap": {
+   "poll": 9503,
+   "gm": {
+    "gm": "0x1fd8400",
+    "players": 3,
+    "checkpoint": 1,
+    "level_idx": 13,
+    "gm_14c": 0,
+    "powerup_full_hp_ok_56e5": 1,
+    "bank": 0,
+    "level_name_124": "level9"
+   },
+   "cams": {
+    "poll": 9503,
+    "views": 3,
+    "checkpoint": 1,
+    "0": {
+     "active": "0xcc6000",
+     "render": "0xcc6000",
+     "follow": "0xcc6000",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "1": {
+     "active": "0xcf9800",
+     "render": "0xcf9800",
+     "follow": "0xcf9800",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "2": {
+     "active": "0xcf8400",
+     "render": "0xcf8400",
+     "follow": "0xcf8400",
+     "rail": "0xc55800",
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0,
+     "rail_target_340": 3
+    },
+    "3": {
+     "active": 0,
+     "render": 0,
+     "follow": 0,
+     "rail": 0,
+     "blend": 0,
+     "kind": "none"
+    }
+   },
+   "players": {
+    "count": 3,
+    "1": {
+     "handle": "0x162",
+     "obj": "0x640c80",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      73.37,
+      381.275,
+      4.795
+     ]
+    },
+    "2": {
+     "handle": "0x10167",
+     "obj": "0x641350",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      74.138,
+      382.255,
+      4.795
+     ]
+    },
+    "3": {
+     "handle": "0x3023b",
+     "obj": "0x6420f0",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      71.993,
+      384.601,
+      4.795
+     ]
+    },
+    "4": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    }
+   },
+   "lc_names_newest_first": [
+    "level9_chap1_radio.lua",
+    "level9.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": -1,
+    "4": 1
+   }
+  },
+  "follow2_words_240_270": [
+   "0x428ffc51",
+   "0x43c07bc5",
+   "0x40c63b04",
+   "0x428ffc51",
+   "0x43c04cf0",
+   "0x40c63b04"
+  ],
+  "follow0_words_240_270": [
+   "0x4292fb17",
+   "0x43be6c08",
+   "0x40c63b04",
+   "0x4292bdae",
+   "0x43bea337",
+   "0x40c63b04"
+  ]
+ },
+ "cam_camD_probe.ctl1@9600": {
+  "poll": 9603,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "local h = player2 if W4P_CTL == nil then W4P_CTL = {} end if W4P_CTL[1] == nil then local q = call(GetPosition, {h; n = 1}, \"x\") or {x = 407, y = -137, z = 3} W4P_CTL[1] = CameraCreateLocked(\"W4PCTL\", {q.x + 4, q.y + 4, q.z + 6}, 65, 0, -30, 0, 0.1, 75) end CameraMakeActive(W4P_CTL[1], 0, nil, h, h) W4P_R = (CameraGetActive(1) == W4P_CTL[1]) and 1 or 0",
+  "blend": {
+   "poll": 9603,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcd3c00",
+    "render": "0xcd3c00",
+    "follow": "0xcf9800",
+    "blend": 0
+   },
+   "2": {
+    "active": "0xcf8400",
+    "render": "0xcf8400",
+    "follow": "0xcf8400",
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl_read@9650": {
+  "poll": 9653,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_R = 0 for v = 1, 3 do W4P_R = W4P_R * 10 + ((W4P_CTL and W4P_CTL[v] and CameraGetActive(v) == W4P_CTL[v]) and 1 or 0) end",
+  "blend": {
+   "poll": 9653,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcd3c00",
+    "render": "0xcd3c00",
+    "follow": "0xcf9800",
+    "blend": 0
+   },
+   "2": {
+    "active": "0xcf8400",
+    "render": "0xcf8400",
+    "follow": "0xcf8400",
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl2@9700": {
+  "poll": 9709,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "local h = HuGetPlayer(2) if W4P_CTL == nil then W4P_CTL = {} end if W4P_CTL[2] == nil then local q = call(GetPosition, {h; n = 1}, \"x\") or {x = 407, y = -137, z = 3} W4P_CTL[2] = CameraCreateLocked(\"W4PCTL\", {q.x + 4, q.y + 4, q.z + 6}, 65, 0, -30, 0, 0.1, 75) end CameraMakeActive(W4P_CTL[2], 0, nil, h, h) W4P_R = (CameraGetActive(2) == W4P_CTL[2]) and 1 or 0",
+  "blend": {
+   "poll": 9709,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcd3c00",
+    "render": "0xcd3c00",
+    "follow": "0xcf9800",
+    "blend": 0
+   },
+   "2": {
+    "active": "0xcdbc00",
+    "render": "0xcdbc00",
+    "follow": "0xcf8400",
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl_read@9750": {
+  "poll": 9757,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 110
+  },
+  "src": "W4P_R = 0 for v = 1, 3 do W4P_R = W4P_R * 10 + ((W4P_CTL and W4P_CTL[v] and CameraGetActive(v) == W4P_CTL[v]) and 1 or 0) end",
+  "blend": {
+   "poll": 9757,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcd3c00",
+    "render": "0xcd3c00",
+    "follow": "0xcf9800",
+    "blend": 0
+   },
+   "2": {
+    "active": "0xcdbc00",
+    "render": "0xcdbc00",
+    "follow": "0xcf8400",
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.main0_1@9800": {
+  "poll": 9808,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "CameraMakeActive(MainCam, 0, nil, player2, player2) CameraMakeActive(MainCam, 0, nil, HuGetPlayer(2), HuGetPlayer(2)) W4P_R = 100",
+  "blend": {
+   "poll": 9808,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcf9800",
+    "render": "0xcf9800",
+    "follow": "0xcf9800",
+    "blend": 0
+   },
+   "2": {
+    "active": "0xcf8400",
+    "render": "0xcf8400",
+    "follow": "0xcf8400",
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl_read@9850": {
+  "poll": 9854,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0
+  },
+  "src": "W4P_R = 0 for v = 1, 3 do W4P_R = W4P_R * 10 + ((W4P_CTL and W4P_CTL[v] and CameraGetActive(v) == W4P_CTL[v]) and 1 or 0) end",
+  "blend": {
+   "poll": 9854,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcf9800",
+    "render": "0xcf9800",
+    "follow": "0xcf9800",
+    "blend": 0
+   },
+   "2": {
+    "active": "0xcf8400",
+    "render": "0xcf8400",
+    "follow": "0xcf8400",
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.blend_go1@9900": {
+  "poll": 9905,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "CameraMakeActive(MainCam, 0.85, nil, player2, player2) W4P_R = 100",
+  "blend": {
+   "poll": 9905,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "blend": "0xcdd800",
+    "frm": "0xcf9800",
+    "to": "0xcf9800",
+    "dur": 0.85,
+    "elapsed": 0.067,
+    "progress": 0.078
+   },
+   "2": {
+    "active": "0xcf8400",
+    "render": "0xcf8400",
+    "follow": "0xcf8400",
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.blend_go2@9950": {
+  "poll": 9957,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "CameraMakeActive(MainCam, 0.85, nil, HuGetPlayer(2), HuGetPlayer(2)) W4P_R = 100",
+  "blend": {
+   "poll": 9957,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "blend": "0xcdd800",
+    "frm": "0xcf9800",
+    "to": "0xcf9800",
+    "dur": 0.85,
+    "elapsed": 1.8,
+    "progress": 1.0
+   },
+   "2": {
+    "active": "0xcde000",
+    "render": "0xcde000",
+    "follow": "0xcf8400",
+    "blend": "0xcde000",
+    "frm": "0xcf8400",
+    "to": "0xcf8400",
+    "dur": 0.85,
+    "elapsed": 0.1,
+    "progress": 0.118
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl_read@10100": {
+  "poll": 10106,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0
+  },
+  "src": "W4P_R = 0 for v = 1, 3 do W4P_R = W4P_R * 10 + ((W4P_CTL and W4P_CTL[v] and CameraGetActive(v) == W4P_CTL[v]) and 1 or 0) end",
+  "blend": {
+   "poll": 10106,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "blend": "0xcdd800",
+    "frm": "0xcf9800",
+    "to": "0xcf9800",
+    "dur": 0.85,
+    "elapsed": 6.767,
+    "progress": 1.0
+   },
+   "2": {
+    "active": "0xcde000",
+    "render": "0xcde000",
+    "follow": "0xcf8400",
+    "blend": "0xcde000",
+    "frm": "0xcf8400",
+    "to": "0xcf8400",
+    "dur": 0.85,
+    "elapsed": 5.067,
+    "progress": 1.0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl1@10200": {
+  "poll": 10207,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0
+  },
+  "src": "local h = player2 if W4P_CTL == nil then W4P_CTL = {} end if W4P_CTL[1] == nil then local q = call(GetPosition, {h; n = 1}, \"x\") or {x = 407, y = -137, z = 3} W4P_CTL[1] = CameraCreateLocked(\"W4PCTL\", {q.x + 4, q.y + 4, q.z + 6}, 65, 0, -30, 0, 0.1, 75) end CameraMakeActive(W4P_CTL[1], 0, nil, h, h) W4P_R = (CameraGetActive(1) == W4P_CTL[1]) and 1 or 0",
+  "blend": {
+   "poll": 10207,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "blend": "0xcdd800",
+    "frm": "0xcf9800",
+    "to": "0xcf9800",
+    "dur": 0.85,
+    "elapsed": 10.2,
+    "progress": 1.0
+   },
+   "2": {
+    "active": "0xcde000",
+    "render": "0xcde000",
+    "follow": "0xcf8400",
+    "blend": "0xcde000",
+    "frm": "0xcf8400",
+    "to": "0xcf8400",
+    "dur": 0.85,
+    "elapsed": 8.5,
+    "progress": 1.0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl2@10250": {
+  "poll": 10255,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0
+  },
+  "src": "local h = HuGetPlayer(2) if W4P_CTL == nil then W4P_CTL = {} end if W4P_CTL[2] == nil then local q = call(GetPosition, {h; n = 1}, \"x\") or {x = 407, y = -137, z = 3} W4P_CTL[2] = CameraCreateLocked(\"W4PCTL\", {q.x + 4, q.y + 4, q.z + 6}, 65, 0, -30, 0, 0.1, 75) end CameraMakeActive(W4P_CTL[2], 0, nil, h, h) W4P_R = (CameraGetActive(2) == W4P_CTL[2]) and 1 or 0",
+  "blend": {
+   "poll": 10255,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "blend": "0xcdd800",
+    "frm": "0xcf9800",
+    "to": "0xcf9800",
+    "dur": 0.85,
+    "elapsed": 11.8,
+    "progress": 1.0
+   },
+   "2": {
+    "active": "0xcde000",
+    "render": "0xcde000",
+    "follow": "0xcf8400",
+    "blend": "0xcde000",
+    "frm": "0xcf8400",
+    "to": "0xcf8400",
+    "dur": 0.85,
+    "elapsed": 10.1,
+    "progress": 1.0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl_read@10400": {
+  "poll": 10404,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0
+  },
+  "src": "W4P_R = 0 for v = 1, 3 do W4P_R = W4P_R * 10 + ((W4P_CTL and W4P_CTL[v] and CameraGetActive(v) == W4P_CTL[v]) and 1 or 0) end",
+  "blend": {
+   "poll": 10404,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "blend": "0xcdd800",
+    "frm": "0xcf9800",
+    "to": "0xcf9800",
+    "dur": 0.85,
+    "elapsed": 16.767,
+    "progress": 1.0
+   },
+   "2": {
+    "active": "0xcde000",
+    "render": "0xcde000",
+    "follow": "0xcf8400",
+    "blend": "0xcde000",
+    "frm": "0xcf8400",
+    "to": "0xcf8400",
+    "dur": 0.85,
+    "elapsed": 15.067,
+    "progress": 1.0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl_read@10600": {
+  "poll": 10606,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0
+  },
+  "src": "W4P_R = 0 for v = 1, 3 do W4P_R = W4P_R * 10 + ((W4P_CTL and W4P_CTL[v] and CameraGetActive(v) == W4P_CTL[v]) and 1 or 0) end",
+  "blend": {
+   "poll": 10606,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "blend": "0xcdd800",
+    "frm": "0xcf9800",
+    "to": "0xcf9800",
+    "dur": 0.85,
+    "elapsed": 23.566,
+    "progress": 1.0
+   },
+   "2": {
+    "active": "0xcde000",
+    "render": "0xcde000",
+    "follow": "0xcf8400",
+    "blend": "0xcde000",
+    "frm": "0xcf8400",
+    "to": "0xcf8400",
+    "dur": 0.85,
+    "elapsed": 21.866,
+    "progress": 1.0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.main0_1@10700": {
+  "poll": 10704,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "CameraMakeActive(MainCam, 0, nil, player2, player2) CameraMakeActive(MainCam, 0, nil, HuGetPlayer(2), HuGetPlayer(2)) W4P_R = 100",
+  "blend": {
+   "poll": 10704,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "blend": "0xcdd800",
+    "frm": "0xcf9800",
+    "to": "0xcf9800",
+    "dur": 0.85,
+    "elapsed": 26.833,
+    "progress": 1.0
+   },
+   "2": {
+    "active": "0xcde000",
+    "render": "0xcde000",
+    "follow": "0xcf8400",
+    "blend": "0xcde000",
+    "frm": "0xcf8400",
+    "to": "0xcf8400",
+    "dur": 0.85,
+    "elapsed": 25.133,
+    "progress": 1.0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.ctl_read@10800": {
+  "poll": 10804,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0
+  },
+  "src": "W4P_R = 0 for v = 1, 3 do W4P_R = W4P_R * 10 + ((W4P_CTL and W4P_CTL[v] and CameraGetActive(v) == W4P_CTL[v]) and 1 or 0) end",
+  "blend": {
+   "poll": 10804,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "blend": "0xcdd800",
+    "frm": "0xcf9800",
+    "to": "0xcf9800",
+    "dur": 0.85,
+    "elapsed": 30.2,
+    "progress": 1.0
+   },
+   "2": {
+    "active": "0xcde000",
+    "render": "0xcde000",
+    "follow": "0xcf8400",
+    "blend": "0xcde000",
+    "frm": "0xcf8400",
+    "to": "0xcf8400",
+    "dur": 0.85,
+    "elapsed": 28.5,
+    "progress": 1.0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.snap@11000": {
+  "poll": 11001,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 3,
+   "checkpoint": 1,
+   "level_idx": 13,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level9"
+  },
+  "cams": {
+   "poll": 11001,
+   "views": 3,
+   "checkpoint": 1,
+   "0": {
+    "active": "0xcc6000",
+    "render": "0xcc6000",
+    "follow": "0xcc6000",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xcdd800",
+    "render": "0xcdd800",
+    "follow": "0xcf9800",
+    "rail": 0,
+    "blend": "0xcdd800",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcde000",
+    "render": "0xcde000",
+    "follow": "0xcf8400",
+    "rail": "0xc55800",
+    "blend": "0xcde000",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0,
+    "rail_target_340": 3
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "rail": 0,
+    "blend": 0,
+    "kind": "none"
+   }
+  },
+  "players": {
+   "count": 3,
+   "1": {
+    "handle": "0x162",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     73.37,
+     381.275,
+     4.795
+    ]
+   },
+   "2": {
+    "handle": "0x10167",
+    "obj": "0x641350",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     74.138,
+     382.255,
+     4.795
+    ]
+   },
+   "3": {
+    "handle": "0x3023b",
+    "obj": "0x6420f0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     71.993,
+     384.601,
+     4.795
+    ]
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  },
+  "lc_names_newest_first": [
+   "level9_chap1_radio.lua",
+   "level9.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "pads": {
+   "0": 0,
+   "1": 2,
+   "2": -1,
+   "4": 1
+  }
+ }
+}

@@ -1,0 +1,3455 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "cam_camB_probe.god6@4300": {
+  "poll": 4303,
+  "players_god": 2,
+  "tries": 1,
+  "secs": 0.2
+ },
+ "cam_camB_probe.snap@5000": {
+  "st": {
+   "poll": 5002,
+   "checkpoint": 4,
+   "level": "level3",
+   "count": 2,
+   "views": 2,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x20162",
+    "0x158",
+    "0xffffffff",
+    "0xffffffff",
+    "0x20162",
+    "0x0"
+   ],
+   "lc_names": [
+    "level3_chase.lua",
+    "level3.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 7,
+   "players": {
+    "count": 2,
+    "1": {
+     "handle": "0x20162",
+     "obj": "0x641a20",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      -261.579,
+      364.934,
+      20.195
+     ]
+    },
+    "2": {
+     "handle": "0x158",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      -268.609,
+      360.601,
+      20.165
+     ]
+    },
+    "3": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    },
+    "4": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xc9e000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xcd9c00",
+     "rail": "0xc55c00",
+     "rail_info": {
+      "tgt": "0x641a20",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xc9e400",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd07400",
+     "rail": "0xce2800",
+     "rail_info": {
+      "tgt": "0x640c80",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0x0",
+     "rail": "0x0",
+     "rail_info": null
+    },
+    "3": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0x0",
+     "rail": "0x0",
+     "rail_info": null
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": -1,
+    "2": -1,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 5007,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 110,
+    "W4P_R2": 0,
+    "W4P_R3": 1
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.m6_startrail@5100": {
+  "poll": 5106,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_PC(ch4.StartRail, vbStartRail, player) W4P_R = 100",
+  "cams_before": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0x0",
+    "kind": "none",
+    "render_vt": null,
+    "follow": "0x0",
+    "rail": "0x0",
+    "rail_info": null
+   },
+   "3": {
+    "render": "0x0",
+    "kind": "none",
+    "render_vt": null,
+    "follow": "0x0",
+    "rail": "0x0",
+    "rail_info": null
+   }
+  },
+  "cams_after": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0x0",
+    "kind": "none",
+    "render_vt": null,
+    "follow": "0x0",
+    "rail": "0x0",
+    "rail_info": null
+   },
+   "3": {
+    "render": "0x0",
+    "kind": "none",
+    "render_vt": null,
+    "follow": "0x0",
+    "rail": "0x0",
+    "rail_info": null
+   }
+  }
+ },
+ "cam_camB_probe.snap@5300": {
+  "st": {
+   "poll": 5302,
+   "checkpoint": 4,
+   "level": "level3",
+   "count": 2,
+   "views": 2,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x20162",
+    "0x158",
+    "0xffffffff",
+    "0xffffffff",
+    "0x20162",
+    "0x0"
+   ],
+   "lc_names": [
+    "level3_chase.lua",
+    "level3.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 7,
+   "players": {
+    "count": 2,
+    "1": {
+     "handle": "0x20162",
+     "obj": "0x641a20",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      -260.59,
+      365.842,
+      20.195
+     ]
+    },
+    "2": {
+     "handle": "0x158",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      -268.806,
+      360.6,
+      20.165
+     ]
+    },
+    "3": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    },
+    "4": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xc9e000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xcd9c00",
+     "rail": "0xc55c00",
+     "rail_info": {
+      "tgt": "0x641a20",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xc9e400",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd07400",
+     "rail": "0xce2800",
+     "rail_info": {
+      "tgt": "0x640c80",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0x0",
+     "rail": "0x0",
+     "rail_info": null
+    },
+    "3": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0x0",
+     "rail": "0x0",
+     "rail_info": null
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": -1,
+    "2": -1,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 5306,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 110,
+    "W4P_R2": 0,
+    "W4P_R3": 1
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.join@5400": {
+  "poll": 5402,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 5403
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 5404
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camB_probe.join@5600": {
+  "skipped": "4 players",
+  "poll": 5602
+ },
+ "cam_camB_probe.god@5700": {
+  "poll": 5703,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 4
+  },
+  "src": "W4P_R = 0 for i = 0, 3 do local h = HuGetPlayer(i) if HuIsAPlayer(h) then HuSetGodMode(h, true) W4P_R = W4P_R + 1 end end"
+ },
+ "cam_camB_probe.join@5800": {
+  "skipped": "4 players",
+  "poll": 5800
+ },
+ "cam_camB_probe.snap@6000": {
+  "st": {
+   "poll": 6002,
+   "checkpoint": 4,
+   "level": "level3",
+   "count": 4,
+   "views": 4,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167",
+    "0x20162",
+    "0x0"
+   ],
+   "lc_names": [
+    "level3_chase.lua",
+    "level3.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 7,
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x20162",
+     "obj": "0x641a20",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      -266.041,
+      368.285,
+      20.195
+     ]
+    },
+    "2": {
+     "handle": "0x158",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      -268.624,
+      360.613,
+      20.165
+     ]
+    },
+    "3": {
+     "handle": "0x1015d",
+     "obj": "0x641350",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      -19.93,
+      365.348,
+      14.141
+     ]
+    },
+    "4": {
+     "handle": "0x30167",
+     "obj": "0x6420f0",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      -13.644,
+      366.287,
+      13.999
+     ]
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xc9e000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xcd9c00",
+     "rail": "0xc55c00",
+     "rail_info": {
+      "tgt": "0x641a20",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xc9e400",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd07400",
+     "rail": "0xce2800",
+     "rail_info": {
+      "tgt": "0x640c80",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0xd23c00",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd22400",
+     "rail": "0xd22c00",
+     "rail_info": {
+      "tgt": "0x641350",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 3
+     }
+    },
+    "3": {
+     "render": "0xd24000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd23000",
+     "rail": "0xd23800",
+     "rail_info": {
+      "tgt": "0x6420f0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 4
+     }
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 6006,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 110,
+    "W4P_R2": 34,
+    "W4P_R3": 1
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.god@6050": {
+  "poll": 6054,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 4
+  },
+  "src": "W4P_R = 0 for i = 0, 3 do local h = HuGetPlayer(i) if HuIsAPlayer(h) then HuSetGodMode(h, true) W4P_R = W4P_R + 1 end end"
+ },
+ "cam_camB_probe.snap@6300": {
+  "st": {
+   "poll": 6300,
+   "checkpoint": 4,
+   "level": "level3",
+   "count": 4,
+   "views": 4,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167",
+    "0x20162",
+    "0x0"
+   ],
+   "lc_names": [
+    "level3_chase.lua",
+    "level3.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 7,
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x20162",
+     "obj": "0x641a20",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      -265.747,
+      367.859,
+      20.196
+     ]
+    },
+    "2": {
+     "handle": "0x158",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      -268.63,
+      360.628,
+      20.165
+     ]
+    },
+    "3": {
+     "handle": "0x1015d",
+     "obj": "0x641350",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      -19.93,
+      365.348,
+      14.141
+     ]
+    },
+    "4": {
+     "handle": "0x30167",
+     "obj": "0x6420f0",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      -13.644,
+      366.287,
+      13.999
+     ]
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xc9e000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xcd9c00",
+     "rail": "0xc55c00",
+     "rail_info": {
+      "tgt": "0x641a20",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xc9e400",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd07400",
+     "rail": "0xce2800",
+     "rail_info": {
+      "tgt": "0x640c80",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0xd23c00",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd22400",
+     "rail": "0xd22c00",
+     "rail_info": {
+      "tgt": "0x641350",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 3
+     }
+    },
+    "3": {
+     "render": "0xd24000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd23000",
+     "rail": "0xd23800",
+     "rail_info": {
+      "tgt": "0x6420f0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 4
+     }
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 6305,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 110,
+    "W4P_R2": 34,
+    "W4P_R3": 1
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.tp34@6500": {
+  "p3": {
+   "poll": 6503,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 100
+   },
+   "src": "local h = HuGetPlayer(2) if HuIsAPlayer(h) then Teleport(h, {-265.839, 368.374, 20.196}, -1) W4P_R = 100 else W4P_R = 0 end",
+   "p1_pos": [
+    -267.339,
+    368.374,
+    20.196
+   ]
+  },
+  "p4": {
+   "poll": 6506,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 100
+   },
+   "src": "local h = HuGetPlayer(3) if HuIsAPlayer(h) then Teleport(h, {-268.728, 368.359, 20.196}, -1) W4P_R = 100 else W4P_R = 0 end",
+   "p1_pos": [
+    -267.228,
+    368.359,
+    20.196
+   ]
+  },
+  "after": {
+   "count": 4,
+   "1": {
+    "handle": "0x20162",
+    "obj": "0x641a20",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -267.095,
+     368.334,
+     20.196
+    ]
+   },
+   "2": {
+    "handle": "0x158",
+    "obj": "0x640c80",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -268.755,
+     360.637,
+     20.166
+    ]
+   },
+   "3": {
+    "handle": "0x1015d",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -265.839,
+     368.374,
+     20.195
+    ]
+   },
+   "4": {
+    "handle": "0x30167",
+    "obj": "0x6420f0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -268.739,
+     368.342,
+     20.188
+    ]
+   }
+  }
+ },
+ "cam_camB_probe.m6_boxes@6600": {
+  "poll": 6606,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0,
+   "W4P_R2": 0,
+   "W4P_R3": 0
+  },
+  "src": "W4P_V = {} local t = {vSideRail, vMainRail, vBigRail, vTopRail, vFixCam} for i = 0, 3 do local h = HuGetPlayer(i) local n = 0 if HuIsAPlayer(h) then for j = 1, 5 do for k, b in t[j] do if IsInsideBox(b, h) then n = n + 1 end end end end W4P_V[i] = n end W4P_R = W4P_V[0] * 10 + W4P_V[1] W4P_R2 = W4P_V[2] * 10 + W4P_V[3] W4P_R3 = (IsInsideBox(vbStartRail, player) and 1 or 0)",
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x20162",
+    "obj": "0x641a20",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -267.007,
+     368.195,
+     20.196
+    ]
+   },
+   "2": {
+    "handle": "0x158",
+    "obj": "0x640c80",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -268.752,
+     360.608,
+     20.165
+    ]
+   },
+   "3": {
+    "handle": "0x1015d",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -265.835,
+     368.544,
+     20.195
+    ]
+   },
+   "4": {
+    "handle": "0x30167",
+    "obj": "0x6420f0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -268.747,
+     368.354,
+     20.188
+    ]
+   }
+  }
+ },
+ "cam_camB_probe.snap@6800": {
+  "st": {
+   "poll": 6800,
+   "checkpoint": 4,
+   "level": "level3",
+   "count": 4,
+   "views": 4,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167",
+    "0x20162",
+    "0x0"
+   ],
+   "lc_names": [
+    "level3_chase.lua",
+    "level3.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 7,
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x20162",
+     "obj": "0x641a20",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      -266.1,
+      369.126,
+      20.195
+     ]
+    },
+    "2": {
+     "handle": "0x158",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      -268.752,
+      360.608,
+      20.165
+     ]
+    },
+    "3": {
+     "handle": "0x1015d",
+     "obj": "0x641350",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      -265.374,
+      368.782,
+      20.195
+     ]
+    },
+    "4": {
+     "handle": "0x30167",
+     "obj": "0x6420f0",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      -268.696,
+      369.881,
+      20.196
+     ]
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xc9e000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xcd9c00",
+     "rail": "0xc55c00",
+     "rail_info": {
+      "tgt": "0x641a20",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xc9e400",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd07400",
+     "rail": "0xce2800",
+     "rail_info": {
+      "tgt": "0x640c80",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0xd23c00",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd22400",
+     "rail": "0xd22c00",
+     "rail_info": {
+      "tgt": "0x641350",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 3
+     }
+    },
+    "3": {
+     "render": "0xd24000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd23000",
+     "rail": "0xd23800",
+     "rail_info": {
+      "tgt": "0x6420f0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 4
+     }
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 6804,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 110,
+    "W4P_R2": 34,
+    "W4P_R3": 1
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.m6_top_p3@7000": {
+  "poll": 7003,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_PC(ch4.EnterTopRail, vTopRail[14], HuGetPlayer(2)) W4P_R = 100",
+  "cams_before": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0xd23c00",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd22400",
+    "rail": "0xd22c00",
+    "rail_info": {
+     "tgt": "0x641350",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 3
+    }
+   },
+   "3": {
+    "render": "0xd24000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd23000",
+    "rail": "0xd23800",
+    "rail_info": {
+     "tgt": "0x6420f0",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 4
+    }
+   }
+  },
+  "cams_after": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0xd23c00",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd22400",
+    "rail": "0xd22c00",
+    "rail_info": {
+     "tgt": "0x641350",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 20.0,
+     "k3": 0.0,
+     "k4": 0.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 3
+    }
+   },
+   "3": {
+    "render": "0xd24000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd23000",
+    "rail": "0xd23800",
+    "rail_info": {
+     "tgt": "0x6420f0",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 4
+    }
+   }
+  }
+ },
+ "cam_camB_probe.m6_fix_p3@7300": {
+  "poll": 7303,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_A0 = CameraGetActive(0) W4P_A1 = CameraGetActive(1) W4P_CC = ch4.FixCam[1] local a, s = HuIsAlive, HuSetSlowMo HuIsAlive = function(h) return nil end HuSetSlowMo = function(a, b) end W4P_PC(ch4.EnterFixCam, vFixCam[1], HuGetPlayer(2)) HuIsAlive, HuSetSlowMo = a, s W4P_R = 100",
+  "cams_before": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0xd23c00",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd22400",
+    "rail": "0xd22c00",
+    "rail_info": {
+     "tgt": "0x641350",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 20.0,
+     "k3": 0.0,
+     "k4": 0.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 3
+    }
+   },
+   "3": {
+    "render": "0xd24000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd23000",
+    "rail": "0xd23800",
+    "rail_info": {
+     "tgt": "0x6420f0",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 4
+    }
+   }
+  },
+  "cams_after": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0xd23c00",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd22400",
+    "rail": "0xd22c00",
+    "rail_info": {
+     "tgt": "0x641350",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 20.0,
+     "k3": 0.0,
+     "k4": 0.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 3
+    }
+   },
+   "3": {
+    "render": "0xd24000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd23000",
+    "rail": "0xd23800",
+    "rail_info": {
+     "tgt": "0x6420f0",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 4
+    }
+   }
+  }
+ },
+ "cam_camB_probe.chk01@7400": {
+  "poll": 7406,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 11,
+   "W4P_R2": 0
+  },
+  "src": "W4P_R = 10 * ((CameraGetActive(0) == W4P_A0 and 1) or 0) + ((CameraGetActive(1) == W4P_A1 and 1) or 0) local c = CameraGetActive(2) W4P_R2 = 0 if W4P_CC then if c == W4P_CC then W4P_R2 = 2 end if W4BC[W4P_CC] and c == W4BC[W4P_CC][2] then W4P_R2 = 1 end end",
+  "cams": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0xd23c00",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd22400",
+    "rail": "0xd22c00",
+    "rail_info": {
+     "tgt": "0x641350",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 20.0,
+     "k3": 0.0,
+     "k4": 0.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 3
+    }
+   },
+   "3": {
+    "render": "0xd24000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd23000",
+    "rail": "0xd23800",
+    "rail_info": {
+     "tgt": "0x6420f0",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 4
+    }
+   }
+  }
+ },
+ "cam_camB_probe.m6_fixexit_p3@7600": {
+  "poll": 7604,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_A0 = CameraGetActive(0) W4P_A1 = CameraGetActive(1) W4P_PC(ch4.ExitFixCam, vFixCam[1], HuGetPlayer(2)) W4P_R = 100",
+  "cams_before": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0xd23c00",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd22400",
+    "rail": "0xd22c00",
+    "rail_info": {
+     "tgt": "0x641350",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 20.0,
+     "k3": 0.0,
+     "k4": 0.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 3
+    }
+   },
+   "3": {
+    "render": "0xd24000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd23000",
+    "rail": "0xd23800",
+    "rail_info": {
+     "tgt": "0x6420f0",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 4
+    }
+   }
+  },
+  "cams_after": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0xd23c00",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd22400",
+    "rail": "0xd22c00",
+    "rail_info": {
+     "tgt": "0x641350",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 20.0,
+     "k3": 0.0,
+     "k4": 0.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 3
+    }
+   },
+   "3": {
+    "render": "0xd24000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd23000",
+    "rail": "0xd23800",
+    "rail_info": {
+     "tgt": "0x6420f0",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 4
+    }
+   }
+  }
+ },
+ "cam_camB_probe.snap@7800": {
+  "st": {
+   "poll": 7800,
+   "checkpoint": 4,
+   "level": "level3",
+   "count": 4,
+   "views": 4,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167",
+    "0x20162",
+    "0x0"
+   ],
+   "lc_names": [
+    "level3_chase.lua",
+    "level3.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 7,
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x20162",
+     "obj": "0x641a20",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      -267.93,
+      369.776,
+      20.195
+     ]
+    },
+    "2": {
+     "handle": "0x158",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      -268.78,
+      360.514,
+      20.162
+     ]
+    },
+    "3": {
+     "handle": "0x1015d",
+     "obj": "0x641350",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      -265.292,
+      369.771,
+      20.195
+     ]
+    },
+    "4": {
+     "handle": "0x30167",
+     "obj": "0x6420f0",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      -266.01,
+      370.124,
+      20.195
+     ]
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xc9e000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xcd9c00",
+     "rail": "0xc55c00",
+     "rail_info": {
+      "tgt": "0x641a20",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xc9e400",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd07400",
+     "rail": "0xce2800",
+     "rail_info": {
+      "tgt": "0x640c80",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0xd23c00",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd22400",
+     "rail": "0xd22c00",
+     "rail_info": {
+      "tgt": "0x641350",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 20.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 3
+     }
+    },
+    "3": {
+     "render": "0xd24000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd23000",
+     "rail": "0xd23800",
+     "rail_info": {
+      "tgt": "0x6420f0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 4
+     }
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 7804,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 110,
+    "W4P_R2": 34,
+    "W4P_R3": 1
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.m6_end@8000": {
+  "poll": 8010,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_PC(ch4.EnterGallery, vbEnterGallery, player) W4P_R = 100",
+  "cams_before": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0xd23c00",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd22400",
+    "rail": "0xd22c00",
+    "rail_info": {
+     "tgt": "0x641350",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 20.0,
+     "k3": 0.0,
+     "k4": 0.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 3
+    }
+   },
+   "3": {
+    "render": "0xd24000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd23000",
+    "rail": "0xd23800",
+    "rail_info": {
+     "tgt": "0x6420f0",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 4
+    }
+   }
+  },
+  "cams_after": {
+   "0": {
+    "render": "0xc9e000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xcd9c00",
+    "rail": "0xc55c00",
+    "rail_info": {
+     "tgt": "0x641a20",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 1
+    }
+   },
+   "1": {
+    "render": "0xc9e400",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd07400",
+    "rail": "0xce2800",
+    "rail_info": {
+     "tgt": "0x640c80",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 2
+    }
+   },
+   "2": {
+    "render": "0xd23c00",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd22400",
+    "rail": "0xd22c00",
+    "rail_info": {
+     "tgt": "0x641350",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 20.0,
+     "k3": 0.0,
+     "k4": 0.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 3
+    }
+   },
+   "3": {
+    "render": "0xd24000",
+    "kind": "blend->rail",
+    "render_vt": "0x537610",
+    "follow": "0xd23000",
+    "rail": "0xd23800",
+    "rail_info": {
+     "tgt": "0x6420f0",
+     "tcount": 1,
+     "points": 2,
+     "fov": 78.0,
+     "k0": 5.5,
+     "k1": 4.0,
+     "k3": -8.0,
+     "k4": 6.0,
+     "k9": 2.0,
+     "pts_xyz": [
+      [
+       -273.776,
+       349.0,
+       29.971
+      ],
+      [
+       248.0,
+       349.0,
+       29.971
+      ]
+     ],
+     "tgt_player": 4
+    }
+   }
+  }
+ },
+ "cam_camB_probe.snap@8300": {
+  "st": {
+   "poll": 8302,
+   "checkpoint": 4,
+   "level": "level3",
+   "count": 4,
+   "views": 4,
+   "cin_410": 3,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167",
+    "0x20162",
+    "0x0"
+   ],
+   "lc_names": [
+    "level3_chase.lua",
+    "level3.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 7,
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x20162",
+     "obj": "0x641a20",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      209.742,
+      366.902,
+      9.786
+     ]
+    },
+    "2": {
+     "handle": "0x158",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      207.93,
+      365.23,
+      9.786
+     ]
+    },
+    "3": {
+     "handle": "0x1015d",
+     "obj": "0x641350",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      207.37,
+      366.721,
+      9.786
+     ]
+    },
+    "4": {
+     "handle": "0x30167",
+     "obj": "0x6420f0",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      208.762,
+      367.624,
+      9.786
+     ]
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xc9e000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xcd9c00",
+     "rail": "0xc55c00",
+     "rail_info": {
+      "tgt": "0x641a20",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xc9e400",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd07400",
+     "rail": "0xce2800",
+     "rail_info": {
+      "tgt": "0x640c80",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0xd23c00",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd22400",
+     "rail": "0xd22c00",
+     "rail_info": {
+      "tgt": "0x641350",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 20.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 3
+     }
+    },
+    "3": {
+     "render": "0xd24000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd23000",
+     "rail": "0xd23800",
+     "rail_info": {
+      "tgt": "0x6420f0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 4
+     }
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 8310,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 110,
+    "W4P_R2": 0,
+    "W4P_R3": 0
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.snap@8800": {
+  "st": {
+   "poll": 8802,
+   "checkpoint": 5,
+   "level": "level3",
+   "count": 4,
+   "views": 4,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167",
+    "0x20162",
+    "0x0"
+   ],
+   "lc_names": [
+    "tag3.lua",
+    "level3_gallery.lua",
+    "level3_chase.lua",
+    "level3.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 8,
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x20162",
+     "obj": "0x641a20",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      206.7,
+      367.9,
+      9.767
+     ]
+    },
+    "2": {
+     "handle": "0x158",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      208.9,
+      365.8,
+      9.771
+     ]
+    },
+    "3": {
+     "handle": "0x1015d",
+     "obj": "0x641350",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      206.7,
+      366.4,
+      9.769
+     ]
+    },
+    "4": {
+     "handle": "0x30167",
+     "obj": "0x6420f0",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      208.9,
+      368.1,
+      9.767
+     ]
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xc9e000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xcd9c00",
+     "rail": "0xc55c00",
+     "rail_info": {
+      "tgt": "0x641a20",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xc9e400",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd07400",
+     "rail": "0xce2800",
+     "rail_info": {
+      "tgt": "0x640c80",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0xd23c00",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd22400",
+     "rail": "0xd22c00",
+     "rail_info": {
+      "tgt": "0x641350",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 20.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 3
+     }
+    },
+    "3": {
+     "render": "0xd24000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd23000",
+     "rail": "0xd23800",
+     "rail_info": {
+      "tgt": "0x6420f0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 4
+     }
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 8808,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 110,
+    "W4P_R2": 0,
+    "W4P_R3": 0
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.snap@9300": {
+  "st": {
+   "poll": 9304,
+   "checkpoint": 5,
+   "level": "level3",
+   "count": 4,
+   "views": 4,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167",
+    "0x20162",
+    "0x0"
+   ],
+   "lc_names": [
+    "tag3.lua",
+    "level3_gallery.lua",
+    "level3_chase.lua",
+    "level3.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 8,
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x20162",
+     "obj": "0x641a20",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      206.7,
+      367.9,
+      9.767
+     ]
+    },
+    "2": {
+     "handle": "0x158",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      208.9,
+      365.8,
+      9.771
+     ]
+    },
+    "3": {
+     "handle": "0x1015d",
+     "obj": "0x641350",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      206.7,
+      366.4,
+      9.769
+     ]
+    },
+    "4": {
+     "handle": "0x30167",
+     "obj": "0x6420f0",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      208.9,
+      368.1,
+      9.767
+     ]
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xc9e000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xcd9c00",
+     "rail": "0xc55c00",
+     "rail_info": {
+      "tgt": "0x641a20",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xc9e400",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd07400",
+     "rail": "0xce2800",
+     "rail_info": {
+      "tgt": "0x640c80",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0xd23c00",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd22400",
+     "rail": "0xd22c00",
+     "rail_info": {
+      "tgt": "0x641350",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 20.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 3
+     }
+    },
+    "3": {
+     "render": "0xd24000",
+     "kind": "blend->rail",
+     "render_vt": "0x537610",
+     "follow": "0xd23000",
+     "rail": "0xd23800",
+     "rail_info": {
+      "tgt": "0x6420f0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 78.0,
+      "k0": 5.5,
+      "k1": 4.0,
+      "k3": -8.0,
+      "k4": 6.0,
+      "k9": 2.0,
+      "pts_xyz": [
+       [
+        -273.776,
+        349.0,
+        29.971
+       ],
+       [
+        248.0,
+        349.0,
+        29.971
+       ]
+      ],
+      "tgt_player": 4
+     }
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 9311,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 110,
+    "W4P_R2": 0,
+    "W4P_R3": 0
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ }
+}

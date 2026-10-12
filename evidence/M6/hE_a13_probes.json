@@ -1,0 +1,433 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "hude_probe.hud@9500": {
+  "poll": 9501,
+  "views": 4,
+  "layout": 2,
+  "count": 4,
+  "clock": 97815,
+  "marked_622e10": [
+   0,
+   0,
+   1,
+   0
+  ],
+  "ring_table": [
+   [
+    "0xffffffff",
+    "0xc2eab9ac",
+    "0xc0d1bc82"
+   ],
+   [
+    "0xffffffff",
+    "0xc29798ae",
+    "0xc2eab9ac"
+   ],
+   [
+    "0xffffffff",
+    "0x3f800000",
+    "0x38ef48"
+   ],
+   [
+    "0xffffffff",
+    "0x400c6a3d",
+    "0x0"
+   ]
+  ],
+  "ring_count": 0,
+  "look9": [
+   "0x1c",
+   "0x22"
+  ],
+  "players": [
+   {
+    "handle": "0x162",
+    "obj": "0x640c80",
+    "pidx": 0,
+    "slot": 0,
+    "pad": 0,
+    "has_pad": 1,
+    "squad": "0x5e6e30",
+    "draw_2b4": 1,
+    "phud": {
+     "ptr": "0x619970",
+     "411c": 160370,
+     "4104": 0,
+     "40f8": 1,
+     "40fc": 1
+    }
+   },
+   {
+    "handle": "0x10167",
+    "obj": "0x641350",
+    "pidx": 1,
+    "slot": 1,
+    "pad": 4,
+    "has_pad": 1,
+    "squad": "0x5e6e30",
+    "draw_2b4": 1,
+    "phud": {
+     "ptr": "0x61e3c0",
+     "411c": 316938,
+     "4104": 0,
+     "40f8": 1,
+     "40fc": 1
+    }
+   },
+   {
+    "handle": "0x3023b",
+    "obj": "0x6420f0",
+    "pidx": 2,
+    "slot": 2,
+    "pad": 2,
+    "has_pad": 1,
+    "squad": "0x5e6e30",
+    "draw_2b4": 1,
+    "phud": {
+     "ptr": "0xa0000",
+     "411c": 329727,
+     "4104": 0,
+     "40f8": 1,
+     "40fc": 1
+    }
+   },
+   {
+    "handle": "0x40244",
+    "obj": "0x6427c0",
+    "pidx": 3,
+    "slot": 3,
+    "pad": 1,
+    "has_pad": 1,
+    "squad": "0x5e6e30",
+    "draw_2b4": 1,
+    "phud": {
+     "ptr": "0xa4a50",
+     "411c": 333915,
+     "4104": 0,
+     "40f8": 1,
+     "40fc": 1
+    }
+   }
+  ],
+  "radars": [
+   {
+    "base": "0x601e10",
+    "flags": [
+     1,
+     1,
+     1,
+     0
+    ],
+    "zoom": 1.0,
+    "vec": [
+     -0.215,
+     2.0,
+     0.24,
+     1.0
+    ]
+   },
+   {
+    "base": "0x604750",
+    "flags": [
+     1,
+     1,
+     1,
+     0
+    ],
+    "zoom": 1.0,
+    "vec": [
+     1.235,
+     2.0,
+     0.24,
+     1.0
+    ]
+   },
+   {
+    "base": "0xa9500",
+    "flags": [
+     1,
+     1,
+     1,
+     0
+    ],
+    "zoom": 1.0,
+    "vec": [
+     -0.215,
+     2.0,
+     -0.81,
+     1.0
+    ]
+   },
+   {
+    "base": "0xabe40",
+    "flags": [
+     1,
+     1,
+     1,
+     0
+    ],
+    "zoom": 1.0,
+    "vec": [
+     1.235,
+     2.0,
+     -0.81,
+     1.0
+    ]
+   }
+  ],
+  "widgets": [
+   {
+    "base": "0x618010",
+    "a90": 0,
+    "a94": 0,
+    "a98": 1,
+    "frac": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "smooth": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "pos": [
+     [
+      -0.215,
+      2.0,
+      0.24
+     ],
+     [
+      -0.215,
+      2.0,
+      0.24
+     ],
+     [
+      -0.215,
+      2.0,
+      0.24
+     ],
+     [
+      -0.215,
+      2.0,
+      0.24
+     ]
+    ]
+   },
+   {
+    "base": "0x618ac0",
+    "a90": 1,
+    "a94": 0,
+    "a98": 1,
+    "frac": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "smooth": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "pos": [
+     [
+      1.235,
+      2.0,
+      0.24
+     ],
+     [
+      1.235,
+      2.0,
+      0.24
+     ],
+     [
+      1.235,
+      2.0,
+      0.24
+     ],
+     [
+      1.235,
+      2.0,
+      0.24
+     ]
+    ]
+   }
+  ],
+  "nonzero_E0CB0_E1000": [
+   "0xe0d00",
+   "0xe0d04",
+   "0xe0d08",
+   "0xe0d0c",
+   "0xe0d10",
+   "0xe0d14",
+   "0xe0d18",
+   "0xe0d1c",
+   "0xe0d20",
+   "0xe0d24",
+   "0xe0d2c",
+   "0xe0d30",
+   "0xe0d34",
+   "0xe0d38",
+   "0xe0d40",
+   "0xe0d44",
+   "0xe0d48",
+   "0xe0d4c",
+   "0xe0d50",
+   "0xe0d54",
+   "0xe0d58",
+   "0xe0d5c",
+   "0xe0d60",
+   "0xe0d64",
+   "0xe0d68",
+   "0xe0d6c",
+   "0xe0d70",
+   "0xe0d74",
+   "0xe0d78",
+   "0xe0d7c",
+   "0xe0d80",
+   "0xe0d84",
+   "0xe0d88",
+   "0xe0d90",
+   "0xe0d94",
+   "0xe0d98",
+   "0xe0d9c",
+   "0xe0da0",
+   "0xe0dc0",
+   "0xe0dc4",
+   "0xe0dc8",
+   "0xe0dcc",
+   "0xe0dd0",
+   "0xe0dd4",
+   "0xe0dd8",
+   "0xe0ddc",
+   "0xe0de0",
+   "0xe0de4",
+   "0xe0de8",
+   "0xe0dec",
+   "0xe0df0",
+   "0xe0df4",
+   "0xe0df8",
+   "0xe0dfc",
+   "0xe0e00",
+   "0xe0e04",
+   "0xe0e08",
+   "0xe0e0c",
+   "0xe0e10",
+   "0xe0e14",
+   "0xe0e18",
+   "0xe0e1c",
+   "0xe0e20",
+   "0xe0e24",
+   "0xe0e28",
+   "0xe0e2c",
+   "0xe0e30",
+   "0xe0e34",
+   "0xe0e38",
+   "0xe0e3c",
+   "0xe0e40",
+   "0xe0e44",
+   "0xe0e48",
+   "0xe0e4c",
+   "0xe0e50",
+   "0xe0e80",
+   "0xe0e84",
+   "0xe0e88",
+   "0xe0e8c",
+   "0xe0e90",
+   "0xe0e94",
+   "0xe0e98",
+   "0xe0e9c",
+   "0xe0ea0",
+   "0xe0ea4",
+   "0xe0eac",
+   "0xe0eb0",
+   "0xe0eb4",
+   "0xe0eb8",
+   "0xe0ebc",
+   "0xe0ec0",
+   "0xe0ec4",
+   "0xe0ec8",
+   "0xe0ecc",
+   "0xe0ed0",
+   "0xe0ed4",
+   "0xe0ed8",
+   "0xe0edc",
+   "0xe0ee0",
+   "0xe0ee4",
+   "0xe0ee8",
+   "0xe0eec",
+   "0xe0ef0",
+   "0xe0ef4",
+   "0xe0ef8",
+   "0xe0efc",
+   "0xe0f00",
+   "0xe0f04",
+   "0xe0f08",
+   "0xe0f0c",
+   "0xe0f10",
+   "0xe0f14",
+   "0xe0f18",
+   "0xe0f1c",
+   "0xe0f20",
+   "0xe0f24",
+   "0xe0f28",
+   "0xe0f2c",
+   "0xe0f30",
+   "0xe0f34",
+   "0xe0f38",
+   "0xe0f3c",
+   "0xe0f40",
+   "0xe0f44",
+   "0xe0f48",
+   "0xe0f4c",
+   "0xe0f50",
+   "0xe0f80",
+   "0xe0f84",
+   "0xe0f88",
+   "0xe0f8c"
+  ],
+  "nonzero_E8158_E82C0": [
+   "0xe8160",
+   "0xe8164",
+   "0xe8168",
+   "0xe816c",
+   "0xe8170",
+   "0xe8174",
+   "0xe817c",
+   "0xe8180",
+   "0xe8184",
+   "0xe8188"
+  ]
+ }
+}

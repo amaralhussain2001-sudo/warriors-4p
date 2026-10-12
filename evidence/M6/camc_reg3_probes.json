@@ -1,0 +1,1288 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "cam_camC_probe.god@5000": {
+  "poll": 5004,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "for i = 0, 3 do local h = HuGetPlayer(i) if h and HuIsAPlayer(h) then HuSetGodMode(h, true) end end W4P_R = 1",
+  "trk_after": {
+   "poll": 5004,
+   "checkpoint": 5,
+   "count": 2,
+   "views": 1,
+   "list": [
+    "P1",
+    "P2",
+    null,
+    null
+   ],
+   "list_raw": [
+    "0x300f4",
+    "0x200ef",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "players": {
+    "1": "0x6420f0",
+    "2": "0x641a20",
+    "3": "0x0",
+    "4": "0x0"
+   },
+   "pos": {
+    "1": [
+     214.8,
+     -32.5,
+     -212.5
+    ],
+    "2": [
+     214.5,
+     -33.6,
+     -212.5
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xc34400",
+     "render_is": "rail",
+     "f_tgt": "P1",
+     "f_tgt2": null,
+     "f_last": "P1",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": "P1",
+     "r_tgt2": "P2",
+     "r_cnt": 2
+    },
+    "1": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P2",
+     "f_tgt2": null,
+     "f_last": "P2",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": null,
+     "r_tgt2": null,
+     "r_cnt": 0
+    },
+    "2": {
+     "render": "0x0",
+     "render_is": "none"
+    },
+    "3": {
+     "render": "0x0",
+     "render_is": "none"
+    }
+   },
+   "lc_names": [
+    "level81_chatterbox.lua",
+    "level81.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.god@5500": {
+  "poll": 5503,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "for i = 0, 3 do local h = HuGetPlayer(i) if h and HuIsAPlayer(h) then HuSetGodMode(h, true) end end W4P_R = 1",
+  "trk_after": {
+   "poll": 5503,
+   "checkpoint": 5,
+   "count": 2,
+   "views": 1,
+   "list": [
+    "P1",
+    "P2",
+    null,
+    null
+   ],
+   "list_raw": [
+    "0x300f4",
+    "0x200ef",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "players": {
+    "1": "0x6420f0",
+    "2": "0x641a20",
+    "3": "0x0",
+    "4": "0x0"
+   },
+   "pos": {
+    "1": [
+     215.0,
+     -32.2,
+     -212.5
+    ],
+    "2": [
+     214.7,
+     -33.7,
+     -212.5
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xc34400",
+     "render_is": "rail",
+     "f_tgt": "P1",
+     "f_tgt2": null,
+     "f_last": "P1",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": "P1",
+     "r_tgt2": "P2",
+     "r_cnt": 2
+    },
+    "1": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P2",
+     "f_tgt2": null,
+     "f_last": "P2",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": null,
+     "r_tgt2": null,
+     "r_cnt": 0
+    },
+    "2": {
+     "render": "0x0",
+     "render_is": "none"
+    },
+    "3": {
+     "render": "0x0",
+     "render_is": "none"
+    }
+   },
+   "lc_names": [
+    "level81_chatterbox.lua",
+    "level81.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@5600": {
+  "poll": 5602,
+  "checkpoint": 5,
+  "count": 2,
+  "views": 1,
+  "list": [
+   "P1",
+   "P2",
+   null,
+   null
+  ],
+  "list_raw": [
+   "0x300f4",
+   "0x200ef",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "players": {
+   "1": "0x6420f0",
+   "2": "0x641a20",
+   "3": "0x0",
+   "4": "0x0"
+  },
+  "pos": {
+   "1": [
+    214.9,
+    -32.5,
+    -212.5
+   ],
+   "2": [
+    214.5,
+    -33.9,
+    -212.5
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xc34400",
+    "render_is": "rail",
+    "f_tgt": "P1",
+    "f_tgt2": null,
+    "f_last": "P1",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": "P1",
+    "r_tgt2": "P2",
+    "r_cnt": 2
+   },
+   "1": {
+    "render": "0x0",
+    "render_is": "none",
+    "f_tgt": "P2",
+    "f_tgt2": null,
+    "f_last": "P2",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": null,
+    "r_tgt2": null,
+    "r_cnt": 0
+   },
+   "2": {
+    "render": "0x0",
+    "render_is": "none"
+   },
+   "3": {
+    "render": "0x0",
+    "render_is": "none"
+   }
+  },
+  "lc_names": [
+   "level81_chatterbox.lua",
+   "level81.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.markers@5700": {
+  "m17_helpers_x6": {
+   "poll": 5706,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 101
+   },
+   "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4PC and W4PC.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4PC and W4PC.os and C3 and W4PC.os ~= C3.ObjShowive) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0)"
+  },
+  "m8_m1_fn": {
+   "poll": 5708,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 101
+   },
+   "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4PC and W4PC.cc and C5 and W4PC.cc ~= C5.ChatterCam) and 1 or 0) W4P_R = W4P_R * 10 + ((W4PC and W4PC.p3 and P3 and W4PC.p3.EndChapterScene ~= P3.EndChapterScene) and 1 or 0) W4P_R = W4P_R * 10 + ((W4PC_TW and W4PC_SW) and 1 or 0)"
+  },
+  "trk": {
+   "poll": 5709,
+   "checkpoint": 5,
+   "count": 2,
+   "views": 1,
+   "list": [
+    "P1",
+    "P2",
+    null,
+    null
+   ],
+   "list_raw": [
+    "0x300f4",
+    "0x200ef",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "players": {
+    "1": "0x6420f0",
+    "2": "0x641a20",
+    "3": "0x0",
+    "4": "0x0"
+   },
+   "pos": {
+    "1": [
+     214.9,
+     -32.5,
+     -212.5
+    ],
+    "2": [
+     214.5,
+     -33.9,
+     -212.5
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xc34400",
+     "render_is": "rail",
+     "f_tgt": "P1",
+     "f_tgt2": null,
+     "f_last": "P1",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": "P1",
+     "r_tgt2": "P2",
+     "r_cnt": 2
+    },
+    "1": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P2",
+     "f_tgt2": null,
+     "f_last": "P2",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": null,
+     "r_tgt2": null,
+     "r_cnt": 0
+    },
+    "2": {
+     "render": "0x0",
+     "render_is": "none"
+    },
+    "3": {
+     "render": "0x0",
+     "render_is": "none"
+    }
+   },
+   "lc_names": [
+    "level81_chatterbox.lua",
+    "level81.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.m8_cc_fix@6000": {
+  "poll": 6006,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "W4P_PC(C5.ChatterCam) W4P_R = 1",
+  "trk_after": {
+   "poll": 6006,
+   "checkpoint": 5,
+   "count": 2,
+   "views": 1,
+   "list": [
+    "ai135",
+    null,
+    null,
+    null
+   ],
+   "list_raw": [
+    "0x400fc",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "players": {
+    "1": "0x6420f0",
+    "2": "0x641a20",
+    "3": "0x0",
+    "4": "0x0"
+   },
+   "pos": {
+    "1": [
+     215.0,
+     -32.2,
+     -212.5
+    ],
+    "2": [
+     214.6,
+     -33.9,
+     -212.5
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xc34400",
+     "render_is": "rail",
+     "f_tgt": "P1",
+     "f_tgt2": null,
+     "f_last": "P1",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": "ai135",
+     "r_tgt2": null,
+     "r_cnt": 1
+    },
+    "1": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P2",
+     "f_tgt2": null,
+     "f_last": "P2",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": null,
+     "r_tgt2": null,
+     "r_cnt": 0
+    },
+    "2": {
+     "render": "0x0",
+     "render_is": "none"
+    },
+    "3": {
+     "render": "0x0",
+     "render_is": "none"
+    }
+   },
+   "lc_names": [
+    "level81_chatterbox.lua",
+    "level81.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@6300": {
+  "poll": 6302,
+  "checkpoint": 5,
+  "count": 2,
+  "views": 1,
+  "list": [
+   "ai135",
+   null,
+   null,
+   null
+  ],
+  "list_raw": [
+   "0x400fc",
+   "0xffffffff",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "players": {
+   "1": "0x6420f0",
+   "2": "0x641a20",
+   "3": "0x0",
+   "4": "0x0"
+  },
+  "pos": {
+   "1": [
+    215.0,
+    -32.2,
+    -212.5
+   ],
+   "2": [
+    214.6,
+    -33.9,
+    -212.5
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xc34400",
+    "render_is": "rail",
+    "f_tgt": "P1",
+    "f_tgt2": null,
+    "f_last": "P1",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": "ai135",
+    "r_tgt2": null,
+    "r_cnt": 1
+   },
+   "1": {
+    "render": "0x0",
+    "render_is": "none",
+    "f_tgt": "P2",
+    "f_tgt2": null,
+    "f_last": "P2",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": null,
+    "r_tgt2": null,
+    "r_cnt": 0
+   },
+   "2": {
+    "render": "0x0",
+    "render_is": "none"
+   },
+   "3": {
+    "render": "0x0",
+    "render_is": "none"
+   }
+  },
+  "lc_names": [
+   "level81_chatterbox.lua",
+   "level81.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.m8_bw_fix@6600": {
+  "poll": 6605,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "W4P_PC(C5.CamBackToWarriors) W4P_R = 1",
+  "trk_after": {
+   "poll": 6605,
+   "checkpoint": 5,
+   "count": 2,
+   "views": 1,
+   "list": [
+    "P2",
+    "P1",
+    null,
+    null
+   ],
+   "list_raw": [
+    "0x200ef",
+    "0x300f4",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "players": {
+    "1": "0x6420f0",
+    "2": "0x641a20",
+    "3": "0x0",
+    "4": "0x0"
+   },
+   "pos": {
+    "1": [
+     212.8,
+     -40.8,
+     -212.5
+    ],
+    "2": [
+     213.1,
+     -40.9,
+     -212.5
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xc34400",
+     "render_is": "rail",
+     "f_tgt": "P1",
+     "f_tgt2": null,
+     "f_last": "P1",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": "P2",
+     "r_tgt2": "P1",
+     "r_cnt": 2
+    },
+    "1": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P2",
+     "f_tgt2": null,
+     "f_last": "P2",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": null,
+     "r_tgt2": null,
+     "r_cnt": 0
+    },
+    "2": {
+     "render": "0x0",
+     "render_is": "none"
+    },
+    "3": {
+     "render": "0x0",
+     "render_is": "none"
+    }
+   },
+   "lc_names": [
+    "level81_chatterbox.lua",
+    "level81.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@6900": {
+  "poll": 6905,
+  "checkpoint": 5,
+  "count": 2,
+  "views": 1,
+  "list": [
+   "P2",
+   "P1",
+   null,
+   null
+  ],
+  "list_raw": [
+   "0x200ef",
+   "0x300f4",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "players": {
+   "1": "0x6420f0",
+   "2": "0x641a20",
+   "3": "0x0",
+   "4": "0x0"
+  },
+  "pos": {
+   "1": [
+    212.3,
+    -40.7,
+    -236.5
+   ],
+   "2": [
+    213.1,
+    -40.9,
+    -236.5
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xc34400",
+    "render_is": "rail",
+    "f_tgt": "P1",
+    "f_tgt2": null,
+    "f_last": "P1",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": "P2",
+    "r_tgt2": "P1",
+    "r_cnt": 2
+   },
+   "1": {
+    "render": "0x0",
+    "render_is": "none",
+    "f_tgt": "P2",
+    "f_tgt2": null,
+    "f_last": "P2",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": null,
+    "r_tgt2": null,
+    "r_cnt": 0
+   },
+   "2": {
+    "render": "0x0",
+    "render_is": "none"
+   },
+   "3": {
+    "render": "0x0",
+    "render_is": "none"
+   }
+  },
+  "lc_names": [
+   "level81_chatterbox.lua",
+   "level81.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.trk@9800": {
+  "poll": 9805,
+  "checkpoint": 5,
+  "count": 2,
+  "views": 1,
+  "list": [
+   "P2",
+   "P1",
+   null,
+   null
+  ],
+  "list_raw": [
+   "0x200ef",
+   "0x300f4",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "players": {
+   "1": "0x6420f0",
+   "2": "0x641a20",
+   "3": "0x0",
+   "4": "0x0"
+  },
+  "pos": {
+   "1": [
+    212.3,
+    -40.7,
+    -236.5
+   ],
+   "2": [
+    213.1,
+    -40.9,
+    -236.5
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xc34400",
+    "render_is": "rail",
+    "f_tgt": "P1",
+    "f_tgt2": null,
+    "f_last": "P1",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": "P2",
+    "r_tgt2": "P1",
+    "r_cnt": 2
+   },
+   "1": {
+    "render": "0x0",
+    "render_is": "none",
+    "f_tgt": "P2",
+    "f_tgt2": null,
+    "f_last": "P2",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": null,
+    "r_tgt2": null,
+    "r_cnt": 0
+   },
+   "2": {
+    "render": "0x0",
+    "render_is": "none"
+   },
+   "3": {
+    "render": "0x0",
+    "render_is": "none"
+   }
+  },
+  "lc_names": [
+   "level81_chatterbox.lua",
+   "level81.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.markers@9900": {
+  "m17_helpers_x6": {
+   "poll": 10167,
+   "status": 0,
+   "done": 0,
+   "values": {
+    "W4P_R": 0
+   },
+   "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4PC and W4PC.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4PC and W4PC.os and C3 and W4PC.os ~= C3.ObjShowive) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0)"
+  },
+  "m8_m1_fn": {
+   "poll": 10424,
+   "status": 0,
+   "done": 0,
+   "values": {
+    "W4P_R": 0
+   },
+   "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4PC and W4PC.cc and C5 and W4PC.cc ~= C5.ChatterCam) and 1 or 0) W4P_R = W4P_R * 10 + ((W4PC and W4PC.p3 and P3 and W4PC.p3.EndChapterScene ~= P3.EndChapterScene) and 1 or 0) W4P_R = W4P_R * 10 + ((W4PC_TW and W4PC_SW) and 1 or 0)"
+  },
+  "trk": {
+   "poll": 10424,
+   "checkpoint": 5,
+   "count": 2,
+   "views": 1,
+   "list": [
+    "P2",
+    "P1",
+    null,
+    null
+   ],
+   "list_raw": [
+    "0x200ef",
+    "0x300f4",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "players": {
+    "1": "0x6420f0",
+    "2": "0x641a20",
+    "3": "0x0",
+    "4": "0x0"
+   },
+   "pos": {
+    "1": [
+     212.3,
+     -40.7,
+     -236.5
+    ],
+    "2": [
+     213.1,
+     -40.9,
+     -236.5
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xc34400",
+     "render_is": "rail",
+     "f_tgt": "P1",
+     "f_tgt2": null,
+     "f_last": "P1",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": "P2",
+     "r_tgt2": "P1",
+     "r_cnt": 2
+    },
+    "1": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P2",
+     "f_tgt2": null,
+     "f_last": "P2",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": null,
+     "r_tgt2": null,
+     "r_cnt": 0
+    },
+    "2": {
+     "render": "0x0",
+     "render_is": "none"
+    },
+    "3": {
+     "render": "0x0",
+     "render_is": "none"
+    }
+   },
+   "lc_names": [
+    "level81_chatterbox.lua",
+    "level81.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.m1_ecs_fix@10100": {
+  "poll": 10688,
+  "status": 0,
+  "done": 0,
+  "values": {
+   "W4P_R": 0
+  },
+  "src": "local s1, s2, s3, s4 = HuSpeakNI, GoalMoveToFlag, SetMsgHandler, HUDSetTutorialText local nop = function() end HuSpeakNI, GoalMoveToFlag, SetMsgHandler, HUDSetTutorialText = nop, nop, nop, nop W4P_PC(P3.EndChapterScene) HuSpeakNI, GoalMoveToFlag, SetMsgHandler, HUDSetTutorialText = s1, s2, s3, s4 W4P_R = 1",
+  "trk_after": {
+   "poll": 10688,
+   "checkpoint": 5,
+   "count": 2,
+   "views": 1,
+   "list": [
+    "P2",
+    "P1",
+    null,
+    null
+   ],
+   "list_raw": [
+    "0x200ef",
+    "0x300f4",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "players": {
+    "1": "0x6420f0",
+    "2": "0x641a20",
+    "3": "0x0",
+    "4": "0x0"
+   },
+   "pos": {
+    "1": [
+     212.3,
+     -40.7,
+     -236.5
+    ],
+    "2": [
+     213.1,
+     -40.9,
+     -236.5
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xc34400",
+     "render_is": "rail",
+     "f_tgt": "P1",
+     "f_tgt2": null,
+     "f_last": "P1",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": "P2",
+     "r_tgt2": "P1",
+     "r_cnt": 2
+    },
+    "1": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P2",
+     "f_tgt2": null,
+     "f_last": "P2",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": null,
+     "r_tgt2": null,
+     "r_cnt": 0
+    },
+    "2": {
+     "render": "0x0",
+     "render_is": "none"
+    },
+    "3": {
+     "render": "0x0",
+     "render_is": "none"
+    }
+   },
+   "lc_names": [
+    "level81_chatterbox.lua",
+    "level81.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@10400": {
+  "poll": 10688,
+  "checkpoint": 5,
+  "count": 2,
+  "views": 1,
+  "list": [
+   "P2",
+   "P1",
+   null,
+   null
+  ],
+  "list_raw": [
+   "0x200ef",
+   "0x300f4",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "players": {
+   "1": "0x6420f0",
+   "2": "0x641a20",
+   "3": "0x0",
+   "4": "0x0"
+  },
+  "pos": {
+   "1": [
+    212.3,
+    -40.7,
+    -236.5
+   ],
+   "2": [
+    213.1,
+    -40.9,
+    -236.5
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xc34400",
+    "render_is": "rail",
+    "f_tgt": "P1",
+    "f_tgt2": null,
+    "f_last": "P1",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": "P2",
+    "r_tgt2": "P1",
+    "r_cnt": 2
+   },
+   "1": {
+    "render": "0x0",
+    "render_is": "none",
+    "f_tgt": "P2",
+    "f_tgt2": null,
+    "f_last": "P2",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": null,
+    "r_tgt2": null,
+    "r_cnt": 0
+   },
+   "2": {
+    "render": "0x0",
+    "render_is": "none"
+   },
+   "3": {
+    "render": "0x0",
+    "render_is": "none"
+   }
+  },
+  "lc_names": [
+   "level81_chatterbox.lua",
+   "level81.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.m1_vj_fix@10600": {
+  "poll": 10947,
+  "status": 0,
+  "done": 0,
+  "values": {
+   "W4P_R": 0
+  },
+  "src": "W4P_PC(P3.VerminJumped, nil, Teacher.Vermin) W4P_R = 1",
+  "trk_after": {
+   "poll": 10947,
+   "checkpoint": 5,
+   "count": 2,
+   "views": 1,
+   "list": [
+    "P2",
+    "P1",
+    null,
+    null
+   ],
+   "list_raw": [
+    "0x200ef",
+    "0x300f4",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "players": {
+    "1": "0x6420f0",
+    "2": "0x641a20",
+    "3": "0x0",
+    "4": "0x0"
+   },
+   "pos": {
+    "1": [
+     212.3,
+     -40.7,
+     -236.5
+    ],
+    "2": [
+     213.1,
+     -40.9,
+     -236.5
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xc34400",
+     "render_is": "rail",
+     "f_tgt": "P1",
+     "f_tgt2": null,
+     "f_last": "P1",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": "P2",
+     "r_tgt2": "P1",
+     "r_cnt": 2
+    },
+    "1": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P2",
+     "f_tgt2": null,
+     "f_last": "P2",
+     "f_cnt": 1,
+     "f_sec": null,
+     "f_secw": 0.0,
+     "r_tgt": null,
+     "r_tgt2": null,
+     "r_cnt": 0
+    },
+    "2": {
+     "render": "0x0",
+     "render_is": "none"
+    },
+    "3": {
+     "render": "0x0",
+     "render_is": "none"
+    }
+   },
+   "lc_names": [
+    "level81_chatterbox.lua",
+    "level81.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@10900": {
+  "poll": 10947,
+  "checkpoint": 5,
+  "count": 2,
+  "views": 1,
+  "list": [
+   "P2",
+   "P1",
+   null,
+   null
+  ],
+  "list_raw": [
+   "0x200ef",
+   "0x300f4",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "players": {
+   "1": "0x6420f0",
+   "2": "0x641a20",
+   "3": "0x0",
+   "4": "0x0"
+  },
+  "pos": {
+   "1": [
+    212.3,
+    -40.7,
+    -236.5
+   ],
+   "2": [
+    213.1,
+    -40.9,
+    -236.5
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xc34400",
+    "render_is": "rail",
+    "f_tgt": "P1",
+    "f_tgt2": null,
+    "f_last": "P1",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": "P2",
+    "r_tgt2": "P1",
+    "r_cnt": 2
+   },
+   "1": {
+    "render": "0x0",
+    "render_is": "none",
+    "f_tgt": "P2",
+    "f_tgt2": null,
+    "f_last": "P2",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0,
+    "r_tgt": null,
+    "r_tgt2": null,
+    "r_cnt": 0
+   },
+   "2": {
+    "render": "0x0",
+    "render_is": "none"
+   },
+   "3": {
+    "render": "0x0",
+    "render_is": "none"
+   }
+  },
+  "lc_names": [
+   "level81_chatterbox.lua",
+   "level81.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ }
+}

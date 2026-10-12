@@ -1,0 +1,1681 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "chase_probe.cams@4300": {
+  "poll": 4301,
+  "checkpoint": 3,
+  "views": 2,
+  "join_flag": 0,
+  "count": 2,
+  "cams": {
+   "0": {
+    "render": "0xce5c00",
+    "follow": "0xcbf800",
+    "rail": "0xce5400",
+    "follow_240": [
+     "0x42c8711e",
+     "0xc279d124",
+     "0xc356718f",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x42c86666",
+     "0xc278cccd",
+     "0xc3567380",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce8000",
+    "follow": "0xcdfc00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0x42ca4521",
+     "0xc27b4e97",
+     "0xc355f7b2",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x42cbcccd",
+     "0xc27b3333",
+     "0xc3567380",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0xe5",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     106.528,
+     -109.625,
+     -215.851
+    ]
+   },
+   "2": {
+    "handle": "0x300f4",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     107.298,
+     -109.438,
+     -215.851
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "chase_probe.state@4330": {
+  "poll": 4332,
+  "checkpoint": 3,
+  "level": "level81",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 2,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   0,
+   0
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 4,
+    "name": "Cleon(chase)",
+    "pidx": 0,
+    "hud": 0,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1530,
+    "c670": 2,
+    "c674": 0,
+    "flag_idx": 3,
+    "pos": [
+     117.15,
+     -115.53,
+     -215.85
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xe5"
+   },
+   "2": {
+    "obj": "0x6420f0",
+    "char": 9,
+    "name": "Swan(chase)",
+    "pidx": 1,
+    "hud": 1,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 2,
+    "c674": 0,
+    "flag_idx": 3,
+    "pos": [
+     118.14,
+     -115.06,
+     -215.85
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x300f4"
+   }
+  },
+  "lc_names": [
+   "level81_chase.lua",
+   "level81.lua",
+   "global.lua",
+   "config_normal.lua"
+  ]
+ },
+ "m8cam_probe.marks@4360": {
+  "poll": 4367,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1,
+   "W4P_R2": 0,
+   "W4P_R3": 0,
+   "W4P_R4": 0,
+   "W4P_R5": 1
+  },
+  "src": "W4P_R = (W4P_O and W4P_O.m8cam) and 1 or 0 W4P_R2 = (W4P_M8C and W4P_M8C.n) or 0 W4P_R3 = (W4P_M8C and W4P_M8C.k2) or 0 W4P_R4 = (W4P_M8C and W4P_M8C.k3) or 0 W4P_R5 = (W4P_M8C and W4P_M8C.go) or 0"
+ },
+ "chase_probe.cams@4450": {
+  "poll": 4452,
+  "checkpoint": 3,
+  "views": 2,
+  "join_flag": 0,
+  "count": 2,
+  "cams": {
+   "0": {
+    "render": "0xce5c00",
+    "follow": "0xcbf800",
+    "rail": "0xce5400",
+    "follow_240": [
+     "0x43029048",
+     "0xc2e8f1fe",
+     "0xc3567380",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43029048",
+     "0xc2e8f1fe",
+     "0xc3567380",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce8000",
+    "follow": "0xcdfc00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0x4303a1c4",
+     "0xc2e74843",
+     "0xc3567380",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4303a1c4",
+     "0xc2e74843",
+     "0xc3567380",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0xe5",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     163.154,
+     -116.615,
+     -215.851
+    ]
+   },
+   "2": {
+    "handle": "0x300f4",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     164.011,
+     -115.742,
+     -215.851
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "chase_probe.state@4480": {
+  "poll": 4484,
+  "checkpoint": 3,
+  "level": "level81",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 2,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   0,
+   0
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 4,
+    "name": "Cleon(chase)",
+    "pidx": 0,
+    "hud": 0,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1530,
+    "c670": 2,
+    "c674": 2,
+    "flag_idx": 4,
+    "pos": [
+     175.95,
+     -116.67,
+     -215.85
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xe5"
+   },
+   "2": {
+    "obj": "0x6420f0",
+    "char": 9,
+    "name": "Swan(chase)",
+    "pidx": 1,
+    "hud": 1,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 2,
+    "c674": 2,
+    "flag_idx": 4,
+    "pos": [
+     176.81,
+     -115.78,
+     -215.85
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x300f4"
+   }
+  },
+  "lc_names": [
+   "level81_chase.lua",
+   "level81.lua",
+   "global.lua",
+   "config_normal.lua"
+  ]
+ },
+ "m8cam_probe.marks@4510": {
+  "poll": 4519,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1,
+   "W4P_R2": 0,
+   "W4P_R3": 0,
+   "W4P_R4": 0,
+   "W4P_R5": 1
+  },
+  "src": "W4P_R = (W4P_O and W4P_O.m8cam) and 1 or 0 W4P_R2 = (W4P_M8C and W4P_M8C.n) or 0 W4P_R3 = (W4P_M8C and W4P_M8C.k2) or 0 W4P_R4 = (W4P_M8C and W4P_M8C.k3) or 0 W4P_R5 = (W4P_M8C and W4P_M8C.go) or 0"
+ },
+ "chase_probe.cams@4600": {
+  "poll": 4600,
+  "checkpoint": 3,
+  "views": 2,
+  "join_flag": 0,
+  "count": 2,
+  "cams": {
+   "0": {
+    "render": "0xce5c00",
+    "follow": "0xcbf800",
+    "rail": "0xce5400",
+    "follow_240": [
+     "0x43490690",
+     "0xc2b07b37",
+     "0xc3562d39",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x434907ee",
+     "0xc2b08be4",
+     "0xc355f128",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce8000",
+    "follow": "0xcdfc00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0x43481492",
+     "0xc2ab1cac",
+     "0xc355b7f6",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43481ab3",
+     "0xc2ab0776",
+     "0xc35575c2",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0xe5",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     201.032,
+     -87.851,
+     -215.268
+    ]
+   },
+   "2": {
+    "handle": "0x300f4",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     200.103,
+     -85.081,
+     -214.784
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "chase_probe.state@4630": {
+  "poll": 4630,
+  "checkpoint": 3,
+  "level": "level81",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 2,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   0,
+   0
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 4,
+    "name": "Cleon(chase)",
+    "pidx": 0,
+    "hud": 0,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1530,
+    "c670": 2,
+    "c674": 1,
+    "flag_idx": 8,
+    "pos": [
+     201.05,
+     -75.85,
+     -213.17
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xe5"
+   },
+   "2": {
+    "obj": "0x6420f0",
+    "char": 9,
+    "name": "Swan(chase)",
+    "pidx": 1,
+    "hud": 1,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 2,
+    "c674": 2,
+    "flag_idx": 8,
+    "pos": [
+     200.07,
+     -72.68,
+     -212.62
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x300f4"
+   }
+  },
+  "lc_names": [
+   "level81_chase.lua",
+   "level81.lua",
+   "global.lua",
+   "config_normal.lua"
+  ]
+ },
+ "m8cam_probe.marks@4660": {
+  "poll": 4671,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1,
+   "W4P_R2": 0,
+   "W4P_R3": 0,
+   "W4P_R4": 0,
+   "W4P_R5": 1
+  },
+  "src": "W4P_R = (W4P_O and W4P_O.m8cam) and 1 or 0 W4P_R2 = (W4P_M8C and W4P_M8C.n) or 0 W4P_R3 = (W4P_M8C and W4P_M8C.k2) or 0 W4P_R4 = (W4P_M8C and W4P_M8C.k3) or 0 W4P_R5 = (W4P_M8C and W4P_M8C.go) or 0"
+ },
+ "chase_probe.cams@4750": {
+  "poll": 4750,
+  "checkpoint": 3,
+  "views": 2,
+  "join_flag": 0,
+  "count": 2,
+  "cams": {
+   "0": {
+    "render": "0xce5c00",
+    "follow": "0xcbf800",
+    "rail": "0xce5400",
+    "follow_240": [
+     "0x4347a093",
+     "0xc22aa491",
+     "0xc3502fc4",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4347fb2a",
+     "0xc22af333",
+     "0xc3501cb9",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce8000",
+    "follow": "0xcdfc00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0x43483cae",
+     "0xc224d060",
+     "0xc35081bc",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43483958",
+     "0xc224cab0",
+     "0xc3501cb9",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0xd0b12",
+    "obj": "0x646510",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     199.969,
+     -42.617,
+     -209.512
+    ]
+   },
+   "2": {
+    "handle": "0xe0b17",
+    "obj": "0x646be0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     200.209,
+     -41.162,
+     -209.512
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "chase_probe.state@4780": {
+  "poll": 4787,
+  "checkpoint": 4,
+  "level": "level81",
+  "count": 2,
+  "join_flag": 1,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 2,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   0,
+   0
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x646510",
+    "char": 1,
+    "name": "Cleon",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1530,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     195.7,
+     -39.7,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xd0b12"
+   },
+   "2": {
+    "obj": "0x646be0",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     197.0,
+     -40.0,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xe0b17"
+   }
+  },
+  "lc_names": [
+   "level81_cracker.lua",
+   "level81_chase.lua",
+   "level81.lua",
+   "global.lua"
+  ]
+ },
+ "m8cam_probe.marks@4810": {
+  "poll": 4824,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1,
+   "W4P_R2": 0,
+   "W4P_R3": 0,
+   "W4P_R4": 0,
+   "W4P_R5": 0
+  },
+  "src": "W4P_R = (W4P_O and W4P_O.m8cam) and 1 or 0 W4P_R2 = (W4P_M8C and W4P_M8C.n) or 0 W4P_R3 = (W4P_M8C and W4P_M8C.k2) or 0 W4P_R4 = (W4P_M8C and W4P_M8C.k3) or 0 W4P_R5 = (W4P_M8C and W4P_M8C.go) or 0"
+ },
+ "chase_probe.cams@4900": {
+  "poll": 4904,
+  "checkpoint": 4,
+  "views": 2,
+  "join_flag": 1,
+  "count": 2,
+  "cams": {
+   "0": {
+    "render": "0xce5c00",
+    "follow": "0xcbf800",
+    "rail": "0xce5400",
+    "follow_240": [
+     "0x43434294",
+     "0xc2173980",
+     "0xc3531a1b",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4342ec88",
+     "0xc2162bd2",
+     "0xc3531a1d",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xcdfc00",
+    "follow": "0xcdfc00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0x43462d9f",
+     "0xc21bade0",
+     "0xc3531a1c",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4346b550",
+     "0xc21b9df7",
+     "0xc3531a1c",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0xd0b12",
+    "obj": "0x646510",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     194.888,
+     -37.573,
+     -212.502
+    ]
+   },
+   "2": {
+    "handle": "0xe0b17",
+    "obj": "0x646be0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     198.728,
+     -38.843,
+     -212.502
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "chase_probe.state@4930": {
+  "poll": 4937,
+  "checkpoint": 4,
+  "level": "level81",
+  "count": 2,
+  "join_flag": 1,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 2,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   0,
+   0
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x646510",
+    "char": 1,
+    "name": "Cleon",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1530,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     194.66,
+     -36.9,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xd0b12"
+   },
+   "2": {
+    "obj": "0x646be0",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     198.64,
+     -38.77,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xe0b17"
+   }
+  },
+  "lc_names": [
+   "level81_cracker.lua",
+   "level81_chase.lua",
+   "level81.lua",
+   "global.lua"
+  ]
+ },
+ "m8cam_probe.marks@4960": {
+  "poll": 4970,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1,
+   "W4P_R2": 0,
+   "W4P_R3": 0,
+   "W4P_R4": 0,
+   "W4P_R5": 0
+  },
+  "src": "W4P_R = (W4P_O and W4P_O.m8cam) and 1 or 0 W4P_R2 = (W4P_M8C and W4P_M8C.n) or 0 W4P_R3 = (W4P_M8C and W4P_M8C.k2) or 0 W4P_R4 = (W4P_M8C and W4P_M8C.k3) or 0 W4P_R5 = (W4P_M8C and W4P_M8C.go) or 0"
+ },
+ "chase_probe.cams@5050": {
+  "poll": 5058,
+  "checkpoint": 4,
+  "views": 2,
+  "join_flag": 1,
+  "count": 2,
+  "cams": {
+   "0": {
+    "render": "0xce5c00",
+    "follow": "0xcbf800",
+    "rail": "0xce5400",
+    "follow_240": [
+     "0x43410854",
+     "0xc2111ad4",
+     "0xc3531a1b",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x434113e2",
+     "0xc212b981",
+     "0xc3531a1d",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xcdfc00",
+    "follow": "0xcdfc00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0x43477f8d",
+     "0xc214c49f",
+     "0xc3531a1c",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4347881d",
+     "0xc215f64d",
+     "0xc3531a1c",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0xd0b12",
+    "obj": "0x646510",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     193.067,
+     -36.618,
+     -212.502
+    ]
+   },
+   "2": {
+    "handle": "0xe0b17",
+    "obj": "0x646be0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     199.578,
+     -37.412,
+     -212.502
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "chase_probe.state@5080": {
+  "poll": 5081,
+  "checkpoint": 4,
+  "level": "level81",
+  "count": 2,
+  "join_flag": 1,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 2,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   0,
+   0
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x646510",
+    "char": 1,
+    "name": "Cleon",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1530,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     192.37,
+     -36.0,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xd0b12"
+   },
+   "2": {
+    "obj": "0x646be0",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     199.35,
+     -36.65,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xe0b17"
+   }
+  },
+  "lc_names": [
+   "level81_cracker.lua",
+   "level81_chase.lua",
+   "level81.lua",
+   "global.lua"
+  ]
+ },
+ "m8cam_probe.marks@5110": {
+  "poll": 5122,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1,
+   "W4P_R2": 0,
+   "W4P_R3": 0,
+   "W4P_R4": 0,
+   "W4P_R5": 0
+  },
+  "src": "W4P_R = (W4P_O and W4P_O.m8cam) and 1 or 0 W4P_R2 = (W4P_M8C and W4P_M8C.n) or 0 W4P_R3 = (W4P_M8C and W4P_M8C.k2) or 0 W4P_R4 = (W4P_M8C and W4P_M8C.k3) or 0 W4P_R5 = (W4P_M8C and W4P_M8C.go) or 0"
+ },
+ "chase_probe.cams@5200": {
+  "poll": 5202,
+  "checkpoint": 4,
+  "views": 2,
+  "join_flag": 1,
+  "count": 2,
+  "cams": {
+   "0": {
+    "render": "0xce5c00",
+    "follow": "0xcbf800",
+    "rail": "0xce5400",
+    "follow_240": [
+     "0x433ed20a",
+     "0xc2125c09",
+     "0xc3531a1b",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x433ed829",
+     "0xc212cf46",
+     "0xc3531a1d",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xcdfc00",
+    "follow": "0xcdfc00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0x43474ed3",
+     "0xc209effa",
+     "0xc35328a7",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4347a134",
+     "0xc207ca02",
+     "0xc3531a1c",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0xd0b12",
+    "obj": "0x646510",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     190.833,
+     -36.64,
+     -212.502
+    ]
+   },
+   "2": {
+    "handle": "0xe0b17",
+    "obj": "0x646be0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     199.636,
+     -33.889,
+     -212.502
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "chase_probe.state@5230": {
+  "poll": 5232,
+  "checkpoint": 4,
+  "level": "level81",
+  "count": 2,
+  "join_flag": 1,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 2,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   0,
+   0
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x646510",
+    "char": 1,
+    "name": "Cleon",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1530,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     190.21,
+     -36.7,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xd0b12"
+   },
+   "2": {
+    "obj": "0x646be0",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     199.27,
+     -34.63,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xe0b17"
+   }
+  },
+  "lc_names": [
+   "level81_cracker.lua",
+   "level81_chase.lua",
+   "level81.lua",
+   "global.lua"
+  ]
+ },
+ "m8cam_probe.marks@5260": {
+  "poll": 5273,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1,
+   "W4P_R2": 0,
+   "W4P_R3": 0,
+   "W4P_R4": 0,
+   "W4P_R5": 0
+  },
+  "src": "W4P_R = (W4P_O and W4P_O.m8cam) and 1 or 0 W4P_R2 = (W4P_M8C and W4P_M8C.n) or 0 W4P_R3 = (W4P_M8C and W4P_M8C.k2) or 0 W4P_R4 = (W4P_M8C and W4P_M8C.k3) or 0 W4P_R5 = (W4P_M8C and W4P_M8C.go) or 0"
+ },
+ "chase_probe.cams@5350": {
+  "poll": 5353,
+  "checkpoint": 4,
+  "views": 2,
+  "join_flag": 1,
+  "count": 2,
+  "cams": {
+   "0": {
+    "render": "0xce5c00",
+    "follow": "0xcbf800",
+    "rail": "0xce5400",
+    "follow_240": [
+     "0x433d2ab9",
+     "0xc2155d93",
+     "0xc3531a4e",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x433d7e6e",
+     "0xc2135899",
+     "0xc3531a1a",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xcdfc00",
+    "follow": "0xcdfc00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0x434792e8",
+     "0xc20964bd",
+     "0xc3531a1c",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4347befc",
+     "0xc2073416",
+     "0xc3531a1c",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0xd0b12",
+    "obj": "0x646510",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     189.489,
+     -36.812,
+     -212.502
+    ]
+   },
+   "2": {
+    "handle": "0xe0b17",
+    "obj": "0x646be0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     199.704,
+     -33.812,
+     -212.502
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "chase_probe.state@5380": {
+  "poll": 5383,
+  "checkpoint": 4,
+  "level": "level81",
+  "count": 2,
+  "join_flag": 1,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 2,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   0,
+   0
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x646510",
+    "char": 1,
+    "name": "Cleon",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1529,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     190.11,
+     -36.36,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xd0b12"
+   },
+   "2": {
+    "obj": "0x646be0",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1334,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     199.28,
+     -34.22,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xe0b17"
+   }
+  },
+  "lc_names": [
+   "level81_cracker.lua",
+   "level81_chase.lua",
+   "level81.lua",
+   "global.lua"
+  ]
+ },
+ "m8cam_probe.marks@5410": {
+  "poll": 5423,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1,
+   "W4P_R2": 0,
+   "W4P_R3": 0,
+   "W4P_R4": 0,
+   "W4P_R5": 0
+  },
+  "src": "W4P_R = (W4P_O and W4P_O.m8cam) and 1 or 0 W4P_R2 = (W4P_M8C and W4P_M8C.n) or 0 W4P_R3 = (W4P_M8C and W4P_M8C.k2) or 0 W4P_R4 = (W4P_M8C and W4P_M8C.k3) or 0 W4P_R5 = (W4P_M8C and W4P_M8C.go) or 0"
+ },
+ "chase_probe.cams@5500": {
+  "poll": 5502,
+  "checkpoint": 4,
+  "views": 2,
+  "join_flag": 1,
+  "count": 2,
+  "cams": {
+   "0": {
+    "render": "0xce5c00",
+    "follow": "0xcbf800",
+    "rail": "0xce5400",
+    "follow_240": [
+     "0x433e94af",
+     "0xc2190534",
+     "0xc35315c6",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x433e967c",
+     "0xc216d127",
+     "0xc3531a1a",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xcdfc00",
+    "follow": "0xcdfc00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0x43480d64",
+     "0xc2091331",
+     "0xc353235c",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4347ece7",
+     "0xc209752b",
+     "0xc3531a1c",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0xd0b12",
+    "obj": "0x646510",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     190.589,
+     -37.697,
+     -212.502
+    ]
+   },
+   "2": {
+    "handle": "0xe0b17",
+    "obj": "0x646be0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     200.013,
+     -34.407,
+     -212.502
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "chase_probe.state@5530": {
+  "poll": 5531,
+  "checkpoint": 4,
+  "level": "level81",
+  "count": 2,
+  "join_flag": 1,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 2,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   0,
+   0
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x646510",
+    "char": 1,
+    "name": "Cleon",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1512,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     191.57,
+     -37.99,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xd0b12"
+   },
+   "2": {
+    "obj": "0x646be0",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1229,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     200.15,
+     -33.75,
+     -212.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xe0b17"
+   }
+  },
+  "lc_names": [
+   "level81_cracker.lua",
+   "level81_chase.lua",
+   "level81.lua",
+   "global.lua"
+  ]
+ },
+ "m8cam_probe.marks@5560": {
+  "poll": 5570,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1,
+   "W4P_R2": 0,
+   "W4P_R3": 0,
+   "W4P_R4": 0,
+   "W4P_R5": 0
+  },
+  "src": "W4P_R = (W4P_O and W4P_O.m8cam) and 1 or 0 W4P_R2 = (W4P_M8C and W4P_M8C.n) or 0 W4P_R3 = (W4P_M8C and W4P_M8C.k2) or 0 W4P_R4 = (W4P_M8C and W4P_M8C.k3) or 0 W4P_R5 = (W4P_M8C and W4P_M8C.go) or 0"
+ }
+}

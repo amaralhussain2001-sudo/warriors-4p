@@ -1,0 +1,105 @@
+[
+ {
+  "mission": 13,
+  "level": 9,
+  "name": "All-City",
+  "run": "integ1_m13",
+  "policies": true,
+  "seconds": 786,
+  "hash_points": 369,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "tlb_misses": {
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0
+  },
+  "end_state": {
+   "0": "TimeoutError('timed out')",
+   "1": {
+    "poll": 11111,
+    "players": 4,
+    "handles": [
+     "0x162",
+     "0x10167",
+     "0x30205",
+     "0x40213"
+    ],
+    "views": 4,
+    "cameras": 4
+   },
+   "2": {
+    "poll": 11111,
+    "players": 4,
+    "handles": [
+     "0x162",
+     "0x10167",
+     "0x30205",
+     "0x40213"
+    ],
+    "views": 4,
+    "cameras": 4
+   },
+   "3": {
+    "poll": 11113,
+    "players": 4,
+    "handles": [
+     "0x162",
+     "0x10167",
+     "0x30205",
+     "0x40213"
+    ],
+    "views": 4,
+    "cameras": 4
+   }
+  },
+  "players_seen": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "first_poll_with_4": 9525,
+  "auto_joins_scheduled": 14,
+  "w4p_events": [
+   "[250455091.806] auto join for player 2 (pad 4) scheduled at poll 3511",
+   "[250455091.844] auto join for player 3 (pad 1) scheduled at poll 3514",
+   "[250455091.860] auto join for player 4 (pad 2) scheduled at poll 3517",
+   "[250461848.496] auto join for player 2 (pad 4) scheduled at poll 3571",
+   "[250461848.530] auto join for player 3 (pad 1) scheduled at poll 3574",
+   "[250461848.535] auto join for player 4 (pad 2) scheduled at poll 3577",
+   "[250595515.076] auto join for player 2 (pad 4) scheduled at poll 6511",
+   "[250595515.114] auto join for player 3 (pad 1) scheduled at poll 6514",
+   "[250595515.121] auto join for player 4 (pad 2) scheduled at poll 6517",
+   "[250739811.406] auto join for player 3 (pad 1) scheduled at poll 9031",
+   "[250739811.434] auto join for player 4 (pad 2) scheduled at poll 9034",
+   "[250787279.317] auto join for player 3 (pad 1) scheduled at poll 9391",
+   "[250787279.352] auto join for player 4 (pad 2) scheduled at poll 9394",
+   "[250795882.353] auto join for player 4 (pad 2) scheduled at poll 9451"
+  ],
+  "last_sample": {
+   "t": 780,
+   "poll": 11090,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10167",
+    "0x30205",
+    "0x40213"
+   ],
+   "pad_owner": [
+    0,
+    2,
+    3,
+    -1,
+    1,
+    -1,
+    -1,
+    -1
+   ],
+   "views": 4
+  }
+ }
+]

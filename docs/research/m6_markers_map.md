@@ -1,5 +1,7 @@
 # M6: overhead markers, radar and map with 4 players (2026-10-12)
 
+**Correction (2026-10-12):** section 2.4's explanations of player 3's missing Select ring and of the players 3-4 status panel are superseded by F-0222 (cause: 2-entry 'always marked' byte array 0x00622E10) and F-0229 (MARK34 and SEL34 fixes; B1's S1 guard is not the panel's cause and stays).
+
 ## Plain-English summary
 - **Update 2026-10-12 (section 9): players 3 and 4 now show as "3P" (red) and "4P" (green) on every other player's
   radar**, in the style of the game's "1P"/"2P". The labels are built at runtime inside the game's own radar icon

@@ -1,0 +1,82 @@
+{
+ "tag": "integ_m6cp4",
+ "environment": "SINGLE-PC, 4 instances in lockstep, loopback, scripted tapping bots, no impairment",
+ "mission": 6,
+ "start_checkpoint": 4,
+ "tap_slots": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "tap_from": 6000,
+ "tap_stop": {},
+ "tap_gaps": {},
+ "tap_buttons": [
+  "TRI",
+  "CIR",
+  "X",
+  "SQ"
+ ],
+ "policies": true,
+ "seconds": 973,
+ "hash_points": 323,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "15": 0,
+  "16": 0,
+  "17": 0,
+  "18": 0
+ },
+ "checkpoints_seen": [
+  [
+   583,
+   1
+  ],
+  [
+   4021,
+   4
+  ]
+ ],
+ "player_counts_seen": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "max_tap_flag_index_by_player": {},
+ "last_poll_with_n_tapping": {
+  "0": 9583
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": "TimeoutError('timed out')",
+  "2": {
+   "poll": 9783,
+   "players": 4,
+   "handles": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 9785,
+   "players": 4,
+   "handles": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "samples": 304
+}

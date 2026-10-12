@@ -4,8 +4,8 @@ patch=2,EE,00128430,word,00000000 // was 1040000D beq v0,zero,0x00128468 -> nop 
 patch=2,EE,000F0B90,word,24010002 // addiu at,zero,2
 patch=2,EE,000F0B94,word,0041082A // slt at,v0,at            p < 2 ?
 patch=2,EE,000F0B98,word,1420000E // bne at,zero,normal (0x000F0BD4)
-patch=2,EE,000F0B9C,word,00000000 // nop
-patch=2,EE,000F0BA0,word,3C080051 // lui t0,0x51
+patch=2,EE,000F0B9C,word,3C080051 // BOSSTGT: camtarget cave word 0x000F0B9C nop -> lui t0,0x51 (delay slot of bne at,zero,normal; t0 dead here)
+patch=2,EE,000F0BA0,word,0803AE58 // BOSSTGT: camtarget cave word 0x000F0BA0 lui t0,0x51 -> j 0x000EB960 (delay slot lw t0,0x489C(t0) kept)
 patch=2,EE,000F0BA4,word,8D08489C // lw t0,0x489c(t0)        GameMgr
 patch=2,EE,000F0BA8,word,00024880 // sll t1,v0,2
 patch=2,EE,000F0BAC,word,01094021 // addu t0,t0,t1
@@ -54,3 +54,43 @@ patch=2,EE,000F0988,word,AE020340 // sw v0, 0x340(s0)  ; the one target
 patch=2,EE,000F098C,word,0002582B // sltu t3, zero, v0
 patch=2,EE,000F0990,word,0804EE62 // j 0x0013B988  ; count = 1 (0 without a human), then the original tail
 patch=2,EE,000F0994,word,AE0B0348 // sw t3, 0x348(s0)
+// BOSSTGT (camC, docs/research/m6_cam_camC.md): a view-3/4 follow camera whose secondary target is its own player
+//    takes tracked-list entry 0 as primary target when that entry is a non-player human (the M17 boss camera of
+//    views 1-2: primary Lizzie, secondary own player); otherwise its own human. Only the camC M17 row sets such a
+//    secondary target (scripts never use index 2/3).
+patch=2,EE,000EB960,word,00024880 // BOSSTGT: sll t1,v0,2  ; v0 = view index (camtarget cave), t0 = GameMgr
+patch=2,EE,000EB964,word,01094021 // BOSSTGT: addu t0,t0,t1
+patch=2,EE,000EB968,word,8D0A0228 // BOSSTGT: lw t2,0x228(t0)  ; own handle
+patch=2,EE,000EB96C,word,8E2B0320 // BOSSTGT: lw t3,0x320(s1)  ; secondary target handle of this follow camera
+patch=2,EE,000EB970,word,154B000E // BOSSTGT: bne t2,t3,own
+patch=2,EE,000EB974,word,00000000 // BOSSTGT: nop
+patch=2,EE,000EB978,word,27BDFFF0 // BOSSTGT: addiu sp,sp,-16
+patch=2,EE,000EB97C,word,AFA80000 // BOSSTGT: sw t0,0(sp)
+patch=2,EE,000EB980,word,3C04005D // BOSSTGT: lui a0,0x005D
+patch=2,EE,000EB984,word,0C0E409A // BOSSTGT: jal 0x00390268  ; human of tracked-list entry 0
+patch=2,EE,000EB988,word,348491A8 // BOSSTGT: ori a0,a0,0x91A8
+patch=2,EE,000EB98C,word,8FA80000 // BOSSTGT: lw t0,0(sp)
+patch=2,EE,000EB990,word,10400006 // BOSSTGT: beq v0,zero,own
+patch=2,EE,000EB994,word,27BD0010 // BOSSTGT: addiu sp,sp,16
+patch=2,EE,000EB998,word,804C01B0 // BOSSTGT: lb t4,0x1B0(v0)  ; player index (-1 = not a player)
+patch=2,EE,000EB99C,word,05810003 // BOSSTGT: bgez t4,own
+patch=2,EE,000EB9A0,word,00000000 // BOSSTGT: nop
+patch=2,EE,000EB9A4,word,0803C2EE // BOSSTGT: j 0x000F0BB8  ; camtarget tail: target = v0 (the boss), count 1
+patch=2,EE,000EB9A8,word,00000000 // BOSSTGT: nop
+patch=2,EE,000EB9AC,word,0803C2EC // BOSSTGT: j 0x000F0BB0  ; camtarget's own call: jal 0x00390268 with a0 = t0 + 0x228
+patch=2,EE,000EB9B0,word,00000000 // BOSSTGT: nop
+// CFGFOLLOW (camC): the CfgFollowCamera core FUN_0011C0B8 copied the new follow-camera settings (distance, angle,
+//    FOV, offsets) from follow[0] to follow[1] only; now to follow[3], [2], [1] (each if present).
+patch=2,EE,0011C20C,word,3C11000F // CFGFOLLOW: was 0C047E78 -> lui s1,0x000F
+patch=2,EE,0011C210,word,3631082C // CFGFOLLOW: was 0000282D -> ori s1,s1,0x082C  ; &follow[3] (relocated per-view array 0x000F0820)
+patch=2,EE,0011C214,word,8E240000 // CFGFOLLOW: was 1040000A -> lw a0,0(s1)
+patch=2,EE,0011C218,word,10800004 // CFGFOLLOW: was 24040001 -> beq a0,zero,next
+patch=2,EE,0011C21C,word,2631FFFC // CFGFOLLOW: was 0C047E78 -> addiu s1,s1,-4
+patch=2,EE,0011C220,word,3C05000F // CFGFOLLOW: was 0000282D -> lui a1,0x000F
+patch=2,EE,0011C224,word,0C04930A // CFGFOLLOW: was 0040802D -> jal 0x00124C28  ; copy the settings of follow[0] into follow[i]
+patch=2,EE,0011C228,word,8CA50820 // CFGFOLLOW: was 0000202D -> lw a1,0x0820(a1)  ; follow[0]
+patch=2,EE,0011C22C,word,3221000F // CFGFOLLOW: was 0C047E78 -> andi at,s1,0x000F
+patch=2,EE,0011C230,word,1420FFF8 // CFGFOLLOW: was 0000282D -> bne at,zero,loop
+patch=2,EE,0011C234,word,00000000 // CFGFOLLOW: was 0200202D -> nop
+patch=2,EE,0011C238,word,00000000 // CFGFOLLOW: was 0C04930A -> nop
+patch=2,EE,0011C23C,word,00000000 // CFGFOLLOW: was 0040282D -> nop

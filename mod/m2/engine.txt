@@ -163,6 +163,18 @@ patch=2,EE,0011EDD8,word,3C03000F // was 3C03005E: lui v1,0xf
 patch=2,EE,0011EDDC,word,24420800 // was 24429148: addiu v0,v0,2048
 patch=2,EE,0011EDE0,word,24630810 // was 24639150: addiu v1,v1,2064
 patch=2,EE,0011F100,word,3C17000F // was 3C17005E: lui s7,0xf
+// LUIFIX (2026-10-12, coordinator): the compiler copied "lui rX,0x5E" into the delay slots of branches that skip the
+//    relocated lui (FUN_0011EE08 CameraMakeActive: branches to 0x0011F104 at 0x0011F088/0x0011F0B0/0x0011F0E0;
+//    FUN_0011ED60: the "slot empty" branches at 0x0011ED84/A4/C4). On those paths the relocated immediates (0x0800..)
+//    were added to 0x005E0000: active[view] was written to 0x005E0800+4*view instead of 0x000F0800 (camera change lost,
+//    stray write into game memory). Paths: the view shows a blend camera (blend hand-over never completed), a name
+//    callback is given, a null camera; FUN_0011ED60 cleared 0x005E0800/0x005E0810 instead of active/render.
+patch=2,EE,0011ED88,word,3C02000F // LUIFIX: was 3C02005E lui v0,0x5E (delay slot of beq a0,zero,0x0011ED98)
+patch=2,EE,0011EDA8,word,3C02000F // LUIFIX: was 3C02005E lui v0,0x5E (delay slot of beq a0,zero,0x0011EDB8)
+patch=2,EE,0011EDC8,word,3C02000F // LUIFIX: was 3C02005E lui v0,0x5E (delay slot of beq a0,zero,0x0011EDD8)
+patch=2,EE,0011F08C,word,3C17000F // LUIFIX: was 3C17005E lui s7,0x5E (delay slot of beq s2,zero,0x0011F104)
+patch=2,EE,0011F0B4,word,3C17000F // LUIFIX: was 3C17005E lui s7,0x5E (delay slot of beq v0,zero,0x0011F104: active is a blend camera)
+patch=2,EE,0011F0E4,word,3C17000F // LUIFIX: was 3C17005E lui s7,0x5E (delay slot of b 0x0011F104: name callback set)
 patch=2,EE,0011F110,word,26E20800 // was 26E29148: addiu v0,s7,2048
 patch=2,EE,0011F13C,word,26E20800 // was 26E29148: addiu v0,s7,2048
 patch=2,EE,0011F170,word,3C04000F // was 3C04005E: lui a0,0xf

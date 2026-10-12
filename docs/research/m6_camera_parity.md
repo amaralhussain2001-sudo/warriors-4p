@@ -1,5 +1,7 @@
 # M6 camera parity: cameras that only players 1-2 get, all 18 missions and the hub (static audit, 2026-10-12)
 
+**Status (2026-10-12 21:40): implemented** - LUIFIX F-0223 (relocation bug that also hit players 1-2), RAILTGT F-0215, rows and engine rules F-0224 (M8 cp3), F-0225 (M16), F-0226 (M6, M9), F-0227 (M17, M8 cp5, M1, BOSSTGT, CFGFOLLOW), F-0228 (M3, M10, M11, M5, M13), D24 beach F-0215. Correction: in M9 players 3-4 are inside the cage (F-0226). HUD prompts for players 3-4: not possible (F-0228).
+
 Build: The Warriors SLUS-21215 v1.03 (`local/disc/SLUS_212.15`, opened read-only), current patch set
 `mod/w4p_m1.pnach` (5703 patch lines, 2026-10-12 13:48). **Static analysis only: no emulator, no test runner, no build,
 no project file changed except this note.** Sources: pseudo-Lua `local/analysis/pseudo/` (cited `WAD:line`, e.g.

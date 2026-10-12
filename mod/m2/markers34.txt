@@ -1170,3 +1170,22 @@ patch=2,EE,000E9784,word,080717C4
 patch=2,EE,000E9788,word,00000000
 patch=2,EE,000E978C,word,080717CD
 patch=2,EE,000E9790,word,00000000
+// ---- hudE begin (docs/research/m6_hud_parity.md) ----
+// hudE markers: MARK34 player 3's Select ring (2-entry 'always marked' array 0x00622E10 read with index 2),
+// DECAL34 the dark blob under player characters (FUN_00174320, views 0-1 only) also in views 3-4 via LOOK9
+patch=2,EE,000E8160,word,2E230002 // MARK34: sltiu v1, s1, 2
+patch=2,EE,000E8164,word,10600007 // beq v1, zero, mk_unm  ; player index >= 2: not marked
+patch=2,EE,000E8168,word,3C080062 // lui t0, 0x0062
+patch=2,EE,000E816C,word,01111021 // addu v0, t0, s1
+patch=2,EE,000E8170,word,90432E10 // lbu v1, 0x2E10(v0)  ; original test for players 1-2
+patch=2,EE,000E8174,word,10600003 // beq v1, zero, mk_unm
+patch=2,EE,000E8178,word,00000000 // nop
+patch=2,EE,000E817C,word,08092E8E // j 0x0024BA38  ; marked (as the original fall-through)
+patch=2,EE,000E8180,word,8FA30058 // lw v1, 0x58(sp)  ; the original delay-slot load (0x0024BA34)
+patch=2,EE,000E8184,word,08092E99 // mk_unm: j 0x0024BA64  ; not marked (as the original beq target)
+patch=2,EE,000E8188,word,8FA30058 // lw v1, 0x58(sp)
+patch=2,EE,0024BA20,word,0803A058 // was 3C080062; FUN_0024B780: lui t0,0x62 (always-marked byte 0x00622E10[i]) -> j MARK34 (index >= 2 never marked)
+patch=2,EE,0024BA24,word,00000000 // was 25082E10; FUN_0024B780: addiu t0,t0,0x2E10 -> nop (delay slot; MARK34 builds the address)
+patch=2,EE,0017472C,word,2EC20004 // was 2EC20002; FUN_00174320: sltiu v0,s6,2 -> sltiu v0,s6,4 (player blob decal also in views 2-3)
+patch=2,EE,00174760,word,0C03A200 // was 0C0616AC; FUN_00174320: jal 0x00185AB0 (sprite item view+9) -> jal LOOK9 0x000E8800 (views 2-3: own copies of item 9)
+// ---- hudE end ----

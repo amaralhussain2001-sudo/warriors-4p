@@ -1,0 +1,919 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "cam_camB_probe.god9@4300": {
+  "poll": 4302,
+  "players_god": 2,
+  "tries": 1,
+  "secs": 0.1
+ },
+ "cam_camB_probe.snap@6000": {
+  "st": {
+   "poll": 6004,
+   "checkpoint": 4,
+   "level": "level86",
+   "count": 2,
+   "views": 1,
+   "cin_410": 3,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x40182",
+    "0x70191",
+    "0xffffffff",
+    "0xffffffff",
+    "0x40182",
+    "0x0"
+   ],
+   "lc_names": [
+    "level86_chapter4.lua",
+    "level86.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 3,
+   "players": {
+    "count": 2,
+    "1": {
+     "handle": "0x40182",
+     "obj": "0x6427c0",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      50.008,
+      52.164,
+      0.25
+     ]
+    },
+    "2": {
+     "handle": "0x70191",
+     "obj": "0x643c30",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      50.213,
+      52.901,
+      0.25
+     ]
+    },
+    "3": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    },
+    "4": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xd37400",
+     "kind": "other",
+     "render_vt": "0x537090",
+     "follow": "0xcf6800",
+     "rail": "0x0",
+     "rail_info": null
+    },
+    "1": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0xd22c00",
+     "rail": "0x0",
+     "rail_info": null
+    },
+    "2": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0x0",
+     "rail": "0x0",
+     "rail_info": null
+    },
+    "3": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0x0",
+     "rail": "0x0",
+     "rail_info": null
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": -1,
+    "2": -1,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 6009,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 0,
+    "W4P_R2": 0,
+    "W4P_R3": 0
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.god@6500": {
+  "poll": 6504,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 2
+  },
+  "src": "W4P_R = 0 for i = 0, 3 do local h = HuGetPlayer(i) if HuIsAPlayer(h) then HuSetGodMode(h, true) W4P_R = W4P_R + 1 end end"
+ },
+ "cam_camB_probe.snap@6800": {
+  "st": {
+   "poll": 6801,
+   "checkpoint": 4,
+   "level": "level86",
+   "count": 2,
+   "views": 2,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x40182",
+    "0x70191",
+    "0xffffffff",
+    "0xffffffff",
+    "0x40182",
+    "0x0"
+   ],
+   "lc_names": [
+    "level86_chapter4.lua",
+    "level86.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 3,
+   "players": {
+    "count": 2,
+    "1": {
+     "handle": "0x40182",
+     "obj": "0x6427c0",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      50.281,
+      52.109,
+      0.268
+     ]
+    },
+    "2": {
+     "handle": "0x70191",
+     "obj": "0x643c30",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      50.171,
+      52.818,
+      0.268
+     ]
+    },
+    "3": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    },
+    "4": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xca5c00",
+     "kind": "other",
+     "render_vt": "0x537610",
+     "follow": "0xcf6800",
+     "rail": "0xc9e800",
+     "rail_info": {
+      "tgt": "0x6427c0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 53.0,
+      "k0": 0.0,
+      "k1": -1.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.1,
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xca5800",
+     "kind": "rail",
+     "render_vt": "0x536dd0",
+     "follow": "0xd22c00",
+     "rail": "0xca5800",
+     "rail_info": {
+      "tgt": "0x643c30",
+      "tcount": 1,
+      "points": 2,
+      "fov": 53.0,
+      "k0": 0.0,
+      "k1": -1.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.1,
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0x0",
+     "rail": "0x0",
+     "rail_info": null
+    },
+    "3": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0x0",
+     "rail": "0x0",
+     "rail_info": null
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": -1,
+    "2": -1,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 6805,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 0,
+    "W4P_R2": 0,
+    "W4P_R3": 0
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.join@6800": {
+  "poll": 6805,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 6806
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 6807
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_after": 2
+ },
+ "cam_camB_probe.god@6900": {
+  "poll": 6903,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 2
+  },
+  "src": "W4P_R = 0 for i = 0, 3 do local h = HuGetPlayer(i) if HuIsAPlayer(h) then HuSetGodMode(h, true) W4P_R = W4P_R + 1 end end"
+ },
+ "cam_camB_probe.m9_info@7000": {
+  "poll": 7005,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 101,
+   "W4P_R2": 44,
+   "W4P_R3": 88
+  },
+  "src": "W4P_R = 100 * ((railCam_start and 1) or 0) + 10 * ((railCam and 1) or 0) + ((C4 and 1) or 0) W4P_V = {} for i = 0, 3 do local h = HuGetPlayer(i) local d = 8 if HuIsAPlayer(h) then d = 0 if IsInsideBox(vHammerBox, h) then d = d + 1 end if IsInsideBox(vSecondVanBox, h) then d = d + 2 end if IsInsideBox(vClipBox, h) then d = d + 4 end end W4P_V[i] = d end W4P_R2 = W4P_V[0] * 10 + W4P_V[1] W4P_R3 = W4P_V[2] * 10 + W4P_V[3]",
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0x40182",
+    "obj": "0x6427c0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     50.388,
+     52.171,
+     0.268
+    ]
+   },
+   "2": {
+    "handle": "0x70191",
+    "obj": "0x643c30",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     50.043,
+     52.78,
+     0.268
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  }
+ },
+ "cam_camB_probe.join@7100": {
+  "poll": 7100,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 7100
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 7101
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": -1,
+   "4": 1
+  },
+  "count_after": 3
+ },
+ "cam_camB_probe.snap@7200": {
+  "st": {
+   "poll": 7201,
+   "checkpoint": 4,
+   "level": "level86",
+   "count": 3,
+   "views": 3,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x40182",
+    "0x70191",
+    "0x51ad5",
+    "0xffffffff",
+    "0x40182",
+    "0x0"
+   ],
+   "lc_names": [
+    "level86_chapter4.lua",
+    "level86.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 3,
+   "players": {
+    "count": 3,
+    "1": {
+     "handle": "0x40182",
+     "obj": "0x6427c0",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      50.388,
+      52.171,
+      0.268
+     ]
+    },
+    "2": {
+     "handle": "0x70191",
+     "obj": "0x643c30",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      50.043,
+      52.78,
+      0.268
+     ]
+    },
+    "3": {
+     "handle": "0x51ad5",
+     "obj": "0x642e90",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      46.857,
+      51.468,
+      0.268
+     ]
+    },
+    "4": {
+     "handle": "0xffffffff",
+     "obj": "0x0",
+     "hud_slot": null,
+     "pidx": null,
+     "pos": null
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xca5c00",
+     "kind": "other",
+     "render_vt": "0x537610",
+     "follow": "0xcf6800",
+     "rail": "0xc9e800",
+     "rail_info": {
+      "tgt": "0x6427c0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 53.0,
+      "k0": 0.0,
+      "k1": -1.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.1,
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xca5800",
+     "kind": "rail",
+     "render_vt": "0x536dd0",
+     "follow": "0xd22c00",
+     "rail": "0xca5800",
+     "rail_info": {
+      "tgt": "0x643c30",
+      "tcount": 1,
+      "points": 2,
+      "fov": 53.0,
+      "k0": 0.0,
+      "k1": -1.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.1,
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0xce1c00",
+     "kind": "follow",
+     "render_vt": "0x535d50",
+     "follow": "0xce1c00",
+     "rail": "0xcdd800",
+     "rail_info": {
+      "tgt": "0x0",
+      "tcount": 0,
+      "points": 2,
+      "fov": 53.0,
+      "k0": 0.0,
+      "k1": -1.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.1,
+      "tgt_player": null
+     }
+    },
+    "3": {
+     "render": "0x0",
+     "kind": "none",
+     "render_vt": null,
+     "follow": "0x0",
+     "rail": "0x0",
+     "rail_info": null
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": -1,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 7206,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 0,
+    "W4P_R2": 0,
+    "W4P_R3": 0
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.god@7300": {
+  "poll": 7304,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 3
+  },
+  "src": "W4P_R = 0 for i = 0, 3 do local h = HuGetPlayer(i) if HuIsAPlayer(h) then HuSetGodMode(h, true) W4P_R = W4P_R + 1 end end"
+ },
+ "cam_camB_probe.join@7400": {
+  "poll": 7400,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 3,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 7401
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camB_probe.snap@7600": {
+  "st": {
+   "poll": 7600,
+   "checkpoint": 4,
+   "level": "level86",
+   "count": 4,
+   "views": 4,
+   "cin_410": 0,
+   "gm_14c": 0,
+   "join_flag": 1,
+   "tracked": [
+    "0x40182",
+    "0x70191",
+    "0x51ad5",
+    "0x6265a",
+    "0x40182",
+    "0x0"
+   ],
+   "lc_names": [
+    "level86_chapter4.lua",
+    "level86.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua"
+   ],
+   "lc_runs": 3,
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x40182",
+     "obj": "0x6427c0",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      50.499,
+      52.28,
+      0.268
+     ]
+    },
+    "2": {
+     "handle": "0x70191",
+     "obj": "0x643c30",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      49.933,
+      52.709,
+      0.268
+     ]
+    },
+    "3": {
+     "handle": "0x51ad5",
+     "obj": "0x642e90",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      47.18,
+      51.431,
+      0.268
+     ]
+    },
+    "4": {
+     "handle": "0x6265a",
+     "obj": "0x643560",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      53.825,
+      50.902,
+      0.268
+     ]
+    }
+   },
+   "cams": {
+    "0": {
+     "render": "0xca5c00",
+     "kind": "other",
+     "render_vt": "0x537610",
+     "follow": "0xcf6800",
+     "rail": "0xc9e800",
+     "rail_info": {
+      "tgt": "0x6427c0",
+      "tcount": 1,
+      "points": 2,
+      "fov": 53.0,
+      "k0": 0.0,
+      "k1": -1.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.1,
+      "tgt_player": 1
+     }
+    },
+    "1": {
+     "render": "0xca5800",
+     "kind": "rail",
+     "render_vt": "0x536dd0",
+     "follow": "0xd22c00",
+     "rail": "0xca5800",
+     "rail_info": {
+      "tgt": "0x643c30",
+      "tcount": 1,
+      "points": 2,
+      "fov": 53.0,
+      "k0": 0.0,
+      "k1": -1.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.1,
+      "tgt_player": 2
+     }
+    },
+    "2": {
+     "render": "0xce1c00",
+     "kind": "follow",
+     "render_vt": "0x535d50",
+     "follow": "0xce1c00",
+     "rail": "0xcdd800",
+     "rail_info": {
+      "tgt": "0x0",
+      "tcount": 0,
+      "points": 2,
+      "fov": 53.0,
+      "k0": 0.0,
+      "k1": -1.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.1,
+      "tgt_player": null
+     }
+    },
+    "3": {
+     "render": "0xd14400",
+     "kind": "follow",
+     "render_vt": "0x535d50",
+     "follow": "0xd14400",
+     "rail": "0xd22800",
+     "rail_info": {
+      "tgt": "0x0",
+      "tcount": 0,
+      "points": 2,
+      "fov": 53.0,
+      "k0": 0.0,
+      "k1": -1.0,
+      "k3": 0.0,
+      "k4": 0.0,
+      "k9": 2.1,
+      "tgt_player": null
+     }
+    }
+   },
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  },
+  "lua": {
+   "poll": 7605,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 0,
+    "W4P_R2": 0,
+    "W4P_R3": 0
+   },
+   "src": "W4P_R = 100 * ((W4BW and 1) or 0) + 10 * ((W4B6 and 1) or 0) + ((W4B9 and 1) or 0) W4P_R2 = 10 * ((W4BR and W4BR[2] and W4P_PN(W4BR[2])) or 0) + ((W4BR and W4BR[3] and W4P_PN(W4BR[3])) or 0) W4P_R3 = ((W4B6 and W4B6.t and 1) or 0) + 10 * ((W4B9 and W4B9.p) or 0)"
+  }
+ },
+ "cam_camB_probe.join@7700": {
+  "skipped": "4 players",
+  "poll": 7700
+ },
+ "cam_camB_probe.god@7800": {
+  "poll": 7804,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 4
+  },
+  "src": "W4P_R = 0 for i = 0, 3 do local h = HuGetPlayer(i) if HuIsAPlayer(h) then HuSetGodMode(h, true) W4P_R = W4P_R + 1 end end"
+ },
+ "cam_camB_probe.join@8000": {
+  "skipped": "4 players",
+  "poll": 8000
+ },
+ "cam_camB_probe.m9_info@8100": {
+  "poll": 8105,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 101,
+   "W4P_R2": 44,
+   "W4P_R3": 0
+  },
+  "src": "W4P_R = 100 * ((railCam_start and 1) or 0) + 10 * ((railCam and 1) or 0) + ((C4 and 1) or 0) W4P_V = {} for i = 0, 3 do local h = HuGetPlayer(i) local d = 8 if HuIsAPlayer(h) then d = 0 if IsInsideBox(vHammerBox, h) then d = d + 1 end if IsInsideBox(vSecondVanBox, h) then d = d + 2 end if IsInsideBox(vClipBox, h) then d = d + 4 end end W4P_V[i] = d end W4P_R2 = W4P_V[0] * 10 + W4P_V[1] W4P_R3 = W4P_V[2] * 10 + W4P_V[3]",
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x40182",
+    "obj": "0x6427c0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     50.499,
+     52.28,
+     0.268
+    ]
+   },
+   "2": {
+    "handle": "0x70191",
+    "obj": "0x643c30",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     49.933,
+     52.709,
+     0.268
+    ]
+   },
+   "3": {
+    "handle": "0x51ad5",
+    "obj": "0x642e90",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     47.508,
+     51.404,
+     0.268
+    ]
+   },
+   "4": {
+    "handle": "0x6265a",
+    "obj": "0x643560",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     53.825,
+     50.902,
+     0.268
+    ]
+   }
+  }
+ }
+}

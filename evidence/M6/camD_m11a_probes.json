@@ -1,0 +1,1612 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "cam_camD_probe.m11_mark@4600": {
+  "poll": 4608,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 111
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d11m) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d11 and W4P_O.d11 ~= P6.NewWarrior) and 1 or 0)"
+ },
+ "cam_camD_probe.m11_mark@5000": {
+  "poll": 5010,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 111
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d11m) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d11 and W4P_O.d11 ~= P6.NewWarrior) and 1 or 0)"
+ },
+ "cam_camD_probe.m11_god@5200": {
+  "poll": 5204,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "for i = 0, 3 do local h = HuGetPlayer(i) if h and HuIsAPlayer(h) then HuSetGodMode(h, true) end end W4P_R = 100"
+ },
+ "cam_camD_probe.join34@5300": {
+  "poll": 5311,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 5312
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 5314
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camD_probe.m11_call@5400": {
+  "poll": 5425,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 102
+  },
+  "src": "W4P_PC(P6.NewWarrior, Warriors.Cody) W4P_R = 100 + (killCount or 0)",
+  "before": {
+   "poll": 5404,
+   "views": 4,
+   "checkpoint": 6,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "rail": 0,
+    "blend": "0xc53c00",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xd0e400",
+    "render": "0xd0e400",
+    "follow": "0xd0e400",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcd5000",
+    "render": "0xcd5000",
+    "follow": "0xcd5000",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   }
+  },
+  "after": {
+   "poll": 5425,
+   "views": 4,
+   "checkpoint": 6,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "rail": 0,
+    "blend": "0xc53c00",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xd0e400",
+    "render": "0xd0e400",
+    "follow": "0xd0e400",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcd5000",
+    "render": "0xcd5000",
+    "follow": "0xcd5000",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   }
+  },
+  "handles": {
+   "Birdie.Birdie": "0x70167",
+   "Warriors.Cody": "0x40151",
+   "KilledWarriors[2]": "0x6015b"
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x13d",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -50.7,
+     6.7,
+     10.329
+    ]
+   },
+   "2": {
+    "handle": "0x3014c",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -38.3,
+     -10.6,
+     10.329
+    ]
+   },
+   "3": {
+    "handle": "0x80465",
+    "obj": "0x644300",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -54.026,
+     8.078,
+     13.717
+    ]
+   },
+   "4": {
+    "handle": "0x9046b",
+    "obj": "0x6449d0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -54.026,
+     8.078,
+     13.717
+    ]
+   }
+  }
+ },
+ "cam_camD_probe.join34@5600": {
+  "poll": 5602,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 0,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camD_probe.m11_god@5700": {
+  "poll": 5708,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "for i = 0, 3 do local h = HuGetPlayer(i) if h and HuIsAPlayer(h) then HuSetGodMode(h, true) end end W4P_R = 100"
+ },
+ "cam_camD_probe.m11_call@5700": {
+  "poll": 5728,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 103
+  },
+  "src": "W4P_PC(P6.NewWarrior, Warriors.Cody) W4P_R = 100 + (killCount or 0)",
+  "before": {
+   "poll": 5708,
+   "views": 4,
+   "checkpoint": 6,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "rail": 0,
+    "blend": "0xc53c00",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xd0e400",
+    "render": "0xd0e400",
+    "follow": "0xd0e400",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcd5000",
+    "render": "0xcd5000",
+    "follow": "0xcd5000",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   }
+  },
+  "after": {
+   "poll": 5728,
+   "views": 4,
+   "checkpoint": 6,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "rail": 0,
+    "blend": "0xc53c00",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xd0e400",
+    "render": "0xd0e400",
+    "follow": "0xd0e400",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcd5000",
+    "render": "0xcd5000",
+    "follow": "0xcd5000",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   }
+  },
+  "handles": {
+   "Birdie.Birdie": "0x70167",
+   "Warriors.Cody": "0x40151",
+   "KilledWarriors[2]": "0x6015b"
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x13d",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -50.7,
+     6.7,
+     10.329
+    ]
+   },
+   "2": {
+    "handle": "0x3014c",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -38.3,
+     -10.6,
+     10.329
+    ]
+   },
+   "3": {
+    "handle": "0x80465",
+    "obj": "0x644300",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -54.026,
+     8.078,
+     13.717
+    ]
+   },
+   "4": {
+    "handle": "0x9046b",
+    "obj": "0x6449d0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -54.026,
+     8.078,
+     13.717
+    ]
+   }
+  }
+ },
+ "cam_camD_probe.join34@5900": {
+  "poll": 5905,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 0,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camD_probe.m11_call@6000": {
+  "skipped": "players 4, calls so far 2",
+  "poll": 6005
+ },
+ "cam_camD_probe.join34@6200": {
+  "poll": 6205,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 0,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camD_probe.m11_god@6300": {
+  "poll": 6309,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "for i = 0, 3 do local h = HuGetPlayer(i) if h and HuIsAPlayer(h) then HuSetGodMode(h, true) end end W4P_R = 100"
+ },
+ "cam_camD_probe.m11_call@6300": {
+  "skipped": "players 4, calls so far 2",
+  "poll": 6309
+ },
+ "cam_camD_probe.join34@6500": {
+  "poll": 6504,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 0,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camD_probe.m11_call@6600": {
+  "skipped": "players 4, calls so far 2",
+  "poll": 6600
+ },
+ "cam_camD_probe.m11_orig_note@6800": {
+  "poll": 6806,
+  "cams": {
+   "poll": 6806,
+   "views": 4,
+   "checkpoint": 6,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "rail": 0,
+    "blend": "0xc53c00",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xd0e400",
+    "render": "0xd0e400",
+    "follow": "0xd0e400",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcd5000",
+    "render": "0xcd5000",
+    "follow": "0xcd5000",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   }
+  }
+ },
+ "cam_camD_probe.m11_call_any@7000": {
+  "skipped": "players 4, calls so far 2",
+  "poll": 7014
+ },
+ "cam_camD_probe.m11_orig_note@7200": {
+  "poll": 7204,
+  "cams": {
+   "poll": 7204,
+   "views": 4,
+   "checkpoint": 6,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "rail": 0,
+    "blend": "0xc53c00",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xd0e400",
+    "render": "0xd0e400",
+    "follow": "0xd0e400",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcd5000",
+    "render": "0xcd5000",
+    "follow": "0xcd5000",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   }
+  }
+ },
+ "cam_camD_probe.blend_go1@7300": {
+  "poll": 7311,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "CameraMakeActive(MainCam, 0.85, nil, player2, player2) W4P_R = 100",
+  "blend": {
+   "poll": 7311,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "blend": "0xc53c00",
+    "frm": "0xc53c00",
+    "to": "0xc51800",
+    "dur": 1.0,
+    "elapsed": 64.166,
+    "progress": 1.0
+   },
+   "1": {
+    "active": "0xca7400",
+    "render": "0xca7400",
+    "follow": "0xd0e400",
+    "blend": "0xca7400",
+    "frm": "0xd0e400",
+    "to": "0xd0e400",
+    "dur": 0.85,
+    "elapsed": 0.167,
+    "progress": 0.196
+   },
+   "2": {
+    "active": "0xcd5000",
+    "render": "0xcd5000",
+    "follow": "0xcd5000",
+    "blend": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.blend_read@7360": {
+  "poll": 7379,
+  "0": {
+   "active": "0xc53c00",
+   "render": "0xc53c00",
+   "follow": "0xcfb000",
+   "blend": "0xc53c00",
+   "frm": "0xc53c00",
+   "to": "0xc51800",
+   "dur": 1.0,
+   "elapsed": 66.566,
+   "progress": 1.0
+  },
+  "1": {
+   "active": "0xca7400",
+   "render": "0xca7400",
+   "follow": "0xd0e400",
+   "blend": "0xca7400",
+   "frm": "0xd0e400",
+   "to": "0xd0e400",
+   "dur": 0.85,
+   "elapsed": 2.567,
+   "progress": 1.0
+  },
+  "2": {
+   "active": "0xcd5000",
+   "render": "0xcd5000",
+   "follow": "0xcd5000",
+   "blend": 0
+  },
+  "3": {
+   "active": "0xcfbc00",
+   "render": "0xcfbc00",
+   "follow": "0xcfbc00",
+   "blend": 0
+  }
+ },
+ "cam_camD_probe.blend_read@7600": {
+  "poll": 7601,
+  "0": {
+   "active": "0xc53c00",
+   "render": "0xc53c00",
+   "follow": "0xcfb000",
+   "blend": "0xc53c00",
+   "frm": "0xc53c00",
+   "to": "0xc51800",
+   "dur": 1.0,
+   "elapsed": 74.199,
+   "progress": 1.0
+  },
+  "1": {
+   "active": "0xca7400",
+   "render": "0xca7400",
+   "follow": "0xd0e400",
+   "blend": "0xca7400",
+   "frm": "0xd0e400",
+   "to": "0xd0e400",
+   "dur": 0.85,
+   "elapsed": 10.2,
+   "progress": 1.0
+  },
+  "2": {
+   "active": "0xcd5000",
+   "render": "0xcd5000",
+   "follow": "0xcd5000",
+   "blend": 0
+  },
+  "3": {
+   "active": "0xcfbc00",
+   "render": "0xcfbc00",
+   "follow": "0xcfbc00",
+   "blend": 0
+  }
+ },
+ "cam_camD_probe.blend_go2@7700": {
+  "poll": 7711,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "CameraMakeActive(MainCam, 0.85, nil, HuGetPlayer(2), HuGetPlayer(2)) W4P_R = 100",
+  "blend": {
+   "poll": 7711,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "blend": "0xc53c00",
+    "frm": "0xc53c00",
+    "to": "0xc51800",
+    "dur": 1.0,
+    "elapsed": 77.999,
+    "progress": 1.0
+   },
+   "1": {
+    "active": "0xca7400",
+    "render": "0xca7400",
+    "follow": "0xd0e400",
+    "blend": "0xca7400",
+    "frm": "0xd0e400",
+    "to": "0xd0e400",
+    "dur": 0.85,
+    "elapsed": 14.0,
+    "progress": 1.0
+   },
+   "2": {
+    "active": "0xcd3400",
+    "render": "0xcd3400",
+    "follow": "0xcd5000",
+    "blend": "0xcd3400",
+    "frm": "0xcd5000",
+    "to": "0xcd5000",
+    "dur": 0.85,
+    "elapsed": 0.167,
+    "progress": 0.196
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "blend": 0
+   }
+  }
+ },
+ "cam_camD_probe.blend_read@7760": {
+  "poll": 7760,
+  "0": {
+   "active": "0xc53c00",
+   "render": "0xc53c00",
+   "follow": "0xcfb000",
+   "blend": "0xc53c00",
+   "frm": "0xc53c00",
+   "to": "0xc51800",
+   "dur": 1.0,
+   "elapsed": 79.632,
+   "progress": 1.0
+  },
+  "1": {
+   "active": "0xca7400",
+   "render": "0xca7400",
+   "follow": "0xd0e400",
+   "blend": "0xca7400",
+   "frm": "0xd0e400",
+   "to": "0xd0e400",
+   "dur": 0.85,
+   "elapsed": 15.667,
+   "progress": 1.0
+  },
+  "2": {
+   "active": "0xcd3400",
+   "render": "0xcd3400",
+   "follow": "0xcd5000",
+   "blend": "0xcd3400",
+   "frm": "0xcd5000",
+   "to": "0xcd5000",
+   "dur": 0.85,
+   "elapsed": 1.833,
+   "progress": 1.0
+  },
+  "3": {
+   "active": "0xcfbc00",
+   "render": "0xcfbc00",
+   "follow": "0xcfbc00",
+   "blend": 0
+  }
+ },
+ "cam_camD_probe.blend_read@8000": {
+  "poll": 8002,
+  "0": {
+   "active": "0xc53c00",
+   "render": "0xc53c00",
+   "follow": "0xcfb000",
+   "blend": "0xc53c00",
+   "frm": "0xc53c00",
+   "to": "0xc51800",
+   "dur": 1.0,
+   "elapsed": 87.865,
+   "progress": 1.0
+  },
+  "1": {
+   "active": "0xca7400",
+   "render": "0xca7400",
+   "follow": "0xd0e400",
+   "blend": "0xca7400",
+   "frm": "0xd0e400",
+   "to": "0xd0e400",
+   "dur": 0.85,
+   "elapsed": 23.866,
+   "progress": 1.0
+  },
+  "2": {
+   "active": "0xcd3400",
+   "render": "0xcd3400",
+   "follow": "0xcd5000",
+   "blend": "0xcd3400",
+   "frm": "0xcd5000",
+   "to": "0xcd5000",
+   "dur": 0.85,
+   "elapsed": 10.033,
+   "progress": 1.0
+  },
+  "3": {
+   "active": "0xcfbc00",
+   "render": "0xcfbc00",
+   "follow": "0xcfbc00",
+   "blend": 0
+  }
+ },
+ "cam_camD_probe.hud_objs@8100": {
+  "poll": 8103,
+  "0": {
+   "addr": "0x607380",
+   "first": [
+    "0x539270",
+    "0x0",
+    "0x1",
+    "0x1"
+   ],
+   "anim_440_45c": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  },
+  "1": {
+   "addr": "0x607910",
+   "first": [
+    "0x539270",
+    "0x0",
+    "0x1",
+    "0x1"
+   ],
+   "anim_440_45c": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  },
+  "2": {
+   "addr": "0x607ea0",
+   "first": [
+    "0x53a348",
+    "0x1",
+    "0x1",
+    "0x1"
+   ],
+   "anim_440_45c": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  },
+  "3": {
+   "addr": "0x608430",
+   "first": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ],
+   "anim_440_45c": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x3f800000",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  },
+  "code_0x001ADB78": "0x2e420002"
+ },
+ "cam_camD_probe.hud_on1@8200": {
+  "poll": 8207,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "HUDTurnOnActionCycleAnim(3, 0.15, 2, 73, 73, 1) W4P_R = 100",
+  "objs": {
+   "poll": 8207,
+   "0": {
+    "addr": "0x607380",
+    "first": [
+     "0x539270",
+     "0x0",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "1": {
+    "addr": "0x607910",
+    "first": [
+     "0x539270",
+     "0x0",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x49",
+     "0x49",
+     "0x3",
+     "0x1",
+     "0x0",
+     "0x4",
+     "0x2",
+     "0x1"
+    ]
+   },
+   "2": {
+    "addr": "0x607ea0",
+    "first": [
+     "0x53a348",
+     "0x1",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "3": {
+    "addr": "0x608430",
+    "first": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x3f800000",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "code_0x001ADB78": "0x2e420002"
+  }
+ },
+ "cam_camD_probe.m11_orig_note@8300": {
+  "poll": 8303,
+  "cams": {
+   "poll": 8303,
+   "views": 4,
+   "checkpoint": 6,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "rail": 0,
+    "blend": "0xc53c00",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xca7400",
+    "render": "0xca7400",
+    "follow": "0xd0e400",
+    "rail": 0,
+    "blend": "0xca7400",
+    "kind": "blend",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcd3400",
+    "render": "0xcd3400",
+    "follow": "0xcd5000",
+    "rail": 0,
+    "blend": "0xcd3400",
+    "kind": "blend",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   }
+  }
+ },
+ "cam_camD_probe.hud_off1@8450": {
+  "poll": 8471,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "HUDTurnOffActionCycleAnim(1) W4P_R = 100",
+  "objs": {
+   "poll": 8471,
+   "0": {
+    "addr": "0x607380",
+    "first": [
+     "0x539270",
+     "0x0",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "1": {
+    "addr": "0x607910",
+    "first": [
+     "0x539270",
+     "0x0",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x49",
+     "0x49",
+     "0x3",
+     "0x3",
+     "0x1",
+     "0x1",
+     "0x2",
+     "0x0"
+    ]
+   },
+   "2": {
+    "addr": "0x607ea0",
+    "first": [
+     "0x53a348",
+     "0x1",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "3": {
+    "addr": "0x608430",
+    "first": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x3f800000",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "code_0x001ADB78": "0x2e420002"
+  }
+ },
+ "cam_camD_probe.hud_on2@8600": {
+  "poll": 8607,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "HUDTurnOnActionCycleAnim(3, 0.15, 2, 73, 73, 2) W4P_R = 100",
+  "before": {
+   "poll": 8602,
+   "0": {
+    "addr": "0x607380",
+    "first": [
+     "0x539270",
+     "0x0",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "1": {
+    "addr": "0x607910",
+    "first": [
+     "0x539270",
+     "0x0",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x49",
+     "0x49",
+     "0x3",
+     "0x3",
+     "0x1",
+     "0x1",
+     "0x2",
+     "0x0"
+    ]
+   },
+   "2": {
+    "addr": "0x607ea0",
+    "first": [
+     "0x53a348",
+     "0x1",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "3": {
+    "addr": "0x608430",
+    "first": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x3f800000",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "code_0x001ADB78": "0x2e420002"
+  },
+  "after": {
+   "poll": 8607,
+   "0": {
+    "addr": "0x607380",
+    "first": [
+     "0x539270",
+     "0x0",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "1": {
+    "addr": "0x607910",
+    "first": [
+     "0x539270",
+     "0x0",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x49",
+     "0x49",
+     "0x3",
+     "0x3",
+     "0x1",
+     "0x1",
+     "0x2",
+     "0x0"
+    ]
+   },
+   "2": {
+    "addr": "0x607ea0",
+    "first": [
+     "0x53a348",
+     "0x0",
+     "0x1",
+     "0x1"
+    ],
+    "anim_440_45c": [
+     "0x49",
+     "0x49",
+     "0x3",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x2",
+     "0x1"
+    ]
+   },
+   "3": {
+    "addr": "0x608430",
+    "first": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ],
+    "anim_440_45c": [
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x3f800000",
+     "0x0",
+     "0x0",
+     "0x0",
+     "0x0"
+    ]
+   },
+   "code_0x001ADB78": "0x2e420002"
+  }
+ },
+ "cam_camD_probe.hud_objs@8700": {
+  "poll": 8701,
+  "0": {
+   "addr": "0x607380",
+   "first": [
+    "0x539270",
+    "0x0",
+    "0x1",
+    "0x1"
+   ],
+   "anim_440_45c": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  },
+  "1": {
+   "addr": "0x607910",
+   "first": [
+    "0x539270",
+    "0x0",
+    "0x1",
+    "0x1"
+   ],
+   "anim_440_45c": [
+    "0x49",
+    "0x49",
+    "0x3",
+    "0x3",
+    "0x1",
+    "0x1",
+    "0x2",
+    "0x0"
+   ]
+  },
+  "2": {
+   "addr": "0x607ea0",
+   "first": [
+    "0x53a348",
+    "0x0",
+    "0x1",
+    "0x1"
+   ],
+   "anim_440_45c": [
+    "0x49",
+    "0x49",
+    "0x3",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x2",
+    "0x1"
+   ]
+  },
+  "3": {
+   "addr": "0x608430",
+   "first": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ],
+   "anim_440_45c": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x3f800000",
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  },
+  "code_0x001ADB78": "0x2e420002"
+ },
+ "cam_camD_probe.m11_orig_note@8900": {
+  "poll": 8905,
+  "cams": {
+   "poll": 8905,
+   "views": 4,
+   "checkpoint": 6,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "rail": 0,
+    "blend": "0xc53c00",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xca7400",
+    "render": "0xca7400",
+    "follow": "0xd0e400",
+    "rail": 0,
+    "blend": "0xca7400",
+    "kind": "blend",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcd3400",
+    "render": "0xcd3400",
+    "follow": "0xcd5000",
+    "rail": 0,
+    "blend": "0xcd3400",
+    "kind": "blend",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   }
+  }
+ },
+ "cam_camD_probe.snap@9200": {
+  "poll": 9204,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 6,
+   "level_idx": 11,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level31"
+  },
+  "cams": {
+   "poll": 9204,
+   "views": 4,
+   "checkpoint": 6,
+   "0": {
+    "active": "0xc53c00",
+    "render": "0xc53c00",
+    "follow": "0xcfb000",
+    "rail": 0,
+    "blend": "0xc53c00",
+    "kind": "blend",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xca7400",
+    "render": "0xca7400",
+    "follow": "0xd0e400",
+    "rail": 0,
+    "blend": "0xca7400",
+    "kind": "blend",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xcd3400",
+    "render": "0xcd3400",
+    "follow": "0xcd5000",
+    "rail": 0,
+    "blend": "0xcd3400",
+    "kind": "blend",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xcfbc00",
+    "render": "0xcfbc00",
+    "follow": "0xcfbc00",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0x70167",
+    "follow_secondary_on_3fc": 0
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x13d",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -54.083,
+     5.926,
+     9.074
+    ]
+   },
+   "2": {
+    "handle": "0x3014c",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -38.3,
+     -10.6,
+     10.329
+    ]
+   },
+   "3": {
+    "handle": "0x80465",
+    "obj": "0x644300",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -54.026,
+     8.078,
+     13.717
+    ]
+   },
+   "4": {
+    "handle": "0x9046b",
+    "obj": "0x6449d0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -54.026,
+     8.078,
+     13.717
+    ]
+   }
+  },
+  "lc_names_newest_first": [
+   "tag7.lua",
+   "level31_Birdie.lua",
+   "level31.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua"
+  ],
+  "pads": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ }
+}

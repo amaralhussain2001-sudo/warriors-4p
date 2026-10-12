@@ -1,0 +1,420 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "cam_camD_probe.m10_keep@4300": {
+  "poll": 4307,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 110
+  },
+  "src": "if C5 then C5.maxDistance = 9999 end MAX_TIME_OVER_MAX_DISTANCE = 1000000000 W4P_R = 100 + (C5 and 10 or 0) + (W4P_D10ON or 0)"
+ },
+ "cam_camD_probe.m10_keep@4600": {
+  "poll": 4610,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 110
+  },
+  "src": "if C5 then C5.maxDistance = 9999 end MAX_TIME_OVER_MAX_DISTANCE = 1000000000 W4P_R = 100 + (C5 and 10 or 0) + (W4P_D10ON or 0)"
+ },
+ "cam_camD_probe.m10_keep@4800": {
+  "poll": 4807,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 111
+  },
+  "src": "if C5 then C5.maxDistance = 9999 end MAX_TIME_OVER_MAX_DISTANCE = 1000000000 W4P_R = 100 + (C5 and 10 or 0) + (W4P_D10ON or 0)"
+ },
+ "blend_probe.read@5100": {
+  "poll": 5107,
+  "views": 2,
+  "cameras": 2,
+  "0": {
+   "active": "0xd02800",
+   "render": "0xd02800",
+   "follow": "0xd02800",
+   "blend": "0x0",
+   "active_idx": 0
+  },
+  "1": {
+   "active": "0xd05c00",
+   "render": "0xd05c00",
+   "follow": "0xd05c00",
+   "blend": "0x0",
+   "active_idx": 1
+  },
+  "2": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  },
+  "3": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  }
+ },
+ "cam_camD_probe.ctl1@5200": {
+  "poll": 5209,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "local h = player2 if W4P_CTL == nil then W4P_CTL = {} end if W4P_CTL[1] == nil then local q = call(GetPosition, {h; n = 1}, \"x\") or {x = 407, y = -137, z = 3} W4P_CTL[1] = CameraCreateLocked(\"W4PCTL\", {q.x + 4, q.y + 4, q.z + 6}, 65, 0, -30, 0, 0.1, 75) end CameraMakeActive(W4P_CTL[1], 0, nil, h, h) W4P_R = (CameraGetActive(1) == W4P_CTL[1]) and 1 or 0",
+  "blend": {
+   "poll": 5209,
+   "0": {
+    "active": "0xd02800",
+    "render": "0xd02800",
+    "follow": "0xd02800",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xc49800",
+    "render": "0xc49800",
+    "follow": "0xd05c00",
+    "blend": 0
+   },
+   "2": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "blend_probe.read@5300": {
+  "poll": 5303,
+  "views": 2,
+  "cameras": 2,
+  "0": {
+   "active": "0xd02800",
+   "render": "0xd02800",
+   "follow": "0xd02800",
+   "blend": "0x0",
+   "active_idx": 0
+  },
+  "1": {
+   "active": "0xc49800",
+   "render": "0xc49800",
+   "follow": "0xd05c00",
+   "blend": "0x0",
+   "active_idx": 1
+  },
+  "2": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  },
+  "3": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  }
+ },
+ "cam_camD_probe.main0_1@5400": {
+  "poll": 5415,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "CameraMakeActive(MainCam, 0, nil, player2, player2) CameraMakeActive(MainCam, 0, nil, HuGetPlayer(2), HuGetPlayer(2)) W4P_R = 100",
+  "blend": {
+   "poll": 5415,
+   "0": {
+    "active": "0xd02800",
+    "render": "0xd02800",
+    "follow": "0xd02800",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xd05c00",
+    "render": "0xd05c00",
+    "follow": "0xd05c00",
+    "blend": 0
+   },
+   "2": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "blend_probe.read@5450": {
+  "poll": 5453,
+  "views": 2,
+  "cameras": 2,
+  "0": {
+   "active": "0xd02800",
+   "render": "0xd02800",
+   "follow": "0xd02800",
+   "blend": "0x0",
+   "active_idx": 0
+  },
+  "1": {
+   "active": "0xd05c00",
+   "render": "0xd05c00",
+   "follow": "0xd05c00",
+   "blend": "0x0",
+   "active_idx": 1
+  },
+  "2": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  },
+  "3": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  }
+ },
+ "cam_camD_probe.blend_go1@5500": {
+  "poll": 5510,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "CameraMakeActive(MainCam, 0.85, nil, player2, player2) W4P_R = 100",
+  "blend": {
+   "poll": 5510,
+   "0": {
+    "active": "0xd02800",
+    "render": "0xd02800",
+    "follow": "0xd02800",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xc4ac00",
+    "render": "0xc4ac00",
+    "follow": "0xd05c00",
+    "blend": "0xc4ac00",
+    "frm": "0xd05c00",
+    "to": "0xd05c00",
+    "dur": 0.85,
+    "elapsed": 0.133,
+    "progress": 0.157
+   },
+   "2": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "blend_probe.read@5560": {
+  "poll": 5563,
+  "views": 2,
+  "cameras": 2,
+  "0": {
+   "active": "0xd02800",
+   "render": "0xd02800",
+   "follow": "0xd02800",
+   "blend": "0x0",
+   "active_idx": 0
+  },
+  "1": {
+   "active": "0xd05c00",
+   "render": "0xd05c00",
+   "follow": "0xd05c00",
+   "blend": "0x0",
+   "active_idx": 1
+  },
+  "2": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  },
+  "3": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  }
+ },
+ "blend_probe.read@5650": {
+  "poll": 5656,
+  "views": 2,
+  "cameras": 2,
+  "0": {
+   "active": "0xd02800",
+   "render": "0xd02800",
+   "follow": "0xd02800",
+   "blend": "0x0",
+   "active_idx": 0
+  },
+  "1": {
+   "active": "0xd05c00",
+   "render": "0xd05c00",
+   "follow": "0xd05c00",
+   "blend": "0x0",
+   "active_idx": 1
+  },
+  "2": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  },
+  "3": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  }
+ },
+ "cam_camD_probe.ctl1@5700": {
+  "poll": 5706,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "local h = player2 if W4P_CTL == nil then W4P_CTL = {} end if W4P_CTL[1] == nil then local q = call(GetPosition, {h; n = 1}, \"x\") or {x = 407, y = -137, z = 3} W4P_CTL[1] = CameraCreateLocked(\"W4PCTL\", {q.x + 4, q.y + 4, q.z + 6}, 65, 0, -30, 0, 0.1, 75) end CameraMakeActive(W4P_CTL[1], 0, nil, h, h) W4P_R = (CameraGetActive(1) == W4P_CTL[1]) and 1 or 0",
+  "blend": {
+   "poll": 5706,
+   "0": {
+    "active": "0xd02800",
+    "render": "0xd02800",
+    "follow": "0xd02800",
+    "blend": 0
+   },
+   "1": {
+    "active": "0xc49800",
+    "render": "0xc49800",
+    "follow": "0xd05c00",
+    "blend": 0
+   },
+   "2": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   },
+   "3": {
+    "active": 0,
+    "render": 0,
+    "follow": 0,
+    "blend": 0
+   }
+  }
+ },
+ "blend_probe.read@5760": {
+  "poll": 5776,
+  "views": 2,
+  "cameras": 2,
+  "0": {
+   "active": "0xd02800",
+   "render": "0xd02800",
+   "follow": "0xd02800",
+   "blend": "0x0",
+   "active_idx": 0
+  },
+  "1": {
+   "active": "0xc49800",
+   "render": "0xc49800",
+   "follow": "0xd05c00",
+   "blend": "0x0",
+   "active_idx": 1
+  },
+  "2": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  },
+  "3": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  }
+ },
+ "blend_probe.read@6000": {
+  "poll": 6005,
+  "views": 2,
+  "cameras": 2,
+  "0": {
+   "active": "0xd02800",
+   "render": "0xd02800",
+   "follow": "0xd02800",
+   "blend": "0x0",
+   "active_idx": 0
+  },
+  "1": {
+   "active": "0xc49800",
+   "render": "0xc49800",
+   "follow": "0xd05c00",
+   "blend": "0x0",
+   "active_idx": 1
+  },
+  "2": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  },
+  "3": {
+   "active": "0x0",
+   "render": "0x0",
+   "follow": "0x0",
+   "blend": "0x0"
+  }
+ }
+}

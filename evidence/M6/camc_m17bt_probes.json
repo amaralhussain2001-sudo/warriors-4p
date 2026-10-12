@@ -1,0 +1,1421 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "cam_camC_probe.trk@5000": {
+  "poll": 5002,
+  "checkpoint": 2,
+  "count": 2,
+  "views": 2,
+  "list": [
+   "ai237",
+   "ai237",
+   null,
+   null
+  ],
+  "list_raw": [
+   "0x9008e",
+   "0x9008e",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "players": {
+   "1": "0x641350",
+   "2": "0x640c80",
+   "3": "0x0",
+   "4": "0x0"
+  },
+  "pos": {
+   "1": [
+    375.4,
+    10.4,
+    4.2
+   ],
+   "2": [
+    376.1,
+    8.2,
+    4.2
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xcab800",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P1",
+    "f_secw": 0.0
+   },
+   "1": {
+    "render": "0xcdb000",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P2",
+    "f_secw": 0.0
+   },
+   "2": {
+    "render": "0x0",
+    "render_is": "none"
+   },
+   "3": {
+    "render": "0x0",
+    "render_is": "none"
+   }
+  },
+  "lc_names": [
+   "level55_lizziesattack.lua",
+   "level55.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "x6fix_probe.join34@5300": {
+  "poll": 5303,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 5304
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 5305
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@5600": {
+  "poll": 5600,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@5900": {
+  "poll": 5903,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camC_probe.god@6200": {
+  "poll": 6203,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "for i = 0, 3 do local h = HuGetPlayer(i) if h and HuIsAPlayer(h) then HuSetGodMode(h, true) end end W4P_R = 1",
+  "trk_after": {
+   "poll": 6203,
+   "checkpoint": 2,
+   "count": 4,
+   "views": 4,
+   "list": [
+    "ai237",
+    "ai237",
+    "P3",
+    "P4"
+   ],
+   "list_raw": [
+    "0x9008e",
+    "0x9008e",
+    "0x2007d",
+    "0xa04da"
+   ],
+   "players": {
+    "1": "0x641350",
+    "2": "0x640c80",
+    "3": "0x641a20",
+    "4": "0x6450a0"
+   },
+   "pos": {
+    "1": [
+     376.6,
+     8.5,
+     4.2
+    ],
+    "2": [
+     377.2,
+     9.1,
+     4.2
+    ],
+    "3": [
+     383.8,
+     12.1,
+     4.2
+    ],
+    "4": [
+     369.4,
+     9.6,
+     4.2
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xcab800",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P1",
+     "f_secw": 0.0
+    },
+    "1": {
+     "render": "0xcdb000",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P2",
+     "f_secw": 0.0
+    },
+    "2": {
+     "render": "0xce1800",
+     "render_is": "follow",
+     "f_tgt": "P3",
+     "f_tgt2": null,
+     "f_last": "P3",
+     "f_cnt": 1,
+     "f_sec": "ai237",
+     "f_secw": 0.0
+    },
+    "3": {
+     "render": "0xce3c00",
+     "render_is": "follow",
+     "f_tgt": "P4",
+     "f_tgt2": null,
+     "f_last": "P4",
+     "f_cnt": 1,
+     "f_sec": "ai237",
+     "f_secw": 0.0
+    }
+   },
+   "lc_names": [
+    "level55_lizziesattack.lua",
+    "level55.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.near34@6400": {
+  "poll": 6405,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "local a, b = HuGetPlayer(2), HuGetPlayer(3) if a and HuIsAPlayer(a) then HuTeleportNearHuman(a, player) end if b and HuIsAPlayer(b) then HuTeleportNearHuman(b, player2) end W4P_R = 1",
+  "trk_after": {
+   "poll": 6405,
+   "checkpoint": 2,
+   "count": 4,
+   "views": 4,
+   "list": [
+    "ai237",
+    "ai237",
+    "P3",
+    "P4"
+   ],
+   "list_raw": [
+    "0x9008e",
+    "0x9008e",
+    "0x2007d",
+    "0xa04da"
+   ],
+   "players": {
+    "1": "0x641350",
+    "2": "0x640c80",
+    "3": "0x641a20",
+    "4": "0x6450a0"
+   },
+   "pos": {
+    "1": [
+     376.6,
+     8.5,
+     4.2
+    ],
+    "2": [
+     377.2,
+     9.1,
+     4.2
+    ],
+    "3": [
+     373.3,
+     9.8,
+     4.2
+    ],
+    "4": [
+     374.7,
+     9.6,
+     4.2
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xcab800",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P1",
+     "f_secw": 0.0
+    },
+    "1": {
+     "render": "0xcdb000",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P2",
+     "f_secw": 0.0
+    },
+    "2": {
+     "render": "0xce1800",
+     "render_is": "follow",
+     "f_tgt": "P3",
+     "f_tgt2": null,
+     "f_last": "P3",
+     "f_cnt": 1,
+     "f_sec": "ai237",
+     "f_secw": 0.0
+    },
+    "3": {
+     "render": "0xce3c00",
+     "render_is": "follow",
+     "f_tgt": "P4",
+     "f_tgt2": null,
+     "f_last": "P4",
+     "f_cnt": 1,
+     "f_sec": "ai237",
+     "f_secw": 0.0
+    }
+   },
+   "lc_names": [
+    "level55_lizziesattack.lua",
+    "level55.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@6700": {
+  "poll": 6700,
+  "checkpoint": 2,
+  "count": 4,
+  "views": 4,
+  "list": [
+   "ai237",
+   "ai237",
+   "P3",
+   "P4"
+  ],
+  "list_raw": [
+   "0x9008e",
+   "0x9008e",
+   "0x2007d",
+   "0xa04da"
+  ],
+  "players": {
+   "1": "0x641350",
+   "2": "0x640c80",
+   "3": "0x641a20",
+   "4": "0x6450a0"
+  },
+  "pos": {
+   "1": [
+    376.6,
+    8.5,
+    4.2
+   ],
+   "2": [
+    378.1,
+    8.9,
+    4.2
+   ],
+   "3": [
+    373.0,
+    9.8,
+    4.2
+   ],
+   "4": [
+    373.8,
+    8.3,
+    4.2
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xcab800",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P1",
+    "f_secw": 0.0
+   },
+   "1": {
+    "render": "0xcdb000",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P2",
+    "f_secw": 0.0
+   },
+   "2": {
+    "render": "0xce1800",
+    "render_is": "follow",
+    "f_tgt": "P3",
+    "f_tgt2": null,
+    "f_last": "P3",
+    "f_cnt": 1,
+    "f_sec": "ai237",
+    "f_secw": 0.0
+   },
+   "3": {
+    "render": "0xce3c00",
+    "render_is": "follow",
+    "f_tgt": "P4",
+    "f_tgt2": null,
+    "f_last": "P4",
+    "f_cnt": 1,
+    "f_sec": "ai237",
+    "f_secw": 0.0
+   }
+  },
+  "lc_names": [
+   "level55_lizziesattack.lua",
+   "level55.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.m17_sec34_own@6900": {
+  "poll": 6905,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "for i = 2, 3 do local h = HuGetPlayer(i) if h and HuIsAPlayer(h) then CamSetSecondary(h, 0, i) end end W4P_R = 1",
+  "trk_after": {
+   "poll": 6905,
+   "checkpoint": 2,
+   "count": 4,
+   "views": 4,
+   "list": [
+    "ai237",
+    "ai237",
+    "P3",
+    "P4"
+   ],
+   "list_raw": [
+    "0x9008e",
+    "0x9008e",
+    "0x2007d",
+    "0xa04da"
+   ],
+   "players": {
+    "1": "0x641350",
+    "2": "0x640c80",
+    "3": "0x641a20",
+    "4": "0x6450a0"
+   },
+   "pos": {
+    "1": [
+     376.6,
+     8.5,
+     4.2
+    ],
+    "2": [
+     378.1,
+     8.9,
+     4.2
+    ],
+    "3": [
+     373.4,
+     9.2,
+     4.2
+    ],
+    "4": [
+     374.2,
+     8.8,
+     4.2
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xcab800",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P1",
+     "f_secw": 0.0
+    },
+    "1": {
+     "render": "0xcdb000",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P2",
+     "f_secw": 0.0
+    },
+    "2": {
+     "render": "0xce1800",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P3",
+     "f_secw": 0.0
+    },
+    "3": {
+     "render": "0xce3c00",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P4",
+     "f_secw": 0.0
+    }
+   },
+   "lc_names": [
+    "level55_lizziesattack.lua",
+    "level55.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@7200": {
+  "poll": 7204,
+  "checkpoint": 2,
+  "count": 4,
+  "views": 4,
+  "list": [
+   "ai237",
+   "ai237",
+   "P3",
+   "P4"
+  ],
+  "list_raw": [
+   "0x9008e",
+   "0x9008e",
+   "0x2007d",
+   "0xa04da"
+  ],
+  "players": {
+   "1": "0x641350",
+   "2": "0x640c80",
+   "3": "0x641a20",
+   "4": "0x6450a0"
+  },
+  "pos": {
+   "1": [
+    376.6,
+    8.5,
+    4.2
+   ],
+   "2": [
+    378.1,
+    9.1,
+    4.2
+   ],
+   "3": [
+    373.4,
+    9.2,
+    4.2
+   ],
+   "4": [
+    374.1,
+    9.3,
+    4.2
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xcab800",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P1",
+    "f_secw": 0.0
+   },
+   "1": {
+    "render": "0xcdb000",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P2",
+    "f_secw": 0.0
+   },
+   "2": {
+    "render": "0xce1800",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P3",
+    "f_secw": 0.0
+   },
+   "3": {
+    "render": "0xce3c00",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P4",
+    "f_secw": 0.0
+   }
+  },
+  "lc_names": [
+   "level55_lizziesattack.lua",
+   "level55.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.trk@7500": {
+  "poll": 7500,
+  "checkpoint": 2,
+  "count": 4,
+  "views": 4,
+  "list": [
+   "ai237",
+   "ai237",
+   "P3",
+   "P4"
+  ],
+  "list_raw": [
+   "0x9008e",
+   "0x9008e",
+   "0x2007d",
+   "0xa04da"
+  ],
+  "players": {
+   "1": "0x641350",
+   "2": "0x640c80",
+   "3": "0x641a20",
+   "4": "0x6450a0"
+  },
+  "pos": {
+   "1": [
+    376.6,
+    8.5,
+    4.2
+   ],
+   "2": [
+    378.0,
+    8.9,
+    4.2
+   ],
+   "3": [
+    372.2,
+    9.2,
+    4.2
+   ],
+   "4": [
+    372.9,
+    9.6,
+    4.2
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xcab800",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P1",
+    "f_secw": 0.0
+   },
+   "1": {
+    "render": "0xcdb000",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P2",
+    "f_secw": 0.0
+   },
+   "2": {
+    "render": "0xce1800",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P3",
+    "f_secw": 0.0
+   },
+   "3": {
+    "render": "0xce3c00",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P4",
+    "f_secw": 0.0
+   }
+  },
+  "lc_names": [
+   "level55_lizziesattack.lua",
+   "level55.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.near34@7700": {
+  "poll": 7703,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "local a, b = HuGetPlayer(2), HuGetPlayer(3) if a and HuIsAPlayer(a) then HuTeleportNearHuman(a, player) end if b and HuIsAPlayer(b) then HuTeleportNearHuman(b, player2) end W4P_R = 1",
+  "trk_after": {
+   "poll": 7703,
+   "checkpoint": 2,
+   "count": 4,
+   "views": 4,
+   "list": [
+    "ai237",
+    "ai237",
+    "P3",
+    "P4"
+   ],
+   "list_raw": [
+    "0x9008e",
+    "0x9008e",
+    "0x2007d",
+    "0xa04da"
+   ],
+   "players": {
+    "1": "0x641350",
+    "2": "0x640c80",
+    "3": "0x641a20",
+    "4": "0x6450a0"
+   },
+   "pos": {
+    "1": [
+     376.6,
+     8.5,
+     4.2
+    ],
+    "2": [
+     378.1,
+     8.6,
+     4.2
+    ],
+    "3": [
+     373.3,
+     9.8,
+     4.2
+    ],
+    "4": [
+     377.3,
+     8.6,
+     4.2
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xcab800",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P1",
+     "f_secw": 0.0
+    },
+    "1": {
+     "render": "0xcdb000",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P2",
+     "f_secw": 0.0
+    },
+    "2": {
+     "render": "0xce1800",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P3",
+     "f_secw": 0.0
+    },
+    "3": {
+     "render": "0xce3c00",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P4",
+     "f_secw": 0.0
+    }
+   },
+   "lc_names": [
+    "level55_lizziesattack.lua",
+    "level55.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@8000": {
+  "poll": 8000,
+  "checkpoint": 2,
+  "count": 4,
+  "views": 4,
+  "list": [
+   "ai237",
+   "ai237",
+   "P3",
+   "P4"
+  ],
+  "list_raw": [
+   "0x9008e",
+   "0x9008e",
+   "0x2007d",
+   "0xa04da"
+  ],
+  "players": {
+   "1": "0x641350",
+   "2": "0x640c80",
+   "3": "0x641a20",
+   "4": "0x6450a0"
+  },
+  "pos": {
+   "1": [
+    376.6,
+    8.5,
+    4.2
+   ],
+   "2": [
+    378.2,
+    9.0,
+    4.2
+   ],
+   "3": [
+    373.3,
+    9.8,
+    4.2
+   ],
+   "4": [
+    377.3,
+    8.6,
+    4.2
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xcab800",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P1",
+    "f_secw": 0.0
+   },
+   "1": {
+    "render": "0xcdb000",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P2",
+    "f_secw": 0.0
+   },
+   "2": {
+    "render": "0xce1800",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P3",
+    "f_secw": 0.0
+   },
+   "3": {
+    "render": "0xce3c00",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P4",
+    "f_secw": 0.0
+   }
+  },
+  "lc_names": [
+   "level55_lizziesattack.lua",
+   "level55.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.m17_sec34_on@8300": {
+  "poll": 8305,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "for i = 2, 3 do CamSetSecondary(Lizzie01[\"101\"], 0, i) end W4P_R = 1",
+  "trk_after": {
+   "poll": 8305,
+   "checkpoint": 2,
+   "count": 4,
+   "views": 4,
+   "list": [
+    "ai237",
+    "ai237",
+    "P3",
+    "P4"
+   ],
+   "list_raw": [
+    "0x9008e",
+    "0x9008e",
+    "0x2007d",
+    "0xa04da"
+   ],
+   "players": {
+    "1": "0x641350",
+    "2": "0x640c80",
+    "3": "0x641a20",
+    "4": "0x6450a0"
+   },
+   "pos": {
+    "1": [
+     376.6,
+     8.5,
+     4.2
+    ],
+    "2": [
+     378.0,
+     8.9,
+     4.2
+    ],
+    "3": [
+     373.9,
+     9.4,
+     4.2
+    ],
+    "4": [
+     377.3,
+     8.6,
+     4.2
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xcab800",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P1",
+     "f_secw": 0.0
+    },
+    "1": {
+     "render": "0xcdb000",
+     "render_is": "follow",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P2",
+     "f_secw": 0.0
+    },
+    "2": {
+     "render": "0xce1800",
+     "render_is": "follow",
+     "f_tgt": "P3",
+     "f_tgt2": null,
+     "f_last": "P3",
+     "f_cnt": 1,
+     "f_sec": "ai237",
+     "f_secw": 0.0
+    },
+    "3": {
+     "render": "0xce3c00",
+     "render_is": "follow",
+     "f_tgt": "P4",
+     "f_tgt2": null,
+     "f_last": "P4",
+     "f_cnt": 1,
+     "f_sec": "ai237",
+     "f_secw": 0.0
+    }
+   },
+   "lc_names": [
+    "level55_lizziesattack.lua",
+    "level55.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@8600": {
+  "poll": 8600,
+  "checkpoint": 2,
+  "count": 4,
+  "views": 4,
+  "list": [
+   "ai237",
+   "ai237",
+   "P3",
+   "P4"
+  ],
+  "list_raw": [
+   "0x9008e",
+   "0x9008e",
+   "0x2007d",
+   "0xa04da"
+  ],
+  "players": {
+   "1": "0x641350",
+   "2": "0x640c80",
+   "3": "0x641a20",
+   "4": "0x6450a0"
+  },
+  "pos": {
+   "1": [
+    376.6,
+    8.5,
+    4.2
+   ],
+   "2": [
+    378.0,
+    8.9,
+    4.2
+   ],
+   "3": [
+    373.9,
+    9.4,
+    4.2
+   ],
+   "4": [
+    377.2,
+    8.5,
+    4.2
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xcab800",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P1",
+    "f_secw": 0.0
+   },
+   "1": {
+    "render": "0xcdb000",
+    "render_is": "follow",
+    "f_tgt": "ai237",
+    "f_tgt2": null,
+    "f_last": "ai237",
+    "f_cnt": 1,
+    "f_sec": "P2",
+    "f_secw": 0.0
+   },
+   "2": {
+    "render": "0xce1800",
+    "render_is": "follow",
+    "f_tgt": "P3",
+    "f_tgt2": null,
+    "f_last": "P3",
+    "f_cnt": 1,
+    "f_sec": "ai237",
+    "f_secw": 0.0
+   },
+   "3": {
+    "render": "0xce3c00",
+    "render_is": "follow",
+    "f_tgt": "P4",
+    "f_tgt2": null,
+    "f_last": "P4",
+    "f_cnt": 1,
+    "f_sec": "ai237",
+    "f_secw": 0.0
+   }
+  },
+  "lc_names": [
+   "level55_lizziesattack.lua",
+   "level55.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "lc_runs": 7
+ },
+ "cam_camC_probe.m17_sec34_own@8900": {
+  "poll": 8906,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "for i = 2, 3 do local h = HuGetPlayer(i) if h and HuIsAPlayer(h) then CamSetSecondary(h, 0, i) end end W4P_R = 1",
+  "trk_after": {
+   "poll": 8906,
+   "checkpoint": 2,
+   "count": 4,
+   "views": 1,
+   "list": [
+    "ai237",
+    "P1",
+    "P3",
+    "P4"
+   ],
+   "list_raw": [
+    "0x9008e",
+    "0x10078",
+    "0x2007d",
+    "0xa04da"
+   ],
+   "players": {
+    "1": "0x641350",
+    "2": "0x640c80",
+    "3": "0x641a20",
+    "4": "0x6450a0"
+   },
+   "pos": {
+    "1": [
+     377.2,
+     -6.4,
+     4.2
+    ],
+    "2": [
+     378.2,
+     -1.5,
+     4.2
+    ],
+    "3": [
+     376.9,
+     -1.9,
+     4.2
+    ],
+    "4": [
+     376.8,
+     6.4,
+     4.2
+    ]
+   },
+   "cams": {
+    "0": {
+     "render": "0xce5400",
+     "render_is": "other",
+     "f_tgt": "ai237",
+     "f_tgt2": "P1",
+     "f_last": "ai237",
+     "f_cnt": 2,
+     "f_sec": "P1",
+     "f_secw": 0.0
+    },
+    "1": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "ai237",
+     "f_tgt2": null,
+     "f_last": "ai237",
+     "f_cnt": 1,
+     "f_sec": "P2",
+     "f_secw": 0.0
+    },
+    "2": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P3",
+     "f_tgt2": null,
+     "f_last": "P3",
+     "f_cnt": 1,
+     "f_sec": "P3",
+     "f_secw": 0.0
+    },
+    "3": {
+     "render": "0x0",
+     "render_is": "none",
+     "f_tgt": "P4",
+     "f_tgt2": null,
+     "f_last": "P4",
+     "f_cnt": 1,
+     "f_sec": "P4",
+     "f_secw": 0.0
+    }
+   },
+   "lc_names": [
+    "level55_lizziesattack.lua",
+    "level55.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua",
+    "config_normal.lua"
+   ],
+   "lc_runs": 7
+  }
+ },
+ "cam_camC_probe.trk@9200": {
+  "poll": 9207,
+  "checkpoint": 3,
+  "count": 2,
+  "views": 2,
+  "list": [
+   "P1",
+   "P2",
+   null,
+   null
+  ],
+  "list_raw": [
+   "0xc11f5",
+   "0x911eb",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "players": {
+   "1": "0x645e40",
+   "2": "0x6449d0",
+   "3": "0x0",
+   "4": "0x0"
+  },
+  "pos": {
+   "1": [
+    340.7,
+    24.7,
+    -195.8
+   ],
+   "2": [
+    363.1,
+    30.7,
+    -99.8
+   ]
+  },
+  "cams": {
+   "0": {
+    "render": "0xce5400",
+    "render_is": "other",
+    "f_tgt": "P1",
+    "f_tgt2": null,
+    "f_last": "P1",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0
+   },
+   "1": {
+    "render": "0xcdb000",
+    "render_is": "follow",
+    "f_tgt": "P2",
+    "f_tgt2": null,
+    "f_last": "P2",
+    "f_cnt": 1,
+    "f_sec": null,
+    "f_secw": 0.0
+   },
+   "2": {
+    "render": "0x0",
+    "render_is": "none"
+   },
+   "3": {
+    "render": "0x0",
+    "render_is": "none"
+   }
+  },
+  "lc_names": [
+   "level55_punkfight.lua",
+   "level55_lizziesattack.lua",
+   "level55.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua"
+  ],
+  "lc_runs": 7
+ }
+}

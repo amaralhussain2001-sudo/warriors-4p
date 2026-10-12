@@ -1,0 +1,1212 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "cam_camD_probe.m5_mark@4800": {
+  "poll": 4812,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 111
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d5m) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d5 and c1Intro and W4P_O.d5.kl ~= c1Intro.Kill) and 1 or 0)"
+ },
+ "cam_camD_probe.join34@5200": {
+  "poll": 5203,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 5204
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 5206
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camD_probe.join34@5500": {
+  "poll": 5500,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camD_probe.join34@5800": {
+  "poll": 5803,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "cam_camD_probe.m5_mark@5900": {
+  "poll": 5908,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 111
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d5m) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.d5 and c1Intro and W4P_O.d5.kl ~= c1Intro.Kill) and 1 or 0)"
+ },
+ "cam_camD_probe.m5_boxinfo@6000": {
+  "poll": 6007,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 24,
+   "W4P_R2": 24
+  },
+  "src": "local t = {vbIntroCam[1], vbIntroCam[2], vbLeadRail[1], vbLeadRail[2], vbSideRail} W4P_R = 0 W4P_R2 = 0 for k = 1, 5 do W4P_R = W4P_R * 2 + (IsInsideBox(t[k], player) and 1 or 0) W4P_R2 = W4P_R2 * 2 + (IsInsideBox(t[k], HuGetPlayer(2)) and 1 or 0) end",
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x30122",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     457.426,
+     202.818,
+     12.935
+    ]
+   },
+   "2": {
+    "handle": "0x113",
+    "obj": "0x640c80",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     457.31,
+     203.652,
+     12.936
+    ]
+   },
+   "3": {
+    "handle": "0x5012c",
+    "obj": "0x642e90",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     456.534,
+     203.623,
+     12.937
+    ]
+   },
+   "4": {
+    "handle": "0x10118",
+    "obj": "0x641350",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     456.02,
+     202.609,
+     12.937
+    ]
+   }
+  }
+ },
+ "cam_camD_probe.m5_state@6100": {
+  "poll": 6112,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 101,
+   "W4P_R2": 110,
+   "W4P_R3": 0,
+   "W4P_R4": 1
+  },
+  "src": "local s = W4P_D5S[2] W4P_R = 0 W4P_R2 = 0 W4P_R3 = 0 if s then W4P_R = (s.ic or 0) * 100 + (s.tr or 0) * 10 + (s.cb or 0) W4P_R2 = (s.on or 0) * 100 + (s.lk and 10 or 0) + (s.r and 1 or 0) end local c = CameraGetActive(2) if s and s.lk and c == s.lk then W4P_R3 = 1 elseif s and s.r and c == s.r then W4P_R3 = 2 elseif c1Intro and c == c1Intro.StartLock then W4P_R3 = 3 end W4P_R4 = 0 if c1Intro and CameraGetActive(0) == c1Intro.StartLock then W4P_R4 = 1 end ",
+  "snap": {
+   "poll": 6112,
+   "gm": {
+    "gm": "0x1fd8400",
+    "players": 4,
+    "checkpoint": 1,
+    "level_idx": 5,
+    "gm_14c": 0,
+    "powerup_full_hp_ok_56e5": 1,
+    "bank": 0,
+    "level_name_124": "level2"
+   },
+   "cams": {
+    "poll": 6112,
+    "views": 4,
+    "checkpoint": 1,
+    "0": {
+     "active": "0xc4dc00",
+     "render": "0xc4dc00",
+     "follow": "0xcdf800",
+     "rail": 0,
+     "blend": 0,
+     "lock_list_players": [
+      0,
+      0
+     ],
+     "kind": "locked",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "1": {
+     "active": "0xd2a800",
+     "render": "0xd2a800",
+     "follow": "0xd2a800",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "2": {
+     "active": "0xd29c00",
+     "render": "0xd29c00",
+     "follow": "0xd28000",
+     "rail": 0,
+     "blend": "0xd29c00",
+     "kind": "blend",
+     "blend_to": "0xd29800",
+     "blend_to_kind": "locked",
+     "blend_progress": 1.0,
+     "lock_list_players": [
+      0,
+      0
+     ],
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "3": {
+     "active": "0xd2a400",
+     "render": "0xd2a400",
+     "follow": "0xd28c00",
+     "rail": 0,
+     "blend": "0xd2a400",
+     "kind": "blend",
+     "blend_to": "0xd2a000",
+     "blend_to_kind": "locked",
+     "blend_progress": 1.0,
+     "lock_list_players": [
+      0,
+      0
+     ],
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    }
+   },
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x30122",
+     "obj": "0x6420f0",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      457.426,
+      202.818,
+      12.935
+     ]
+    },
+    "2": {
+     "handle": "0x113",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      457.31,
+      203.652,
+      12.936
+     ]
+    },
+    "3": {
+     "handle": "0x5012c",
+     "obj": "0x642e90",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      456.534,
+      203.623,
+      12.937
+     ]
+    },
+    "4": {
+     "handle": "0x10118",
+     "obj": "0x641350",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      456.02,
+      202.609,
+      12.937
+     ]
+    }
+   },
+   "lc_names_newest_first": [
+    "tag7.lua",
+    "level2_clinic.lua",
+    "level2.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua"
+   ],
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  }
+ },
+ "cam_camD_probe.m5_in_lead@6300": {
+  "poll": 6304,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 101
+  },
+  "src": "W4P_D5OB = W4P_D5OB or IsInsideBox W4P_D5IB = function(b, h) if b == vbLeadRail[1] and h == HuGetPlayer(2) then return 1 end return W4P_D5OB(b, h) end W4P_R = 100 + (W4P_D5ON or 0)",
+  "before": {
+   "poll": 6304,
+   "views": 4,
+   "checkpoint": 1,
+   "0": {
+    "active": "0xc4dc00",
+    "render": "0xc4dc00",
+    "follow": "0xcdf800",
+    "rail": 0,
+    "blend": 0,
+    "lock_list_players": [
+     0,
+     0
+    ],
+    "kind": "locked",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xd2a800",
+    "render": "0xd2a800",
+    "follow": "0xd2a800",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xd29c00",
+    "render": "0xd29c00",
+    "follow": "0xd28000",
+    "rail": 0,
+    "blend": "0xd29c00",
+    "kind": "blend",
+    "blend_to": "0xd29800",
+    "blend_to_kind": "locked",
+    "blend_progress": 1.0,
+    "lock_list_players": [
+     0,
+     0
+    ],
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "3": {
+    "active": "0xd2a400",
+    "render": "0xd2a400",
+    "follow": "0xd28c00",
+    "rail": 0,
+    "blend": "0xd2a400",
+    "kind": "blend",
+    "blend_to": "0xd2a000",
+    "blend_to_kind": "locked",
+    "blend_progress": 1.0,
+    "lock_list_players": [
+     0,
+     0
+    ],
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   }
+  }
+ },
+ "cam_camD_probe.m5_state@6600": {
+  "poll": 6607,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 12,
+   "W4P_R2": 111,
+   "W4P_R3": 0,
+   "W4P_R4": 1
+  },
+  "src": "local s = W4P_D5S[2] W4P_R = 0 W4P_R2 = 0 W4P_R3 = 0 if s then W4P_R = (s.ic or 0) * 100 + (s.tr or 0) * 10 + (s.cb or 0) W4P_R2 = (s.on or 0) * 100 + (s.lk and 10 or 0) + (s.r and 1 or 0) end local c = CameraGetActive(2) if s and s.lk and c == s.lk then W4P_R3 = 1 elseif s and s.r and c == s.r then W4P_R3 = 2 elseif c1Intro and c == c1Intro.StartLock then W4P_R3 = 3 end W4P_R4 = 0 if c1Intro and CameraGetActive(0) == c1Intro.StartLock then W4P_R4 = 1 end ",
+  "snap": {
+   "poll": 6607,
+   "gm": {
+    "gm": "0x1fd8400",
+    "players": 4,
+    "checkpoint": 1,
+    "level_idx": 5,
+    "gm_14c": 0,
+    "powerup_full_hp_ok_56e5": 1,
+    "bank": 0,
+    "level_name_124": "level2"
+   },
+   "cams": {
+    "poll": 6607,
+    "views": 4,
+    "checkpoint": 1,
+    "0": {
+     "active": "0xc4dc00",
+     "render": "0xc4dc00",
+     "follow": "0xcdf800",
+     "rail": 0,
+     "blend": 0,
+     "lock_list_players": [
+      0,
+      0
+     ],
+     "kind": "locked",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "1": {
+     "active": "0xd2a800",
+     "render": "0xd2a800",
+     "follow": "0xd2a800",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "2": {
+     "active": "0xd29c00",
+     "render": "0xd29c00",
+     "follow": "0xd28000",
+     "rail": "0xc9e400",
+     "blend": "0xd29c00",
+     "kind": "blend",
+     "blend_to": "0xc9e400",
+     "blend_to_kind": "rail",
+     "blend_progress": 1.0,
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0,
+     "rail_target_340": 3
+    },
+    "3": {
+     "active": "0xd2a400",
+     "render": "0xd2a400",
+     "follow": "0xd28c00",
+     "rail": 0,
+     "blend": "0xd2a400",
+     "kind": "blend",
+     "blend_to": "0xd2a000",
+     "blend_to_kind": "locked",
+     "blend_progress": 1.0,
+     "lock_list_players": [
+      0,
+      0
+     ],
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    }
+   },
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x30122",
+     "obj": "0x6420f0",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      457.426,
+      202.818,
+      12.935
+     ]
+    },
+    "2": {
+     "handle": "0x113",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      457.31,
+      203.652,
+      12.936
+     ]
+    },
+    "3": {
+     "handle": "0x5012c",
+     "obj": "0x642e90",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      456.534,
+      203.623,
+      12.937
+     ]
+    },
+    "4": {
+     "handle": "0x10118",
+     "obj": "0x641350",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      456.02,
+      202.609,
+      12.937
+     ]
+    }
+   },
+   "lc_names_newest_first": [
+    "tag7.lua",
+    "level2_clinic.lua",
+    "level2.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua"
+   ],
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  }
+ },
+ "cam_camD_probe.m5_in_side@6700": {
+  "poll": 6705,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 101
+  },
+  "src": "W4P_D5OB = W4P_D5OB or IsInsideBox W4P_D5IB = function(b, h) if b == vbSideRail and h == HuGetPlayer(2) then return 1 end return W4P_D5OB(b, h) end W4P_R = 100 + (W4P_D5ON or 0)",
+  "before": {
+   "poll": 6705,
+   "views": 4,
+   "checkpoint": 1,
+   "0": {
+    "active": "0xc4dc00",
+    "render": "0xc4dc00",
+    "follow": "0xcdf800",
+    "rail": 0,
+    "blend": 0,
+    "lock_list_players": [
+     0,
+     0
+    ],
+    "kind": "locked",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xd2a800",
+    "render": "0xd2a800",
+    "follow": "0xd2a800",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xd29c00",
+    "render": "0xd29c00",
+    "follow": "0xd28000",
+    "rail": "0xc9e400",
+    "blend": "0xd29c00",
+    "kind": "blend",
+    "blend_to": "0xc9e400",
+    "blend_to_kind": "rail",
+    "blend_progress": 1.0,
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0,
+    "rail_target_340": 3
+   },
+   "3": {
+    "active": "0xd2a400",
+    "render": "0xd2a400",
+    "follow": "0xd28c00",
+    "rail": 0,
+    "blend": "0xd2a400",
+    "kind": "blend",
+    "blend_to": "0xd2a000",
+    "blend_to_kind": "locked",
+    "blend_progress": 1.0,
+    "lock_list_players": [
+     0,
+     0
+    ],
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   }
+  }
+ },
+ "cam_camD_probe.m5_state@7000": {
+  "poll": 7013,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 3,
+   "W4P_R2": 111,
+   "W4P_R3": 0,
+   "W4P_R4": 1
+  },
+  "src": "local s = W4P_D5S[2] W4P_R = 0 W4P_R2 = 0 W4P_R3 = 0 if s then W4P_R = (s.ic or 0) * 100 + (s.tr or 0) * 10 + (s.cb or 0) W4P_R2 = (s.on or 0) * 100 + (s.lk and 10 or 0) + (s.r and 1 or 0) end local c = CameraGetActive(2) if s and s.lk and c == s.lk then W4P_R3 = 1 elseif s and s.r and c == s.r then W4P_R3 = 2 elseif c1Intro and c == c1Intro.StartLock then W4P_R3 = 3 end W4P_R4 = 0 if c1Intro and CameraGetActive(0) == c1Intro.StartLock then W4P_R4 = 1 end ",
+  "snap": {
+   "poll": 7013,
+   "gm": {
+    "gm": "0x1fd8400",
+    "players": 4,
+    "checkpoint": 1,
+    "level_idx": 5,
+    "gm_14c": 0,
+    "powerup_full_hp_ok_56e5": 1,
+    "bank": 0,
+    "level_name_124": "level2"
+   },
+   "cams": {
+    "poll": 7013,
+    "views": 4,
+    "checkpoint": 1,
+    "0": {
+     "active": "0xc4dc00",
+     "render": "0xc4dc00",
+     "follow": "0xcdf800",
+     "rail": 0,
+     "blend": 0,
+     "lock_list_players": [
+      0,
+      0
+     ],
+     "kind": "locked",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "1": {
+     "active": "0xd2a800",
+     "render": "0xd2a800",
+     "follow": "0xd2a800",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "2": {
+     "active": "0xd29c00",
+     "render": "0xd29c00",
+     "follow": "0xd28000",
+     "rail": "0xc9e400",
+     "blend": "0xd29c00",
+     "kind": "blend",
+     "blend_to": "0xc9e400",
+     "blend_to_kind": "rail",
+     "blend_progress": 1.0,
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0,
+     "rail_target_340": 3
+    },
+    "3": {
+     "active": "0xd2a400",
+     "render": "0xd2a400",
+     "follow": "0xd28c00",
+     "rail": 0,
+     "blend": "0xd2a400",
+     "kind": "blend",
+     "blend_to": "0xd2a000",
+     "blend_to_kind": "locked",
+     "blend_progress": 1.0,
+     "lock_list_players": [
+      0,
+      0
+     ],
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    }
+   },
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x30122",
+     "obj": "0x6420f0",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      457.426,
+      202.818,
+      12.935
+     ]
+    },
+    "2": {
+     "handle": "0x113",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      457.31,
+      203.652,
+      12.936
+     ]
+    },
+    "3": {
+     "handle": "0x5012c",
+     "obj": "0x642e90",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      456.534,
+      203.623,
+      12.937
+     ]
+    },
+    "4": {
+     "handle": "0x10118",
+     "obj": "0x641350",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      456.02,
+      202.609,
+      12.937
+     ]
+    }
+   },
+   "lc_names_newest_first": [
+    "tag7.lua",
+    "level2_clinic.lua",
+    "level2.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua"
+   ],
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  }
+ },
+ "cam_camD_probe.m5_unstub@7100": {
+  "poll": 7103,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "if W4P_D5OB then W4P_D5IB = W4P_D5OB end W4P_R = 100"
+ },
+ "cam_camD_probe.m5_kill@7300": {
+  "poll": 7308,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100,
+   "W4P_R2": 1
+  },
+  "src": "W4P_PC(c1Intro.Kill) W4P_R = 100 + (c1Intro and 1 or 0) W4P_R2 = 0 if W4P_D5S[2] then W4P_R2 = (W4P_D5S[2].on or 0) * 10 + (W4P_D5S[2].lk and 1 or 0) end",
+  "snap": {
+   "poll": 7308,
+   "gm": {
+    "gm": "0x1fd8400",
+    "players": 4,
+    "checkpoint": 1,
+    "level_idx": 5,
+    "gm_14c": 0,
+    "powerup_full_hp_ok_56e5": 1,
+    "bank": 0,
+    "level_name_124": "level2"
+   },
+   "cams": {
+    "poll": 7308,
+    "views": 4,
+    "checkpoint": 1,
+    "0": {
+     "active": "0xc4dc00",
+     "render": "0xc4dc00",
+     "follow": "0xcdf800",
+     "rail": 0,
+     "blend": 0,
+     "lock_list_players": [
+      0,
+      0
+     ],
+     "kind": "locked",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "1": {
+     "active": "0xd2a800",
+     "render": "0xd2a800",
+     "follow": "0xd2a800",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "2": {
+     "active": "0xd29c00",
+     "render": "0xd29c00",
+     "follow": "0xd28000",
+     "rail": "0xc9e400",
+     "blend": "0xd29c00",
+     "kind": "blend",
+     "blend_to": "0xd28000",
+     "blend_to_kind": "follow",
+     "blend_progress": 0.4,
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0,
+     "rail_target_340": 3
+    },
+    "3": {
+     "active": "0xd2a400",
+     "render": "0xd2a400",
+     "follow": "0xd28c00",
+     "rail": 0,
+     "blend": "0xd2a400",
+     "kind": "blend",
+     "blend_to": "0xd28c00",
+     "blend_to_kind": "follow",
+     "blend_progress": 0.4,
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    }
+   },
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x30122",
+     "obj": "0x6420f0",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      457.426,
+      202.818,
+      12.935
+     ]
+    },
+    "2": {
+     "handle": "0x113",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      457.31,
+      203.652,
+      12.936
+     ]
+    },
+    "3": {
+     "handle": "0x5012c",
+     "obj": "0x642e90",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      456.534,
+      203.623,
+      12.937
+     ]
+    },
+    "4": {
+     "handle": "0x10118",
+     "obj": "0x641350",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      456.02,
+      202.609,
+      12.937
+     ]
+    }
+   },
+   "lc_names_newest_first": [
+    "tag7.lua",
+    "level2_clinic.lua",
+    "level2.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua"
+   ],
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  }
+ },
+ "cam_camD_probe.m5_state@7500": {
+  "poll": 7516,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 3,
+   "W4P_R2": 11,
+   "W4P_R3": 0,
+   "W4P_R4": 0
+  },
+  "src": "local s = W4P_D5S[2] W4P_R = 0 W4P_R2 = 0 W4P_R3 = 0 if s then W4P_R = (s.ic or 0) * 100 + (s.tr or 0) * 10 + (s.cb or 0) W4P_R2 = (s.on or 0) * 100 + (s.lk and 10 or 0) + (s.r and 1 or 0) end local c = CameraGetActive(2) if s and s.lk and c == s.lk then W4P_R3 = 1 elseif s and s.r and c == s.r then W4P_R3 = 2 elseif c1Intro and c == c1Intro.StartLock then W4P_R3 = 3 end W4P_R4 = 0 if c1Intro and CameraGetActive(0) == c1Intro.StartLock then W4P_R4 = 1 end ",
+  "snap": {
+   "poll": 7516,
+   "gm": {
+    "gm": "0x1fd8400",
+    "players": 4,
+    "checkpoint": 1,
+    "level_idx": 5,
+    "gm_14c": 0,
+    "powerup_full_hp_ok_56e5": 1,
+    "bank": 0,
+    "level_name_124": "level2"
+   },
+   "cams": {
+    "poll": 7516,
+    "views": 4,
+    "checkpoint": 1,
+    "0": {
+     "active": "0xc4dc00",
+     "render": "0xc4dc00",
+     "follow": "0xcdf800",
+     "rail": 0,
+     "blend": 0,
+     "lock_list_players": [
+      0,
+      0
+     ],
+     "kind": "locked",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "1": {
+     "active": "0xd2a800",
+     "render": "0xd2a800",
+     "follow": "0xd2a800",
+     "rail": 0,
+     "blend": 0,
+     "kind": "follow",
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    },
+    "2": {
+     "active": "0xd29c00",
+     "render": "0xd29c00",
+     "follow": "0xd28000",
+     "rail": "0xc9e400",
+     "blend": "0xd29c00",
+     "kind": "blend",
+     "blend_to": "0xd28000",
+     "blend_to_kind": "follow",
+     "blend_progress": 1.0,
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0,
+     "rail_target_340": 3
+    },
+    "3": {
+     "active": "0xd2a400",
+     "render": "0xd2a400",
+     "follow": "0xd28c00",
+     "rail": 0,
+     "blend": "0xd2a400",
+     "kind": "blend",
+     "blend_to": "0xd28c00",
+     "blend_to_kind": "follow",
+     "blend_progress": 1.0,
+     "follow_secondary_320": "0xffffffff",
+     "follow_secondary_on_3fc": 0
+    }
+   },
+   "players": {
+    "count": 4,
+    "1": {
+     "handle": "0x30122",
+     "obj": "0x6420f0",
+     "hud_slot": 0,
+     "pidx": 0,
+     "pos": [
+      457.426,
+      202.818,
+      12.935
+     ]
+    },
+    "2": {
+     "handle": "0x113",
+     "obj": "0x640c80",
+     "hud_slot": 1,
+     "pidx": 1,
+     "pos": [
+      457.31,
+      203.652,
+      12.936
+     ]
+    },
+    "3": {
+     "handle": "0x5012c",
+     "obj": "0x642e90",
+     "hud_slot": 2,
+     "pidx": 2,
+     "pos": [
+      456.534,
+      203.623,
+      12.937
+     ]
+    },
+    "4": {
+     "handle": "0x10118",
+     "obj": "0x641350",
+     "hud_slot": 3,
+     "pidx": 3,
+     "pos": [
+      456.02,
+      202.609,
+      12.937
+     ]
+    }
+   },
+   "lc_names_newest_first": [
+    "tag7.lua",
+    "level2_clinic.lua",
+    "level2.lua",
+    "global.lua",
+    "config_normal.lua",
+    "level99_combat.lua",
+    "level99.lua",
+    "global.lua"
+   ],
+   "pads": {
+    "0": 0,
+    "1": 2,
+    "2": 3,
+    "4": 1
+   }
+  }
+ },
+ "cam_camD_probe.snap@7800": {
+  "poll": 7805,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 1,
+   "level_idx": 5,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level2"
+  },
+  "cams": {
+   "poll": 7805,
+   "views": 4,
+   "checkpoint": 1,
+   "0": {
+    "active": "0xc4dc00",
+    "render": "0xc4dc00",
+    "follow": "0xcdf800",
+    "rail": 0,
+    "blend": 0,
+    "lock_list_players": [
+     0,
+     0
+    ],
+    "kind": "locked",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "1": {
+    "active": "0xd2a800",
+    "render": "0xd2a800",
+    "follow": "0xd2a800",
+    "rail": 0,
+    "blend": 0,
+    "kind": "follow",
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   },
+   "2": {
+    "active": "0xd29c00",
+    "render": "0xd29c00",
+    "follow": "0xd28000",
+    "rail": "0xc9e400",
+    "blend": "0xd29c00",
+    "kind": "blend",
+    "blend_to": "0xd28000",
+    "blend_to_kind": "follow",
+    "blend_progress": 1.0,
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0,
+    "rail_target_340": 3
+   },
+   "3": {
+    "active": "0xd2a400",
+    "render": "0xd2a400",
+    "follow": "0xd28c00",
+    "rail": 0,
+    "blend": "0xd2a400",
+    "kind": "blend",
+    "blend_to": "0xd28c00",
+    "blend_to_kind": "follow",
+    "blend_progress": 1.0,
+    "follow_secondary_320": "0xffffffff",
+    "follow_secondary_on_3fc": 0
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x30122",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     457.426,
+     202.818,
+     12.935
+    ]
+   },
+   "2": {
+    "handle": "0x113",
+    "obj": "0x640c80",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     457.31,
+     203.652,
+     12.936
+    ]
+   },
+   "3": {
+    "handle": "0x5012c",
+    "obj": "0x642e90",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     456.534,
+     203.623,
+     12.937
+    ]
+   },
+   "4": {
+    "handle": "0x10118",
+    "obj": "0x641350",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     456.02,
+     202.609,
+     12.937
+    ]
+   }
+  },
+  "lc_names_newest_first": [
+   "tag7.lua",
+   "level2_clinic.lua",
+   "level2.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua"
+  ],
+  "pads": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ }
+}
