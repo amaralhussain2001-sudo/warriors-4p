@@ -26,7 +26,7 @@ MISSIONS = {1: (99, "New Blood"), 2: (80, "Real Live Bunch"), 3: (87, "Payback")
             13: (9, "All-City"), 14: (51, "Desperate Dudes"), 15: (52, None), 16: (54, None), 17: (55, None),
             18: (84, None)}
 GROUPS = ("warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;"
-          "warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p session;warriors-4p missions;warriors-4p session call")
+          "warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p 4p markers;warriors-4p session;warriors-4p missions;warriors-4p session call")
 
 
 def opt(name, default, cast=str):

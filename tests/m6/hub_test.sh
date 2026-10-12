@@ -9,4 +9,4 @@ python -I tests/m2/m2_run4.py "${1:-hub_cp2}" --seconds "${2:-600}" --polls 4000
   --shot-slots 0,1,2,3 --shot-every 20 --sample-every 15 --crop \
   --calls "3999:0041ABC0:2,4009:00160D78:0x01FDA7DC,12000:0041ABC0:1,12010:00160D78:0x01FD9B7C" \
   --ini EmuCore/Speedhacks/vuThread=false --w4p "SessionPolicies = true" \
-  --groups "warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p session;warriors-4p missions;warriors-4p session call"
+  --groups "warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p 4p markers;warriors-4p session;warriors-4p missions;warriors-4p session call"

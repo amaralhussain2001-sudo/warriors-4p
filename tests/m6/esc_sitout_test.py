@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.join(PROJ, "tools"))
 import sandbox  # noqa: E402
 
 GROUPS = ("warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;"
-          "warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p session;warriors-4p missions;warriors-4p session call")
+          "warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p 4p markers;warriors-4p session;warriors-4p missions;warriors-4p session call")
 
 
 def opt(name, default, cast=str):

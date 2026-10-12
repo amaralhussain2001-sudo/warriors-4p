@@ -22,7 +22,7 @@ $PadForSlot = @(0, 4, 1, 2)                          # emulated pad of players 1
 # Patch groups of every session (2-4 players). 60 fps and widescreen are added when the host chooses them.
 $BaseGroups = @("warriors-4p M1", "warriors-4p own view", "warriors-4p hud", "warriors-4p 4p", "warriors-4p 4p hud B1",
     "warriors-4p 4p hud B2", "warriors-4p 4p spawn", "warriors-4p 4p spawn leave", "warriors-4p 4p inventory",
-    "warriors-4p 4p fx", "warriors-4p session", "warriors-4p missions", "warriors-4p session call")
+    "warriors-4p 4p fx", "warriors-4p 4p markers", "warriors-4p session", "warriors-4p missions", "warriors-4p session call")
 $script:clock = [System.Diagnostics.Stopwatch]::StartNew()
 
 # ---------------------------------------------------------------- developer self-test answers (players: none)
