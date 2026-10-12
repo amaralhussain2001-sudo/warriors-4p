@@ -1,4 +1,4 @@
-# Project state (handoff, updated 2026-10-12 ~16:30, written before a chat reset)
+# Project state (handoff, updated 2026-10-12 ~17:00)
 
 **Stage:** 2 (approved 2026-10-10; decisions D1-D21 in `docs/DECISIONS.md`).
 **Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5** (session policies + transport):
@@ -10,7 +10,46 @@ auto re-join every 60 polls). Protocol version 3.
 Package: `dist/warriors-4p-coop.zip` id **b94e4b5caed8** (w4p-m6-2, pnach 5666 incl. RARC) passed its self-test
 (F-0207) but is NOT yet given to the user: it will be rebuilt with w4p-m6-3.
 
-## READ FIRST: handoff for the next chat (2026-10-12 ~16:30)
+## READ FIRST: handoff (2026-10-12 ~17:00, second chat of the day)
+The user cleared the chat at ~16:25 and said again "do not stop until everything is finished". Background agents of the
+first chat SURVIVE a /clear (same claude.exe process): check `ListAgents` and the newest transcripts under
+`~/.claude/projects/<project>/<session>/subagents/` before assuming work stopped, and coordinate with SendMessage.
+
+### Running at ~17:00 (check each before continuing)
+- **D24 DONE** (commit a6a4673, F-0211..F-0217, docs/research/m6_chase4p.md): M18 car escape as Cochise/Vermin with
+  tapping, fail/retry with 4, TAPOFF fix, one tap icon, RAILTGT + beach rails for views 3-4, M8 cart chase as Snow/Ajax
+  tap-running. Final pnach 7414 addresses, 6 known problems. LUACH table now at 0x000EEE00 (64 rows, 13-63 free).
+  Left for camera parity: M8 cp3 cart-chase cameras for players 3-4 (RunCam1 rail + RunCam2-7 on type-2 boxes).
+  Note F-0217: with SessionPolicies one player cannot skip the M1 intro movie, so a level jump to cp > 1 during it
+  loads cp 1 (chase4p_run.py votes at 3650-3750; mission_smoke with cp > 1 would need the same).
+- **Camera parity agents camA..camD** (started ~16:55; brief `local/m6/cam/BRIEF.md`): camA M16 cp1/cp3 (instances
+  19-20, RAM 0x000E9800-0x000EA3FF), camB M6 cp4 + M9 cp4 (21-22, 0x000EA400-0x000EAFFF), camC tracked-list F3 for M17
+  cp2, M8 cp5, M1 + secondary targets (23-24, 0x000EB000-0x000EB9FF), camD M3 cp5, M11, M10, M5, M13, HUD prompts on
+  HUD 2/3 (25-26, 0x000EBA00-0x000EBFFF + 0x000E5D10-0x000E6FFF). Each writes row files in local/m6/cam/<agent>/rows,
+  tests with a private pnach from `tools/lua_rows.py build` (new tool: inserts LUACH rows on a copy of mod/), and writes
+  docs/research/m6_cam_<agent>.md with placeholder findings F-CAM-<agent>-n. The coordinator integrates all rows into
+  mod/ with `tools/lua_rows.py build --apply` AFTER the D24 commit, assigns F-numbers, commits.
+- **HUD agent hudE** (started ~16:57): player 3's Select ring (F-0194), timer arcs on radars 3-4 (F-0203), Select
+  status panel 3-4, radar zoom 3-4, per-character decal views 3-4; works on a copy local/m6/hudE/mod (instances 32-33),
+  doc docs/research/m6_hud_parity.md, placeholder findings F-HUD-n; coordinator merges its diff.
+- **Coordinator runs:** hubreal_m4 (instances 27-30: Mission 4 ended with the game's own UnlockAndLoad() -> hideout,
+  test-only group "warriors-4p test lua" in local/m6/hubreal/test.pnach), ring_p3a (instance 31, tests/m6/ring_probe.py),
+  next T1g outage test `sh tests/m7/t1g_run.sh t1g 27` (new helper test switch "mute SECONDS [SLOT]", w4p-net rebuilt
+  16:52; local4.py --mute). GPU (RTX 5090) is at 99% with ~15 emulators: runs reach ~10-16 polls/s, allow more time.
+- **Done by the coordinator (17:00-18:00):** long1 65 min 0 mismatches (F-0220), T1g outages through the helper with the
+  new `mute` switch (F-0219), real mission end -> hideout (F-0218), bandwidth (F-0221), player 3 ring cause (F-0222, fix
+  by hudE), M7 report draft docs/reports/M7_report.md (criterion 4 waits for the final smoke).
+- 4-instance runs beside long1: `tests/m2/m2_run4.py --inst-base N` (new option, also `--patch`; chase4p_run.py passes
+  both). Instances 15-18 = D24 agent, 27-30 = coordinator (e.g. hubreal_m4: real mission end -> hideout test).
+
+### Next steps after the running work
+1. Integrate camera rows (after D24 commit): one `lua_rows.py build --apply` with all agents' rows (regions as above),
+   regenerate mod/w4p_m1.pnach, smoke the touched missions with 4 instances (mission_smoke.py), commit, findings.
+2. Open M6 HUD items: player 3's Select ring (F-0194), players 3-4 timer arcs (F-0203).
+3. Rebuild the friend package (w4p-m6-3 + new pnach) and self-test; tell the user the new id (b94e4b5caed8 superseded).
+4. M7: long1 result, T1g outage through w4p-net, M7 report. Then M8 packaging, legal review, final report.
+
+### (first chat's handoff, kept for reference)
 The user cleared the chat. Everything needed to continue is in this file, `docs/FINDINGS.md` (up to F-0210),
 `docs/DECISIONS.md` (up to D24) and the research docs named below. The user said "do not stop until you finish
 everything": keep working without pauses; stop only for things that need the user. Explain in plain English with

@@ -10,6 +10,9 @@ datagrams without route, datagrams forwarded through the host).
   python -I net/w4p-net/tests/local4.py --seconds 1500        stop by itself after 25 minutes
   python -I net/w4p-net/tests/local4.py --block 1,2           joiner pair 1-2 forced through the host (T1e setup)
   python -I net/w4p-net/tests/local4.py --direct-dial         joiners connect with the join code only (no reply codes)
+  python -I net/w4p-net/tests/local4.py --mute 3:400:20        T1g: 400 s after HELPERS READY, helper 3 drops the game
+                                                            data to/from every other slot for 20 s (test switch "mute";
+                                                            "K:AT:SECONDS:SLOT" = only the link to SLOT; comma list)
 
 Default ports (instance k = slot k): emulator ListenPort 46000+k, helper slot ports 46100+10k .. 46103+10k,
 ICE port 46400+k. They avoid the 41xxx ports used by the m2 runners and the 45xxx ports of run_t1.py.
@@ -48,6 +51,7 @@ def main():
     ap.add_argument("--block", default="", help="joiner pair 'a,b' without a direct link (forwarded by the host)")
     ap.add_argument("--direct-dial", action="store_true", help="do not paste reply codes (path b only)")
     ap.add_argument("--stop-file", default="", help="stop the helpers when this file appears (for scripts)")
+    ap.add_argument("--mute", default="", help="T1g outages: K:AT:SECONDS[:SLOT],... (helper K, AT s after READY)")
     ap.add_argument("--out", default=OUT_DEFAULT)
     a = ap.parse_args()
     n = a.players
@@ -117,8 +121,18 @@ def main():
 
     threading.Thread(target=stdin_wait, daemon=True).start()
     t0 = time.time()
+    mutes = [[int(f[0]), float(f[1]), float(f[2]), int(f[3]) if len(f) > 3 else None, False]
+             for f in (m.split(":") for m in a.mute.split(",") if m)]
+    mute_log = []
     try:
         while not stop.is_set():
+            for m in mutes:
+                if not m[4] and time.time() - t0 >= m[1]:
+                    m[4] = True
+                    helpers[m[0]].send("mute %g%s" % (m[2], "" if m[3] is None else " %d" % m[3]))
+                    mute_log.append({"helper": helpers[m[0]].name, "at_s": round(time.time() - t0, 1), "seconds": m[2],
+                                     "slot": m[3], "wall": time.strftime("%H:%M:%S")})
+                    print("MUTE sent: %s" % mute_log[-1], flush=True)
             if a.seconds and time.time() - t0 > a.seconds:
                 break
             if a.stop_file and os.path.exists(a.stop_file):
@@ -132,13 +146,14 @@ def main():
         pass
     stats = {h.name: h.quit() for h in helpers}
     summary = {"players": n, "seconds": round(time.time() - t0, 1), "emu_ports": emu, "slot_bases": sb,
-               "block": block, "direct_dial": a.direct_dial, "helpers": {}}
+               "block": block, "direct_dial": a.direct_dial, "mutes": mute_log, "helpers": {}}
     for name, s in stats.items():
         if not s:
             continue
         summary["helpers"][name] = {
             "slot": s["slot"], "emu_rx": s["emu_rx"], "emu_tx": s["emu_tx"], "emu_drop": s["emu_drop"],
             "loopback_strangers": s["loopback_strangers"],
+            "mute": {k: s.get(k) for k in ("mute_count", "mute_drop_tx", "mute_drop_rx")},
             "per_slot": [{k: x[k] for k in ("slot", "data_tx", "data_tx_via_host", "data_no_route", "data_rx",
                                              "data_rx_via_host")} for x in s["slots"]],
             "links": [{k: L[k] for k in ("peer", "kind", "attempts", "connect_ms", "state", "ping_p50", "ping_p95",

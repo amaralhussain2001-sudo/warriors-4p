@@ -9,6 +9,7 @@ Usage: python -I tests/m6/mission_smoke.py [--missions 1,2,3] [--seconds 600] [-
                       random bots without any Start press, so they join only through X11)
        [--calls-extra "poll:fn:args,..."]  (more W4P CallAt entries after the level jump)
        [--groups-extra "warriors-4p missions"]  (more pnach groups; the group must exist in mod/w4p_m1.pnach)
+       [--inst-base 6] [--patch file.pnach]  (passed to m2_run4.py: instances base..base+3, pnach to install)
 Writes local/m2/<tag>_m<NN>/ (via m2_run4.py), evidence/M6/<tag>_m<NN>.json and evidence/M6/<tag>_summary.json.
 Mission completion is NOT tested here (bots cannot play objectives); see docs/plan/M6.md.
 """
@@ -55,6 +56,8 @@ def main():
                    f",{q}:0041A430:GM:1" for q in force_join) + (f",{calls_extra}" if calls_extra else ""),
                "--ini", "EmuCore/Speedhacks/vuThread=false", "--groups", GROUPS + "".join(
                    ";" + g for g in opt("--groups-extra", "").split(";") if g)]
+        base = int(opt("--inst-base", "6"))
+        cmd += ["--inst-base", str(base)] + (["--patch", opt("--patch", "")] if "--patch" in sys.argv else [])
         if policies:
             cmd += ["--w4p", "SessionPolicies = true"]
         else:
@@ -64,7 +67,7 @@ def main():
         subprocess.run(cmd, cwd=PROJ, capture_output=True, text=True)
         out_dir = os.path.join(PROJ, "local", "m2", run)
         tlb = {}
-        for n in (6, 7, 8, 9):
+        for n in range(base, base + 4):
             src = os.path.join(PROJ, "local", "pcsx2", f"inst{n}", "PCSX2", "logs", "emulog.txt")
             try:
                 txt = open(src, encoding="utf-8", errors="replace").read()

@@ -852,6 +852,11 @@ namespace w4p
 				ctrl_.push_back(std::move(m));
 			return;
 		}
+		if (type == kTypeData && (Muted(src) || (dst != me && dst < kMaxSlots && Muted(dst))))
+		{
+			mute_drop_rx_++; // test switch "mute" (T1g)
+			return;
+		}
 		if (dst != me)
 		{
 			// Forwarding through the host for a joiner pair without a direct link (design 2.3).
@@ -958,6 +963,11 @@ namespace w4p
 						emu_drop_++;
 						continue;
 					}
+					if (Muted(p))
+					{
+						mute_drop_tx_++; // test switch "mute" (T1g)
+						continue;
+					}
 					bool via = false;
 					SlotStats& st = slot_stats_[p];
 					if (SendTo(p, kTypeData, buf, static_cast<size_t>(n), &via))
@@ -1035,6 +1045,24 @@ namespace w4p
 			quit_.store(true);
 		else if (cmd == "status")
 			Summary(false);
+		else if (cmd == "mute")
+		{
+			// TEST SWITCH (T1g): simulate an outage of the game data for SECONDS (to/from SLOT, or every other slot)
+			double secs = 0;
+			int slot = -1;
+			is >> secs;
+			if (!(is >> slot))
+				slot = -1;
+			if (secs <= 0 || secs > 3600 || slot >= kMaxSlots)
+			{
+				Say("Usage: mute SECONDS [SLOT] (test switch: drops game data to/from SLOT, or all, for SECONDS).");
+				return;
+			}
+			mute_mask_.store(slot < 0 ? static_cast<uint8_t>(0xFF) : static_cast<uint8_t>(1u << slot));
+			mute_until_us_.store(NowUs() + static_cast<int64_t>(secs * 1e6));
+			mute_count_++;
+			Log("TEST SWITCH mute: game data to/from %s dropped for %.1f s", slot < 0 ? "every slot" : ("slot " + std::to_string(slot)).c_str(), secs);
+		}
 		else if (cmd == "lock")
 		{
 			lobby_open_ = false;
@@ -1072,6 +1100,11 @@ namespace w4p
 		}
 		else
 			Say("Unknown command '%s' (paste a code, or: status, probe RATE SIZE SECONDS, lock, quit).", cmd.c_str());
+	}
+
+	bool Helper::Muted(int slot) const
+	{
+		return slot >= 0 && slot < kMaxSlots && (mute_mask_.load() & (1u << slot)) && NowUs() < mute_until_us_.load();
 	}
 
 	void Helper::HandlePaste(const std::string& line)
@@ -1670,6 +1703,10 @@ namespace w4p
 			static_cast<unsigned long long>(emu_rx_.load()), static_cast<unsigned long long>(emu_tx_.load()),
 			static_cast<unsigned long long>(emu_drop_.load()), static_cast<unsigned long long>(loop_strangers_.load()),
 			static_cast<unsigned long long>(strangers_));
+		if (mute_count_.load())
+			Log("TEST SWITCH mute: %llu time(s); game datagrams dropped: to peers %llu, from peers %llu",
+				static_cast<unsigned long long>(mute_count_.load()), static_cast<unsigned long long>(mute_drop_tx_.load()),
+				static_cast<unsigned long long>(mute_drop_rx_.load()));
 	}
 
 	std::string Helper::StatsJson()
@@ -1727,7 +1764,9 @@ namespace w4p
 			  << ",\"probe_rtt_max\":" << Pct(pr, 1.0) << "}";
 		}
 		o << "],\"emu_rx\":" << emu_rx_.load() << ",\"emu_tx\":" << emu_tx_.load() << ",\"emu_drop\":" << emu_drop_.load()
-		  << ",\"loopback_strangers\":" << loop_strangers_.load() << ",\"ice_strangers\":" << strangers_ << "}";
+		  << ",\"loopback_strangers\":" << loop_strangers_.load() << ",\"ice_strangers\":" << strangers_
+		  << ",\"mute_count\":" << mute_count_.load() << ",\"mute_drop_tx\":" << mute_drop_tx_.load()
+		  << ",\"mute_drop_rx\":" << mute_drop_rx_.load() << "}";
 		return o.str();
 	}
 

@@ -183,6 +183,7 @@ namespace w4p
 		// main loop parts
 		void Tick();
 		void HandleCommand(const std::string& line);
+		bool Muted(int slot) const;           // test switch "mute" (T1g): game data to/from this slot dropped now?
 		void HandlePaste(const std::string& line);
 		void HandleIncoming(const Incoming& in);
 		void HandleCtrl(const CtrlMsg& m);
@@ -227,6 +228,12 @@ namespace w4p
 		std::thread bridge_thread_, stdin_thread_, probe_thread_;
 		std::atomic<bool> bridge_stop_{false};
 		std::atomic<uint64_t> loop_strangers_{0}, emu_tx_{0}, emu_rx_{0}, emu_drop_{0};
+
+		// test switch (T1g outage): "mute SECONDS [SLOT]" drops the game data (type D) to and from SLOT (all other
+		// slots without SLOT) until mute_until_us_; control traffic, pings and ICE keep running
+		std::atomic<int64_t> mute_until_us_{0};
+		std::atomic<uint8_t> mute_mask_{0};
+		std::atomic<uint64_t> mute_drop_tx_{0}, mute_drop_rx_{0}, mute_count_{0};
 
 		// probe
 		std::atomic<bool> probe_running_{false};

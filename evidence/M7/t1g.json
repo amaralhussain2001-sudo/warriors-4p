@@ -1,0 +1,155 @@
+{
+ "test": "T1g (M7 criterion 2)",
+ "date": "2026-10-12",
+ "environment": "SINGLE-PC, 4 instances (27-30) in lockstep, loopback, 4 w4p-net helpers (local4.py, host candidates only, no STUN), random bots, SessionPolicies on, DisconnectTimeoutS 60 (default), host choice continue (TestHostChoice), Mission 13, impairment: helper test switch 'mute' on slot 3 (game data only; ICE/pings kept)",
+ "build": "fork w4p-m6-3, mod/w4p_m1.pnach of 2026-10-12 16:30 (D24 applied), w4p-net with the mute test switch (build 16:52)",
+ "mutes": [
+  {
+   "helper": "j3",
+   "at_s": 420.5,
+   "seconds": 20.0,
+   "slot": null,
+   "wall": "17:07:05"
+  },
+  {
+   "helper": "j3",
+   "at_s": 620.7,
+   "seconds": 45.0,
+   "slot": null,
+   "wall": "17:10:25"
+  },
+  {
+   "helper": "j3",
+   "at_s": 840.2,
+   "seconds": 75.0,
+   "slot": null,
+   "wall": "17:14:05"
+  }
+ ],
+ "w4p_wait_episodes_slot0": [
+  {
+   "poll": 6055,
+   "waited_s": 19.0,
+   "result": "resumed"
+  },
+  {
+   "poll": 6557,
+   "waited_s": 0.0
+  },
+  {
+   "poll": 8420,
+   "waited_s": 44.1,
+   "result": "resumed"
+  },
+  {
+   "poll": 10252,
+   "waited_s": 59.1,
+   "result": "timeout -> 'player 4 leaves the session from poll 10253: continue without him' on slots 0-2; slot 3: 'the host did not come back: the session is over'"
+  }
+ ],
+ "hash_points_common_all4": 341,
+ "mismatches_all4": 0,
+ "remaining_slots_common": 410,
+ "remaining_mismatches": 0,
+ "remaining_points_after_leave": 69,
+ "tlb_misses": {
+  "27": 0,
+  "28": 0,
+  "29": 0,
+  "30": 0
+ },
+ "helper_mute_counters": {
+  "h0": {
+   "mute_count": 0,
+   "mute_drop_tx": 0,
+   "mute_drop_rx": 0
+  },
+  "j1": {
+   "mute_count": 0,
+   "mute_drop_tx": 0,
+   "mute_drop_rx": 0
+  },
+  "j2": {
+   "mute_count": 0,
+   "mute_drop_tx": 0,
+   "mute_drop_rx": 0
+  },
+  "j3": {
+   "mute_count": 3,
+   "mute_drop_tx": 27291,
+   "mute_drop_rx": 24502
+  }
+ },
+ "helper_links_after": {
+  "h0": [
+   [
+    1,
+    "completed",
+    1
+   ],
+   [
+    2,
+    "completed",
+    1
+   ],
+   [
+    3,
+    "completed",
+    1
+   ]
+  ],
+  "j1": [
+   [
+    0,
+    "completed",
+    1
+   ],
+   [
+    2,
+    "completed",
+    1
+   ],
+   [
+    3,
+    "completed",
+    1
+   ]
+  ],
+  "j2": [
+   [
+    0,
+    "completed",
+    1
+   ],
+   [
+    1,
+    "completed",
+    1
+   ],
+   [
+    3,
+    "completed",
+    1
+   ]
+  ],
+  "j3": [
+   [
+    0,
+    "completed",
+    1
+   ],
+   [
+    1,
+    "completed",
+    1
+   ],
+   [
+    2,
+    "completed",
+    1
+   ]
+  ]
+ },
+ "not_exercised": "loss of ICE connectivity (consent freshness 30 s) and the helper's re-dial: the test switch drops game data only, so the ICE pairs stayed 'completed' with 1 attempt; needs a real network outage (LAN/INTERNET test with the user)",
+ "logs": "local/m2/t1g/w4p_slot*.log, local/m7/t1g/helpers/, local/m7/t1g/local4_console.txt, tests/m7/t1g_run.sh"
+}

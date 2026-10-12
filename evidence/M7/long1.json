@@ -1,0 +1,211 @@
+{
+ "tag": "long1",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot",
+ "seconds": 3911,
+ "hash_points_common": 1545,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "w4p_stats_last": {
+  "0": "poll 46352, polls 46353, waits 22680, wait total 1726597.0 ms, max 567.9 ms, hashes 4635, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 15% gs 4% vu 0%",
+  "1": "poll 46352, polls 46353, waits 14837, wait total 1088043.2 ms, max 835.6 ms, hashes 4635, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 15% gs 5% vu 0%",
+  "2": "poll 46354, polls 46355, waits 17281, wait total 1171700.6 ms, max 511.8 ms, hashes 4635, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 14% gs 4% vu 0%",
+  "3": "poll 46352, polls 46353, waits 19084, wait total 1031632.2 ms, max 512.0 ms, hashes 4635, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 15% gs 4% vu 0%"
+ },
+ "level_reloads": [
+  {
+   "t": 241,
+   "poll": 6488,
+   "players": 0,
+   "views": 0
+  }
+ ],
+ "player_count_changes": [
+  {
+   "t": 30,
+   "poll": 851,
+   "players": 0,
+   "views": 0
+  },
+  {
+   "t": 60,
+   "poll": 1571,
+   "players": 0,
+   "views": 1
+  },
+  {
+   "t": 150,
+   "poll": 3893,
+   "players": 2,
+   "views": 1
+  },
+  {
+   "t": 241,
+   "poll": 6488,
+   "players": 0,
+   "views": 0
+  },
+  {
+   "t": 271,
+   "poll": 7114,
+   "players": 2,
+   "views": 2
+  },
+  {
+   "t": 361,
+   "poll": 9566,
+   "players": 4,
+   "views": 4
+  },
+  {
+   "t": 2012,
+   "poll": 31795,
+   "players": 4,
+   "views": 1
+  },
+  {
+   "t": 2042,
+   "poll": 32163,
+   "players": 4,
+   "views": 4
+  },
+  {
+   "t": 3122,
+   "poll": 40036,
+   "players": 1,
+   "views": 1
+  },
+  {
+   "t": 3152,
+   "poll": 40232,
+   "players": 2,
+   "views": 2
+  },
+  {
+   "t": 3182,
+   "poll": 40401,
+   "players": 2,
+   "views": 1
+  },
+  {
+   "t": 3212,
+   "poll": 40729,
+   "players": 4,
+   "views": 4
+  }
+ ],
+ "softlock_candidates": [],
+ "last_sample": {
+  "t": 3905,
+  "poll": 46373,
+  "players": 4,
+  "handles": [
+   "0x162",
+   "0x10167",
+   "0x3020c",
+   "0x40222"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ },
+ "polls_per_s": {
+  "min": 3.9,
+  "max": 30.3,
+  "mean": 11.7
+ },
+ "cpu_mem_per_instance": {
+  "6": {
+   "cpu_cores_avg": 0.26,
+   "working_set_mb_max": 929.6,
+   "private_mb_max": 1317.8,
+   "private_mb_first_last": [
+    1274.0,
+    1315.3
+   ],
+   "samples": 64
+  },
+  "8": {
+   "cpu_cores_avg": 0.26,
+   "working_set_mb_max": 941.0,
+   "private_mb_max": 1318.6,
+   "private_mb_first_last": [
+    1275.4,
+    1318.6
+   ],
+   "samples": 64
+  },
+  "7": {
+   "cpu_cores_avg": 0.25,
+   "working_set_mb_max": 943.3,
+   "private_mb_max": 1318.4,
+   "private_mb_first_last": [
+    1275.3,
+    1318.4
+   ],
+   "samples": 64
+  },
+  "9": {
+   "cpu_cores_avg": 0.26,
+   "working_set_mb_max": 938.9,
+   "private_mb_max": 1319.3,
+   "private_mb_first_last": [
+    1274.7,
+    1316.2
+   ],
+   "samples": 64
+  }
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 46402,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10167",
+    "0x3020c",
+    "0x40222"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 46403,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10167",
+    "0x3020c",
+    "0x40222"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 46407,
+   "players": 4,
+   "handles": [
+    "0x162",
+    "0x10167",
+    "0x3020c",
+    "0x40222"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ }
+}
