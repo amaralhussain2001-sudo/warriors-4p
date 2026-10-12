@@ -1,0 +1,92 @@
+{
+ "mission": 6,
+ "level": 3,
+ "name": "Writer's Block",
+ "run": "rst_m06",
+ "policies": true,
+ "seconds": 606,
+ "hash_points": 469,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 14345,
+   "players": 4,
+   "handles": [
+    "0x30168",
+    "0x20163",
+    "0x158",
+    "0x1015d"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 14354,
+   "players": 4,
+   "handles": [
+    "0x30168",
+    "0x20163",
+    "0x158",
+    "0x1015d"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 14364,
+   "players": 4,
+   "handles": [
+    "0x30168",
+    "0x20163",
+    "0x158",
+    "0x1015d"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 7301,
+ "auto_joins_scheduled": 4,
+ "w4p_events": [
+  "[216523407.818] auto join for player 3 (pad 1) scheduled at poll 7051",
+  "[216523407.848] auto join for player 4 (pad 2) scheduled at poll 7054",
+  "[216785011.726] auto join for player 3 (pad 1) scheduled at poll 12451",
+  "[216785011.767] auto join for player 4 (pad 2) scheduled at poll 12454"
+ ],
+ "last_sample": {
+  "t": 601,
+  "poll": 14242,
+  "players": 4,
+  "handles": [
+   "0x30168",
+   "0x20163",
+   "0x158",
+   "0x1015d"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

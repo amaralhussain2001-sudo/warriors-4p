@@ -1,0 +1,99 @@
+{
+ "mission": 9,
+ "level": 86,
+ "name": "Payin' The Cost",
+ "run": "rst_m09",
+ "policies": true,
+ "seconds": 607,
+ "hash_points": 457,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 13943,
+   "players": 4,
+   "handles": [
+    "0x40182",
+    "0x50187",
+    "0x6018c",
+    "0x120772"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 13956,
+   "players": 4,
+   "handles": [
+    "0x40182",
+    "0x50187",
+    "0x6018c",
+    "0x120772"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 13965,
+   "players": 4,
+   "handles": [
+    "0x40182",
+    "0x50187",
+    "0x6018c",
+    "0x120772"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "first_poll_with_4": 8580,
+ "auto_joins_scheduled": 10,
+ "w4p_events": [
+  "[217171842.383] auto join for player 3 (pad 1) scheduled at poll 8251",
+  "[217171842.419] auto join for player 4 (pad 2) scheduled at poll 8254",
+  "[217184082.880] auto join for player 4 (pad 2) scheduled at poll 8551",
+  "[217249434.073] auto join for player 2 (pad 4) scheduled at poll 10051",
+  "[217249434.106] auto join for player 3 (pad 1) scheduled at poll 10054",
+  "[217249434.111] auto join for player 4 (pad 2) scheduled at poll 10057",
+  "[217286789.826] auto join for player 3 (pad 1) scheduled at poll 10651",
+  "[217437172.937] auto join for player 3 (pad 1) scheduled at poll 13351",
+  "[217437172.964] auto join for player 4 (pad 2) scheduled at poll 13354",
+  "[217447683.885] auto join for player 4 (pad 2) scheduled at poll 13651"
+ ],
+ "last_sample": {
+  "t": 601,
+  "poll": 13846,
+  "players": 4,
+  "handles": [
+   "0x40182",
+   "0x50187",
+   "0x6018c",
+   "0x120772"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}
