@@ -1,0 +1,239 @@
+{
+ "tag": "reg_2p_orig",
+ "environment": "SINGLE-PC, one instance, bots/scripted input, no humans, no network",
+ "instance": 12,
+ "input": "UNMODIFIED game (no pnach at all), W4P OFF, agent key presses on pad 1 and pad 2 (keyboard bindings)",
+ "players": 1,
+ "patch": null,
+ "groups": [],
+ "ini": [
+  "EmuCore/Speedhacks/vuThread=false"
+ ],
+ "cards": "fresh",
+ "seconds": 1100,
+ "emulator_exited_early": true,
+ "tlb_misses": 0,
+ "last_poll": null,
+ "last_frames": 6285,
+ "samples": 194,
+ "sample_errors": 1,
+ "frame_counter_advanced_in_last_60s": true,
+ "poll_counter_advanced_in_last_60s": null,
+ "state_changes": [
+  {
+   "t": 3.0,
+   "poll": null,
+   "frames": 0,
+   "level": null,
+   "cp": null,
+   "players": null,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": null,
+   "pad_owner": [
+    0,
+    0
+   ]
+  },
+  {
+   "t": 7.1,
+   "poll": null,
+   "frames": 0,
+   "level": 0,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 45.5,
+   "poll": null,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 55.6,
+   "poll": null,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 142.5,
+   "poll": null,
+   "frames": 2087,
+   "level": 99,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 146.5,
+   "poll": null,
+   "frames": 2087,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 154.6,
+   "poll": null,
+   "frames": 2087,
+   "level": 99,
+   "cp": 1,
+   "players": 2,
+   "views": 1,
+   "cameras": 2,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 245.7,
+   "poll": null,
+   "frames": 4304,
+   "level": 99,
+   "cp": 1,
+   "players": 2,
+   "views": 1,
+   "cameras": 2,
+   "paused": true,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 290.3,
+   "poll": null,
+   "frames": 4304,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": true,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 304.5,
+   "poll": null,
+   "frames": 4319,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 318.7,
+   "poll": null,
+   "frames": 4737,
+   "level": 99,
+   "cp": 1,
+   "players": 2,
+   "views": 1,
+   "cameras": 2,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 369.5,
+   "poll": null,
+   "frames": 6237,
+   "level": 99,
+   "cp": 1,
+   "players": 2,
+   "views": 1,
+   "cameras": 2,
+   "paused": true,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 393.8,
+   "poll": null,
+   "frames": 6285,
+   "level": 99,
+   "cp": 1,
+   "players": 2,
+   "views": 1,
+   "cameras": 2,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  }
+ ],
+ "local_dir": "local/m7/reg_2p_orig/",
+ "observed": [
+  "2 PLAYER -> 'Player 2 press the START button' -> pad 2 Start -> Mission 1 with 2 players (pad owners [0,1])",
+  "both walked and attacked; one merged view in the tutorial pen (views 1, cameras 2)",
+  "pause -> Quit -> 'Player 2 / Continue game in 1 player mode / All' -> Yes -> 1 player (pad 2 free) -> pad 2 Start -> re-join scene -> 2 players, '2P' marker, player 2 moves"
+ ],
+ "stopped": "stopped by the agent after the test (sandbox.py kill) - emulator_exited_early means that, not a crash"
+}

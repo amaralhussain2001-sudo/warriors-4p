@@ -1,0 +1,287 @@
+{
+ "tag": "reg_2p_mod",
+ "environment": "SINGLE-PC, one instance, bots/scripted input, no humans, no network",
+ "instance": 12,
+ "input": "package groups + widescreen, W4P OFF, agent key presses on pad 1 and pad 2 (Down rebound to ',')",
+ "players": 1,
+ "patch": "local/m7/reg.pnach",
+ "groups": [
+  "warriors-4p M1",
+  "warriors-4p own view",
+  "warriors-4p hud",
+  "warriors-4p 4p",
+  "warriors-4p 4p hud B1",
+  "warriors-4p 4p hud B2",
+  "warriors-4p 4p spawn",
+  "warriors-4p 4p spawn leave",
+  "warriors-4p 4p inventory",
+  "warriors-4p 4p fx",
+  "warriors-4p session",
+  "warriors-4p missions",
+  "warriors-4p session call",
+  "warriors-4p widescreen"
+ ],
+ "ini": [
+  "EmuCore/Speedhacks/vuThread=false",
+  "Pad1/Down=Keyboard/Comma"
+ ],
+ "cards": "fresh",
+ "seconds": 1300,
+ "emulator_exited_early": true,
+ "tlb_misses": 0,
+ "last_poll": 10521,
+ "last_frames": 6800,
+ "samples": 197,
+ "sample_errors": 1,
+ "frame_counter_advanced_in_last_60s": true,
+ "poll_counter_advanced_in_last_60s": true,
+ "state_changes": [
+  {
+   "t": 3.0,
+   "poll": 0,
+   "frames": 0,
+   "level": null,
+   "cp": null,
+   "players": null,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": null,
+   "pad_owner": [
+    0,
+    0
+   ]
+  },
+  {
+   "t": 7.1,
+   "poll": 36,
+   "frames": 0,
+   "level": 0,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 45.5,
+   "poll": 1244,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 55.6,
+   "poll": 1556,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 114.3,
+   "poll": 3067,
+   "frames": 1173,
+   "level": 99,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 118.4,
+   "poll": 3105,
+   "frames": 1173,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 124.5,
+   "poll": 3132,
+   "frames": 1173,
+   "level": 99,
+   "cp": 1,
+   "players": 2,
+   "views": 1,
+   "cameras": 2,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 183.6,
+   "poll": 4665,
+   "frames": 2586,
+   "level": 99,
+   "cp": 1,
+   "players": 2,
+   "views": 1,
+   "cameras": 2,
+   "paused": true,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 226.1,
+   "poll": 5940,
+   "frames": 2586,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": true,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 230.2,
+   "poll": 6060,
+   "frames": 2586,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 244.3,
+   "poll": 6476,
+   "frames": 3002,
+   "level": 99,
+   "cp": 1,
+   "players": 2,
+   "views": 1,
+   "cameras": 2,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 280.8,
+   "poll": 7541,
+   "frames": 4049,
+   "level": 99,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 295.0,
+   "poll": 7832,
+   "frames": 4049,
+   "level": 80,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 299.1,
+   "poll": 7871,
+   "frames": 4049,
+   "level": 80,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 0,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 359.9,
+   "poll": 9313,
+   "frames": 5585,
+   "level": 80,
+   "cp": 1,
+   "players": 2,
+   "views": 2,
+   "cameras": 2,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  }
+ ],
+ "local_dir": "local/m7/reg_2p_mod/",
+ "observed": [
+  "same 2-player flow as the unmodified game up to Mission 1 with 2 players",
+  "pause -> Quit offers 'Player 2 - Continue game in 1 player mode' (k_c1): the [warriors-4p session] group has no S3/S4 words; drop-out worked (players 2 -> 1) and pad 2 Start re-joined (players 2, '2P' marker, k_c7)",
+  "cheat 12 -> Mission 2 with 2 players; walking apart: views 2 but drawn as the 2x2 layout - both views in the TOP HALF, bottom half empty (k_d5, k_d6, k_d7) - DIFFERENT from the original side-by-side split"
+ ],
+ "stopped": "stopped by the agent after the test"
+}

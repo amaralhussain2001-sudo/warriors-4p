@@ -1,0 +1,30 @@
+{
+ "tag": "m7_usercard",
+ "environment": "SINGLE-PC, one instance, bots/scripted input (W4P input playback, 1 player), no humans, no network",
+ "tool": "tests/m2/nav_probe.py --memcards (copies of the user's cards local/Mcd001.ps2, Mcd002.ps2; originals untouched)",
+ "patch": "local/m7/reg.pnach",
+ "groups": "warriors-4p M1 + package4 base groups + widescreen (see local/m7/groups_pkg.txt)",
+ "ini": [
+  "EmuCore/Speedhacks/vuThread=false"
+ ],
+ "script": "local/m7/scripts/user_card_menu.txt",
+ "seconds": 300,
+ "observed": [
+  "main menu STORY : EXTRAS / QUICK RUMBLE (t0068_p1784)",
+  "EXTRAS lists only TRAILER before a profile is loaded (t0074_p1968 .. t0089_p2431)",
+  "STORY -> 1 PLAYER -> PROFILE MANAGER with USE EXISTING PROFILE (t0105_p2895) -> CHOOSE PROFILE 'A' (t0108_p2987)",
+  "loading screen, then 'Flashback Level - Bonus level unlocked.' (t0129_p3276) and the Warriors' hideout with player 1 (t0135_p3462 .. t0297_p8298)"
+ ],
+ "end_state": {
+  "poll": 8384,
+  "players": 1,
+  "views": 1,
+  "cameras": 1,
+  "join_allowed": 0,
+  "gm_14c": 0
+ },
+ "tlb_misses": 0,
+ "emulog": "local/m2/m7_usercard/emulog.txt",
+ "not_done": "the flashback spot in the hideout was not walked to (scripted input cannot find it); hub minigames and the arcade machine were not used",
+ "local_dir": "local/m2/m7_usercard/"
+}

@@ -1,5 +1,11 @@
 // docs/research/session_policies.md section 6: S1 movie flag, S2 pause by a downed player 1, S3/S4 no 'Player 2'
 // drop-out in Quit, S5 LEAVE(index) at 0x000E7100 (needs 4p spawn + 4p spawn leave and a call mailbox)
+// S1-S4 game hooks restored 2026-10-12 (F-0192): the F-0174 rewrite dropped every line at or above 0x000E7100,
+// which also removed these hooks into game code (commit 3ad46c2).
+patch=2,EE,0042A580,word,0C039C00 // S1 hook: was 0C05152A jal 0x001454A8 -> jal 0x000E7000; delay slot nop kept
+patch=2,EE,00158F50,word,0000102D // S2: was 0C089F76 jal 0x00227DD8 -> daddu v0,zero,zero (a downed player can open the pause)
+patch=2,EE,001DEADC,word,00000000 // S3: was 14400027 bne v0,zero,0x001DEB7C -> nop (Quit dialog as in 1-player mode)
+patch=2,EE,001DF658,word,00000000 // S4: was 54400006 bnel v0,zero,0x001DF674 -> nop (same test in FUN_001DF5E8)
 patch=2,EE,000E7000,word,27BDFFF0 // S1 FMV flag cave: addiu sp,sp,-16
 patch=2,EE,000E7004,word,FFBF0000 // sd ra,0(sp)
 patch=2,EE,000E7008,word,8FA800C0 // lw t0,0xc0(sp): the movie loop's sp+0xB0 = skippable flag (stored at 0x00429FF0)

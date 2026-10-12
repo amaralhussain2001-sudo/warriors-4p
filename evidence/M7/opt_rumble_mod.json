@@ -1,0 +1,369 @@
+{
+ "tag": "opt_mod",
+ "environment": "SINGLE-PC, one instance, bots/scripted input, no humans, no network",
+ "instance": 12,
+ "input": "package groups + widescreen, W4P OFF, agent key presses, fresh cards",
+ "players": 1,
+ "patch": "local/m7/reg.pnach",
+ "groups": [
+  "warriors-4p M1",
+  "warriors-4p own view",
+  "warriors-4p hud",
+  "warriors-4p 4p",
+  "warriors-4p 4p hud B1",
+  "warriors-4p 4p hud B2",
+  "warriors-4p 4p spawn",
+  "warriors-4p 4p spawn leave",
+  "warriors-4p 4p inventory",
+  "warriors-4p 4p fx",
+  "warriors-4p session",
+  "warriors-4p missions",
+  "warriors-4p session call",
+  "warriors-4p widescreen"
+ ],
+ "ini": [
+  "EmuCore/Speedhacks/vuThread=false",
+  "Pad1/Down=Keyboard/Comma"
+ ],
+ "cards": "fresh",
+ "seconds": 1500,
+ "emulator_exited_early": true,
+ "tlb_misses": 0,
+ "last_poll": 25843,
+ "last_frames": 21770,
+ "samples": 453,
+ "sample_errors": 1,
+ "frame_counter_advanced_in_last_60s": true,
+ "poll_counter_advanced_in_last_60s": true,
+ "state_changes": [
+  {
+   "t": 3.0,
+   "poll": 0,
+   "frames": 0,
+   "level": null,
+   "cp": null,
+   "players": null,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": null,
+   "pad_owner": [
+    0,
+    0
+   ]
+  },
+  {
+   "t": 7.1,
+   "poll": 36,
+   "frames": 0,
+   "level": 0,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 45.5,
+   "poll": 1229,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 55.7,
+   "poll": 1560,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 179.2,
+   "poll": 5072,
+   "frames": 2695,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 181.2,
+   "poll": 5079,
+   "frames": 2695,
+   "level": 102,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 183.2,
+   "poll": 5102,
+   "frames": 2695,
+   "level": 102,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 191.3,
+   "poll": 5173,
+   "frames": 2738,
+   "level": 102,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 0,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 355.5,
+   "poll": 10041,
+   "frames": 6932,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 359.5,
+   "poll": 10071,
+   "frames": 6932,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 462.8,
+   "poll": 13006,
+   "frames": 9849,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 464.8,
+   "poll": 13015,
+   "frames": 9849,
+   "level": 102,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 466.9,
+   "poll": 13037,
+   "frames": 9849,
+   "level": 102,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 474.9,
+   "poll": 13112,
+   "frames": 9896,
+   "level": 102,
+   "cp": 1,
+   "players": 2,
+   "views": 2,
+   "cameras": 2,
+   "paused": false,
+   "join": 0,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 592.5,
+   "poll": 16634,
+   "frames": 13419,
+   "level": 102,
+   "cp": 1,
+   "players": 2,
+   "views": 1,
+   "cameras": 2,
+   "paused": false,
+   "join": 0,
+   "pad_owner": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": 620.8,
+   "poll": 17430,
+   "frames": 13461,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 624.9,
+   "poll": 17459,
+   "frames": 13461,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 715.9,
+   "poll": 20026,
+   "frames": 16007,
+   "level": 102,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 720.0,
+   "poll": 20055,
+   "frames": 16007,
+   "level": 102,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 728.0,
+   "poll": 20132,
+   "frames": 16059,
+   "level": 102,
+   "cp": 1,
+   "players": 2,
+   "views": 2,
+   "cameras": 2,
+   "paused": false,
+   "join": 0,
+   "pad_owner": [
+    0,
+    1
+   ]
+  }
+ ],
+ "local_dir": "local/m7/opt_mod/",
+ "observed": [
+  "EXTRAS on a fresh card: TRAILER only (played ~20 s, skipped)",
+  "QUICK RUMBLE: 1 ON 1 (1P | VS) and WAR PARTY (1P | COOP | VS); area list: Fight Pen only (level 102)",
+  "1 ON 1, 1 player vs CPU: level 102 for 174 s (match ~100 s, won, result screens)",
+  "WAR PARTY Co-op (2 pads): 2 players, views 2 (2x2 layout, top half only), level 102 for 156 s (match ~100 s, won)",
+  "1 ON 1 VS (2 pads): 2 players, views 2, ~150 s of continuous fighting until the agent stopped the run"
+ ],
+ "not_tested": "WAR PARTY 1P and VS; other arenas (locked on a fresh card)"
+}

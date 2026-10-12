@@ -1,0 +1,123 @@
+{
+ "date": "2026-10-12",
+ "doc": "docs/research/m7_regression.md",
+ "environment": "SINGLE-PC, one instance (sandbox 12), bots/scripted input, no humans, no network, MTVU off",
+ "pnach": "local/m7/reg.pnach sha256 a2ae9a97c37e7f0988871ed5e1d2f3ab4b1df72e6e4901051279a14d20f4ca96 (current mod sources)",
+ "fork": "w4p-m6-1",
+ "mod_groups": "warriors-4p M1, own view, hud, 4p, 4p hud B1, 4p hud B2, 4p spawn, 4p spawn leave, 4p inventory, 4p fx, session, missions, session call, widescreen (package4 BaseGroups + widescreen)",
+ "columns": [
+  "run",
+  "config",
+  "checked",
+  "result",
+  "label"
+ ],
+ "rows": [
+  [
+   "reg_1p_mod",
+   "mod groups (14), W4P 1 player, script",
+   "boot -> 1P new story -> M1 -> pause -> format/save -> cheat 12 -> autosave -> M2",
+   "pass, 0 TLB",
+   "VERIFIED"
+  ],
+  [
+   "reg_1p_base",
+   "M1 only, W4P 1 player, same script",
+   "same points at the same polls",
+   "pass, 0 TLB",
+   "VERIFIED (baseline)"
+  ],
+  [
+   "reg_1p_load_mod",
+   "mod, W4P off, agent keys, saved card",
+   "existing profile -> M2 loads, HUD, pause, command menu",
+   "pass, 0 TLB",
+   "VERIFIED"
+  ],
+  [
+   "reg_1p_load_base",
+   "M1, W4P off, scripted keys, saved card",
+   "existing profile -> M2 loads, pause",
+   "pass, 0 TLB",
+   "VERIFIED (baseline)"
+  ],
+  [
+   "reg_1p_60",
+   "mod + 60fps, EE 180 %, W4P off, agent keys",
+   "title Start, menus, M1, pause",
+   "pass, 0 TLB",
+   "VERIFIED (short)"
+  ],
+  [
+   "reg_2p_orig",
+   "no pnach, W4P off, agent keys 2 pads",
+   "P2 join, fight, drop-out via Quit, re-join by Start",
+   "original behaviour",
+   "VERIFIED (baseline)"
+  ],
+  [
+   "reg_2p_orig_split",
+   "no pnach, W4P off",
+   "M2 split: side-by-side full height, merge when together",
+   "original behaviour",
+   "VERIFIED (baseline)"
+  ],
+  [
+   "reg_2p_mod",
+   "mod, W4P off, agent keys 2 pads",
+   "join, fight, drop-out, re-join: same as original; split: top half only, bottom empty",
+   "play pass, 0 TLB; layout differs",
+   "VERIFIED / FAILED TEST (layout)"
+  ],
+  [
+   "opt_rumble_mod",
+   "mod, W4P off, agent keys",
+   "EXTRAS=TRAILER; 1 ON 1 1P 174 s, WAR PARTY coop 156 s, 1 ON 1 VS 203 s in level 102",
+   "pass, 0 TLB",
+   "VERIFIED"
+  ],
+  [
+   "opt_flashback82_mod",
+   "mod, W4P 1 player, test level jump",
+   "level 82 Roots 197 s",
+   "pass, 0 TLB",
+   "VERIFIED (level jump only)"
+  ],
+  [
+   "opt_armies60_mod",
+   "mod, W4P 1 player, test level jump",
+   "level 60 AotN stage 1 236 s incl. continue/restart",
+   "pass, 0 TLB",
+   "VERIFIED (level jump only)"
+  ],
+  [
+   "opt_usercard_hub",
+   "mod, W4P 1 player, nav_probe --memcards",
+   "user's card: EXTRAS=TRAILER; story -> hideout with flashback hint, ~2.5 min",
+   "pass, 0 TLB",
+   "VERIFIED"
+  ],
+  [
+   "flashbacks/AotN from fresh card",
+   "-",
+   "not offered by the menus",
+   "-",
+   "BLOCKED (fresh card)"
+  ],
+  [
+   "M1 first checkpoint",
+   "-",
+   "tutorial not finishable with scripted input",
+   "-",
+   "NOT TESTED"
+  ]
+ ],
+ "criteria": {
+  "5": "met for boot/new story/M1/pause/save/load; first checkpoint NOT tested",
+  "6": "play flow met (join, fight, drop-out, re-join); split-screen layout FAILED TEST vs original (2x2 top half)",
+  "7": "rumble modes met at original player counts; flashbacks/AotN BLOCKED on fresh card, smoke-tested only via test level jump"
+ },
+ "other_findings": [
+  "[warriors-4p session] has no S2/S3/S4 words although session.txt header and F-0168 say S1-S5: Quit still offers 'Player 2 - Continue game in 1 player mode' with the package groups"
+ ]
+}

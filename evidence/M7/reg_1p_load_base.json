@@ -1,0 +1,158 @@
+{
+ "tag": "reg_1p_load_base",
+ "environment": "SINGLE-PC, one instance, bots/scripted input, no humans, no network",
+ "instance": 12,
+ "input": "W4P OFF, scripted key presses on the poll clock (local/m7/scripts/reg_1p_load_keys.txt), group M1 only, card saved by reg_1p_base",
+ "players": 1,
+ "patch": "local/m7/reg.pnach",
+ "groups": [
+  "warriors-4p M1"
+ ],
+ "ini": [
+  "EmuCore/Speedhacks/vuThread=false"
+ ],
+ "cards": "local/m7/cards_reg_1p_base",
+ "seconds": 260,
+ "emulator_exited_early": false,
+ "tlb_misses": 0,
+ "last_poll": 6979,
+ "last_frames": 5139,
+ "samples": 127,
+ "sample_errors": 1,
+ "frame_counter_advanced_in_last_60s": true,
+ "poll_counter_advanced_in_last_60s": true,
+ "state_changes": [
+  {
+   "t": 3.1,
+   "poll": 0,
+   "frames": 0,
+   "level": null,
+   "cp": null,
+   "players": null,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": null,
+   "pad_owner": [
+    0,
+    0
+   ]
+  },
+  {
+   "t": 7.2,
+   "poll": 41,
+   "frames": 0,
+   "level": 0,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 43.7,
+   "poll": 1173,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 58.0,
+   "poll": 1615,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 96.5,
+   "poll": 2599,
+   "frames": 970,
+   "level": 80,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 100.5,
+   "poll": 2636,
+   "frames": 970,
+   "level": 80,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 0,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 167.7,
+   "poll": 4246,
+   "frames": 2630,
+   "level": 80,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": true,
+   "join": 0,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 175.8,
+   "poll": 4482,
+   "frames": 2642,
+   "level": 80,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 0,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  }
+ ],
+ "local_dir": "local/m7/reg_1p_load_base/",
+ "observed": [
+  "USE EXISTING PROFILE -> Mission 2 (level 80) at poll 2599, 1 player; pause 4246-4482"
+ ]
+}

@@ -1,0 +1,204 @@
+{
+ "tag": "opt_aotn60",
+ "environment": "SINGLE-PC, one instance, bots/scripted input, no humans, no network",
+ "instance": 12,
+ "input": "as opt_flashback82_mod, level jump to table entry 24 = level 60 (Armies of the Night stage 1), random play from poll 4600",
+ "players": 1,
+ "patch": "local/m7/reg.pnach",
+ "groups": [
+  "warriors-4p M1",
+  "warriors-4p own view",
+  "warriors-4p hud",
+  "warriors-4p 4p",
+  "warriors-4p 4p hud B1",
+  "warriors-4p 4p hud B2",
+  "warriors-4p 4p spawn",
+  "warriors-4p 4p spawn leave",
+  "warriors-4p 4p inventory",
+  "warriors-4p 4p fx",
+  "warriors-4p session",
+  "warriors-4p missions",
+  "warriors-4p session call",
+  "warriors-4p widescreen"
+ ],
+ "ini": [
+  "EmuCore/Speedhacks/vuThread=false"
+ ],
+ "cards": "fresh",
+ "seconds": 400,
+ "emulator_exited_early": false,
+ "tlb_misses": 0,
+ "last_poll": 10534,
+ "last_frames": 7467,
+ "samples": 196,
+ "sample_errors": 1,
+ "frame_counter_advanced_in_last_60s": true,
+ "poll_counter_advanced_in_last_60s": true,
+ "state_changes": [
+  {
+   "t": 3.0,
+   "poll": 0,
+   "frames": 0,
+   "level": null,
+   "cp": null,
+   "players": null,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": null,
+   "pad_owner": [
+    0,
+    0
+   ]
+  },
+  {
+   "t": 7.1,
+   "poll": 38,
+   "frames": 0,
+   "level": 0,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 43.5,
+   "poll": 1175,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 53.7,
+   "poll": 1499,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 128.7,
+   "poll": 3513,
+   "frames": 1853,
+   "level": 99,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 132.8,
+   "poll": 3541,
+   "frames": 1853,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 163.2,
+   "poll": 4015,
+   "frames": 2347,
+   "level": 60,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 167.2,
+   "poll": 4057,
+   "frames": 2347,
+   "level": 60,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 342.1,
+   "poll": 9109,
+   "frames": 6114,
+   "level": 60,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 346.2,
+   "poll": 9142,
+   "frames": 6114,
+   "level": 60,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  }
+ ],
+ "local_dir": "local/m7/opt_aotn60/",
+ "observed": [
+  "title card 'Armies of the Night - Stage One', side-scrolling fight with 1 player, timer ran out -> 'CONTINUE?' -> stage restarted (level reload at 342 s) -> playing again; 236 s in level 60, 0 TLB misses"
+ ],
+ "caveat": "reached through a test-only level jump; on a fresh card the arcade is locked (needs all five flashbacks, F-0064)"
+}

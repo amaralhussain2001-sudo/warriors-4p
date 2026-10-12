@@ -1,0 +1,177 @@
+{
+ "tag": "reg_1p_60",
+ "environment": "SINGLE-PC, one instance, bots/scripted input, no humans, no network",
+ "instance": 12,
+ "input": "W4P OFF, agent key presses, package groups + warriors-4p 60fps, EE cycle rate 180 % (EECycleRate=2) as the package uses with 60 fps",
+ "players": 1,
+ "patch": "local/m7/reg.pnach",
+ "groups": [
+  "warriors-4p M1",
+  "warriors-4p own view",
+  "warriors-4p hud",
+  "warriors-4p 4p",
+  "warriors-4p 4p hud B1",
+  "warriors-4p 4p hud B2",
+  "warriors-4p 4p spawn",
+  "warriors-4p 4p spawn leave",
+  "warriors-4p 4p inventory",
+  "warriors-4p 4p fx",
+  "warriors-4p session",
+  "warriors-4p missions",
+  "warriors-4p session call",
+  "warriors-4p widescreen",
+  "warriors-4p 60fps"
+ ],
+ "ini": [
+  "EmuCore/Speedhacks/vuThread=false",
+  "EmuCore/Speedhacks/EECycleRate=2"
+ ],
+ "cards": "fresh",
+ "seconds": 300,
+ "emulator_exited_early": false,
+ "tlb_misses": 0,
+ "last_poll": 17724,
+ "last_frames": 11416,
+ "samples": 147,
+ "sample_errors": 1,
+ "frame_counter_advanced_in_last_60s": true,
+ "poll_counter_advanced_in_last_60s": true,
+ "state_changes": [
+  {
+   "t": 3.0,
+   "poll": 0,
+   "frames": 0,
+   "level": null,
+   "cp": null,
+   "players": null,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": null,
+   "pad_owner": [
+    0,
+    0
+   ]
+  },
+  {
+   "t": 7.1,
+   "poll": 99,
+   "frames": 0,
+   "level": 0,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 51.8,
+   "poll": 4204,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 62.0,
+   "poll": 4685,
+   "frames": 0,
+   "level": 100,
+   "cp": 1,
+   "players": 0,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 181.6,
+   "poll": 11348,
+   "frames": 6069,
+   "level": 99,
+   "cp": 1,
+   "players": 0,
+   "views": 0,
+   "cameras": 0,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    65535,
+    65535
+   ]
+  },
+  {
+   "t": 185.7,
+   "poll": 11389,
+   "frames": 6069,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 234.4,
+   "poll": 13837,
+   "frames": 7811,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": true,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  },
+  {
+   "t": 240.6,
+   "poll": 14189,
+   "frames": 7881,
+   "level": 99,
+   "cp": 1,
+   "players": 1,
+   "views": 1,
+   "cameras": 1,
+   "paused": false,
+   "join": 1,
+   "pad_owner": [
+    0,
+    65535
+   ]
+  }
+ ],
+ "local_dir": "local/m7/reg_1p_60/",
+ "observed": [
+  "title accepted the first Start press (k_a3)",
+  "new profile, Mission 1 with 1 player at poll 11389",
+  "OSD 59.9 fps in gameplay (k_b3/k_b4)",
+  "pause open/close 13837-14189"
+ ],
+ "note": "short check only (title + start + pause), as asked"
+}

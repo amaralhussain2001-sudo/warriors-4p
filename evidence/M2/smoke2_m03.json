@@ -1,0 +1,74 @@
+{
+ "tag": "smoke2_m03",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot",
+ "seconds": 607,
+ "state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 15456,
+   "players": 4,
+   "handles": [
+    "0x1b3",
+    "0x101bb",
+    "0x40798",
+    "0x507b0"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 15466,
+   "players": 4,
+   "handles": [
+    "0x1b3",
+    "0x101bb",
+    "0x40798",
+    "0x507b0"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 15479,
+   "players": 4,
+   "handles": [
+    "0x1b3",
+    "0x101bb",
+    "0x40798",
+    "0x507b0"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 15483, polls 15484, waits 1469, wait total 26515.7 ms, max 176.1 ms, hashes 1548, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 58% gs 13% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 4
+  },
+  "1": {
+   "last": "poll 15485, polls 15486, waits 2820, wait total 51784.9 ms, max 143.6 ms, hashes 1548, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 56% gs 14% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 4
+  },
+  "2": {
+   "last": "poll 15488, polls 15489, waits 2312, wait total 36675.5 ms, max 72.5 ms, hashes 1548, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 58% gs 14% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 4
+  },
+  "3": {
+   "last": "poll 15484, polls 15485, waits 1849, wait total 33775.9 ms, max 178.4 ms, hashes 1548, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 55% gs 15% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 4
+  }
+ },
+ "hash_points_common": 516,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "last_common": "15480"
+}
