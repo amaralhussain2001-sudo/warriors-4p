@@ -3,7 +3,7 @@
 **Stage:** 2 (approved 2026-10-10; decisions D1-D21 in `docs/DECISIONS.md`).
 **Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5** (session policies + transport):
 every SINGLE-PC criterion met, 4-player package built; LAN/INTERNET parts need the user. **M6** (missions) in progress:
-exit criteria `docs/plan/M6.md`. **M7** criteria written (`docs/plan/M7.md`); regression done (F-0193). Findings up to **F-0200**. The user said "do not stop until you finish everything"
+exit criteria `docs/plan/M6.md`. **M7** criteria written (`docs/plan/M7.md`); regression done (F-0193). Findings up to **F-0204**. The user said "do not stop until you finish everything"
 (2026-10-12): keep going without pauses; stop only for things that need the user.
 Fork: binary **w4p-m6-1** (+ Esc/sit-out changes, built 06:59); source **w4p-m6-2** = patches 0001-0019 (only the
 OSD text and build tag differ from the binary; rebuild after smoke3). Protocol version 3.
@@ -23,7 +23,7 @@ OSD text and build tag differ from the binary; rebuild after smoke3). Protocol v
 ## M5 status (all SINGLE-PC, 4 instances on loopback unless noted)
 | # | Criterion | Status | Evidence |
 |---|---|---|---|
-| 1 | Pause | **met** (Start); Esc -> pause request (D18) implemented, not tested with a real key | F-0171 |
+| 1 | Pause | **met**: Start, and Esc as a pause request with real key presses (F-0196) | F-0171, F-0196 |
 | 2 | Cutscene skip | **met** | F-0171, F-0177 |
 | 3 | Disconnect, back in time | **met** | F-0164, F-0167 |
 | 4 | Timeout choice | **met** for players 2, 3, 4 | F-0169, F-0170, F-0176, F-0178 |
@@ -36,12 +36,12 @@ OSD text and build tag differ from the binary; rebuild after smoke3). Protocol v
 ## M6 status (`docs/plan/M6.md`)
 | # | Criterion | Status |
 |---|---|---|
-| 1 | Smoke per mission | first batch (F-0181): 16/17 in sync, M17 crash -> fixed (F-0184); players 3-4 blocked in M2/M5/M16/M18 -> X11 (F-0183) fixes M5/M16; M2/M18 by script design. **Re-test batch smoke2 running** (all 18 missions, policies on, X11, missions group, FXCAM, chooser v2) |
-| 2 | Per-mission fixes | X1, X2, X3, X5, X7(b), X8 (F-0180), chooser v2 (F-0182), X11 (F-0183), FXCAM (F-0184), X12 (F-0185). Open: X4 teleport follow, X6 Lua patches, M12 pin |
-| 3 | Restart/checkpoint per mission | not yet per mission (M2 tests R8 in M13 only) |
+| 1 | Smoke per mission | **met (SINGLE-PC)**: smoke3 all 18 missions 0 mismatches / 0 TLB, 4 players in 16 (M2/M18 join off by script) (F-0201) |
+| 2 | Per-mission fixes | X1-X8 (F-0180, F-0182), X11 (F-0183), FXCAM (F-0184), X12 (F-0185), PINSVC/PLACE (F-0188, F-0197), X4 (F-0189), X6 rows (F-0190, F-0199), HUD (F-0191, F-0194, F-0200, F-0203), FOVFIX (F-0198). Open: player 3's Select ring, 'player boxes' only for players 1-2 (F-0199) |
+| 3 | Restart/checkpoint per mission | **met (SINGLE-PC)**: checkpoint reload with 4 players in M3/M6/M9/M12/M14/M15, players back in 17-43 s, 0 mismatches (F-0204) |
 | 4 | Completion with humans | needs the user (D) |
 | 5 | Hub interludes | X12 verified with a level jump (F-0185); a real hub after a finished mission untested |
-| 6 | Mission status table | not yet written in MISSIONS.md |
+| 6 | Mission status table | interim table in MISSIONS.md (all IN PROGRESS until human completion) |
 
 ## Next steps (in this order)
 1. Running: smoke3 batch (all 18 missions, all fixes, policies on; `local/m6_smoke3_console.txt`, 07:17 to ~10:50,
