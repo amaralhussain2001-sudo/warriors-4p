@@ -114,7 +114,10 @@ def main():
         peer_base = opt("--peer-base", 0)  # through w4p-net helpers (net/w4p-net/tests/local4.py): 127.0.0.1:base+10*slot+o
         lines += [f"Peer{o} = 127.0.0.1:{(peer_base + 10 * slot + o) if peer_base else PORTS[o]}" for o in INSTS if o != slot]
         extra = [a for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] in ("--w4p", f"--w4p-slot{slot}")]
-        lines += [f"{k.strip()} = {v.strip()}" for k, v in (e.split("=", 1) for e in extra)]
+        extra_kv = [(k.strip(), v.strip()) for k, v in (e.split("=", 1) for e in extra)]
+        # an extra key replaces the default line (the W4P ini reader keeps the first value, so appending was ignored)
+        lines = [ln for ln in lines if ln.split(" = ", 1)[0] not in {k for k, _ in extra_kv}]
+        lines += [f"{k} = {v}" for k, v in extra_kv]
         ini = os.path.join(out_dir, f"w4p_slot{slot}.ini")
         open(ini, "w", encoding="utf-8").write("\n".join(lines) + "\n")
         env = dict(os.environ, W4P_CONFIG=ini)
