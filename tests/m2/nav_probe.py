@@ -265,7 +265,7 @@ def main():
             pine, poll = None, -1
         name = os.path.join(out, f"t{int(time.time() - t0):04d}_p{poll}.png")
         subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
-                        os.path.join(PROJ, "tools", "winshot.ps1"), "-ProcessId", str(p.pid), "-Out", name, "-Scale", "0.4"],
+                        os.path.join(PROJ, "tools", "winshot.ps1"), "-ProcessId", str(p.pid), "-Out", name, "-Scale", opt("--shot-scale", "0.4", str)],
                        capture_output=True)
     try:  # game state at the end: GameMgr player count and handles (F-0020), views and cameras
         pine = pine or Pine(sandbox.PINE_BASE + INST, timeout=3)
