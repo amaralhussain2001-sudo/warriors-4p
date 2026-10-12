@@ -357,6 +357,76 @@ on the probes listed). Probe module: `tests/m2/icon34_probe.py` (read-only excep
 - Overlapping labels when players stand close (as with the game's own labels); player 4's label is drawn on top.
 - `mod/make_pnach.py`'s description of the group still says "coloured red/green" (not changed: the file is shared).
 
+## 10. The orange ring around the radar (Mission 12 report, 2026-10-12, fix RARC)
+
+### Plain English
+- **What it is:** the orange (and blue) ring is not part of the radar disc. It is two **timer arcs** that the game draws
+  around player 1's and player 2's radars while the gang has a running 10-second timer (in Mission 12 it shows during
+  fights). Each arc shrinks as its timer runs out. The disc was already halved for the 2x2 layout (RHALF, F-0191), but
+  the arcs have their own fixed radius, so they stayed at single-player size: about twice the disc, reaching into the
+  next quarter (the orange arc at the left edge of player 2's crop was player 1's ring).
+- **Fix (RARC, in `[warriors-4p hud]` next to RHALF):** in the 2x2 layout with 2 or more views the arcs' inner and outer
+  radius are halved, so they hug the half-size disc like they hug the full disc in single player. Single player, the
+  merged view and other layouts are unchanged. Example, Mission 12, same scene and poll: before
+  `local/m2/ring_r0/t0374_p9701.png` (arcs about twice the disc, crossing into the neighbouring quarter), after
+  `local/m2/ring_r1/t0374_p9725.png` (arcs on the disc edge; zoom `local/m6/ring/z_r1_q1.png`).
+- **Players 3 and 4 never get these arcs:** the game has only two of these per-player widgets (open, like their missing
+  Select status panel).
+
+### 10.1 What draws it (VERIFIED static + runtime)
+- `FUN_001AABA8` (our label RadarArcsDraw) draws, for the per-player HUD widget of player 1 (HUD+0x177D0 = 0x00618010) and
+  player 2 (HUD+0x18280 = 0x00618AC0; called from the HUD draw, all_01.c lines 46215/46219), up to two arcs with
+  `FUN_001A5E38` (our label DrawArc) -> `FUN_0017B8A8` (fan with a texture). Arc objects at widget +0x0/+0x120 and
+  +0x220/+0x340; +0x0 inner radius, +0x4 outer radius, +0x8/+0xC start/end angle, +0x10.. position. Runtime (ring_r1,
+  PINE): radii (54.0, 57.6) and (57.6, 61.2); position = the radar's position vector (e.g. (-0.215, 2.0, 0.24) for
+  player 1 = radar 1's +0x2930). `FUN_001AA630` copies the radar vector into the arc positions (the existing hud
+  patch B keeps its height).
+- Visibility: `FUN_001AA9B0` sets each arc's fraction from the squad's end times +0x5E8 and +0x5F0 (GameClock ms; full
+  arc for 10 s, factor 0.0001). The squad timers are set by `FUN_00169878`/`FUN_001698C8`; +0x5E8 is refreshed to 10 s
+  while GameMgr+0x28C == 1 (`FUN_001698F0`). What game state sets them in Mission 12 (fights, "heat") is a HYPOTHESIS;
+  the test forces them (`marker_probe.arcs_on`, TEST ONLY PINE write of +0x5E8/+0x5F0 = clock + 9.5 s).
+- Colours: `FUN_001AABA8` copies DAT_006007E0 / DAT_006007E8 into the arcs (`FUN_001AACF0` sets them).
+- Both widgets read player 1's squad, so the arcs appear around radars 1 and 2 at the same time (matches the report:
+  player 2's crop showed his ring and the edge of player 1's).
+
+### 10.2 Other radar decorations (for completeness)
+| Decoration | Drawn by | Size source | 2x2 status |
+|---|---|---|---|
+| Disc and inner disc | `FUN_001C60B0` -> `FUN_0017B8A8` / `FUN_0017BC28` | 0x0050E9BC x 0.19 (inner x 0.825, 0x0050E9DC) | halved (RHALF 0x001C6304) |
+| Blip positions, rim clamp | `FUN_001C5210` | 0x0050E9BC | halved (RHALF 0x001C598C) |
+| Timer arcs (the orange ring) | `FUN_001AABA8` -> `FUN_001A5E38` | arc +0x0/+0x4 radii | **halved now (RARC)** |
+| Player icons / labels (widgets) | sprite flush (item BLIPIDX, section 4) | first 0x0050E9CC (halved by RHALF 0x001C5D78), then **overwritten in the same frame** by 0x0050E9D4 = 0.03 (0.035 for icons 0x19/0x1A) at 0x001C5F70 -> `FUN_001A2120` | full single-player size (observation; not changed, labels stay readable) |
+| Dots (companions, enemies, objectives) | "hud_radar_dot" effects | effect scale x 0x0050E9B0 / 0x0050E9B4 (`FUN_001C4690`) | not changed (not part of the report) |
+| Chase ring (HUD+0x9640, Lua `HUDSetChaseHUDState_*`, only in scripts 08024/09021) | `FUN_001A43D8` | fixed screen constants 0x0050D17C-0x0050D190 | not checked (HYPOTHESIS: one ring at the single-player radar spot) |
+| Radar zoom `HUDSetRadarZoomScale` | writes radar 1/2 +0x2920 (0x00604730, 0x00607070) | | radars 3-4 keep 1.0 (observation) |
+
+### 10.3 Patch (16 lines in `[warriors-4p hud]`, `mod/make_pnach.py` after RHALF)
+- 0x001A5F74 (was C5030000 `lwc1 f3,0x0(t0)`, the inner-radius load in `FUN_001A5E38`; all three paths that load the outer
+  radius into f2 meet here) -> `j 0x000E80B4`; the delay slot 0x001A5F78 (`addiu a3,zero,16`) is unchanged.
+- Cave 0x000E80B4-0x000E80EB (14 words): original load; if layout mode 0x0050B1A4 == 2 and views 0x0050B198 >= 2:
+  f2 (outer) and f3 (inner) x 0.5; `j 0x001A5F7C`. Uses at, v0 (reloaded at 0x001A5F7C) and f1 (dead until 0x001A5FB4).
+  Halving both radii keeps the ring's thickness ratio (+0xF0 = inner/outer).
+- `python -I tools/note_patches.py check local/m6/ring/r1.pnach` (current `mod/make_pnach.py`): **5666 addresses,
+  6 problems** (the 6 known `[4p hud A]`/`[4p hud B1]` alternatives); free RAM 0x000E80B4-0x000E80FF was unused.
+
+### 10.4 Tests (SINGLE-PC, one instance, sandbox 12, scripted bots, no impairment, MTVU off, Mission 12 level14)
+Level jump CallAt `4000:0041ABC0:1,4010:00160D78:0x01FD9F18`, players 3-4 join with `cal_p3.txt`/`cal_p4.txt`,
+`marker_probe:arcs_on` at polls 9600/10400(/11200), screenshots every 6 s at 2x internal resolution.
+
+| Run | Pnach | Result |
+|---|---|---|
+| ring_r1 (first try) | `local/m6/ring/r1.pnach` | not a game result: the emulator went to "Paused" at 39 s on the boot screen (`(VMManager) Pausing...` in the emulog, poll 1108); cause not found (outside input possible); rerun |
+| ring_r0 | `mod/w4p_m1.pnach` (committed, without RARC) | arcs about twice the disc around radars 1-2, crossing into the neighbouring quarters (`local/m2/ring_r0/t0374_p9701.png`); 0 TLB misses |
+| ring_r1 | `local/m6/ring/r1.pnach` (with RARC) | arcs on the disc edge, inside each quarter; disc, labels and dots unchanged compared with ring_r0 (same scene); 4 players, 4 views, 0 TLB misses (`local/m2/ring_r1/t0374_p9725.png`, zoom `local/m6/ring/z_r1_q1.png`) |
+| ring_r2w | r1.pnach + `[warriors-4p widescreen]` | radars at x -0.201 / 1.541, depth 1.9, z 0.262 / -0.832; discs and arcs fully inside their quarters, right margin about 30 px of a 787 px quarter (4:3 run: about 32 of 620) (`local/m2/ring_r2w/t0374_p9752.png`, zooms `local/m6/ring/z_r2w_q2.png`, `z_r2w_q4.png`); 0 TLB misses |
+
+### 10.5 Open
+- Players 3-4 have no timer arcs (no per-player widget); radars 3-4 do not get `HUDSetRadarZoomScale`.
+- The player icons stay at the single-player icon scale 0.03 (RHALF's blip halving at 0x001C5D78 is overwritten by the
+  second scale call); not changed because the labels are readable as they are.
+- What sets the squad timers in Mission 12 was not traced; a real fight with RARC was not recorded (the test forces the
+  timers). No 4-instance lockstep run with RARC; 2-player sessions use the same 2x2 condition (not run).
+
 ## Appendix A: cave sources
 R5900, assembled at the addresses in section 4. Constants filled by the generator: TINT3 = 0xFF2020FF (player 3, red),
 TINT4 = 0xFF20FF20 (player 4, green), DATA = 0x000E83F0, DATA9 = 0x000E8A00, FANCORE_AT = 0x000E8400;

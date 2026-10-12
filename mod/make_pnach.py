@@ -178,7 +178,25 @@ def main():
            (0x000E80A4, 0x3421FDF4, "ori at,at,0xfdf4: half of 0x3CD4FDF4"),
            (0x000E80A8, 0x44816000, "mtc1 at,f12"),
            (0x000E80AC, 0x08071760, "j 0x001C5D80"),
-           (0x000E80B0, 0x00000000, "nop")]
+           (0x000E80B0, 0x00000000, "nop"),
+           # RARC (M6, m6_markers_map.md addendum): the two timer arcs around each of players 1-2's radars (per-player HUD
+           # widget HUD+0x177D0/0x18280, FUN_001AABA8 -> FUN_001A5E38, squad timers +0x5E8/+0x5F0; the orange ring) have
+           # fixed radii (+0x0 inner, +0x4 outer) that RHALF does not reach: in the same 2x2 condition both are halved.
+           (0x001A5F74, 0x0803A02D, "was C5030000 lwc1 f3,0x0(t0) -> j 0x000E80B4 (RARC: arc radii, FUN_001A5E38)"),
+           (0x000E80B4, 0xC5030000, "lwc1 f3,0x0(t0): arc inner radius (original load; f2 = outer radius)"),
+           (0x000E80B8, 0x3C010051, "lui at,0x51"),
+           (0x000E80BC, 0x8C22B1A4, "lw v0,-0x4E5C(at): layout mode 0x0050B1A4"),
+           (0x000E80C0, 0x2442FFFE, "addiu v0,v0,-2"),
+           (0x000E80C4, 0x14400007, "bne v0,zero,ret: not the 2x2 layout"),
+           (0x000E80C8, 0x8C22B198, "lw v0,-0x4E68(at): views 0x0050B198"),
+           (0x000E80CC, 0x2C420002, "sltiu v0,v0,2"),
+           (0x000E80D0, 0x14400004, "bne v0,zero,ret: fewer than 2 views"),
+           (0x000E80D4, 0x3C013F00, "lui at,0x3f00: 0.5"),
+           (0x000E80D8, 0x44810800, "mtc1 at,f1 (f1 is dead until 0x001A5FB4)"),
+           (0x000E80DC, 0x46011082, "mul.s f2,f2,f1: outer radius / 2"),
+           (0x000E80E0, 0x460118C2, "mul.s f3,f3,f1: inner radius / 2 (ratio +0xF0 unchanged)"),
+           (0x000E80E4, 0x080697DF, "ret: j 0x001A5F7C"),
+           (0x000E80E8, 0x00000000, "nop")]
     out += ["", "[warriors-4p hud]", "author=warriors-4p",
             "description=Online sessions: each player's radar inside their own view at single-player size (2x2 layout).", ""]
     out += [f"patch=2,EE,{a:08X},word,{w:08X} // {c}" for a, w, c in hud]

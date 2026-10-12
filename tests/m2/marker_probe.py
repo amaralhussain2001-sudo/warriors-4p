@@ -227,3 +227,27 @@ def pads(p):
         out["pad_owner"][pad] = ((w >> 16) & 0xFFFF)
     out["b622e10"] = hex(p.read32(0x00622E10))
     return out
+
+
+
+def arcs_on(p):
+    """TEST ONLY (PINE write, single instance): start the two timer arcs around players 1-2's radars (the orange ring;
+    FUN_001AA9B0 reads the squad's end times +0x5E8 / +0x5F0, GameClock ms) for 9.5 s, and report the arc radii of the
+    per-player widgets HUD+0x177D0 / HUD+0x18280 (objects +0x0, +0x120, +0x220, +0x340: +0 inner, +4 outer)."""
+    gm = p.read32(0x0051489C)
+    o = _resolve(p, p.read32(gm + 0x228))
+    out = {"poll": p.read32(0x000F0500)}
+    if not 0x00100000 <= o < 0x02000000:
+        return out
+    brain = 0x006D53F0 + ((p.read32(o + 0x90) >> 16) & 0xFFFF) * 0x2F0
+    squad = p.read32(brain + 0x20C)
+    clock = p.read32(p.read32(0x0050B734) + 0x48)
+    if 0x00100000 <= squad < 0x02000000:
+        p.write32(squad + 0x5E8, clock + 9500)
+        p.write32(squad + 0x5F0, clock + 9500)
+    out.update(squad=hex(squad), clock=clock, views=p.read32(0x0050B198), layout=p.read32(0x0050B1A4))
+    for name, w in (("w1", 0x00618010), ("w2", 0x00618AC0)):
+        out[name] = {"active_a98": p.read32(w + 0xA98), "a94": p.read32(w + 0xA94),
+                     "radii": [[_f(p.read32(w + off)), _f(p.read32(w + off + 4))] for off in (0x0, 0x120, 0x220, 0x340)],
+                     "pos20": [_f(p.read32(w + 0x20 + 4 * k)) for k in range(3)]}
+    return out
