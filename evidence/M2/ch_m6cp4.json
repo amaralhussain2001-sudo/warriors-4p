@@ -1,0 +1,63 @@
+{
+ "tag": "ch_m6cp4",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, fresh boot",
+ "seconds": 972,
+ "state": {
+  "0": "TimeoutError('timed out')",
+  "1": "TimeoutError('timed out')",
+  "2": {
+   "poll": 10101,
+   "players": 4,
+   "handles": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 10106,
+   "players": 4,
+   "handles": [
+    "0x20162",
+    "0x158",
+    "0x1015d",
+    "0x30167"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 10057, polls 10058, waits 3305, wait total 311246.6 ms, max 611.5 ms, hashes 1005, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 9% gs 4% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 25
+  },
+  "1": {
+   "last": "poll 10104, polls 10105, waits 3989, wait total 390073.2 ms, max 399.5 ms, hashes 1008, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 11% gs 4% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 25
+  },
+  "2": {
+   "last": "poll 10107, polls 10108, waits 3659, wait total 385703.4 ms, max 544.0 ms, hashes 1008, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 11% gs 4% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 25
+  },
+  "3": {
+   "last": "poll 10109, polls 10110, waits 3320, wait total 352310.7 ms, max 393.1 ms, hashes 1008, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 10% gs 4% vu 0%",
+   "desync": [],
+   "errors": [],
+   "calls": 25
+  }
+ },
+ "hash_points_common": 335,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "last_common": "10050"
+}
