@@ -1,0 +1,336 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "x4x6_probe.lc_setup2@3400": {
+  "poll": 3404,
+  "lc_n": 8,
+  "lc_runs": 0,
+  "tab": [
+   "0x0",
+   "0xe7f80",
+   "0xe7fc0",
+   "0xe7fa0",
+   "0xe7fe0",
+   "0xe7e00",
+   "0x0",
+   "0x0"
+  ]
+ },
+ "x4x6_probe.state@8500": {
+  "poll": 8505,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 2,
+   "checkpoint": 1,
+   "level_idx": 13,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level9"
+  },
+  "code": {
+   "x4_teleport_hook": true,
+   "x4_flag_hook": true,
+   "x4f_first_word": true,
+   "luarun_first_word": true,
+   "test_call": true
+  },
+  "script_mgr": "0xc8e600",
+  "lua_state": "0xc9da00",
+  "mgr_vtable": "0x5449b8",
+  "x4_on": 1,
+  "x4_dist": 15.0,
+  "x4_n": 0,
+  "count": 2,
+  "players": {
+   "1": {
+    "handle": "0x162",
+    "obj": "0x640c80",
+    "pos": [
+     73.37,
+     381.275,
+     4.795
+    ]
+   },
+   "2": {
+    "handle": "0x10165",
+    "obj": "0x641350",
+    "pos": [
+     74.138,
+     382.255,
+     4.795
+    ],
+    "dist_to_p1": 1.245
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "pos": null
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cinematic_410": 0
+ },
+ "x4x6_probe.lc_read2@8600": {
+  "poll": 8608,
+  "lc_n": 16,
+  "lc_runs": 10,
+  "names_newest_first": [
+   "level9_chap1_radio.lua",
+   "level9.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "call": {
+   "fn": "0xe79a0",
+   "args": [
+    "0xe7c00",
+    "0x0",
+    "0x0",
+    "0x0"
+   ],
+   "done": 1,
+   "v0": 0,
+   "poll": 8608,
+   "src": "InvSetMoney((W4P_AUTO or 0) * 10 + (W4P_CH1 or 0), 1)"
+  },
+  "p1_money_auto_x10_plus_ch1": 41,
+  "expect": 41
+ },
+ "x4x6_probe.state@9100": {
+  "poll": 9100,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 1,
+   "level_idx": 13,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level9"
+  },
+  "code": {
+   "x4_teleport_hook": true,
+   "x4_flag_hook": true,
+   "x4f_first_word": true,
+   "luarun_first_word": true,
+   "test_call": true
+  },
+  "script_mgr": "0xc8e600",
+  "lua_state": "0xc9da00",
+  "mgr_vtable": "0x5449b8",
+  "x4_on": 1,
+  "x4_dist": 15.0,
+  "x4_n": 0,
+  "count": 4,
+  "players": {
+   "1": {
+    "handle": "0x162",
+    "obj": "0x640c80",
+    "pos": [
+     73.37,
+     381.275,
+     4.795
+    ]
+   },
+   "2": {
+    "handle": "0x10165",
+    "obj": "0x641350",
+    "pos": [
+     74.138,
+     382.255,
+     4.795
+    ],
+    "dist_to_p1": 1.245
+   },
+   "3": {
+    "handle": "0x30230",
+    "obj": "0x6420f0",
+    "pos": [
+     78.369,
+     380.073,
+     4.04
+    ],
+    "dist_to_p1": 5.197
+   },
+   "4": {
+    "handle": "0x4024a",
+    "obj": "0x6427c0",
+    "pos": [
+     79.888,
+     372.543,
+     4.034
+    ],
+    "dist_to_p1": 10.923
+   }
+  },
+  "money": [
+   41,
+   0,
+   0,
+   0
+  ],
+  "cinematic_410": 0
+ },
+ "x4x6_probe.gauto_p3@9200": {
+  "poll": 9203,
+  "call": {
+   "fn": "0xe79a0",
+   "args": [
+    "0xe7c00",
+    "0x0",
+    "0x0",
+    "0x0"
+   ],
+   "done": 1,
+   "v0": 0,
+   "poll": 9203,
+   "src": "subrail = nil EnterGraveTrain(0, HuGetPlayer(2)) if subrail == nil then InvSetMoney(444, 1) else InvSetMoney(445, 1) end"
+  },
+  "money": [
+   444,
+   0,
+   0,
+   0
+  ],
+  "expect_p1": 444,
+  "render_cams": [
+   "0xcc5000",
+   "0xcde400",
+   "0xcd9c00",
+   "0xce3400"
+  ]
+ },
+ "x4x6_probe.gauto_p1@9800": {
+  "poll": 9805,
+  "call": {
+   "fn": "0xe79a0",
+   "args": [
+    "0xe7c00",
+    "0x0",
+    "0x0",
+    "0x0"
+   ],
+   "done": 1,
+   "v0": 0,
+   "poll": 9805,
+   "src": "subrail = nil EnterGraveTrain(0, player) if subrail == nil then InvSetMoney(448, 1) else InvSetMoney(449, 1) end"
+  },
+  "money": [
+   449,
+   0,
+   0,
+   0
+  ],
+  "expect_p1": 449,
+  "render_cams": [
+   "0xcf8800",
+   "0xcde400",
+   "0xcd9c00",
+   "0xce3400"
+  ]
+ },
+ "x4x6_probe.state@10000": {
+  "poll": 10004,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 1,
+   "level_idx": 13,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level9"
+  },
+  "code": {
+   "x4_teleport_hook": true,
+   "x4_flag_hook": true,
+   "x4f_first_word": true,
+   "luarun_first_word": true,
+   "test_call": true
+  },
+  "script_mgr": "0xc8e600",
+  "lua_state": "0xc9da00",
+  "mgr_vtable": "0x5449b8",
+  "x4_on": 1,
+  "x4_dist": 15.0,
+  "x4_n": 0,
+  "count": 4,
+  "players": {
+   "1": {
+    "handle": "0x162",
+    "obj": "0x640c80",
+    "pos": [
+     73.37,
+     381.275,
+     4.795
+    ]
+   },
+   "2": {
+    "handle": "0x10165",
+    "obj": "0x641350",
+    "pos": [
+     74.138,
+     382.255,
+     4.795
+    ],
+    "dist_to_p1": 1.245
+   },
+   "3": {
+    "handle": "0x30230",
+    "obj": "0x6420f0",
+    "pos": [
+     82.037,
+     381.133,
+     4.024
+    ],
+    "dist_to_p1": 8.702
+   },
+   "4": {
+    "handle": "0x4024a",
+    "obj": "0x6427c0",
+    "pos": [
+     81.723,
+     372.12,
+     4.026
+    ],
+    "dist_to_p1": 12.417
+   }
+  },
+  "money": [
+   449,
+   0,
+   0,
+   0
+  ],
+  "cinematic_410": 0
+ }
+}

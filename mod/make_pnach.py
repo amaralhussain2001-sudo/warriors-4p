@@ -189,7 +189,7 @@ def main():
                               ("fx34.txt", "4p fx", "fades, flashes, blur and game-over black for views 3-4; needs 4p (m2_fx34.md)"),
                               ("fx34_fog.txt", "4p fx fog", "optional: 3D fog on views 3-4 (2 extra fog systems; m2_fx34.md B-opt)"),
                               ("session.txt", "session", "session policies - movie flag, pause by a downed player 1, no Player 2 drop-out in Quit, LEAVE(index); needs 4p spawn and spawn leave (session_policies.md)"),
-                              ("missions.txt", "missions", "M6 mission fixes - X1 delete guard (LEAVE player 3/4 before a script deletes his human), X3 HuChangePlayerGang wrapper, X7 starting items for players 3-4; needs session, 4p spawn and spawn leave (m6_fixes.md)")):
+                              ("missions.txt", "missions", "M6 mission fixes - X1 delete guard (LEAVE player 3/4 before a script deletes his human), X3 HuChangePlayerGang wrapper, X7 starting items for players 3-4 (owed again after a forced leave), X4 teleport follow, X6 Lua fixes after each script file (LUACH; M13 subway camera guard); needs session, 4p spawn and spawn leave (m6_fixes.md, m6_chooser.md, m6_x4_x6.md)")):
         lines = [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
         out += ["", f"[warriors-4p {title}]", "author=warriors-4p", f"description=Experimental: {desc}.", ""] + lines
     # TEST ONLY (M2 engine tests in Mission 1): PickJoinCompanion (FUN_0022A770) skips its gang-wide search in level 99,

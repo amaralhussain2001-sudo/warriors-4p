@@ -1,4 +1,4 @@
-// [warriors-4p missions] M6 mission fixes X1, X3 and X7 (docs/research/m6_missions.md section 2, docs/research/m6_fixes.md).
+// [warriors-4p missions] M6 mission fixes X1, X3, X4 and X7, X6 Lua runner (LUARUN), file hook (LUACH) and the M13 camera guard row (docs/research/m6_missions.md section 2, docs/research/m6_fixes.md, docs/research/m6_x4_x6.md).
 // Needs [warriors-4p session] (LEAVE 0x000E7100), [warriors-4p 4p spawn] (UNPIN 0x000E1EE8) and [warriors-4p 4p spawn leave].
 // X1 delete guard: before a script deletes a human held by player 3/4 (HuDelete binding 0x00358608, call 0x00358624;
 //    GangDelete FUN_0016D068, call 0x0016D0C0 of the member cleanup FUN_00164738 - not used by the level teardown
@@ -16,7 +16,7 @@
 // X7 (b) (m6_chooser.md): LVOWE(index) = LEAVE for a script-forced leave (X1, X3); if the player got the starting items in
 //    this level load (given byte 1), the byte becomes 2 = owed, and X7J gives them again at his next join, at any
 //    checkpoint (the forced release emptied his inventory slot). Normal leaves keep byte 1: no second gift.
-// Free RAM 0x000E7400-0x000E7813.
+// Free RAM used: 0x000E7400-0x000E7BFF (code, data, LUACH log) and 0x000E7E00-0x000E7F7F (LUACH table and row data); 0x000E7C00-0x000E7DFF is a test-only Lua string buffer (written over PINE by tests/m2/x4x6_probe.py, not in the pnach).
 patch=2,EE,00358624,word,0C039D20 // X1: was 0C08CFBC jal 0x00233EF0 (HuDelete core) -> jal 0x000E7480 X1D; delay slot daddu a0,v0,zero kept
 patch=2,EE,0016D0C0,word,0C039D40 // X1: was 0C0591CE jal 0x00164738 (gang member cleanup) in GangDelete FUN_0016D068 -> jal 0x000E7500 X1G; delay slot daddu a0,s1,zero kept
 patch=2,EE,0035D1E8,word,0C039D60 // X3: was 0C08E6E0 jal 0x00239B80 (HuChangePlayerGang core) -> jal 0x000E7580 X3W; delay slot sltu a1,zero,v0 kept
@@ -237,3 +237,228 @@ patch=2,EE,000E7804,word,DFBF0000 // lo_out: ld ra, 0x0(sp)
 patch=2,EE,000E7808,word,7BB00010 // lq s0, 0x10(sp)
 patch=2,EE,000E780C,word,03E00008 // jr ra
 patch=2,EE,000E7810,word,27BD0020 // addiu sp, sp, 32
+// X4 teleport follow (m6_x4_x6.md section 1): after a script Teleport / TeleportToFlag of player 1 or player 2
+//    (binding cores 0x00385BB8 / 0x00385DB0, each called only from its binding), every player 3/4 that is not within
+//    X4_DIST (15.0) of player 1 (TestDistance core 0x00385EA8) is put on a free spot next to player 1 by the
+//    HuTeleportNearHuman core 0x0023B138 (3.6 units, the game's own 32-direction search). Runs also during scenes.
+//    HuTeleportNearHuman itself is not hooked: all 7 script uses move A0/player2 next to player.
+// X6 Lua runner (m6_x4_x6.md section 2): LUARUN(source, name) runs a NUL-terminated Lua source string in the level's
+//    lua_State (*(*(0x00512B04) + 4)) through the game's ScriptLua DoString 0x00356A78; for W4P CallAt and tests.
+patch=2,EE,0036CC58,word,0C039E08 // X4: was 0C0E16EE jal 0x00385BB8 (Teleport core) in the Teleport binding FUN_0036CBC0 -> jal 0x000E7820 TPW; delay slot daddu a1,sp,zero kept
+patch=2,EE,0036CE34,word,0C039E0B // X4: was 0C0E176C jal 0x00385DB0 (TeleportToFlag core) in the TeleportToFlag binding FUN_0036CDC0 -> jal 0x000E782C TFW; delay slot daddu a1,s1,zero kept
+patch=2,EE,000E7820,word,3C190038 // TPW: lui t9, 0x0038  ; TPW: replaces the Teleport binding's (0x0036CBC0) call of its core 0x00385BB8
+patch=2,EE,000E7824,word,08039E0E // j 0x000E7838
+patch=2,EE,000E7828,word,37395BB8 // ori t9, t9, 0x5BB8  ; t9 = 0x00385BB8 Teleport core (handle, float[3]*, angle)
+patch=2,EE,000E782C,word,3C190038 // TFW: lui t9, 0x0038  ; TFW: replaces the TeleportToFlag binding's (0x0036CDC0) call of its core 0x00385DB0
+patch=2,EE,000E7830,word,08039E0E // j 0x000E7838
+patch=2,EE,000E7834,word,37395DB0 // ori t9, t9, 0x5DB0  ; t9 = 0x00385DB0 TeleportToFlag core (handle, flag handle, angle)
+patch=2,EE,000E7838,word,27BDFFE0 // X4W: addiu sp, sp, -32  ; X4W: core call (t9, arguments a0-a2 as the binding set them), then X4F(teleported handle)
+patch=2,EE,000E783C,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E7840,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E7844,word,0320F809 // jalr ra, t9  ; the replaced core call
+patch=2,EE,000E7848,word,0080802D // daddu s0, a0, zero  ; handle the script teleported
+patch=2,EE,000E784C,word,0C039E1C // jal 0x000E7870
+patch=2,EE,000E7850,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E7854,word,DFBF0000 // ld ra, 0x0(sp)
+patch=2,EE,000E7858,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E785C,word,03E00008 // jr ra
+patch=2,EE,000E7860,word,27BD0020 // addiu sp, sp, 32
+patch=2,EE,000E7870,word,27BDFFC0 // X4F: addiu sp, sp, -64  ; X4F(handle): if it is player 1 or 2, every player 3/4 farther than X4_DIST from player 1 goes next to player 1
+patch=2,EE,000E7874,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E7878,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E787C,word,7FB10020 // sq s1, 0x20(sp)
+patch=2,EE,000E7880,word,7FB20030 // sq s2, 0x30(sp)
+patch=2,EE,000E7884,word,3C08000E // lui t0, 0x000E
+patch=2,EE,000E7888,word,8D087980 // lw t0, 0x7980(t0)  ; X4_ON (config, 0 = off)
+patch=2,EE,000E788C,word,11000027 // beq t0, zero, 0x000E792C
+patch=2,EE,000E7890,word,AFA40008 // sw a0, 0x8(sp)
+patch=2,EE,000E7894,word,0C0E409A // jal 0x00390268  ; object of the handle (0 = none)
+patch=2,EE,000E7898,word,27A40008 // addiu a0, sp, 8
+patch=2,EE,000E789C,word,10400023 // beq v0, zero, 0x000E792C
+patch=2,EE,000E78A0,word,00000000 // nop
+patch=2,EE,000E78A4,word,0C08A61A // jal 0x00229868  ; human or 0
+patch=2,EE,000E78A8,word,0040202D // daddu a0, v0, zero
+patch=2,EE,000E78AC,word,1040001F // beq v0, zero, 0x000E792C
+patch=2,EE,000E78B0,word,00000000 // nop
+patch=2,EE,000E78B4,word,804801B0 // lb t0, 0x1B0(v0)  ; player index of the teleported human (-1 = AI)
+patch=2,EE,000E78B8,word,2D080002 // sltiu t0, t0, 2
+patch=2,EE,000E78BC,word,1100001B // beq t0, zero, 0x000E792C  ; only a teleport of player 1 or player 2 pulls players 3-4
+patch=2,EE,000E78C0,word,3C090051 // lui t1, 0x0051
+patch=2,EE,000E78C4,word,8D30489C // lw s0, 0x489C(t1)  ; GameMgr
+patch=2,EE,000E78C8,word,12000018 // beq s0, zero, 0x000E792C
+patch=2,EE,000E78CC,word,24110002 // addiu s1, zero, 2  ; game player index 2 = player 3
+patch=2,EE,000E78D0,word,86080224 // x4_loop: lh t0, 0x224(s0)  ; player count
+patch=2,EE,000E78D4,word,0228402A // slt t0, s1, t0
+patch=2,EE,000E78D8,word,11000014 // beq t0, zero, 0x000E792C
+patch=2,EE,000E78DC,word,00114080 // sll t0, s1, 2
+patch=2,EE,000E78E0,word,02089021 // addu s2, s0, t0  ; s2 + 0x228 = his handle
+patch=2,EE,000E78E4,word,3C09000E // lui t1, 0x000E
+patch=2,EE,000E78E8,word,C52C7984 // lwc1 f12, 0x7984(t1)  ; X4_DIST (15.0)
+patch=2,EE,000E78EC,word,8E440228 // lw a0, 0x228(s2)
+patch=2,EE,000E78F0,word,0C0E17AA // jal 0x00385EA8  ; TestDistance core (d, h1, h2): 1 = closer than d (0 also for a dead handle)
+patch=2,EE,000E78F4,word,8E050228 // lw a1, 0x228(s0)  ; player 1
+patch=2,EE,000E78F8,word,14400008 // bne v0, zero, 0x000E791C
+patch=2,EE,000E78FC,word,00000000 // nop
+patch=2,EE,000E7900,word,8E440228 // lw a0, 0x228(s2)
+patch=2,EE,000E7904,word,0C08EC4E // jal 0x0023B138  ; HuTeleportNearHuman core (mover, target): free spot 3.6 units from player 1 (no-op for a dead handle)
+patch=2,EE,000E7908,word,8E050228 // lw a1, 0x228(s0)
+patch=2,EE,000E790C,word,3C09000E // lui t1, 0x000E
+patch=2,EE,000E7910,word,8D287988 // lw t0, 0x7988(t1)
+patch=2,EE,000E7914,word,25080001 // addiu t0, t0, 1
+patch=2,EE,000E7918,word,AD287988 // sw t0, 0x7988(t1)  ; X4_N: follow teleports made (tests)
+patch=2,EE,000E791C,word,26310001 // x4_next: addiu s1, s1, 1
+patch=2,EE,000E7920,word,2A280004 // slti t0, s1, 4
+patch=2,EE,000E7924,word,1500FFEA // bne t0, zero, 0x000E78D0
+patch=2,EE,000E7928,word,00000000 // nop
+patch=2,EE,000E792C,word,DFBF0000 // x4_out: ld ra, 0x0(sp)
+patch=2,EE,000E7930,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E7934,word,7BB10020 // lq s1, 0x20(sp)
+patch=2,EE,000E7938,word,7BB20030 // lq s2, 0x30(sp)
+patch=2,EE,000E793C,word,03E00008 // jr ra
+patch=2,EE,000E7940,word,27BD0040 // addiu sp, sp, 64
+patch=0,EE,000E7980,word,00000001 // X4_ON: config, X4 teleport follow on (1) / off (0) (startup only)
+patch=0,EE,000E7984,word,41700000 // X4_DIST: config, float 15.0: players 3-4 closer than this to player 1 stay where they are (startup only)
+patch=0,EE,000E7988,word,00000000 // X4_N: follow teleports made since boot (tests) (startup only)
+patch=0,EE,000E7990,word,7034773D // X6 default chunk name "=w4p" (bytes 3D 77 34 70) (startup only)
+patch=0,EE,000E7994,word,00000000 // X6 default chunk name: terminating NUL (startup only)
+patch=2,EE,000E79A0,word,27BDFFF0 // LUARUN: addiu sp, sp, -16  ; LUARUN(source, chunk name or 0): run Lua source on the game thread; v0 = lua_dobuffer status (0 ok), -1 no script manager
+patch=2,EE,000E79A4,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E79A8,word,3C080051 // lui t0, 0x0051
+patch=2,EE,000E79AC,word,8D092B04 // lw t1, 0x2B04(t0)  ; ScriptLua object (re-created at every level load, FUN_00356390)
+patch=2,EE,000E79B0,word,1120000A // beq t1, zero, 0x000E79DC
+patch=2,EE,000E79B4,word,2402FFFF // addiu v0, zero, -1
+patch=2,EE,000E79B8,word,8D2A0004 // lw t2, 0x4(t1)  ; its lua_State (FUN_003564D8 0x00356528)
+patch=2,EE,000E79BC,word,11400007 // beq t2, zero, 0x000E79DC
+patch=2,EE,000E79C0,word,3C0B000E // lui t3, 0x000E
+patch=2,EE,000E79C4,word,256B7990 // addiu t3, t3, 31120  ; default chunk name "=w4p"
+patch=2,EE,000E79C8,word,00A0302D // daddu a2, a1, zero
+patch=2,EE,000E79CC,word,0165300A // movz a2, t3, a1
+patch=2,EE,000E79D0,word,0080282D // daddu a1, a0, zero
+patch=2,EE,000E79D4,word,0C0D5A9E // jal 0x00356A78  ; ScriptLua DoString (vtable +0x2C): lua_dobuffer(L, source, strlen, name) FUN_003290D0
+patch=2,EE,000E79D8,word,0120202D // daddu a0, t1, zero
+patch=2,EE,000E79DC,word,DFBF0000 // lr_out: ld ra, 0x0(sp)
+patch=2,EE,000E79E0,word,03E00008 // jr ra
+patch=2,EE,000E79E4,word,27BD0010 // addiu sp, sp, 16
+// X6 LUACH (m6_x4_x6.md section 2.3): DoBuffer FUN_00356AD0 runs every script file (DoFile 0x00356C18, preload
+//    callback FUN_00356D00); LUACH runs the file, logs its name (8 x 32-byte ring 0x000E7B00, LC_N 0x000E7AFC), then
+//    runs the Lua source of every LC_TAB row (0x000E7F00: {file name or 0 = every file, source}, source 0 = end) whose
+//    name equals the file name (plain, e.g. "level9.lua": no "@" in the disc build). The Lua state is new at every
+//    level load, so a row runs again after a checkpoint reload and never leaks into another mission.
+// X6 row M13: "level9.lua" -> EnterGraveTrain (subway trigger) ignores players 3-4; without it the trigger swaps
+//    player 3's own view to the subway rail camera for good (run x4x6b g5). Players 1-2 unchanged (x4x6c).
+patch=2,EE,00356AD8,word,0C039E80 // X6: was 0C0CA434 jal 0x003290D0 (lua_dobuffer) in ScriptLua DoBuffer FUN_00356AD0 (vtable +0x3C, runs every file chunk: DoFile 0x00356C18, preload FUN_00356D00) -> jal 0x000E7A00 LUACH; delay slot lw a0,0x4(a0) kept
+patch=2,EE,000E7A00,word,27BDFFC0 // LUACH: addiu sp, sp, -64  ; LUACH(L, buffer, size, name): replaces DoBuffer's (FUN_00356AD0) call of lua_dobuffer (0x00356AD8); runs the chunk, logs its name, then the W4P fix sources registered for that chunk name
+patch=2,EE,000E7A04,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E7A08,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E7A0C,word,7FB10020 // sq s1, 0x20(sp)
+patch=2,EE,000E7A10,word,7FB20030 // sq s2, 0x30(sp)
+patch=2,EE,000E7A14,word,0080802D // daddu s0, a0, zero  ; lua_State
+patch=2,EE,000E7A18,word,0C0CA434 // jal 0x003290D0  ; the replaced call: lua_dobuffer(L, buffer, size, name)
+patch=2,EE,000E7A1C,word,00E0882D // daddu s1, a3, zero  ; chunk name, e.g. "level9.lua" (disc paths "%s.lua" have no "/", so no "@" prefix: run x4x6b log)
+patch=2,EE,000E7A20,word,AFA20008 // sw v0, 0x8(sp)  ; its status, returned unchanged
+patch=2,EE,000E7A24,word,1220002B // beq s1, zero, 0x000E7AD4
+patch=2,EE,000E7A28,word,3C08000E // lui t0, 0x000E
+patch=2,EE,000E7A2C,word,8D097AFC // lw t1, 0x7AFC(t0)  ; LC_N: file chunks run since boot (log index)
+patch=2,EE,000E7A30,word,252A0001 // addiu t2, t1, 1
+patch=2,EE,000E7A34,word,AD0A7AFC // sw t2, 0x7AFC(t0)
+patch=2,EE,000E7A38,word,31290007 // andi t1, t1, 0x7
+patch=2,EE,000E7A3C,word,00094940 // sll t1, t1, 5
+patch=2,EE,000E7A40,word,01284821 // addu t1, t1, t0  ; log slot (N & 7): 32 bytes at 0x000E7B00 + 32 * slot
+patch=2,EE,000E7A44,word,0000582D // daddu t3, zero, zero
+patch=2,EE,000E7A48,word,022B6021 // lc_copy: addu t4, s1, t3
+patch=2,EE,000E7A4C,word,918D0000 // lbu t5, 0x0(t4)
+patch=2,EE,000E7A50,word,012B7021 // addu t6, t1, t3
+patch=2,EE,000E7A54,word,A1CD7B00 // sb t5, 0x7B00(t6)
+patch=2,EE,000E7A58,word,11A00005 // beq t5, zero, 0x000E7A70
+patch=2,EE,000E7A5C,word,256B0001 // addiu t3, t3, 1
+patch=2,EE,000E7A60,word,296F001F // slti t7, t3, 31
+patch=2,EE,000E7A64,word,15E0FFF8 // bne t7, zero, 0x000E7A48
+patch=2,EE,000E7A68,word,00000000 // nop
+patch=2,EE,000E7A6C,word,A1207B1F // sb zero, 0x7B1F(t1)  ; long name: cut at 31 characters
+patch=2,EE,000E7A70,word,3C12000E // lc_tab: lui s2, 0x000E
+patch=2,EE,000E7A74,word,26527F00 // addiu s2, s2, 32512  ; LC_TAB rows (chunk name or 0 = every chunk, Lua source); source 0 = end of table
+patch=2,EE,000E7A78,word,8E450004 // lc_row: lw a1, 0x4(s2)  ; Lua source of this row
+patch=2,EE,000E7A7C,word,10A00015 // beq a1, zero, 0x000E7AD4
+patch=2,EE,000E7A80,word,8E440000 // lw a0, 0x0(s2)  ; chunk name of this row
+patch=2,EE,000E7A84,word,10800005 // beq a0, zero, 0x000E7A9C
+patch=2,EE,000E7A88,word,00000000 // nop
+patch=2,EE,000E7A8C,word,0C10C313 // jal 0x00430C4C  ; strcmp(row name, chunk name): 0 = same
+patch=2,EE,000E7A90,word,0220282D // daddu a1, s1, zero
+patch=2,EE,000E7A94,word,1440000D // bne v0, zero, 0x000E7ACC
+patch=2,EE,000E7A98,word,8E450004 // lw a1, 0x4(s2)
+patch=2,EE,000E7A9C,word,0C10C3AC // lc_run: jal 0x00430EB0  ; strlen(source)
+patch=2,EE,000E7AA0,word,00A0202D // daddu a0, a1, zero
+patch=2,EE,000E7AA4,word,0040302D // daddu a2, v0, zero
+patch=2,EE,000E7AA8,word,8E450004 // lw a1, 0x4(s2)
+patch=2,EE,000E7AAC,word,3C07000E // lui a3, 0x000E
+patch=2,EE,000E7AB0,word,24E77990 // addiu a3, a3, 31120  ; chunk name "=w4p"
+patch=2,EE,000E7AB4,word,0C0CA434 // jal 0x003290D0  ; lua_dobuffer(L, source, strlen, "=w4p"); a Lua error only gives a status (_ERRORMESSAGE/_ALERT are no-ops)
+patch=2,EE,000E7AB8,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E7ABC,word,3C08000E // lui t0, 0x000E
+patch=2,EE,000E7AC0,word,8D097AF8 // lw t1, 0x7AF8(t0)
+patch=2,EE,000E7AC4,word,25290001 // addiu t1, t1, 1
+patch=2,EE,000E7AC8,word,AD097AF8 // sw t1, 0x7AF8(t0)  ; LC_RUNS: fix sources run since boot
+patch=2,EE,000E7ACC,word,1000FFEA // lc_next: beq zero, zero, 0x000E7A78
+patch=2,EE,000E7AD0,word,26520008 // addiu s2, s2, 8
+patch=2,EE,000E7AD4,word,8FA20008 // lc_out: lw v0, 0x8(sp)
+patch=2,EE,000E7AD8,word,DFBF0000 // ld ra, 0x0(sp)
+patch=2,EE,000E7ADC,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E7AE0,word,7BB10020 // lq s1, 0x20(sp)
+patch=2,EE,000E7AE4,word,7BB20030 // lq s2, 0x30(sp)
+patch=2,EE,000E7AE8,word,03E00008 // jr ra
+patch=2,EE,000E7AEC,word,27BD0040 // addiu sp, sp, 64
+patch=0,EE,000E7AF8,word,00000000 // LC_RUNS: W4P fix sources run by LUACH since boot (tests) (startup only)
+patch=0,EE,000E7AFC,word,00000000 // LC_N: file chunks run since boot; log ring 0x000E7B00-0x000E7BFF holds the last 8 chunk names, slot N & 7 (startup only)
+patch=0,EE,000E7F00,word,000E7F40 // LC_TAB row 0: chunk name "level9.lua" (M13 main file, defines EnterGraveTrain 09229 main_99; name from the LUACH log, run x4x6b) (startup only)
+patch=0,EE,000E7F04,word,000E7E00 // LC_TAB row 0: Lua source 0x000E7E00 (M13 camera guard, m6_x4_x6.md section 3) (startup only)
+patch=0,EE,000E7F08,word,00000000 // LC_TAB row 1: chunk name pointer (0 = every chunk) (startup only)
+patch=0,EE,000E7F0C,word,00000000 // LC_TAB row 1: Lua source pointer 0 = end of table (startup only)
+patch=0,EE,000E7E00,word,636E7566 // M13 row source bytes 0-3 "func" (startup only)
+patch=0,EE,000E7E04,word,6E6F6974 // M13 row source bytes 4-7 "tion" (startup only)
+patch=0,EE,000E7E08,word,50345720 // M13 row source bytes 8-11 " W4P" (startup only)
+patch=0,EE,000E7E0C,word,3433475F // M13 row source bytes 12-15 "_G34" (startup only)
+patch=0,EE,000E7E10,word,20296628 // M13 row source bytes 16-19 "(f) " (startup only)
+patch=0,EE,000E7E14,word,75746572 // M13 row source bytes 20-23 "retu" (startup only)
+patch=0,EE,000E7E18,word,66206E72 // M13 row source bytes 24-27 "rn f" (startup only)
+patch=0,EE,000E7E1C,word,74636E75 // M13 row source bytes 28-31 "unct" (startup only)
+patch=0,EE,000E7E20,word,286E6F69 // M13 row source bytes 32-35 "ion(" (startup only)
+patch=0,EE,000E7E24,word,202C3061 // M13 row source bytes 36-39 "a0, " (startup only)
+patch=0,EE,000E7E28,word,20293161 // M13 row source bytes 40-43 "a1) " (startup only)
+patch=0,EE,000E7E2C,word,48206669 // M13 row source bytes 44-47 "if H" (startup only)
+patch=0,EE,000E7E30,word,41734975 // M13 row source bytes 48-51 "uIsA" (startup only)
+patch=0,EE,000E7E34,word,79616C50 // M13 row source bytes 52-55 "Play" (startup only)
+patch=0,EE,000E7E38,word,61287265 // M13 row source bytes 56-59 "er(a" (startup only)
+patch=0,EE,000E7E3C,word,61202931 // M13 row source bytes 60-63 "1) a" (startup only)
+patch=0,EE,000E7E40,word,6120646E // M13 row source bytes 64-67 "nd a" (startup only)
+patch=0,EE,000E7E44,word,3D7E2031 // M13 row source bytes 68-71 "1 ~=" (startup only)
+patch=0,EE,000E7E48,word,616C7020 // M13 row source bytes 72-75 " pla" (startup only)
+patch=0,EE,000E7E4C,word,20726579 // M13 row source bytes 76-79 "yer " (startup only)
+patch=0,EE,000E7E50,word,20646E61 // M13 row source bytes 80-83 "and " (startup only)
+patch=0,EE,000E7E54,word,7E203161 // M13 row source bytes 84-87 "a1 ~" (startup only)
+patch=0,EE,000E7E58,word,6C70203D // M13 row source bytes 88-91 "= pl" (startup only)
+patch=0,EE,000E7E5C,word,72657961 // M13 row source bytes 92-95 "ayer" (startup only)
+patch=0,EE,000E7E60,word,68742032 // M13 row source bytes 96-99 "2 th" (startup only)
+patch=0,EE,000E7E64,word,72206E65 // M13 row source bytes 100-103 "en r" (startup only)
+patch=0,EE,000E7E68,word,72757465 // M13 row source bytes 104-107 "etur" (startup only)
+patch=0,EE,000E7E6C,word,6E65206E // M13 row source bytes 108-111 "n en" (startup only)
+patch=0,EE,000E7E70,word,65722064 // M13 row source bytes 112-115 "d re" (startup only)
+patch=0,EE,000E7E74,word,6E727574 // M13 row source bytes 116-119 "turn" (startup only)
+patch=0,EE,000E7E78,word,28662520 // M13 row source bytes 120-123 " %f(" (startup only)
+patch=0,EE,000E7E7C,word,202C3061 // M13 row source bytes 124-127 "a0, " (startup only)
+patch=0,EE,000E7E80,word,20293161 // M13 row source bytes 128-131 "a1) " (startup only)
+patch=0,EE,000E7E84,word,20646E65 // M13 row source bytes 132-135 "end " (startup only)
+patch=0,EE,000E7E88,word,20646E65 // M13 row source bytes 136-139 "end " (startup only)
+patch=0,EE,000E7E8C,word,65746E45 // M13 row source bytes 140-143 "Ente" (startup only)
+patch=0,EE,000E7E90,word,61724772 // M13 row source bytes 144-147 "rGra" (startup only)
+patch=0,EE,000E7E94,word,72546576 // M13 row source bytes 148-151 "veTr" (startup only)
+patch=0,EE,000E7E98,word,206E6961 // M13 row source bytes 152-155 "ain " (startup only)
+patch=0,EE,000E7E9C,word,3457203D // M13 row source bytes 156-159 "= W4" (startup only)
+patch=0,EE,000E7EA0,word,33475F50 // M13 row source bytes 160-163 "P_G3" (startup only)
+patch=0,EE,000E7EA4,word,6E452834 // M13 row source bytes 164-167 "4(En" (startup only)
+patch=0,EE,000E7EA8,word,47726574 // M13 row source bytes 168-171 "terG" (startup only)
+patch=0,EE,000E7EAC,word,65766172 // M13 row source bytes 172-175 "rave" (startup only)
+patch=0,EE,000E7EB0,word,69617254 // M13 row source bytes 176-179 "Trai" (startup only)
+patch=0,EE,000E7EB4,word,0000296E // M13 row source bytes 180-183 "n).." (startup only)
+patch=0,EE,000E7F40,word,6576656C // M13 row chunk name bytes 0-3 "leve" (startup only)
+patch=0,EE,000E7F44,word,6C2E396C // M13 row chunk name bytes 4-7 "l9.l" (startup only)
+patch=0,EE,000E7F48,word,00006175 // M13 row chunk name bytes 8-11 "ua.." (startup only)
