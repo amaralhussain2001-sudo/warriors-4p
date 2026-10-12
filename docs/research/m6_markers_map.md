@@ -1,6 +1,10 @@
 # M6: overhead markers, radar and map with 4 players (2026-10-12)
 
 ## Plain-English summary
+- **Update 2026-10-12 (section 9): players 3 and 4 now show as "3P" (red) and "4P" (green) on every other player's
+  radar**, in the style of the game's "1P"/"2P". The labels are built at runtime inside the game's own radar icon
+  picture from the game's "2P" art and HUD font; nothing from the game is shipped. The "red/green 2P" text below is
+  the earlier state (superseded where marked).
 - **The yellow "2P 2P 2P" were not overhead markers. They were the radar's player icons, drawn in the wrong place.**
   Every radar draws small icons for the other people around you: "1P"/"2P" for the players, a red "W" for a Warriors
   companion, an arrow or letter for an objective. Our per-view HUD patch (`[warriors-4p 4p hud B2]`) copies every
@@ -12,7 +16,7 @@
   full-screen HUD camera as the radar disc, so they sit on the disc of their own radar and only there. Players 3 and 4
   now also get icons on their radars (before, radars 3-4 showed only the map, no icons at all), and players 3 and 4 have
   their own colours on every radar: player 2 = yellow "2P", **player 3 = red "2P", player 4 = green "2P"** (the game has
-  no "3P"/"4P" art, see below). Example: player 1's radar shows a yellow, a red and a green "2P" around his own arrow.
+  no "3P"/"4P" art, see below; superseded by section 9: now red "3P" and green "4P"). Example: player 1's radar shows a yellow, a red and a green "2P" around his own arrow.
 - **How the original 2-player split screen does it** (the rule we copied): in split screen there is **no text above
   anyone's head**. You find your partner with the radar: on player 1's radar player 2 is a "2P" label, on player 2's
   radar player 1 is a "1P" label, your own blip is an arrow. Labels above the heads ("1P"/"2P", effects `dyn_p_one`,
@@ -28,7 +32,7 @@
 - **Also fixed:** pressing Select shows a coloured health ring around your feet. Players 3-4 asked for the wrong
   picture for it (sprite items 11/12 instead of the per-view items 9/10); they now get their own copies (R7). Player 4's
   ring appears (screenshot `local/m2/mk_e/t0409_p10925.png`, bottom right); player 3's still does not.
-- **Open:** "3P"/"4P" labels do not exist in the game (colour instead); the Select status panel is still missing for
+- **Open:** "3P"/"4P" labels do not exist in the game (colour instead; superseded by section 9: built at runtime); the Select status panel is still missing for
   players 3-4; the Select health ring now shows for player 4 but still not for player 3 (FAILED TEST, cause not
   found); no 4-instance lockstep run yet; all tests are SINGLE-PC, one emulator instance, scripted bots, Mission 13 only.
 
@@ -52,6 +56,9 @@ pnachs in `local/m6/hud34/` (final: `final2.pnach`).
 | Players 3-4 icon | was the same "2P" as player 2 on radar 1 and player 2's own arrow on radar 2 | **VERIFIED** (before) | mk_c zooms `local/m6/hud34/z_c1.png`, `z_c2.png` |
 | Fix R4 PICON | P3 red, P4 green; other players shown with the game's own "other player" frames on every radar, own player keeps his arrow | **VERIFIED** (final, mk_g); first version FAILED TEST (wrong flag field, mk_d) | mk_g probe frames/colours; `local/m2/mk_g/t0364_p9578.png`, zooms `local/m6/hud34/z_g_r1.png` .. `z_g_r4.png` |
 | "3P"/"4P" art | not referenced by any code; no label effect for it in the data | **VERIFIED** (code, effect names) / HYPOTHESIS (unused atlas frames not surveyed) | section 3 |
+| "3P"/"4P" art (survey) | none of the 0x173 part_page0 frames is a 3P/4P label (decoded atlas); the picture is re-uploaded from EE RAM every frame | **VERIFIED** (supersedes the HYPOTHESIS above) | 9.1, p34a/p34b |
+| Fix L1-L4 | "3P"/"4P" (and "3"/"4") built at runtime in free texels from the game's 2P art and font; virtual frames 0xFFF3-0xFFF6 | **VERIFIED** (l34a, l34c, l34e) | 9.2-9.4, `local/m6/p34/z_l34e_p9915_r1..r4.png` |
+| Fix L5 | radar keeps the new labels upright (first version turned them with the heading: FAILED TEST l34b) | **VERIFIED** (l34c, l34e) | 9.3, 9.4 |
 | Merged-view labels (`dyn_p_one/two`) | only with 1 view; players 3-4 would get "2P" and it is never cleared | **VERIFIED** (static); R6 fix **untested at runtime** | section 2.3 |
 | Select ring of players 3-4 | not drawn (they ask for sprite items 11/12, which are other sprites) | **VERIFIED** (P1 ring shown, players 3-4 none) | mk_c `t0388_p10292.png`; mk_d `t0412_p11016.png`, `t0424_p11380.png` |
 | Fix R7 LOOK9 | own per-view copies of item 9 for views 2-3 | **VERIFIED** for player 4 (index 3); **FAILED TEST** for player 3 (index 2): still no ring | mk_e |
@@ -145,6 +152,7 @@ pnachs in `local/m6/hud34/` (final: `final2.pnach`).
   Select presses at polls 10700-11020 are player 4's and those at 11300-11620 player 3's.
 
 ## 3. "3P"/"4P" labels: options and choice
+(Superseded 2026-10-12 by section 9: option (a) was built after all, by writing the labels into the texture at runtime.)
 - (a) "3P"/"4P" from existing art or the HUD font: **not feasible cheaply.** No code path uses a 3P/4P frame (the radar
   code uses 0x15E/0x15F and 0x168-0x16D only) and there are no label effects for players 3-4 (2.3). Building a "3"/"4"
   from font glyphs would need a second widget per blip and per radar (HYPOTHESIS: possible, not attempted).
@@ -159,7 +167,7 @@ pnachs in `local/m6/hud34/` (final: `final2.pnach`).
 | R1 | 0x00197180 (384200FF `xori v0,v0,0xFF` -> `sltiu v0,v0,0xFE`) | | `FUN_00197168` draws view 0xFE like 0xFF; SHARED copies only 0xFF, so 0xFE items take the original global-camera path |
 | R2 BINIT/BMK | 0x001C4B60, 0x001C4EB0 (0040F809 `jalr ra,v0`, the blip widget init in `FUN_001C4A40`/`FUN_001C4D00`) | BINIT 0x000E82C0, BMK 0x000E86C0, data 0x000E83F0-0x000E83FB (saved ra, widget, BLIPIDX) | after the init, the widget's sprite index +0xC4 becomes BLIPIDX: a copy of item 2 with view 0xFE, made on first use and re-made after the level unload (`FUN_00185AE0` frees items 13-254) |
 | R3 RTAG | 0x001C4160 (AE400044 `sw zero,0x44(s2)`, end of radar init `FUN_001C3DE0`) | 0x000E8100 | the radar's 7 dot sprites (+0x48..+0x60, index << 16, made by `FUN_0039C388` with view 0xFF) get view 0xFE |
-| R4 PICON | 0x001B3148, 0x001B31C8 (0C06CB28 `jal 0x001B2CA0`, icon 0x16B / 0x16A) | 0x000E8180 | after the original call, with 2+ views: on each of the 4 radars the human's widget gets the player-3/4 colour and, unless it is that radar's own player, the other-player frame (0x168/0x169, or 0x15E/0x15F when GameMgr+0x120 != 0, as the game at 0x001C5E64) |
+| R4 PICON | 0x001B3148, 0x001B31C8 (0C06CB28 `jal 0x001B2CA0`, icon 0x16B / 0x16A) | 0x000E8180 (moved to 0x000E8DE0 by L4, section 9.3) | after the original call, with 2+ views: on each of the 4 radars the human's widget gets the player-3/4 colour and, unless it is that radar's own player, the other-player frame (0x168/0x169, or 0x15E/0x15F when GameMgr+0x120 != 0, as the game at 0x001C5E64) |
 | R5 FAN | entries of `FUN_001C4528`, `4640`, `4690`, `4768`, `48C0`, `49D0`, `4A40`, `4BE0`, `4D00`, `4FF8`, `5108`, `4500` (2 words each -> `j stub; nop`) | FANCORE 0x000E8400, stubs 0x000E8500-0x000E869F | a call with radar 2 (0x00604750) from outside the radar module (ra not in 0x001C3000-0x001C6FFF) runs for radar 2, then for radars 3 (0x000A9500) and 4 (0x000ABE40); returns radar 2's v0; internal calls are not repeated |
 | R6 | 0x0024B2F0 (00041027 `nor v0,zero,a0` -> `sltiu v0,a0,2`) | | merged-view label only for player index 0-1 |
 | R7 LOOK9 | 0x0024A298, 0x0024AFA4 (0C0616AC `jal 0x00185AB0`) | 0x000E8800, data 0x000E8A00-0x000E8A07 | sprite lookups 11/12 (views 2/3) get own copies of item 9 with view 2/3 |
@@ -197,7 +205,7 @@ pnachs in `local/m6/hud34/` (final: `final2.pnach`).
   placement, `m2_spawn_companion.md`).
 
 ## 7. Open points
-- "3P"/"4P" art does not exist; players 3-4 are coloured "2P" icons (section 3).
+- "3P"/"4P" art does not exist; players 3-4 are coloured "2P" icons (section 3). Superseded: section 9 ("3P"/"4P" built at runtime).
 - Select status panel for players 3-4 (B1 S-guard on `FUN_001B28A0`).
 - R6 untested at runtime; 2-player sessions with B2, widescreen and other missions not re-checked; no 4-instance lockstep
   run with the new group.
@@ -219,6 +227,135 @@ pnachs in `local/m6/hud34/` (final: `final2.pnach`).
 
 All runs ended by timeout (450-490 s); the test runner's PINE reads reported a few "error code 255" while the game was
 loading (no effect on the probes listed).
+
+## 9. "3P" and "4P" labels for players 3 and 4 (2026-10-12, parts L1-L5)
+
+### Plain English
+- **Players 3 and 4 now show as "3P" and "4P" on the radars**, in the same style as the game's "1P"/"2P" (number first,
+  bold yellow digit with a dark outline, then the game's own "P"), and still in their own colours: player 3 red, player 4
+  green. Player 1 ("1P") and player 2 ("2P", yellow) are unchanged, and everyone still sees himself as an arrow.
+  Example (run l34e, `local/m6/p34/z_l34e_p9915_r1.png`): player 1's radar shows a yellow "2P", a red "3P" and a green
+  "4P" around his own arrow; player 3's radar (`z_l34e_p9915_r3.png`) shows his red arrow, "1P", "2P" and a green "4P".
+- **How, without shipping any game art:** the game has no "3P"/"4P" picture, so the patch draws the two labels itself,
+  once, while the game runs. All radar icons come from one picture in the console's memory (the HUD texture page
+  "part_page0"), and the game sends that picture to the graphics chip again every frame. The patch writes two new
+  small labels into an empty corner of that picture: the "P" is copied from the game's own "2P" label, the shape of the
+  "3" and "4" comes from the game's own small HUD font (which also has digits), and the colours (yellow fill, light
+  top/bottom edge, dark outline, grey-blue bottom line) are taken from the game's "2" label. Nothing from the game is
+  stored in the patch file; it only contains code and the graphics chip's memory layout tables.
+- **Also fixed on the way (L5):** the radar turns arrows with the player's heading but keeps "1P"/"2P" labels upright.
+  At first the new labels were turned like arrows (they showed upside down when a player walked south, FAILED TEST l34b);
+  they are now kept upright like the game's own labels.
+- **Safe fallback:** before writing anything the patch checks the picture (size, format, the "2P" art where expected,
+  the target corner really empty). If any check fails, players 3 and 4 keep the coloured "2P" from before.
+- **The game's other radar mode** (single digits "1"/"2" instead of "1P"/"2P", chosen by GameMgr+0x120) also gets
+  "3"/"4" (tested by forcing the flag, l34c).
+- **Open:** tested on one PC, one emulator instance, Mission 13, bots only; not yet in a 4-instance lockstep run;
+  labels can still overlap when players stand close together (same as the game's "1P"/"2P").
+
+Build: The Warriors SLUS-21215 v1.03 (`local/disc/SLUS_212.15`, read-only); fork build w4p-m6-1 (not rebuilt,
+`emulator/` untouched). Addresses static unless marked dynamic; function names are OUR labels. Tests: **SINGLE-PC, one
+instance (sandbox 13), scripted bots, no impairment, MTVU off**, Mission 13 via the standard level jump, 2x internal
+resolution, screenshots at scale 1.0. `mod/w4p_m1.pnach` was NOT regenerated (a 4-instance batch uses it); test pnachs
+in `local/m6/p34/` (final: `l34c.pnach`). Extracted texture data and decoded pictures stay in `local/m6/p34/`.
+
+### 9.1 The radar icon picture (VERIFIED, runtime p34a, EE dump `local/m6/p34/ee_9405.bin`)
+| Fact | Value | Evidence |
+|---|---|---|
+| Blip sprite item | BLIPIDX item 0x16 and global item 2 use page "part_page0" (item +0x0C = page 0x00C063A0, dynamic) | probe `icon34_probe.survey@9300` |
+| Frame table | page +0x0C -> resource (+4 count 0x173, +8 font base 0x5E, +0x0C table 0x00FDCA14); 16 bytes per frame (u0, v0, u1, v1, normalised); `FUN_00181E38(page, frame)` returns table + frame * 16 | survey; disassembly 0x00181E38 |
+| Texture | page +0x14 -> RenderWare texture -> raster 0x00A61C68: 512 x 256, 8 bit (TEX0 PSM 0x13, TBW 8, CLUT PSMCT32 CSM1); pixels raster+4 = 0x00FBC550, palette raster+8 = 0x00FDC5D0 (dynamic) | survey, TEX0 decode |
+| EE copy format | the 8-bit picture is stored ready for upload as PSMCT32 256 x 128 (BITBLTBUF DBW 4), palette as PSMCT32 16 x 16 at DBP +0x200, behind a DMA chain at raster +0x24 (0x00FBC400) | GIF tags at 0x00FBC400-0x00FBC54F |
+| Upload | **every frame**: TEX0 TBP alternates 0x3960 / 0x3480 every 1-3 polls | p34b `tex_watch@9300` (40 samples) |
+| Labels in the atlas | 0x169 "2P" texels (318,144)-(336,155): the "2" = 9 texels, the "P" = 10 texels; 0x15F "2" alone (338,144) (104 of 108 texels equal to the "2" of "2P"); 0x15E "1"; 0x168 "1P" (297,233) | frame table, decoded atlas `local/m6/p34/atlas_part_page0.png` |
+| Digits in the same picture | part_page0 also holds a small white font: frame = 0x5E + character, cells 9 x 18 texels, glyphs 10 rows; '3' = 0x91 at (70,215), '4' = 0x92 at (60,215). Other digits: big 3D digits 0x0D-0x13 (wide, other style); `big_font` (item 6) is a separate slab-serif page | frame table, atlas |
+| Free texels | no frame rectangle (+1 texel) and alpha 0 in x 85-277, y 234-247 | offline scan of all 0x173 frames |
+| No "3P"/"4P" art | none of the 0x173 frames shows a 3P/4P label (decoded atlas) | `atlas_part_page0.png` |
+
+**Re-upload test (VERIFIED, p34b):** at poll 9504 a test probe copied the "1P" texels over the "2P" texels in the EE copy
+(`icon34_probe.tex_test`, PINE, single instance). Every "2P" label on the radars turned into a "1P" in the next
+screenshot (`local/m6/p34/zb_before_r1.png` from `local/m2/p34b/t0357_p9364.png`, `zb_after_r1.png` from
+`t0363_p9549.png`). So a texel written into the EE copy is on screen in the next frame; no upload call is needed.
+
+### 9.2 How the labels are built (L2 GEN, runs once per texture copy)
+1. Find the raster through item 2 -> page -> texture -> raster; require 512 x 256 x 8 bit, frame count >= 0x16A and the
+   font digits inside the table.
+2. Read the "2P" (0x169) and "2" (0x15F) positions from the frame table (float u/v x 512/256); require the same row and
+   at most 12 of 108 texels different between the "2" of "2P" and the standalone "2" (4 differ in SLUS-21215).
+3. Take the palette indices from the standalone "2": fill (+5,+2) = 0x7B, highlight (+2,+10) = 0xEF, outline (+8,+3) =
+   0x09, bottom line (+3,+11) = 0x9B, clear (-1,0) = 0x07 (must be transparent).
+4. Check that x 88-161, y 234-249 is fully transparent (otherwise stop: coloured "2P" stays).
+5. For '3' and '4': the font glyph's mask (palette alpha >= 0x60 and red >= 0x80) over 10 rows from its first row,
+   trimmed to its used columns, placed right-aligned in an 11 x 12 cell; each cell texel becomes highlight (glyph texel
+   at the top or bottom edge of a stroke), fill (other glyph texels), bottom line (row 11 next to the glyph), outline
+   (next to the glyph) or clear. The cell is written twice: as the digit of the label and as the digit-only frame.
+6. The 10 x 12 "P" texels of "2P" are copied right of the digit.
+Result: "3P" at (90,236) and "4P" at (113,236), 21 x 12 texels; "3" at (136,236), "4" at (149,236), 11 x 12. The
+virtual frames 0xFFF3/0xFFF4/0xFFF5/0xFFF6 point at these rectangles (VTAB, same half-texel insets as the game's frames).
+Texel address in the EE copy: GS address of the PSMT8 texel (block/column tables), mapped back through the PSMCT32
+upload layout (inverse block/column tables); the four tables (384 bytes) come from the GS memory layout in
+`emulator/pcsx2/pcsx2/GS/GSTables.cpp` (hardware layout, not game data). Offline check: the mapping reproduces the whole
+decoded atlas (0 mismatches, `ee_offsets` in `tests/m2/icon34_probe.py`).
+Example (palette indices, "3P", run l34a, identical to the scratch simulation):
+```
+07 07 07 09 09 09 09 09 07 07 07 5e 09 9b 09 09 9b 09 ae b8 01
+07 09 09 09 ef ef ef 09 09 09 07 69 7b 7b 7b 7b 7b 7b 94 99 e4
+07 09 ef ef ef ef ef ef ef 09 07 a1 94 7b 7b 7b 7b 7b 7b 7b 09
+07 09 ef ef 09 09 09 7b 7b 09 07 59 09 7b ef 3d 63 9b 7b ef 1b
+...
+07 9b 9b 9b 9b 9b 9b 9b 9b 9b 07 ae 0d 9b 9b 9b 2a 7d 07 07 07
+```
+
+### 9.3 Patch parts (added to `mod/m2/markers34.txt`, group `[warriors-4p 4p markers]`)
+| Part | Patched game words (was) | Caves / data | What it does |
+|---|---|---|---|
+| L1 VFR | 0x00181E38 (8C83000C `lw v1,0xC(a0)` -> `j VFR`; 0x00181E3C `andi a1,a1,0xFFFF` kept as delay slot) | VFR 0x000E8F40, VTAB 0x000E8B60-0x000E8C5F | `FUN_00181E38` (frame -> UV record): frames 0xFFF0-0xFFFF come from VTAB (3 "3P", 4 "4P", 5 "3", 6 "4"; others zero); all other frames unchanged |
+| L2 GEN | | GEN 0x000E92E8, helpers OFF/PXR/PXW/ALPHA/MASKPX/FXY/RAS/CLASS 0x000E8F78-0x000E924F, tables 0x000E8C60-0x000E8DDF, data 0x000E8A10-0x000E8B55 | builds the labels (9.2) |
+| L3 ENSURE | | 0x000E9250 | returns 1 when the labels exist: same pixel buffer as last time and the marker texel (first P column of "3P") equal to the 2P source; otherwise runs GEN once (a buffer that failed GEN is not retried) |
+| L4 | PICON moved: 0x001B3148, 0x001B31C8 now `jal 0x000E8DE0` (was `jal 0x000E8180`; game word 0C06CB28 `jal 0x001B2CA0`) | PICON 0x000E8DE0 | as R4, plus: players 3-4 call ENSURE once per call; on other players' radars their widget frame becomes 0xFFF3/0xFFF4 (digit-only mode 0xFFF5/0xFFF6) instead of 0x169/0x15F; colours unchanged |
+| L5 LBLCHK | 0x001C5F08 (5482000A `bnel a0,v0` -> `j LBLCHK`; delay slot 0x001C5F0C `lw v0,0x948(s2)` kept) | 0x000E976C | in the radar update `FUN_001C5210` (0x001C5ED8-0x001C5F2C) frames 0x19, 0x1A, 0x168, 0x169, 0x15E, 0x15F get rotation 0 (upright) and all others turn with the heading; L5 adds 0xFFF0-0xFFFF to the upright set |
+
+- RAM: 0x000E8A10-0x000E9793 (new). The old PICON range 0x000E8180-0x000E82BF is no longer written (free again).
+- Checks: `python -I tools/note_patches.py check local/m6/p34/l34c.pnach` (current `mod/make_pnach.py` and the other
+  fragments, 2026-10-12): **5650 addresses, 6 problems** = the 6 known `[4p hud A]`/`[4p hud B1]` alternatives
+  (0x001C0648, 0x001C7890, 0x001A6D28, 0x001A6C38, 0x0041DC44, 0x0041DC50). Every "was" word is read from the ELF and
+  asserted by the generator.
+- Scratch simulation (not in the repo): the generated words run in a small R5900 interpreter on the EE dump: VFR returns
+  the original pointer for 0x169 and VTAB+0x30 for 0xFFF3; ENSURE builds the labels in 196,108 instructions (once) and
+  then answers in 145; s-registers and sp preserved; output identical to a Python prototype of the same rules.
+- Determinism (HYPOTHESIS until a lockstep run): GEN reads only game memory and writes only the texture copy and its own
+  data, on the first frame a player 3/4 icon is set, so every instance builds the same texels at the same frame.
+- Costs: GEN about 0.2 M instructions once; per frame 2 ENSURE calls (a few hundred instructions); 3 extra instructions
+  per `FUN_00181E38` call.
+- Risks (HYPOTHESIS): a caller of `FUN_00181E38` that passes frame 0xFFF0-0xFFFF on purpose would now get VTAB (none
+  found; menu and HUD texts render normally in l34a-l34e); another texture page with the same layout but different art
+  fails the checks and falls back to "2P".
+
+### 9.4 Tests (SINGLE-PC, one instance, sandbox 13, scripted bots, no impairment, MTVU off, Mission 13)
+Command (template): `python -I tests/m2/nav_probe.py <tag> <p1 script> --inst 13 --players 4 --script2 <p2> --script3
+<slot 2 = player 4> --script4 <slot 3 = player 3> --groups "<local/m6/p34/groups.txt>" --ini EmuCore/Speedhacks/vuThread=false
+--ini EmuCore/GS/upscale_multiplier=2 --shot-scale 1.0 --every 5 --callat "4000:0041ABC0:1,4010:00160D78:0x01FD9F9C"
+--probe icon34_probe:... --patch local/m6/p34/<pnach> --seconds 420`.
+
+| Run | Pnach / scripts | Purpose | Result |
+|---|---|---|---|
+| p34a | `base.pnach` (before L1-L5), cal_p3/cal_p4 | survey + 32 MB EE dump | 9.1 table; `ee_9405.bin`, decoded `atlas_part_page0.png`, `atlas_big_font.png` (local only) |
+| p34b | `base.pnach` | re-upload test | TBP alternates every frame; "2P" -> "1P" after the EE write (9.1); **VERIFIED** |
+| l34a | `l34a.pnach` (L1-L4), cal_p3/cal_p4 | first runtime test | GENOK = 1 at poll 8700, texels identical to the simulation; radar frames 0xFFF3/0xFFF4 with VTAB UVs on the other players' radars, own arrows 0x16B, P1/P2 frames 0x168/0x169/0x16A/0x16B as before; 0 TLB misses; players stood together, labels overlapped (`z_l34a_r1..r4.png`) |
+| l34b | `l34a.pnach`, players walk apart (`walk_p1..p4.txt`), poke GameMgr+0x120 = 1 at 10600-11200 | spacing, digit-only mode | **FAILED TEST**: "3P"/"4P" turned with the player's heading (upside down/sideways, `z_l34b_p9784_r1..r3.png`) -> L5. Digit-only mode showed "3"/"4" (also turned) |
+| l34c | `l34c.pnach` (L1-L5), same scripts | L5 | labels upright (`z_l34c_p9776_r1..r4.png`); digit-only mode "1", "3", "4" upright (`z_l34c_p10863_r1.png`, `_r2.png`); 0 TLB |
+| l34d | `l34c.pnach`, wider walks (`w2_*.txt`) | readable crops | `z_l34d_p9866_r1..r4.png`; some labels still overlap |
+| l34e | `l34c.pnach`, P2 walks 220 polls, players 3/4 320/420 polls (`w2_p2.txt`, `w3_s2.txt`, `w3_s3.txt`) | final check | **all four radars** (`local/m2/l34e/t0380_p9915.png`; zooms `local/m6/p34/z_l34e_p9915_r1..r4.png`): r1 (P1) 2P yellow, 3P red, 4P green, own arrow; r2 (P2) 1P, 3P, 4P, own arrow; r3 (P3) own red arrow, 1P, 2P, 4P green; r4 (P4) 1P, 2P, 3P red, own green arrow. Nothing floating in the scene; 0 TLB misses (`local/pcsx2/inst13/PCSX2/logs/emulog.txt`, run l34e) |
+
+All runs ended by timeout; the runner's PINE reads reported a few "error code 255" while the game was loading (no effect
+on the probes listed). Probe module: `tests/m2/icon34_probe.py` (read-only except the TEST ONLY `tex_test`).
+
+### 9.5 Open points
+- No 4-instance lockstep run with L1-L5 yet (determinism HYPOTHESIS, 9.3); not run in other missions, the hub, widescreen
+  or a 2-player session (L1-L5 do nothing there: GEN runs only for player index 2-3, VFR/LBLCHK are pass-through for the
+  game's own frames).
+- Overlapping labels when players stand close (as with the game's own labels); player 4's label is drawn on top.
+- `mod/make_pnach.py`'s description of the group still says "coloured red/green" (not changed: the file is shared).
 
 ## Appendix A: cave sources
 R5900, assembled at the addresses in section 4. Constants filled by the generator: TINT3 = 0xFF2020FF (player 3, red),
@@ -597,3 +734,630 @@ lk_orig:
 ```
 
 FAN stub per function F (12 functions): `lui t9,hi(T); j FANCORE; ori t9,t9,lo(T)`; T: the two original entry words of F, `j F+8; nop`. For `FUN_001C4500` T rebuilds its entry branch: `lw v1,0x38(a0); bne a1,v1,c; lui v0,0x51; j 0x001C4520; nop; c: j 0x001C450C; nop`.
+
+## Appendix B: cave sources of L1-L5 (section 9)
+R5900, assembled from 0x000E8DE0 in this order: PICON (Appendix A's PICON with the L4 changes below), VFR, the helpers, ENSURE, GEN, LBLCHK. Offsets like `-29168(t9)` are data addresses relative to t9 / s7 = 0x000F0000 (L34 data 0x000E8A10: +0 GENPIX, +4 GENOK, +8 FT, +0x0C PIX, +0x10 PAL, +0x14 BASE, +0x18 P2X, +0x1C P2Y, +0x20..+0x24 indices fill, highlight, outline, bottom line, clear; MASK 0x000E8A40, FILL 0x000E8AA0 (14 x 13), VTAB 0x000E8B60, block/column tables 0x000E8C60, 0x000E8C80, 0x000E8CA0, 0x000E8CE0). `nop #@RAWW w` lines are emitted as the raw word w (FPU instructions).
+
+### PICON changes (L4)
+```
+  sw t1,28(sp)
+  sw zero,16(sp)            # L34: virtual "3P"/"4P" frames usable (players 3-4 only)
+  slti at,t1,2
+  bne at,zero,pc_go
+  nop
+  jal ENSURE
+  nop
+  sw v0,16(sp)
+pc_go:
+  sw zero,20(sp)            # r = 0
+  ...
+pc_sel:
+  lw t7,16(sp)
+  beq t7,zero,pc_alt
+  nop
+  ori t5,zero,0xFFF1
+  addu t5,t5,t1             # players 3 / 4: 0xFFF3 / 0xFFF4
+  ori t6,zero,0xFFF3
+  addu t6,t6,t1             # digit-only alternative 0xFFF5 / 0xFFF6
+pc_alt:
+  beq t4,zero,pc_st
+  nop
+  daddu t5,t6,zero
+pc_st:
+```
+
+### VFR (L1)
+```
+VFR:
+  ori at,zero,0xFFF0
+  sltu at,a1,at             # a1 = frame (masked by the original andi in the hook's delay slot)
+  beq at,zero,vf_v
+  lw v1,0xC(a0)             # original: page +0x0C
+  sll a1,a1,4
+  lw v0,0xC(v1)             # original: frame table + frame * 16
+  jr ra
+  addu v0,v0,a1
+vf_v:
+  andi a1,a1,0xF            # virtual frames 0xFFF0..0xFFFF -> VTAB
+  sll a1,a1,4
+  lui v0,0xe
+  ori v0,v0,0x8b60
+  jr ra
+  addu v0,v0,a1
+```
+### OFF, PXR, PXW, ALPHA, MASKPX, FXY, RAS, CLASS (L2 helpers)
+```
+OFF:                        # a0 = x, a1 = y (PSMT8 512 x 256, TBW 8) -> v0 = byte offset in the EE upload buffer (PSMCT32 256 x 128, DBW 4)
+  lui t9,0x000F
+  srl t0,a1,6
+  sll t0,t0,2
+  srl t1,a0,7
+  addu t0,t0,t1             # page
+  andi t1,a1,0x30
+  srl t1,t1,1
+  andi t2,a0,0x70
+  srl t2,t2,4
+  addu t1,t1,t2
+  addu t1,t1,t9
+  lbu t1,-29600(t1)      # PSMT8 block in page
+  sll t0,t0,5
+  addu t0,t0,t1
+  sll t0,t0,8
+  andi t1,a1,15
+  sll t1,t1,4
+  andi t2,a0,15
+  addu t1,t1,t2
+  addu t1,t1,t9
+  lbu t1,-29472(t1)      # byte in block
+  addu t0,t0,t1             # GS byte address
+  srl t1,t0,8
+  andi t2,t1,31             # PSMCT32 block
+  srl t1,t1,5               # PSMCT32 page
+  addu t2,t2,t9
+  lbu t2,-29568(t2)    # (by << 3) | bx
+  srl t3,t0,2
+  andi t3,t3,63
+  addu t3,t3,t9
+  lbu t3,-29536(t3)    # (cy << 3) | cx
+  andi v0,t1,3
+  sll v0,v0,6
+  andi v1,t2,7
+  sll v1,v1,3
+  addu v0,v0,v1
+  andi v1,t3,7
+  addu v0,v0,v1             # X
+  srl v1,t1,2
+  sll v1,v1,5
+  srl t1,t2,3
+  sll t1,t1,3
+  addu v1,v1,t1
+  srl t1,t3,3
+  addu v1,v1,t1             # Y
+  sll v1,v1,8
+  addu v0,v0,v1
+  sll v0,v0,2
+  andi t0,t0,3
+  jr ra
+  addu v0,v0,t0
+PXR:                        # a0 = x, a1 = y -> v0 = palette index (PIX from L34D)
+  move t7,ra
+  jal OFF
+  nop
+  lw t0,-30180(t9)
+  addu t0,t0,v0
+  jr t7
+  lbu v0,0(t0)
+PXW:                        # a0 = x, a1 = y, a2 = palette index
+  move t7,ra
+  jal OFF
+  nop
+  lw t0,-30180(t9)
+  addu t0,t0,v0
+  jr t7
+  sb a2,0(t0)
+ALPHA:                      # a0 = palette index -> v0 = alpha, v1 = red (CLUT stored CSM1-swizzled)
+  andi t0,a0,0xE7
+  andi t1,a0,0x08
+  sll t1,t1,1
+  or t0,t0,t1
+  andi t1,a0,0x10
+  srl t1,t1,1
+  or t0,t0,t1
+  sll t0,t0,2
+  lui t9,0x000F
+  lw t1,-30176(t9)
+  addu t0,t0,t1
+  lbu v1,0(t0)
+  jr ra
+  lbu v0,3(t0)
+MASKPX:                     # a0 = x, a1 = y -> v0 = 1 for a glyph pixel (alpha >= 0x60, red >= 0x80)
+  move t6,ra
+  jal PXR
+  nop
+  jal ALPHA
+  move a0,v0
+  sltiu t0,v0,0x60
+  bne t0,zero,mp_no
+  sltiu t0,v1,0x80
+  bne t0,zero,mp_no
+  nop
+  jr t6
+  addiu v0,zero,1
+mp_no:
+  jr t6
+  move v0,zero
+FXY:                        # a0 = frame -> v0 = x0 = (int)(u0 * 512), v1 = y0 = (int)(v0 * 256)
+  lui t9,0x000F
+  lw t8,-30184(t9)
+  sll a0,a0,4
+  addu t8,t8,a0
+  lwc1 f0,0(t8)
+  lwc1 f1,4(t8)
+  lui at,0x4400
+  nop  #@RAWW 0x44811000 mtc1 at,f2 (512.0)
+  lui at,0x4380
+  nop  #@RAWW 0x44811800 mtc1 at,f3 (256.0)
+  nop  #@RAWW 0x46020002 mul.s f0,f0,f2
+  nop  #@RAWW 0x46030842 mul.s f1,f1,f3
+  nop  #@RAWW 0x46000024 cvt.w.s f0,f0
+  nop  #@RAWW 0x46000864 cvt.w.s f1,f1
+  nop  #@RAWW 0x44020000 mfc1 v0,f0
+  jr ra
+  nop  #@RAWW 0x44030800 mfc1 v1,f1
+RAS:                        # -> v0 = part_page0 raster (item 2 -> page -> texture -> raster), v1 = page; v0 = 0 if not valid
+  lui v0,0x51
+  lw t0,-0x32B4(v0)
+  lui t2,0x0200
+  beq t0,zero,rs_no
+  sltu t1,t0,t2
+  beq t1,zero,rs_no
+  nop
+  lw t0,0x1998(t0)          # item 2 (+0x189C + 2 * 0x78) +0x0C = page
+  beq t0,zero,rs_no
+  sltu t1,t0,t2
+  beq t1,zero,rs_no
+  nop
+  lw t3,0x14(t0)            # texture
+  beq t3,zero,rs_no
+  sltu t1,t3,t2
+  beq t1,zero,rs_no
+  nop
+  lw v0,0(t3)               # raster
+  beq v0,zero,rs_no
+  sltu t1,v0,t2
+  beq t1,zero,rs_no
+  nop
+  jr ra
+  move v1,t0
+rs_no:
+  jr ra
+  move v0,zero
+CLASS:                      # a0 = x (0..10), a1 = y (0..11) of the digit cell -> v0 = palette index (fill/highlight/outline/bevel/clear)
+  lui t9,0x000F
+  addiu t0,a1,1
+  sll t1,t0,3
+  sll t2,t0,2
+  addu t0,t0,t1
+  addu t0,t0,t2             # (y + 1) * 13
+  addu t0,t0,a0
+  addu t0,t0,t9
+  lbu t1,-30047(t0)
+  beq t1,zero,cl_out
+  nop
+  lbu t2,-30060(t0)
+  lbu t3,-30034(t0)
+  and t2,t2,t3
+  beq t2,zero,cl_h
+  nop
+  jr ra
+  lbu v0,-30160(t9)
+cl_h:
+  jr ra
+  lbu v0,-30159(t9)
+cl_out:
+  lbu t1,-30061(t0)
+  lbu t2,-30060(t0)
+  or t1,t1,t2
+  lbu t2,-30059(t0)
+  or t1,t1,t2
+  lbu t2,-30048(t0)
+  or t1,t1,t2
+  lbu t2,-30046(t0)
+  or t1,t1,t2
+  lbu t2,-30035(t0)
+  or t1,t1,t2
+  lbu t2,-30034(t0)
+  or t1,t1,t2
+  lbu t2,-30033(t0)
+  or t1,t1,t2
+  bne t1,zero,cl_edge
+  nop
+  jr ra
+  lbu v0,-30156(t9)
+cl_edge:
+  addiu t1,zero,11
+  beq a1,t1,cl_b
+  nop
+  jr ra
+  lbu v0,-30158(t9)
+cl_b:
+  jr ra
+  lbu v0,-30157(t9)
+```
+### ENSURE (L3)
+```
+ENSURE:                     # -> v0 = 1 when "3P"/"4P" are in the part_page0 texture (generates them once per texture copy)
+  addiu sp,sp,-16
+  sd ra,0(sp)
+  jal RAS
+  nop
+  beq v0,zero,en_no
+  lui t9,0x000F
+  lw t0,4(v0)               # pixel buffer
+  lw t1,-30192(t9)
+  bne t0,t1,en_gen
+  lw t1,-30188(t9)
+  beq t1,zero,en_no         # this buffer failed the checks: keep the coloured "2P"
+  nop
+  lw a0,-30168(t9)        # marker: first P column of "3P" equals the 2P source
+  lw a1,-30164(t9)
+  addiu a0,a0,9
+  jal PXR
+  addiu a1,a1,1
+  sd v0,8(sp)
+  addiu a0,zero,101
+  jal PXR
+  addiu a1,zero,237
+  ld t0,8(sp)
+  beq v0,t0,en_ok
+  nop
+en_gen:
+  jal GEN
+  nop
+  lui t9,0x000F
+  lw t1,-30188(t9)
+  beq t1,zero,en_no
+  nop
+en_ok:
+  ld ra,0(sp)
+  addiu v0,zero,1
+  jr ra
+  addiu sp,sp,16
+en_no:
+  ld ra,0(sp)
+  move v0,zero
+  jr ra
+  addiu sp,sp,16
+```
+### GEN (L2)
+```
+GEN:                        # builds "3P", "4P", "3", "4" in free texels of part_page0 from the game's own "2P" art and font
+  addiu sp,sp,-96
+  sd ra,0(sp)
+  sd s0,8(sp)
+  sd s1,16(sp)
+  sd s2,24(sp)
+  sd s3,32(sp)
+  sd s4,40(sp)
+  sd s5,48(sp)
+  sd s6,56(sp)
+  sd s7,64(sp)
+  lui s7,0x000F
+  sw zero,-30188(s7)
+  jal RAS
+  nop
+  beq v0,zero,gn_ret
+  move s0,v0                # raster
+  move s1,v1                # page
+  lw t0,4(s0)               # pixels (PSMT8 data uploaded as PSMCT32)
+  sw t0,-30192(s7)
+  sw t0,-30180(s7)
+  lw t1,8(s0)               # palette (CSM1)
+  sw t1,-30176(s7)
+  beq t0,zero,gn_ret
+  nop
+  beq t1,zero,gn_ret
+  nop
+  lw t2,0xC(s0)
+  addiu t3,zero,512
+  bne t2,t3,gn_ret
+  lw t2,0x10(s0)
+  addiu t3,zero,256
+  bne t2,t3,gn_ret
+  lw t2,0x14(s0)
+  addiu t3,zero,8
+  bne t2,t3,gn_ret
+  lw t0,0xC(s1)             # page resource
+  beq t0,zero,gn_ret
+  nop
+  lw t1,0xC(t0)             # frame table
+  sw t1,-30184(s7)
+  lw t2,4(t0)               # frame count
+  lw t3,8(t0)               # font base frame (frame = base + character)
+  sw t3,-30172(s7)
+  sltiu t4,t2,0x16A
+  bne t4,zero,gn_ret
+  addiu t4,t3,0x35
+  sltu t4,t2,t4
+  bne t4,zero,gn_ret
+  nop
+  jal FXY
+  addiu a0,zero,0x169       # "2P"
+  sw v0,-30168(s7)
+  sw v1,-30164(s7)
+  move s2,v0
+  move s3,v1
+  jal FXY
+  addiu a0,zero,0x15F       # "2" (digit-only alternative)
+  move s4,v0
+  move s0,zero              # texels that differ (the two copies differ in a few palette entries)
+  bne v1,s3,gn_ret
+  move s5,zero
+gv_y:                       # the "2" of "2P" must match the standalone "2" (9 x 12 texels): the P starts 9 texels in
+  move s6,zero
+gv_x:
+  addu a0,s2,s6
+  jal PXR
+  addu a1,s3,s5
+  sd v0,72(sp)
+  addu a0,s4,s6
+  jal PXR
+  addu a1,s3,s5
+  ld t0,72(sp)
+  beq v0,t0,gv_same
+  addiu s6,s6,1
+  addiu s0,s0,1
+gv_same:
+  sltiu t0,s6,9
+  bne t0,zero,gv_x
+  nop
+  addiu s5,s5,1
+  sltiu t0,s5,12
+  bne t0,zero,gv_y
+  nop
+  sltiu t0,s0,13            # at most 12 of 108 texels differ (4 in SLUS-21215)
+  beq t0,zero,gn_ret
+  nop
+  addiu a0,s4,5             # palette indices of the "2" art: fill, highlight, outline, bevel, clear
+  jal PXR
+  addiu a1,s3,2
+  sb v0,-30160(s7)
+  addiu a0,s4,2
+  jal PXR
+  addiu a1,s3,10
+  sb v0,-30159(s7)
+  addiu a0,s4,8
+  jal PXR
+  addiu a1,s3,3
+  sb v0,-30158(s7)
+  addiu a0,s4,3
+  jal PXR
+  addiu a1,s3,11
+  sb v0,-30157(s7)
+  addiu a0,s4,-1
+  jal PXR
+  move a1,s3
+  sb v0,-30156(s7)
+  jal ALPHA
+  move a0,v0
+  bne v0,zero,gn_ret        # "clear" must be transparent
+  addiu s5,zero,234
+gd_y:                       # target texels must be unused (transparent)
+  addiu s6,zero,88
+gd_x:
+  move a0,s6
+  jal PXR
+  move a1,s5
+  jal ALPHA
+  move a0,v0
+  bne v0,zero,gn_ret
+  addiu s6,s6,1
+  sltiu t0,s6,162
+  bne t0,zero,gd_x
+  nop
+  addiu s5,s5,1
+  sltiu t0,s5,250
+  bne t0,zero,gd_y
+  nop
+  addiu s0,zero,3           # digit 3, then 4
+gd_digit:
+  lw a0,-30172(s7)
+  addu a0,a0,s0
+  jal FXY
+  addiu a0,a0,0x30          # font frame of '3' / '4'
+  move s1,v0
+  move s2,v1
+  move s5,zero
+gt_y:                       # first glyph row of the 9 x 18 cell
+  move s6,zero
+gt_x:
+  addu a0,s1,s6
+  jal MASKPX
+  addu a1,s2,s5
+  bne v0,zero,gt_found
+  addiu s6,s6,1
+  sltiu t0,s6,9
+  bne t0,zero,gt_x
+  nop
+  addiu s5,s5,1
+  sltiu t0,s5,18
+  bne t0,zero,gt_y
+  nop
+  beq zero,zero,gn_ret
+  nop
+gt_found:
+  addu s2,s2,s5
+  move s5,zero
+gm_y:                       # mask of 10 glyph rows x 9 columns
+  move s6,zero
+gm_x:
+  addu a0,s1,s6
+  jal MASKPX
+  addu a1,s2,s5
+  sll t0,s5,3
+  addu t0,t0,s5
+  addu t0,t0,s6
+  addu t0,t0,s7
+  sb v0,-30144(t0)
+  addiu s6,s6,1
+  sltiu t0,s6,9
+  bne t0,zero,gm_x
+  nop
+  addiu s5,s5,1
+  sltiu t0,s5,10
+  bne t0,zero,gm_y
+  nop
+  addiu s3,zero,-1          # first used column
+  addiu s4,zero,-1          # last used column
+  move s6,zero
+gc_x:
+  move s5,zero
+  move t1,zero
+gc_y:
+  sll t0,s5,3
+  addu t0,t0,s5
+  addu t0,t0,s6
+  addu t0,t0,s7
+  lbu t0,-30144(t0)
+  or t1,t1,t0
+  addiu s5,s5,1
+  sltiu t0,s5,10
+  bne t0,zero,gc_y
+  nop
+  beq t1,zero,gc_next
+  nop
+  move s4,s6
+  bgez s3,gc_next
+  nop
+  move s3,s6
+gc_next:
+  addiu s6,s6,1
+  sltiu t0,s6,9
+  bne t0,zero,gc_x
+  nop
+  bltz s3,gn_ret
+  move t0,zero
+gf_clr:
+  addu t1,t0,s7
+  sb zero,-30048(t1)
+  addiu t0,t0,1
+  sltiu t1,t0,182
+  bne t1,zero,gf_clr
+  nop
+  addiu t5,zero,9
+  subu t5,t5,s4             # cell column = mask column + 9 - last (digit right-aligned against the P)
+  move s5,zero
+gk_y:
+  move s6,s3
+gk_x:
+  sll t0,s5,3
+  addu t0,t0,s5
+  addu t0,t0,s6
+  addu t0,t0,s7
+  lbu t2,-30144(t0)
+  addiu t3,s5,2             # fill map row = glyph row + 1 (cell) + 1 (border)
+  sll t4,t3,3
+  sll t6,t3,2
+  addu t4,t4,t6
+  addu t4,t4,t3             # * 13
+  addu t4,t4,s6
+  addu t4,t4,t5
+  addu t4,t4,s7
+  sb t2,-30047(t4)
+  addiu s6,s6,1
+  slt t0,s4,s6
+  beq t0,zero,gk_x
+  nop
+  addiu s5,s5,1
+  sltiu t0,s5,10
+  bne t0,zero,gk_y
+  nop
+  addiu t0,zero,3
+  addiu s1,zero,113
+  bne s0,t0,gd_w
+  addiu s2,zero,149
+  addiu s1,zero,90
+  addiu s2,zero,136
+gd_w:
+  move s5,zero
+gw_y:                       # digit cell 11 x 12 -> "dP" label and digit-only frame
+  move s6,zero
+gw_x:
+  move a0,s6
+  jal CLASS
+  move a1,s5
+  sd v0,72(sp)
+  addu a0,s1,s6
+  addiu a1,s5,236
+  jal PXW
+  move a2,v0
+  ld a2,72(sp)
+  addu a0,s2,s6
+  jal PXW
+  addiu a1,s5,236
+  addiu s6,s6,1
+  sltiu t0,s6,11
+  bne t0,zero,gw_x
+  nop
+  addiu s5,s5,1
+  sltiu t0,s5,12
+  bne t0,zero,gw_y
+  nop
+  move s5,zero
+gp_y:                       # the P of "2P" (10 x 12 texels) right of the digit
+  move s6,zero
+gp_x:
+  lw a0,-30168(s7)
+  lw a1,-30164(s7)
+  addu a0,a0,s6
+  addiu a0,a0,9
+  jal PXR
+  addu a1,a1,s5
+  addu a0,s1,s6
+  addiu a0,a0,11
+  addiu a1,s5,236
+  jal PXW
+  move a2,v0
+  addiu s6,s6,1
+  sltiu t0,s6,10
+  bne t0,zero,gp_x
+  nop
+  addiu s5,s5,1
+  sltiu t0,s5,12
+  bne t0,zero,gp_y
+  nop
+  addiu s0,s0,1
+  sltiu t0,s0,5
+  bne t0,zero,gd_digit
+  nop
+  addiu t0,zero,1
+  sw t0,-30188(s7)
+gn_ret:
+  ld ra,0(sp)
+  ld s0,8(sp)
+  ld s1,16(sp)
+  ld s2,24(sp)
+  ld s3,32(sp)
+  ld s4,40(sp)
+  ld s5,48(sp)
+  ld s6,56(sp)
+  ld s7,64(sp)
+  jr ra
+  addiu sp,sp,96
+```
+### LBLCHK (L5)
+```
+LBLCHK:                     # L5: radar update FUN_001C5210 keeps label frames upright (rotation 0); a0 = widget frame
+  addiu at,zero,0x15F       # the replaced test: frame == 0x15F
+  beq a0,at,lc_lab
+  ori at,zero,0xFFF0
+  sltu at,a0,at
+  bne at,zero,lc_no         # frames 0xFFF0-0xFFFF ("3P", "4P", "3", "4") are labels too
+  nop
+lc_lab:
+  j 0x001C5F10              # label: rotation 0
+  nop
+lc_no:
+  j 0x001C5F34              # other icons (arrows): rotation by heading, as before; v0 = widget (delay slot of the hook)
+  nop
+```
