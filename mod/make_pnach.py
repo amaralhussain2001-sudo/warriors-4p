@@ -80,7 +80,12 @@ def main():
             # Our crop picks view = player index, so a dropped view shifts every PC's picture. Keep both flags at 1;
             # the rest of FUN_00121888 is unchanged (it re-lays out when the flags were changed elsewhere).
             "patch=2,EE,00121AE0,word,24130001 // was 8C64B1D8 lw a0,-0x4e28(v1) -> addiu s3,zero,1: player 2 view flag = 1",
-            "patch=2,EE,00121AEC,word,00A0882D // was 00A4880A movz s1,a1,a0 -> daddu s1,a1,zero: player 1 view flag = 1 (a1 = 1)"]
+            "patch=2,EE,00121AEC,word,00A0882D // was 00A4880A movz s1,a1,a0 -> daddu s1,a1,zero: player 1 view flag = 1 (a1 = 1)",
+            # FOVFIX (M6, user report 2026-10-12, F-0198): in the 2x2 layout each quarter has the full screen's shape, but
+            # FUN_00120A98 (made for the side-by-side split) halved both view windows in mode 2, so a cropped quarter was
+            # about 1.6x zoomed in (window 0.32 vs 0.51 in single player). Without the halving a quarter shows the follow
+            # camera's own 65 deg view, the same picture scale as the original 2-player split screen.
+            "patch=2,EE,00120C04,word,10000009 // was 3C013F00 lui at,0x3f00 -> beq zero,zero,0x00120C2C (mode 2: windows and +0x48 not halved)"]
     # Each player's radar inside their own quarter, at single-player size after the 2x crop (docs/research/hud_scale.md
     # patch 2A, which replaces hud_layout.md patch A; patch B kept). Only layout mode 2 (our 2x2 patch) changes.
     hud = [(0x001AFF48, 0x0803C180, "was 3C020051 lui v0,0x51 -> j 0x000F0600"),
