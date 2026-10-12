@@ -117,6 +117,10 @@ Step 8 - Closing
 Close the game window when you are done (all players at about the same time). Keep the Start-Coop window open while
 you play; after the game it tells you whether the co-op progress was saved and where the logs are.
 
+Note: this package is only for online co-op. For single-player or for 2 players on one PC, use your own PCSX2 as
+before; do not start emulator\pcsx2-qtx64.exe from this folder directly. The co-op patches are switched on only
+inside a session started by Start-Coop.bat (they would change the original 2-player split screen).
+
 Step 9 - Co-op saves (your progress together)
 ---------------------------------------------
 - Co-op progress is kept in this package's folder: coop-saves\<save name>\ (files Mcd001.ps2 and Mcd002.ps2).
