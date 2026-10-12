@@ -131,6 +131,21 @@ patch=2,EE,000E80A4,word,3421FDF4 // ori at,at,0xfdf4: half of 0x3CD4FDF4
 patch=2,EE,000E80A8,word,44816000 // mtc1 at,f12
 patch=2,EE,000E80AC,word,08071760 // j 0x001C5D80
 patch=2,EE,000E80B0,word,00000000 // nop
+patch=2,EE,001A5F74,word,0803A02D // was C5030000 lwc1 f3,0x0(t0) -> j 0x000E80B4 (RARC: arc radii, FUN_001A5E38)
+patch=2,EE,000E80B4,word,C5030000 // lwc1 f3,0x0(t0): arc inner radius (original load; f2 = outer radius)
+patch=2,EE,000E80B8,word,3C010051 // lui at,0x51
+patch=2,EE,000E80BC,word,8C22B1A4 // lw v0,-0x4E5C(at): layout mode 0x0050B1A4
+patch=2,EE,000E80C0,word,2442FFFE // addiu v0,v0,-2
+patch=2,EE,000E80C4,word,14400007 // bne v0,zero,ret: not the 2x2 layout
+patch=2,EE,000E80C8,word,8C22B198 // lw v0,-0x4E68(at): views 0x0050B198
+patch=2,EE,000E80CC,word,2C420002 // sltiu v0,v0,2
+patch=2,EE,000E80D0,word,14400004 // bne v0,zero,ret: fewer than 2 views
+patch=2,EE,000E80D4,word,3C013F00 // lui at,0x3f00: 0.5
+patch=2,EE,000E80D8,word,44810800 // mtc1 at,f1 (f1 is dead until 0x001A5FB4)
+patch=2,EE,000E80DC,word,46011082 // mul.s f2,f2,f1: outer radius / 2
+patch=2,EE,000E80E0,word,460118C2 // mul.s f3,f3,f1: inner radius / 2 (ratio +0xF0 unchanged)
+patch=2,EE,000E80E4,word,080697DF // ret: j 0x001A5F7C
+patch=2,EE,000E80E8,word,00000000 // nop
 
 [warriors-4p hud markers]
 author=warriors-4p

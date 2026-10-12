@@ -14,4 +14,5 @@ imp_rtt150 75 0 0 4
 imp_jit20 25 20 0 3
 imp_loss1 25 0 0.01 2
 imp_loss5 25 0 0.05 3
+imp_rtt50b 25 0 0 2
 LIST
