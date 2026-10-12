@@ -1,0 +1,1925 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "x6fix_probe.state@5500": {
+  "poll": 5500,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 2,
+   "checkpoint": 2,
+   "level_idx": 3,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level87"
+  },
+  "lc_n": 17,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "level87_chap2_street1.lua",
+   "tag7.lua",
+   "level87.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0x301c3",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     352.6,
+     76.9,
+     0.226
+    ]
+   },
+   "2": {
+    "handle": "0x201be",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     353.1,
+     74.6,
+     0.226
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xc42000",
+    "follow": "0xc42000",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43b0502e",
+     "0x429a91ce",
+     "0x3fd020c1",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43b04ccd",
+     "0x4299cccd",
+     "0x3fd020d1",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd29800",
+    "follow": "0xd29800",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43b08e9b",
+     "0x42959e26",
+     "0x3fe5ccf0",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43b08ccd",
+     "0x42953333",
+     "0x3fd020d1",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  }
+ },
+ "x6fix_probe.markers_m3@5600": {
+  "poll": 5604,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 11
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.m3 and W4P_O.t3 ~= SpotGettingTagged) and 1 or 0)"
+ },
+ "x6fix_probe.join34@8800": {
+  "poll": 8803,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 8804
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 8805
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@9200": {
+  "poll": 9206,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@9600": {
+  "poll": 9601,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.state@9900": {
+  "poll": 9905,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 2,
+   "level_idx": 3,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level87"
+  },
+  "lc_n": 17,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "level87_chap2_street1.lua",
+   "tag7.lua",
+   "level87.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x301c3",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     352.6,
+     76.9,
+     0.226
+    ]
+   },
+   "2": {
+    "handle": "0x201be",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     353.1,
+     74.6,
+     0.226
+    ]
+   },
+   "3": {
+    "handle": "0x101b9",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     351.3,
+     75.4,
+     0.226
+    ]
+   },
+   "4": {
+    "handle": "0x1b3",
+    "obj": "0x640c80",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     354.5,
+     75.8,
+     0.226
+    ]
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xc42000",
+    "follow": "0xc42000",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43b0502e",
+     "0x429a91ce",
+     "0x3fd020c1",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43b04ccd",
+     "0x4299cccd",
+     "0x3fd020d1",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd29800",
+    "follow": "0xd29800",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43b08e9b",
+     "0x42959e26",
+     "0x3fe5ccf0",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43b08ccd",
+     "0x42953333",
+     "0x3fd020d1",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xd2f000",
+    "follow": "0xd2f000",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43afbb50",
+     "0x4297af72",
+     "0x3fd02297",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43afa666",
+     "0x4296cccd",
+     "0x3fd020d2",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xd33000",
+    "follow": "0xd33000",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43b13b41",
+     "0x4298341c",
+     "0x3fd020d1",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43b14000",
+     "0x4297999a",
+     "0x3fd020d1",
+     "0x3f800000"
+    ]
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ },
+ "x6fix_probe.m3_tag_p3@10000": {
+  "poll": 10007,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 300,
+   "W4P_R2": 3
+  },
+  "src": "InvSetSpraycanCharges(0, 1) InvSetSpraycanCharges(3, HuGetHUD(HuGetPlayer(2)) + 1) W4P_K = nil for k = 1, 20 do local t = tagflag[k] if t and master[t] and master[t].wtag and not master[t].done and k ~= 3 and k ~= 9 then W4P_K = k break end end local t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 = HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback local o = W4P_IGSC local g = InvGetSpraycanCharges W4P_HT, W4P_SP, W4P_IG = 0, 0, 0 local nop = function() end HuTag = function(h, w, a) W4P_HT = W4P_PN(h) end SoundPlayCommand = function(h, n, a, b) W4P_SP = W4P_PN(h) end SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = nop, nop, nop, nop, nop, nop, nop, nop W4P_IGSC = function(p) W4P_IG = p or 1 return %o(p) end InvGetSpraycanCharges = function(p) W4P_IG = (p or 1) + 10 return %g(p) end W4P_PC(SpotGettingTagged, tagflag[W4P_K], HuGetPlayer(2)) HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 W4P_IGSC = o InvGetSpraycanCharges = g W4P_R = W4P_HT * 100 + W4P_SP * 10 W4P_R2 = W4P_IG ",
+  "spray": [
+   0,
+   0,
+   3,
+   0
+  ],
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x301c3",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     352.6,
+     76.9,
+     0.226
+    ]
+   },
+   "2": {
+    "handle": "0x201be",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     353.1,
+     74.6,
+     0.226
+    ]
+   },
+   "3": {
+    "handle": "0x101b9",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     351.3,
+     75.4,
+     0.226
+    ]
+   },
+   "4": {
+    "handle": "0x1b3",
+    "obj": "0x640c80",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     354.5,
+     75.8,
+     0.226
+    ]
+   }
+  }
+ },
+ "x6fix_probe.m3_orig_p3@10050": {
+  "poll": 10057,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 30,
+   "W4P_R2": 11
+  },
+  "src": "InvSetSpraycanCharges(0, 1) InvSetSpraycanCharges(3, HuGetHUD(HuGetPlayer(2)) + 1) W4P_K = nil for k = 1, 20 do local t = tagflag[k] if t and master[t] and master[t].wtag and not master[t].done and k ~= 3 and k ~= 9 then W4P_K = k break end end local t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 = HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback local o = W4P_IGSC local g = InvGetSpraycanCharges W4P_HT, W4P_SP, W4P_IG = 0, 0, 0 local nop = function() end HuTag = function(h, w, a) W4P_HT = W4P_PN(h) end SoundPlayCommand = function(h, n, a, b) W4P_SP = W4P_PN(h) end SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = nop, nop, nop, nop, nop, nop, nop, nop W4P_IGSC = function(p) W4P_IG = p or 1 return %o(p) end InvGetSpraycanCharges = function(p) W4P_IG = (p or 1) + 10 return %g(p) end W4P_PC(W4P_O.t3, tagflag[W4P_K], HuGetPlayer(2)) HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 W4P_IGSC = o InvGetSpraycanCharges = g W4P_R = W4P_HT * 100 + W4P_SP * 10 W4P_R2 = W4P_IG ",
+  "spray": [
+   0,
+   0,
+   3,
+   0
+  ],
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x301c3",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     352.6,
+     76.9,
+     0.226
+    ]
+   },
+   "2": {
+    "handle": "0x201be",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     353.1,
+     74.6,
+     0.226
+    ]
+   },
+   "3": {
+    "handle": "0x101b9",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     351.3,
+     75.4,
+     0.226
+    ]
+   },
+   "4": {
+    "handle": "0x1b3",
+    "obj": "0x640c80",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     354.5,
+     75.8,
+     0.226
+    ]
+   }
+  }
+ },
+ "x6fix_probe.m3_tag_p3_empty@10100": {
+  "poll": 10123,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 30,
+   "W4P_R2": 3
+  },
+  "src": "InvSetSpraycanCharges(3, 1) InvSetSpraycanCharges(0, HuGetHUD(HuGetPlayer(2)) + 1) W4P_K = nil for k = 1, 20 do local t = tagflag[k] if t and master[t] and master[t].wtag and not master[t].done and k ~= 3 and k ~= 9 then W4P_K = k break end end local t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 = HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback local o = W4P_IGSC local g = InvGetSpraycanCharges W4P_HT, W4P_SP, W4P_IG = 0, 0, 0 local nop = function() end HuTag = function(h, w, a) W4P_HT = W4P_PN(h) end SoundPlayCommand = function(h, n, a, b) W4P_SP = W4P_PN(h) end SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = nop, nop, nop, nop, nop, nop, nop, nop W4P_IGSC = function(p) W4P_IG = p or 1 return %o(p) end InvGetSpraycanCharges = function(p) W4P_IG = (p or 1) + 10 return %g(p) end W4P_PC(SpotGettingTagged, tagflag[W4P_K], HuGetPlayer(2)) HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 W4P_IGSC = o InvGetSpraycanCharges = g W4P_R = W4P_HT * 100 + W4P_SP * 10 W4P_R2 = W4P_IG ",
+  "spray": [
+   3,
+   0,
+   0,
+   0
+  ],
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x301c3",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     352.6,
+     76.9,
+     0.226
+    ]
+   },
+   "2": {
+    "handle": "0x201be",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     353.1,
+     74.6,
+     0.226
+    ]
+   },
+   "3": {
+    "handle": "0x101b9",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     351.3,
+     75.4,
+     0.226
+    ]
+   },
+   "4": {
+    "handle": "0x1b3",
+    "obj": "0x640c80",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     354.5,
+     75.8,
+     0.226
+    ]
+   }
+  }
+ },
+ "x6fix_probe.m3_orig_p3_empty@10150": {
+  "poll": 10157,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 300,
+   "W4P_R2": 11
+  },
+  "src": "InvSetSpraycanCharges(3, 1) InvSetSpraycanCharges(0, HuGetHUD(HuGetPlayer(2)) + 1) W4P_K = nil for k = 1, 20 do local t = tagflag[k] if t and master[t] and master[t].wtag and not master[t].done and k ~= 3 and k ~= 9 then W4P_K = k break end end local t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 = HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback local o = W4P_IGSC local g = InvGetSpraycanCharges W4P_HT, W4P_SP, W4P_IG = 0, 0, 0 local nop = function() end HuTag = function(h, w, a) W4P_HT = W4P_PN(h) end SoundPlayCommand = function(h, n, a, b) W4P_SP = W4P_PN(h) end SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = nop, nop, nop, nop, nop, nop, nop, nop W4P_IGSC = function(p) W4P_IG = p or 1 return %o(p) end InvGetSpraycanCharges = function(p) W4P_IG = (p or 1) + 10 return %g(p) end W4P_PC(W4P_O.t3, tagflag[W4P_K], HuGetPlayer(2)) HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 W4P_IGSC = o InvGetSpraycanCharges = g W4P_R = W4P_HT * 100 + W4P_SP * 10 W4P_R2 = W4P_IG ",
+  "spray": [
+   3,
+   0,
+   0,
+   0
+  ],
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x301c3",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     352.6,
+     76.9,
+     0.226
+    ]
+   },
+   "2": {
+    "handle": "0x201be",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     353.1,
+     74.6,
+     0.226
+    ]
+   },
+   "3": {
+    "handle": "0x101b9",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     351.3,
+     75.4,
+     0.226
+    ]
+   },
+   "4": {
+    "handle": "0x1b3",
+    "obj": "0x640c80",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     354.5,
+     75.8,
+     0.226
+    ]
+   }
+  }
+ },
+ "x6fix_probe.m3_tag_p1@10200": {
+  "poll": 10206,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100,
+   "W4P_R2": 11
+  },
+  "src": "InvSetSpraycanCharges(3, 1) InvSetSpraycanCharges(0, HuGetHUD(HuGetPlayer(2)) + 1) W4P_K = nil for k = 1, 20 do local t = tagflag[k] if t and master[t] and master[t].wtag and not master[t].done and k ~= 3 and k ~= 9 then W4P_K = k break end end local t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 = HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback local o = W4P_IGSC local g = InvGetSpraycanCharges W4P_HT, W4P_SP, W4P_IG = 0, 0, 0 local nop = function() end HuTag = function(h, w, a) W4P_HT = W4P_PN(h) end SoundPlayCommand = function(h, n, a, b) W4P_SP = W4P_PN(h) end SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = nop, nop, nop, nop, nop, nop, nop, nop W4P_IGSC = function(p) W4P_IG = p or 1 return %o(p) end InvGetSpraycanCharges = function(p) W4P_IG = (p or 1) + 10 return %g(p) end W4P_PC(SpotGettingTagged, tagflag[W4P_K], player) HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 W4P_IGSC = o InvGetSpraycanCharges = g W4P_R = W4P_HT * 100 + W4P_SP * 10 W4P_R2 = W4P_IG ",
+  "spray": [
+   3,
+   0,
+   0,
+   0
+  ],
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x301c3",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     352.6,
+     76.9,
+     0.226
+    ]
+   },
+   "2": {
+    "handle": "0x201be",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     353.1,
+     74.6,
+     0.226
+    ]
+   },
+   "3": {
+    "handle": "0x101b9",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     351.3,
+     75.4,
+     0.226
+    ]
+   },
+   "4": {
+    "handle": "0x1b3",
+    "obj": "0x640c80",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     354.5,
+     75.8,
+     0.226
+    ]
+   }
+  }
+ },
+ "x6fix_probe.m3_real_p3@10300": {
+  "poll": 10309,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 1
+  },
+  "src": "InvSetSpraycanCharges(0, 1) InvSetSpraycanCharges(3, HuGetHUD(HuGetPlayer(2)) + 1) W4P_K = nil for k = 1, 20 do local t = tagflag[k] if t and master[t] and master[t].wtag and not master[t].done and k ~= 3 and k ~= 9 then W4P_K = k break end end W4P_PC(SpotGettingTagged, tagflag[W4P_K], HuGetPlayer(2)) W4P_R = W4P_K",
+  "spray": [
+   0,
+   0,
+   3,
+   0
+  ]
+ },
+ "x6fix_probe.m3_real_read@10600": {
+  "poll": 10610,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 10
+  },
+  "src": "W4P_R = (HuIsTagging(HuGetPlayer(2)) and 1 or 0) * 10 + (HuIsTagging(player) and 1 or 0)",
+  "spray": [
+   0,
+   0,
+   3,
+   0
+  ],
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x301c3",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     352.6,
+     76.9,
+     0.226
+    ]
+   },
+   "2": {
+    "handle": "0x201be",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     353.1,
+     74.6,
+     0.226
+    ]
+   },
+   "3": {
+    "handle": "0x101b9",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     351.332,
+     75.473,
+     0.226
+    ]
+   },
+   "4": {
+    "handle": "0x1b3",
+    "obj": "0x640c80",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     354.5,
+     75.8,
+     0.226
+    ]
+   }
+  }
+ },
+ "x6fix_probe.state@10700": {
+  "poll": 10701,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 2,
+   "level_idx": 3,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level87"
+  },
+  "lc_n": 17,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "level87_chap2_street1.lua",
+   "tag7.lua",
+   "level87.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x301c3",
+    "obj": "0x6420f0",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     352.6,
+     76.9,
+     0.226
+    ]
+   },
+   "2": {
+    "handle": "0x201be",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     353.1,
+     74.6,
+     0.226
+    ]
+   },
+   "3": {
+    "handle": "0x101b9",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     351.332,
+     75.473,
+     0.226
+    ]
+   },
+   "4": {
+    "handle": "0x1b3",
+    "obj": "0x640c80",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     354.5,
+     75.8,
+     0.226
+    ]
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   0,
+   0,
+   2,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xc42000",
+    "follow": "0xc42000",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43b0502e",
+     "0x429a91ce",
+     "0x3fd020c1",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43b04ccd",
+     "0x4299cccd",
+     "0x3fd020d1",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd29800",
+    "follow": "0xd29800",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43b08e9b",
+     "0x42959e26",
+     "0x3fe5ccf0",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43b08ccd",
+     "0x42953333",
+     "0x3fd020d1",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xc34400",
+    "follow": "0xd2f000",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43afbb42",
+     "0x4297d19a",
+     "0x3fd02559",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43afaa78",
+     "0x4296f229",
+     "0x3fd020d2",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xd33000",
+    "follow": "0xd33000",
+    "rail": "0x0",
+    "follow_240": [
+     "0x43b13b41",
+     "0x4298341c",
+     "0x3fd020d1",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x43b14000",
+     "0x4297999a",
+     "0x3fd020d1",
+     "0x3f800000"
+    ]
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ },
+ "x6fix_probe.state@13000": {
+  "poll": 13002,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 2,
+   "checkpoint": 2,
+   "level_idx": 6,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level3"
+  },
+  "lc_n": 21,
+  "lc_runs": 6,
+  "names_newest_first": [
+   "level3_comp.lua",
+   "level3.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level87_chap2_street1.lua",
+   "tag7.lua",
+   "level87.lua",
+   "global.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0x20163",
+    "obj": "0x641a20",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -73.101,
+     -178.624,
+     0.003
+    ]
+   },
+   "2": {
+    "handle": "0x158",
+    "obj": "0x640c80",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -71.188,
+     -178.188,
+     0.004
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   1,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xd34000",
+    "follow": "0xcc5800",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc28ee097",
+     "0xc3333452",
+     "0x3fb3a2ed",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc28ee5cd",
+     "0xc33320c9",
+     "0x3fb3a2ed",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd2dc00",
+    "follow": "0xd2dc00",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc28d8069",
+     "0xc3329ab2",
+     "0x3fb3aba3",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc28e6079",
+     "0xc332301a",
+     "0x3fb3aba3",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  }
+ },
+ "x6fix_probe.markers_m6a@13100": {
+  "poll": 13104,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 11
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.m6a and W4P_O.t6a ~= C1.WarrTagStart) and 1 or 0)"
+ },
+ "x6fix_probe.join34@14500": {
+  "poll": 14502,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 14504
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 14504
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@14900": {
+  "poll": 14901,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@15300": {
+  "poll": 15300,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.state@15500": {
+  "poll": 15503,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 2,
+   "level_idx": 6,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level3"
+  },
+  "lc_n": 21,
+  "lc_runs": 6,
+  "names_newest_first": [
+   "level3_comp.lua",
+   "level3.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level87_chap2_street1.lua",
+   "tag7.lua",
+   "level87.lua",
+   "global.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x20163",
+    "obj": "0x641a20",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -72.179,
+     -178.659,
+     0.003
+    ]
+   },
+   "2": {
+    "handle": "0x158",
+    "obj": "0x640c80",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -71.574,
+     -178.106,
+     0.004
+    ]
+   },
+   "3": {
+    "handle": "0x1015d",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -71.947,
+     -181.861,
+     0.003
+    ]
+   },
+   "4": {
+    "handle": "0x30168",
+    "obj": "0x6420f0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -73.662,
+     -175.141,
+     0.004
+    ]
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   1,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xd34000",
+    "follow": "0xcc5800",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc28ee097",
+     "0xc3333452",
+     "0x3fb3a2ed",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc28ee5cd",
+     "0xc33320c9",
+     "0x3fb3a2ed",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd2dc00",
+    "follow": "0xd2dc00",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc28e620c",
+     "0xc3325c71",
+     "0x3fb3a9d8",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc28f2613",
+     "0xc3321b0a",
+     "0x3fb3a9d8",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xd35c00",
+    "follow": "0xd35c00",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc28ef34c",
+     "0xc3351bba",
+     "0x3fb38b39",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc28fe4b2",
+     "0xc335dc7f",
+     "0x3fb38b39",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xd36400",
+    "follow": "0xd36400",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc291e464",
+     "0xc32fa66d",
+     "0x3fb3b12a",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc29352f9",
+     "0xc32f242d",
+     "0x3fb3b12a",
+     "0x3f800000"
+    ]
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ },
+ "x6fix_probe.m6_tag_p3@15600": {
+  "poll": 15609,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 300,
+   "W4P_R2": 3
+  },
+  "src": "InvSetSpraycanCharges(0, 1) InvSetSpraycanCharges(3, HuGetHUD(HuGetPlayer(2)) + 1) C1.WarrTag = C1.WarrTag or {} C1.WarrTagCtr = C1.WarrTagCtr or 0 local lf = C1.LockFlag local t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 = HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback local o = W4P_IGSC local g = InvGetSpraycanCharges W4P_HT, W4P_SP, W4P_IG = 0, 0, 0 local nop = function() end HuTag = function(h, w, a) W4P_HT = W4P_PN(h) end SoundPlayCommand = function(h, n, a, b) W4P_SP = W4P_PN(h) end SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = nop, nop, nop, nop, nop, nop, nop, nop W4P_IGSC = function(p) W4P_IG = p or 1 return %o(p) end InvGetSpraycanCharges = function(p) W4P_IG = (p or 1) + 10 return %g(p) end W4P_PC(C1.WarrTagStart, fWarrTag, HuGetPlayer(2)) C1.LockFlag = lf HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 W4P_IGSC = o InvGetSpraycanCharges = g W4P_R = W4P_HT * 100 + W4P_SP * 10 W4P_R2 = W4P_IG ",
+  "spray": [
+   0,
+   0,
+   3,
+   0
+  ],
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x20163",
+    "obj": "0x641a20",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -72.179,
+     -178.659,
+     0.003
+    ]
+   },
+   "2": {
+    "handle": "0x158",
+    "obj": "0x640c80",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -71.574,
+     -178.106,
+     0.004
+    ]
+   },
+   "3": {
+    "handle": "0x1015d",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -71.947,
+     -181.861,
+     0.003
+    ]
+   },
+   "4": {
+    "handle": "0x30168",
+    "obj": "0x6420f0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -73.662,
+     -175.141,
+     0.004
+    ]
+   }
+  }
+ },
+ "x6fix_probe.m6_orig_p3@15650": {
+  "poll": 15656,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 30,
+   "W4P_R2": 10
+  },
+  "src": "InvSetSpraycanCharges(0, 1) InvSetSpraycanCharges(3, HuGetHUD(HuGetPlayer(2)) + 1) C1.WarrTag = C1.WarrTag or {} C1.WarrTagCtr = C1.WarrTagCtr or 0 local lf = C1.LockFlag local t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 = HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback local o = W4P_IGSC local g = InvGetSpraycanCharges W4P_HT, W4P_SP, W4P_IG = 0, 0, 0 local nop = function() end HuTag = function(h, w, a) W4P_HT = W4P_PN(h) end SoundPlayCommand = function(h, n, a, b) W4P_SP = W4P_PN(h) end SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = nop, nop, nop, nop, nop, nop, nop, nop W4P_IGSC = function(p) W4P_IG = p or 1 return %o(p) end InvGetSpraycanCharges = function(p) W4P_IG = (p or 1) + 10 return %g(p) end W4P_PC(W4P_O.t6a, fWarrTag, HuGetPlayer(2)) C1.LockFlag = lf HuTag, SoundPlayCommand, SetMsgHandler, SetMsgHandlerEx, HuSetPushable, W_StartStopWatch, SuperRunScene, HuSpeakNI, ObjHide, CfgTagStartCallback = t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 W4P_IGSC = o InvGetSpraycanCharges = g W4P_R = W4P_HT * 100 + W4P_SP * 10 W4P_R2 = W4P_IG ",
+  "spray": [
+   0,
+   0,
+   3,
+   0
+  ],
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x20163",
+    "obj": "0x641a20",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -72.179,
+     -178.659,
+     0.003
+    ]
+   },
+   "2": {
+    "handle": "0x158",
+    "obj": "0x640c80",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -71.574,
+     -178.106,
+     0.004
+    ]
+   },
+   "3": {
+    "handle": "0x1015d",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -71.947,
+     -181.861,
+     0.003
+    ]
+   },
+   "4": {
+    "handle": "0x30168",
+    "obj": "0x6420f0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -73.662,
+     -175.141,
+     0.004
+    ]
+   }
+  }
+ },
+ "x6fix_probe.state@15700": {
+  "poll": 15700,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 2,
+   "level_idx": 6,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level3"
+  },
+  "lc_n": 21,
+  "lc_runs": 6,
+  "names_newest_first": [
+   "level3_comp.lua",
+   "level3.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level87_chap2_street1.lua",
+   "tag7.lua",
+   "level87.lua",
+   "global.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x20163",
+    "obj": "0x641a20",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -72.179,
+     -178.659,
+     0.003
+    ]
+   },
+   "2": {
+    "handle": "0x158",
+    "obj": "0x640c80",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -71.574,
+     -178.106,
+     0.004
+    ]
+   },
+   "3": {
+    "handle": "0x1015d",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -71.947,
+     -181.861,
+     0.003
+    ]
+   },
+   "4": {
+    "handle": "0x30168",
+    "obj": "0x6420f0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -73.662,
+     -175.141,
+     0.004
+    ]
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   0,
+   0,
+   3,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xd34000",
+    "follow": "0xcc5800",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc28ee097",
+     "0xc3333452",
+     "0x3fb3a2ed",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc28ee5cd",
+     "0xc33320c9",
+     "0x3fb3a2ed",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd2dc00",
+    "follow": "0xd2dc00",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc28e620c",
+     "0xc3325c71",
+     "0x3fb3a9d8",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc28f2613",
+     "0xc3321b0a",
+     "0x3fb3a9d8",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xd35c00",
+    "follow": "0xd35c00",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc28ef34c",
+     "0xc3351bba",
+     "0x3fb38b39",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc28fe4b2",
+     "0xc335dc7f",
+     "0x3fb38b39",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xd36400",
+    "follow": "0xd36400",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc291e464",
+     "0xc32fa66d",
+     "0x3fb3b12a",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc29352f9",
+     "0xc32f242d",
+     "0x3fb3b12a",
+     "0x3f800000"
+    ]
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ }
+}

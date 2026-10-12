@@ -1,0 +1,1533 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "x6fix_probe.state@5500": {
+  "poll": 5503,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 2,
+   "checkpoint": 3,
+   "level_idx": 18,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level84"
+  },
+  "lc_n": 16,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "level84_final.lua",
+   "level84.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -126.984,
+     -138.954,
+     -0.392
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -126.826,
+     -141.656,
+     -0.392
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xcaa400",
+    "follow": "0xca9c00",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc3a85136",
+     "0xc35cde5e",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a864a4",
+     "0xc35c9fff",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0x0",
+    "follow_240": [
+     "0xc3a81db0",
+     "0xc35dea1b",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8032e",
+     "0xc35dd7b6",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  }
+ },
+ "x6fix_probe.markers_m18@5600": {
+  "poll": 5609,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 11
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.m18 and W4P_O.mi ~= C5.MoveInFOV and W4P_O.mo ~= C5.MoveOUTFOV) and 1 or 0)"
+ },
+ "x6fix_probe.join34@8800": {
+  "poll": 8803,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 8804
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 8806
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@9200": {
+  "poll": 9200,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@9600": {
+  "poll": 9602,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.state@9900": {
+  "poll": 9902,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 3,
+   "level_idx": 18,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level84"
+  },
+  "lc_n": 16,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "level84_final.lua",
+   "level84.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -339.297,
+     -217.146,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -341.695,
+     -218.504,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe068e",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -343.617,
+     -216.841,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf0696",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -335.697,
+     -217.146,
+     -0.238
+    ]
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xcf2800",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ },
+ "x6fix_probe.mi_p3@10000": {
+  "poll": 10008,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_N = 0 W4P_X = 0 W4P_T = 0 local o = CamSetupRail CamSetupRail = function(n, t, a, b, c, d, i) W4P_N = W4P_N + 1 W4P_X = (i or -1) + 1 W4P_T = W4P_PN(t) return %o(n, t, a, b, c, d, i) end W4P_PC(C5.MoveInFOV, vFOVZoom, HuGetPlayer(2)) CamSetupRail = o W4P_R = 100 + W4P_N * 100 + W4P_X * 10 + W4P_T ",
+  "cams_before": {
+   "0": {
+    "render": "0xcf2800",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  },
+  "cams_after": {
+   "0": {
+    "render": "0xcf2800",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  }
+ },
+ "x6fix_probe.mo_p3@10050": {
+  "poll": 10054,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_N = 0 W4P_X = 0 W4P_T = 0 local o = CamSetupRail CamSetupRail = function(n, t, a, b, c, d, i) W4P_N = W4P_N + 1 W4P_X = (i or -1) + 1 W4P_T = W4P_PN(t) return %o(n, t, a, b, c, d, i) end W4P_PC(C5.MoveOUTFOV, vFOVZoom, HuGetPlayer(2)) CamSetupRail = o W4P_R = 100 + W4P_N * 100 + W4P_X * 10 + W4P_T ",
+  "cams_before": {
+   "0": {
+    "render": "0xcf2800",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  },
+  "cams_after": {
+   "0": {
+    "render": "0xcf2800",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  }
+ },
+ "x6fix_probe.mi_orig_p3@10100": {
+  "poll": 10112,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 223
+  },
+  "src": "W4P_N = 0 W4P_X = 0 W4P_T = 0 local o = CamSetupRail CamSetupRail = function(n, t, a, b, c, d, i) W4P_N = W4P_N + 1 W4P_X = (i or -1) + 1 W4P_T = W4P_PN(t) return %o(n, t, a, b, c, d, i) end W4P_PC(W4P_O.mi, vFOVZoom, HuGetPlayer(2)) CamSetupRail = o W4P_R = 100 + W4P_N * 100 + W4P_X * 10 + W4P_T ",
+  "cams_before": {
+   "0": {
+    "render": "0xcf2800",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  },
+  "cams_after": {
+   "0": {
+    "render": "0xcf2800",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  }
+ },
+ "x6fix_probe.mi_p1@10150": {
+  "poll": 10173,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 211
+  },
+  "src": "W4P_N = 0 W4P_X = 0 W4P_T = 0 local o = CamSetupRail CamSetupRail = function(n, t, a, b, c, d, i) W4P_N = W4P_N + 1 W4P_X = (i or -1) + 1 W4P_T = W4P_PN(t) return %o(n, t, a, b, c, d, i) end W4P_PC(C5.MoveInFOV, vFOVZoom, player) CamSetupRail = o W4P_R = 100 + W4P_N * 100 + W4P_X * 10 + W4P_T ",
+  "cams_before": {
+   "0": {
+    "render": "0xcf2800",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  },
+  "cams_after": {
+   "0": {
+    "render": "0xcf8000",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  }
+ },
+ "x6fix_probe.fov2_setup@10250": {
+  "skipped": "box centre 124.8 units from player 1 (> 30.0)",
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -339.297,
+     -217.146,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -341.695,
+     -218.504,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe068e",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -345.078,
+     -216.651,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf0696",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -335.697,
+     -217.146,
+     -0.238
+    ]
+   }
+  },
+  "spy": {
+   "poll": 10260,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 100
+   },
+   "src": "W4P_H = {0, 0, 0, 0, 0, 0, 0, 0, 0} W4P_RN = 0 W4P_RX = 0 W4P_RT = 0 local o1, o3 = C5.MoveInFOV, CamSetupRail C5.MoveInFOV = function(a0, a1) local k = W4P_PN(a1) W4P_H[k] = W4P_H[k] + 1 return %o1(a0, a1) end CamSetupRail = function(n, t, a, b, c, d, i) W4P_RN = W4P_RN + 1 W4P_RX = (i or -1) + 1 W4P_RT = W4P_PN(t) return %o3(n, t, a, b, c, d, i) end SetMsgHandler(vFOVZoom, 3, \"C5.MoveInFOV\") SetMsgHandler(vFOVZoom, 4, \"C5.MoveOUTFOV\") W4P_R = 100"
+  }
+ },
+ "x6fix_probe.fov2_read1@10500": {
+  "poll": 10506,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0,
+   "W4P_R2": 0
+  },
+  "src": "W4P_R = 100 * (IsInsideBox(vFOVZoom, HuGetPlayer(2)) and 1 or 0) + 10 * W4P_H[3] + W4P_RN W4P_R2 = W4P_RX * 10 + W4P_RT",
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -339.297,
+     -217.146,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -341.695,
+     -218.504,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe068e",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -345.282,
+     -216.22,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf0696",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -335.699,
+     -217.13,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.fov2_p1@10550": {
+  "skipped": "box centre 124.8 units from player 1 (> 30.0)",
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -339.297,
+     -217.146,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -341.695,
+     -218.504,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe068e",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -345.298,
+     -216.248,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf0696",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -334.716,
+     -217.615,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.fov2_read2@10800": {
+  "poll": 10807,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 0,
+   "W4P_R2": 0
+  },
+  "src": "W4P_R = 100 * (IsInsideBox(vFOVZoom, player) and 1 or 0) + 10 * W4P_H[1] + W4P_RN W4P_R2 = W4P_RX * 10 + W4P_RT",
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -339.297,
+     -217.146,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -341.695,
+     -218.504,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe068e",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -345.298,
+     -216.248,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf0696",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -337.928,
+     -217.828,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.state@10900": {
+  "poll": 10909,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 3,
+   "level_idx": 18,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level84"
+  },
+  "lc_n": 16,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "level84_final.lua",
+   "level84.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua",
+   "config_normal.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -339.297,
+     -217.146,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -341.695,
+     -218.504,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe068e",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -345.298,
+     -216.248,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf0696",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -338.086,
+     -216.586,
+     -0.238
+    ]
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xcf8000",
+    "follow": "0xca9c00",
+    "rail": "0xcf2800",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce0c00",
+    "rail": "0xcf2c00",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f94ae83",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f94ae83",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4400",
+    "rail": "0xcf4c00",
+    "follow_240": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97d90",
+     "0xc359a33a",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6800",
+    "rail": "0xcf7000",
+    "follow_240": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a97ca3",
+     "0xc359a613",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ }
+}

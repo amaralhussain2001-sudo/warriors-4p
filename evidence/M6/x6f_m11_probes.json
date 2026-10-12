@@ -1,0 +1,1058 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "x6fix_probe.state@5500": {
+  "poll": 5505,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 2,
+   "checkpoint": 2,
+   "level_idx": 11,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level31"
+  },
+  "lc_n": 17,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "tag1.lua",
+   "level31_Streets.lua",
+   "level31.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 2,
+   "1": {
+    "handle": "0x13d",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     76.75,
+     58.349,
+     -0.084
+    ]
+   },
+   "2": {
+    "handle": "0x20148",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     76.716,
+     59.737,
+     -0.085
+    ]
+   },
+   "3": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   },
+   "4": {
+    "handle": "0xffffffff",
+    "obj": "0x0",
+    "hud_slot": null,
+    "pidx": null,
+    "pos": null
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xd38c00",
+    "follow": "0xce2400",
+    "rail": "0x0",
+    "follow_240": [
+     "0x4299a684",
+     "0x426b0b2a",
+     "0x3fa5c468",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x42997060",
+     "0x42698894",
+     "0x3fa8616d",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd2dc00",
+    "follow": "0xd2dc00",
+    "rail": "0x0",
+    "follow_240": [
+     "0x429a941e",
+     "0x426e1792",
+     "0x3eb782a9",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x42996eac",
+     "0x426ef2e3",
+     "0x3fa861c4",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0x0",
+    "rail": "0x0",
+    "follow_240": null,
+    "follow_270": null
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  }
+ },
+ "x6fix_probe.markers_m11@5600": {
+  "poll": 5610,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 11
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.m11 and W4P_O.gm ~= P2.GotMoney) and 1 or 0)"
+ },
+ "x6fix_probe.join34@8800": {
+  "poll": 8803,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 8804
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 8807
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@9200": {
+  "poll": 9205,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.join34@9600": {
+  "poll": 9603,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "x6fix_probe.state@9900": {
+  "poll": 9904,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 2,
+   "level_idx": 11,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level31"
+  },
+  "lc_n": 17,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "tag1.lua",
+   "level31_Streets.lua",
+   "level31.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x13d",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     79.338,
+     56.627,
+     -0.081
+    ]
+   },
+   "2": {
+    "handle": "0x20148",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     76.457,
+     60.646,
+     -0.085
+    ]
+   },
+   "3": {
+    "handle": "0x10142",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     77.878,
+     59.42,
+     -0.083
+    ]
+   },
+   "4": {
+    "handle": "0x1f0e8f",
+    "obj": "0x64dfb0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     80.04,
+     53.096,
+     -0.08
+    ]
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "spray": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xd38c00",
+    "follow": "0xce2400",
+    "rail": "0x0",
+    "follow_240": [
+     "0x429f831c",
+     "0x42614685",
+     "0x3fa8d37b",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x429ead1b",
+     "0x426281e9",
+     "0x3fa8d37b",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd2dc00",
+    "follow": "0xd2dc00",
+    "rail": "0x0",
+    "follow_240": [
+     "0x4299cf0c",
+     "0x42727ef8",
+     "0x3fa85779",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4298e9fc",
+     "0x42729575",
+     "0x3fa85779",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xd39800",
+    "follow": "0xd39800",
+    "rail": "0x0",
+    "follow_240": [
+     "0x429bf08b",
+     "0x426ca106",
+     "0x3fc88321",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x429bc182",
+     "0x426dadda",
+     "0x3fa893e2",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xd40c00",
+    "follow": "0xd40c00",
+    "rail": "0x0",
+    "follow_240": [
+     "0x42a014b2",
+     "0x4256fe16",
+     "0x3fa8f214",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x42a014b2",
+     "0x42546257",
+     "0x3fa8f213",
+     "0x3f800000"
+    ]
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ },
+ "x6fix_probe.m11_sum@10000": {
+  "poll": 10007,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 80,
+   "W4P_R2": 0
+  },
+  "src": "InvSetMoney(0, 2) InvSetMoney(40, 3) InvSetMoney(40, 4) W4P_R = W4P_IGM2(2) W4P_R2 = InvGetMoney(2)",
+  "money": [
+   0,
+   0,
+   40,
+   40
+  ],
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 2,
+   "level_idx": 11,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level31"
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x13d",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     79.338,
+     56.627,
+     -0.081
+    ]
+   },
+   "2": {
+    "handle": "0x20148",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     76.457,
+     60.646,
+     -0.085
+    ]
+   },
+   "3": {
+    "handle": "0x10142",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     77.878,
+     59.42,
+     -0.083
+    ]
+   },
+   "4": {
+    "handle": "0x1f0e8f",
+    "obj": "0x64dfb0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     80.04,
+     53.096,
+     -0.08
+    ]
+   }
+  }
+ },
+ "x6fix_probe.m11_orig@10100": {
+  "poll": 10107,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_PC(W4P_O.gm, nil, true) W4P_R = 100",
+  "money_before": [
+   0,
+   0,
+   40,
+   40
+  ],
+  "money_after": [
+   0,
+   0,
+   40,
+   40
+  ],
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 2,
+   "level_idx": 11,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level31"
+  }
+ },
+ "x6fix_probe.m11_after@10300": {
+  "poll": 10301,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 2,
+   "level_idx": 11,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level31"
+  },
+  "lc_n": 17,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "tag1.lua",
+   "level31_Streets.lua",
+   "level31.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua",
+   "global.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x13d",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     79.338,
+     56.627,
+     -0.081
+    ]
+   },
+   "2": {
+    "handle": "0x20148",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     76.457,
+     60.646,
+     -0.085
+    ]
+   },
+   "3": {
+    "handle": "0x10142",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     77.878,
+     59.42,
+     -0.083
+    ]
+   },
+   "4": {
+    "handle": "0x1f0e8f",
+    "obj": "0x64dfb0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     80.04,
+     53.096,
+     -0.08
+    ]
+   }
+  },
+  "money": [
+   0,
+   0,
+   40,
+   40
+  ],
+  "spray": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xd38c00",
+    "follow": "0xce2400",
+    "rail": "0x0",
+    "follow_240": [
+     "0x429f831c",
+     "0x42614685",
+     "0x3fa8d37b",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x429ead1b",
+     "0x426281e9",
+     "0x3fa8d37b",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd2dc00",
+    "follow": "0xd2dc00",
+    "rail": "0x0",
+    "follow_240": [
+     "0x4299cf0c",
+     "0x42727ef8",
+     "0x3fa85779",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4298e9fc",
+     "0x42729575",
+     "0x3fa85779",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xd39800",
+    "follow": "0xd39800",
+    "rail": "0x0",
+    "follow_240": [
+     "0x429bf08c",
+     "0x426ca106",
+     "0x3fc88321",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x429bc182",
+     "0x426dadda",
+     "0x3fa893e2",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xd40c00",
+    "follow": "0xd40c00",
+    "rail": "0x0",
+    "follow_240": [
+     "0x42a014b2",
+     "0x4256fe16",
+     "0x3fa8f213",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x42a014b2",
+     "0x42546257",
+     "0x3fa8f214",
+     "0x3f800000"
+    ]
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ },
+ "x6fix_probe.m11_fix@10400": {
+  "poll": 10407,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_PC(P2.GotMoney, nil, true) W4P_R = 100",
+  "money_before": [
+   0,
+   0,
+   40,
+   40
+  ],
+  "money_after": [
+   0,
+   0,
+   0,
+   5
+  ],
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 3,
+   "level_idx": 11,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level31"
+  }
+ },
+ "x6fix_probe.m11_after@10800": {
+  "poll": 10802,
+  "gm": {
+   "gm": "0x1fd8400",
+   "players": 4,
+   "checkpoint": 3,
+   "level_idx": 11,
+   "gm_14c": 0,
+   "powerup_full_hp_ok_56e5": 1,
+   "bank": 0,
+   "level_name_124": "level31"
+  },
+  "lc_n": 18,
+  "lc_runs": 4,
+  "names_newest_first": [
+   "level31_gclub.lua",
+   "tag1.lua",
+   "level31_Streets.lua",
+   "level31.lua",
+   "global.lua",
+   "config_normal.lua",
+   "level99_combat.lua",
+   "level99.lua"
+  ],
+  "table": [
+   [
+    "level9.lua",
+    "0xe7e00"
+   ],
+   [
+    "global.lua",
+    "0xec090"
+   ],
+   [
+    "level54.lua",
+    "0xec6f0"
+   ],
+   [
+    "level54_alley.lua",
+    "0xec74c"
+   ],
+   [
+    "level84_final.lua",
+    "0xec7a0"
+   ],
+   [
+    "level31_Streets.lua",
+    "0xec82c"
+   ],
+   [
+    "level87.lua",
+    "0xec8f4"
+   ],
+   [
+    "level3_comp.lua",
+    "0xec950"
+   ],
+   [
+    "level3_gallery.lua",
+    "0xec9a8"
+   ],
+   [
+    "level9.lua",
+    "0xeca00"
+   ],
+   [
+    "*",
+    "0x0"
+   ]
+  ],
+  "luach_hook": true,
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x13d",
+    "obj": "0x640c80",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     148.528,
+     86.335,
+     5.983
+    ]
+   },
+   "2": {
+    "handle": "0x20148",
+    "obj": "0x641a20",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     149.837,
+     87.806,
+     5.986
+    ]
+   },
+   "3": {
+    "handle": "0x10142",
+    "obj": "0x641350",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     147.724,
+     87.946,
+     5.985
+    ]
+   },
+   "4": {
+    "handle": "0x1f0e8f",
+    "obj": "0x64dfb0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     80.04,
+     53.096,
+     -0.08
+    ]
+   }
+  },
+  "money": [
+   0,
+   0,
+   0,
+   5
+  ],
+  "spray": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "cams": {
+   "0": {
+    "render": "0xd38c00",
+    "follow": "0xce2400",
+    "rail": "0x0",
+    "follow_240": [
+     "0x4314a605",
+     "0x42acb23a",
+     "0x40f88593",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4314871e",
+     "0x42acab71",
+     "0x40ec42a0",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xd2dc00",
+    "follow": "0xd2dc00",
+    "rail": "0x0",
+    "follow_240": [
+     "0x4315c669",
+     "0x42aff298",
+     "0x40f41c0d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4315d631",
+     "0x42af9c94",
+     "0x40ec5a60",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xd39800",
+    "follow": "0xd39800",
+    "rail": "0x0",
+    "follow_240": [
+     "0x431427e1",
+     "0x42afc87c",
+     "0x40ec53b6",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x4313b96b",
+     "0x42afe482",
+     "0x40ec53c6",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xd40c00",
+    "follow": "0xd40c00",
+    "rail": "0x0",
+    "follow_240": [
+     "0x42a014b2",
+     "0x4256fe16",
+     "0x3fa8f213",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0x42a014b2",
+     "0x42546257",
+     "0x3fa8f213",
+     "0x3f800000"
+    ]
+   }
+  },
+  "pads_owner": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  }
+ }
+}
