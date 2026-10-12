@@ -1,0 +1,92 @@
+---- 0.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "mm" (check code 8DB3E39F)   60 fps: yes   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   waiting for a friend to join...
+
+  Input delay: 2 frames (33 ms), from the slowest connection (0 ms).
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 2.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "mm" (check code 8DB3E39F)   60 fps: yes   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   connecting...
+
+  Input delay: 2 frames (33 ms), from the slowest connection (0 ms).
+
+  Messages:
+    Player 2 joined.
+    All 2 players are connected. (Press Start in the launcher.)
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 5.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "mm" (check code 8DB3E39F)   60 fps: yes   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping   31 ms   connecting...
+
+  Input delay: 2 frames (33 ms), from the slowest connection (31 ms).
+
+  Messages:
+    Player 2 joined.
+    All 2 players are connected. (Press Start in the launcher.)
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 6.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "mm" (check code 8DB3E39F)   60 fps: yes   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    8 ms   connecting...
+
+  Input delay: 2 frames (33 ms), from the slowest connection (8 ms).
+
+  Messages:
+    Player 2 joined.
+    All 2 players are connected. (Press Start in the launcher.)
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 7.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "mm" (check code 8DB3E39F)   60 fps: yes   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    8 ms   ready
+
+  Input delay: 2 frames (33 ms), from the slowest connection (8 ms).
+Starting: waiting for every player to answer...
+
+  Messages:
+    Player 2 joined.
+    All 2 players are connected. (Press Start in the launcher.)
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.

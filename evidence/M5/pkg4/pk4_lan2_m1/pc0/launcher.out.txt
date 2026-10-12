@@ -1,0 +1,15 @@
+00:39:56      0.1  warriors-4p co-op launcher, package 18d32fe54258, mode lanhost, pnach 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c
+00:39:56      0.2  host: 2 players, co-op save 'pk4_lan2_m1' new, 60 fps False, widescreen True
+00:39:56      0.2  lobby socket on 127.0.0.1:47050
+00:39:56      0.3  lobby: slot 0, players 2, helper ready False, peers [], problems [2=waiting], delay 2
+00:39:58      2.2  message: Player 2 joined (from 127.0.0.1).
+00:39:59      3.2  lobby: slot 0, players 2, helper ready False, peers [1:up], problems [2=connecting], delay 2
+00:40:04      8.3  ping to player 2: median 12.4 ms, p90 12.4 ms (3 samples); reported by him: 0:54
+00:40:04      8.3  start: session e6a670acc555, 2 players, input delay 2, co-op save 'pk4_lan2_m1' new, 60 fps False, widescreen True, slowest ping 12.4 ms
+00:40:04      8.3  lobby: slot 0, players 2, helper ready False, peers [1:up], problems [2=], delay 2
+00:40:04      8.4  start: every player answered
+00:40:04      8.4  lobby ended: start
+00:40:05      8.4  game starting: slot 0, players 2, delay 2, patch set 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c|warriors-4p M1;warriors-4p own view;warriors-4p hud;warriors-4p 4p;warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p session;warriors-4p session call;warriors-4p widescreen|new
+00:44:05    248.6  self-test: closing the game window after 240 s
+00:44:05    249.0  game closed: exit code 0, session started True, shutdown line True, mismatches 0, host gone False, differs False
+00:44:05    249.1  co-op save stored in C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_lan2_m1\pc0\coop-saves\pk4_lan2_m1 (ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33)

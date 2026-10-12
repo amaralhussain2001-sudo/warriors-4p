@@ -1,0 +1,40 @@
+00:44:41      0.1  warriors-4p co-op launcher, package c5eb772416e6, mode host, pnach 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c
+00:44:41      0.2  host: 4 players, co-op save 'm13group' new, 60 fps False, widescreen True
+00:44:41      0.2  connection helper started: w4p-net host --players 4 --emu-port 47000 --slot-ports 47100 --ice-port 47400 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_m13_4p\pc0\logs\20261012_004441_host\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_m13_4p\pc0\logs\20261012_004441_host\connection-stats.json --no-stun --bind 127.0.0.1
+00:44:41      0.2  lobby socket on 127.0.0.1:47000
+00:44:41      0.2  @listen 47400
+00:44:41      0.2  join code issued
+00:44:41      0.3  lobby: slot 0, players 4, helper ready False, peers [], problems [2=waiting 3=waiting 4=waiting], delay 2
+00:44:41      1.0  @path b 1
+00:44:42      1.6  message: Player 2 joined (path b; connected -179417761.6 ms after the agent started).
+00:44:42      1.6  @joined 1 b 533.0
+00:44:42      1.6  @link 1 connected 564.9 1 b
+00:44:42      2.0  @path b 2
+00:44:43      2.3  lobby: slot 0, players 4, helper ready False, peers [1:up], problems [2=connecting 3=waiting 4=waiting], delay 2
+00:44:43      2.5  message: Player 3 joined (path b; connected -179418766.4 ms after the agent started).
+00:44:43      2.6  @joined 2 b 532.9
+00:44:43      2.6  @link 2 connected 563.9 1 b
+00:44:44      3.1  @path b 3
+00:44:44      3.3  lobby: slot 0, players 4, helper ready False, peers [1:up 2:up], problems [2=connecting 3=connecting 4=waiting], delay 2
+00:44:44      3.6  message: Player 4 joined (path b; connected -179419799.8 ms after the agent started).
+00:44:44      3.6  @joined 3 b 531.8
+00:44:44      3.6  @link 3 connected 562.7 1 b
+00:44:45      4.1  @ready 3849.3
+00:44:45      4.1  message: All 4 players are connected. (Press Start in the launcher.)
+00:44:45      4.3  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2=connecting 3=connecting 4=connecting], delay 2
+00:44:48      7.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2= 3=connecting 4=connecting], delay 2
+00:44:49      8.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2= 3= 4=connecting], delay 2
+00:44:50      9.4  ping to player 2: median 8.6 ms, p90 10.4 ms (5 samples); reported by him: 0:60,2:73,3:63
+00:44:50      9.4  ping to player 3: median 7.9 ms, p90 10.1 ms (4 samples); reported by him: 0:59,1:66,3:57
+00:44:50      9.4  ping to player 4: median 7.5 ms, p90 7.5 ms (3 samples); reported by him: 0:51,1:53,2:56
+00:44:50      9.4  start: session e5b96a0a715f, 4 players, input delay 2, co-op save 'm13group' new, 60 fps False, widescreen True, slowest ping 10.4 ms
+00:44:50      9.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2= 3= 4=], delay 2
+00:44:50      9.4  message: Lobby closed: no new players.
+00:44:50      9.4  start: every player answered
+00:44:50      9.4  lobby ended: start
+00:44:50      9.5  game starting: slot 0, players 4, delay 2, patch set 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c|warriors-4p M1;warriors-4p own view;warriors-4p hud;warriors-4p 4p;warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p session;warriors-4p session call;warriors-4p widescreen;warriors-4p test call|new
+00:56:50    729.7  self-test: closing the game window after 720 s
+00:56:51    730.2  game closed: exit code 0, session started True, shutdown line True, mismatches 0, host gone False, differs False
+00:56:51    730.2  co-op save stored in C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\saves_m13\pc0\m13group (ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33)
+00:56:51    730.4  @stats (see connection-stats.json)
+00:56:51    730.4  connection helper stopped (exit code 0)

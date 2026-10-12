@@ -1,0 +1,19 @@
+02:43:08      0.1  warriors-4p co-op launcher, package aff287cc6ada, mode host, pnach 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c
+02:43:08      0.2  host: 2 players, co-op save 'mm' 8db3e39feff4f2a84101152d122112132281f109d98912073e42ca0409bdeaa1, 60 fps True, widescreen True
+02:43:08      0.2  connection helper started: w4p-net host --players 2 --emu-port 47000 --slot-ports 47100 --ice-port 47400 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_lobby_mismatch\pc0\logs\20261012_024308_host\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_lobby_mismatch\pc0\logs\20261012_024308_host\connection-stats.json --no-stun --bind 127.0.0.1
+02:43:08      0.2  lobby socket on 127.0.0.1:47000
+02:43:08      0.2  @listen 47400
+02:43:08      0.2  join code issued
+02:43:09      0.3  lobby: slot 0, players 2, helper ready False, peers [], problems [2=waiting], delay 2
+02:43:09      1.0  @path b 1
+02:43:10      1.5  helper: Player 2 joined (path b; connected -186525458.0 ms after the agent started).
+02:43:10      1.5  message: Player 2 joined.
+02:43:10      1.6  @joined 1 b 518.1
+02:43:10      1.6  @link 1 connected 549.5 1 b
+02:43:10      2.0  @ready 1832.8
+02:43:10      2.0  message: All 2 players are connected. (Press Start in the launcher.)
+02:43:11      2.3  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=connecting], delay 2
+02:43:16      7.4  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=save], delay 2
+02:43:53     45.1  lobby ended: timeout
+02:43:53     45.3  @stats (see connection-stats.json)
+02:43:53     45.3  connection helper stopped (exit code 0)

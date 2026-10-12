@@ -1,0 +1,207 @@
+{
+ "tag": "pk4_title60_2pgroups",
+ "package": "aff287cc6ada",
+ "args": [
+  "--preset",
+  "title60",
+  "--players",
+  "2",
+  "--seconds",
+  "300",
+  "--groups-2p"
+ ],
+ "environment": "SINGLE-PC, package launcher in test mode, loopback, fresh memory cards, bots, no impairment",
+ "saves_before": {
+  "pc0": [],
+  "pc1": []
+ },
+ "pcsx2_running_before_start": 4,
+ "seconds_total": 313,
+ "launchers_still_running": [],
+ "pcs": {
+  "pc0": {
+   "status": {
+    "phase": "done",
+    "mode": "host",
+    "slot": 0,
+    "players": 2,
+    "group": "pk4_title60_2pgroups",
+    "delay": 2,
+    "fps60": true,
+    "wide": true,
+    "sid": "735737a27ea1",
+    "maxRttMs": 7.969,
+    "problems": {},
+    "exitCode": 0,
+    "forcedClose": false,
+    "normalEnd": true,
+    "notSavedReason": "",
+    "savedBack": true,
+    "saveHash": "new",
+    "cardHashStart": "new",
+    "saveHashEnd": "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33",
+    "helperError": ""
+   },
+   "events": [
+    "@listen 47400",
+    "@code join <code>",
+    "@path b 1",
+    "@joined 1 b 529.0",
+    "@link 1 connected 560.0 1 b",
+    "@ready 1776.8",
+    "start 735737a27ea1"
+   ],
+   "w4p": {
+    "session_started": true,
+    "matches": [
+     "player 2 matches (build, game, BIOS, settings, patches)"
+    ],
+    "errors": [],
+    "test_calls": 0,
+    "pauses": 0,
+    "skip_votes": 0,
+    "leaves": [],
+    "host_gone": false,
+    "last_stats": "poll 23157, polls 23158, waits 7079, wait total 54094.0 ms, max 1736.8 ms, hashes 771, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 32% gs 3% vu 0%",
+    "shutdown": "polls 23632, waits 7247, wait total 55517.4 ms, wait max 1736.8 ms, hashes compared 787, mismatches 0"
+   },
+   "hash_points": 787,
+   "tlb_misses": 0,
+   "helper": {
+    "emu_rx": 24876,
+    "emu_tx": 24730,
+    "emu_drop": 0,
+    "loopback_strangers": 0,
+    "links": [
+     {
+      "peer": 1,
+      "kind": "host-joiner",
+      "path": "b",
+      "attempts": 1,
+      "connect_ms": 559.985,
+      "state": "completed",
+      "ping_p50": 0.145,
+      "ping_p95": 0.203,
+      "ping_max": 0.341,
+      "fwd_out": 0,
+      "bad_tag": 0,
+      "bad_mac": 0,
+      "bad_src": 0,
+      "send_err": 0
+     }
+    ],
+    "no_route": 0
+   },
+   "lobby_closed_refusals": 0,
+   "saves_after": {
+    "pk4_title60_2pgroups": {
+     "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+     "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+    }
+   }
+  },
+  "pc1": {
+   "status": {
+    "phase": "done",
+    "mode": "join",
+    "slot": 1,
+    "players": 2,
+    "group": "pk4_title60_2pgroups",
+    "delay": 2,
+    "fps60": true,
+    "wide": true,
+    "sid": "735737a27ea1",
+    "maxRttMs": 0,
+    "problems": {},
+    "exitCode": 0,
+    "forcedClose": false,
+    "normalEnd": true,
+    "notSavedReason": "",
+    "savedBack": true,
+    "saveHash": "new",
+    "cardHashStart": "new",
+    "saveHashEnd": "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33",
+    "helperError": ""
+   },
+   "events": [
+    "@listen 47401",
+    "@code reply <code>",
+    "@link 0 connected 503.8 1 j",
+    "@slot 1",
+    "@ready 661.8",
+    "start 735737a27ea1",
+    "@host_left"
+   ],
+   "w4p": {
+    "session_started": true,
+    "matches": [
+     "player 1 matches (build, game, BIOS, settings, patches)"
+    ],
+    "errors": [],
+    "test_calls": 0,
+    "pauses": 0,
+    "skip_votes": 0,
+    "leaves": [],
+    "host_gone": false,
+    "last_stats": "poll 23334, polls 23335, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 777, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 36% gs 3% vu 0%",
+    "shutdown": "polls 23635, waits 1, wait total 2000.7 ms, wait max 2000.7 ms, hashes compared 787, mismatches 0"
+   },
+   "hash_points": 787,
+   "tlb_misses": 0,
+   "helper": {
+    "emu_rx": 24825,
+    "emu_tx": 24876,
+    "emu_drop": 0,
+    "loopback_strangers": 0,
+    "links": [
+     {
+      "peer": 0,
+      "kind": "joiner-host",
+      "path": "j",
+      "attempts": 1,
+      "connect_ms": 503.817,
+      "state": "completed",
+      "ping_p50": 0.144,
+      "ping_p95": 0.202,
+      "ping_max": 0.343,
+      "fwd_out": 0,
+      "bad_tag": 0,
+      "bad_mac": 0,
+      "bad_src": 0,
+      "send_err": 0
+     }
+    ],
+    "no_route": 0
+   },
+   "lobby_closed_refusals": 0,
+   "saves_after": {
+    "pk4_title60_2pgroups": {
+     "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+     "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+    }
+   }
+  }
+ },
+ "hash_points_common": 787,
+ "hash_mismatches": 0,
+ "game_hash_mismatches": 0,
+ "first_mismatch": null,
+ "first_common": "30",
+ "last_common": "23610",
+ "co_op_save": {
+  "group": "pk4_title60_2pgroups",
+  "all_saved_back": true,
+  "identical_after": true,
+  "hash_after": "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33"
+ },
+ "screenshots": [
+  "local\\m5\\pkg4\\pk4_title60_2pgroups\\shot_pc0_t0090.png",
+  "local\\m5\\pkg4\\pk4_title60_2pgroups\\shot_pc1_t0090.png",
+  "local\\m5\\pkg4\\pk4_title60_2pgroups\\shot_pc0_t0255.png",
+  "local\\m5\\pkg4\\pk4_title60_2pgroups\\shot_pc1_t0255.png"
+ ],
+ "package_used": [
+  "aff287cc6ada"
+ ],
+ "package_note": "'package' = id read when the harness started; 'package_used' = id reported by the launchers (added afterwards from local/m5/pkg4/<tag>/pc*/logs/*/lobby-log.txt)"
+}

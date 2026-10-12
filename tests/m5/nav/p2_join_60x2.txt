@@ -1,0 +1,3 @@
+# TEST ONLY (tests/m5/package4_selftest.py preset m1_60x2): tests/m2/nav/p2_join.txt with fresh memory cards at 60 fps;
+# poll = 7000 + 2 x (30 fps poll - 1100) (first Start at the title at poll 7000), presses held 5 polls. Uncalibrated guess.
+9400 START:5

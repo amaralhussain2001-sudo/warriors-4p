@@ -1,0 +1,149 @@
+{
+ "tag": "pk4_lan2_m1",
+ "package": "18d32fe54258",
+ "args": [
+  "--preset",
+  "m1_30",
+  "--players",
+  "2",
+  "--seconds",
+  "240",
+  "--lan"
+ ],
+ "environment": "SINGLE-PC, package launcher in test mode, loopback, fresh memory cards, bots, no impairment",
+ "saves_before": {
+  "pc0": [],
+  "pc1": []
+ },
+ "pcsx2_running_before_start": 4,
+ "seconds_total": 255,
+ "launchers_still_running": [],
+ "pcs": {
+  "pc0": {
+   "status": {
+    "phase": "done",
+    "mode": "lanhost",
+    "slot": 0,
+    "players": 2,
+    "group": "pk4_lan2_m1",
+    "delay": 2,
+    "fps60": false,
+    "wide": true,
+    "sid": "e6a670acc555",
+    "maxRttMs": 12.433,
+    "problems": {},
+    "exitCode": 0,
+    "forcedClose": false,
+    "normalEnd": true,
+    "notSavedReason": "",
+    "savedBack": true,
+    "saveHash": "new",
+    "cardHashStart": "new",
+    "saveHashEnd": "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33",
+    "helperError": ""
+   },
+   "events": [
+    "lan joined 1",
+    "start e6a670acc555"
+   ],
+   "w4p": {
+    "session_started": true,
+    "matches": [
+     "player 2 matches (build, game, BIOS, settings, patches)"
+    ],
+    "errors": [],
+    "test_calls": 0,
+    "pauses": 0,
+    "skip_votes": 4,
+    "leaves": [],
+    "host_gone": false,
+    "last_stats": "poll 6126, polls 6127, waits 92, wait total 3340.8 ms, max 1688.2 ms, hashes 204, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 47% gs 13% vu 0%",
+    "shutdown": "polls 6281, waits 92, wait total 3340.8 ms, wait max 1688.2 ms, hashes compared 209, mismatches 0"
+   },
+   "hash_points": 209,
+   "tlb_misses": 0,
+   "helper": null,
+   "lobby_closed_refusals": 0,
+   "saves_after": {
+    "pk4_lan2_m1": {
+     "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+     "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+    }
+   }
+  },
+  "pc1": {
+   "status": {
+    "phase": "done",
+    "mode": "lanjoin",
+    "slot": 1,
+    "players": 2,
+    "group": "pk4_lan2_m1",
+    "delay": 2,
+    "fps60": false,
+    "wide": true,
+    "sid": "e6a670acc555",
+    "maxRttMs": 0,
+    "problems": {},
+    "exitCode": 0,
+    "forcedClose": false,
+    "normalEnd": true,
+    "notSavedReason": "",
+    "savedBack": true,
+    "saveHash": "new",
+    "cardHashStart": "new",
+    "saveHashEnd": "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33",
+    "helperError": ""
+   },
+   "events": [
+    "lan slot 1",
+    "start e6a670acc555"
+   ],
+   "w4p": {
+    "session_started": true,
+    "matches": [
+     "player 1 matches (build, game, BIOS, settings, patches)"
+    ],
+    "errors": [],
+    "test_calls": 0,
+    "pauses": 0,
+    "skip_votes": 4,
+    "leaves": [],
+    "host_gone": false,
+    "last_stats": "poll 6186, polls 6187, waits 82, wait total 944.7 ms, max 145.8 ms, hashes 206, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 36% gs 5% vu 0%",
+    "shutdown": "polls 6284, waits 83, wait total 3196.3 ms, wait max 2251.6 ms, hashes compared 209, mismatches 0"
+   },
+   "hash_points": 209,
+   "tlb_misses": 0,
+   "helper": null,
+   "lobby_closed_refusals": 0,
+   "saves_after": {
+    "pk4_lan2_m1": {
+     "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+     "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+    }
+   }
+  }
+ },
+ "hash_points_common": 209,
+ "hash_mismatches": 0,
+ "game_hash_mismatches": 0,
+ "first_mismatch": null,
+ "first_common": "30",
+ "last_common": "6270",
+ "co_op_save": {
+  "group": "pk4_lan2_m1",
+  "all_saved_back": true,
+  "identical_after": true,
+  "hash_after": "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33"
+ },
+ "screenshots": [
+  "local\\m5\\pkg4\\pk4_lan2_m1\\shot_pc0_t0090.png",
+  "local\\m5\\pkg4\\pk4_lan2_m1\\shot_pc1_t0090.png",
+  "local\\m5\\pkg4\\pk4_lan2_m1\\shot_pc0_t0195.png",
+  "local\\m5\\pkg4\\pk4_lan2_m1\\shot_pc1_t0195.png"
+ ],
+ "package_used": [
+  "18d32fe54258"
+ ],
+ "package_note": "'package' = id read when the harness started; 'package_used' = id reported by the launchers (added afterwards from local/m5/pkg4/<tag>/pc*/logs/*/lobby-log.txt)"
+}

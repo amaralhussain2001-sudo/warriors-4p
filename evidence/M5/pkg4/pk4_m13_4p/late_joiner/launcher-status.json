@@ -1,0 +1,25 @@
+{
+    "phase":  "lobby-timeout",
+    "mode":  "join",
+    "slot":  -1,
+    "players":  0,
+    "group":  "",
+    "saveHash":  "",
+    "delay":  2,
+    "fps60":  true,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\pk4_m13_4p\\pc4\\logs\\20261012_004554_join",
+    "package":  "c5eb772416e6",
+    "sid":  "",
+    "maxRttMs":  0,
+    "problems":  {
+
+                 },
+    "helperError":  "",
+    "events":  [
+                   "@listen 47404",
+                   "@code reply \u003ccode\u003e",
+                   "not connected after 30 s",
+                   "@link 0 failed 1"
+               ]
+}

@@ -1,0 +1,50 @@
+{
+    "phase":  "done",
+    "mode":  "host",
+    "slot":  0,
+    "players":  4,
+    "group":  "missions4",
+    "saveHash":  "new",
+    "delay":  2,
+    "fps60":  false,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\pk4_missions_4p\\pc0\\logs\\20261012_024530_host",
+    "package":  "5eab3e866200",
+    "sid":  "e98d9d0aa7aa",
+    "maxRttMs":  8.927,
+    "problems":  {
+
+                 },
+    "helperError":  "",
+    "events":  [
+                   "@listen 47400",
+                   "@code join \u003ccode\u003e",
+                   "@path b 1",
+                   "@joined 1 b 532.0",
+                   "@link 1 connected 563.4 1 b",
+                   "@path b 2",
+                   "@joined 2 b 530.8",
+                   "@link 2 connected 561.4 1 b",
+                   "@path b 3",
+                   "@joined 3 b 534.0",
+                   "@link 3 connected 566.0 1 b",
+                   "@ready 3871.4",
+                   "start e98d9d0aa7aa"
+               ],
+    "cardHashStart":  "new",
+    "forcedClose":  false,
+    "notSavedReason":  "",
+    "normalEnd":  true,
+    "emuPid":  42844,
+    "savedBack":  true,
+    "exitCode":  0,
+    "w4p":  {
+                "differs":  false,
+                "hostGone":  false,
+                "started":  true,
+                "desync":  false,
+                "shutdown":  true,
+                "mismatches":  0
+            },
+    "saveHashEnd":  "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33"
+}

@@ -1,0 +1,27 @@
+{
+    "phase":  "lobby-timeout",
+    "mode":  "host",
+    "slot":  0,
+    "players":  2,
+    "group":  "mm",
+    "saveHash":  "8db3e39feff4f2a84101152d122112132281f109d98912073e42ca0409bdeaa1",
+    "delay":  2,
+    "fps60":  true,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\pk4_lobby_mismatch\\pc0\\logs\\20261012_024308_host",
+    "package":  "aff287cc6ada",
+    "sid":  "",
+    "maxRttMs":  4.71,
+    "problems":  {
+                     "2":  "save"
+                 },
+    "helperError":  "",
+    "events":  [
+                   "@listen 47400",
+                   "@code join \u003ccode\u003e",
+                   "@path b 1",
+                   "@joined 1 b 518.1",
+                   "@link 1 connected 549.5 1 b",
+                   "@ready 1832.8"
+               ]
+}

@@ -1,0 +1,20 @@
+02:43:55      0.4  warriors-4p co-op launcher, package aff287cc6ada, mode join, pnach 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c
+02:43:55      0.5  connection helper started: w4p-net join <code> --emu-port 47001 --slot-ports 47110 --ice-port 47401 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_lobby_mismatch\pc1\logs\20261012_024355_join\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_lobby_mismatch\pc1\logs\20261012_024355_join\connection-stats.json --no-stun --bind 127.0.0.1
+02:43:55      0.5  lobby socket on 127.0.0.1:47001
+02:43:55      0.5  @listen 47401
+02:43:55      0.5  reply code issued
+02:43:55      0.6  lobby: slot -1, players 0, helper ready False, peers [], problems [], delay 2
+02:43:55      1.1  @link 0 connected 513.6 1 j
+02:43:55      1.1  message: Connected to the host (513.6 ms).
+02:43:56      1.2  @slot 1
+02:43:56      1.2  message: Connected to the host. You are Player 2.
+02:43:56      1.2  @ready 673.8
+02:43:56      1.5  lobby: slot 1, players 0, helper ready True, peers [], problems [], delay 2
+02:43:57      2.6  lobby: slot 1, players 2, helper ready True, peers [0:up], problems [0=own save same], delay 2
+02:44:01      6.9  start received: session 838e547a4a72, 2 players, input delay 2, co-op save 'mm' 8db3e39feff4f2a84101152d122112132281f109d98912073e42ca0409bdeaa1
+02:44:01      6.9  message: The host started the game. Starting...
+02:44:03      8.9  lobby ended: start
+02:44:06     11.9  message: The host closed the game.
+02:44:06     11.9  @host_left
+02:44:06     12.1  @stats (see connection-stats.json)
+02:44:06     12.1  connection helper stopped (exit code 0)

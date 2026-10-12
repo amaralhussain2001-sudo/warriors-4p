@@ -1,0 +1,48 @@
+{
+    "phase":  "done",
+    "mode":  "join",
+    "slot":  2,
+    "players":  4,
+    "group":  "final4",
+    "saveHash":  "new",
+    "delay":  2,
+    "fps60":  false,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\pk4_final_4p\\pc2\\logs\\20261012_022638_join",
+    "package":  "aff287cc6ada",
+    "sid":  "35e06e8af1da",
+    "maxRttMs":  0,
+    "problems":  {
+
+                 },
+    "helperError":  "",
+    "events":  [
+                   "@listen 47402",
+                   "@code reply \u003ccode\u003e",
+                   "@link 0 connected 508.6 1 j",
+                   "@slot 2",
+                   "@link 1 connected 0.2 1 i",
+                   "@ready 885.4",
+                   "@notready",
+                   "@link 3 connected 327.5 1 i",
+                   "@ready 1948.4",
+                   "start 35e06e8af1da",
+                   "@host_left"
+               ],
+    "cardHashStart":  "new",
+    "forcedClose":  false,
+    "notSavedReason":  "",
+    "normalEnd":  true,
+    "emuPid":  39304,
+    "savedBack":  true,
+    "exitCode":  0,
+    "w4p":  {
+                "differs":  false,
+                "hostGone":  false,
+                "started":  true,
+                "desync":  false,
+                "shutdown":  true,
+                "mismatches":  0
+            },
+    "saveHashEnd":  "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33"
+}

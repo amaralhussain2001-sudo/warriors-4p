@@ -1,0 +1,44 @@
+[    0.001] w4p-net (helper protocol 1, libjuice 1.7.4), role joiner
+[    0.001] STUN: disabled (--no-stun)
+[    0.001] options: players 4, ICE port 47404, bind loopback, emulator port 47004, slot ports 47140-47143, connect window 10 min
+[    0.001] join code read: 1 host candidate(s); joiner id 6de3
+[    0.001]   host candidate: host IPv4 loopback port 47400
+[    0.001] ICE socket: UDP port 47404 (MUX mode, one socket for all links), bind loopback
+[    0.002] @listen 47404
+[    0.002] juice[info]: Changing state to gathering
+[    0.002] juice[info]: Changing state to connecting
+[    0.002] juice[info]: Candidate gathering done
+[    0.002] juice[info]: Connectivity timer started
+[    0.002] link 0 (joiner-host, peer slot 0, controlled): agent #1 started, 1 remote candidate(s)
+[    0.002]   remote candidate: host IPv4 loopback port 47400
+[    0.002] local candidate: host IPv4 loopback port 47404
+[    0.002] reply code issued: 45 characters, 1 candidate(s)
+[    0.002] emulator bridge: emulator at loopback port 47004, helper slot ports 47140-47143 (W4P Peer<p> = 127.0.0.1:47140+p)
+[    0.002] link 0 (peer slot 0): connecting (0.3 ms after agent #1 started)
+[   10.011] ---- periodic summary (role joiner, slot 255) ----
+[   10.011] link 0 joiner-host peer slot 0 path j: state connecting, attempts 1, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   10.011] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   20.023] ---- periodic summary (role joiner, slot 255) ----
+[   20.023] link 0 joiner-host peer slot 0 path j: state connecting, attempts 1, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   20.023] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   30.024] ---- periodic summary (role joiner, slot 255) ----
+[   30.024] link 0 joiner-host peer slot 0 path j: state connecting, attempts 1, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   30.024] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   39.540] juice[info]: Connectivity timer expired
+[   39.540] juice[info]: Changing state to failed
+[   39.555] link 0 (peer slot 0): failed (39538.7 ms after agent #1 started)
+[   39.555] @link 0 failed 1
+[   39.555] link 0: agent #1 failed; re-creating it with the same port, credentials and remote description
+[   39.556] juice[info]: Changing state to gathering
+[   39.556] juice[info]: Changing state to connecting
+[   39.556] juice[info]: Candidate gathering done
+[   39.556] juice[info]: Connectivity timer started
+[   39.556] link 0 (joiner-host, peer slot 0, controlled): agent #2 started, 1 remote candidate(s)
+[   39.572] link 0 (peer slot 0): connecting (0.1 ms after agent #2 started)
+[   40.026] ---- periodic summary (role joiner, slot 255) ----
+[   40.026] link 0 joiner-host peer slot 0 path j: state connecting, attempts 2, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   40.026] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   45.100] ---- final summary (role joiner, slot 255) ----
+[   45.100] link 0 joiner-host peer slot 0 path j: state connecting, attempts 2, never connected; ping RTT n=0 p50=-1.000 p95=-1.000 max=-1.000 ms; sent 0 dgr/0 B, received 0 dgr/0 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   45.100] emulator bridge: from emulator 0, to emulator 0, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   45.101] exit

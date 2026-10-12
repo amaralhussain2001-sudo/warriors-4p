@@ -1,0 +1,23 @@
+02:43:54      0.1  warriors-4p co-op launcher, package aff287cc6ada, mode host, pnach 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c
+02:43:54      0.2  host: 2 players, co-op save 'mm' 8db3e39feff4f2a84101152d122112132281f109d98912073e42ca0409bdeaa1, 60 fps True, widescreen True
+02:43:54      0.2  connection helper started: w4p-net host --players 2 --emu-port 47000 --slot-ports 47100 --ice-port 47400 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_lobby_mismatch\pc0\logs\20261012_024354_host\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_lobby_mismatch\pc0\logs\20261012_024354_host\connection-stats.json --no-stun --bind 127.0.0.1
+02:43:54      0.2  lobby socket on 127.0.0.1:47000
+02:43:54      0.2  @listen 47400
+02:43:54      0.2  join code issued
+02:43:54      0.3  lobby: slot 0, players 2, helper ready False, peers [], problems [2=waiting], delay 2
+02:43:55      1.0  @path b 1
+02:43:55      1.6  helper: Player 2 joined (path b; connected -186571094.3 ms after the agent started).
+02:43:55      1.6  message: Player 2 joined.
+02:43:55      1.6  @joined 1 b 535.4
+02:43:56      1.6  @link 1 connected 566.8 1 b
+02:43:56      2.0  @ready 1824.3
+02:43:56      2.0  message: All 2 players are connected. (Press Start in the launcher.)
+02:43:56      2.3  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=connecting], delay 2
+02:44:01      7.4  ping to player 2: median 8.5 ms, p90 8.5 ms (3 samples); reported by him: 0:40
+02:44:01      7.4  start: session 838e547a4a72, 2 players, input delay 2, co-op save 'mm' 8db3e39feff4f2a84101152d122112132281f109d98912073e42ca0409bdeaa1, 60 fps True, widescreen True, slowest ping 8.5 ms
+02:44:01      7.4  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=], delay 2
+02:44:01      7.4  message: Lobby closed: no new players.
+02:44:01      7.4  start: every player answered
+02:44:01      7.4  lobby ended: start
+02:44:04     10.6  @stats (see connection-stats.json)
+02:44:04     10.6  connection helper stopped (exit code 0)

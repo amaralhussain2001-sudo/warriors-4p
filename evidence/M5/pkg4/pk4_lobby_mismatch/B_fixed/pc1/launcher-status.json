@@ -1,0 +1,28 @@
+{
+    "phase":  "start-ok",
+    "mode":  "join",
+    "slot":  1,
+    "players":  2,
+    "group":  "mm",
+    "saveHash":  "8db3e39feff4f2a84101152d122112132281f109d98912073e42ca0409bdeaa1",
+    "delay":  2,
+    "fps60":  true,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\pk4_lobby_mismatch\\pc1\\logs\\20261012_024355_join",
+    "package":  "aff287cc6ada",
+    "sid":  "838e547a4a72",
+    "maxRttMs":  0,
+    "problems":  {
+
+                 },
+    "helperError":  "",
+    "events":  [
+                   "@listen 47401",
+                   "@code reply \u003ccode\u003e",
+                   "@link 0 connected 513.6 1 j",
+                   "@slot 1",
+                   "@ready 673.8",
+                   "start 838e547a4a72",
+                   "@host_left"
+               ]
+}

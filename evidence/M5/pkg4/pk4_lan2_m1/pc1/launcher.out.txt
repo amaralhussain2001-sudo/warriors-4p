@@ -1,0 +1,12 @@
+00:39:58      0.1  warriors-4p co-op launcher, package 18d32fe54258, mode lanjoin, pnach 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c
+00:39:58      0.2  lobby socket on 127.0.0.1:47051
+00:39:58      0.2  lobby: slot -1, players 0, helper ready False, peers [], problems [], delay 2
+00:39:58      0.3  message: Connected to the host. You are Player 2.
+00:39:59      1.3  lobby: slot 1, players 2, helper ready False, peers [0:up], problems [0=own save same], delay 2
+00:40:04      6.3  start received: session e6a670acc555, 2 players, input delay 2, co-op save 'pk4_lan2_m1' new
+00:40:04      6.3  message: The host started the game. Starting...
+00:40:06      8.4  lobby ended: start
+00:40:07      8.4  game starting: slot 1, players 2, delay 2, patch set 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c|warriors-4p M1;warriors-4p own view;warriors-4p hud;warriors-4p 4p;warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p session;warriors-4p session call;warriors-4p widescreen|new
+00:44:07    248.7  self-test: closing the game window after 240 s
+00:44:07    249.3  game closed: exit code 0, session started True, shutdown line True, mismatches 0, host gone False, differs False
+00:44:07    249.3  co-op save stored in C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_lan2_m1\pc1\coop-saves\pk4_lan2_m1 (ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33)

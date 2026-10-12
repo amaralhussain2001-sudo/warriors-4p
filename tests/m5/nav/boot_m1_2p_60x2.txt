@@ -1,0 +1,21 @@
+# TEST ONLY (tests/m5/package4_selftest.py preset m1_60x2): tests/m2/nav/boot_to_m1_2p.txt with fresh memory cards at 60 fps;
+# poll = 7000 + 2 x (30 fps poll - 1100) (first Start at the title at poll 7000), presses held 5 polls. Uncalibrated guess.
+7000 START:5
+8320 START:5
+8600 X:5
+9040 RIGHT:5
+9200 X:5
+9960 X:5
+10120 X:5
+10200 DOWN:5
+10260 DOWN:5
+10320 DOWN:5
+10380 LEFT:5
+10440 LEFT:5
+10560 X:5
+10900 X:5
+11200 X:5
+11500 X:5
+11800 X:5
+12100 X:5
+12400 X:5

@@ -1,0 +1,27 @@
+01:48:02      0.1  warriors-4p co-op launcher, package 33938fbe8b0c, mode host, pnach 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c
+01:48:02      0.2  host: 2 players, co-op save 'pk4_title60_keys' new, 60 fps True, widescreen True
+01:48:02      0.2  connection helper started: w4p-net host --players 2 --emu-port 47000 --slot-ports 47100 --ice-port 47400 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_title60_keys\pc0\logs\20261012_014802_host\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_title60_keys\pc0\logs\20261012_014802_host\connection-stats.json --no-stun --bind 127.0.0.1
+01:48:02      0.2  lobby socket on 127.0.0.1:47000
+01:48:02      0.2  @listen 47400
+01:48:02      0.2  join code issued
+01:48:02      0.3  lobby: slot 0, players 2, helper ready False, peers [], problems [2=waiting], delay 2
+01:48:03      1.0  @path b 1
+01:48:03      1.5  helper: Player 2 joined (path b; connected -183218997.9 ms after the agent started).
+01:48:03      1.5  message: Player 2 joined.
+01:48:03      1.5  @joined 1 b 531.9
+01:48:03      1.6  @link 1 connected 563.3 1 b
+01:48:04      2.0  @ready 1787.6
+01:48:04      2.0  message: All 2 players are connected. (Press Start in the launcher.)
+01:48:04      2.3  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=connecting], delay 2
+01:48:09      7.3  ping to player 2: median 5.7 ms, p90 5.7 ms (3 samples); reported by him: 0:36
+01:48:09      7.3  start: session 3c4cc5d871b5, 2 players, input delay 2, co-op save 'pk4_title60_keys' new, 60 fps True, widescreen True, slowest ping 5.7 ms
+01:48:09      7.3  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=], delay 2
+01:48:09      7.3  message: Lobby closed: no new players.
+01:48:09      7.3  start: every player answered
+01:48:09      7.3  lobby ended: start
+01:48:09      7.4  game starting: slot 0, players 2, delay 2, patch set 04f00b1deff94413cc55fafd38d0cc679d3399bea59c81c2765be48ac0e9564c|warriors-4p M1;warriors-4p own view;warriors-4p hud;warriors-4p 4p;warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p session;warriors-4p session call;warriors-4p 60fps;warriors-4p widescreen|new
+01:54:09    367.6  self-test: closing the game window after 360 s
+01:54:10    368.0  game closed: exit code 0, session started True, shutdown line True, mismatches 0, host gone False, differs False
+01:54:10    368.1  co-op save stored in C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4_title60_keys\pc0\coop-saves\pk4_title60_keys (ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33)
+01:54:10    368.2  @stats (see connection-stats.json)
+01:54:10    368.2  connection helper stopped (exit code 0)
