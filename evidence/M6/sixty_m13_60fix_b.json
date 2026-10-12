@@ -1,6 +1,6 @@
 {
  "tag": "m13_60fix_b",
- "environment": "SINGLE-PC, 1 instance(s), W4P session, scripted bot input",
+ "environment": "SINGLE-PC, 1 instance, W4P session with 4 players (slots 2-4 simulated), seeded random bots, from savestate local/m2/states/m13_4p_state.p2s",
  "groups": [
   "warriors-4p M1",
   "warriors-4p own view",

@@ -1,6 +1,6 @@
 {
  "tag": "l2p60fix",
- "environment": "SINGLE-PC, 2 instance(s), W4P session, scripted bot input",
+ "environment": "SINGLE-PC, 2 instance(s), W4P session on loopback, key presses posted to each window by the agent (--live-input)",
  "groups": [
   "warriors-4p M1",
   "warriors-4p own view",

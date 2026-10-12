@@ -1,0 +1,97 @@
+[
+ {
+  "mission": 1,
+  "level": 99,
+  "name": "New Blood",
+  "run": "smoke2_m01",
+  "policies": true,
+  "seconds": 607,
+  "hash_points": 562,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "tlb_misses": {
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0
+  },
+  "end_state": {
+   "0": "TimeoutError('timed out')",
+   "1": {
+    "poll": 16854,
+    "players": 4,
+    "handles": [
+     "0x87",
+     "0x1008a",
+     "0xc01d2",
+     "0xd04a5"
+    ],
+    "views": 1,
+    "cameras": 4
+   },
+   "2": {
+    "poll": 16867,
+    "players": 4,
+    "handles": [
+     "0x87",
+     "0x1008a",
+     "0xc01d2",
+     "0xd04a5"
+    ],
+    "views": 1,
+    "cameras": 4
+   },
+   "3": {
+    "poll": 16876,
+    "players": 4,
+    "handles": [
+     "0x87",
+     "0x1008a",
+     "0xc01d2",
+     "0xd04a5"
+    ],
+    "views": 1,
+    "cameras": 4
+   }
+  },
+  "players_seen": [
+   0,
+   1,
+   2,
+   4
+  ],
+  "first_poll_with_4": 11020,
+  "auto_joins_scheduled": 7,
+  "w4p_events": [
+   "[191749887.239] auto join for player 3 (pad 1) scheduled at poll 10051",
+   "[191749887.273] auto join for player 4 (pad 2) scheduled at poll 10054",
+   "[191759897.650] auto join for player 3 (pad 1) scheduled at poll 10351",
+   "[191759897.686] auto join for player 4 (pad 2) scheduled at poll 10354",
+   "[191769957.544] auto join for player 3 (pad 1) scheduled at poll 10651",
+   "[191769957.584] auto join for player 4 (pad 2) scheduled at poll 10654",
+   "[191779985.334] auto join for player 4 (pad 2) scheduled at poll 10951"
+  ],
+  "last_sample": {
+   "t": 601,
+   "poll": 16753,
+   "players": 4,
+   "handles": [
+    "0x87",
+    "0x1008a",
+    "0xc01d2",
+    "0xd04a5"
+   ],
+   "pad_owner": [
+    0,
+    2,
+    3,
+    -1,
+    1,
+    -1,
+    -1,
+    -1
+   ],
+   "views": 1
+  }
+ }
+]

@@ -152,7 +152,11 @@ def main():
             "patch=2,EE,0030C94C,word,3C013C88 // R60-4 (was 3C013D08)",
             "patch=2,EE,0041AB40,word,3C013C88 // R60-4 (was 3C013D08)",
             "patch=2,EE,0041ABA4,word,3C013C88 // R60-4 (was 3C013D08)",
-            "patch=2,EE,00249B44,word,3C013C88 // R60-4 camera clamp in SimStep (was 3C013D08)"]
+            "patch=2,EE,00249B44,word,3C013C88 // R60-4 camera clamp in SimStep (was 3C013D08)",
+            # M6 (m6_sixty_title.md): menus/title/loading run the GameClock in fixed-step mode, which advanced 1/30 s per
+            # drawn frame -> two logic steps (two pad updates) per frame with R60-2/3, so the title never saw Start pressed.
+            "patch=2,EE,001459C8,word,3C013C88 // R60-FS GameClock fixed step 1/60 s per frame (was 3C013D08 = 1/30): one logic step per frame in menus",
+            "patch=2,EE,00145A98,word,3C05004B // R60-FS fixed-step unscaled clock +0x4B0000 cycles per frame (was 3C050096 = 0x960000)"]
     # M2 (experimental): four genuine players. GameMgr storage and limits (docs/research/m2_gamemgr.md) and the engine
     # tables below GameMgr: pads, cameras, ScreenEffects, listener buffer, camera flags (m2_pads_cameras.md); the 0x5C
     # per-player records (m2_gamemgr_records.md); interim HUD guards, no HUD for players 3-4 (m2_hud_players34.md (A));

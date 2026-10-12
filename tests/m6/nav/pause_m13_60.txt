@@ -1,0 +1,10 @@
+# TEST ONLY (docs/research/m6_sixty_title.md): pause menu at 60 fps from the Mission 13 savestate (nav_probe --state);
+# session-relative polls (60 per second). Start = pause, RIGHT -> Stats, DOWN -> Restart, RIGHT -> Resume, X = ok.
+1200 START:5
+1500 RIGHT:5
+1800 DOWN:5
+2100 RIGHT:5
+2400 X:5
+3000 START:5
+3300 RIGHT:5
+3600 RIGHT:5

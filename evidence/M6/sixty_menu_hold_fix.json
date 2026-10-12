@@ -1,0 +1,123 @@
+{
+ "tag": "menu_hold_fix",
+ "environment": "SINGLE-PC, 1 instance, no W4P, key presses posted to the window",
+ "groups": [
+  "warriors-4p own view",
+  "warriors-4p hud",
+  "warriors-4p 60fps",
+  "warriors-4p widescreen"
+ ],
+ "pnach": "local\\m6\\sixty\\check.pnach",
+ "ee_cycle_rate": "2",
+ "seconds": 331,
+ "key_presses": [
+  {
+   "t": 12.08,
+   "mode": "0x0",
+   "frame": 0,
+   "mode_3s_later": "0x0"
+  },
+  {
+   "t": 18.11,
+   "mode": "0x0",
+   "frame": 0,
+   "mode_3s_later": "0x5e57e0"
+  },
+  {
+   "t": 24.13,
+   "mode": "0x5e5810",
+   "frame": 0,
+   "mode_3s_later": "0x5e5d90"
+  },
+  {
+   "t": 30.38,
+   "mode": "0x5e5d90",
+   "frame": 0,
+   "mode_3s_later": "0x5e5d90"
+  },
+  {
+   "t": 36.41,
+   "mode": "0x5e5d90",
+   "frame": 0,
+   "mode_3s_later": "0x5e65c0"
+  },
+  {
+   "t": 42.42,
+   "mode": "0x5e65c0",
+   "frame": 276,
+   "mode_3s_later": "0x5e65c0"
+  }
+ ],
+ "title_seen": true,
+ "title_left": true,
+ "title_first": {
+  "t": 37.9,
+  "poll": null,
+  "frame": 6
+ },
+ "start_accepted": {
+  "t": 43.68,
+  "poll": null,
+  "frame": 352,
+  "mode": "0x5e65c0",
+  "pad": 0
+ },
+ "timeline": [
+  {
+   "t": 1.54,
+   "poll": null,
+   "frame": 0,
+   "mode": "0x0",
+   "name": "",
+   "depth": 0,
+   "fixed": null
+  },
+  {
+   "t": 19.36,
+   "poll": null,
+   "frame": 0,
+   "mode": "0x5e57e0",
+   "name": "m5E57E0",
+   "depth": 2,
+   "fixed": 0
+  },
+  {
+   "t": 23.63,
+   "poll": null,
+   "frame": 0,
+   "mode": "0x5e5810",
+   "name": "",
+   "depth": 1,
+   "fixed": 1
+  },
+  {
+   "t": 26.87,
+   "poll": null,
+   "frame": 0,
+   "mode": "0x5e5d90",
+   "name": "loading",
+   "depth": 0,
+   "fixed": 0
+  },
+  {
+   "t": 37.9,
+   "poll": null,
+   "frame": 6,
+   "mode": "0x5e65c0",
+   "name": "title",
+   "depth": 1,
+   "fixed": 1
+  }
+ ],
+ "per_mode": {
+  "0x5e65c0": {
+   "frames": 16385,
+   "steps": 16385,
+   "seconds": 292.2,
+   "polls": 0,
+   "steps_per_frame": 1.0,
+   "frames_per_s": 56.07,
+   "polls_per_s": null
+  }
+ }
+}
