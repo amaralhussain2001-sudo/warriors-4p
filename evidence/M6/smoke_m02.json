@@ -1,0 +1,83 @@
+{
+ "mission": 2,
+ "level": 80,
+ "name": "Real Live Bunch",
+ "run": "smoke_m02",
+ "seconds": 607,
+ "hash_points": 560,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16766,
+   "players": 1,
+   "handles": [
+    "0xcc",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  },
+  "2": {
+   "poll": 16778,
+   "players": 1,
+   "handles": [
+    "0xcc",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  },
+  "3": {
+   "poll": 16789,
+   "players": 1,
+   "handles": [
+    "0xcc",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2
+ ],
+ "first_poll_with_4": null,
+ "last_sample": {
+  "t": 601,
+  "poll": 16663,
+  "players": 1,
+  "handles": [
+   "0xcc",
+   "0xffffffff",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "pad_owner": [
+   0,
+   -1,
+   -1,
+   -1,
+   -1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 1
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "mission": 1,
+ "level": 99,
+ "name": "New Blood",
+ "run": "smoke_m01",
+ "seconds": 607,
+ "hash_points": 550,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16768,
+   "players": 4,
+   "handles": [
+    "0x87",
+    "0x1008a",
+    "0xc022b",
+    "0xd035c"
+   ],
+   "views": 1,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16778,
+   "players": 4,
+   "handles": [
+    "0x87",
+    "0x1008a",
+    "0xc022b",
+    "0xd035c"
+   ],
+   "views": 1,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16790,
+   "players": 4,
+   "handles": [
+    "0x87",
+    "0x1008a",
+    "0xc022b",
+    "0xd035c"
+   ],
+   "views": 1,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 9495,
+ "last_sample": {
+  "t": 601,
+  "poll": 16666,
+  "players": 4,
+  "handles": [
+   "0x87",
+   "0x1008a",
+   "0xc022b",
+   "0xd035c"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 1
+ }
+}

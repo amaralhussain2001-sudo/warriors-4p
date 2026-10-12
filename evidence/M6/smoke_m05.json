@@ -1,0 +1,83 @@
+{
+ "mission": 5,
+ "level": 2,
+ "name": "Real Heavy Rep",
+ "run": "smoke_m05",
+ "seconds": 607,
+ "hash_points": 558,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16726,
+   "players": 2,
+   "handles": [
+    "0x3011c",
+    "0x113",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 2,
+   "cameras": 2
+  },
+  "2": {
+   "poll": 16738,
+   "players": 2,
+   "handles": [
+    "0x3011c",
+    "0x113",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 2,
+   "cameras": 2
+  },
+  "3": {
+   "poll": 16749,
+   "players": 2,
+   "handles": [
+    "0x3011c",
+    "0x113",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 2,
+   "cameras": 2
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2
+ ],
+ "first_poll_with_4": null,
+ "last_sample": {
+  "t": 601,
+  "poll": 16625,
+  "players": 2,
+  "handles": [
+   "0x3011c",
+   "0x113",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "pad_owner": [
+   0,
+   -1,
+   -1,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 2
+ }
+}

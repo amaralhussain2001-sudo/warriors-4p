@@ -1,0 +1,84 @@
+{
+ "mission": 12,
+ "level": 14,
+ "name": "Set Up",
+ "run": "smoke_m12",
+ "seconds": 607,
+ "hash_points": 548,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16437,
+   "players": 4,
+   "handles": [
+    "0x10153",
+    "0x150",
+    "0x27088c",
+    "0x2a08d9"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16449,
+   "players": 4,
+   "handles": [
+    "0x10153",
+    "0x150",
+    "0x27088c",
+    "0x2a08d9"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16461,
+   "players": 4,
+   "handles": [
+    "0x10153",
+    "0x150",
+    "0x27088c",
+    "0x2a08d9"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 7283,
+ "last_sample": {
+  "t": 601,
+  "poll": 16335,
+  "players": 4,
+  "handles": [
+   "0x10153",
+   "0x150",
+   "0x27088c",
+   "0x2a08d9"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

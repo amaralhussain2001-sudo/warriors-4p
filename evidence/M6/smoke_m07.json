@@ -1,0 +1,84 @@
+{
+ "mission": 7,
+ "level": 5,
+ "name": "Adios Amigo",
+ "run": "smoke_m07",
+ "seconds": 607,
+ "hash_points": 508,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 15241,
+   "players": 4,
+   "handles": [
+    "0x101bc",
+    "0x201bf",
+    "0x301c2",
+    "0x1b9"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 15245,
+   "players": 4,
+   "handles": [
+    "0x101bc",
+    "0x201bf",
+    "0x301c2",
+    "0x1b9"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 15254,
+   "players": 4,
+   "handles": [
+    "0x101bc",
+    "0x201bf",
+    "0x301c2",
+    "0x1b9"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 7156,
+ "last_sample": {
+  "t": 601,
+  "poll": 15159,
+  "players": 4,
+  "handles": [
+   "0x101bc",
+   "0x201bf",
+   "0x301c2",
+   "0x1b9"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

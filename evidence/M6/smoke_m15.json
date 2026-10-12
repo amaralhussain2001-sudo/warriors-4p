@@ -1,0 +1,84 @@
+{
+ "mission": 15,
+ "level": 52,
+ "name": null,
+ "run": "smoke_m15",
+ "seconds": 607,
+ "hash_points": 551,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16522,
+   "players": 4,
+   "handles": [
+    "0x1018a",
+    "0x2018d",
+    "0x6019a",
+    "0x40194"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16533,
+   "players": 4,
+   "handles": [
+    "0x1018a",
+    "0x2018d",
+    "0x6019a",
+    "0x40194"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16545,
+   "players": 4,
+   "handles": [
+    "0x1018a",
+    "0x2018d",
+    "0x6019a",
+    "0x40194"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 9447,
+ "last_sample": {
+  "t": 601,
+  "poll": 16421,
+  "players": 4,
+  "handles": [
+   "0x1018a",
+   "0x2018d",
+   "0x6019a",
+   "0x40194"
+  ],
+  "pad_owner": [
+   0,
+   3,
+   2,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

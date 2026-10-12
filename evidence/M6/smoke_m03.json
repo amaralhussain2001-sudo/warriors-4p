@@ -1,0 +1,84 @@
+{
+ "mission": 3,
+ "level": 87,
+ "name": "Payback",
+ "run": "smoke_m03",
+ "seconds": 607,
+ "hash_points": 543,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 16275,
+   "players": 4,
+   "handles": [
+    "0x1b3",
+    "0x101bb",
+    "0x201be",
+    "0x301c2"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 16287,
+   "players": 4,
+   "handles": [
+    "0x1b3",
+    "0x101bb",
+    "0x201be",
+    "0x301c2"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 16299,
+   "players": 4,
+   "handles": [
+    "0x1b3",
+    "0x101bb",
+    "0x201be",
+    "0x301c2"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 7320,
+ "last_sample": {
+  "t": 601,
+  "poll": 16175,
+  "players": 4,
+  "handles": [
+   "0x1b3",
+   "0x101bb",
+   "0x201be",
+   "0x301c2"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

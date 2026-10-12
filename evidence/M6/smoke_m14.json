@@ -1,0 +1,85 @@
+{
+ "mission": 14,
+ "level": 51,
+ "name": "Desperate Dudes",
+ "run": "smoke_m14",
+ "seconds": 607,
+ "hash_points": 574,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 17218,
+   "players": 4,
+   "handles": [
+    "0x1bb",
+    "0x101be",
+    "0x13028a",
+    "0x1402e3"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 17228,
+   "players": 4,
+   "handles": [
+    "0x1bb",
+    "0x101be",
+    "0x13028a",
+    "0x1402e3"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 17240,
+   "players": 4,
+   "handles": [
+    "0x1bb",
+    "0x101be",
+    "0x13028a",
+    "0x1402e3"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "first_poll_with_4": 7565,
+ "last_sample": {
+  "t": 601,
+  "poll": 17118,
+  "players": 4,
+  "handles": [
+   "0x1bb",
+   "0x101be",
+   "0x13028a",
+   "0x1402e3"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}
