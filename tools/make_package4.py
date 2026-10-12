@@ -137,7 +137,7 @@ def main():
         os.path.join(PROJ, "mod", "w4p_m1.pnach")
     shutil.copy2(pnach, os.path.join(DEST, "game", "w4p.pnach"))
     shutil.copy2(os.path.join(SRC4, "profile_PCSX2.ini"), os.path.join(DEST, "game", "profile_PCSX2.ini"))
-    for f in ("Start-Coop.ps1", "Start-Coop.bat", "README.txt"):
+    for f in ("Start-Coop.ps1", "Start-Coop.bat", "README.txt", "QUICK-START.txt"):
         shutil.copy2(os.path.join(SRC4, f), os.path.join(DEST, f))
     # licences and sources
     shutil.copy2(os.path.join(FORK, "COPYING.GPLv3"), os.path.join(DEST, "COPYING.GPLv3"))

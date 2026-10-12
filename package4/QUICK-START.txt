@@ -1,0 +1,51 @@
+THE WARRIORS - ONLINE CO-OP (2 TO 4 PLAYERS) - QUICK START
+==========================================================
+(README.txt has every detail. This page is the short version.)
+
+EVERY PLAYER NEEDS
+- Windows 10 or 11, 64-bit.
+- This SAME zip file (everybody the identical copy - the lobby checks it).
+- Their OWN copy of The Warriors for PS2, USA version 1.03, as an .iso file.
+- Their OWN PS2 BIOS file (dumped from a PS2 they own). This package contains no game and no BIOS.
+- A game controller or the keyboard.
+
+ONCE, ON EVERY PC
+1. Unzip warriors-4p-coop.zip (for example to the Desktop). Do not run it from inside the zip.
+2. Double-click Start-Coop.bat. If Windows warns: "More info" -> "Run anyway".
+3. Choose your game file (.iso) and your BIOS file, press Enter for the suggested picture quality.
+
+THE HOST (one player - he creates the game; the host's PC should be the strongest and best connected)
+1. Start-Coop.bat -> 1 (Host a game)
+2. How many players: 2, 3 or 4
+3. How friends connect: 1 (join code) - works over the internet and in the same house
+4. Save name: for example "friends". Next time use the SAME name to continue the story together.
+5. 60 fps: yes (choose no if any PC is slow)   Widescreen: yes
+6. The JOIN CODE (starts with W4P1-) is now copied: paste it into your group chat.
+7. If a friend sends you a REPLY CODE: copy it and press R in your window.
+8. When every friend shows "ready": press S. The game starts on every PC.
+9. In the game you control the menus: start (or continue) the story with "2 PLAYER".
+
+EACH FRIEND
+1. Copy the host's join code from the chat (the whole code, starting with W4P1-).
+2. Start-Coop.bat -> 2 (Join a game) -> the code is read from the clipboard.
+3. Wait about 10 seconds for "Connected. You are Player N".
+   If instead a REPLY CODE appears: it is already copied - paste it into the chat for the host (host presses R).
+4. If Windows asks about "w4p-net": tick "Private networks", click "Allow access".
+5. Wait until the host presses S - your game starts by itself.
+6. Player 2: press Start to join, as in the original game.
+   Players 3 and 4: you join by yourselves when the mission allows it. Until then you see a waiting message
+   (some story parts are for 2 players only).
+
+DURING THE GAME
+- Start or Esc: pause for everybody ("Paused by Player N"). Only that player or the host can resume.
+- Cutscenes: skipped only when everybody presses Cross or Start ("2/4 want to skip").
+- Tab (keyboard) or the touchpad/share button: switch between YOUR view and ALL views.
+- On your map: you are the arrow; the others are 1P, 2P, 3P (red), 4P (green).
+- If someone's connection drops: everybody waits up to 60 s. Then the host chooses:
+  Cross = continue without him, Circle = restart from the last checkpoint.
+- Keep the black Start-Coop window open while you play. Close the game window when you are done (all at about the
+  same time); the black window then says whether the co-op progress was saved.
+
+IF SOMETHING GOES WRONG
+- "OUT OF SYNC", a freeze or a crash: close the game, and send the newest folder from logs\ (every PC) to the host.
+- Cannot connect at all: try another player as the host, or in the same house use 3 (Join by IP address).

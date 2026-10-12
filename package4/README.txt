@@ -92,11 +92,12 @@ Step 7 - Play
 -------------
 - Player 1 (the host) controls the menus. Start the story with "2 PLAYER"; Player 2 presses Start to join, as in the
   original game.
-- Players 3 and 4 press Start during a mission to join. IMPORTANT for this test version: this has only been checked in
-  mission 13 ("All-City"). In mission 1 (the tutorial) players 3 and 4 cannot join yet; other missions are not tested
-  yet. So a test that starts a new story is mainly a test for 2 players.
-- Start pauses the game for everybody ("Paused by Player N"). Only that player or the host can resume.
-  (Esc is meant to do the same; that has not been tested yet.)
+- Players 3 and 4 join by themselves when a mission allows it (no button needed); until then they see a waiting
+  message. Some story parts are for 2 players only (for example the start of mission 2 and the car chase at the start
+  of mission 18); players 3-4 join when those parts end. In the hideout between missions only the host plays; the
+  others see "Host is in the hideout - next: Mission N. Please wait."
+- Start or Esc pauses the game for everybody ("Paused by Player N"). Only that player or the host can resume.
+- On the map you are the arrow; the others show as 1P, 2P (yellow), 3P (red) and 4P (green).
 - Cutscenes are skipped only when everybody presses a button ("2/4 want to skip").
 - Tab (keyboard) or the touchpad / share button (controller) switches between YOUR view and ALL players' views.
 - Savestates and fast-forward are switched off on purpose during online play.
