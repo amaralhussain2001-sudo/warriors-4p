@@ -1,0 +1,346 @@
+[
+ {
+  "tag": "imp_base",
+  "impair": {
+   "ImpairLatencyMs": "0",
+   "ImpairJitterMs": "0",
+   "ImpairLoss": "0"
+  },
+  "delay_used": 2,
+  "hash_points": 606,
+  "mismatches": 0,
+  "polls_per_s_min": 27.3,
+  "wait_ms_per_s_max": 143.6,
+  "per_slot": [
+   {
+    "slot": 0,
+    "polls_per_s": 27.32,
+    "wait_ms_per_s": 14.6,
+    "waits": 472,
+    "max_wait_ms": 187.9
+   },
+   {
+    "slot": 1,
+    "polls_per_s": 27.31,
+    "wait_ms_per_s": 10.9,
+    "waits": 252,
+    "max_wait_ms": 150.7
+   },
+   {
+    "slot": 2,
+    "polls_per_s": 27.3,
+    "wait_ms_per_s": 49.1,
+    "waits": 1206,
+    "max_wait_ms": 66.2
+   },
+   {
+    "slot": 3,
+    "polls_per_s": 27.32,
+    "wait_ms_per_s": 143.6,
+    "waits": 3696,
+    "max_wait_ms": 190.0
+   }
+  ]
+ },
+ {
+  "tag": "imp_rtt50",
+  "impair": {
+   "ImpairLatencyMs": "25",
+   "ImpairJitterMs": "0",
+   "ImpairLoss": "0"
+  },
+  "delay_used": 2,
+  "hash_points": 583,
+  "mismatches": 0,
+  "polls_per_s_min": 25.89,
+  "wait_ms_per_s_max": 150.7,
+  "per_slot": [
+   {
+    "slot": 0,
+    "polls_per_s": 25.89,
+    "wait_ms_per_s": 120.0,
+    "waits": 3994,
+    "max_wait_ms": 753.3
+   },
+   {
+    "slot": 1,
+    "polls_per_s": 25.89,
+    "wait_ms_per_s": 73.3,
+    "waits": 2795,
+    "max_wait_ms": 238.7
+   },
+   {
+    "slot": 2,
+    "polls_per_s": 25.89,
+    "wait_ms_per_s": 70.6,
+    "waits": 1870,
+    "max_wait_ms": 93.1
+   },
+   {
+    "slot": 3,
+    "polls_per_s": 25.89,
+    "wait_ms_per_s": 150.7,
+    "waits": 3935,
+    "max_wait_ms": 782.3
+   }
+  ]
+ },
+ {
+  "tag": "imp_rtt50b",
+  "impair": {
+   "ImpairLatencyMs": "25",
+   "ImpairJitterMs": "0",
+   "ImpairLoss": "0"
+  },
+  "delay_used": 2,
+  "hash_points": 604,
+  "mismatches": 0,
+  "polls_per_s_min": 27.26,
+  "wait_ms_per_s_max": 115.7,
+  "per_slot": [
+   {
+    "slot": 0,
+    "polls_per_s": 27.26,
+    "wait_ms_per_s": 31.9,
+    "waits": 874,
+    "max_wait_ms": 187.6
+   },
+   {
+    "slot": 1,
+    "polls_per_s": 27.26,
+    "wait_ms_per_s": 35.3,
+    "waits": 1243,
+    "max_wait_ms": 173.8
+   },
+   {
+    "slot": 2,
+    "polls_per_s": 27.26,
+    "wait_ms_per_s": 54.2,
+    "waits": 1437,
+    "max_wait_ms": 72.5
+   },
+   {
+    "slot": 3,
+    "polls_per_s": 27.26,
+    "wait_ms_per_s": 115.7,
+    "waits": 3638,
+    "max_wait_ms": 181.9
+   }
+  ]
+ },
+ {
+  "tag": "imp_rtt100",
+  "impair": {
+   "ImpairLatencyMs": "50",
+   "ImpairJitterMs": "0",
+   "ImpairLoss": "0"
+  },
+  "delay_used": 2,
+  "hash_points": 602,
+  "mismatches": 0,
+  "polls_per_s_min": 27.38,
+  "wait_ms_per_s_max": 206.0,
+  "per_slot": [
+   {
+    "slot": 0,
+    "polls_per_s": 27.39,
+    "wait_ms_per_s": 115.9,
+    "waits": 6611,
+    "max_wait_ms": 160.7
+   },
+   {
+    "slot": 1,
+    "polls_per_s": 27.38,
+    "wait_ms_per_s": 154.5,
+    "waits": 6935,
+    "max_wait_ms": 169.5
+   },
+   {
+    "slot": 2,
+    "polls_per_s": 27.39,
+    "wait_ms_per_s": 97.4,
+    "waits": 5565,
+    "max_wait_ms": 69.5
+   },
+   {
+    "slot": 3,
+    "polls_per_s": 27.39,
+    "wait_ms_per_s": 206.0,
+    "waits": 7014,
+    "max_wait_ms": 161.6
+   }
+  ]
+ },
+ {
+  "tag": "imp_rtt150",
+  "impair": {
+   "ImpairLatencyMs": "75",
+   "ImpairJitterMs": "0",
+   "ImpairLoss": "0"
+  },
+  "delay_used": 2,
+  "hash_points": 584,
+  "mismatches": 0,
+  "polls_per_s_min": 26.48,
+  "wait_ms_per_s_max": 419.9,
+  "per_slot": [
+   {
+    "slot": 0,
+    "polls_per_s": 26.48,
+    "wait_ms_per_s": 321.1,
+    "waits": 10005,
+    "max_wait_ms": 177.2
+   },
+   {
+    "slot": 1,
+    "polls_per_s": 26.48,
+    "wait_ms_per_s": 375.1,
+    "waits": 10082,
+    "max_wait_ms": 178.7
+   },
+   {
+    "slot": 2,
+    "polls_per_s": 26.48,
+    "wait_ms_per_s": 419.9,
+    "waits": 10172,
+    "max_wait_ms": 118.1
+   },
+   {
+    "slot": 3,
+    "polls_per_s": 26.48,
+    "wait_ms_per_s": 397.6,
+    "waits": 10074,
+    "max_wait_ms": 180.9
+   }
+  ]
+ },
+ {
+  "tag": "imp_jit20",
+  "impair": {
+   "ImpairLatencyMs": "25",
+   "ImpairJitterMs": "20",
+   "ImpairLoss": "0"
+  },
+  "delay_used": 2,
+  "hash_points": 604,
+  "mismatches": 0,
+  "polls_per_s_min": 27.27,
+  "wait_ms_per_s_max": 114.9,
+  "per_slot": [
+   {
+    "slot": 0,
+    "polls_per_s": 27.28,
+    "wait_ms_per_s": 23.8,
+    "waits": 736,
+    "max_wait_ms": 152.6
+   },
+   {
+    "slot": 1,
+    "polls_per_s": 27.28,
+    "wait_ms_per_s": 42.0,
+    "waits": 1187,
+    "max_wait_ms": 135.9
+   },
+   {
+    "slot": 2,
+    "polls_per_s": 27.27,
+    "wait_ms_per_s": 39.7,
+    "waits": 1415,
+    "max_wait_ms": 76.5
+   },
+   {
+    "slot": 3,
+    "polls_per_s": 27.28,
+    "wait_ms_per_s": 114.9,
+    "waits": 2536,
+    "max_wait_ms": 164.0
+   }
+  ]
+ },
+ {
+  "tag": "imp_loss1",
+  "impair": {
+   "ImpairLatencyMs": "25",
+   "ImpairJitterMs": "0",
+   "ImpairLoss": "0.01"
+  },
+  "delay_used": 2,
+  "hash_points": 604,
+  "mismatches": 0,
+  "polls_per_s_min": 27.3,
+  "wait_ms_per_s_max": 131.3,
+  "per_slot": [
+   {
+    "slot": 0,
+    "polls_per_s": 27.31,
+    "wait_ms_per_s": 28.4,
+    "waits": 869,
+    "max_wait_ms": 189.4
+   },
+   {
+    "slot": 1,
+    "polls_per_s": 27.3,
+    "wait_ms_per_s": 31.0,
+    "waits": 1106,
+    "max_wait_ms": 190.4
+   },
+   {
+    "slot": 2,
+    "polls_per_s": 27.31,
+    "wait_ms_per_s": 29.7,
+    "waits": 982,
+    "max_wait_ms": 85.3
+   },
+   {
+    "slot": 3,
+    "polls_per_s": 27.31,
+    "wait_ms_per_s": 131.3,
+    "waits": 3004,
+    "max_wait_ms": 183.2
+   }
+  ]
+ },
+ {
+  "tag": "imp_loss5",
+  "impair": {
+   "ImpairLatencyMs": "25",
+   "ImpairJitterMs": "0",
+   "ImpairLoss": "0.05"
+  },
+  "delay_used": 2,
+  "hash_points": 602,
+  "mismatches": 0,
+  "polls_per_s_min": 27.22,
+  "wait_ms_per_s_max": 136.3,
+  "per_slot": [
+   {
+    "slot": 0,
+    "polls_per_s": 27.23,
+    "wait_ms_per_s": 39.1,
+    "waits": 1241,
+    "max_wait_ms": 180.3
+   },
+   {
+    "slot": 1,
+    "polls_per_s": 27.22,
+    "wait_ms_per_s": 55.0,
+    "waits": 1482,
+    "max_wait_ms": 123.5
+   },
+   {
+    "slot": 2,
+    "polls_per_s": 27.22,
+    "wait_ms_per_s": 49.4,
+    "waits": 1546,
+    "max_wait_ms": 93.3
+   },
+   {
+    "slot": 3,
+    "polls_per_s": 27.23,
+    "wait_ms_per_s": 136.3,
+    "waits": 2890,
+    "max_wait_ms": 163.8
+   }
+  ]
+ }
+]
