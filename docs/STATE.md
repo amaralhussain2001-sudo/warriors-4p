@@ -1,12 +1,14 @@
-# Project state (handoff, updated 2026-10-12 ~07:30)
+# Project state (handoff, updated 2026-10-12 ~15:05)
 
 **Stage:** 2 (approved 2026-10-10; decisions D1-D21 in `docs/DECISIONS.md`).
 **Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5** (session policies + transport):
 every SINGLE-PC criterion met, 4-player package built; LAN/INTERNET parts need the user. **M6** (missions) in progress:
-exit criteria `docs/plan/M6.md`. **M7** criteria written (`docs/plan/M7.md`); regression done (F-0193). Findings up to **F-0204**. The user said "do not stop until you finish everything"
+exit criteria `docs/plan/M6.md`. **M7** criteria written (`docs/plan/M7.md`); regression done (F-0193); impairment series done (F-0206). Findings up to **F-0207**. The user said "do not stop until you finish everything"
 (2026-10-12): keep going without pauses; stop only for things that need the user.
-Fork: binary **w4p-m6-1** (+ Esc/sit-out changes, built 06:59); source **w4p-m6-2** = patches 0001-0019 (only the
-OSD text and build tag differ from the binary; rebuild after smoke3). Protocol version 3.
+Fork: binary **w4p-m6-3** (built 14:51) = patches 0001-0019 + uncommitted W4P.cpp change (sit-out picture shown
+during cutscenes, build tag w4p-m6-3; commit + export as patch 0020 after its test). Protocol version 3.
+Package: `dist/warriors-4p-coop.zip` id **b94e4b5caed8** (w4p-m6-2, pnach 5666 incl. RARC) passed its self-test
+(F-0207) but is NOT yet given to the user: it will be rebuilt with w4p-m6-3.
 
 ## Waiting on the user
 - **E6 2-PC test** with `dist/warriors-4p-test.zip` (2-player package, old build w4p-m3-7). Do NOT rebuild that zip
@@ -18,7 +20,13 @@ OSD text and build tag differ from the binary; rebuild after smoke3). Protocol v
   given again after a script-forced leave).
 - Open small decisions (chooser, `docs/research/m6_chooser.md`): Fox-from-M16 and post-game hub rows (HYPOTHESIS).
 - User reports handled 2026-10-12: floating yellow "2P" labels (radar icons, F-0194), radar too big / seen twice
-  (F-0191), "map shows every player?" (no in-mission map; radars now show all four, F-0194).
+  (F-0191), "map shows every player?" (no in-mission map; radars now show all four, F-0194), zoom (F-0198), orange
+  ring (F-0203), true single view (D23 experiment: not feasible, F-0205), equal quarter size (answered: CropFor in
+  W4P.cpp + fov4fix cameras), M16/M18 walkthroughs, why runtime patches instead of an edited disc (plan section 14).
+- **Asked 2026-10-12, unanswered:** what waiting players 3-4 see in shared-camera stretches (e.g. M18 car escape):
+  A (recommended) show the picture when the game itself draws one shared view (views == 1 with >= 2 players in the
+  game), B let players 3-4 run as Cochise/Vermin (script change, risky), C keep black (cutscenes visible). Also: the
+  cut-off message "and the person got...", exact single-player zoom (54 deg) instead of 65, Q1, D.
 
 ## M5 status (all SINGLE-PC, 4 instances on loopback unless noted)
 | # | Criterion | Status | Evidence |
@@ -44,27 +52,26 @@ OSD text and build tag differ from the binary; rebuild after smoke3). Protocol v
 | 6 | Mission status table | interim table in MISSIONS.md (all IN PROGRESS until human completion) |
 
 ## Next steps (in this order)
-1. Running: smoke3 batch (all 18 missions, all fixes, policies on; `local/m6_smoke3_console.txt`, 07:17 to ~10:50,
-   instances 6-9). Do NOT edit tests/m2/nav_probe.py, m2_run4.py, tests/m1/m1_run.py, tools/sandbox.py or pine while a
-   batch runs (smoke2 died at mission 8 from a syntax error in nav_probe, which m2_run4 imports). Then record smoke3 in
-   FINDINGS and the MISSIONS.md status table.
-2. Build w4p-m6-2 (`powershell -File emulator\build.ps1`), then `sh tests/m6/restart_test.sh` (M6 criterion 3) and the
-   M7 runs: 60-min long session, `sh tests/m7/impair_run.sh <tag> <lat> <jit> <loss> <delay>` for RTT 50/100/150,
-   jitter 20, loss 1 % / 5 % (check that the w4p log shows the InputDelay override), T1g through w4p-net.
-3. Rebuild the 4-player package: `python -I mod/make_pnach.py > local/m5/pkg4/w4p_pkg.pnach`,
-   `python -I tools/make_package4.py --pnach local/m5/pkg4/w4p_pkg.pnach` (no `--reuse-emulator`), self-test
-   (4 players, a 60 fps title run, the session S2-S4 hooks: Quit menu without 'Player 2').
-4. Give the user the package + LAN steps (m5_package4.md "Steps for the user's 2-PC LAN test").
-5. Open M6 items: player 3's Select ring (F-0194), X6 script fixes (M16/M18 camera guards, M11 cash, tagging spray),
-   the 2-player local layout gating (F-0193, optional); then M8 packaging, legal review, final report.
+1. Running: `python -I tests/m6/mission_smoke.py --missions 18 --seconds 600 --tag sitcut --policies` (w4p-m6-3
+   sit-out cutscene check; player 3/4 screenshots during in-game scenes must show the scene, not black). Then commit
+   W4P.cpp in emulator/pcsx2 (author warriors-4p) and export patch 0020; add the finding.
+2. M18 car-escape test: an agent is reading the button-tap mechanics (HuSetButtonTapControl 0x00358930 ->
+   FUN_00234318); then a 4-instance run with tapping bots for players 1-2 to prove the escape can be won (reach cp3).
+3. If the user picks A above: W4P sit-out shows the picture when views == 1 and >= 2 players are in the game; rebuild.
+4. Rebuild the package (`python -I mod/make_pnach.py > local/m5/pkg4/w4p_pkg.pnach`,
+   `python -I tools/make_package4.py --pnach local/m5/pkg4/w4p_pkg.pnach`), self-test
+   `python -I tests/m5/package4_selftest.py <tag> --preset m13_60 --players 4 --seconds 900`, tell the user the new id.
+5. M7 remaining: 60-minute long session, T1g outage through w4p-net, bandwidth/CPU/memory measurements, M7 report.
+6. Open M6 items: player 3's Select ring (F-0194), players 3-4 timer arcs (F-0203), the 2-player local layout gating
+   (F-0193, optional), a real hub after a finished mission; then M8 packaging, legal review, final report.
 
 ## How to run things (quick reference)
-- Build the fork: `powershell -File emulator\build.ps1` (log `local/logs/build_Release.log`). Build tag **w4p-m6-1**;
+- Build the fork: `powershell -File emulator\build.ps1` (log `local/logs/build_Release.log`). Build tag **w4p-m6-3**;
   commit in `emulator/pcsx2` with author/committer `warriors-4p <w4p@localhost>`, export with
   `git format-patch -1 HEAD --start-number N -o ../patches`. Do not build while any instance runs (the exe is locked);
   ask agents to pause runs first.
 - Patch file: edit `mod/m2/*.txt` or `mod/make_pnach.py`, then `python -I mod/make_pnach.py > mod/w4p_m1.pnach` and
-  `python -I tools/note_patches.py check mod/w4p_m1.pnach` (expected: **5651 addresses, 6 problems** = the known
+  `python -I tools/note_patches.py check mod/w4p_m1.pnach` (expected: **5666 addresses, 6 problems** = the known
   `[4p hud A]` vs `[4p hud B1]` alternatives). Never regenerate it while a batch that uses it is starting runs.
 - Full 4-player group list: `warriors-4p M1; own view; hud; 4p; 4p hud B1; 4p hud B2; 4p spawn; 4p spawn leave;
   4p inventory; 4p fx; 4p markers; session; missions; session call` (prefix every name with `warriors-4p `; tests add
