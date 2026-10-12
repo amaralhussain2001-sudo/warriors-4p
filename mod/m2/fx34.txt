@@ -242,3 +242,14 @@ patch=0,EE,000E5C30,word,00000000 // fx34 tint slots, zero at startup
 patch=0,EE,000E5C34,word,00000000 // fx34 tint slots, zero at startup
 patch=0,EE,000E5C38,word,00000000 // fx34 tint slots, zero at startup
 patch=0,EE,000E5C3C,word,00000000 // fx34 tint slots, zero at startup
+// FXCAM (F-0184): OE_Fog / OE_RoomSmoke keep the previous camera pitch and yaw per camera in 2-entry arrays
+// (+0x18[2] in FUN_0019B8C0, +0x20[2] in FUN_0019B968, index = the object's camera +0x28). Camera 2 wrote its yaw
+// over +0x28 itself (M17 party smoke crash at pc 0x0011F9B0). Each object serves one camera only, so cameras 2-3 use
+// the entries of cameras 0-1 (index & 1); cameras 0-1 unchanged.
+patch=2,EE,0019B940,word,32310004 // was 26100018 addiu s0,s0,24 -> andi s1,s1,4; FUN_0019B8C0 pitch
+patch=2,EE,0019B94C,word,C6010018 // was C6010000 lwc1 f1,0x0(s0) -> lwc1 f1,0x18(s0); FUN_0019B8C0
+patch=2,EE,0019B950,word,E6000018 // was E6000000 swc1 f0,0x0(s0) -> swc1 f0,0x18(s0); FUN_0019B8C0
+patch=2,EE,0019BA40,word,30420004 // was 26030020 addiu v1,s0,32 -> andi v0,v0,4; FUN_0019B968 yaw
+patch=2,EE,0019BA44,word,02021821 // was 00621821 addu v1,v1,v0 -> addu v1,s0,v0; FUN_0019B968
+patch=2,EE,0019BA4C,word,C4600020 // was C4600000 lwc1 f0,0x0(v1) -> lwc1 f0,0x20(v1); FUN_0019B968
+patch=2,EE,0019BA64,word,E46C0020 // was E46C0000 swc1 f12,0x0(v1) -> swc1 f12,0x20(v1); FUN_0019B968

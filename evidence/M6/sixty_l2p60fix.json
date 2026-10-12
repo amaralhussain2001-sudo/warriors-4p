@@ -1,0 +1,185 @@
+{
+ "tag": "l2p60fix",
+ "environment": "SINGLE-PC, 2 instance(s), W4P session, scripted bot input",
+ "groups": [
+  "warriors-4p M1",
+  "warriors-4p own view",
+  "warriors-4p hud",
+  "warriors-4p 60fps",
+  "m6 fix fixedstep",
+  "warriors-4p widescreen"
+ ],
+ "pnach": "local\\m6\\sixty\\test.pnach",
+ "ee_cycle_rate": "2",
+ "seconds": 1502,
+ "key_presses": [],
+ "title_seen": true,
+ "title_left": true,
+ "title_first": {
+  "t": 43.43,
+  "poll": 2277,
+  "frame": 4
+ },
+ "start_accepted": {
+  "t": 60.87,
+  "poll": 3321,
+  "frame": 1048,
+  "mode": "0x5e65c0",
+  "pad": 0
+ },
+ "timeline": [
+  {
+   "t": 2.07,
+   "poll": 0,
+   "frame": 0,
+   "mode": "0x0",
+   "name": "",
+   "depth": 0,
+   "fixed": null
+  },
+  {
+   "t": 24.5,
+   "poll": 1597,
+   "frame": 0,
+   "mode": "0x5e57e0",
+   "name": "m5E57E0",
+   "depth": 2,
+   "fixed": 0
+  },
+  {
+   "t": 29.52,
+   "poll": 2033,
+   "frame": 0,
+   "mode": "0x5e5810",
+   "name": "",
+   "depth": 1,
+   "fixed": 1
+  },
+  {
+   "t": 32.78,
+   "poll": 2213,
+   "frame": 0,
+   "mode": "0x5e5d90",
+   "name": "loading",
+   "depth": 0,
+   "fixed": 0
+  },
+  {
+   "t": 43.43,
+   "poll": 2277,
+   "frame": 4,
+   "mode": "0x5e65c0",
+   "name": "title",
+   "depth": 1,
+   "fixed": 1
+  },
+  {
+   "t": 185.57,
+   "poll": 10794,
+   "frame": 8514,
+   "mode": "0x5e5810",
+   "name": "",
+   "depth": 1,
+   "fixed": 1
+  },
+  {
+   "t": 197.11,
+   "poll": 11361,
+   "frame": 8514,
+   "mode": "0x5e56b8",
+   "name": "in-game",
+   "depth": 1,
+   "fixed": 0
+  },
+  {
+   "t": 277.41,
+   "poll": 14417,
+   "frame": 10648,
+   "mode": "0x5e6550",
+   "name": "",
+   "depth": 2,
+   "fixed": 0
+  },
+  {
+   "t": 301.25,
+   "poll": 15841,
+   "frame": 10648,
+   "mode": "0x5e56b8",
+   "name": "in-game",
+   "depth": 1,
+   "fixed": 0
+  },
+  {
+   "t": 318.57,
+   "poll": 16685,
+   "frame": 11494,
+   "mode": "0x5e6550",
+   "name": "",
+   "depth": 2,
+   "fixed": 0
+  },
+  {
+   "t": 356.72,
+   "poll": 18007,
+   "frame": 11494,
+   "mode": "0x5e56b8",
+   "name": "in-game",
+   "depth": 1,
+   "fixed": 0
+  },
+  {
+   "t": 356.97,
+   "poll": 18007,
+   "frame": 11494,
+   "mode": "0x5e5d90",
+   "name": "loading",
+   "depth": 0,
+   "fixed": 0
+  },
+  {
+   "t": 357.22,
+   "poll": 18009,
+   "frame": 11494,
+   "mode": "0x5e56b8",
+   "name": "in-game",
+   "depth": 1,
+   "fixed": 0
+  }
+ ],
+ "per_mode": {
+  "0x5e65c0": {
+   "frames": 8502,
+   "steps": 8502,
+   "seconds": 141.9,
+   "polls": 8502,
+   "steps_per_frame": 1.0,
+   "frames_per_s": 59.92,
+   "polls_per_s": 59.92
+  },
+  "0x5e56b8": {
+   "frames": 67610,
+   "steps": 67062,
+   "seconds": 1175.7,
+   "polls": 67021,
+   "steps_per_frame": 0.992,
+   "frames_per_s": 57.51,
+   "polls_per_s": 57.01
+  }
+ },
+ "hash_points_common": 2806,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "last_common": "84180",
+ "w4p_stats": {
+  "0": {
+   "last": "poll 84197, polls 84198, waits 2830, wait total 36565.7 ms, max 48.1 ms, hashes 2806, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 51% gs 16% vu 0%",
+   "desync": [],
+   "errors": []
+  },
+  "1": {
+   "last": "poll 84180, polls 84181, waits 53235, wait total 140992.3 ms, max 3267.9 ms, hashes 2805, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 53% gs 16% vu 0%",
+   "desync": [],
+   "errors": []
+  }
+ }
+}

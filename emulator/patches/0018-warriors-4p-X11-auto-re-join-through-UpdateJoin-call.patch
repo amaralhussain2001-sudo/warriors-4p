@@ -1,0 +1,216 @@
+From 0ad3e3b8d9d5c5a016b005f96fcb57e749d7bae6 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Mon, 12 Oct 2026 04:04:27 +0300
+Subject: [PATCH] warriors-4p: X11 auto re-join through UpdateJoin calls, X12
+ hub interlude (players 2-4 wait, blank picture, pads unplugged), build tag
+ w4p-m6-1
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/GS/Renderers/Common/GSRenderer.cpp |  4 +-
+ pcsx2/W4P/W4P.cpp                        | 95 +++++++++++++++++++++++-
+ pcsx2/W4P/W4P.h                          |  4 +
+ 3 files changed, 99 insertions(+), 4 deletions(-)
+
+diff --git a/pcsx2/GS/Renderers/Common/GSRenderer.cpp b/pcsx2/GS/Renderers/Common/GSRenderer.cpp
+index 1772b76..378bebe 100644
+--- a/pcsx2/GS/Renderers/Common/GSRenderer.cpp
++++ b/pcsx2/GS/Renderers/Common/GSRenderer.cpp
+@@ -699,7 +699,7 @@ void GSRenderer::VSync(u32 field, bool registers_written, bool idle_frame)
+ 
+ 		if (BeginPresentFrame(false))
+ 		{
+-			if (current && !blank_frame)
++			if (current && !blank_frame && !W4P::BlankPresentation()) // warriors-4p: hub waiting screen
+ 			{
+ 				const u64 current_time = Common::Timer::GetCurrentValue();
+ 				const float shader_time = static_cast<float>(Common::Timer::ConvertValueToSeconds(current_time - m_shader_time_start));
+@@ -997,7 +997,7 @@ void GSRenderer::PresentCurrentFrame()
+ 	if (BeginPresentFrame(false))
+ 	{
+ 		GSTexture* current = g_gs_device->GetCurrent();
+-		if (current)
++		if (current && !W4P::BlankPresentation()) // warriors-4p
+ 		{
+ 			const GSVector4i src_rect(CalculateDrawSrcRect(current, m_real_size));
+ 			const GSVector4 src_uv(GSVector4(src_rect) / GSVector4(current->GetSize()).xyxy());
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 2bf11ed..6393539 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -52,7 +52,7 @@ namespace W4P
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+ 		constexpr u16 kProtocolVersion = 3; // 2: hello/fingerprint packet, kernel and game RAM hashes; 3: disconnect handling (status, drop, relay)
+-		constexpr char kBuildTag[] = "w4p-m5-1";
++		constexpr char kBuildTag[] = "w4p-m6-1";
+ 		// EE RAM below this address belongs to the BIOS kernel; the game and our patch caves live above it.
+ 		constexpr u32 kGameRamStart = 0x000A0000; // includes the warriors-4p data/caves (0x000A0000+); 0x81000-0x95FFF holds BIOS/loader leftovers (F-0125)
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+@@ -294,6 +294,10 @@ namespace W4P
+ 			u32 movie_change_t = 0;
+ 			s32 scene_countdown_prev = 0;
+ 			u32 dbg_top = 0, dbg_movie = 0, dbg_scene = 0;
++			// Hub interlude (X12) and the delayed reconnect of players 3-4's pads afterwards.
++			bool hub = false;
++			u32 hub_reconnect_until = 0;
++			u32 hub_cp = 0;
+ 			bool paused_prev = false;
+ 		};
+ 
+@@ -315,6 +319,7 @@ namespace W4P
+ 		float s_sent[4] = {};
+ 		std::atomic<bool> s_show_all{false}; // player's choice: all players' views instead of their own
+ 		std::atomic<bool> s_local_start_request{false}; // pause hotkey in a session: one Start press for the local player
++		std::atomic<bool> s_blank{false}; // hub interlude on a non-host PC: no game picture (presentation only)
+ 
+ 		double NowMs()
+ 		{
+@@ -1049,6 +1054,18 @@ namespace W4P
+ 			}
+ 		}
+ 
++		bool PadUnplugged(int player, u32 t)
++		{
++			Session& s = *s_session;
++			if (IsDropped(player, t))
++				return true;
++			if (!s.cfg.session_policies || player == 0)
++				return false;
++			// Hub: players 2-4 out of the game (no automatic player 2 in Coney); after it, player 2's pad comes back first
++			// so the next level's start binds player 2 to his own pad; players 3-4 follow (m6_missions.md 6.2).
++			return s.hub || (player >= 2 && static_cast<s32>(s.hub_reconnect_until - t) > 0);
++		}
++
+ 		void WriteInput(u32 portbuf, Input in, int player, u32 t)
+ 		{
+ 			Session& s = *s_session;
+@@ -1064,7 +1081,7 @@ namespace W4P
+ 			}
+ 			// A player who left the session shows as an unplugged pad, so the game never binds a companion to it later
+ 			// (session_policies.md 3.4).
+-			memWrite32(portbuf + kPortOffConnected, IsDropped(player, t) ? 0 : 1);
++			memWrite32(portbuf + kPortOffConnected, PadUnplugged(player, t) ? 0 : 1);
+ 			memWrite8(portbuf + kPortOffSticks + 0, in.lx);
+ 			memWrite8(portbuf + kPortOffSticks + 1, in.ly);
+ 			memWrite8(portbuf + kPortOffSticks + 2, in.rx);
+@@ -1151,6 +1168,45 @@ namespace W4P
+ 			const u32 top = memRead32(0x0050C784);
+ 			const u32 top_mode = top < 64 ? memRead32(0x005E66A0 + 4 * top) : 0;
+ 			const bool paused = top_mode == 0x005E6550u;
++			// X12 hub interlude: level 95, checkpoint 1-10, no level change requested (m6_missions.md 6.3).
++			{
++				const u32 gm = memRead32(0x0051489C);
++				bool hub = false;
++				u32 cp = 0;
++				if (gm >= 0x00100000 && gm < 0x02000000)
++				{
++					const u32 level = memRead32(gm + 0x14D4 + static_cast<u32>(memRead16(gm + 0x56DC)) * 0x84 + 4);
++					cp = memRead16(gm + 0x33A);
++					hub = level == 95 && cp >= 1 && cp <= 10 && memRead32(gm + 0x14C) == 0;
++				}
++				if (hub != s.hub)
++				{
++					Log(fmt::format("hub interlude {} at poll {} (checkpoint {})", hub ? "starts" : "ends", t - s.c0, cp));
++					if (!hub)
++						s.hub_reconnect_until = t + 120;
++					s.hub = hub;
++					s.hub_cp = cp;
++					s_blank.store(hub && s.cfg.local_slot != 0);
++				}
++				if (hub)
++				{
++					// Only the host plays; the others get neutral input (their pads are reported unplugged) and a waiting
++					// screen. The host's input is not filtered (his own pause / skips, like single player).
++					static constexpr int kNext[11] = {0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14};
++					for (int p = 1; p < n; p++)
++						s.eff[p] = Neutral();
++					if (s.cfg.local_slot != 0 && (t - s.c0) % 30 == 0)
++						Host::AddKeyedOSDMessage("w4p_hub", fmt::format("Host is in the hideout - next: Mission {}. Please wait.",
++							kNext[std::min<u32>(cp, 10)]), 1.5f);
++					for (int p = 0; p < n; p++)
++						s.prev_buttons[p] = raw[p];
++					s.prev_eff0_buttons = s.eff[0].buttons;
++					s.votes = 0;
++					s.eff_t = t;
++					s.eff_valid = true;
++					return;
++				}
++			}
+ 			{
+ 				// Diagnostics (F-0175): log what the filter sees whenever it changes.
+ 				const u32 mv = memRead32(0x000E70F0);
+@@ -1274,6 +1330,35 @@ namespace W4P
+ 					{
+ 						s.pauser = -1; // closed, or the game refused (prompt, GAME OVER, cooldown)
+ 					}
++					// X11 auto re-join (m6_missions.md 1.2, jd2_m05): every 300 polls, a connected session player whose pad has no
++					// character joins through the game's own UpdateJoin(GameMgr, pad) (FUN_0041A460), called through the session
++					// call mailbox. The Start-press path is not used: it needs a gameplay camera mode (FUN_00158728), which some
++					// missions do not have at their start (Mission 5). Only in quiet gameplay: in-game mode, no cutscene, no
++					// cinematic flag (GameMgr+0x410), no level change (+0x14C), joining on (+0x56E8), mode 0/3 (+0x158).
++					if ((t - s.c0) % 300 == 150)
++					{
++						const u32 gm = memRead32(0x0051489C);
++						const bool quiet = gm >= 0x00100000 && gm < 0x02000000 && memRead32(gm + 0x410) == 0 &&
++										   memRead32(gm + 0x14C) == 0 && memRead32(gm + 0x56E8) != 0 &&
++										   (memRead32(gm + 0x158) == 0 || memRead32(gm + 0x158) == 3);
++						u32 slot_offset = 1;
++						for (int p = 1; p < n && quiet; p++)
++						{
++							if (!(connected >> p & 1) || PadUnplugged(p, t))
++								continue;
++							const u32 pad = static_cast<u32>(s.cfg.pad_for_slot[p]);
++							if (static_cast<s16>(memRead16(0x005DD810 + pad * 0x50 + 0x42)) >= 0)
++								continue;
++							CallSpec cs;
++							cs.poll = t - s.c0 + slot_offset; // one mailbox call per frame: a different poll per pad
++							cs.fn = 0x0041A460;
++							cs.gamemgr[0] = true;
++							cs.args[1] = pad;
++							s.cfg.calls.push_back(cs);
++							slot_offset += 3;
++							Log(fmt::format("auto join for player {} (pad {}) scheduled at poll {}", p + 1, pad, cs.poll));
++						}
++					}
+ 				}
+ 				else
+ 				{
+@@ -1678,6 +1763,7 @@ namespace W4P
+ 		if (s.log)
+ 			std::fclose(s.log);
+ 		s_session.reset();
++		s_blank.store(false);
+ 		s_layout_hist.clear();
+ 		s_sent_valid = false;
+ 		std::lock_guard<std::mutex> lock(s_crop_mutex);
+@@ -1725,6 +1811,11 @@ namespace W4P
+ 		return false;
+ 	}
+ 
++	bool BlankPresentation()
++	{
++		return s_blank.load(std::memory_order_relaxed);
++	}
++
+ 	bool RequestPauseInSession()
+ 	{
+ 		if (!s_session || !s_session->started || !s_session->cfg.session_policies)
+diff --git a/pcsx2/W4P/W4P.h b/pcsx2/W4P/W4P.h
+index efa001f..f0ee2de 100644
+--- a/pcsx2/W4P/W4P.h
++++ b/pcsx2/W4P/W4P.h
+@@ -46,6 +46,10 @@ namespace W4P
+ 	// the emulator pause must not happen.
+ 	bool RequestPauseInSession();
+ 
++	// Hub interludes (D4 A, m6_missions.md 6.2): players 2-4 have no own view while the host does the required hub
++	// steps, so their picture is blanked (no shared view) and a waiting message is shown. Safe on the GS thread.
++	bool BlankPresentation();
++
+ 	// Vibration routing during a session: the emulated controller of the LOCAL player drives this PC's controller
+ 	// (host pad 0); every other emulated controller is muted. Returns the host pad index, or -1 to mute.
+ 	int VibrationPadFor(u32 unified_slot);
+-- 
+2.55.0.windows.3
+

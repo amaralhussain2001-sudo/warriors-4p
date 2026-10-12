@@ -1,0 +1,60 @@
+{
+ "tag": "m13_60fix_b",
+ "environment": "SINGLE-PC, 1 instance(s), W4P session, scripted bot input",
+ "groups": [
+  "warriors-4p M1",
+  "warriors-4p own view",
+  "warriors-4p hud",
+  "warriors-4p 4p",
+  "warriors-4p 4p hud B1",
+  "warriors-4p 4p hud B2",
+  "warriors-4p 4p spawn",
+  "warriors-4p 4p spawn leave",
+  "warriors-4p 4p inventory",
+  "warriors-4p 4p fx",
+  "warriors-4p test call",
+  "warriors-4p 60fps",
+  "m6 fix fixedstep"
+ ],
+ "pnach": "local\\m6\\sixty\\prefrag_fix.pnach",
+ "ee_cycle_rate": "2",
+ "seconds": 201,
+ "key_presses": [],
+ "title_seen": false,
+ "title_left": false,
+ "title_first": null,
+ "start_accepted": null,
+ "timeline": [
+  {
+   "t": 2.05,
+   "poll": 9307,
+   "frame": 5235,
+   "mode": "0x5e56b8",
+   "name": "in-game",
+   "depth": 1,
+   "fixed": 0
+  }
+ ],
+ "per_mode": {
+  "0x5e56b8": {
+   "frames": 10432,
+   "steps": 10444,
+   "seconds": 198.0,
+   "polls": 10399,
+   "steps_per_frame": 1.001,
+   "frames_per_s": 52.69,
+   "polls_per_s": 52.53
+  }
+ },
+ "hash_points_common": 331,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "last_common": "9930",
+ "w4p_stats": {
+  "0": {
+   "last": "poll 9942, polls 9943, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 0, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 71% gs 23% vu 0%",
+   "desync": [],
+   "errors": []
+  }
+ }
+}
