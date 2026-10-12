@@ -1,0 +1,185 @@
+[
+ {
+  "mission": 5,
+  "level": 2,
+  "name": "Real Heavy Rep",
+  "run": "x11_m05",
+  "policies": true,
+  "seconds": 607,
+  "hash_points": 508,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "tlb_misses": {
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0
+  },
+  "end_state": {
+   "0": "TimeoutError('timed out')",
+   "1": {
+    "poll": 15215,
+    "players": 4,
+    "handles": [
+     "0x3011c",
+     "0x113",
+     "0x50122",
+     "0x10116"
+    ],
+    "views": 4,
+    "cameras": 4
+   },
+   "2": {
+    "poll": 15226,
+    "players": 4,
+    "handles": [
+     "0x3011c",
+     "0x113",
+     "0x50122",
+     "0x10116"
+    ],
+    "views": 4,
+    "cameras": 4
+   },
+   "3": {
+    "poll": 15236,
+    "players": 4,
+    "handles": [
+     "0x3011c",
+     "0x113",
+     "0x50122",
+     "0x10116"
+    ],
+    "views": 4,
+    "cameras": 4
+   }
+  },
+  "players_seen": [
+   0,
+   1,
+   2,
+   4
+  ],
+  "first_poll_with_4": 7466,
+  "auto_joins_scheduled": 2,
+  "w4p_events": [
+   "[188594757.769] auto join for player 3 (pad 1) scheduled at poll 7351",
+   "[188594757.802] auto join for player 4 (pad 2) scheduled at poll 7354"
+  ],
+  "last_sample": {
+   "t": 601,
+   "poll": 15116,
+   "players": 4,
+   "handles": [
+    "0x3011c",
+    "0x113",
+    "0x50122",
+    "0x10116"
+   ],
+   "pad_owner": [
+    0,
+    2,
+    3,
+    -1,
+    1,
+    -1,
+    -1,
+    -1
+   ],
+   "views": 4
+  }
+ },
+ {
+  "mission": 16,
+  "level": 54,
+  "name": null,
+  "run": "x11_m16",
+  "policies": true,
+  "seconds": 607,
+  "hash_points": 517,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "tlb_misses": {
+   "6": 0,
+   "7": 0,
+   "8": 0,
+   "9": 0
+  },
+  "end_state": {
+   "0": "TimeoutError('timed out')",
+   "1": {
+    "poll": 15499,
+    "players": 4,
+    "handles": [
+     "0x120",
+     "0x1012c",
+     "0x2012f",
+     "0x30133"
+    ],
+    "views": 1,
+    "cameras": 4
+   },
+   "2": {
+    "poll": 15508,
+    "players": 4,
+    "handles": [
+     "0x120",
+     "0x1012c",
+     "0x2012f",
+     "0x30133"
+    ],
+    "views": 1,
+    "cameras": 4
+   },
+   "3": {
+    "poll": 15516,
+    "players": 4,
+    "handles": [
+     "0x120",
+     "0x1012c",
+     "0x2012f",
+     "0x30133"
+    ],
+    "views": 1,
+    "cameras": 4
+   }
+  },
+  "players_seen": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "first_poll_with_4": 10504,
+  "auto_joins_scheduled": 4,
+  "w4p_events": [
+   "[189293236.710] auto join for player 3 (pad 1) scheduled at poll 10051",
+   "[189293236.741] auto join for player 4 (pad 2) scheduled at poll 10054",
+   "[189461038.010] auto join for player 3 (pad 1) scheduled at poll 13951",
+   "[189461038.043] auto join for player 4 (pad 2) scheduled at poll 13954"
+  ],
+  "last_sample": {
+   "t": 601,
+   "poll": 15411,
+   "players": 4,
+   "handles": [
+    "0x120",
+    "0x1012c",
+    "0x2012f",
+    "0x30133"
+   ],
+   "pad_owner": [
+    0,
+    2,
+    3,
+    -1,
+    1,
+    -1,
+    -1,
+    -1
+   ],
+   "views": 1
+  }
+ }
+]

@@ -156,7 +156,7 @@ def survey_mem(p):
     live = [h for h in (r32(0x006EBD38 + 8 * s) for s in range(60)) if h]
     out["humans"] = {"live": len(live), "without_model_instance_D8": sum(1 for h in live if not r32(h + 0xD8))}
     out["w4p"] = {"choose_result": r32(0x000E15F0), "choose_status": [r32(0x000E15C0 + 4 * i) for i in range(9)],
-                  "pin": [r32(0x000E1C00 + 4 * i) for i in range(15)],
+                  "pin": [r32(0x000E1C00 + 4 * i) for i in range(24)],  # slot 0, codes, config, slot 1 (m6_chooser.md)
                   "config": [r32(0x000E1C40 + 4 * i) for i in range(3)]}
     return out
 

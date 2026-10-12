@@ -61,13 +61,19 @@ patch=2,EE,00236E3C,word,24420890 // was 2442DEB8 addiu v0,v0,-0x2148 -> addiu v
 patch=2,EE,0023700C,word,3C03000F // was 3C030060 lui v1,0x60 -> lui v1,0xf; FUN_00236fb8 (delay slot shared by both paths)
 patch=2,EE,00237014,word,24630890 // was 2463DEB8 addiu v1,v1,-0x2148 -> addiu v1,v1,0x890; FUN_00236fb8 path s1 != 0 (mode 3)
 patch=2,EE,00237038,word,24630890 // was 2463DEB8 addiu v1,v1,-0x2148 -> addiu v1,v1,0x890; FUN_00236fb8 path s1 == 0 (mode 2)
-// Block B (optional, gameplay decision): bank the money of players 3-4 at mission end like players 1-2 (FUN_0015d160).
-// s0 = GameMgr+0x480 at 0x0015D3F4 (set at 0x0015D3DC). Money of slot s = I+0x7C+s*0x3F4.
-patch=2,EE,0015D3F4,word,0C039400 // was 0C0554C2 jal 0x00155308 -> jal 0x000E5000 (cave, then j 0x00155308)
-patch=2,EE,000E5000,word,8E020000 // lw v0,0(s0)       bank (inventory+0)
-patch=2,EE,000E5004,word,8E030864 // lw v1,0x864(s0)   slot 2 money
-patch=2,EE,000E5008,word,00431021 // addu v0,v0,v1
-patch=2,EE,000E500C,word,8E030C58 // lw v1,0xc58(s0)   slot 3 money
-patch=2,EE,000E5010,word,00431021 // addu v0,v0,v1
-patch=2,EE,000E5014,word,080554C2 // j 0x00155308 (SSMC_StartSaveSequence core, as the original jal)
-patch=2,EE,000E5018,word,AE020000 // sw v0,0(s0) (delay)
+// Block B, X8 (m6_missions.md 5.3, F-0158): at mission end clear the money and items of slots 2-3 (players 3-4), live and
+// checkpoint copy, instead of banking them - parity with players 1-2, whose money UnlockAndLoad/LiquidizeAssets
+// (WAD 4106) sets to 0 before FUN_0015D160 banks slots 0-1. s0 = GameMgr+0x480 at 0x0015D3F4 (set at 0x0015D3DC).
+// Replaces the earlier Block B (bank += money of slots 2-3).
+patch=2,EE,0015D3F4,word,0C039400 // was 0C0554C2 jal 0x00155308 -> jal 0x000E5000 (cave X8, then j 0x00155308)
+patch=2,EE,000E5000,word,27BDFFF0 // X8: addiu sp, sp, -16  ; X8: mission end, after slots 0-1 were banked (0x0015D3B0-0x0015D3F0)
+patch=2,EE,000E5004,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E5008,word,0200202D // daddu a0, s0, zero  ; s0 = Inv = GameMgr+0x480 (0x0015D3DC)
+patch=2,EE,000E500C,word,0C107B18 // jal 0x0041EC60  ; InvReleaseSlot(Inv, 2): slot 2 counts 0, live and checkpoint copy
+patch=2,EE,000E5010,word,24050002 // addiu a1, zero, 2
+patch=2,EE,000E5014,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E5018,word,0C107B18 // jal 0x0041EC60  ; InvReleaseSlot(Inv, 3)
+patch=2,EE,000E501C,word,24050003 // addiu a1, zero, 3
+patch=2,EE,000E5020,word,DFBF0000 // ld ra, 0x0(sp)
+patch=2,EE,000E5024,word,080554C2 // j 0x00155308  ; the replaced call (save sequence core), returns to 0x0015D3FC
+patch=2,EE,000E5028,word,27BD0010 // addiu sp, sp, 16

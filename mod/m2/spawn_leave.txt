@@ -2,7 +2,7 @@
 patch=2,EE,0041A868,word,0C038490 // was 0C106C52 jal 0x0041B148 (leave script event) -> jal 0x000E1240 LEAVEHOOK; delay slot sh v0,1110(s1) kept
 patch=2,EE,000E1240,word,27BDFFF0 // addiu sp,sp,-16
 patch=2,EE,000E1244,word,AFBF0000 // sw ra,0(sp)
-patch=2,EE,000E1248,word,0C106C52 // jal 0x0041B148
+patch=2,EE,000E1248,word,0C0384A4 // [warriors-4p 4p spawn leave] X5: jal 0x000E1290 X5EV (pnach had 0C106C52 jal 0x0041B148 leave event); delay slot nop kept
 patch=2,EE,000E124C,word,00000000 // nop
 patch=2,EE,000E1250,word,820301B1 // lb v1,0x1b1(s0)
 patch=2,EE,000E1254,word,24010007 // addiu at,zero,7
@@ -18,3 +18,18 @@ patch=2,EE,000E1278,word,0040202D // move a0,v0
 patch=2,EE,000E127C,word,8FBF0000 // lw ra,0(sp)
 patch=2,EE,000E1280,word,03E00008 // jr ra
 patch=2,EE,000E1284,word,27BD0010 // addiu sp,sp,16
+
+// X5 (m6_missions.md section 2): no Lua leave event for player index >= 2 on any path. LEAVEHOOK's event call
+// (0x000E1248) goes through X5EV: called from the game's leave loop (return address 0x0041A870, s3 = index of the
+// released player) it skips the event for index >= 2; from the session LEAVE cave (index 0-1 only) it runs it.
+patch=2,EE,000E1290,word,8FA80000 // X5EV: lw t0, 0x0(sp)  ; X5EV(GameMgr, human, 0): LEAVEHOOK's saved ra = its return address
+patch=2,EE,000E1294,word,3C090041 // lui t1, 0x0041
+patch=2,EE,000E1298,word,3529A870 // ori t1, t1, 0xA870  ; return address of the game's leave loop call 0x0041A868
+patch=2,EE,000E129C,word,15090003 // bne t0, t1, 0x000E12AC  ; other caller (session LEAVE: index 0-1 only): event as before
+patch=2,EE,000E12A0,word,2A680002 // slti t0, s3, 2  ; game leave loop: s3 = index of the released player
+patch=2,EE,000E12A4,word,11000003 // beq t0, zero, 0x000E12B4  ; index >= 2: no Lua leave event (missions expect player 2)
+patch=2,EE,000E12A8,word,00000000 // nop
+patch=2,EE,000E12AC,word,08106C52 // x5_ev: j 0x0041B148  ; FUN_0041B148 (the replaced call), returns to LEAVEHOOK
+patch=2,EE,000E12B0,word,00000000 // nop
+patch=2,EE,000E12B4,word,03E00008 // x5_skip: jr ra
+patch=2,EE,000E12B8,word,0000102D // daddu v0, zero, zero

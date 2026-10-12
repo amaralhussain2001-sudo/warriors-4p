@@ -1,0 +1,98 @@
+{
+ "tag": "a60_w4p",
+ "environment": "SINGLE-PC, 1 instance(s), W4P session, scripted bot input",
+ "groups": [
+  "warriors-4p M1",
+  "warriors-4p 60fps"
+ ],
+ "pnach": "local\\m6\\sixty\\test.pnach",
+ "ee_cycle_rate": "2",
+ "seconds": 241,
+ "key_presses": [],
+ "title_seen": true,
+ "title_left": false,
+ "title_first": {
+  "t": 32.12,
+  "poll": 1290,
+  "frame": 11
+ },
+ "start_accepted": null,
+ "timeline": [
+  {
+   "t": 2.04,
+   "poll": 0,
+   "frame": 0,
+   "mode": "0x0",
+   "name": "",
+   "depth": 0,
+   "fixed": null
+  },
+  {
+   "t": 13.08,
+   "poll": 604,
+   "frame": 0,
+   "mode": "0x5e5810",
+   "name": "",
+   "depth": 1,
+   "fixed": 0
+  },
+  {
+   "t": 13.33,
+   "poll": 607,
+   "frame": 0,
+   "mode": "0x5e57e0",
+   "name": "m5E57E0",
+   "depth": 2,
+   "fixed": 0
+  },
+  {
+   "t": 18.21,
+   "poll": 1038,
+   "frame": 0,
+   "mode": "0x5e5810",
+   "name": "",
+   "depth": 1,
+   "fixed": 1
+  },
+  {
+   "t": 21.47,
+   "poll": 1219,
+   "frame": 0,
+   "mode": "0x5e5d90",
+   "name": "loading",
+   "depth": 0,
+   "fixed": 0
+  },
+  {
+   "t": 32.12,
+   "poll": 1290,
+   "frame": 11,
+   "mode": "0x5e65c0",
+   "name": "title",
+   "depth": 1,
+   "fixed": 1
+  }
+ ],
+ "per_mode": {
+  "0x5e65c0": {
+   "frames": 12297,
+   "steps": 24594,
+   "seconds": 205.6,
+   "polls": 12317,
+   "steps_per_frame": 2.0,
+   "frames_per_s": 59.81,
+   "polls_per_s": 59.91
+  }
+ },
+ "hash_points_common": 447,
+ "hash_mismatches": 0,
+ "first_mismatch": null,
+ "last_common": "13410",
+ "w4p_stats": {
+  "0": {
+   "last": "poll 13438, polls 13439, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 0, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 32% gs 6% vu 0%",
+   "desync": [],
+   "errors": []
+  }
+ }
+}

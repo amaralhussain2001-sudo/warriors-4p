@@ -1,0 +1,239 @@
+// [warriors-4p missions] M6 mission fixes X1, X3 and X7 (docs/research/m6_missions.md section 2, docs/research/m6_fixes.md).
+// Needs [warriors-4p session] (LEAVE 0x000E7100), [warriors-4p 4p spawn] (UNPIN 0x000E1EE8) and [warriors-4p 4p spawn leave].
+// X1 delete guard: before a script deletes a human held by player 3/4 (HuDelete binding 0x00358608, call 0x00358624;
+//    GangDelete FUN_0016D068, call 0x0016D0C0 of the member cleanup FUN_00164738 - not used by the level teardown
+//    FUN_0016C2F0), LEAVE(index) releases him; the delete then runs on the AI human. A W4P-added Warrior (+0x1B1 = 7)
+//    gets its marker cleared first, so only the caller deletes him (LEAVE's LV would delete him too); its pin is released
+//    (UNPIN: only if no other W4P-added Warrior of that name plays). The LEAVE goes through LVOWE (X7 b below).
+// X3 HuChangePlayerGang wrapper (binding 0x0035D1A8, call 0x0035D1E8): unless player 1 is already in the target gang,
+//    LEAVE the last index while more than 2 players are in, then the original FUN_00239B80 (<= 2 players).
+//    Players 3-4 re-join with Start (W4P X11 injects it).
+// X7 starting items (m6_missions.md section 4, option S1): when player 3/4 joins by Start (UpdateJoin's join-event call
+//    0x0041A5C0) at checkpoint 0/1, the first time per level load for that HUD slot, he gets the level's MS values like
+//    player 2 (WAD 4106 main_149/153): Flash added, spray and money set (InvGiveRevive/InvSetSpraycanCharges/InvSetMoney
+//    cores, player number = HUD slot + 1). Flags cleared at every level load (ResetLevel call 0x00160AE0). Needs [4p hud B1]
+//    (HUD slots 2-3) and [4p inventory] (slots 2-3 accepted).
+// X7 (b) (m6_chooser.md): LVOWE(index) = LEAVE for a script-forced leave (X1, X3); if the player got the starting items in
+//    this level load (given byte 1), the byte becomes 2 = owed, and X7J gives them again at his next join, at any
+//    checkpoint (the forced release emptied his inventory slot). Normal leaves keep byte 1: no second gift.
+// Free RAM 0x000E7400-0x000E7813.
+patch=2,EE,00358624,word,0C039D20 // X1: was 0C08CFBC jal 0x00233EF0 (HuDelete core) -> jal 0x000E7480 X1D; delay slot daddu a0,v0,zero kept
+patch=2,EE,0016D0C0,word,0C039D40 // X1: was 0C0591CE jal 0x00164738 (gang member cleanup) in GangDelete FUN_0016D068 -> jal 0x000E7500 X1G; delay slot daddu a0,s1,zero kept
+patch=2,EE,0035D1E8,word,0C039D60 // X3: was 0C08E6E0 jal 0x00239B80 (HuChangePlayerGang core) -> jal 0x000E7580 X3W; delay slot sltu a1,zero,v0 kept
+patch=2,EE,0041A5C0,word,0C039D90 // X7: was 0C106C52 jal 0x0041B148 (join event) in UpdateJoin -> jal 0x000E7640 X7J; delay slot daddu a0,s1,zero kept
+patch=2,EE,00160AE0,word,0C039DD0 // X7: was 0C05B0BC jal 0x0016C2F0 (delete all gangs) in ResetLevel FUN_001607B8 -> jal 0x000E7740 X7R; delay slot nop kept
+patch=2,EE,000E7400,word,27BDFFE0 // REL34: addiu sp, sp, -32  ; REL34(human): release player 3/4 (index >= 2) with LEAVE before a script deletes him
+patch=2,EE,000E7404,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E7408,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E740C,word,0080802D // daddu s0, a0, zero
+patch=2,EE,000E7410,word,820401B0 // lb a0, 0x1B0(s0)  ; player index (-1 = AI)
+patch=2,EE,000E7414,word,28880002 // slti t0, a0, 2
+patch=2,EE,000E7418,word,1500000B // bne t0, zero, 0x000E7448  ; AI, player 1 or player 2: nothing to do
+patch=2,EE,000E741C,word,0000102D // daddu v0, zero, zero
+patch=2,EE,000E7420,word,920801B1 // lbu t0, 0x1B1(s0)  ; join priority; 7 = Warrior added by W4P (SPAWN)
+patch=2,EE,000E7424,word,24090007 // addiu t1, zero, 7
+patch=2,EE,000E7428,word,15090005 // bne t0, t1, 0x000E7440
+patch=2,EE,000E742C,word,00000000 // nop
+patch=2,EE,000E7430,word,A20001B1 // sb zero, 0x1B1(s0)  ; added Warrior: clear the marker so LEAVE's LV does not delete him too (the caller deletes)
+patch=2,EE,000E7434,word,0C0387BA // jal 0x000E1EE8  ; UNPIN(char id): his model pin is released unless another W4P-added Warrior uses that Warrior
+patch=2,EE,000E7438,word,8E0400D0 // lw a0, 0xD0(s0)
+patch=2,EE,000E743C,word,820401B0 // lb a0, 0x1B0(s0)  ; index again for LEAVE
+patch=2,EE,000E7440,word,0C039DE4 // r34_leave: jal 0x000E7790  ; LVOWE(index): LEAVE + X7 starting items owed again
+patch=2,EE,000E7444,word,00000000 // nop
+patch=2,EE,000E7448,word,DFBF0000 // r34_out: ld ra, 0x0(sp)
+patch=2,EE,000E744C,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E7450,word,03E00008 // jr ra
+patch=2,EE,000E7454,word,27BD0020 // addiu sp, sp, 32
+patch=2,EE,000E7480,word,27BDFFD0 // X1D: addiu sp, sp, -48  ; X1D(handle): replaces the HuDelete binding's call of the core 0x00233EF0
+patch=2,EE,000E7484,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E7488,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E748C,word,AFA40020 // sw a0, 0x20(sp)
+patch=2,EE,000E7490,word,0080802D // daddu s0, a0, zero  ; handle
+patch=2,EE,000E7494,word,0C0E409A // jal 0x00390268  ; object of the handle (0 = none)
+patch=2,EE,000E7498,word,27A40020 // addiu a0, sp, 32
+patch=2,EE,000E749C,word,10400007 // beq v0, zero, 0x000E74BC
+patch=2,EE,000E74A0,word,00000000 // nop
+patch=2,EE,000E74A4,word,0C08A61A // jal 0x00229868  ; the core's own test: human or 0
+patch=2,EE,000E74A8,word,0040202D // daddu a0, v0, zero
+patch=2,EE,000E74AC,word,10400003 // beq v0, zero, 0x000E74BC
+patch=2,EE,000E74B0,word,00000000 // nop
+patch=2,EE,000E74B4,word,0C039D00 // jal 0x000E7400  ; player 3/4: LEAVE first, he is AI when deleted
+patch=2,EE,000E74B8,word,0040202D // daddu a0, v0, zero
+patch=2,EE,000E74BC,word,0C08CFBC // x1d_del: jal 0x00233EF0  ; HuDelete core (the replaced call)
+patch=2,EE,000E74C0,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E74C4,word,DFBF0000 // ld ra, 0x0(sp)
+patch=2,EE,000E74C8,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E74CC,word,03E00008 // jr ra
+patch=2,EE,000E74D0,word,27BD0030 // addiu sp, sp, 48
+patch=2,EE,000E7500,word,27BDFFD0 // X1G: addiu sp, sp, -48  ; X1G(gang): replaces GangDelete's (FUN_0016D068) call of the member cleanup 0x00164738
+patch=2,EE,000E7504,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E7508,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E750C,word,7FB10020 // sq s1, 0x20(sp)
+patch=2,EE,000E7510,word,0080802D // daddu s0, a0, zero  ; gang object
+patch=2,EE,000E7514,word,0000882D // daddu s1, zero, zero  ; member slot 0..15
+patch=2,EE,000E7518,word,00114080 // x1g_loop: sll t0, s1, 2
+patch=2,EE,000E751C,word,02082021 // addu a0, s0, t0
+patch=2,EE,000E7520,word,0C0E409A // jal 0x00390268  ; member handle at gang+0x48+4*slot
+patch=2,EE,000E7524,word,24840048 // addiu a0, a0, 72
+patch=2,EE,000E7528,word,10400007 // beq v0, zero, 0x000E7548
+patch=2,EE,000E752C,word,00000000 // nop
+patch=2,EE,000E7530,word,804801B0 // lb t0, 0x1B0(v0)  ; player index
+patch=2,EE,000E7534,word,29080002 // slti t0, t0, 2
+patch=2,EE,000E7538,word,15000003 // bne t0, zero, 0x000E7548
+patch=2,EE,000E753C,word,00000000 // nop
+patch=2,EE,000E7540,word,0C039D00 // jal 0x000E7400  ; player 3/4: LEAVE; ReleasePlayer keeps him in this gang as AI, cleaned up below
+patch=2,EE,000E7544,word,0040202D // daddu a0, v0, zero
+patch=2,EE,000E7548,word,26310001 // x1g_next: addiu s1, s1, 1
+patch=2,EE,000E754C,word,2A280010 // slti t0, s1, 16
+patch=2,EE,000E7550,word,1500FFF1 // bne t0, zero, 0x000E7518
+patch=2,EE,000E7554,word,00000000 // nop
+patch=2,EE,000E7558,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E755C,word,DFBF0000 // ld ra, 0x0(sp)
+patch=2,EE,000E7560,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E7564,word,7BB10020 // lq s1, 0x20(sp)
+patch=2,EE,000E7568,word,080591CE // j 0x00164738  ; the replaced call (tail call, ra = FUN_0016D068)
+patch=2,EE,000E756C,word,27BD0030 // addiu sp, sp, 48
+patch=2,EE,000E7580,word,27BDFFC0 // X3W: addiu sp, sp, -64  ; X3W(gang id, flag): replaces HuChangePlayerGang's call of 0x00239B80
+patch=2,EE,000E7584,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E7588,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E758C,word,7FB10020 // sq s1, 0x20(sp)
+patch=2,EE,000E7590,word,0080802D // daddu s0, a0, zero
+patch=2,EE,000E7594,word,00A0882D // daddu s1, a1, zero
+patch=2,EE,000E7598,word,3C020051 // lui v0, 0x0051
+patch=2,EE,000E759C,word,8C44489C // lw a0, 0x489C(v0)  ; GameMgr
+patch=2,EE,000E75A0,word,0C0E409A // jal 0x00390268  ; player 1
+patch=2,EE,000E75A4,word,24840228 // addiu a0, a0, 552
+patch=2,EE,000E75A8,word,10400015 // beq v0, zero, 0x000E7600
+patch=2,EE,000E75AC,word,00000000 // nop
+patch=2,EE,000E75B0,word,0C087502 // jal 0x0021D408
+patch=2,EE,000E75B4,word,0040202D // daddu a0, v0, zero
+patch=2,EE,000E75B8,word,8C48020C // lw t0, 0x20C(v0)  ; player 1's gang
+patch=2,EE,000E75BC,word,AFA80030 // sw t0, 0x30(sp)
+patch=2,EE,000E75C0,word,0C05B0E2 // jal 0x0016C388  ; target gang object (as 0x00239BD4)
+patch=2,EE,000E75C4,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E75C8,word,8FA80030 // lw t0, 0x30(sp)
+patch=2,EE,000E75CC,word,1048000C // beq v0, t0, 0x000E7600  ; player 1 already in it: the core changes nothing (0x00239BF0)
+patch=2,EE,000E75D0,word,00000000 // nop
+patch=2,EE,000E75D4,word,3C020051 // x3_loop: lui v0, 0x0051
+patch=2,EE,000E75D8,word,8C48489C // lw t0, 0x489C(v0)
+patch=2,EE,000E75DC,word,85040224 // lh a0, 0x224(t0)  ; player count
+patch=2,EE,000E75E0,word,28890003 // slti t1, a0, 3
+patch=2,EE,000E75E4,word,15200006 // bne t1, zero, 0x000E7600  ; <= 2 players: original behaviour
+patch=2,EE,000E75E8,word,00000000 // nop
+patch=2,EE,000E75EC,word,0C039DE4 // jal 0x000E7790  ; LVOWE(count-1): LEAVE the last index first (nobody moves down); X7 items owed again
+patch=2,EE,000E75F0,word,2484FFFF // addiu a0, a0, -1
+patch=2,EE,000E75F4,word,24090001 // addiu t1, zero, 1
+patch=2,EE,000E75F8,word,1049FFF6 // beq v0, t1, 0x000E75D4  ; released: next
+patch=2,EE,000E75FC,word,00000000 // nop
+patch=2,EE,000E7600,word,0200202D // x3_call: daddu a0, s0, zero
+patch=2,EE,000E7604,word,0C08E6E0 // jal 0x00239B80  ; the replaced call; players 3-4 re-join later (X11)
+patch=2,EE,000E7608,word,0220282D // daddu a1, s1, zero
+patch=2,EE,000E760C,word,DFBF0000 // ld ra, 0x0(sp)
+patch=2,EE,000E7610,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E7614,word,7BB10020 // lq s1, 0x20(sp)
+patch=2,EE,000E7618,word,03E00008 // jr ra
+patch=2,EE,000E761C,word,27BD0040 // addiu sp, sp, 64
+patch=2,EE,000E7640,word,27BDFFD0 // X7J: addiu sp, sp, -48  ; X7J(GameMgr, human, 1): replaces UpdateJoin's call of the join event FUN_0041B148 (0x0041A5C0)
+patch=2,EE,000E7644,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E7648,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E764C,word,7FB10020 // sq s1, 0x20(sp)
+patch=2,EE,000E7650,word,0C106C52 // jal 0x0041B148  ; the replaced call (guard 0x0041B180: no Lua event for index >= 2)
+patch=2,EE,000E7654,word,00A0802D // daddu s0, a1, zero  ; joining human
+patch=2,EE,000E7658,word,820801B0 // lb t0, 0x1B0(s0)  ; player index
+patch=2,EE,000E765C,word,29080002 // slti t0, t0, 2
+patch=2,EE,000E7660,word,1500002F // bne t0, zero, 0x000E7720  ; players 1-2: Lua SetupLevelInventory / InventoryPlayer2 (WAD 4106 main_150/152)
+patch=2,EE,000E7664,word,8E090380 // lw t1, 0x380(s0)  ; HUD slot = inventory slot (2/3 with [4p hud B1])
+patch=2,EE,000E7668,word,252AFFFE // addiu t2, t1, -2
+patch=2,EE,000E766C,word,2D4A0002 // sltiu t2, t2, 2
+patch=2,EE,000E7670,word,1140002B // beq t2, zero, 0x000E7720
+patch=2,EE,000E7674,word,3C020051 // lui v0, 0x0051
+patch=2,EE,000E7678,word,8C4B489C // lw t3, 0x489C(v0)  ; GameMgr
+patch=2,EE,000E767C,word,3C0D000E // lui t5, 0x000E
+patch=2,EE,000E7680,word,01A96821 // addu t5, t5, t1
+patch=2,EE,000E7684,word,91AE7780 // lbu t6, 0x7780(t5)  ; given byte of this slot: 0 not yet, 1 given in this level load, 2 owed after a forced leave (LVOWE)
+patch=2,EE,000E7688,word,240F0002 // addiu t7, zero, 2
+patch=2,EE,000E768C,word,11CF0005 // beq t6, t7, 0x000E76A4  ; owed: give them again, at any checkpoint
+patch=2,EE,000E7690,word,956C033A // lhu t4, 0x33A(t3)  ; checkpoint
+patch=2,EE,000E7694,word,15C00022 // bne t6, zero, 0x000E7720  ; already given in this level load (SetPlayer2Inventory = nil): no second gift
+patch=2,EE,000E7698,word,2D8C0002 // sltiu t4, t4, 2
+patch=2,EE,000E769C,word,11800020 // beq t4, zero, 0x000E7720  ; like main_150/152: checkpoint 0 or 1 only
+patch=2,EE,000E76A0,word,00000000 // nop
+patch=2,EE,000E76A4,word,240E0001 // x7_give: addiu t6, zero, 1
+patch=2,EE,000E76A8,word,A1AE7780 // sb t6, 0x7780(t5)
+patch=2,EE,000E76AC,word,956F56DC // lhu t7, 0x56DC(t3)  ; level index
+patch=2,EE,000E76B0,word,000FC1C0 // sll t8, t7, 7
+patch=2,EE,000E76B4,word,000FC880 // sll t9, t7, 2
+patch=2,EE,000E76B8,word,03197821 // addu t7, t8, t9
+patch=2,EE,000E76BC,word,01EB7821 // addu t7, t7, t3
+patch=2,EE,000E76C0,word,8DEF14D8 // lw t7, 0x14D8(t7)  ; level number
+patch=2,EE,000E76C4,word,3C11000E // lui s1, 0x000E
+patch=2,EE,000E76C8,word,26317760 // addiu s1, s1, 30560
+patch=2,EE,000E76CC,word,92380000 // x7_tab: lbu t8, 0x0(s1)  ; row: level, Flash, spray, money (0 = end)
+patch=2,EE,000E76D0,word,13000013 // beq t8, zero, 0x000E7720
+patch=2,EE,000E76D4,word,00000000 // nop
+patch=2,EE,000E76D8,word,170FFFFC // bne t8, t7, 0x000E76CC
+patch=2,EE,000E76DC,word,26310004 // addiu s1, s1, 4  ; next row (on a match s1 = row + 4)
+patch=2,EE,000E76E0,word,25300001 // addiu s0, t1, 1  ; player number = slot + 1 (Lua-style wrappers use p - 1)
+patch=2,EE,000E76E4,word,9224FFFD // lbu a0, -0x3(s1)
+patch=2,EE,000E76E8,word,10800003 // beq a0, zero, 0x000E76F8
+patch=2,EE,000E76EC,word,00000000 // nop
+patch=2,EE,000E76F0,word,0C107B6E // jal 0x0041EDB8  ; FUN_0041EDB8 InvGiveRevive(n, p)
+patch=2,EE,000E76F4,word,0200282D // daddu a1, s0, zero
+patch=2,EE,000E76F8,word,9224FFFE // x7_paint: lbu a0, -0x2(s1)
+patch=2,EE,000E76FC,word,10800003 // beq a0, zero, 0x000E770C
+patch=2,EE,000E7700,word,00000000 // nop
+patch=2,EE,000E7704,word,0C107C0C // jal 0x0041F030  ; FUN_0041F030 InvSetSpraycanCharges(n, p)
+patch=2,EE,000E7708,word,0200282D // daddu a1, s0, zero
+patch=2,EE,000E770C,word,9224FFFF // x7_money: lbu a0, -0x1(s1)
+patch=2,EE,000E7710,word,10800003 // beq a0, zero, 0x000E7720
+patch=2,EE,000E7714,word,00000000 // nop
+patch=2,EE,000E7718,word,0C107BAE // jal 0x0041EEB8  ; FUN_0041EEB8 InvSetMoney(n, p)
+patch=2,EE,000E771C,word,0200282D // daddu a1, s0, zero
+patch=2,EE,000E7720,word,DFBF0000 // x7_out: ld ra, 0x0(sp)
+patch=2,EE,000E7724,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E7728,word,7BB10020 // lq s1, 0x20(sp)
+patch=2,EE,000E772C,word,03E00008 // jr ra
+patch=2,EE,000E7730,word,27BD0030 // addiu sp, sp, 48
+patch=2,EE,000E7740,word,3C08000E // X7R: lui t0, 0x000E  ; X7R: replaces ResetLevel's call of FUN_0016C2F0 (0x00160AE0): every level (re)load
+patch=2,EE,000E7744,word,0805B0BC // j 0x0016C2F0  ; the replaced call (tail call, ra = ResetLevel)
+patch=2,EE,000E7748,word,AD007780 // sw zero, 0x7780(t0)  ; players 3-4 may get the starting items again
+patch=0,EE,000E7760,word,0F010057 // X7 row 1: level87 (M3): spray 1, money 15 (bytes level, Flash, spray, money; startup only)
+patch=0,EE,000E7764,word,00020005 // X7 row 2: level5 (M7): spray 2 (bytes level, Flash, spray, money; startup only)
+patch=0,EE,000E7768,word,00060009 // X7 row 3: level9 (M13): spray 6 (bytes level, Flash, spray, money; startup only)
+patch=0,EE,000E776C,word,00010133 // X7 row 4: level51 (M14): Flash 1, spray 1 (bytes level, Flash, spray, money; startup only)
+patch=0,EE,000E7770,word,00000154 // X7 row 5: level84 (M18): Flash 1 (bytes level, Flash, spray, money; startup only)
+patch=0,EE,000E7774,word,00000000 // X7 table end (startup only)
+patch=0,EE,000E7780,word,00000000 // X7 given flags, byte per HUD slot (+2, +3): 0 not yet, 1 given, 2 owed (LVOWE); cleared by X7R at every level load (startup only)
+patch=2,EE,000E7790,word,27BDFFE0 // LVOWE: addiu sp, sp, -32  ; LVOWE(index): LEAVE(index) for a script-forced leave (X1 REL34, X3W); returns LEAVE's v0
+patch=2,EE,000E7794,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E7798,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E779C,word,0080802D // daddu s0, a0, zero  ; index
+patch=2,EE,000E77A0,word,3C020051 // lui v0, 0x0051
+patch=2,EE,000E77A4,word,8C42489C // lw v0, 0x489C(v0)  ; GameMgr
+patch=2,EE,000E77A8,word,00104080 // sll t0, s0, 2
+patch=2,EE,000E77AC,word,01024021 // addu t0, t0, v0
+patch=2,EE,000E77B0,word,0C0E409A // jal 0x00390268  ; his human (GameMgr+0x228+4*index) or 0
+patch=2,EE,000E77B4,word,25040228 // addiu a0, t0, 552
+patch=2,EE,000E77B8,word,10400002 // beq v0, zero, 0x000E77C4
+patch=2,EE,000E77BC,word,2408FFFF // addiu t0, zero, -1  ; no human: no X7 byte
+patch=2,EE,000E77C0,word,8C480380 // lw t0, 0x380(v0)  ; HUD slot = inventory slot, read before the release
+patch=2,EE,000E77C4,word,AFA80008 // lo_leave: sw t0, 0x8(sp)
+patch=2,EE,000E77C8,word,0C039C40 // jal 0x000E7100  ; LEAVE(index): release, cameras, pad owners, layout (session group)
+patch=2,EE,000E77CC,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E77D0,word,24080001 // addiu t0, zero, 1
+patch=2,EE,000E77D4,word,1448000B // bne v0, t0, 0x000E7804  ; not released: nothing owed
+patch=2,EE,000E77D8,word,8FA80008 // lw t0, 0x8(sp)
+patch=2,EE,000E77DC,word,2509FFFE // addiu t1, t0, -2
+patch=2,EE,000E77E0,word,2D290002 // sltiu t1, t1, 2
+patch=2,EE,000E77E4,word,11200007 // beq t1, zero, 0x000E7804  ; HUD slot 2/3 only (X7 bytes 0x000E7782/83)
+patch=2,EE,000E77E8,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E77EC,word,01485021 // addu t2, t2, t0
+patch=2,EE,000E77F0,word,914B7780 // lbu t3, 0x7780(t2)
+patch=2,EE,000E77F4,word,240C0001 // addiu t4, zero, 1
+patch=2,EE,000E77F8,word,156C0002 // bne t3, t4, 0x000E7804  ; he did not get the starting items in this level load: nothing owed
+patch=2,EE,000E77FC,word,240C0002 // addiu t4, zero, 2
+patch=2,EE,000E7800,word,A14C7780 // sb t4, 0x7780(t2)  ; X7(b): 2 = owed, X7J gives them again at his re-join (the release emptied his slot)
+patch=2,EE,000E7804,word,DFBF0000 // lo_out: ld ra, 0x0(sp)
+patch=2,EE,000E7808,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E780C,word,03E00008 // jr ra
+patch=2,EE,000E7810,word,27BD0020 // addiu sp, sp, 32
