@@ -1,0 +1,31 @@
+10:22:31      0.4  warriors-4p co-op launcher, package 56bc5ea4486e, mode join, pnach e78d9b80c8f27955ad062e77bb72d86f4cffe83c8a6a5d3d44ed1b8bcf14ec22
+10:22:31      0.5  connection helper started: w4p-net join <code> --emu-port 47003 --slot-ports 47130 --ice-port 47403 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4f_m13_4p\pc3\logs\20261012_102231_join\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4f_m13_4p\pc3\logs\20261012_102231_join\connection-stats.json --no-stun --bind 127.0.0.1
+10:22:31      0.5  lobby socket on 127.0.0.1:47003
+10:22:31      0.5  @listen 47403
+10:22:31      0.5  reply code issued
+10:22:31      0.6  lobby: slot -1, players 0, helper ready False, peers [], problems [], delay 2
+10:22:32      1.0  @link 0 connected 506.5 1 j
+10:22:32      1.0  message: Connected to the host (506.5 ms).
+10:22:32      1.2  @slot 3
+10:22:32      1.2  message: Connected to the host. You are Player 4.
+10:22:32      1.4  @link 1 connected 0.3 1 i
+10:22:32      1.4  @link 2 connected 0.2 1 i
+10:22:32      1.4  @ready 866.3
+10:22:32      1.5  lobby: slot 3, players 0, helper ready True, peers [], problems [], delay 2
+10:22:33      2.6  lobby: slot 3, players 4, helper ready True, peers [0:up], problems [0=own save same], delay 2
+10:22:34      3.6  lobby: slot 3, players 4, helper ready True, peers [0:up 1:up 2:up], problems [0=own save same], delay 2
+10:22:38      6.9  start received: session c896a12e9467, 4 players, input delay 2, co-op save 'pk4f_m13_4p' new
+10:22:38      6.9  message: The host started the game. Starting...
+10:22:40      8.9  lobby ended: start
+10:22:40      9.0  game starting: slot 3, players 4, delay 2, patch set e78d9b80c8f27955ad062e77bb72d86f4cffe83c8a6a5d3d44ed1b8bcf14ec22|warriors-4p M1;warriors-4p own view;warriors-4p hud;warriors-4p 4p;warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p 4p markers;warriors-4p session;warriors-4p missions;warriors-4p session call;warriors-4p widescreen;warriors-4p test call|new
+10:34:38    727.7  message: The host closed the game.
+10:34:39    727.9  @host_left
+10:34:40    729.1  self-test: closing the game window after 720 s
+10:34:41    729.8  message: Player 2 left.
+10:34:41    729.8  game closed: exit code 0, session started True, shutdown line True, mismatches 0, host gone False, differs False
+10:34:41    729.8  co-op save stored in C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4f_m13_4p\pc3\coop-saves\pk4f_m13_4p (ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33)
+10:34:41    729.8  @left 1
+10:34:41    729.9  message: Player 3 left.
+10:34:41    729.9  @left 2
+10:34:41    730.0  @stats (see connection-stats.json)
+10:34:41    730.0  connection helper stopped (exit code 0)

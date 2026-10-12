@@ -1,0 +1,43 @@
+10:35:35      0.1  warriors-4p co-op launcher, package 56bc5ea4486e, mode host, pnach e78d9b80c8f27955ad062e77bb72d86f4cffe83c8a6a5d3d44ed1b8bcf14ec22
+10:35:35      0.1  host: 4 players, co-op save 'pk4f_m13_60' new, 60 fps True, widescreen True
+10:35:35      0.2  connection helper started: w4p-net host --players 4 --emu-port 47000 --slot-ports 47100 --ice-port 47400 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4f_m13_60\pc0\logs\20261012_103535_host\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4f_m13_60\pc0\logs\20261012_103535_host\connection-stats.json --no-stun --bind 127.0.0.1
+10:35:35      0.2  lobby socket on 127.0.0.1:47000
+10:35:35      0.2  @listen 47400
+10:35:35      0.2  join code issued
+10:35:35      0.3  lobby: slot 0, players 4, helper ready False, peers [], problems [2=waiting 3=waiting 4=waiting], delay 2
+10:35:36      1.0  @path b 1
+10:35:36      1.5  helper: Player 2 joined (path b; connected -214871689.9 ms after the agent started).
+10:35:36      1.5  message: Player 2 joined.
+10:35:36      1.6  @joined 1 b 527.7
+10:35:36      1.6  @link 1 connected 558.6 1 b
+10:35:37      2.0  @path b 2
+10:35:37      2.3  lobby: slot 0, players 4, helper ready False, peers [1:up], problems [2=connecting 3=waiting 4=waiting], delay 2
+10:35:37      2.5  helper: Player 3 joined (path b; connected -214872683.9 ms after the agent started).
+10:35:37      2.5  message: Player 3 joined.
+10:35:37      2.6  @joined 2 b 525.1
+10:35:37      2.6  @link 2 connected 556.5 1 b
+10:35:38      3.0  @path b 3
+10:35:38      3.3  lobby: slot 0, players 4, helper ready False, peers [1:up 2:up], problems [2=connecting 3=connecting 4=waiting], delay 2
+10:35:38      3.6  helper: Player 4 joined (path b; connected -214873701.6 ms after the agent started).
+10:35:38      3.6  message: Player 4 joined.
+10:35:38      3.6  @joined 3 b 529.3
+10:35:38      3.6  @link 3 connected 560.5 1 b
+10:35:39      4.0  @ready 3843.8
+10:35:39      4.0  message: All 4 players are connected. (Press Start in the launcher.)
+10:35:39      4.3  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2=connecting 3=connecting 4=connecting], delay 2
+10:35:42      7.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2= 3=connecting 4=connecting], delay 2
+10:35:43      8.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2= 3= 4=connecting], delay 2
+10:35:44      9.4  ping to player 2: median 5.8 ms, p90 6.0 ms (5 samples); reported by him: 0:47,2:53,3:54
+10:35:44      9.4  ping to player 3: median 5.6 ms, p90 5.7 ms (4 samples); reported by him: 0:50,1:49,3:45
+10:35:44      9.4  ping to player 4: median 5.2 ms, p90 5.2 ms (3 samples); reported by him: 0:40,1:52,2:41
+10:35:44      9.4  start: session 1ebdd245a60e, 4 players, input delay 2, co-op save 'pk4f_m13_60' new, 60 fps True, widescreen True, slowest ping 6.0 ms
+10:35:44      9.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2= 3= 4=], delay 2
+10:35:44      9.4  message: Lobby closed: no new players.
+10:35:44      9.4  start: every player answered
+10:35:44      9.4  lobby ended: start
+10:35:44      9.5  game starting: slot 0, players 4, delay 2, patch set e78d9b80c8f27955ad062e77bb72d86f4cffe83c8a6a5d3d44ed1b8bcf14ec22|warriors-4p M1;warriors-4p own view;warriors-4p hud;warriors-4p 4p;warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p 4p markers;warriors-4p session;warriors-4p missions;warriors-4p session call;warriors-4p 60fps;warriors-4p widescreen;warriors-4p test call|new
+10:47:44    729.6  self-test: closing the game window after 720 s
+10:47:45    730.0  game closed: exit code 0, session started True, shutdown line True, mismatches 0, host gone False, differs False
+10:47:45    730.1  co-op save stored in C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4f_m13_60\pc0\coop-saves\pk4f_m13_60 (ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33)
+10:47:45    730.3  @stats (see connection-stats.json)
+10:47:45    730.3  connection helper stopped (exit code 0)
