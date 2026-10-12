@@ -1,4 +1,4 @@
-# Project state (handoff, updated 2026-10-12 ~21:45)
+# Project state (handoff, updated 2026-10-13 ~00:35)
 
 **Stage:** 2 (approved 2026-10-10; decisions D1-D21 in `docs/DECISIONS.md`).
 **Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5** (session policies + transport):
@@ -10,38 +10,33 @@ auto re-join every 60 polls). Protocol version 3.
 Package: `dist/warriors-4p-coop.zip` id **b94e4b5caed8** (w4p-m6-2, pnach 5666 incl. RARC) passed its self-test
 (F-0207) but is NOT yet given to the user: it will be rebuilt with w4p-m6-3.
 
-## READ FIRST: handoff (2026-10-12 ~21:45, second chat of the day)
-The user cleared the chat at ~16:25 and said "do not stop until everything is finished". Background agents of a
-cleared chat SURVIVE a /clear (same claude.exe process): check `ListAgents` and the newest transcripts under
-`~/.claude/projects/<project>/<session>/subagents/` before assuming work stopped; coordinate with SendMessage.
+## READ FIRST: handoff (2026-10-13 ~00:35) - SINGLE-PC work finished, waiting for the user
+Everything that one PC with bots can do is done and committed. What remains needs the user (LAN PC, friends, human play)
+or his decisions. Read `docs/reports/FINAL_status.md` first, then `docs/reports/USER_TESTS.md`.
 
-### Done in this chat (all committed)
-- a6a4673 **D24** (F-0211..F-0217): players 3-4 play the M18 car escape (Cochise/Vermin, tapping, one icon, fail/retry)
-  and the M8 cart chase (Snow/Ajax tap-run); TAPOFF; RAILTGT; beach rails for views 3-4; LUACH table at 0x000EEE00.
-- 5c9d0b5 **M7** (F-0218..F-0222): long1 65 min 0 mismatches; T1g outages through the helper (new w4p-net test switch
-  `mute`); real mission end -> hideout; bandwidth ~1 Mbit/s per PC at 60 fps; cause of player 3's Select ring.
-  `docs/reports/M7_report.md` (criterion 4 waits for smoke4).
-- c78aa8e **Camera + HUD parity** (F-0223..F-0229): **LUIFIX** (6 missed delay-slot `lui`s in the [4p] camera
-  relocation since M2: camera changes during a blend / with a name callback were lost for every player, stray write to
-  0x005E0800+); LUACH rows 12-25 (M16, M6, M9, M17, M8 cp3/cp5, M1, M3, M10, M11, M5, M13); BOSSTGT, CFGFOLLOW; HUD
-  MARK34/SEL34/ARC34/ZOOM34/DECAL34. mod/w4p_m1.pnach 11733 addresses, 6 known problems.
-  Agent notes: docs/research/m6_cam_camA..D.md, m6_hud_parity.md, m6_chase4p.md. `docs/reports/USER_TESTS.md`.
-- **Package e64016ce3a7b** built 21:40 (dist/warriors-4p-coop.zip, SHA-256 a5d4b2eb...c9d; fork b81b4cc w4p-m6-3,
-  pnach 11733) - self-test NOT yet run; do not give it to the user before it passes.
+### State
+- Stage 2; milestones: M2 done (tag m2-mission13), M5 SINGLE-PC done (LAN/internet need the user), M6 SINGLE-PC done
+  (criterion 4 = human play-throughs open; all missions IN PROGRESS), **M7 SINGLE-PC done (tag m7-singlepc)**, M8:
+  package, instructions, legal review (`docs/reports/M8_legal_review.md`), protocol spec (`docs/PROTOCOL.md`), final
+  status report done; final per-mission statuses wait for the user's tests.
+- Findings up to **F-0233**. Fork w4p-m6-3 (b81b4cc, patches 0001-0020). mod/w4p_m1.pnach 11733 addresses (6 known
+  problems = [4p hud A]/[4p hud B1] alternatives).
+- **Package for the user: `dist/warriors-4p-coop.zip` id 26748ee9ec13** (SHA-256 9cc3ac7f...899e85c8c, self-tests F-0230
+  60 fps and F-0233 30 fps, 0 mismatches). Complete source zip `dist/warriors-4p-coop-source.zip` (legal L1 option A).
+  Superseded, do not send: b94e4b5caed8, e64016ce3a7b, the old 2-player dist/warriors-4p-test.zip (E6).
+- This chat's commits: a6a4673 (D24), 5c9d0b5 (M7 tests), c78aa8e (camera/HUD parity + LUIFIX), cb7d54d (smoke4,
+  reports), 9af4231 (chapter runs) and docs/tools commits in between.
 
-### Running at ~21:45
-- **smoke4**: all 18 missions, 4 instances, policies, 900 s each, three groups: missions 1-6 inst 6-9, 7-12 inst 15-18,
-  13-18 inst 27-30 (`local/m6/smoke4_[abc]_console.txt`, `evidence/M6/smoke4_mNN.json`; the three groups overwrite
-  smoke4_summary.json - rebuild it from the per-mission files).
+### Waiting on the user (asked in the final message of 2026-10-13)
+1. Legal L1 (give friends the source zip too, recommended A), L2 (ship the patch without comments: `make_package4.py
+   --strip-comments`, recommended A, needs a rebuild + short self-test), L8 (private sharing only, recommended A).
+2. Dates for the LAN test and the internet sessions; then the play-throughs (USER_TESTS.md tests A-D).
+3. Older open items: Q1 (E6 2-player package: recommended skip), the cut-off message "and the person got...", optional
+   54 deg single-player zoom.
 
-### Next steps
-1. After smoke4: chapter runs `sh tests/m6/chapter_runs.sh ch 6 16:1 16:3 17:2 8:3 8:5 1:3 18:1` and
-   `sh tests/m6/chapter_runs.sh ch 15 3:5 10:5 11:6 6:4 9:4` (4 instances started at the parity chapters); watch for
-   TLB pc 0x00356E08 (F-0226 open item).
-2. Package self-test `python -I tests/m5/package4_selftest.py pk4h_m13_60 --preset m13_60 --players 4` (check its
-   options first), then give the user the id and the USER_TESTS.md sheet; b94e4b5caed8 is superseded.
-3. Reports: M7 criterion 4 + M6 report (docs/reports/M6_report.md), MISSIONS.md status table, final report (M8) with
-   legal review of the package contents; then the user's tests (LAN, internet, human play-through).
+### If the user sends logs or reports
+Logs land in `logs\<date>_<time>_<role>\` of each PC's package folder: w4p.log (hashes, DESYNC lines, waits),
+connection-log.txt / connection-stats.json (helper), lobby log. Compare with PROTOCOL.md sections 5-6.
 
 ### (first chat's handoff, kept for reference)
 The user cleared the chat. Everything needed to continue is in this file, `docs/FINDINGS.md` (up to F-0210),

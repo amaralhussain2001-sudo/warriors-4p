@@ -66,3 +66,10 @@ in PCSX2's bundled `resources/RedumpDatabase.yaml` (line 67412). Finding F-0001.
 
 ## 2-PC test package
 Built by `tools/make_package.py`; `dist/warriors-4p-test/MANIFEST.txt` lists the SHA-256 of every file (not committed).
+
+## Package 26748ee9ec13 (2026-10-13, F-0233)
+| File | SHA-256 |
+|---|---|
+| dist/warriors-4p-coop.zip (id 26748ee9ec13) | 9cc3ac7f3c249289384918bcf13bcd78957dd6f945a3525e651c830899e85c8c |
+| dist/warriors-4p-coop-source.zip (fork b81b4cc + w4p-net + mod sources) | 7580dc44f638a9ab393a9603a30e60711ad0ce8184765a135f3025fa0b26a1a4 |
+| emulator pcsx2-qtx64.exe (w4p-m6-3) | 3a4a6ee1619162f6fc0963263e09e88f3e5176d9939aa59d6b3bb064ad53b0e0 |

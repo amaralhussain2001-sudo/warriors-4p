@@ -3,10 +3,10 @@
 This is the final status of everything that can be done on this one PC. The brief's final mission statuses (BRIEF 8.4)
 need tests on separate PCs with people (your LAN test and the internet sessions with friends), so every mission is still
 **IN PROGRESS** here; after your tests each mission gets exactly one of the six final statuses. Evidence: findings
-F-0001..F-0232 (`docs/FINDINGS.md`), reports in `docs/reports/`, research notes in `docs/research/`.
+F-0001..F-0233 (`docs/FINDINGS.md`), reports in `docs/reports/`, research notes in `docs/research/`.
 
 ## Plain-English summary
-- **What you get:** a package (`dist/warriors-4p-coop.zip`) that lets 2-4 friends, each on his own PC with his own copy of
+- **What you get:** a package (`dist/warriors-4p-coop.zip`, id 26748ee9ec13, SHA-256 9cc3ac7f...899e85c8c) that lets 2-4 friends, each on his own PC with his own copy of
   The Warriors and his own PS2 BIOS, play the story together online: each PC shows its own player's view and HUD, and
   the four games stay in step through a lockstep connection (no game data is streamed, every PC runs the real game).
 - **Tested on this PC (bots, no humans):** all 18 story missions start and run with 4 players without desync or crash
@@ -30,7 +30,7 @@ F-0001..F-0232 (`docs/FINDINGS.md`), reports in `docs/reports/`, research notes 
 | Checkpoint restarts with 4 players (6 missions + both chases); real mission end -> hideout | F-0204, F-0212, F-0216, F-0218 |
 | 65-minute session, network outages through the helper, impairment series | F-0220, F-0219, F-0206 |
 | Regression: single-player, original local 2-player (with the package), optional content | F-0193 |
-| Package self-test (4 launchers, 60 fps, co-op save copy-back) | F-0230 |
+| Package self-tests (4 launchers, 60 fps and 30 fps, co-op save copy-back); final package **26748ee9ec13** | F-0230, F-0233 |
 | Originals unchanged (ISO, BIOS sets, original PCSX2) | `evidence/hashes/inputs_2026-10-12_m7.json`, 20/20 |
 
 ## Partial / incomplete
