@@ -1,0 +1,139 @@
+{
+ "tag": "esc2",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, real Esc key presses on player 2's window",
+ "mission": 13,
+ "esc_posted": [
+  {
+   "t": 291,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 321,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 351,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 381,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 411,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 441,
+   "rc": 0,
+   "out": ""
+  }
+ ],
+ "hash_points": 443,
+ "mismatches": 0,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "events": {
+  "0": [
+   "[202601633.393] skip vote by player 1 at poll 3650",
+   "[202749998.041] skip vote by player 2 at poll 7709",
+   "[202801107.789] skip vote by player 4 at poll 9050",
+   "[202801305.702] skip vote by player 1 at poll 9055",
+   "[202801371.483] skip vote by player 2 at poll 9057",
+   "[202811446.127] skip vote by player 3 at poll 9359",
+   "[202814686.157] auto join for player 3 (pad 1) scheduled at poll 9451",
+   "[202814686.193] auto join for player 4 (pad 2) scheduled at poll 9454",
+   "[202824693.605] auto join for player 3 (pad 1) scheduled at poll 9751",
+   "[202824693.636] auto join for player 4 (pad 2) scheduled at poll 9754",
+   "[202834743.387] auto join for player 4 (pad 2) scheduled at poll 10051",
+   "[202839883.746] pause requested by player 2 at poll 10204",
+   "[202840172.733] game paused at poll 10205",
+   "[202851133.866] game resumed at poll 10527",
+   "[202870002.222] pause requested by player 2 at poll 11093",
+   "[202870285.892] game paused at poll 11094",
+   "[202875507.901] game resumed at poll 11244",
+   "[202900141.843] pause requested by player 2 at poll 11982",
+   "[202900449.345] game paused at poll 11983",
+   "[202920419.358] game resumed at poll 12575"
+  ],
+  "1": [
+   "[202601637.042] skip vote by player 1 at poll 3650",
+   "[202750001.760] skip vote by player 2 at poll 7709",
+   "[202801110.844] skip vote by player 4 at poll 9050",
+   "[202801308.509] skip vote by player 1 at poll 9055",
+   "[202801374.795] skip vote by player 2 at poll 9057",
+   "[202811449.735] skip vote by player 3 at poll 9359",
+   "[202814689.679] auto join for player 3 (pad 1) scheduled at poll 9451",
+   "[202814689.710] auto join for player 4 (pad 2) scheduled at poll 9454",
+   "[202824697.440] auto join for player 3 (pad 1) scheduled at poll 9751",
+   "[202824697.469] auto join for player 4 (pad 2) scheduled at poll 9754",
+   "[202834746.960] auto join for player 4 (pad 2) scheduled at poll 10051",
+   "[202839887.586] pause requested by player 2 at poll 10204",
+   "[202840176.391] game paused at poll 10205",
+   "[202851137.561] game resumed at poll 10527",
+   "[202870005.938] pause requested by player 2 at poll 11093",
+   "[202870289.566] game paused at poll 11094",
+   "[202875511.672] game resumed at poll 11244",
+   "[202900145.450] pause requested by player 2 at poll 11982",
+   "[202900452.949] game paused at poll 11983",
+   "[202920423.040] game resumed at poll 12575"
+  ],
+  "2": [
+   "[202601655.586] skip vote by player 1 at poll 3650",
+   "[202750020.270] skip vote by player 2 at poll 7709",
+   "[202801129.827] skip vote by player 4 at poll 9050",
+   "[202801326.557] skip vote by player 1 at poll 9055",
+   "[202801393.140] skip vote by player 2 at poll 9057",
+   "[202811468.027] skip vote by player 3 at poll 9359",
+   "[202813776.356] sit-out screen starts at poll 9422",
+   "[202814708.529] auto join for player 3 (pad 1) scheduled at poll 9451",
+   "[202814708.561] auto join for player 4 (pad 2) scheduled at poll 9454",
+   "[202824716.023] auto join for player 3 (pad 1) scheduled at poll 9751",
+   "[202824716.099] auto join for player 4 (pad 2) scheduled at poll 9754",
+   "[202824786.095] sit-out screen ends at poll 9752",
+   "[202834765.426] auto join for player 4 (pad 2) scheduled at poll 10051",
+   "[202839908.951] pause requested by player 2 at poll 10204",
+   "[202840194.784] game paused at poll 10205",
+   "[202851156.049] game resumed at poll 10527",
+   "[202870024.385] pause requested by player 2 at poll 11093",
+   "[202870307.994] game paused at poll 11094",
+   "[202875530.073] game resumed at poll 11244",
+   "[202900163.759] pause requested by player 2 at poll 11982",
+   "[202900471.355] game paused at poll 11983",
+   "[202920441.499] game resumed at poll 12575"
+  ],
+  "3": [
+   "[202601653.519] skip vote by player 1 at poll 3650",
+   "[202750018.137] skip vote by player 2 at poll 7709",
+   "[202801127.964] skip vote by player 4 at poll 9050",
+   "[202801324.751] skip vote by player 1 at poll 9055",
+   "[202801391.279] skip vote by player 2 at poll 9057",
+   "[202811466.431] skip vote by player 3 at poll 9359",
+   "[202813774.157] sit-out screen starts at poll 9422",
+   "[202814706.387] auto join for player 3 (pad 1) scheduled at poll 9451",
+   "[202814706.420] auto join for player 4 (pad 2) scheduled at poll 9454",
+   "[202824713.948] auto join for player 3 (pad 1) scheduled at poll 9751",
+   "[202824713.981] auto join for player 4 (pad 2) scheduled at poll 9754",
+   "[202834763.269] auto join for player 4 (pad 2) scheduled at poll 10051",
+   "[202834837.361] sit-out screen ends at poll 10052",
+   "[202839904.286] pause requested by player 2 at poll 10204",
+   "[202840192.877] game paused at poll 10205",
+   "[202851154.066] game resumed at poll 10527",
+   "[202870022.349] pause requested by player 2 at poll 11093",
+   "[202870305.989] game paused at poll 11094",
+   "[202875528.016] game resumed at poll 11244",
+   "[202900161.686] pause requested by player 2 at poll 11982",
+   "[202900469.431] game paused at poll 11983",
+   "[202920439.478] game resumed at poll 12575"
+  ]
+ }
+}

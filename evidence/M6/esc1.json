@@ -1,0 +1,70 @@
+{
+ "tag": "esc1",
+ "environment": "SINGLE-PC, 4 instances, loopback, bots, real Esc key presses on player 2's window",
+ "mission": 2,
+ "esc_posted": [
+  {
+   "t": 221,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 251,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 281,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 311,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 341,
+   "rc": 0,
+   "out": ""
+  },
+  {
+   "t": 371,
+   "rc": 0,
+   "out": ""
+  }
+ ],
+ "hash_points": 445,
+ "mismatches": 0,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "events": {
+  "0": [
+   "[202083210.319] skip vote by player 1 at poll 3650",
+   "[202160987.835] skip vote by player 2 at poll 5977",
+   "[202194187.481] skip vote by player 2 at poll 6583"
+  ],
+  "1": [
+   "[202083223.049] skip vote by player 1 at poll 3650",
+   "[202161000.583] skip vote by player 2 at poll 5977",
+   "[202194200.118] skip vote by player 2 at poll 6583",
+   "[202247686.844] sit-out screen starts at poll 8023"
+  ],
+  "2": [
+   "[202083238.550] skip vote by player 1 at poll 3650",
+   "[202161016.155] skip vote by player 2 at poll 5977",
+   "[202194215.661] skip vote by player 2 at poll 6583",
+   "[202247702.385] sit-out screen starts at poll 8023"
+  ],
+  "3": [
+   "[202083215.954] skip vote by player 1 at poll 3650",
+   "[202160993.490] skip vote by player 2 at poll 5977",
+   "[202194193.038] skip vote by player 2 at poll 6583",
+   "[202247679.865] sit-out screen starts at poll 8023"
+  ]
+ }
+}

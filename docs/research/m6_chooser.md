@@ -20,6 +20,13 @@ HYPOTHESIS; (3) M17's crash at the third join (finding 4) was fixed by the coord
 Follow-up runs use `local/m6/ch2.pnach` (KICK) and `local/m6/ch3.pnach` (KICK off + PINSVC), both generated from
 the committed sources (HEAD 336c6a4/c287aac) with only `spawn.txt` replaced.
 
+**Follow-up 2 (F-0195, players 3-4 standing on the same spot):** SPAWN put every added Warrior at player 1's position
++ 1.5 units in x, so two Warriors spawned close together overlapped exactly. Now SPAWN creates him 4 units beside player 1
+and a new routine PLACE moves him with the game's own HuTeleportNearHuman core to a free spot 3.6 units from player 1
+(fallback: player 1 +/- 1.5 units, per player index). VERIFIED in M13 and M12 (section 2.7, runs chs_pl13/chs_pl12).
+A taken-over companion keeps his own position (MakePlayer has no teleport). Test pnach `local/m6/ch4.pnach` (HEAD
+2124ac8 + this `spawn.txt`): **4257 addresses, 6 problems** (the known 6).
+
 ## Summary
 | # | Problem | Change | Where | Result |
 |---|---|---|---|---|
@@ -50,6 +57,9 @@ re-assembled: 0 mismatches (section 3).
 | 0x000E2300-0x000E2310 | `[4p spawn]` (patch=0) | follow-up 2.6: KICK_MS (0 = off), KICK_T, N_KICK, SVC_T, N_FIX |
 | 0x000E2320-0x000E2438 | `[4p spawn]` | follow-up 2.6: PINSVC 0x000E2320, PINFIX 0x000E2374 |
 | 0x0023D6BC | `[4p spawn]` | follow-up 2.6: the human update's model request call -> `jal 0x000E2320` PINSVC (was 0C06290C `jal 0x0018A430`) |
+| 0x000E10CC | `[4p spawn]` | follow-up 2.7: SPAWN's x offset `lui at, 0x4080` (4.0 units; pnach had 3C013FC0 = 1.5) |
+| 0x000E2314-0x000E2318 | `[4p spawn]` (patch=0) | follow-up 2.7: N_PLACE, N_PLACE_FB |
+| 0x000E2440-0x000E257C | `[4p spawn]` | follow-up 2.7: PLACE 0x000E2440, PLPOS 0x000E2560; JS calls PLACE after a successful spawn (JS still at 0x000E2108, KICK now 0x000E219C) |
 | 0x000E103C | `[4p spawn]` | SPAWNPICK's spawn call -> `jal 0x000E2108` JS (pnach had `jal 0x000E1A9C`; first version `jal 0x000E20E8`) |
 | 0x001898C8 | `[4p spawn]` | streamer pin fit test -> `jal 0x000E1770` FITCHK (was 0C05DD76 `jal 0x001775D8`; pnach had `jal 0x000E1758`) |
 | 0x00188AEC, 0x00189734 | `[4p spawn]` | unchanged (`jal 0x000E1600` CLRPIN) |
@@ -212,13 +222,48 @@ streamer, Lua deletes, ResetLevel). The new words (0x000E1C3C-0x000E1C5F, 0x000E
 - **Release paths unchanged:** RELEASE's `FUN_0018AD40(dict, id, 1)` drops the instance PINFIX built (it clears every
   entry with that model index and releases its instance, m2_extra_model.md 1.2).
 
+### 2.7 Each added Warrior on his own spot (follow-up 2, F-0195)
+- **Where the position came from (VERIFIED code):** SPAWN (0x000E1080, `[4p spawn]`) reads player 1's position
+  (human+0x10/+0x14/+0x18) and adds 1.5 units in x (`lui at, 0x3FC0` at 0x000E10CC, `add.s` 0x000E10D4) before the human
+  create core `FUN_00233D60`; nothing moves him afterwards. Two Warriors spawned within a few seconds (players 3 and 4) got
+  the same point: F-0195's 74.87 = 73.37 (player 1's x in M13) + 1.5.
+- **Companion take-over (VERIFIED static):** MakePlayer `FUN_00229C40` calls no teleport (no `FUN_0023B138`, no vtable
+  +0x6C position set in its call list); the joining player keeps the companion's own position. For players 3-4 the Lua
+  join event is suppressed (`joinevent.txt`, index >= 2), so the levels' player-2 callbacks (which call
+  `HuTeleportNearHuman(player2, player)`) do not move them either.
+- **Placement helper (VERIFIED static, decompile `FUN_0023B138`, binding `HuTeleportNearHuman` 0x0035B480, arguments (mover,
+  target)):** only if the mover is at least 3.6 units (squared 12.96) from the target, it tries 32 directions (step
+  0.196 rad, start index from the game clock word timer+0x48) at 3.6 units around the target, shortens each by a ray test
+  against the level (`FUN_0024F718`), rejects spots too close to walls or to other humans (`FUN_002274A8` neighbours), adjusts
+  to the ground (`FUN_0040DB88`) and sets the position through the human's vtable (+0xAC / +0x6C, as the Lua `Teleport`
+  core `FUN_00385BB8`). No free spot: no move.
+- **Change:** SPAWN creates the Warrior 4.0 units beside player 1 (0x000E10CC `lui at, 0x4080`) so the helper's distance
+  test passes; JS calls **PLACE(count)** right after a successful SPAWN: `FUN_0023B138(new handle, player 1's handle)`; if
+  neither copy of his x (human+0x10 and the position table 0x00714B00 + 0x20 * human+0x92, which the helper itself reads)
+  changed, the Lua Teleport core puts him at player 1's position + 1.5 (3rd player) or - 1.5 (4th player) units in x (the
+  old offset, now per index). Counters N_PLACE 0x000E2314, N_PLACE_FB 0x000E2318. The 4.0-unit creation point is used only
+  between creation and PLACE inside the same join call (no game update in between).
+- **Lockstep:** game RAM only, inside UpdateJoin on a synchronised Start; the helper's start direction comes from the game
+  clock (HYPOTHESIS deterministic as the rest).
+- **Select ring of player 3 (F-0194 open item, described only):** the marker loop `FUN_0024B780` reads one byte per
+  player index from `0x00622E10` (`(&DAT_00622e10)[index]`, 0x0024BA24 `addiu t0, t0, 0x2E10`; the only access to that
+  address in the ELF by an address scan); for index 2 it reads 0x00622E12, which belongs to the next field, so player 3
+  takes the "always marked" branch (sets his per-player time and calls `FUN_001B28A0(HUD, index, 0)`). The same loop also
+  indexes 2-entry stack arrays (`uStack_110`/`uStack_108`, 12-byte stride) by view. A fix needs a 4-entry copy of the byte
+  array (redirect the read at 0x0024BA24, and find who writes 0x00622E10/11 - no direct writer found by the address scan,
+  so it is written through a base pointer, HYPOTHESIS the HUD manager 0x00600840 + 0x225D0) and a check of the stack arrays.
+  Not trivial; not changed. Observation (not a claim): in chs_pl12 `t0359_p9364.png` rings are drawn under all four
+  players while the random bots press Select.
+
 ## 3. Checks
 - **Assembly round trip.** All new and rewritten code was written as assembly source and assembled with a scratch R5900
   assembler; an independent field decoder disassembled every word and the disassembly was re-assembled to the same word.
   The decoder/encoder pair was first checked on the game ELF: 720,238 decodable words in 0x00100000-0x003FFFFF re-encode
   to themselves (0 mismatches), and on the existing W4P sources (`missions.txt` 179, `spawn_leave.txt` 29, `session.txt`
   142 cave words: 0 mismatches; in `spawn.txt` only the FPU word `add.s` of SPAWN and the candidate data words are outside
-  the subset). Follow-up: the same independent pass over the follow-up `spawn.txt`/`missions.txt` gives **863 code words, 0
+  the subset). Follow-up 2: **945 code words, 0 mismatches** (adds PLACE/PLPOS 0x000E2440-0x000E257C and 0x000E10CC;
+  the scratch assembler/decoder gained `add.s`/`sub.s`: 724,671 ELF words round-trip, 0 mismatches). Follow-up: the same
+  independent pass over the follow-up `spawn.txt`/`missions.txt` gives **863 code words, 0
   mismatches** (adds 0x000E2300-0x000E25FF and the hook 0x0023D6BC `jal 0x000E2320`, whose `was 0C06290C` matches the
   ELF; `missions.txt` read from the committed version, range 0x000E7790-0x000E7813, because another agent now adds code
   from 0x000E7820 in the working copy). First version: independent pass over the final sources: **742 code words** in 0x000E1400-0x000E157F, 0x000E1600-0x000E1BFF,
@@ -233,7 +278,9 @@ streamer, Lua deletes, ResetLevel). The new words (0x000E1C3C-0x000E1C5F, 0x000E
   exact source words were run on a small R5900 interpreter with a mock GameMgr, model dictionary, pin list, char table,
   object table and timer (stubs: handle resolve, HUD index, residency, the pin core with "last free slot", streamer calling
   FITCHK, fit test, SPAWN = CHOOSE + a marker-7 human, DESPAWN, LEAVE, X2SEL, inventory cores); callee-saved registers and
-  sp were checked after every call. Follow-up: **71 checks, 0 failures** (`ch_simtest.py` 70, `ch_simtest2.py` 1; adds XCHK
+  sp were checked after every call. Follow-up 2: **75 checks, 0 failures** (adds PLACE: moved by the helper (human copy or
+  table copy changed) -> no fallback; not moved -> Teleport core to player 1 x + 1.5 (count 2) / - 1.5 (count 3); the
+  interpreter gained lwc1/swc1/mtc1/add.s/sub.s). Follow-up: **71 checks, 0 failures** (`ch_simtest.py` 70, `ch_simtest2.py` 1; adds XCHK
   for the Ajax rows, KICK: no re-pin before 8 s, re-pin at 8.5 s keeping the first T0, no second re-pin within 8 s, timeout
   still 20 s after the first pin, join after a re-pin made the model resident; PINSVC: once per clock value, no instance
   while not resident, instance built with the streamer's call on the next frame once resident, then nothing more, no pin
@@ -265,6 +312,16 @@ CONFLICT 0041DC44: ch3.pnach:1841 sets 2CA20002, ch3.pnach:2815 sets 2CA20004
 CONFLICT 0041DC50: ch3.pnach:1843 sets 3C030060, ch3.pnach:2817 sets 3C03000E
 checked 3476 addresses in 1 files: 6 problems
 ```
+  Follow-up 2 `local/m6/ch4.pnach` (HEAD 2124ac8 + this `spawn.txt`):
+```
+CONFLICT 001C0648: ch4.pnach:1917 sets 0803C374, ch4.pnach:2597 sets 0803815C
+CONFLICT 001C7890: ch4.pnach:1919 sets 0803C384, ch4.pnach:2599 sets 08038164
+CONFLICT 001A6D28: ch4.pnach:1921 sets 0803C394, ch4.pnach:2601 sets 0803816C
+CONFLICT 001A6C38: ch4.pnach:1923 sets 0803C3A4, ch4.pnach:2603 sets 08038174
+CONFLICT 0041DC44: ch4.pnach:1925 sets 2CA20002, ch4.pnach:2899 sets 2CA20004
+CONFLICT 0041DC50: ch4.pnach:1927 sets 3C030060, ch4.pnach:2901 sets 3C03000E
+checked 4257 addresses in 1 files: 6 problems
+```
   and `python -I tools/note_patches.py check mod/m2/missions.txt mod/m2/spawn.txt mod/m2/spawn_leave.txt mod/m2/inventory.txt
   mod/m2/session.txt`: `checked 1356 addresses in 5 files: 0 problems`. The checker's cave test covers only
   0x000F0000-0x000F0FFF; the new ranges were checked separately (no ELF segment below 0x00100000; grep as in section 1).
@@ -273,10 +330,11 @@ checked 3476 addresses in 1 files: 6 problems
   scratch directory.
 
 ## 4. Patch fragments (as in the sources)
-### `mod/m2/spawn.txt` (`[warriors-4p 4p spawn]`): changed lines (JS hook, CHOOSE, FITCHK hook, PINSVC hook, pin block, data, XC table, helpers, KICK, pin service)
+### `mod/m2/spawn.txt` (`[warriors-4p 4p spawn]`): changed lines (JS hook, CHOOSE, FITCHK hook, SPAWN x offset, PINSVC hook, pin block, data, XC table, helpers, KICK, pin service, PLACE)
 Unchanged lines between them (SPAWN, DESPAWN, candidate table 0x000E1580, statuses, game hooks 0x00188AEC/0x00189734, X2) are not repeated; the status comments now list 6.
 ```
 patch=2,EE,000E103C,word,0C038842 // [warriors-4p 4p spawn]: jal 0x000E2108 JS (pnach had 0C038420 jal 0x000E1080 SPAWN); delay slot kept
+patch=2,EE,000E10CC,word,3C014080 // lui at,0x4080  ; F-0195: SPAWN creates the Warrior 4 units beside player 1 (pnach had 3C013FC0 = 1.5 units), so PLACE can move him with HuTeleportNearHuman (needs >= 3.6 units)
 // named-Warrior chooser CHOOSE (m2_spawn_name.md section 5.3, m6_chooser.md): first allowed, resident, absent Warrior; else player 1's char. Allowed = not excluded by the XC table (0x000E1E10, XCHK) for this level and checkpoint
 patch=2,EE,000E1400,word,27BDFFA0 // CHOOSE: addiu sp, sp, -96  ; CHOOSE: in s0 = player 1 human; out s1 = char id; reloads f0
 patch=2,EE,000E1404,word,FFBF0000 // sd ra, 0x0(sp)
@@ -918,7 +976,7 @@ patch=2,EE,000E20B4,word,24090004 // addiu t1, zero, 4  ; code 4: go after timeo
 patch=2,EE,000E20B8,word,AD491C14 // sw t1, 0x1C14(t2)
 patch=2,EE,000E20BC,word,1000000F // beq zero, zero, 0x000E20FC
 patch=2,EE,000E20C0,word,24020001 // addiu v0, zero, 1
-patch=2,EE,000E20C4,word,0C038865 // gt_refuse: jal 0x000E2194  ; still loading: re-pin it if it is older than KICK_MS (M12 first-pin stall, m6_chooser.md 2.6)
+patch=2,EE,000E20C4,word,0C038867 // gt_refuse: jal 0x000E219C  ; still loading: re-pin it if it is older than KICK_MS (M12 first-pin stall, m6_chooser.md 2.6)
 patch=2,EE,000E20C8,word,00000000 // nop
 patch=2,EE,000E20CC,word,3C0A000E // lui t2, 0x000E
 patch=2,EE,000E20D0,word,10400004 // beq v0, zero, 0x000E20E4
@@ -948,69 +1006,71 @@ patch=2,EE,000E212C,word,10400005 // beq v0, zero, 0x000E2144
 patch=2,EE,000E2130,word,00000000 // nop
 patch=2,EE,000E2134,word,0C03880A // js_gate: jal 0x000E2028
 patch=2,EE,000E2138,word,00000000 // nop
-patch=2,EE,000E213C,word,10400010 // beq v0, zero, 0x000E2180  ; refuse this press: v0 = 0 = nobody to join
+patch=2,EE,000E213C,word,10400012 // beq v0, zero, 0x000E2188  ; refuse this press: v0 = 0 = nobody to join
 patch=2,EE,000E2140,word,0000802D // daddu s0, zero, zero
 patch=2,EE,000E2144,word,8FA40020 // js_spawn: lw a0, 0x20(sp)
 patch=2,EE,000E2148,word,0C038420 // jal 0x000E1080  ; SPAWN(-1, 7) as before (CHOOSE inside)
 patch=2,EE,000E214C,word,8FA50024 // lw a1, 0x24(sp)
-patch=2,EE,000E2150,word,10400003 // beq v0, zero, 0x000E2160  ; spawn failed: keep the pins for the next press
+patch=2,EE,000E2150,word,10400005 // beq v0, zero, 0x000E2168  ; spawn failed: keep the pins for the next press
 patch=2,EE,000E2154,word,0040802D // daddu s0, v0, zero
-patch=2,EE,000E2158,word,0C0387D3 // jal 0x000E1F4C  ; release pins no W4P-added player uses (other Warrior chosen, or clone after a timeout)
-patch=2,EE,000E215C,word,00000000 // nop
-patch=2,EE,000E2160,word,24020002 // js_pre: addiu v0, zero, 2
-patch=2,EE,000E2164,word,16620006 // bne s3, v0, 0x000E2180
-patch=2,EE,000E2168,word,3C0A000E // lui t2, 0x000E
-patch=2,EE,000E216C,word,8D421C44 // lw v0, 0x1C44(t2)  ; PRELOAD_AT3
-patch=2,EE,000E2170,word,10400003 // beq v0, zero, 0x000E2180
-patch=2,EE,000E2174,word,00000000 // nop
-patch=2,EE,000E2178,word,0C038601 // jal 0x000E1804  ; 3rd player spawned: start the 4th player's Warrior now (second slot)
+patch=2,EE,000E2158,word,0C038910 // jal 0x000E2440  ; F-0195: his own free spot next to player 1
+patch=2,EE,000E215C,word,0260202D // daddu a0, s3, zero
+patch=2,EE,000E2160,word,0C0387D3 // jal 0x000E1F4C  ; release pins no W4P-added player uses (other Warrior chosen, or clone after a timeout)
+patch=2,EE,000E2164,word,00000000 // nop
+patch=2,EE,000E2168,word,24020002 // js_pre: addiu v0, zero, 2
+patch=2,EE,000E216C,word,16620006 // bne s3, v0, 0x000E2188
+patch=2,EE,000E2170,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2174,word,8D421C44 // lw v0, 0x1C44(t2)  ; PRELOAD_AT3
+patch=2,EE,000E2178,word,10400003 // beq v0, zero, 0x000E2188
 patch=2,EE,000E217C,word,00000000 // nop
-patch=2,EE,000E2180,word,0200102D // js_out: daddu v0, s0, zero
-patch=2,EE,000E2184,word,DFBF0000 // ld ra, 0x0(sp)
-patch=2,EE,000E2188,word,7BB00010 // lq s0, 0x10(sp)
-patch=2,EE,000E218C,word,03E00008 // jr ra
-patch=2,EE,000E2190,word,27BD0030 // addiu sp, sp, 48
-patch=2,EE,000E2194,word,27BDFFE0 // KICK: addiu sp, sp, -32  ; KICK(): refused press, pin EN_SLOT still loading: if KICK_MS != 0, the pin is at least KICK_MS old and the last re-pin at least KICK_MS ago, release and pin again (ENSURE) keeping the first T0; v0 = ENSURE's result (1/2 = go), 0 = refuse
-patch=2,EE,000E2198,word,FFBF0000 // sd ra, 0x0(sp)
-patch=2,EE,000E219C,word,7FB00010 // sq s0, 0x10(sp)
-patch=2,EE,000E21A0,word,3C0A000E // lui t2, 0x000E
-patch=2,EE,000E21A4,word,8D482300 // lw t0, 0x2300(t2)  ; KICK_MS (config, 0 = off)
-patch=2,EE,000E21A8,word,1100001E // beq t0, zero, 0x000E2224
-patch=2,EE,000E21AC,word,3C010051 // lui at, 0x0051
-patch=2,EE,000E21B0,word,8C23B734 // lw v1, -0x48CC(at)  ; timer object *(0x0050B734)
-patch=2,EE,000E21B4,word,1060001B // beq v1, zero, 0x000E2224
-patch=2,EE,000E21B8,word,00000000 // nop
-patch=2,EE,000E21BC,word,8C630038 // lw v1, 0x38(v1)  ; game clock (ms)
-patch=2,EE,000E21C0,word,8D492304 // lw t1, 0x2304(t2)  ; KICK_T: clock of the last re-pin
-patch=2,EE,000E21C4,word,00694823 // subu t1, v1, t1
-patch=2,EE,000E21C8,word,0128482B // sltu t1, t1, t0
-patch=2,EE,000E21CC,word,15200015 // bne t1, zero, 0x000E2224  ; re-pinned less than KICK_MS ago
-patch=2,EE,000E21D0,word,8D491C18 // lw t1, 0x1C18(t2)  ; GT_T: ms since this pin (GATE stored it just before)
-patch=2,EE,000E21D4,word,0128482B // sltu t1, t1, t0
-patch=2,EE,000E21D8,word,15200012 // bne t1, zero, 0x000E2224  ; pin younger than KICK_MS
-patch=2,EE,000E21DC,word,00000000 // nop
-patch=2,EE,000E21E0,word,AD432304 // sw v1, 0x2304(t2)  ; KICK_T = now
-patch=2,EE,000E21E4,word,8D422308 // lw v0, 0x2308(t2)
-patch=2,EE,000E21E8,word,24420001 // addiu v0, v0, 1
-patch=2,EE,000E21EC,word,AD422308 // sw v0, 0x2308(t2)  ; N_KICK
-patch=2,EE,000E21F0,word,0C0387A0 // jal 0x000E1E80
-patch=2,EE,000E21F4,word,8D441C3C // lw a0, 0x1C3C(t2)  ; EN_SLOT
-patch=2,EE,000E21F8,word,8C50000C // lw s0, 0xC(v0)  ; first T0 of this pin: the timeout keeps counting from it
-patch=2,EE,000E21FC,word,3C0A000E // lui t2, 0x000E
-patch=2,EE,000E2200,word,0C0385A8 // jal 0x000E16A0  ; unpin
-patch=2,EE,000E2204,word,8D441C3C // lw a0, 0x1C3C(t2)
-patch=2,EE,000E2208,word,0C038601 // jal 0x000E1804  ; pin again (resident now -> 1; else a new pin and POKE -> 0)
-patch=2,EE,000E220C,word,00000000 // nop
-patch=2,EE,000E2210,word,14400005 // bne v0, zero, 0x000E2228  ; 1 or 2: GATE lets this press join
-patch=2,EE,000E2214,word,3C0A000E // lui t2, 0x000E
-patch=2,EE,000E2218,word,0C0387A0 // jal 0x000E1E80
-patch=2,EE,000E221C,word,8D441C3C // lw a0, 0x1C3C(t2)  ; the slot ENSURE pinned into
-patch=2,EE,000E2220,word,AC50000C // sw s0, 0xC(v0)  ; keep the first T0 (bounded wait: TIMEOUT_MS from the first pin)
-patch=2,EE,000E2224,word,0000102D // kk_no: daddu v0, zero, zero
-patch=2,EE,000E2228,word,DFBF0000 // kk_out: ld ra, 0x0(sp)
-patch=2,EE,000E222C,word,7BB00010 // lq s0, 0x10(sp)
-patch=2,EE,000E2230,word,03E00008 // jr ra
-patch=2,EE,000E2234,word,27BD0020 // addiu sp, sp, 32
+patch=2,EE,000E2180,word,0C038601 // jal 0x000E1804  ; 3rd player spawned: start the 4th player's Warrior now (second slot)
+patch=2,EE,000E2184,word,00000000 // nop
+patch=2,EE,000E2188,word,0200102D // js_out: daddu v0, s0, zero
+patch=2,EE,000E218C,word,DFBF0000 // ld ra, 0x0(sp)
+patch=2,EE,000E2190,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E2194,word,03E00008 // jr ra
+patch=2,EE,000E2198,word,27BD0030 // addiu sp, sp, 48
+patch=2,EE,000E219C,word,27BDFFE0 // KICK: addiu sp, sp, -32  ; KICK(): refused press, pin EN_SLOT still loading: if KICK_MS != 0, the pin is at least KICK_MS old and the last re-pin at least KICK_MS ago, release and pin again (ENSURE) keeping the first T0; v0 = ENSURE's result (1/2 = go), 0 = refuse
+patch=2,EE,000E21A0,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E21A4,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E21A8,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E21AC,word,8D482300 // lw t0, 0x2300(t2)  ; KICK_MS (config, 0 = off)
+patch=2,EE,000E21B0,word,1100001E // beq t0, zero, 0x000E222C
+patch=2,EE,000E21B4,word,3C010051 // lui at, 0x0051
+patch=2,EE,000E21B8,word,8C23B734 // lw v1, -0x48CC(at)  ; timer object *(0x0050B734)
+patch=2,EE,000E21BC,word,1060001B // beq v1, zero, 0x000E222C
+patch=2,EE,000E21C0,word,00000000 // nop
+patch=2,EE,000E21C4,word,8C630038 // lw v1, 0x38(v1)  ; game clock (ms)
+patch=2,EE,000E21C8,word,8D492304 // lw t1, 0x2304(t2)  ; KICK_T: clock of the last re-pin
+patch=2,EE,000E21CC,word,00694823 // subu t1, v1, t1
+patch=2,EE,000E21D0,word,0128482B // sltu t1, t1, t0
+patch=2,EE,000E21D4,word,15200015 // bne t1, zero, 0x000E222C  ; re-pinned less than KICK_MS ago
+patch=2,EE,000E21D8,word,8D491C18 // lw t1, 0x1C18(t2)  ; GT_T: ms since this pin (GATE stored it just before)
+patch=2,EE,000E21DC,word,0128482B // sltu t1, t1, t0
+patch=2,EE,000E21E0,word,15200012 // bne t1, zero, 0x000E222C  ; pin younger than KICK_MS
+patch=2,EE,000E21E4,word,00000000 // nop
+patch=2,EE,000E21E8,word,AD432304 // sw v1, 0x2304(t2)  ; KICK_T = now
+patch=2,EE,000E21EC,word,8D422308 // lw v0, 0x2308(t2)
+patch=2,EE,000E21F0,word,24420001 // addiu v0, v0, 1
+patch=2,EE,000E21F4,word,AD422308 // sw v0, 0x2308(t2)  ; N_KICK
+patch=2,EE,000E21F8,word,0C0387A0 // jal 0x000E1E80
+patch=2,EE,000E21FC,word,8D441C3C // lw a0, 0x1C3C(t2)  ; EN_SLOT
+patch=2,EE,000E2200,word,8C50000C // lw s0, 0xC(v0)  ; first T0 of this pin: the timeout keeps counting from it
+patch=2,EE,000E2204,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2208,word,0C0385A8 // jal 0x000E16A0  ; unpin
+patch=2,EE,000E220C,word,8D441C3C // lw a0, 0x1C3C(t2)
+patch=2,EE,000E2210,word,0C038601 // jal 0x000E1804  ; pin again (resident now -> 1; else a new pin and POKE -> 0)
+patch=2,EE,000E2214,word,00000000 // nop
+patch=2,EE,000E2218,word,14400005 // bne v0, zero, 0x000E2230  ; 1 or 2: GATE lets this press join
+patch=2,EE,000E221C,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2220,word,0C0387A0 // jal 0x000E1E80
+patch=2,EE,000E2224,word,8D441C3C // lw a0, 0x1C3C(t2)  ; the slot ENSURE pinned into
+patch=2,EE,000E2228,word,AC50000C // sw s0, 0xC(v0)  ; keep the first T0 (bounded wait: TIMEOUT_MS from the first pin)
+patch=2,EE,000E222C,word,0000102D // kk_no: daddu v0, zero, zero
+patch=2,EE,000E2230,word,DFBF0000 // kk_out: ld ra, 0x0(sp)
+patch=2,EE,000E2234,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E2238,word,03E00008 // jr ra
+patch=2,EE,000E223C,word,27BD0020 // addiu sp, sp, 32
 // KICK data (m6_chooser.md 2.6): a refused join press whose pin is at least KICK_MS old (and the last re-pin at least
 // KICK_MS ago) releases and pins that Warrior again; the timeout still counts from the first pin.
 patch=0,EE,000E2300,word,00000000 // KICK_MS: config: re-pin a stalled pin after this many ms (0 = off, default: off - tested, did not help in M12; PINSVC below fixes the stall) (startup only)
@@ -1018,6 +1078,8 @@ patch=0,EE,000E2304,word,00000000 // KICK_T: game clock (ms) of the last re-pin 
 patch=0,EE,000E2308,word,00000000 // N_KICK: re-pins made (startup only)
 patch=0,EE,000E230C,word,00000000 // SVC_T: game clock (ms) of the last pin service (startup only)
 patch=0,EE,000E2310,word,00000000 // N_FIX: pin instances built by PINFIX (startup only)
+patch=0,EE,000E2314,word,00000000 // N_PLACE: spawned Warriors moved by HuTeleportNearHuman (PLACE) (startup only)
+patch=0,EE,000E2318,word,00000000 // N_PLACE_FB: spawned Warriors put at player 1 +/- 1.5 units (no free spot) (startup only)
 // PINSVC/PINFIX (m6_chooser.md 2.6, M12 runs chs_m12d/chs_m12k): a pinned model whose three parts arrive is
 // unreferenced until the streamer builds the pin's instance, and the scheduler does not call the streamer for pins
 // alone (H1), so busy levels evict the parts again (LRU). Once per frame (game-clock tick) PINFIX builds the missing
@@ -1094,6 +1156,90 @@ patch=2,EE,000E2430,word,7BB00010 // lq s0, 0x10(sp)
 patch=2,EE,000E2434,word,7BB10020 // lq s1, 0x20(sp)
 patch=2,EE,000E2438,word,03E00008 // jr ra
 patch=2,EE,000E243C,word,27BD0040 // addiu sp, sp, 64
+// PLACE (F-0195, m6_chooser.md 2.7): after JS spawned a Warrior (4 units beside player 1), HuTeleportNearHuman core
+// FUN_0023B138(new, player 1) picks a free spot 3.6 units from player 1 (32 directions from a clock-based start, ray test
+// against walls, other humans avoided) - the call the levels' player-2 join callbacks use. If it does not move him
+// (no free spot), the Lua Teleport core puts him at player 1 + 1.5 (3rd player) or - 1.5 (4th player) units in x.
+patch=2,EE,000E2440,word,27BDFFA0 // PLACE: addiu sp, sp, -96  ; PLACE(count at UpdateJoin entry): move the Warrior SPAWN just created (handle 0x000E1210; SPAWN now creates him 4 units beside player 1) with the game's HuTeleportNearHuman core
+patch=2,EE,000E2444,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E2448,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E244C,word,7FB10020 // sq s1, 0x20(sp)
+patch=2,EE,000E2450,word,7FB20030 // sq s2, 0x30(sp)
+patch=2,EE,000E2454,word,0080902D // daddu s2, a0, zero  ; 2 = the 3rd player, 3 = the 4th
+patch=2,EE,000E2458,word,3C08000E // lui t0, 0x000E
+patch=2,EE,000E245C,word,8D101210 // lw s0, 0x1210(t0)  ; handle of the Warrior just spawned
+patch=2,EE,000E2460,word,3C020051 // lui v0, 0x0051
+patch=2,EE,000E2464,word,8C49489C // lw t1, 0x489C(v0)  ; GameMgr
+patch=2,EE,000E2468,word,8D310228 // lw s1, 0x228(t1)  ; player 1's handle
+patch=2,EE,000E246C,word,AFB00040 // sw s0, 0x40(sp)
+patch=2,EE,000E2470,word,0C0E409A // jal 0x00390268  ; his human
+patch=2,EE,000E2474,word,27A40040 // addiu a0, sp, 64
+patch=2,EE,000E2478,word,10400033 // beq v0, zero, 0x000E2548
+patch=2,EE,000E247C,word,00000000 // nop
+patch=2,EE,000E2480,word,0C038958 // jal 0x000E2560  ; v0 = x word of human+0x10, v1 = x word of his position-table entry (0x00714B00 + 0x20 * human+0x92)
+patch=2,EE,000E2484,word,0040202D // daddu a0, v0, zero
+patch=2,EE,000E2488,word,AFA20044 // sw v0, 0x44(sp)
+patch=2,EE,000E248C,word,AFA30048 // sw v1, 0x48(sp)
+patch=2,EE,000E2490,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E2494,word,0C08EC4E // jal 0x0023B138  ; HuTeleportNearHuman core (mover, target): 32 directions at 3.6 units, wall ray test, other humans avoided
+patch=2,EE,000E2498,word,0220282D // daddu a1, s1, zero
+patch=2,EE,000E249C,word,0C0E409A // jal 0x00390268
+patch=2,EE,000E24A0,word,27A40040 // addiu a0, sp, 64
+patch=2,EE,000E24A4,word,10400028 // beq v0, zero, 0x000E2548
+patch=2,EE,000E24A8,word,00000000 // nop
+patch=2,EE,000E24AC,word,0C038958 // jal 0x000E2560
+patch=2,EE,000E24B0,word,0040202D // daddu a0, v0, zero
+patch=2,EE,000E24B4,word,8FA80044 // lw t0, 0x44(sp)
+patch=2,EE,000E24B8,word,1448001F // bne v0, t0, 0x000E2538  ; either copy of his x changed: he was moved to a free spot
+patch=2,EE,000E24BC,word,8FA80048 // lw t0, 0x48(sp)
+patch=2,EE,000E24C0,word,1468001D // bne v1, t0, 0x000E2538
+patch=2,EE,000E24C4,word,00000000 // nop
+patch=2,EE,000E24C8,word,AFB10040 // sw s1, 0x40(sp)  ; no free spot: player 1's position + 1.5 (3rd player) or - 1.5 (4th) in x (the old offset)
+patch=2,EE,000E24CC,word,0C0E409A // jal 0x00390268  ; player 1's human
+patch=2,EE,000E24D0,word,27A40040 // addiu a0, sp, 64
+patch=2,EE,000E24D4,word,1040001C // beq v0, zero, 0x000E2548
+patch=2,EE,000E24D8,word,3C013FC0 // lui at, 0x3FC0  ; 1.5f
+patch=2,EE,000E24DC,word,44810800 // mtc1 at, f1
+patch=2,EE,000E24E0,word,C4400010 // lwc1 f0, 0x10(v0)
+patch=2,EE,000E24E4,word,24080002 // addiu t0, zero, 2
+patch=2,EE,000E24E8,word,12480004 // beq s2, t0, 0x000E24FC
+patch=2,EE,000E24EC,word,00000000 // nop
+patch=2,EE,000E24F0,word,46010001 // sub.s f0, f0, f1
+patch=2,EE,000E24F4,word,10000002 // beq zero, zero, 0x000E2500
+patch=2,EE,000E24F8,word,00000000 // nop
+patch=2,EE,000E24FC,word,46010000 // pl_plus: add.s f0, f0, f1
+patch=2,EE,000E2500,word,E7A00050 // pl_set: swc1 f0, 0x50(sp)
+patch=2,EE,000E2504,word,8C480014 // lw t0, 0x14(v0)
+patch=2,EE,000E2508,word,AFA80054 // sw t0, 0x54(sp)
+patch=2,EE,000E250C,word,8C480018 // lw t0, 0x18(v0)
+patch=2,EE,000E2510,word,AFA80058 // sw t0, 0x58(sp)
+patch=2,EE,000E2514,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E2518,word,27A50050 // addiu a1, sp, 80
+patch=2,EE,000E251C,word,0C0E16EE // jal 0x00385BB8  ; Lua Teleport core (handle, float[3]*, -1)
+patch=2,EE,000E2520,word,2406FFFF // addiu a2, zero, -1
+patch=2,EE,000E2524,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2528,word,8D432318 // lw v1, 0x2318(t2)
+patch=2,EE,000E252C,word,24630001 // addiu v1, v1, 1
+patch=2,EE,000E2530,word,10000005 // beq zero, zero, 0x000E2548
+patch=2,EE,000E2534,word,AD432318 // sw v1, 0x2318(t2)  ; N_PLACE_FB
+patch=2,EE,000E2538,word,3C0A000E // pl_moved: lui t2, 0x000E
+patch=2,EE,000E253C,word,8D432314 // lw v1, 0x2314(t2)
+patch=2,EE,000E2540,word,24630001 // addiu v1, v1, 1
+patch=2,EE,000E2544,word,AD432314 // sw v1, 0x2314(t2)  ; N_PLACE
+patch=2,EE,000E2548,word,DFBF0000 // pl_out: ld ra, 0x0(sp)
+patch=2,EE,000E254C,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E2550,word,7BB10020 // lq s1, 0x20(sp)
+patch=2,EE,000E2554,word,7BB20030 // lq s2, 0x30(sp)
+patch=2,EE,000E2558,word,03E00008 // jr ra
+patch=2,EE,000E255C,word,27BD0060 // addiu sp, sp, 96
+patch=2,EE,000E2560,word,8C820010 // PLPOS: lw v0, 0x10(a0)  ; PLPOS(human) leaf: v0 = x word at human+0x10, v1 = x word of his position-table entry
+patch=2,EE,000E2564,word,84880092 // lh t0, 0x92(a0)
+patch=2,EE,000E2568,word,00084140 // sll t0, t0, 5
+patch=2,EE,000E256C,word,3C090071 // lui t1, 0x0071
+patch=2,EE,000E2570,word,25294B00 // addiu t1, t1, 19200  ; position table 0x00714B00 (the one FUN_0023B138 reads)
+patch=2,EE,000E2574,word,01094021 // addu t0, t0, t1
+patch=2,EE,000E2578,word,03E00008 // jr ra
+patch=2,EE,000E257C,word,8D030000 // lw v1, 0x0(t0)
 ```
 
 ### `mod/m2/missions.txt` (`[warriors-4p missions]`, as committed in 336c6a4): REL34, X3W's LEAVE call, X7J, X7 bytes comment, LVOWE
@@ -1101,7 +1247,7 @@ patch=2,EE,000E243C,word,27BD0040 // addiu sp, sp, 64
 // X7 (b) (m6_chooser.md): LVOWE(index) = LEAVE for a script-forced leave (X1, X3); if the player got the starting items in
 //    this level load (given byte 1), the byte becomes 2 = owed, and X7J gives them again at his next join, at any
 //    checkpoint (the forced release emptied his inventory slot). Normal leaves keep byte 1: no second gift.
-// Free RAM 0x000E7400-0x000E7813.
+// Free RAM used: 0x000E7400-0x000E7BFF (code, data, LUACH log) and 0x000E7E00-0x000E7F7F (LUACH table and row data); 0x000E7C00-0x000E7DFF is a test-only Lua string buffer (written over PINE by tests/m2/x4x6_probe.py, not in the pnach).
 patch=2,EE,000E7400,word,27BDFFE0 // REL34: addiu sp, sp, -32  ; REL34(human): release player 3/4 (index >= 2) with LEAVE before a script deletes him
 patch=2,EE,000E7404,word,FFBF0000 // sd ra, 0x0(sp)
 patch=2,EE,000E7408,word,7FB00010 // sq s0, 0x10(sp)
@@ -1246,6 +1392,8 @@ slot 1). Results: `local/m2/<tag>/probes.json`, console `local/m6/<tag>_console.
 | chs_m12d (w4p-m6-1, follow-up, diagnosis) | M12 cp1, `ch2.pnach` with KICK_MS = 0 and TIMEOUT_MS = 60,000 (PINE pokes at 6000), `extra_survey` at 6950, 7100, 7300, 7500, 7700, 7900, 8300, 8700 | joins | Swan pinned at 7000 (slot 22, instance 0 the whole time); Swan's parts: 7100 texture only, 7300 none (loads pending 3), **7500 all three resident with refcount 0**, **7700 animation and model evicted**, 7900 requested again, 8300 animation + texture, **8700 all three resident**; request priorities FLT_MAX and dict+0xBC4 = -1 in every sample (no human request, so the scheduler does not call the streamer); timeout at about 8850 -> P3 = Cowboy clone, the preload re-pin found the parts resident -> P4 = Swan. 0 TLB misses | **VERIFIED** diagnosis (section 2.6) |
 | chs_m12s (w4p-m6-1, follow-up) | M12 cp1, `local/m6/ch3.pnach` (KICK off, PINSVC/PINFIX on) | joins, 540 s | **7000: one refused press; by 7050 the Swan pin has an instance (0xD62000)**; **P3 = Swan** at the next press (count 3 at 7200, +0xD8 0xD65400); the preload pinned Ajax (instance 0xD21000 by 7200); **P4 = Ajax** (7350, +0xD8 0xCAA800). Swan and Ajax parts resident with refcount 2 from 7300 to 12000; N_PIN 2, N_REFUSE 4 (one press), N_TIMEOUT 0, N_RELEASE 0, NOFIT 0; count 4, views 4 to poll 14149; 0 TLB misses | **VERIFIED** X10 A in M12 (both players own models) |
 | chs_m13s (w4p-m6-1, follow-up) | M13 cp1, `ch3.pnach`, `local/m6/rnd_p1..p4.txt` (random from 9000), 800 s | 4 players, random bots | 8500: one refused press; **P3 = Swan, P4 = Ajax** (own models, instances 0xC45C00 / 0xCDC000); clock 81.1 s at 9000 -> 384.2 s at 18000 = **303 s of random play**, count 4, views 4 to poll 21066, both pins kept, N_TIMEOUT 0; **0 TLB misses** | **VERIFIED** regression with PINSVC |
+| chs_pl13 (w4p-m6-1, follow-up 2) | M13 cp1, `local/m6/ch4.pnach`, `local/m6/rnd_p1..p4.txt` (players 3-4 Start every 300 polls from 7000, random input from 9000), 620 s | joins, then random play | 8800 (both joined, no input yet): P1 Rembrandt (73.37, 381.27, 4.79), P2 Snow (74.14, 382.25), **P3 Swan (76.90, 381.98), P4 Ajax (70.38, 379.27)**: P3 and P4 each **3.6 units** from P1 on opposite sides, **7.06 apart**; N_PLACE 2, N_PLACE_FB 0 (both moved by HuTeleportNearHuman); N_FIX 2. From 9000 all four move freely (e.g. P3 to (70.0, 396.2) at 9300, P4 to (82.7, 382.7)): nobody stuck. Screenshot `t0342_p8928.png`: four different views. 4 players to the end, **0 TLB misses** | **VERIFIED** F-0195 fix in M13 |
+| chs_pl12 (w4p-m6-1, follow-up 2) | M12 cp1, `ch4.pnach`, rnd scripts, 600 s | joins, then random play | 7300: P1 Cowboy (-23.41, 22.01, 0), P2 Cochise (-23.61, 21.31), **P3 Swan (-25.41, 19.01), P4 clone of Cowboy (-20.08, 23.38)**: 3.6 units from P1 each, **6.89 apart**; N_PLACE 2, N_PLACE_FB 0. All four move from 9000 (P4 7.2 units by 9300). **Player 4 got the clone, not Ajax: FITCHK reported Ajax's model does not fit** (NOFIT 11, N_NOFIT 1, slot 1 released, EN_LAST 7) - the first runtime use of the no-fit fallback; in chs_m12s Ajax did fit. Swan's instance built by PINFIX (N_FIX 1). Screenshots `t0301_p7648.png`, `t0359_p9364.png`. **0 TLB misses** | **VERIFIED** F-0195 fix in M12; VERIFIED no-fit fallback; second model in M12 borderline (finding 10) |
 
 ### 5.1 Pool memory (extra_survey, Sector Pool `*(0x006EB9C8)`, capacity 17,208,320 bytes)
 | Run | Poll | Bytes used | Total free | Largest possible block | Our pins | Live humans (without model) |
@@ -1305,6 +1453,14 @@ PINSVC, in M12 (about 0.36 MB free afterwards, largest block 265 KB, no NOFIT; c
    stayed FLT_MAX and dict+0xBC4 = -1, the pin's instance was never built while the parts came and went; the streamer is
    only reached through our POKE at Start presses. M13 worked before only because its parts were not evicted between
    presses.
+10. **Follow-up 2: a second extra model in M12 is borderline (VERIFIED chs_m12s vs chs_pl12).** With the same level and
+   checkpoint, Ajax's model fitted in chs_m12s (both players with own models) and did not fit in chs_pl12 (FITCHK ->
+   NOFIT -> player 4 = clone of Cowboy). The Sector Pool had about 0.37 MB free after Swan's model with a largest block of
+   265 KB; Ajax needs three 128 KB blocks, so it depends on what the fit test can evict at that moment. Behaviour as
+   designed (problem 3: "if a second model does not fit, fall back to the clone").
+11. **Follow-up 2: F-0195 fixed (VERIFIED chs_pl13, chs_pl12).** Spawned players 3-4 now stand 3.6 units from player 1 on
+   different sides (6.9-7.1 units apart in both runs), chosen by the game's own HuTeleportNearHuman; the fallback was not
+   needed in either run (N_PLACE_FB 0).
 
 ## 7. Not done / open
 - **Not run at runtime (static and simulation only):** X3 (`HuChangePlayerGang`) through LVOWE; REL34's marker-7
@@ -1322,3 +1478,6 @@ PINSVC, in M12 (about 0.36 MB free afterwards, largest block 265 KB, no NOFIT; c
 - **Coordinator:** `mod/w4p_m1.pnach` not regenerated (smoke2 batch); `docs/STATE.md` RAM map and test groups not
   edited (spawn now also 0x000E2300-0x000E243F and the game hook 0x0023D6BC); `m6_fixes.md` findings 3-4 not annotated
   (superseded here).
+- **Follow-up 2 not run:** PLACE's fallback (no free spot) at runtime (simulation only); placement in other missions,
+  after a checkpoint reload or for a re-join while player 1 runs; 4-instance lockstep. The Select ring of player 3 is only
+  described (2.7).

@@ -69,7 +69,22 @@ def brief(p):
             "en_gt": [s["codes"]["EN_LAST"], s["codes"]["GT_LAST"], s["codes"]["N_PIN"], s["codes"]["N_REFUSE"],
                       s["codes"]["N_RELEASE"], s["codes"]["NOFIT"], s["codes"]["N_TIMEOUT"]],
             "choose": [s["choose"]["result"], s["choose"]["status"]], "x7": s["x7_bytes"][2:],
-            "spray23": [s["inv"][2]["spray"], s["inv"][3]["spray"]], "pads": s["pads"], "views": s["views"]}
+            "spray23": [s["inv"][2]["spray"], s["inv"][3]["spray"]], "pads": s["pads"], "views": s["views"],
+            "pos": positions(p), "place": [p.read32(0x000E2314), p.read32(0x000E2318)]}
+
+
+def positions(p):
+    """Players 1-4: position (human+0x10..0x18) rounded, and the distances between every pair (F-0195 overlap check)."""
+    pts = []
+    for i in range(4):
+        _, o = T._player(p, i)
+        pts.append(T._pos(p, o) if o else None)
+    dist = {}
+    for i in range(4):
+        for j in range(i + 1, 4):
+            if pts[i] and pts[j]:
+                dist[f"{i + 1}-{j + 1}"] = round(sum((pts[i][k] - pts[j][k]) ** 2 for k in range(3)) ** 0.5, 2)
+    return {"xyz": pts, "dist": dist}
 
 
 def x2_fox_row_off(p):
