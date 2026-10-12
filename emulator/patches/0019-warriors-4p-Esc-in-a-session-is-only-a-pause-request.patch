@@ -1,0 +1,139 @@
+From f9a1ea91de5cef7a9c6c597ee2bbf4ec9cf7a153 Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Mon, 12 Oct 2026 07:17:48 +0300
+Subject: [PATCH] warriors-4p: Esc in a session is only a pause request (no
+ emulator pause menu), sit-out waiting screen for players without a character,
+ pause request also on bot slots (tests), build tag w4p-m6-2
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pcsx2/Hotkeys.cpp |  7 +++++++
+ pcsx2/W4P/W4P.cpp | 50 +++++++++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 53 insertions(+), 4 deletions(-)
+
+diff --git a/pcsx2/Hotkeys.cpp b/pcsx2/Hotkeys.cpp
+index eb37ae6..0232a8e 100644
+--- a/pcsx2/Hotkeys.cpp
++++ b/pcsx2/Hotkeys.cpp
+@@ -11,6 +11,7 @@
+ #include "Recording/InputRecording.h"
+ #include "SPU2/spu2.h"
+ #include "VMManager.h"
++#include "W4P/W4P.h"
+ #include "SIO/Memcard/MemoryCardFile.h"
+ 
+ #include "common/Assertions.h"
+@@ -156,7 +157,13 @@ DEFINE_HOTKEY("ToggleFullscreen", TRANSLATE_NOOP("Hotkeys", "Navigation"), TRANS
+ DEFINE_HOTKEY("OpenPauseMenu", TRANSLATE_NOOP("Hotkeys", "Navigation"), TRANSLATE_NOOP("Hotkeys", "Open Pause Menu"),
+ 	[](s32 pressed) {
+ 		if (!pressed && VMManager::HasValidVM() && CanPause())
++		{
++			// warriors-4p (D18): in an online session Esc is only a pause request for every player; the emulator's
++			// pause menu (save states, exit, ...) must not open over a running lockstep game. Needs proper testing.
++			if (W4P::RequestPauseInSession())
++				return;
+ 			FullscreenUI::OpenPauseMenu();
++		}
+ 	})
+ DEFINE_HOTKEY("OpenAchievementsList", TRANSLATE_NOOP("Hotkeys", "Navigation"),
+ 	TRANSLATE_NOOP("Hotkeys", "Open Achievements List"), [](s32 pressed) {
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index 6393539..e06fc1c 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -52,7 +52,7 @@ namespace W4P
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+ 		constexpr u16 kProtocolVersion = 3; // 2: hello/fingerprint packet, kernel and game RAM hashes; 3: disconnect handling (status, drop, relay)
+-		constexpr char kBuildTag[] = "w4p-m6-1";
++		constexpr char kBuildTag[] = "w4p-m6-2";
+ 		// EE RAM below this address belongs to the BIOS kernel; the game and our patch caves live above it.
+ 		constexpr u32 kGameRamStart = 0x000A0000; // includes the warriors-4p data/caves (0x000A0000+); 0x81000-0x95FFF holds BIOS/loader leftovers (F-0125)
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+@@ -298,6 +298,10 @@ namespace W4P
+ 			bool hub = false;
+ 			u32 hub_reconnect_until = 0;
+ 			u32 hub_cp = 0;
++			// X13 A / D8 sit-out screen: this PC's player has no character during gameplay.
++			bool sitout = false;
++			u32 nochar_since = 0;
++			bool nochar_prev = false;
+ 			bool paused_prev = false;
+ 		};
+ 
+@@ -401,9 +405,15 @@ namespace W4P
+ 
+ 		Input SampleLocal(u32 t)
+ 		{
+-			if (!s_session->bot.empty())
+-				return s_session->bot[(t - s_session->c0) % s_session->bot.size()];
+ 			const bool start_request = s_local_start_request.exchange(false);
++			if (!s_session->bot.empty())
++			{
++				// Test bots: the pause hotkey still adds its Start press (D18 tests with a real key on a bot slot).
++				Input b = s_session->bot[(t - s_session->c0) % s_session->bot.size()];
++				if (start_request)
++					b.buttons |= 0x0800;
++				return b;
++			}
+ 
+ 			Input in = Neutral();
+ 			PadBase* pad = Pad::GetPad(0, 0); // the local controller is always bound to port 1, slot A
+@@ -1224,6 +1234,13 @@ namespace W4P
+ 			// menus and the 2-player selection keep the game's own input handling (session_policies.md 1.1).
+ 			if (top_mode != 0x005E56B8u && !paused)
+ 			{
++				if (s.sitout)
++				{
++					s.sitout = false;
++					s_blank.store(false);
++					Log(fmt::format("sit-out screen ends at poll {} (not in a mission)", t - s.c0));
++				}
++				s.nochar_prev = false;
+ 				s.votes = 0;
+ 				s.pauser = -1;
+ 				s.cut_prev = false;
+@@ -1379,6 +1396,31 @@ namespace W4P
+ 			}
+ 			if (paused != s.paused_prev)
+ 				Log(fmt::format("game {} at poll {}", paused ? "paused" : "resumed", t - s.c0));
++			// X13 A / D8: a non-host player whose controller has no character in gameplay for 2 s (before X11 joins him,
++			// or while the mission keeps joining off) sees a waiting screen instead of the other players' views. Display
++			// only (no game state), so it cannot affect the lockstep. Cutscenes and the pause keep the current state.
++			if (s.cfg.local_slot != 0 && !cut && !paused)
++			{
++				const u32 gm = memRead32(0x0051489C);
++				const u32 pad = static_cast<u32>(s.cfg.pad_for_slot[s.cfg.local_slot]);
++				const bool valid_gm = gm >= 0x00100000 && gm < 0x02000000;
++				const bool nochar = valid_gm && static_cast<s16>(memRead16(0x005DD810 + pad * 0x50 + 0x42)) < 0 &&
++									memRead32(gm + 0x410) == 0 && (memRead32(gm + 0x224) & 0xFFFF) >= 1;
++				if (nochar && !s.nochar_prev)
++					s.nochar_since = t;
++				s.nochar_prev = nochar;
++				const bool sit = nochar && t - s.nochar_since >= 60;
++				if (sit != s.sitout)
++				{
++					s.sitout = sit;
++					s_blank.store(sit);
++					Log(fmt::format("sit-out screen {} at poll {}", sit ? "starts" : "ends", t - s.c0));
++				}
++				if (sit && (t - s.c0) % 30 == 0)
++					Host::AddKeyedOSDMessage("w4p_sitout", memRead32(gm + 0x56E8) != 0 ?
++						std::string("You are joining the game - please wait.") :
++						std::string("This part of the mission is for fewer players. You join when it ends - please wait."), 1.5f);
++			}
+ 			s.paused_prev = paused;
+ 			s.cut_prev = cut;
+ 			for (int p = 0; p < n; p++)
+@@ -1821,7 +1863,7 @@ namespace W4P
+ 		if (!s_session || !s_session->started || !s_session->cfg.session_policies)
+ 			return false;
+ 		s_local_start_request.store(true);
+-		Host::AddKeyedOSDMessage("w4p_pause_req", "Pause requested (the game pauses for every player)", 2.0f);
++		Host::AddKeyedOSDMessage("w4p_pause_req", "Pause requested for every player (during a cutscene: your vote to skip it)", 2.0f);
+ 		return true;
+ 	}
+ 
+-- 
+2.55.0.windows.3
+
