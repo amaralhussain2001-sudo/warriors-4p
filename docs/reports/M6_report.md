@@ -61,6 +61,9 @@ screenshots and logs in `local/` (not committed).
 
 **All 18 missions: 0 hash mismatches, 0 TLB misses** (422-674 common hash points each; 3 groups of 4 instances ran at the same time: 6-9, 15-18, 27-30; the PC was GPU-bound, about 13-22 polls/s). Mission completion is not tested (bots cannot do objectives). Evidence: `evidence/M6/smoke4_m01..m18.json`, `evidence/M6/smoke4_summary.json`, `local/m6/smoke4_[abc]_console.txt`. Pnach: mod/w4p_m1.pnach of commit c78aa8e (11733 addresses).
 
+## Chapter runs (F-0232)
+All 12 chapters changed by D24 or camera parity, started directly with 4 instances in lockstep (bots mashing buttons): **12/12 with 0 mismatches and 0 TLB misses**; the M8 cart chase and the M18 car escape were won with four tapping players. Camera framing itself was checked in the single-instance runs of the agents (F-0224..F-0228).
+
 ## Failed tests and open points (as prominent as the passes)
 - **FAILED TEST (fixed): the camera relocation bug F-0223** - affected every player since M2 in situations with camera
   blends or callback names (e.g. Mission 16 street chase camera, blend hand-overs).

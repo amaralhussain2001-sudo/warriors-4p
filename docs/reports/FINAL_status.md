@@ -3,7 +3,7 @@
 This is the final status of everything that can be done on this one PC. The brief's final mission statuses (BRIEF 8.4)
 need tests on separate PCs with people (your LAN test and the internet sessions with friends), so every mission is still
 **IN PROGRESS** here; after your tests each mission gets exactly one of the six final statuses. Evidence: findings
-F-0001..F-0231 (`docs/FINDINGS.md`), reports in `docs/reports/`, research notes in `docs/research/`.
+F-0001..F-0232 (`docs/FINDINGS.md`), reports in `docs/reports/`, research notes in `docs/research/`.
 
 ## Plain-English summary
 - **What you get:** a package (`dist/warriors-4p-coop.zip`) that lets 2-4 friends, each on his own PC with his own copy of
@@ -26,7 +26,7 @@ F-0001..F-0231 (`docs/FINDINGS.md`), reports in `docs/reports/`, research notes 
 | Connection helper: join codes, ICE + STUN, forwarding through the host, LAN Join by IP | F-0172, F-0173, m5_package4.md |
 | All 18 missions: 4 players (M2 intro 2 by design), 0 desync, 0 crash | smoke4 F-0231 |
 | Players 3-4 in the 2-player chases (M18 car escape, M8 cart chase) | D24, F-0211..F-0217 |
-| Camera parity for players 3-4 in 12 missions; HUD parity | F-0223..F-0229 |
+| Camera parity for players 3-4 in 12 missions; HUD parity; all 12 changed chapters in 4-PC lockstep (0 desync) | F-0223..F-0229, F-0232 |
 | Checkpoint restarts with 4 players (6 missions + both chases); real mission end -> hideout | F-0204, F-0212, F-0216, F-0218 |
 | 65-minute session, network outages through the helper, impairment series | F-0220, F-0219, F-0206 |
 | Regression: single-player, original local 2-player (with the package), optional content | F-0193 |
