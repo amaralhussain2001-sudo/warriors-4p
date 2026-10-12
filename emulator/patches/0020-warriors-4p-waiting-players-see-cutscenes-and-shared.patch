@@ -1,0 +1,58 @@
+From b81b4ccafbe400e6ecdb8c6f680405baa80eeb9b Mon Sep 17 00:00:00 2001
+From: warriors-4p <w4p@localhost>
+Date: Mon, 12 Oct 2026 15:50:38 +0300
+Subject: [PATCH] warriors-4p: waiting players see cutscenes and shared
+ single-view stretches, auto re-join every 60 polls, build tag w4p-m6-3
+
+---
+ pcsx2/W4P/W4P.cpp | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/pcsx2/W4P/W4P.cpp b/pcsx2/W4P/W4P.cpp
+index e06fc1c..5aa60f2 100644
+--- a/pcsx2/W4P/W4P.cpp
++++ b/pcsx2/W4P/W4P.cpp
+@@ -52,7 +52,7 @@ namespace W4P
+ 		constexpr u32 kRing = 4096; // polls of history kept per player
+ 		constexpr u32 kPktMagic = 0x4E503457u; // "W4PN"
+ 		constexpr u16 kProtocolVersion = 3; // 2: hello/fingerprint packet, kernel and game RAM hashes; 3: disconnect handling (status, drop, relay)
+-		constexpr char kBuildTag[] = "w4p-m6-2";
++		constexpr char kBuildTag[] = "w4p-m6-3";
+ 		// EE RAM below this address belongs to the BIOS kernel; the game and our patch caves live above it.
+ 		constexpr u32 kGameRamStart = 0x000A0000; // includes the warriors-4p data/caves (0x000A0000+); 0x81000-0x95FFF holds BIOS/loader leftovers (F-0125)
+ 		constexpr int kResendBurst = 32; // local inputs repeated in every input packet (loss tolerance)
+@@ -1347,12 +1347,12 @@ namespace W4P
+ 					{
+ 						s.pauser = -1; // closed, or the game refused (prompt, GAME OVER, cooldown)
+ 					}
+-					// X11 auto re-join (m6_missions.md 1.2, jd2_m05): every 300 polls, a connected session player whose pad has no
++					// X11 auto re-join (m6_missions.md 1.2, jd2_m05): every 60 polls, a connected session player whose pad has no
+ 					// character joins through the game's own UpdateJoin(GameMgr, pad) (FUN_0041A460), called through the session
+ 					// call mailbox. The Start-press path is not used: it needs a gameplay camera mode (FUN_00158728), which some
+ 					// missions do not have at their start (Mission 5). Only in quiet gameplay: in-game mode, no cutscene, no
+ 					// cinematic flag (GameMgr+0x410), no level change (+0x14C), joining on (+0x56E8), mode 0/3 (+0x158).
+-					if ((t - s.c0) % 300 == 150)
++					if ((t - s.c0) % 60 == 30) // 2 s at 30 fps (was 300 polls: up to 10 s extra wait per join)
+ 					{
+ 						const u32 gm = memRead32(0x0051489C);
+ 						const bool quiet = gm >= 0x00100000 && gm < 0x02000000 && memRead32(gm + 0x410) == 0 &&
+@@ -1421,6 +1421,16 @@ namespace W4P
+ 						std::string("You are joining the game - please wait.") :
+ 						std::string("This part of the mission is for fewer players. You join when it ends - please wait."), 1.5f);
+ 			}
++			// A cutscene, or a stretch where the game itself draws one shared picture for everybody (one view with at least
++			// two players in the game, e.g. the M18 car escape), is shown to a waiting player too; black otherwise (it would
++			// be another player's own view). Display only.
++			if (s.cfg.local_slot != 0 && s.sitout && !paused)
++			{
++				const u32 gm = memRead32(0x0051489C);
++				const bool shared = memRead32(kViewsRendered) == 1 && gm >= 0x00100000 && gm < 0x02000000 &&
++									(memRead32(gm + 0x224) & 0xFFFF) >= 2;
++				s_blank.store(!cut && !shared);
++			}
+ 			s.paused_prev = paused;
+ 			s.cut_prev = cut;
+ 			for (int p = 0; p < n; p++)
+-- 
+2.55.0.windows.3
+
