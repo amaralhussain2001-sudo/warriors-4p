@@ -1,0 +1,103 @@
+{
+ "mission": 11,
+ "level": 31,
+ "name": "Boys In Blue",
+ "run": "smoke4_m11",
+ "policies": true,
+ "seconds": 908,
+ "hash_points": 445,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "15": 0,
+  "16": 0,
+  "17": 0,
+  "18": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 13467,
+   "players": 4,
+   "handles": [
+    "0x20148",
+    "0x13d",
+    "0x10142",
+    "0x70556"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 13470,
+   "players": 4,
+   "handles": [
+    "0x20148",
+    "0x13d",
+    "0x10142",
+    "0x70556"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 13474,
+   "players": 4,
+   "handles": [
+    "0x20148",
+    "0x13d",
+    "0x10142",
+    "0x70556"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "first_poll_with_4": 9001,
+ "auto_joins_scheduled": 14,
+ "w4p_events": [
+  "[257816985.360] auto join for player 2 (pad 4) scheduled at poll 3511",
+  "[257816985.387] auto join for player 3 (pad 1) scheduled at poll 3514",
+  "[257816985.392] auto join for player 4 (pad 2) scheduled at poll 3517",
+  "[257823692.068] auto join for player 2 (pad 4) scheduled at poll 3571",
+  "[257823692.098] auto join for player 3 (pad 1) scheduled at poll 3574",
+  "[257823692.102] auto join for player 4 (pad 2) scheduled at poll 3577",
+  "[257932533.962] auto join for player 2 (pad 4) scheduled at poll 6511",
+  "[257932533.993] auto join for player 3 (pad 1) scheduled at poll 6514",
+  "[257932534.056] auto join for player 4 (pad 2) scheduled at poll 6517",
+  "[258046621.822] auto join for player 3 (pad 1) scheduled at poll 8971",
+  "[258491307.752] auto join for player 2 (pad 4) scheduled at poll 12691",
+  "[258491307.785] auto join for player 3 (pad 1) scheduled at poll 12694",
+  "[258491307.790] auto join for player 4 (pad 2) scheduled at poll 12697",
+  "[258556600.048] auto join for player 3 (pad 1) scheduled at poll 13171"
+ ],
+ "last_sample": {
+  "t": 902,
+  "poll": 13431,
+  "players": 4,
+  "handles": [
+   "0x20148",
+   "0x13d",
+   "0x10142",
+   "0x70556"
+  ],
+  "pad_owner": [
+   0,
+   3,
+   2,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

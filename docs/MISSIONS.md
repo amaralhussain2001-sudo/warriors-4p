@@ -82,32 +82,35 @@ Start-join (Fox taken over, player 4 spawned as Swan with his own model, F-0154)
 (pick-up, Flash, revive, checkpoint copy), game over, level restart and checkpoint reload, 33-minute 4-instance lockstep
 (F-0160). This is **not** a final mission status: per-mission work and statuses are M6.
 
-## M6 status table (interim, 2026-10-12)
+## M6 status table (interim, 2026-10-12 23:10)
 
-Every mission is **IN PROGRESS** (four-player online not yet tested; completion needs humans, M6 criterion 4). The
-smoke columns are SINGLE-PC, 4 instances in lockstep, loopback, bots, 10 min from checkpoint 1 (hash mismatches /
-TLB misses; 4P = four players reached). Final statuses (BRIEF §8.4) only after the human sessions.
+Every mission is **IN PROGRESS**: everything that one PC with bots can test passed, but no mission has been played from
+start to completion by four people, and nothing has run on separate PCs over the internet (M6 criterion 4, BRIEF 8.4).
+Final statuses only after your play-throughs (`docs/reports/USER_TESTS.md`, test D). Smoke = smoke4 (F-0231): SINGLE-PC,
+4 instances in lockstep, loopback, random bots, SessionPolicies on, 900 s from checkpoint 1 (hash mismatches / TLB
+misses; 4P = four players reached). Fixes in every mission: LUIFIX camera relocation (F-0223), HUD parity (F-0229),
+spawn chooser and own models (F-0182, F-0197), X11 auto re-join (F-0183, F-0209), session policies (M5).
 
-| M | Level | Name | Fixes that apply | SINGLE-PC smoke | Open (needs) |
+| M | Level | Name | Mission-specific fixes | smoke4 | Open (needs) |
 |---|---|---|---|---|---|
-| 1 | 99 | New Blood | players 3-4 spawn (own models), X3 squad swap, X4 tutorial teleports | smoke 0/0, smoke2 0/0 (4P from 11020) | window jump counter for players 3-4 (X6 proposal); first checkpoint not reached by bots |
-| 2 | 80 | Real Live Bunch | X1 deletes, X2 (no Ajax before recruit), sit-out in the join-off intro (F-0196) | smoke 0/0, smoke2 0/0; joins blocked by the script's intro/tutorial (by design); forced-join run 4P (F-0183) | players 3-4 join only after EndStartCam: needs a human run |
-| 3 | 87 | Payback | X1 (Ajax delete cp5), X7 starting items | smoke 0/0, smoke2 0/0 (4P) | tagging uses player 1's spray (X6 proposal); cp1 tally box |
-| 4 | 34 | Blackout | pin/fit fallback | smoke 0/0, smoke2 0/0 (4P) | - |
-| 5 | 2 | Real Heavy Rep | X11 joins past the camera gate (F-0179/F-0183) | x11 0/0 4P, smoke2 0/0 (4P from 7461) | - |
-| 6 | 3 | Writer's Block | X2, X3 (cp2->cp3 gang swap) | smoke 0/0, smoke2 0/0 (4P) | tagging spray (X6 proposal) |
-| 7 | 5 | Adios Amigo | X1, X4 (WarpPlayers / boss warps) | smoke 0/0, smoke2 0/0 (4P) | boss room doors with players 3-4 (human run) |
-| 8 | 81 | Encore | X1, X3, X13 (cp3 join off) | smoke 0/0 (4P) | cp2->cp3 transitions with 4 players |
-| 9 | 86 | Payin' The Cost | X1, X2 | smoke 0/0 (4P) | cp4 cage / rail cameras |
-| 10 | 93 | Destroyed | X1, X4 | smoke 0/0 (4P) | stealth tail with 4 players (human run) |
-| 11 | 31 | Boys In Blue | X1, X2, X13 (Birdie fight join off) | smoke 0/0 (4P) | cash objective sums players 1-2 only (X6 proposal) |
-| 12 | 14 | Set Up | spawn + two pins, PINSVC (F-0188), PLACE (F-0197) | smoke 0/0 (4P) | second extra model borderline on memory (clone fallback seen) |
-| 13 | 9 | All-City | X1/X2 (Fox), X6 subway camera guard (F-0190), X4 | M2 tests (F-0160), smoke not in batch 1 | - |
-| 14 | 51 | Desperate Dudes | X2, X3, X4, X13 (cp6-7) | smoke 0/0 (4P) | chase warps with players 3-4 |
-| 15 | 52 | No Permits, No Parley | spawn only (X2 table), X9 (no Cleon) | smoke 0/0 (4P) | - |
-| 16 | 54 | Home Run | X11 (rail cameras), X2/X3/X1, Ajax excluded after his arrest | x11 0/0 4P (F-0183) | CamSwitcher/GatePicked guards (X6 proposals) |
-| 17 | 55 | Friendly Faces | FXCAM (crash with a 3rd view, F-0184), X2 (Cochise), Ajax/Fox/Cleon excluded | smoke crashed at the 3rd join (fixed, F-0184: 1-instance re-test 4P to poll 12843) | 4-instance re-test in smoke3 |
-| 18 | 84 | Come Out To Play | X13 (cp1-2 car chase is 2 players by design), sit-out screen | smoke 0/0 (players 3-4 wait) | players 3-4 join in cp3 (human run) |
-| hub | 95 | hideout interludes | X12 waiting screen (F-0185) | hub_cp2 0/0 | a real hub after a finished mission; cp3 burner objective |
+| 1 | 99 | New Blood | X3/X4 tutorial, M1 cp3 Vermin framing for players 3-4 (F-0227) | 0/0, 4P | human play-through |
+| 2 | 80 | Real Live Bunch | X1, X2; intro/tutorial join off by the script (X13, players 3-4 see the waiting screen) | 0/0, 2P by design | human play-through |
+| 3 | 87 | Payback | X1, X7, own spray for tags (F-0199), cp5 stealth-tutorial camera (F-0228) | 0/0, 4P | human play-through |
+| 4 | 34 | Blackout | pin/fit fallback | 0/0, 4P | human play-through |
+| 5 | 2 | Real Heavy Rep | X11 joins past the camera gate, intro cameras for players 3-4 (F-0228) | 0/0, 4P | human play-through |
+| 6 | 3 | Writer's Block | X2, X3, tag spray (F-0199), cp4 rooftop chase rails + hazards (F-0226) | 0/0, 4P | human play-through |
+| 7 | 5 | Adios Amigo | X1, X4 | 0/0, 4P | human play-through (boss doors with 4) |
+| 8 | 81 | Encore | X1, X3, **D24 cart chase: players 3-4 = Snow/Ajax tap-running** (F-0216), cart-chase cameras (F-0224), Chatterbox boss framing (F-0227) | 0/0, 4P | human play-through |
+| 9 | 86 | Payin' The Cost | X1, X2, cp4 cage rails + hazards (F-0226) | 0/0, 4P | human play-through; watch item F-0226 |
+| 10 | 93 | Destroyed | X1, X4, cp5 sneak cameras (F-0228) | 0/0, 4P | human play-through |
+| 11 | 31 | Boys In Blue | X1, X2, X13, cash objective sums players 2-4 (F-0199), Birdie framing (F-0228) | 0/0, 4P | human play-through |
+| 12 | 14 | Set Up | spawn + two pins, PINSVC, PLACE | 0/0, 4P | human play-through |
+| 13 | 9 | All-City | X1/X2, subway guard + cameras (F-0228), tag spray | 0/0, 4P | human play-through |
+| 14 | 51 | Desperate Dudes | X2, X3, X4, X13 (cp6-7) | 0/0, 4P | human play-through |
+| 15 | 52 | No Permits, No Parley | X2, X9 | 0/0, 4P | human play-through |
+| 16 | 54 | Home Run | X11, X1-X3, gate camera (F-0199), alley/park chase rails (F-0225); street rail for everybody fixed by LUIFIX | 0/0, 4P | human play-through |
+| 17 | 55 | Friendly Faces | FXCAM (F-0184), X2, Lizzie boss list/framing + BOSSTGT/CFGFOLLOW (F-0227) | 0/0, 4P | human play-through |
+| 18 | 84 | Come Out To Play | **D24 car escape: players 3-4 = Cochise/Vermin tapping** (F-0212..F-0215), beach rails views 3-4 | 0/0, 4P (at the car escape) | human play-through (incl. the finale) |
+| hub | 95 | hideout interludes | X12 waiting screen (F-0185), real mission end -> hideout (F-0218) | hub_cp2 0/0; hubreal_m4 0/0 | host-only by design (D4 A) |
 
-smoke3 (2026-10-12, all fixes up to F-0197, policies on, players 3-4 join only through X11): **all 18 missions 0 mismatches, 0 TLB misses; 4 players in all except M2 and M18 (join off by script at their start)** - F-0201. M17's crash is fixed (4 players).
+Earlier smoke batches (smoke, smoke2, smoke3 = F-0181, F-0201) are kept in the findings register.

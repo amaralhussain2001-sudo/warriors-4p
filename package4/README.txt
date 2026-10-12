@@ -93,9 +93,12 @@ Step 7 - Play
 - Player 1 (the host) controls the menus. Start the story with "2 PLAYER"; Player 2 presses Start to join, as in the
   original game.
 - Players 3 and 4 join by themselves when a mission allows it (no button needed); until then they see a waiting
-  message. Some story parts are for 2 players only (for example the start of mission 2 and the car chase at the start
-  of mission 18); players 3-4 join when those parts end. In the hideout between missions only the host plays; the
-  others see "Host is in the hideout - next: Mission N. Please wait."
+  message. Some story parts are for 2 players only (for example the start of mission 2 and the opening of mission 18
+  before the car escape); players 3-4 join when those parts end. In the two chases where the original lets only 2
+  players run, players 3 and 4 run too: in the mission 8 cart chase as Snow and Ajax, in the mission 18 car escape as
+  Cochise and Vermin - tap the button shown on screen like players 1-2 (one button for everybody; if anyone is caught,
+  the group retries). In the hideout between missions only the host plays; the others see "Host is in the hideout -
+  next: Mission N. Please wait."
 - Start or Esc pauses the game for everybody ("Paused by Player N"). Only that player or the host can resume.
 - On the map you are the arrow; the others show as 1P, 2P (yellow), 3P (red) and 4P (green).
 - Cutscenes are skipped only when everybody presses a button ("2/4 want to skip").

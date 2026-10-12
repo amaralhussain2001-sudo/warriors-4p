@@ -1,0 +1,99 @@
+{
+ "mission": 14,
+ "level": 51,
+ "name": "Desperate Dudes",
+ "run": "smoke4_m14",
+ "policies": true,
+ "seconds": 909,
+ "hash_points": 501,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "27": 0,
+  "28": 0,
+  "29": 0,
+  "30": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 15107,
+   "players": 4,
+   "handles": [
+    "0x1bb",
+    "0x101c0",
+    "0x120284",
+    "0x1a041c"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 15108,
+   "players": 4,
+   "handles": [
+    "0x1bb",
+    "0x101c0",
+    "0x120284",
+    "0x1a041c"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 15115,
+   "players": 4,
+   "handles": [
+    "0x1bb",
+    "0x101c0",
+    "0x120284",
+    "0x1a041c"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "first_poll_with_4": 9833,
+ "auto_joins_scheduled": 10,
+ "w4p_events": [
+  "[255087117.195] auto join for player 2 (pad 4) scheduled at poll 3511",
+  "[255087117.220] auto join for player 3 (pad 1) scheduled at poll 3514",
+  "[255087117.225] auto join for player 4 (pad 2) scheduled at poll 3517",
+  "[255093823.907] auto join for player 2 (pad 4) scheduled at poll 3571",
+  "[255093823.939] auto join for player 3 (pad 1) scheduled at poll 3574",
+  "[255093823.944] auto join for player 4 (pad 2) scheduled at poll 3577",
+  "[255202615.715] auto join for player 2 (pad 4) scheduled at poll 6511",
+  "[255202615.748] auto join for player 3 (pad 1) scheduled at poll 6514",
+  "[255202615.755] auto join for player 4 (pad 2) scheduled at poll 6517",
+  "[255308784.671] auto join for player 3 (pad 1) scheduled at poll 9691"
+ ],
+ "last_sample": {
+  "t": 903,
+  "poll": 15075,
+  "players": 4,
+  "handles": [
+   "0x1bb",
+   "0x101c0",
+   "0x120284",
+   "0x1a041c"
+  ],
+  "pad_owner": [
+   0,
+   3,
+   2,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

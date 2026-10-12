@@ -1,0 +1,93 @@
+{
+ "mission": 2,
+ "level": 80,
+ "name": "Real Live Bunch",
+ "run": "smoke4_m02",
+ "policies": true,
+ "seconds": 909,
+ "hash_points": 645,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 19508,
+   "players": 1,
+   "handles": [
+    "0xcc",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  },
+  "2": {
+   "poll": 19511,
+   "players": 1,
+   "handles": [
+    "0xcc",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  },
+  "3": {
+   "poll": 19522,
+   "players": 1,
+   "handles": [
+    "0xcc",
+    "0xffffffff",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 1,
+   "cameras": 1
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2
+ ],
+ "first_poll_with_4": null,
+ "auto_joins_scheduled": 6,
+ "w4p_events": [
+  "[255087115.193] auto join for player 2 (pad 4) scheduled at poll 3511",
+  "[255087115.219] auto join for player 3 (pad 1) scheduled at poll 3514",
+  "[255087115.224] auto join for player 4 (pad 2) scheduled at poll 3517",
+  "[255093821.890] auto join for player 2 (pad 4) scheduled at poll 3571",
+  "[255093821.922] auto join for player 3 (pad 1) scheduled at poll 3574",
+  "[255093821.927] auto join for player 4 (pad 2) scheduled at poll 3577"
+ ],
+ "last_sample": {
+  "t": 903,
+  "poll": 19445,
+  "players": 1,
+  "handles": [
+   "0xcc",
+   "0xffffffff",
+   "0xffffffff",
+   "0xffffffff"
+  ],
+  "pad_owner": [
+   0,
+   -1,
+   -1,
+   -1,
+   -1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 1
+ }
+}

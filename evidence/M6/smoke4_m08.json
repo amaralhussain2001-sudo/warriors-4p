@@ -1,0 +1,102 @@
+{
+ "mission": 8,
+ "level": 81,
+ "name": "Encore",
+ "run": "smoke4_m08",
+ "policies": true,
+ "seconds": 909,
+ "hash_points": 422,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "15": 0,
+  "16": 0,
+  "17": 0,
+  "18": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 12720,
+   "players": 4,
+   "handles": [
+    "0x100ea",
+    "0x60103",
+    "0xe5",
+    "0x200ef"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 12724,
+   "players": 4,
+   "handles": [
+    "0x100ea",
+    "0x60103",
+    "0xe5",
+    "0x200ef"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 12726,
+   "players": 4,
+   "handles": [
+    "0x100ea",
+    "0x60103",
+    "0xe5",
+    "0x200ef"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "first_poll_with_4": 8464,
+ "auto_joins_scheduled": 13,
+ "w4p_events": [
+  "[255087070.716] auto join for player 2 (pad 4) scheduled at poll 3511",
+  "[255087070.749] auto join for player 3 (pad 1) scheduled at poll 3514",
+  "[255087070.755] auto join for player 4 (pad 2) scheduled at poll 3517",
+  "[255093794.088] auto join for player 2 (pad 4) scheduled at poll 3571",
+  "[255093794.126] auto join for player 3 (pad 1) scheduled at poll 3574",
+  "[255093794.131] auto join for player 4 (pad 2) scheduled at poll 3577",
+  "[255202519.141] auto join for player 2 (pad 4) scheduled at poll 6511",
+  "[255202519.170] auto join for player 3 (pad 1) scheduled at poll 6514",
+  "[255202519.179] auto join for player 4 (pad 2) scheduled at poll 6517",
+  "[255207640.922] auto join for player 2 (pad 4) scheduled at poll 6571",
+  "[255207640.951] auto join for player 3 (pad 1) scheduled at poll 6574",
+  "[255207640.956] auto join for player 4 (pad 2) scheduled at poll 6577",
+  "[255276220.014] auto join for player 3 (pad 1) scheduled at poll 8311"
+ ],
+ "last_sample": {
+  "t": 903,
+  "poll": 12703,
+  "players": 4,
+  "handles": [
+   "0x100ea",
+   "0x60103",
+   "0xe5",
+   "0x200ef"
+  ],
+  "pad_owner": [
+   0,
+   3,
+   2,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 4
+ }
+}

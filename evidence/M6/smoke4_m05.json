@@ -1,0 +1,99 @@
+{
+ "mission": 5,
+ "level": 2,
+ "name": "Real Heavy Rep",
+ "run": "smoke4_m05",
+ "policies": true,
+ "seconds": 908,
+ "hash_points": 449,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 13509,
+   "players": 4,
+   "handles": [
+    "0x30122",
+    "0x113",
+    "0x10118",
+    "0x5012c"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 13509,
+   "players": 4,
+   "handles": [
+    "0x30122",
+    "0x113",
+    "0x10118",
+    "0x5012c"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 13513,
+   "players": 4,
+   "handles": [
+    "0x30122",
+    "0x113",
+    "0x10118",
+    "0x5012c"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "first_poll_with_4": 7386,
+ "auto_joins_scheduled": 10,
+ "w4p_events": [
+  "[257816605.646] auto join for player 2 (pad 4) scheduled at poll 3511",
+  "[257816605.676] auto join for player 3 (pad 1) scheduled at poll 3514",
+  "[257816605.682] auto join for player 4 (pad 2) scheduled at poll 3517",
+  "[257823312.327] auto join for player 2 (pad 4) scheduled at poll 3571",
+  "[257823312.360] auto join for player 3 (pad 1) scheduled at poll 3574",
+  "[257823312.364] auto join for player 4 (pad 2) scheduled at poll 3577",
+  "[257932004.025] auto join for player 2 (pad 4) scheduled at poll 6511",
+  "[257932004.061] auto join for player 3 (pad 1) scheduled at poll 6514",
+  "[257932004.068] auto join for player 4 (pad 2) scheduled at poll 6517",
+  "[257974971.412] auto join for player 3 (pad 1) scheduled at poll 7291"
+ ],
+ "last_sample": {
+  "t": 902,
+  "poll": 13466,
+  "players": 4,
+  "handles": [
+   "0x30122",
+   "0x113",
+   "0x10118",
+   "0x5012c"
+  ],
+  "pad_owner": [
+   0,
+   3,
+   2,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 1
+ }
+}

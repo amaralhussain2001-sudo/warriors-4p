@@ -1,7 +1,7 @@
 # M7 report - robustness (2026-10-12)
 
-**Result: every SINGLE-PC exit criterion of M7 (`docs/plan/M7.md`) now has test evidence, except criterion 4's final
-smoke batch, which runs after the D24 and camera-parity changes are merged (section "Still open").** Everything here is
+**Result: every SINGLE-PC exit criterion of M7 (`docs/plan/M7.md`) is met with test evidence** (criterion 2 for the
+game-data path of an outage; the helper's ICE re-dial needs a real network outage). Everything here is
 one PC with bots or scripted input, 4 emulators in lockstep on loopback unless noted. It does **not** prove: two or more
 real PCs, real routers or the internet, human players, or how the controls feel with latency. Those parts are listed at
 the end as tests only you can do.
@@ -35,7 +35,7 @@ logs and screenshots in `local/` (not committed). Originals unchanged: 20 files,
 | 1 | >= 60 min, 4 instances, a level change, 0 mismatches / crashes / softlocks | **long1**: 3911 s, 1545 common hash points, 0 mismatches, 0 TLB misses, poll counter advanced in every sample; reload at poll 40000 (players back to 4 after 693 polls); D24 pnach of 16:30 (7214 addresses) - F-0220 | **PASS** (SINGLE-PC, bots) |
 | 2 | Outage through the real connection path: short one recovers, long one reaches the host's choice | **t1g**: helpers with the new test switch `mute`; 20 s -> wait 19.0 s, resumed; 45 s -> 44.1 s, resumed; 75 s -> timeout, host "continue", "player 4 leaves the session from poll 10253" on all three, 0 mismatches before and after, 0 TLB - F-0219 | **PASS** for the game-data path; ICE re-dial NOT exercised (needs a real outage) |
 | 3 | Impairment RTT 50/100/150, jitter, loss 1 %/5 %, >= 10 min each, 0 unrecovered desyncs, delay/stall/fps reported | 12 runs x 660 s, all 0 mismatches; speed and waiting per condition in F-0206 | **PASS** (simulated, built-in W4P impairment) |
-| 4 | Every mission smoke-tested with 4 players after all M6 fixes; restarts in >= 6 missions | smoke3 all 18 missions 0 mismatches / 0 TLB (F-0201, before FOVFIX/X6 rows/labels); checkpoint restarts in 6 missions (F-0204); real mission end -> hideout (hubreal_m4, F-0218) | **partly**: the final smoke after the D24 + camera merge is still to run |
+| 4 | Every mission smoke-tested with 4 players after all M6 fixes; restarts in >= 6 missions | **smoke4 with every fix: all 18 missions 0 mismatches / 0 TLB, 4 players in 17 (M2 by design)** (F-0231); checkpoint restarts in 6 missions (F-0204); M18/M8 chase retries with 4 (F-0212, F-0216); real mission end -> hideout (F-0218); crash found and fixed in this round: the camera relocation bug F-0223 | **PASS** (SINGLE-PC, bots) |
 | 5 | Single-player regression | F-0193 (boot, new story, M1, pause, save/load, M2; 60 fps title) | **PASS** |
 | 6 | Original local 2-player regression | F-0193: join, fight, drop-out, re-join = original; the 2x2 layout appears only if the mod's groups are switched on for local play, which the package never does | **PASS** with the package; FAILED TEST only in a configuration the package does not produce |
 | 7 | Optional content at its original player count | F-0193: Rumble modes, flashback 'Roots', Armies stage 1, user card in the hideout, 0 TLB | **PASS** (flashbacks/Armies via test level jump; not offered on a fresh card) |
@@ -59,8 +59,6 @@ logs and screenshots in `local/` (not committed). Originals unchanged: 20 files,
 - F-0221 bandwidth per player. F-0220 the 65-minute session.
 
 ## Still open
-- **Criterion 4 final batch:** smoke all 18 missions with 4 players after the D24 (players 3-4 in the 2-player chases)
-  and camera-parity rows are merged; result goes into this table and FINDINGS.
 - **Needs you (does not block the SINGLE-PC criteria):** a real network outage on LAN/internet (pull a cable or switch
   Wi-Fi off for 20 s, then for 45 s, on one PC), the feel of the controls with latency, and the internet session with
   friends. Exact steps are in the final report's test sheet.

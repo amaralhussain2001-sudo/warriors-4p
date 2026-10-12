@@ -1,0 +1,100 @@
+{
+ "mission": 18,
+ "level": 84,
+ "name": null,
+ "run": "smoke4_m18",
+ "policies": true,
+ "seconds": 908,
+ "hash_points": 674,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "27": 0,
+  "28": 0,
+  "29": 0,
+  "30": 0
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": {
+   "poll": 20301,
+   "players": 4,
+   "handles": [
+    "0xe00db",
+    "0xf00e0",
+    "0x1000e5",
+    "0x1100ea"
+   ],
+   "views": 1,
+   "cameras": 4
+  },
+  "2": {
+   "poll": 20314,
+   "players": 4,
+   "handles": [
+    "0xe00db",
+    "0xf00e0",
+    "0x1000e5",
+    "0x1100ea"
+   ],
+   "views": 1,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 20324,
+   "players": 4,
+   "handles": [
+    "0xe00db",
+    "0xf00e0",
+    "0x1000e5",
+    "0x1100ea"
+   ],
+   "views": 1,
+   "cameras": 4
+  }
+ },
+ "players_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "first_poll_with_4": 8634,
+ "auto_joins_scheduled": 12,
+ "w4p_events": [
+  "[258725270.555] auto join for player 2 (pad 4) scheduled at poll 3511",
+  "[258725270.583] auto join for player 3 (pad 1) scheduled at poll 3514",
+  "[258725270.589] auto join for player 4 (pad 2) scheduled at poll 3517",
+  "[258731977.236] auto join for player 2 (pad 4) scheduled at poll 3571",
+  "[258731977.266] auto join for player 3 (pad 1) scheduled at poll 3574",
+  "[258731977.270] auto join for player 4 (pad 2) scheduled at poll 3577",
+  "[258840535.519] auto join for player 2 (pad 4) scheduled at poll 6511",
+  "[258840535.555] auto join for player 3 (pad 1) scheduled at poll 6514",
+  "[258840535.562] auto join for player 4 (pad 2) scheduled at poll 6517",
+  "[258845623.909] auto join for player 2 (pad 4) scheduled at poll 6571",
+  "[258845623.943] auto join for player 3 (pad 1) scheduled at poll 6574",
+  "[258845623.949] auto join for player 4 (pad 2) scheduled at poll 6577"
+ ],
+ "last_sample": {
+  "t": 902,
+  "poll": 20212,
+  "players": 4,
+  "handles": [
+   "0xe00db",
+   "0xf00e0",
+   "0x1000e5",
+   "0x1100ea"
+  ],
+  "pad_owner": [
+   0,
+   2,
+   3,
+   -1,
+   1,
+   -1,
+   -1,
+   -1
+  ],
+  "views": 1
+ }
+}

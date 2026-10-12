@@ -1,6 +1,8 @@
 """Build the 2-4 player co-op test package in dist/warriors-4p-coop (and dist/warriors-4p-coop.zip).
 
-Usage: python -I tools/make_package4.py [--reuse-emulator] [--pnach FILE]
+Usage: python -I tools/make_package4.py [--reuse-emulator] [--pnach FILE] [--strip-comments]
+  --strip-comments: ship the game patch without the "//" comments (legal review M8 L2: the comments quote
+  replaced original instruction words); patch lines, group headers and descriptions are unchanged.
   --pnach FILE: the game patch to ship (default mod/w4p_m1.pnach), e.g. one generated from the current sources with
   `python -I mod/make_pnach.py > FILE` (check it with `python -I tools/note_patches.py check FILE`).
   --reuse-emulator: keep the emulator folder of the existing dist/warriors-4p-coop (the bin folder is copied only once;
@@ -135,7 +137,20 @@ def main():
     os.makedirs(os.path.join(DEST, "game"))
     pnach = os.path.abspath(sys.argv[sys.argv.index("--pnach") + 1]) if "--pnach" in sys.argv else \
         os.path.join(PROJ, "mod", "w4p_m1.pnach")
-    shutil.copy2(pnach, os.path.join(DEST, "game", "w4p.pnach"))
+    if "--strip-comments" in sys.argv:  # M8 legal review L2: no quoted original words in the shipped patch
+        raw = open(pnach, "rb").read()
+        nl = bytes([13, 13, 10]) if bytes([13, 13, 10]) in raw else (bytes([13, 10]) if bytes([13, 10]) in raw else bytes([10]))
+        out = []
+        for ln in raw.split(nl):
+            t = ln.strip()
+            if t.startswith(b"//"):
+                continue
+            if t.startswith(b"patch=") and b"//" in ln:
+                ln = ln[:ln.index(b"//")].rstrip()
+            out.append(ln)
+        open(os.path.join(DEST, "game", "w4p.pnach"), "wb").write(nl.join(out))
+    else:
+        shutil.copy2(pnach, os.path.join(DEST, "game", "w4p.pnach"))
     shutil.copy2(os.path.join(SRC4, "profile_PCSX2.ini"), os.path.join(DEST, "game", "profile_PCSX2.ini"))
     for f in ("Start-Coop.ps1", "Start-Coop.bat", "README.txt", "QUICK-START.txt"):
         shutil.copy2(os.path.join(SRC4, f), os.path.join(DEST, f))
