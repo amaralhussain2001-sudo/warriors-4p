@@ -50,7 +50,9 @@ def state(p):
                       "in_pin_list": bool(ent), "instance": ent[0][2] if ent else None})
     codes = {n: p.read32(0x000E1C10 + 4 * j) for j, n in enumerate(CODES[:11])}
     codes.update({"EN_SLOT": p.read32(0x000E1C3C), "TIMEOUT_MS": p.read32(0x000E1C40), "PRELOAD_AT3": p.read32(0x000E1C44),
-                  "POKE_EN": p.read32(0x000E1C48), "OWN3": p.read32(0x000E1C4C)})
+                  "POKE_EN": p.read32(0x000E1C48), "OWN3": p.read32(0x000E1C4C),
+                  "KICK_MS": p.read32(0x000E2300), "KICK_T": p.read32(0x000E2304), "N_KICK": p.read32(0x000E2308),
+                  "SVC_T": p.read32(0x000E230C), "N_FIX": p.read32(0x000E2310)})
     return {"poll": T._poll(p), "level_cp": F._level(p), "count": F._s16(p.read32(gm + 0x224)), "players": players,
             "slots": slots, "codes": codes, "pin_list": pins,
             "choose": {"result": p.read32(0x000E15F0), "status": [p.read32(0x000E15C0 + 4 * k) for k in range(9)]},

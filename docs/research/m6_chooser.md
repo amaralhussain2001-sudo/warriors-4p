@@ -10,15 +10,26 @@ warriors-4p missions`), MTVU off, patch `local/m6/ch1.pnach` (generated with `py
 **`mod/w4p_m1.pnach` was NOT regenerated** because the smoke batch on instances 6-9 reads it). Decisions applied as the
 coordinator's defaults: X9 A, X10 A, X7 (b); the user may still change X9/X10 (data words, section 2.5).
 
+**Follow-up (2026-10-12, later the same day; sources committed by the coordinator as 336c6a4 before it):** (1) option (b)
+of finding 3 (re-pin a stalled pin after 8 s, KICK) implemented and tested: **it did not help** (chs_m12k), so it is
+off by default; the cause was diagnosed (chs_m12d: the loaded parts are evicted before anything references them) and
+fixed with a per-frame pin service PINSVC/PINFIX (section 2.6): **M12 now gives players 3 and 4 their own models**
+(chs_m12s); (2) Ajax rows added for M17, M18 and the post-game hub (X9 A, script evidence in 2.1); the Fox rows stay
+HYPOTHESIS; (3) M17's crash at the third join (finding 4) was fixed by the coordinator (F-0184, FXCAM in
+`mod/m2/fx34.txt`). Only `mod/m2/spawn.txt` changed in the follow-up (`missions.txt` belongs to another agent now).
+Follow-up runs use `local/m6/ch2.pnach` (KICK) and `local/m6/ch3.pnach` (KICK off + PINSVC), both generated from
+the committed sources (HEAD 336c6a4/c287aac) with only `spawn.txt` replaced.
+
 ## Summary
 | # | Problem | Change | Where | Result |
 |---|---|---|---|---|
 | 1 | M13: after the script deleted Fox (player 3), the re-join spawned player 3 **as Fox**, whom ch2 re-creates (m6_fixes.md finding 3) | **XC table**: per level and checkpoint range, the Warriors that the level's scripts create later, delete and re-create, or use as scripted actors; CHOOSE gives them status 6 and never picks or pins them (25 rows, from m6_missions.md section 3 + script greps) | `[4p spawn]`: CHOOSE 0x000E1400 (+5 words), XCHK 0x000E1FA8, table 0x000E1E10 | **VERIFIED** (chs_m13fox: Fox status 6 at the re-join, player 3 became Ajax); the 25 rows also checked by simulation |
-| 2 | X9 A: never a Warrior who is dead in the story | XC rows: Cleon in levels 51, 52, 54, 55, 84 (M14-M18) and the post-game hub (level 95 cp >= 11); Fox from M16 (HYPOTHESIS, 2.1) | same table | **VERIFIED** for M15 (chs_m15b: Cleon status 6, no pin; the old order would pin Cleon); other levels simulation only |
-| 3 | Only one pin (PIN_ID): a second spawn moved the pin from Swan (still player 4) to Fox (m6_fixes.md finding 4) | **Two pin slots**; a pin is released only when no W4P-added Warrior of that name plays any more (USED), on his leave/delete (UNPIN), after the last join if unused (SWEEP), on timeout/no-fit, at teardown. **X10 A**: the 3rd player also waits for his own model (OWN3 = 1); no second model -> clone as before | `[4p spawn]` block 0x000E1600-0x000E1AB8, PX/LV at their old addresses, helpers 0x000E1E80-0x000E2173, slot 1 at 0x000E1C50 | **VERIFIED** in M13 (chs_m13fox: Swan's pin and model kept 5.4 min while Ajax got slot 1; chs_reg: P3 Swan + P4 Ajax with own models). **FAILED TEST in M12** (chs_m12, chs_m12b): player 3's first pin never became resident before the GATE timeout -> clone (finding 3) |
+| 2 | X9 A: never a Warrior the story has removed | XC rows: Cleon in levels 51, 52, 54, 55, 84 (M14-M18) and the post-game hub (level 95 cp >= 11); Fox from M16 (HYPOTHESIS, 2.1); **Ajax in M17, M18 and the post-game hub (follow-up, VERIFIED script, 2.1)** | same table | **VERIFIED** for M15 (chs_m15b: Cleon status 6, no pin; the old order would pin Cleon); other levels, the Ajax rows (follow-up) and the Fox rows by simulation only |
+| 3 | Only one pin (PIN_ID): a second spawn moved the pin from Swan (still player 4) to Fox (m6_fixes.md finding 4) | **Two pin slots**; a pin is released only when no W4P-added Warrior of that name plays any more (USED), on his leave/delete (UNPIN), after the last join if unused (SWEEP), on timeout/no-fit, at teardown. **X10 A**: the 3rd player also waits for his own model (OWN3 = 1); no second model -> clone as before | `[4p spawn]` block 0x000E1600-0x000E1AB8, PX/LV at their old addresses, helpers 0x000E1E80-0x000E2173, slot 1 at 0x000E1C50 | **VERIFIED** in M13 (chs_m13fox: Swan's pin and model kept 5.4 min while Ajax got slot 1; chs_reg, chs_m13s: P3 Swan + P4 Ajax with own models). First version **FAILED TEST in M12** (chs_m12, chs_m12b: player 3's first pin never got an instance before the GATE timeout -> clone, finding 3); **follow-up VERIFIED in M12 with PINSVC** (chs_m12s: P3 Swan, P4 Ajax with own models, 1 refused press, no timeout; 2.6) |
 | 4 | X7 (b): a script-forced leave (X1/X3) emptied the player's inventory slot and he did not get his starting items back | **LVOWE**: the forced leave marks the slot's X7 byte "owed" (2) if he had them; X7J gives them again at his next join at any checkpoint; normal leaves keep "given" (1): no second gift | `[missions]`: REL34 and X3W call LVOWE 0x000E7790; X7J 0x000E7640 rewritten | **VERIFIED** (chs_m13fox: spray 6 -> 0 at the forced leave, 6 again at the re-join; no second gift for the other player) |
-| - | Regression: M13, 4 players, random bots | all groups | - | **VERIFIED** (chs_reg, build w4p-m6-1: 4 players / 4 views, 0 TLB misses, 302 s of random play). Separately: **M17 cp1 crashes at the 3rd join with any chooser (finding 4)** |
+| - | Regression: M13, 4 players, random bots | all groups | - | **VERIFIED** (chs_reg and, with PINSVC, chs_m13s; build w4p-m6-1: 4 players / 4 views, 0 TLB misses, 302-303 s of random play). Separately: M17 cp1 crashed at the 3rd join with any chooser (finding 4; fixed by the coordinator, F-0184) |
 
+Follow-up test pnach `local/m6/ch3.pnach`: **3476 addresses, 6 problems** (the known 6). First version:
 `python -I tools/note_patches.py check local/m6/ch1.pnach`: **3340 addresses, 6 problems** = exactly the 6 known
 `[4p hud A]` vs `[4p hud B1]` alternatives (`local/m6/dev2.pnach` of m6_fixes.md: 3122 addresses, 6 problems). The five
 changed or depended-on sources alone (`missions.txt spawn.txt spawn_leave.txt inventory.txt session.txt`): **1356
@@ -35,8 +46,11 @@ re-assembled: 0 mismatches (section 3).
 | 0x000E1BAC-0x000E1BD4 | `[4p spawn]` | LV at its old address (callers 0x000E1274 LEAVEHOOK, 0x000E71E4 session LEAVE unchanged): DESPAWN, then UNPIN(char id) |
 | 0x000E1C00-0x000E1C5C | `[4p spawn]` (patch=0) | slot 0 (ID, OWN, MI, T0) at 0x000E1C00 (= the old PIN_ID/PIN_OWN/PIN_MI/PIN_T0), codes/counters 0x000E1C10-0x000E1C38 as before, **EN_SLOT 0x000E1C3C**, config 0x000E1C40-0x000E1C48 as before, **OWN3 0x000E1C4C** (X10, 1), **slot 1 at 0x000E1C50** |
 | 0x000E1E10-0x000E1E74 | `[4p spawn]` (patch=0) | XC table (25 rows + end) |
-| 0x000E1E80-0x000E2170 | `[4p spawn]` | SLOTP 0x000E1E80, USED 0x000E1E9C, UNPIN 0x000E1EE8, SWEEP 0x000E1F4C, XCHK 0x000E1FA8, GATE 0x000E2028, JS 0x000E20E8 |
-| 0x000E103C | `[4p spawn]` | SPAWNPICK's spawn call -> `jal 0x000E20E8` JS (pnach had `jal 0x000E1A9C`) |
+| 0x000E1E80-0x000E2230 | `[4p spawn]` | SLOTP 0x000E1E80, USED 0x000E1E9C, UNPIN 0x000E1EE8, SWEEP 0x000E1F4C, XCHK 0x000E1FA8, GATE 0x000E2028, JS 0x000E2108 (was 0x000E20E8 before the follow-up), KICK 0x000E2194 (2.6) |
+| 0x000E2300-0x000E2310 | `[4p spawn]` (patch=0) | follow-up 2.6: KICK_MS (0 = off), KICK_T, N_KICK, SVC_T, N_FIX |
+| 0x000E2320-0x000E2438 | `[4p spawn]` | follow-up 2.6: PINSVC 0x000E2320, PINFIX 0x000E2374 |
+| 0x0023D6BC | `[4p spawn]` | follow-up 2.6: the human update's model request call -> `jal 0x000E2320` PINSVC (was 0C06290C `jal 0x0018A430`) |
+| 0x000E103C | `[4p spawn]` | SPAWNPICK's spawn call -> `jal 0x000E2108` JS (pnach had `jal 0x000E1A9C`; first version `jal 0x000E20E8`) |
 | 0x001898C8 | `[4p spawn]` | streamer pin fit test -> `jal 0x000E1770` FITCHK (was 0C05DD76 `jal 0x001775D8`; pnach had `jal 0x000E1758`) |
 | 0x00188AEC, 0x00189734 | `[4p spawn]` | unchanged (`jal 0x000E1600` CLRPIN) |
 | 0x000E7400-0x000E7454 | `missions.txt` `[missions]` | REL34 (was -0x000E7470): W4P-added Warrior -> UNPIN(char id) instead of "release if PIN_ID"; LEAVE through LVOWE |
@@ -44,11 +58,11 @@ re-assembled: 0 mismatches (section 3).
 | 0x000E7640-0x000E7730 | `[missions]` | X7J (was -0x000E7724): given byte 2 = owed -> give at any checkpoint |
 | 0x000E7790-0x000E7810 | `[missions]` | LVOWE(index) |
 
-New low RAM: 0x000E1C3C, 0x000E1C4C-0x000E1C5F, 0x000E1E10-0x000E2173, 0x000E7728-0x000E7733 (X7J grew by 3 words),
+New low RAM: 0x000E1C3C, 0x000E1C4C-0x000E1C5F, 0x000E1E10-0x000E2233 (follow-up: up to 0x000E2237), 0x000E2300-0x000E243F (follow-up), 0x000E7728-0x000E7733 (X7J grew by 3 words),
 0x000E7790-0x000E7813. Grepped free before use in `mod/w4p_m1.pnach`, `local/m6/dev2.pnach`, `mod/m2/*`, `tests/`, `tools/`,
 `emulator/patches/`, `net/` (only the X2 table 0x000E1E00-0x000E1E0F was near). Freed: 0x000E1ABC-0x000E1B37 and
 0x000E1BD8-0x000E1BFF (old ENSURE/GATE/JS tail and LV tail; not referenced). `docs/STATE.md`'s RAM map is not edited here
-(coordinator): spawn/chooser now 0x000E1000-0x000E1C5F and 0x000E1C60-0x000E2173, missions 0x000E7400-0x000E7813.
+(coordinator): spawn/chooser now 0x000E1000-0x000E1C5F, 0x000E1C60-0x000E2237 and 0x000E2300-0x000E243F, missions 0x000E7400-0x000E7813.
 Callers outside `spawn.txt`/`missions.txt` are unchanged: `spawn_leave.txt` 0x000E1274 `jal 0x000E1BAC` (LV) and
 `session.txt` 0x000E71E4 `jal 0x000E1BAC` (LV). `tests/m2/m6fix_probe.py` still reads PIN_ID = slot 0 ID (0x000E1C00).
 
@@ -88,8 +102,9 @@ Callers outside `spawn.txt`/`missions.txt` are unchanged: `spawn_leave.txt` 0x00
 | 51, 52, 54, 55, 84 (M14-M18) | all | Cleon | **X9 A** (below) |
 | 54 (M16) | <= 4 | Swan, Cowboy, Ajax, Snow | AltWar gangs per chapter (08262:1124-1126, 1401-1403, 1269-1271); `AjaxFacesUp` deletes GangWarriors (Swan) 08352:187-213; `AddFinalWarriors`/`AddAjaxFinal` 08353:31-56 |
 | 54, 55, 84 (M16-M18) | all | Fox | **X9 A, HYPOTHESIS** (below) |
+| 55, 84 (M17-M18) | all | Ajax | **X9 A (follow-up), VERIFIED script**: removed at the end of M16 (below) |
 | 55 (M17) | <= 2 | Swan, Cowboy, Snow | `AddWarriors04` + `HuChangePlayerGang` at the cp2 -> cp3 swap 08404:81-83 (08357:1045-1051) |
-| 95 (hub) | 11-15 | Cleon, Fox | post-game hub (`runNextMission` 84 -> 95 cp11, 04106:1763); X9 A, HYPOTHESIS |
+| 95 (hub) | 11-15 | Cleon, Fox, Ajax | post-game hub (`runNextMission` 84 -> 95 cp11, 04106:1763); X9 A, HYPOTHESIS for the hub |
 
   No row for M4 (34), M5 (2), M8 (81), M12 (14): their scripts create no Warrior later that could be absent at a join
   (M4/M5/M12 squads are created once per level load; M8's later Cleon/Swan chase variants replace humans that are present,
@@ -102,8 +117,16 @@ Callers outside `spawn.txt`/`missions.txt` are unchanged: `spawn_leave.txt` 0x00
   is not in a script). Fox: M16's opening subway scene l54_c1 has Fox with two cops, a baton and subway train objects in its
   cast (08355:131-133), his gang is removed right after (08355:139-140), and no later script (M16 08262/0834x-0835x, M17,
   M18) creates a Fox (grep: 1 reference, the scene cast). HYPOTHESIS that this scene is his death; the row only removes Fox
-  from the choice there (cost: one candidate fewer). Ajax is not excluded in M17-M18 (absent from their scripts, but
-  arrested in the story, not dead; X9 A names dead Warriors only) - a data row if the user wants it.
+  from the choice there (cost: one candidate fewer). No more direct script evidence for Fox was found (string tables: only
+  flashback/menu texts), so the Fox rows stay HYPOTHESIS. **Ajax (follow-up, the user's X9 A = no Warriors the story has
+  removed):** M16's last scenes are `l54_c3_b` with the cast `player` (Swan), Cowboy, Ajax, Snow, `LCop.lcop` (char 260,
+  08262:1214), two cops (chars 253/257) and the objects baton, car, `Cuff1`, `Cuff2` and a whistle spawned at Ajax's position (08350:181-185,
+  `AddLCop`/`AddC3ACops` 08350:163-164), then `l54_c3_c` (`Final` = 1, mission end) with the cops and Ajax (08350:199-202);
+  **no M17 or M18 script creates Ajax** (grep: 0 references in 08357, 08400-08404, 09030, 09110-09113). VERIFIED script:
+  Ajax is removed at the end of M16 (handcuffed in the final scene - the scene content itself is HYPOTHESIS, the cast and
+  objects are script text). Rows: level55 and level84 all checkpoints, hub cp >= 11 (masks 0x128 = Ajax, Fox, Cleon).
+  In level54 itself Ajax stays allowed after cp4 (he is in the squad until the final scene, so CHOOSE's presence test
+  refuses him anyway).
 - **Not covered:** flashback missions (levels 82, 92, 83, 20, 11) and rumbles - story-earlier or not story; no rows.
   Levels 60-64: ENSURE/CHOOSE behave as before (+0x114 model field).
 
@@ -157,6 +180,37 @@ streamer, Lua deletes, ResetLevel). The new words (0x000E1C3C-0x000E1C5F, 0x000E
 - X9 / problem 1: XC rows 0x000E1E10.. (delete a row = allow that Warrior there; e.g. the Fox rows if the user does not
   want the HYPOTHESIS rows, or add an Ajax row for M17/M18).
 - Candidate order 0x000E1580 (patch=2 words in `spawn.txt`), TIMEOUT_MS, PRELOAD_AT3, POKE_EN as before.
+- KICK_MS 0x000E2300 (follow-up 2.6): 0 = off (default); e.g. 8000 = re-pin a pin still loading after 8 s.
+
+### 2.6 Stalled pins in busy levels (follow-up 2026-10-12: option (b) KICK, diagnosis, pin service PINSVC)
+- **Problem (finding 3, M12):** player 3's first pin of Swan never got an instance before the GATE timeout.
+- **Option (b), KICK (implemented, tested, default OFF):** `KICK` (0x000E2194), called from GATE's refuse path: when the
+  waited-for pin is at least KICK_MS (0x000E2300) old and the last re-pin is at least KICK_MS ago, RELEASE that slot and
+  ENSURE again (new pin + POKE), keeping the first T0 so the 20 s timeout still counts from the first pin; ENSURE result
+  1/2 -> the press joins (GATE code 5). Data: KICK_T 0x000E2304, N_KICK 0x000E2308. **Result chs_m12k (KICK_MS = 8,000):
+  the re-pin at 8 s did not help** (still not resident at the next presses; timeout at 20 s -> clone), so KICK_MS is 0 in
+  the source; the code stays available as a config word.
+- **Diagnosis (chs_m12d: KICK off, TIMEOUT 60 s, `extra_survey` every ~200 polls; VERIFIED runtime):** the load itself
+  works - Swan's three parts were **resident with refcount 0 at poll 7500 and again at 8700**, but **evicted in between**
+  (7700: animation and model gone; 7900: requested again, loads pending 3). The pin's instance (the reference that keeps
+  the parts) is built only by the streamer `FUN_001897A8` when it services a pin whose model is resident (pin loop
+  0x00189874-0x00189934); the scheduler `FUN_0040F8A0` does not call the streamer for pins alone (all request priorities
+  at FLT_MAX in every sample, dict+0xBC4 = -1: H1 of m2_extra_model.md confirmed), and our POKE runs only at a Start press
+  every ~5 s. In M12 (39-43 live humans, 9 level pins, largest free block 171-265 KB) the fit tests of other streaming
+  evict unreferenced character parts (LRU, `FUN_00187D28`) before a press comes. In M13 the parts stay long enough. The
+  "re-pin after the timeout works" observation of chs_m12/m12b came from the clone spawn and preload ENSURE happening
+  while the parts happened to be resident (8700 in chs_m12d).
+- **Fix, PINSVC/PINFIX (0x000E2320/0x000E2374, hook 0x0023D6BC):** the human update's per-human model request call
+  `jal 0x0018A430` (FUN_0023D660, every human every frame; the call's result is not used, 0x0023D6C4 reloads v0) goes
+  through PINSVC: the original call, then **once per game-clock value (= once per frame)** and only while slot 0 or 1 holds
+  a pin, PINFIX: for each slot whose game pin-list entry has no instance and whose model is resident
+  (`FUN_001774D0(dict, entry, 0, 0)`), build the instance with the streamer's own call `FUN_00177B80(dict, entry, 0)` and
+  store it in the pin-list entry (as the streamer does, 0x00189E84 path). From then on the parts are referenced and cannot
+  be evicted; the next press finds the Warrior resident. Data: SVC_T 0x000E230C, N_FIX 0x000E2310. Cost per frame: one
+  clock compare; with a pin pending, two 32-entry list scans and up to two residency tests. Lockstep: game RAM only, on the
+  game thread (human update), once per frame (HYPOTHESIS deterministic as the rest).
+- **Release paths unchanged:** RELEASE's `FUN_0018AD40(dict, id, 1)` drops the instance PINFIX built (it clears every
+  entry with that model index and releases its instance, m2_extra_model.md 1.2).
 
 ## 3. Checks
 - **Assembly round trip.** All new and rewritten code was written as assembly source and assembled with a scratch R5900
@@ -164,8 +218,11 @@ streamer, Lua deletes, ResetLevel). The new words (0x000E1C3C-0x000E1C5F, 0x000E
   The decoder/encoder pair was first checked on the game ELF: 720,238 decodable words in 0x00100000-0x003FFFFF re-encode
   to themselves (0 mismatches), and on the existing W4P sources (`missions.txt` 179, `spawn_leave.txt` 29, `session.txt`
   142 cave words: 0 mismatches; in `spawn.txt` only the FPU word `add.s` of SPAWN and the candidate data words are outside
-  the subset). Independent pass over the final sources: **742 code words** in 0x000E1400-0x000E157F, 0x000E1600-0x000E1BFF,
-  0x000E1E80-0x000E21FF, 0x000E7400-0x000E747F, 0x000E75EC, 0x000E7640-0x000E773F, 0x000E7790-0x000E78FF: the comment's
+  the subset). Follow-up: the same independent pass over the follow-up `spawn.txt`/`missions.txt` gives **863 code words, 0
+  mismatches** (adds 0x000E2300-0x000E25FF and the hook 0x0023D6BC `jal 0x000E2320`, whose `was 0C06290C` matches the
+  ELF; `missions.txt` read from the committed version, range 0x000E7790-0x000E7813, because another agent now adds code
+  from 0x000E7820 in the working copy). First version: independent pass over the final sources: **742 code words** in 0x000E1400-0x000E157F, 0x000E1600-0x000E1BFF,
+  0x000E1E80-0x000E21FF, 0x000E7400-0x000E747F, 0x000E75EC, 0x000E7640-0x000E773F, 0x000E7790-0x000E7813: the comment's
   instruction text equals the disassembly and re-assembles to the word: **0 mismatches**. Hooks re-read from the sources:
   0x000E103C `jal 0x000E20E8`, 0x001898C8 `jal 0x000E1770`, 0x000E1008 `jal 0x000E1B38`, 0x000E1274 and 0x000E71E4
   `jal 0x000E1BAC`, 0x000E10BC `jal 0x000E1400`, 0x00188AEC/0x00189734 `jal 0x000E1600`, 0x000E75EC `jal 0x000E7790`.
@@ -176,7 +233,11 @@ streamer, Lua deletes, ResetLevel). The new words (0x000E1C3C-0x000E1C5F, 0x000E
   exact source words were run on a small R5900 interpreter with a mock GameMgr, model dictionary, pin list, char table,
   object table and timer (stubs: handle resolve, HUD index, residency, the pin core with "last free slot", streamer calling
   FITCHK, fit test, SPAWN = CHOOSE + a marker-7 human, DESPAWN, LEAVE, X2SEL, inventory cores); callee-saved registers and
-  sp were checked after every call. 54 checks, 0 failures (`ch_simtest.py` 53, `ch_simtest2.py` 1): XCHK for 23 level/checkpoint/Warrior cases (incl. M13 cp1-3 Fox,
+  sp were checked after every call. Follow-up: **71 checks, 0 failures** (`ch_simtest.py` 70, `ch_simtest2.py` 1; adds XCHK
+  for the Ajax rows, KICK: no re-pin before 8 s, re-pin at 8.5 s keeping the first T0, no second re-pin within 8 s, timeout
+  still 20 s after the first pin, join after a re-pin made the model resident; PINSVC: once per clock value, no instance
+  while not resident, instance built with the streamer's call on the next frame once resident, then nothing more, no pin
+  -> only the original call). First version: 54 checks, 0 failures (`ch_simtest.py` 53, `ch_simtest2.py` 1): XCHK for 23 level/checkpoint/Warrior cases (incl. M13 cp1-3 Fox,
   M14 cp1/5/6/7, hub cp10/11, M1, M2 cp1-5, M16 cp4/5); CHOOSE in M13 cp1 with Fox resident -> clone, Fox status 6; M13 cp3
   -> Fox; M15 with Cleon resident -> clone, Cleon status 6; the m6x1b sequence (P3 = Fox companion, preload Swan in slot 0,
   P4 = Swan, REL34(Fox) keeps slot 0, re-join refused while Ajax loads into slot 1, joins as Ajax, both pins kept; LV(Ajax)
@@ -194,6 +255,16 @@ CONFLICT 0041DC44: ch1.pnach:1837 sets 2CA20002, ch1.pnach:2811 sets 2CA20004
 CONFLICT 0041DC50: ch1.pnach:1839 sets 3C030060, ch1.pnach:2813 sets 3C03000E
 checked 3340 addresses in 1 files: 6 problems
 ```
+  Follow-up `local/m6/ch3.pnach` (committed sources + follow-up `spawn.txt`):
+```
+CONFLICT 001C0648: ch3.pnach:1833 sets 0803C374, ch3.pnach:2513 sets 0803815C
+CONFLICT 001C7890: ch3.pnach:1835 sets 0803C384, ch3.pnach:2515 sets 08038164
+CONFLICT 001A6D28: ch3.pnach:1837 sets 0803C394, ch3.pnach:2517 sets 0803816C
+CONFLICT 001A6C38: ch3.pnach:1839 sets 0803C3A4, ch3.pnach:2519 sets 08038174
+CONFLICT 0041DC44: ch3.pnach:1841 sets 2CA20002, ch3.pnach:2815 sets 2CA20004
+CONFLICT 0041DC50: ch3.pnach:1843 sets 3C030060, ch3.pnach:2817 sets 3C03000E
+checked 3476 addresses in 1 files: 6 problems
+```
   and `python -I tools/note_patches.py check mod/m2/missions.txt mod/m2/spawn.txt mod/m2/spawn_leave.txt mod/m2/inventory.txt
   mod/m2/session.txt`: `checked 1356 addresses in 5 files: 0 problems`. The checker's cave test covers only
   0x000F0000-0x000F0FFF; the new ranges were checked separately (no ELF segment below 0x00100000; grep as in section 1).
@@ -202,10 +273,10 @@ checked 3340 addresses in 1 files: 6 problems
   scratch directory.
 
 ## 4. Patch fragments (as in the sources)
-### `mod/m2/spawn.txt` (`[warriors-4p 4p spawn]`): changed lines (JS hook, CHOOSE, FITCHK hook, pin block, data, XC table, helpers)
+### `mod/m2/spawn.txt` (`[warriors-4p 4p spawn]`): changed lines (JS hook, CHOOSE, FITCHK hook, PINSVC hook, pin block, data, XC table, helpers, KICK, pin service)
 Unchanged lines between them (SPAWN, DESPAWN, candidate table 0x000E1580, statuses, game hooks 0x00188AEC/0x00189734, X2) are not repeated; the status comments now list 6.
 ```
-patch=2,EE,000E103C,word,0C03883A // [warriors-4p 4p spawn]: jal 0x000E20E8 JS (pnach had 0C038420 jal 0x000E1080 SPAWN); delay slot kept
+patch=2,EE,000E103C,word,0C038842 // [warriors-4p 4p spawn]: jal 0x000E2108 JS (pnach had 0C038420 jal 0x000E1080 SPAWN); delay slot kept
 // named-Warrior chooser CHOOSE (m2_spawn_name.md section 5.3, m6_chooser.md): first allowed, resident, absent Warrior; else player 1's char. Allowed = not excluded by the XC table (0x000E1E10, XCHK) for this level and checkpoint
 patch=2,EE,000E1400,word,27BDFFA0 // CHOOSE: addiu sp, sp, -96  ; CHOOSE: in s0 = player 1 human; out s1 = char id; reloads f0
 patch=2,EE,000E1404,word,FFBF0000 // sd ra, 0x0(sp)
@@ -302,6 +373,7 @@ patch=2,EE,000E156C,word,03E00008 // jr ra
 patch=2,EE,000E1570,word,27BD0060 // addiu sp, sp, 96
 // [warriors-4p 4p spawn] + [warriors-4p 4p spawn leave]: extra Warrior models for players 3-4 (m2_extra_model.md; two pin slots, m6_chooser.md): a pin is kept while a W4P-added Warrior of that name plays (USED) and released on his leave/delete (UNPIN), after the last join if nobody uses it (SWEEP), on timeout, on no-fit and at teardown
 patch=2,EE,001898C8,word,0C0385DC // was 0C05DD76 jal 0x001775D8 (pin fit test) in FUN_001897A8 -> jal 0x000E1770 FITCHK; delay slot kept
+patch=2,EE,0023D6BC,word,0C0388C8 // was 0C06290C jal 0x0018A430 (model request, every human every frame) in the human update FUN_0023D660 -> jal 0x000E2320 PINSVC (pin service, m6_chooser.md 2.6); delay slot sw v1,0x2A0(s0) kept
 patch=2,EE,000E1600,word,3C0A000E // CLRPIN: lui t2, 0x000E  ; CLRPIN: called instead of FUN_0018AB20 (level teardown clears all pins)
 patch=2,EE,000E1604,word,AD401C00 // sw zero, 0x1C00(t2)  ; slot 0 ID: our pins are gone with the others
 patch=2,EE,000E1608,word,AD401C04 // sw zero, 0x1C04(t2)  ; slot 0 OWN
@@ -650,7 +722,7 @@ patch=0,EE,000E1C04,word,00000000 // slot 0 OWN: 1 = we created the pin (only th
 patch=0,EE,000E1C08,word,00000000 // slot 0 MI: model index of the pin (startup only)
 patch=0,EE,000E1C0C,word,00000000 // slot 0 T0: game clock (ms) when pinned (startup only)
 patch=0,EE,000E1C10,word,00000000 // EN_LAST: last ENSURE code (1 resident,2 new pin,3 existing pin,4 none left,5 no free slot or list full,6 skipped,7 no fit) (startup only)
-patch=0,EE,000E1C14,word,00000000 // GT_LAST: last GATE code (1 go resident,2 go nothing to wait,3 refused,4 go after timeout) (startup only)
+patch=0,EE,000E1C14,word,00000000 // GT_LAST: last GATE code (1 go resident,2 go nothing to wait,3 refused,4 go after timeout,5 go after a re-pin) (startup only)
 patch=0,EE,000E1C18,word,00000000 // GT_T: ms since the pin at the last refused/timed-out GATE (startup only)
 patch=0,EE,000E1C1C,word,00000000 // POKE_RES: last FUN_001897A8 result (startup only)
 patch=0,EE,000E1C20,word,00000000 // N_PIN: pins made (startup only)
@@ -696,11 +768,11 @@ patch=0,EE,000E1E58,word,01000F34 // XC row: level 52, cp 0-15, mask 0x100 = Cle
 patch=0,EE,000E1E5C,word,008D0436 // XC row: level 54, cp 0-4, mask 0x08D = Swan,Cowboy,Ajax,Snow; M16 level54 cp <= 4: Swan, Cowboy, Ajax, Snow (AltWar gangs per chapter, AddAjax 08352:187-213, AddFinalWarriors/AddAjaxFinal 08353:31-56) (startup only)
 patch=0,EE,000E1E60,word,01200F36 // XC row: level 54, cp 0-15, mask 0x120 = Fox,Cleon; M16 level54: Cleon (X9 A), Fox (X9 A, HYPOTHESIS: dies in the opening subway scene l54_c1, cast 08355:131; no later script creates him) (startup only)
 patch=0,EE,000E1E64,word,00850237 // XC row: level 55, cp 0-2, mask 0x085 = Swan,Cowboy,Snow; M17 level55 cp <= 2: Swan, Cowboy, Snow (AddWarriors04 at the cp2 -> cp3 swap, 08404:81-83) (startup only)
-patch=0,EE,000E1E68,word,01200F37 // XC row: level 55, cp 0-15, mask 0x120 = Fox,Cleon; M17 level55: Cleon, Fox (X9 A) (startup only)
-patch=0,EE,000E1E6C,word,01200F54 // XC row: level 84, cp 0-15, mask 0x120 = Fox,Cleon; M18 level84: Cleon, Fox (X9 A) (startup only)
-patch=0,EE,000E1E70,word,0120BF5F // XC row: level 95, cp 11-15, mask 0x120 = Fox,Cleon; hub level95 cp >= 11 (post-game, 04106:1763): Cleon, Fox (X9 A, HYPOTHESIS) (startup only)
+patch=0,EE,000E1E68,word,01280F37 // XC row: level 55, cp 0-15, mask 0x128 = Ajax,Fox,Cleon; M17 level55: Cleon, Fox (X9 A), Ajax (X9 A: arrested at the end of M16 - final scenes l54_c3_b/c with the cop lcop (char 260), two cops and the objects Cuff1/Cuff2 08350:181-202; no M17/M18 script creates Ajax) (startup only)
+patch=0,EE,000E1E6C,word,01280F54 // XC row: level 84, cp 0-15, mask 0x128 = Ajax,Fox,Cleon; M18 level84: Cleon, Fox, Ajax (X9 A) (startup only)
+patch=0,EE,000E1E70,word,0128BF5F // XC row: level 95, cp 11-15, mask 0x128 = Ajax,Fox,Cleon; hub level95 cp >= 11 (post-game, 04106:1763): Cleon, Fox, Ajax (X9 A, HYPOTHESIS for the hub) (startup only)
 patch=0,EE,000E1E74,word,00000000 // XC table end (startup only)
-// Helpers at 0x000E1E80 (pin slot k at 0x000E1C00 + 0x50*k: ID, OWN, MI, T0): SLOTP, USED, UNPIN, SWEEP, XCHK, GATE, JS
+// Helpers at 0x000E1E80 (pin slot k at 0x000E1C00 + 0x50*k: ID, OWN, MI, T0): SLOTP, USED, UNPIN, SWEEP, XCHK, GATE, JS, KICK (re-pin of a stalled pin, data 0x000E2300)
 patch=2,EE,000E1E80,word,00041100 // SLOTP: sll v0, a0, 4  ; SLOTP(k) leaf: v0 = pin slot k (0/1) = 0x000E1C00 + 0x50*k; uses v0, v1
 patch=2,EE,000E1E84,word,00041980 // sll v1, a0, 6
 patch=2,EE,000E1E88,word,00431021 // addu v0, v0, v1
@@ -819,7 +891,7 @@ patch=2,EE,000E2048,word,10430002 // beq v0, v1, 0x000E2054
 patch=2,EE,000E204C,word,00000000 // nop
 patch=2,EE,000E2050,word,24090002 // addiu t1, zero, 2  ; code 2: go, nothing to wait for (clone)
 patch=2,EE,000E2054,word,AD491C14 // gt_go: sw t1, 0x1C14(t2)
-patch=2,EE,000E2058,word,10000020 // beq zero, zero, 0x000E20DC
+patch=2,EE,000E2058,word,10000028 // beq zero, zero, 0x000E20FC
 patch=2,EE,000E205C,word,24020001 // addiu v0, zero, 1
 patch=2,EE,000E2060,word,0C0387A0 // gt_wait: jal 0x000E1E80
 patch=2,EE,000E2064,word,8D441C3C // lw a0, 0x1C3C(t2)  ; EN_SLOT: the slot being loaded
@@ -844,55 +916,187 @@ patch=2,EE,000E20AC,word,24420001 // addiu v0, v0, 1
 patch=2,EE,000E20B0,word,AD421C28 // sw v0, 0x1C28(t2)  ; N_TIMEOUT
 patch=2,EE,000E20B4,word,24090004 // addiu t1, zero, 4  ; code 4: go after timeout (clone)
 patch=2,EE,000E20B8,word,AD491C14 // sw t1, 0x1C14(t2)
-patch=2,EE,000E20BC,word,10000007 // beq zero, zero, 0x000E20DC
+patch=2,EE,000E20BC,word,1000000F // beq zero, zero, 0x000E20FC
 patch=2,EE,000E20C0,word,24020001 // addiu v0, zero, 1
-patch=2,EE,000E20C4,word,8D421C24 // gt_refuse: lw v0, 0x1C24(t2)
-patch=2,EE,000E20C8,word,24420001 // addiu v0, v0, 1
-patch=2,EE,000E20CC,word,AD421C24 // sw v0, 0x1C24(t2)  ; N_REFUSE
-patch=2,EE,000E20D0,word,24090003 // addiu t1, zero, 3  ; code 3: refused, model still streaming
-patch=2,EE,000E20D4,word,AD491C14 // sw t1, 0x1C14(t2)
-patch=2,EE,000E20D8,word,0000102D // daddu v0, zero, zero
-patch=2,EE,000E20DC,word,DFBF0000 // gt_out: ld ra, 0x0(sp)
-patch=2,EE,000E20E0,word,03E00008 // jr ra
-patch=2,EE,000E20E4,word,27BD0010 // addiu sp, sp, 16
-patch=2,EE,000E20E8,word,27BDFFD0 // JS: addiu sp, sp, -48  ; JS(char, prio): SPAWNPICK's spawn call; s3 = count at UpdateJoin entry (2 or 3)
-patch=2,EE,000E20EC,word,FFBF0000 // sd ra, 0x0(sp)
-patch=2,EE,000E20F0,word,7FB00010 // sq s0, 0x10(sp)
-patch=2,EE,000E20F4,word,AFA40020 // sw a0, 0x20(sp)
-patch=2,EE,000E20F8,word,AFA50024 // sw a1, 0x24(sp)
-patch=2,EE,000E20FC,word,24020003 // addiu v0, zero, 3
-patch=2,EE,000E2100,word,12620004 // beq s3, v0, 0x000E2114  ; the 4th player: gate on his model
-patch=2,EE,000E2104,word,3C0A000E // lui t2, 0x000E
-patch=2,EE,000E2108,word,8D421C4C // lw v0, 0x1C4C(t2)  ; OWN3 (X10): the 3rd player gets his own model too
-patch=2,EE,000E210C,word,10400005 // beq v0, zero, 0x000E2124
-patch=2,EE,000E2110,word,00000000 // nop
-patch=2,EE,000E2114,word,0C03880A // js_gate: jal 0x000E2028
-patch=2,EE,000E2118,word,00000000 // nop
-patch=2,EE,000E211C,word,10400010 // beq v0, zero, 0x000E2160  ; refuse this press: v0 = 0 = nobody to join
-patch=2,EE,000E2120,word,0000802D // daddu s0, zero, zero
-patch=2,EE,000E2124,word,8FA40020 // js_spawn: lw a0, 0x20(sp)
-patch=2,EE,000E2128,word,0C038420 // jal 0x000E1080  ; SPAWN(-1, 7) as before (CHOOSE inside)
-patch=2,EE,000E212C,word,8FA50024 // lw a1, 0x24(sp)
-patch=2,EE,000E2130,word,10400003 // beq v0, zero, 0x000E2140  ; spawn failed: keep the pins for the next press
-patch=2,EE,000E2134,word,0040802D // daddu s0, v0, zero
-patch=2,EE,000E2138,word,0C0387D3 // jal 0x000E1F4C  ; release pins no W4P-added player uses (other Warrior chosen, or clone after a timeout)
-patch=2,EE,000E213C,word,00000000 // nop
-patch=2,EE,000E2140,word,24020002 // js_pre: addiu v0, zero, 2
-patch=2,EE,000E2144,word,16620006 // bne s3, v0, 0x000E2160
-patch=2,EE,000E2148,word,3C0A000E // lui t2, 0x000E
-patch=2,EE,000E214C,word,8D421C44 // lw v0, 0x1C44(t2)  ; PRELOAD_AT3
-patch=2,EE,000E2150,word,10400003 // beq v0, zero, 0x000E2160
-patch=2,EE,000E2154,word,00000000 // nop
-patch=2,EE,000E2158,word,0C038601 // jal 0x000E1804  ; 3rd player spawned: start the 4th player's Warrior now (second slot)
+patch=2,EE,000E20C4,word,0C038865 // gt_refuse: jal 0x000E2194  ; still loading: re-pin it if it is older than KICK_MS (M12 first-pin stall, m6_chooser.md 2.6)
+patch=2,EE,000E20C8,word,00000000 // nop
+patch=2,EE,000E20CC,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E20D0,word,10400004 // beq v0, zero, 0x000E20E4
+patch=2,EE,000E20D4,word,24090005 // addiu t1, zero, 5  ; code 5: go after a re-pin (the model became resident, or nothing to wait for)
+patch=2,EE,000E20D8,word,AD491C14 // sw t1, 0x1C14(t2)
+patch=2,EE,000E20DC,word,10000007 // beq zero, zero, 0x000E20FC
+patch=2,EE,000E20E0,word,24020001 // addiu v0, zero, 1
+patch=2,EE,000E20E4,word,8D421C24 // gt_ref2: lw v0, 0x1C24(t2)
+patch=2,EE,000E20E8,word,24420001 // addiu v0, v0, 1
+patch=2,EE,000E20EC,word,AD421C24 // sw v0, 0x1C24(t2)  ; N_REFUSE
+patch=2,EE,000E20F0,word,24090003 // addiu t1, zero, 3  ; code 3: refused, model still streaming
+patch=2,EE,000E20F4,word,AD491C14 // sw t1, 0x1C14(t2)
+patch=2,EE,000E20F8,word,0000102D // daddu v0, zero, zero
+patch=2,EE,000E20FC,word,DFBF0000 // gt_out: ld ra, 0x0(sp)
+patch=2,EE,000E2100,word,03E00008 // jr ra
+patch=2,EE,000E2104,word,27BD0010 // addiu sp, sp, 16
+patch=2,EE,000E2108,word,27BDFFD0 // JS: addiu sp, sp, -48  ; JS(char, prio): SPAWNPICK's spawn call; s3 = count at UpdateJoin entry (2 or 3)
+patch=2,EE,000E210C,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E2110,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E2114,word,AFA40020 // sw a0, 0x20(sp)
+patch=2,EE,000E2118,word,AFA50024 // sw a1, 0x24(sp)
+patch=2,EE,000E211C,word,24020003 // addiu v0, zero, 3
+patch=2,EE,000E2120,word,12620004 // beq s3, v0, 0x000E2134  ; the 4th player: gate on his model
+patch=2,EE,000E2124,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2128,word,8D421C4C // lw v0, 0x1C4C(t2)  ; OWN3 (X10): the 3rd player gets his own model too
+patch=2,EE,000E212C,word,10400005 // beq v0, zero, 0x000E2144
+patch=2,EE,000E2130,word,00000000 // nop
+patch=2,EE,000E2134,word,0C03880A // js_gate: jal 0x000E2028
+patch=2,EE,000E2138,word,00000000 // nop
+patch=2,EE,000E213C,word,10400010 // beq v0, zero, 0x000E2180  ; refuse this press: v0 = 0 = nobody to join
+patch=2,EE,000E2140,word,0000802D // daddu s0, zero, zero
+patch=2,EE,000E2144,word,8FA40020 // js_spawn: lw a0, 0x20(sp)
+patch=2,EE,000E2148,word,0C038420 // jal 0x000E1080  ; SPAWN(-1, 7) as before (CHOOSE inside)
+patch=2,EE,000E214C,word,8FA50024 // lw a1, 0x24(sp)
+patch=2,EE,000E2150,word,10400003 // beq v0, zero, 0x000E2160  ; spawn failed: keep the pins for the next press
+patch=2,EE,000E2154,word,0040802D // daddu s0, v0, zero
+patch=2,EE,000E2158,word,0C0387D3 // jal 0x000E1F4C  ; release pins no W4P-added player uses (other Warrior chosen, or clone after a timeout)
 patch=2,EE,000E215C,word,00000000 // nop
-patch=2,EE,000E2160,word,0200102D // js_out: daddu v0, s0, zero
-patch=2,EE,000E2164,word,DFBF0000 // ld ra, 0x0(sp)
-patch=2,EE,000E2168,word,7BB00010 // lq s0, 0x10(sp)
-patch=2,EE,000E216C,word,03E00008 // jr ra
-patch=2,EE,000E2170,word,27BD0030 // addiu sp, sp, 48
+patch=2,EE,000E2160,word,24020002 // js_pre: addiu v0, zero, 2
+patch=2,EE,000E2164,word,16620006 // bne s3, v0, 0x000E2180
+patch=2,EE,000E2168,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E216C,word,8D421C44 // lw v0, 0x1C44(t2)  ; PRELOAD_AT3
+patch=2,EE,000E2170,word,10400003 // beq v0, zero, 0x000E2180
+patch=2,EE,000E2174,word,00000000 // nop
+patch=2,EE,000E2178,word,0C038601 // jal 0x000E1804  ; 3rd player spawned: start the 4th player's Warrior now (second slot)
+patch=2,EE,000E217C,word,00000000 // nop
+patch=2,EE,000E2180,word,0200102D // js_out: daddu v0, s0, zero
+patch=2,EE,000E2184,word,DFBF0000 // ld ra, 0x0(sp)
+patch=2,EE,000E2188,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E218C,word,03E00008 // jr ra
+patch=2,EE,000E2190,word,27BD0030 // addiu sp, sp, 48
+patch=2,EE,000E2194,word,27BDFFE0 // KICK: addiu sp, sp, -32  ; KICK(): refused press, pin EN_SLOT still loading: if KICK_MS != 0, the pin is at least KICK_MS old and the last re-pin at least KICK_MS ago, release and pin again (ENSURE) keeping the first T0; v0 = ENSURE's result (1/2 = go), 0 = refuse
+patch=2,EE,000E2198,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E219C,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E21A0,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E21A4,word,8D482300 // lw t0, 0x2300(t2)  ; KICK_MS (config, 0 = off)
+patch=2,EE,000E21A8,word,1100001E // beq t0, zero, 0x000E2224
+patch=2,EE,000E21AC,word,3C010051 // lui at, 0x0051
+patch=2,EE,000E21B0,word,8C23B734 // lw v1, -0x48CC(at)  ; timer object *(0x0050B734)
+patch=2,EE,000E21B4,word,1060001B // beq v1, zero, 0x000E2224
+patch=2,EE,000E21B8,word,00000000 // nop
+patch=2,EE,000E21BC,word,8C630038 // lw v1, 0x38(v1)  ; game clock (ms)
+patch=2,EE,000E21C0,word,8D492304 // lw t1, 0x2304(t2)  ; KICK_T: clock of the last re-pin
+patch=2,EE,000E21C4,word,00694823 // subu t1, v1, t1
+patch=2,EE,000E21C8,word,0128482B // sltu t1, t1, t0
+patch=2,EE,000E21CC,word,15200015 // bne t1, zero, 0x000E2224  ; re-pinned less than KICK_MS ago
+patch=2,EE,000E21D0,word,8D491C18 // lw t1, 0x1C18(t2)  ; GT_T: ms since this pin (GATE stored it just before)
+patch=2,EE,000E21D4,word,0128482B // sltu t1, t1, t0
+patch=2,EE,000E21D8,word,15200012 // bne t1, zero, 0x000E2224  ; pin younger than KICK_MS
+patch=2,EE,000E21DC,word,00000000 // nop
+patch=2,EE,000E21E0,word,AD432304 // sw v1, 0x2304(t2)  ; KICK_T = now
+patch=2,EE,000E21E4,word,8D422308 // lw v0, 0x2308(t2)
+patch=2,EE,000E21E8,word,24420001 // addiu v0, v0, 1
+patch=2,EE,000E21EC,word,AD422308 // sw v0, 0x2308(t2)  ; N_KICK
+patch=2,EE,000E21F0,word,0C0387A0 // jal 0x000E1E80
+patch=2,EE,000E21F4,word,8D441C3C // lw a0, 0x1C3C(t2)  ; EN_SLOT
+patch=2,EE,000E21F8,word,8C50000C // lw s0, 0xC(v0)  ; first T0 of this pin: the timeout keeps counting from it
+patch=2,EE,000E21FC,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2200,word,0C0385A8 // jal 0x000E16A0  ; unpin
+patch=2,EE,000E2204,word,8D441C3C // lw a0, 0x1C3C(t2)
+patch=2,EE,000E2208,word,0C038601 // jal 0x000E1804  ; pin again (resident now -> 1; else a new pin and POKE -> 0)
+patch=2,EE,000E220C,word,00000000 // nop
+patch=2,EE,000E2210,word,14400005 // bne v0, zero, 0x000E2228  ; 1 or 2: GATE lets this press join
+patch=2,EE,000E2214,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2218,word,0C0387A0 // jal 0x000E1E80
+patch=2,EE,000E221C,word,8D441C3C // lw a0, 0x1C3C(t2)  ; the slot ENSURE pinned into
+patch=2,EE,000E2220,word,AC50000C // sw s0, 0xC(v0)  ; keep the first T0 (bounded wait: TIMEOUT_MS from the first pin)
+patch=2,EE,000E2224,word,0000102D // kk_no: daddu v0, zero, zero
+patch=2,EE,000E2228,word,DFBF0000 // kk_out: ld ra, 0x0(sp)
+patch=2,EE,000E222C,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E2230,word,03E00008 // jr ra
+patch=2,EE,000E2234,word,27BD0020 // addiu sp, sp, 32
+// KICK data (m6_chooser.md 2.6): a refused join press whose pin is at least KICK_MS old (and the last re-pin at least
+// KICK_MS ago) releases and pins that Warrior again; the timeout still counts from the first pin.
+patch=0,EE,000E2300,word,00000000 // KICK_MS: config: re-pin a stalled pin after this many ms (0 = off, default: off - tested, did not help in M12; PINSVC below fixes the stall) (startup only)
+patch=0,EE,000E2304,word,00000000 // KICK_T: game clock (ms) of the last re-pin (startup only)
+patch=0,EE,000E2308,word,00000000 // N_KICK: re-pins made (startup only)
+patch=0,EE,000E230C,word,00000000 // SVC_T: game clock (ms) of the last pin service (startup only)
+patch=0,EE,000E2310,word,00000000 // N_FIX: pin instances built by PINFIX (startup only)
+// PINSVC/PINFIX (m6_chooser.md 2.6, M12 runs chs_m12d/chs_m12k): a pinned model whose three parts arrive is
+// unreferenced until the streamer builds the pin's instance, and the scheduler does not call the streamer for pins
+// alone (H1), so busy levels evict the parts again (LRU). Once per frame (game-clock tick) PINFIX builds the missing
+// instance of our pins as soon as the model is resident (the streamer's own call FUN_00177B80).
+patch=2,EE,000E2320,word,27BDFFF0 // PINSVC: addiu sp, sp, -16  ; PINSVC(f12, dict, human): replaces the human update's model request call 0x0023D6BC (FUN_0018A430, every human every frame)
+patch=2,EE,000E2324,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E2328,word,0C06290C // jal 0x0018A430  ; the replaced call (f12, a0, a1 unchanged; it returns nothing)
+patch=2,EE,000E232C,word,00000000 // nop
+patch=2,EE,000E2330,word,3C010051 // lui at, 0x0051
+patch=2,EE,000E2334,word,8C23B734 // lw v1, -0x48CC(at)  ; timer object *(0x0050B734)
+patch=2,EE,000E2338,word,1060000B // beq v1, zero, 0x000E2368
+patch=2,EE,000E233C,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2340,word,8C630038 // lw v1, 0x38(v1)  ; game clock (ms)
+patch=2,EE,000E2344,word,8D48230C // lw t0, 0x230C(t2)  ; SVC_T: clock of the last service
+patch=2,EE,000E2348,word,10680007 // beq v1, t0, 0x000E2368  ; once per clock value (per frame), not per human
+patch=2,EE,000E234C,word,8D481C00 // lw t0, 0x1C00(t2)  ; slot 0 ID
+patch=2,EE,000E2350,word,8D491C50 // lw t1, 0x1C50(t2)  ; slot 1 ID
+patch=2,EE,000E2354,word,01094025 // or t0, t0, t1
+patch=2,EE,000E2358,word,11000003 // beq t0, zero, 0x000E2368  ; no pin of ours
+patch=2,EE,000E235C,word,AD43230C // sw v1, 0x230C(t2)  ; SVC_T = now
+patch=2,EE,000E2360,word,0C0388DD // jal 0x000E2374
+patch=2,EE,000E2364,word,00000000 // nop
+patch=2,EE,000E2368,word,DFBF0000 // ps_out: ld ra, 0x0(sp)
+patch=2,EE,000E236C,word,03E00008 // jr ra
+patch=2,EE,000E2370,word,27BD0010 // addiu sp, sp, 16
+patch=2,EE,000E2374,word,27BDFFC0 // PINFIX: addiu sp, sp, -64  ; PINFIX(): for each pin slot whose pin-list entry has no instance: if its model is resident, build the instance as the streamer does (FUN_00177B80), so the loaded data is referenced before LRU eviction removes it again
+patch=2,EE,000E2378,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E237C,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E2380,word,7FB10020 // sq s1, 0x20(sp)
+patch=2,EE,000E2384,word,0000802D // daddu s0, zero, zero  ; pin slot 0, 1
+patch=2,EE,000E2388,word,0C0387A0 // pf_loop: jal 0x000E1E80
+patch=2,EE,000E238C,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E2390,word,8C480000 // lw t0, 0x0(v0)  ; ID
+patch=2,EE,000E2394,word,11000021 // beq t0, zero, 0x000E241C
+patch=2,EE,000E2398,word,8C450008 // lw a1, 0x8(v0)  ; MI
+patch=2,EE,000E239C,word,3C010051 // lui at, 0x0051
+patch=2,EE,000E23A0,word,8C24CD4C // lw a0, -0x32B4(at)  ; dict *(0x0050CD4C)
+patch=2,EE,000E23A4,word,10800021 // beq a0, zero, 0x000E242C
+patch=2,EE,000E23A8,word,249100B4 // addiu s1, a0, 180  ; pin list dict+0xB4, stride 8
+patch=2,EE,000E23AC,word,24090020 // addiu t1, zero, 32
+patch=2,EE,000E23B0,word,8E2A0000 // pf_find: lw t2, 0x0(s1)
+patch=2,EE,000E23B4,word,11450005 // beq t2, a1, 0x000E23CC
+patch=2,EE,000E23B8,word,2529FFFF // addiu t1, t1, -1
+patch=2,EE,000E23BC,word,1520FFFC // bne t1, zero, 0x000E23B0
+patch=2,EE,000E23C0,word,26310008 // addiu s1, s1, 8
+patch=2,EE,000E23C4,word,10000015 // beq zero, zero, 0x000E241C  ; not in the list (ENSURE forgets it at the next join)
+patch=2,EE,000E23C8,word,00000000 // nop
+patch=2,EE,000E23CC,word,8E2A0004 // pf_hit: lw t2, 0x4(s1)  ; instance
+patch=2,EE,000E23D0,word,15400012 // bne t2, zero, 0x000E241C  ; built already
+patch=2,EE,000E23D4,word,8C8B0088 // lw t3, 0x88(a0)  ; dictionary entries
+patch=2,EE,000E23D8,word,00056140 // sll t4, a1, 5
+patch=2,EE,000E23DC,word,016C2821 // addu a1, t3, t4  ; entry = FUN_001780D8(dict, mi)
+patch=2,EE,000E23E0,word,AFA50030 // sw a1, 0x30(sp)
+patch=2,EE,000E23E4,word,0000302D // daddu a2, zero, zero
+patch=2,EE,000E23E8,word,0C05DD34 // jal 0x001774D0  ; all three parts resident? (the streamer's and CHOOSE's test)
+patch=2,EE,000E23EC,word,0000382D // daddu a3, zero, zero
+patch=2,EE,000E23F0,word,1040000A // beq v0, zero, 0x000E241C  ; still loading
+patch=2,EE,000E23F4,word,3C010051 // lui at, 0x0051
+patch=2,EE,000E23F8,word,8C24CD4C // lw a0, -0x32B4(at)  ; dict
+patch=2,EE,000E23FC,word,8FA50030 // lw a1, 0x30(sp)
+patch=2,EE,000E2400,word,0C05DEE0 // jal 0x00177B80  ; instance (the streamer's own call for a resident pin)
+patch=2,EE,000E2404,word,0000302D // daddu a2, zero, zero
+patch=2,EE,000E2408,word,AE220004 // sw v0, 0x4(s1)  ; pin-list entry instance: the model data is referenced from now on
+patch=2,EE,000E240C,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2410,word,8D432310 // lw v1, 0x2310(t2)
+patch=2,EE,000E2414,word,24630001 // addiu v1, v1, 1
+patch=2,EE,000E2418,word,AD432310 // sw v1, 0x2310(t2)  ; N_FIX
+patch=2,EE,000E241C,word,26100001 // pf_next: addiu s0, s0, 1
+patch=2,EE,000E2420,word,2A080002 // slti t0, s0, 2
+patch=2,EE,000E2424,word,1500FFD8 // bne t0, zero, 0x000E2388
+patch=2,EE,000E2428,word,00000000 // nop
+patch=2,EE,000E242C,word,DFBF0000 // pf_out: ld ra, 0x0(sp)
+patch=2,EE,000E2430,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E2434,word,7BB10020 // lq s1, 0x20(sp)
+patch=2,EE,000E2438,word,03E00008 // jr ra
+patch=2,EE,000E243C,word,27BD0040 // addiu sp, sp, 64
 ```
 
-### `mod/m2/missions.txt` (`[warriors-4p missions]`): REL34, X3W's LEAVE call, X7J, X7 bytes comment, LVOWE
+### `mod/m2/missions.txt` (`[warriors-4p missions]`, as committed in 336c6a4): REL34, X3W's LEAVE call, X7J, X7 bytes comment, LVOWE
 ```
 // X7 (b) (m6_chooser.md): LVOWE(index) = LEAVE for a script-forced leave (X1, X3); if the player got the starting items in
 //    this level load (given byte 1), the byte becomes 2 = owed, and X7J gives them again at his next join, at any
@@ -1032,12 +1236,16 @@ slot 1). Results: `local/m2/<tag>/probes.json`, console `local/m6/<tag>_console.
 | Tag (build) | Setup | What was done | Result | Label |
 |---|---|---|---|---|
 | chs_m13fox (w4p-m5-1) | M13 cp1 (entry 0x01FD9F9C), P1 `local/m6/x1_p1.txt`; test aid `x2_fox_row_off` at 6000 (X2's level9 Fox row off, so player 3 takes Fox as in m6x1b; the XC table is separate and stays on) | joins; 9200 `tele_cut2`, 9600 `tele_arrive` -> trainyard scene -> `ch1.StartTheLevel` -> script `HuDelete(fox)`; Start every 300 polls (re-join); 760 s | **8800**: P3 = Fox (companion, char 22, prio 3, HUD slot 2), P4 = W4P Swan (char 5, marker 7) with slot 0 = Swan pinned (instance 0xC45C00); X7 bytes 1/1, spray 6/6. **9800**: count 3, Swan moved to index 2 (HUD slot 3, pad 1 -> 2), slot 2's X7 byte **2 (owed)**, spray of slot 2 = 0 (forced release). **9900**: re-join press refused (GATE 3); CHOOSE statuses Swan 4, **Fox 6** (Fox's model is resident: survey 11000), Snow/Rembrandt 4, others 3 -> clone; ENSURE pinned **Ajax in slot 1**, slot 0 Swan kept. **10200**: P3 re-joined as **Ajax** (char 11, marker 7, HUD slot 2, +0xD8 0xCFF800), **spray of slot 2 = 6 again**, byte 1. To the end (poll 21406; game clock 147.8 s at 11000, 428.2 s at 19400 = **280 s after the re-join, 5.4 min after Fox's deletion**): both pins in the game's pin list with instances (0xC45C00 Swan, 0xCFE400 Ajax), both players' +0xD8 unchanged, N_RELEASE 0, count 4, views 4; **0 TLB misses** | **VERIFIED** problems 1, 3 and 4 (X7 b) in M13 |
-| chs_m12 (w4p-m5-1) | M12 cp1 (entry 0x01FD9F18), P1 `boot_to_m1_2p.txt` | joins (squad Cowboy + Cochise only: both P3/P4 must spawn) | P3's presses 7000-7450 refused (16 refusals, Swan pinned in slot 0, never resident); **7600: GATE timeout (GT_T 20,020 ms) -> slot 0 released -> P3 = clone of Cowboy** (char 18, marker 7); the preload ENSURE right after re-pinned Swan and it was resident within 50 polls -> **P4 = Swan with own model** (7800, instance 0xD21400). Slot 1 unused. Count 4 / views 4 to poll 12386, 0 TLB misses | **FAILED TEST** for X10 A in M12 (P3 got the documented fallback, the clone); fallback itself VERIFIED |
-| chs_m12b (w4p-m6-1) | as chs_m12, `--poke 6000:0x000E1C40:40000` (TIMEOUT_MS 40 s, PINE test aid) | same | 32 refusals; **8250: timeout after 40,040 ms -> P3 = clone of Cowboy**; the re-pin was resident within 150 polls -> **P4 = Swan** (instance 0xCCD800). To poll 14688: count 4, views 4, 0 TLB misses | **FAILED TEST** (same outcome with 40 s; finding 3) |
+| chs_m12 (w4p-m5-1) | M12 cp1 (entry 0x01FD9F18), P1 `boot_to_m1_2p.txt` | joins (squad Cowboy + Cochise only: both P3/P4 must spawn) | P3's presses 7000-7450 refused (16 refusals, Swan pinned in slot 0, never resident); **7600: GATE timeout (GT_T 20,020 ms) -> slot 0 released -> P3 = clone of Cowboy** (char 18, marker 7); the preload ENSURE right after re-pinned Swan and it was resident within 50 polls -> **P4 = Swan with own model** (7800, instance 0xD21400). Slot 1 unused. Count 4 / views 4 to poll 12386, 0 TLB misses | **FAILED TEST** for X10 A in M12 (P3 got the documented fallback, the clone); fallback itself VERIFIED. **Superseded by chs_m12s** |
+| chs_m12b (w4p-m6-1) | as chs_m12, `--poke 6000:0x000E1C40:40000` (TIMEOUT_MS 40 s, PINE test aid) | same | 32 refusals; **8250: timeout after 40,040 ms -> P3 = clone of Cowboy**; the re-pin was resident within 150 polls -> **P4 = Swan** (instance 0xCCD800). To poll 14688: count 4, views 4, 0 TLB misses | **FAILED TEST** (same outcome with 40 s; finding 3). Superseded by chs_m12s |
 | chs_m15 (w4p-m5-1) | M15 cp1 (entry 0x01FDA0A4), P1 `boot_to_m1_2p.txt` | joins | no join until 10,500: the level-start in-engine scene waited for a skip input (single view, screenshot `t0396_p10500.png`); CHOOSE never ran | not a chooser result (test setup); re-run as chs_m15b |
 | chs_m15b (w4p-m6-1) | as chs_m15, P1 `local/m6/skip_p1.txt` (Cross held every 100 polls from 5000 to 9500) | joins | by 7200: **P3 and P4 = clones of Swan** (char 5, marker 7); CHOOSE statuses Swan/Snow 4, Ajax/Cochise/Vermin/Fox/Rembrandt/Cowboy 3 (their `_gen` humans are present; PRESENT refuses them for loading), **Cleon 6**; ENSURE code 4 (nothing to load), no pin made, slots empty (the old order would have pinned **Cleon**, m6_missions.md M15). To poll 15473: count 4, views 4, 0 TLB misses | **VERIFIED** X9 A (Cleon never chosen or pinned in M15) |
 | chs_m17 (w4p-m6-1) | M17 cp1 (entry 0x01FDA1AC), P1 `skip_p1.txt` (coordinator's request after the smoke crash) | joins | 7000: P3 refused (Ajax pinned in slot 0); statuses **Swan/Snow/Cowboy/Fox/Cleon 6** (XC rows level55), Vermin/Rembrandt 4, Ajax/Cochise 3; Cochise (handle 0x73) stays AI (X2 row level55 cp <= 1). **7150: a W4P-spawned Warrior joined (handle 0x8014B, prio 7, index 2; players 3, views 3, cameras 3) and the game crashed at poll 7153**: 23 TLB misses, first pc=0x0011F9B0 addr=0xF0866DEC, then pc=0x0019B090 addr 0/0x220/0x224, then pc=0 (`local/m2/chs_m17/emulog.txt` line 5105) - the same signature as the smoke batch's M17 crash, where player 3 had taken Cochise with the old chooser | **FAILED TEST (M17 cp1 crashes when any 3rd player joins; not caused by the chooser - finding 4)** |
 | chs_reg (w4p-m6-1) | M13 cp1, `local/m6/rnd_p1..p4.txt` (seeded random walk/attack/grab from poll 9000; slots 3/4 Start every 300 polls), X2 Fox row on | 4 players, random bots, 900 s | 7000-8400: 8 refusals; **P3 = Swan, P4 = Ajax, both W4P-spawned with their own models** (slot 0 Swan instance 0xCD1000, slot 1 Ajax 0xC53400; +0xD8 0xC52000 / 0xCDC000); no timeout. Poll 9000 (clock 81.2 s) to 24229: count 4, views 4, both pins kept; clock 383.7 s at 18000 = **302 s of random play** by then; **0 TLB misses** | **VERIFIED** regression and X10 A in M13 (two Warriors with own models) |
+| chs_m12k (w4p-m6-1, follow-up) | M12 cp1 as chs_m12, `local/m6/ch2.pnach` (KICK_MS = 8,000) | joins | 7000-7450: refused; re-pin at about 8 s (N_PIN 1 -> 2, N_RELEASE 1), still not resident at the next presses; **7600: timeout 20,020 ms from the first pin -> P3 = clone of Cowboy**; preload -> P4 = Swan (own model). 0 TLB misses | **FAILED TEST** for option (b): the re-pin does not fix the stall |
+| chs_m12d (w4p-m6-1, follow-up, diagnosis) | M12 cp1, `ch2.pnach` with KICK_MS = 0 and TIMEOUT_MS = 60,000 (PINE pokes at 6000), `extra_survey` at 6950, 7100, 7300, 7500, 7700, 7900, 8300, 8700 | joins | Swan pinned at 7000 (slot 22, instance 0 the whole time); Swan's parts: 7100 texture only, 7300 none (loads pending 3), **7500 all three resident with refcount 0**, **7700 animation and model evicted**, 7900 requested again, 8300 animation + texture, **8700 all three resident**; request priorities FLT_MAX and dict+0xBC4 = -1 in every sample (no human request, so the scheduler does not call the streamer); timeout at about 8850 -> P3 = Cowboy clone, the preload re-pin found the parts resident -> P4 = Swan. 0 TLB misses | **VERIFIED** diagnosis (section 2.6) |
+| chs_m12s (w4p-m6-1, follow-up) | M12 cp1, `local/m6/ch3.pnach` (KICK off, PINSVC/PINFIX on) | joins, 540 s | **7000: one refused press; by 7050 the Swan pin has an instance (0xD62000)**; **P3 = Swan** at the next press (count 3 at 7200, +0xD8 0xD65400); the preload pinned Ajax (instance 0xD21000 by 7200); **P4 = Ajax** (7350, +0xD8 0xCAA800). Swan and Ajax parts resident with refcount 2 from 7300 to 12000; N_PIN 2, N_REFUSE 4 (one press), N_TIMEOUT 0, N_RELEASE 0, NOFIT 0; count 4, views 4 to poll 14149; 0 TLB misses | **VERIFIED** X10 A in M12 (both players own models) |
+| chs_m13s (w4p-m6-1, follow-up) | M13 cp1, `ch3.pnach`, `local/m6/rnd_p1..p4.txt` (random from 9000), 800 s | 4 players, random bots | 8500: one refused press; **P3 = Swan, P4 = Ajax** (own models, instances 0xC45C00 / 0xCDC000); clock 81.1 s at 9000 -> 384.2 s at 18000 = **303 s of random play**, count 4, views 4 to poll 21066, both pins kept, N_TIMEOUT 0; **0 TLB misses** | **VERIFIED** regression with PINSVC |
 
 ### 5.1 Pool memory (extra_survey, Sector Pool `*(0x006EB9C8)`, capacity 17,208,320 bytes)
 | Run | Poll | Bytes used | Total free | Largest possible block | Our pins | Live humans (without model) |
@@ -1047,12 +1255,13 @@ slot 1). Results: `local/m2/<tag>/probes.json`, console `local/m6/<tag>_console.
 | chs_m13fox | 19400 | 16,426,528 | 580,064 | 520,192 | warr_sw, warr_aj | 9 (0) |
 | chs_reg | 9000 / 18000 / 24000 | 16,356,000 / 16,415,648 / 16,422,432 | 650,592 / 590,944 / 584,160 | 591,872 / 452,608 / 452,608 | warr_sw, warr_aj | 10 / 9 / 9 (0) |
 | chs_m12 | 6900 / 9300 / 11400 | 15,874,720 / 16,338,848 / 16,351,136 | 1,131,872 / 667,744 / 655,456 | 265,216 / 171,008 / 171,008 | - / warr_sw / warr_sw | 39 / 43 / 43 (0) |
+| chs_m12s (follow-up, PINSVC) | 6950 / 7300 / 7700 / 12000 | - | 1,139,040 / 371,808 / 364,640 / 359,520 | 265,216 (all four) | - / warr_aj, warr_sw (both with instances) | - |
+| chs_m13s (follow-up) | 9000 / 18000 | 16,356,000 / 16,356,000 | 650,592 / 650,592 | 591,872 / 591,872 | warr_sw, warr_aj | 10 / 10 (0) |
 | chs_m15b | 8000 / 12600 | 16,558,144 / 16,558,144 | 448,448 | 177,152 | none | 20 (0) |
 | chs_m17 | 6900 (before the joins) | 15,805,408 | 1,201,184 | 809,984 | none | 18 (0) |
 
-Two extra Warrior models fit in M13 (about 0.58 MB still free afterwards, no human without a model, no NOFIT). In M12
-and M15 the largest free block is below Swan's 256 KB fit-test block once players 3-4 are in, so a second model there
-depends on the fit test's eviction (not exercised: no second pin was attempted in M12, nothing to load in M15).
+Two extra Warrior models fit in M13 (about 0.58 MB still free afterwards, no human without a model, no NOFIT) and, with
+PINSVC, in M12 (about 0.36 MB free afterwards, largest block 265 KB, no NOFIT; chs_m12s). In M15 nothing is loaded.
 
 ## 6. Findings
 1. **The M13 duplicate-Fox risk is real and is removed (VERIFIED chs_m13fox).** At the re-join Fox's model was resident
@@ -1072,7 +1281,10 @@ depends on the fit test's eviction (not exercised: no second pin was attempted i
    request) shows no duplicate queueing by repeated POKEs. Options for the user: (a) accept (player 3 = clone after 20 s
    in heavy levels like M12, player 4 gets the model); (b) **re-pin on a refused press when the pin is older than about
    8 s** (release and pin again in GATE; about 15 words and 1 config word) - recommended, needs one M12 run to confirm;
-   (c) OWN3 = 0 (player 3 always the clone at once, old behaviour).
+   (c) OWN3 = 0 (player 3 always the clone at once, old behaviour). **Superseded (follow-up, section 2.6):** option (b)
+   was implemented and FAILED (chs_m12k); the real cause is eviction of the unreferenced loaded parts (VERIFIED chs_m12d);
+   the pin service PINSVC fixes it (VERIFIED chs_m12s: players 3 and 4 with own models in M12). Hypotheses (a)/(b)
+   above are superseded.
 4. **Mission 17 cp1 crashes as soon as a third player joins, whoever he is (VERIFIED chs_m17; also the coordinator's
    smoke_m17 with the old chooser, where player 3 had taken Cochise).** Same TLB-miss signature on both builds and with
    both choosers. Static reading (decompile `all_01.c:33233`, our labels): `FUN_0019B070(obj)` (only caller
@@ -1080,7 +1292,8 @@ depends on the fit test's eviction (not exercised: no second pin was attempted i
    check; obj+0x28 holds a garbage camera index once the third view appears. HYPOTHESIS: a level55 cp1 object kept per
    camera or view (party / kiss-scene camera) is not prepared for a third camera - the class of `m2_hud_players34.md`
    CAMSAFE. Not a chooser problem; the XC and X2 tables cannot avoid it. Needs a camera fix or blocking drop-in there
-   (coordinator informed).
+   (coordinator informed). **Superseded:** the coordinator found the cause (fog/room-smoke per-camera pitch/yaw arrays
+   sized for 2 cameras) and fixed it (F-0184, FXCAM in `mod/m2/fx34.txt`); not re-run here.
 5. **M15: with all eight Warriors in the level and Cleon excluded, both players 3-4 are clones of Swan (VERIFIED
    chs_m15b).** By design (X9 A); before this change player 4 would have loaded Cleon.
 6. CHOOSE tests residency before presence, so a Warrior present only as a `_gen` variant shows status 3, not 4
@@ -1088,6 +1301,10 @@ depends on the fit test's eviction (not exercised: no second pin was attempted i
 7. **X7 (b) with HUD-slot reuse (VERIFIED chs_m13fox):** the re-joiner took the freed HUD slot 2, found byte 2 and got
    the level's spray 6 again; the moved player 4 (HUD slot 3) kept byte 1 (no second gift).
 8. N_REFUSE counts every poll on which a refused Start is held (4 per scripted press), not presses (diagnostic).
+9. **Follow-up: H1 of m2_extra_model.md is confirmed at runtime (chs_m12d):** with a pin waiting, the request priorities
+   stayed FLT_MAX and dict+0xBC4 = -1, the pin's instance was never built while the parts came and went; the streamer is
+   only reached through our POKE at Start presses. M13 worked before only because its parts were not evicted between
+   presses.
 
 ## 7. Not done / open
 - **Not run at runtime (static and simulation only):** X3 (`HuChangePlayerGang`) through LVOWE; REL34's marker-7
@@ -1097,7 +1314,11 @@ depends on the fit test's eviction (not exercised: no second pin was attempted i
   at gameplay start, m6_missions.md M14), so Cleon's exclusion there is checked only by simulation (XCHK level 51 cp 1
   and 7); the rows for M2, M3, M6, M7, M9, M10, M11, M16, M17 (cp <= 2), M18 and the hub were not exercised at runtime.
 - **4-instance lockstep** with the new code: not run (HYPOTHESIS deterministic, section 2.4).
-- **Decisions for the user:** keep or drop the HYPOTHESIS rows for Fox (M16-M18, hub) and the hub row; Ajax rows for
-  M17-M18 (arrested, not dead); finding 3 options (a)/(b)/(c); X10 (OWN3) default.
-- **Coordinator:** `mod/w4p_m1.pnach` not regenerated (smoke batch); `docs/STATE.md` RAM map and test groups not
-  edited; `m6_fixes.md` findings 3-4 not annotated (superseded here); finding 4 (M17 crash) needs its own fix.
+- **Decisions for the user:** keep or drop the HYPOTHESIS rows for Fox (M16-M18, hub) and the hub rows; X10 (OWN3)
+  default. (Ajax rows: done in the follow-up per the user's X9 A; finding 3: fixed by PINSVC.)
+- **Follow-up not run:** PINSVC in M14-M18 or with a 4-instance lockstep; KICK with PINSVC together (KICK stays off);
+  N_FIX was not read by the probes of chs_m12s (added to `chooser_probe.state` afterwards); the M17 crash fix (F-0184)
+  with the chooser was not re-run here.
+- **Coordinator:** `mod/w4p_m1.pnach` not regenerated (smoke2 batch); `docs/STATE.md` RAM map and test groups not
+  edited (spawn now also 0x000E2300-0x000E243F and the game hook 0x0023D6BC); `m6_fixes.md` findings 3-4 not annotated
+  (superseded here).

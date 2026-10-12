@@ -15,7 +15,7 @@ patch=2,EE,000E102C,word,2A610004 // slti at,s3,4
 patch=2,EE,000E1030,word,10200004 // beq at,zero,pick_done
 patch=2,EE,000E1034,word,00000000 // nop
 patch=2,EE,000E1038,word,2404FFFF // addiu a0,zero,-1
-patch=2,EE,000E103C,word,0C03883A // [warriors-4p 4p spawn]: jal 0x000E20E8 JS (pnach had 0C038420 jal 0x000E1080 SPAWN); delay slot kept
+patch=2,EE,000E103C,word,0C038842 // [warriors-4p 4p spawn]: jal 0x000E2108 JS (pnach had 0C038420 jal 0x000E1080 SPAWN); delay slot kept
 patch=2,EE,000E1040,word,24050007 // addiu a1,zero,7
 patch=2,EE,000E1044,word,8FBF0000 // lw ra,0(sp)
 patch=2,EE,000E1048,word,03E00008 // jr ra
@@ -228,6 +228,7 @@ patch=0,EE,000E15F0,word,00000000 // last CHOOSE result (char id; startup only)
 patch=2,EE,001898C8,word,0C0385DC // was 0C05DD76 jal 0x001775D8 (pin fit test) in FUN_001897A8 -> jal 0x000E1770 FITCHK; delay slot kept
 patch=2,EE,00188AEC,word,0C038580 // was 0C062AC8 jal 0x0018AB20 (clear all pins) in FUN_00188AA8 -> jal 0x000E1600 CLRPIN; delay slot kept
 patch=2,EE,00189734,word,0C038580 // was 0C062AC8 jal 0x0018AB20 (clear all pins) in FUN_00189718 -> jal 0x000E1600 CLRPIN; delay slot kept
+patch=2,EE,0023D6BC,word,0C0388C8 // was 0C06290C jal 0x0018A430 (model request, every human every frame) in the human update FUN_0023D660 -> jal 0x000E2320 PINSVC (pin service, m6_chooser.md 2.6); delay slot sw v1,0x2A0(s0) kept
 patch=2,EE,000E1600,word,3C0A000E // CLRPIN: lui t2, 0x000E  ; CLRPIN: called instead of FUN_0018AB20 (level teardown clears all pins)
 patch=2,EE,000E1604,word,AD401C00 // sw zero, 0x1C00(t2)  ; slot 0 ID: our pins are gone with the others
 patch=2,EE,000E1608,word,AD401C04 // sw zero, 0x1C04(t2)  ; slot 0 OWN
@@ -576,7 +577,7 @@ patch=0,EE,000E1C04,word,00000000 // slot 0 OWN: 1 = we created the pin (only th
 patch=0,EE,000E1C08,word,00000000 // slot 0 MI: model index of the pin (startup only)
 patch=0,EE,000E1C0C,word,00000000 // slot 0 T0: game clock (ms) when pinned (startup only)
 patch=0,EE,000E1C10,word,00000000 // EN_LAST: last ENSURE code (1 resident,2 new pin,3 existing pin,4 none left,5 no free slot or list full,6 skipped,7 no fit) (startup only)
-patch=0,EE,000E1C14,word,00000000 // GT_LAST: last GATE code (1 go resident,2 go nothing to wait,3 refused,4 go after timeout) (startup only)
+patch=0,EE,000E1C14,word,00000000 // GT_LAST: last GATE code (1 go resident,2 go nothing to wait,3 refused,4 go after timeout,5 go after a re-pin) (startup only)
 patch=0,EE,000E1C18,word,00000000 // GT_T: ms since the pin at the last refused/timed-out GATE (startup only)
 patch=0,EE,000E1C1C,word,00000000 // POKE_RES: last FUN_001897A8 result (startup only)
 patch=0,EE,000E1C20,word,00000000 // N_PIN: pins made (startup only)
@@ -728,11 +729,11 @@ patch=0,EE,000E1E58,word,01000F34 // XC row: level 52, cp 0-15, mask 0x100 = Cle
 patch=0,EE,000E1E5C,word,008D0436 // XC row: level 54, cp 0-4, mask 0x08D = Swan,Cowboy,Ajax,Snow; M16 level54 cp <= 4: Swan, Cowboy, Ajax, Snow (AltWar gangs per chapter, AddAjax 08352:187-213, AddFinalWarriors/AddAjaxFinal 08353:31-56) (startup only)
 patch=0,EE,000E1E60,word,01200F36 // XC row: level 54, cp 0-15, mask 0x120 = Fox,Cleon; M16 level54: Cleon (X9 A), Fox (X9 A, HYPOTHESIS: dies in the opening subway scene l54_c1, cast 08355:131; no later script creates him) (startup only)
 patch=0,EE,000E1E64,word,00850237 // XC row: level 55, cp 0-2, mask 0x085 = Swan,Cowboy,Snow; M17 level55 cp <= 2: Swan, Cowboy, Snow (AddWarriors04 at the cp2 -> cp3 swap, 08404:81-83) (startup only)
-patch=0,EE,000E1E68,word,01200F37 // XC row: level 55, cp 0-15, mask 0x120 = Fox,Cleon; M17 level55: Cleon, Fox (X9 A) (startup only)
-patch=0,EE,000E1E6C,word,01200F54 // XC row: level 84, cp 0-15, mask 0x120 = Fox,Cleon; M18 level84: Cleon, Fox (X9 A) (startup only)
-patch=0,EE,000E1E70,word,0120BF5F // XC row: level 95, cp 11-15, mask 0x120 = Fox,Cleon; hub level95 cp >= 11 (post-game, 04106:1763): Cleon, Fox (X9 A, HYPOTHESIS) (startup only)
+patch=0,EE,000E1E68,word,01280F37 // XC row: level 55, cp 0-15, mask 0x128 = Ajax,Fox,Cleon; M17 level55: Cleon, Fox (X9 A), Ajax (X9 A: arrested at the end of M16 - final scenes l54_c3_b/c with the cop lcop (char 260), two cops and the objects Cuff1/Cuff2 08350:181-202; no M17/M18 script creates Ajax) (startup only)
+patch=0,EE,000E1E6C,word,01280F54 // XC row: level 84, cp 0-15, mask 0x128 = Ajax,Fox,Cleon; M18 level84: Cleon, Fox, Ajax (X9 A) (startup only)
+patch=0,EE,000E1E70,word,0128BF5F // XC row: level 95, cp 11-15, mask 0x128 = Ajax,Fox,Cleon; hub level95 cp >= 11 (post-game, 04106:1763): Cleon, Fox, Ajax (X9 A, HYPOTHESIS for the hub) (startup only)
 patch=0,EE,000E1E74,word,00000000 // XC table end (startup only)
-// Helpers at 0x000E1E80 (pin slot k at 0x000E1C00 + 0x50*k: ID, OWN, MI, T0): SLOTP, USED, UNPIN, SWEEP, XCHK, GATE, JS
+// Helpers at 0x000E1E80 (pin slot k at 0x000E1C00 + 0x50*k: ID, OWN, MI, T0): SLOTP, USED, UNPIN, SWEEP, XCHK, GATE, JS, KICK (re-pin of a stalled pin, data 0x000E2300)
 patch=2,EE,000E1E80,word,00041100 // SLOTP: sll v0, a0, 4  ; SLOTP(k) leaf: v0 = pin slot k (0/1) = 0x000E1C00 + 0x50*k; uses v0, v1
 patch=2,EE,000E1E84,word,00041980 // sll v1, a0, 6
 patch=2,EE,000E1E88,word,00431021 // addu v0, v0, v1
@@ -851,7 +852,7 @@ patch=2,EE,000E2048,word,10430002 // beq v0, v1, 0x000E2054
 patch=2,EE,000E204C,word,00000000 // nop
 patch=2,EE,000E2050,word,24090002 // addiu t1, zero, 2  ; code 2: go, nothing to wait for (clone)
 patch=2,EE,000E2054,word,AD491C14 // gt_go: sw t1, 0x1C14(t2)
-patch=2,EE,000E2058,word,10000020 // beq zero, zero, 0x000E20DC
+patch=2,EE,000E2058,word,10000028 // beq zero, zero, 0x000E20FC
 patch=2,EE,000E205C,word,24020001 // addiu v0, zero, 1
 patch=2,EE,000E2060,word,0C0387A0 // gt_wait: jal 0x000E1E80
 patch=2,EE,000E2064,word,8D441C3C // lw a0, 0x1C3C(t2)  ; EN_SLOT: the slot being loaded
@@ -876,49 +877,181 @@ patch=2,EE,000E20AC,word,24420001 // addiu v0, v0, 1
 patch=2,EE,000E20B0,word,AD421C28 // sw v0, 0x1C28(t2)  ; N_TIMEOUT
 patch=2,EE,000E20B4,word,24090004 // addiu t1, zero, 4  ; code 4: go after timeout (clone)
 patch=2,EE,000E20B8,word,AD491C14 // sw t1, 0x1C14(t2)
-patch=2,EE,000E20BC,word,10000007 // beq zero, zero, 0x000E20DC
+patch=2,EE,000E20BC,word,1000000F // beq zero, zero, 0x000E20FC
 patch=2,EE,000E20C0,word,24020001 // addiu v0, zero, 1
-patch=2,EE,000E20C4,word,8D421C24 // gt_refuse: lw v0, 0x1C24(t2)
-patch=2,EE,000E20C8,word,24420001 // addiu v0, v0, 1
-patch=2,EE,000E20CC,word,AD421C24 // sw v0, 0x1C24(t2)  ; N_REFUSE
-patch=2,EE,000E20D0,word,24090003 // addiu t1, zero, 3  ; code 3: refused, model still streaming
-patch=2,EE,000E20D4,word,AD491C14 // sw t1, 0x1C14(t2)
-patch=2,EE,000E20D8,word,0000102D // daddu v0, zero, zero
-patch=2,EE,000E20DC,word,DFBF0000 // gt_out: ld ra, 0x0(sp)
-patch=2,EE,000E20E0,word,03E00008 // jr ra
-patch=2,EE,000E20E4,word,27BD0010 // addiu sp, sp, 16
-patch=2,EE,000E20E8,word,27BDFFD0 // JS: addiu sp, sp, -48  ; JS(char, prio): SPAWNPICK's spawn call; s3 = count at UpdateJoin entry (2 or 3)
-patch=2,EE,000E20EC,word,FFBF0000 // sd ra, 0x0(sp)
-patch=2,EE,000E20F0,word,7FB00010 // sq s0, 0x10(sp)
-patch=2,EE,000E20F4,word,AFA40020 // sw a0, 0x20(sp)
-patch=2,EE,000E20F8,word,AFA50024 // sw a1, 0x24(sp)
-patch=2,EE,000E20FC,word,24020003 // addiu v0, zero, 3
-patch=2,EE,000E2100,word,12620004 // beq s3, v0, 0x000E2114  ; the 4th player: gate on his model
-patch=2,EE,000E2104,word,3C0A000E // lui t2, 0x000E
-patch=2,EE,000E2108,word,8D421C4C // lw v0, 0x1C4C(t2)  ; OWN3 (X10): the 3rd player gets his own model too
-patch=2,EE,000E210C,word,10400005 // beq v0, zero, 0x000E2124
-patch=2,EE,000E2110,word,00000000 // nop
-patch=2,EE,000E2114,word,0C03880A // js_gate: jal 0x000E2028
-patch=2,EE,000E2118,word,00000000 // nop
-patch=2,EE,000E211C,word,10400010 // beq v0, zero, 0x000E2160  ; refuse this press: v0 = 0 = nobody to join
-patch=2,EE,000E2120,word,0000802D // daddu s0, zero, zero
-patch=2,EE,000E2124,word,8FA40020 // js_spawn: lw a0, 0x20(sp)
-patch=2,EE,000E2128,word,0C038420 // jal 0x000E1080  ; SPAWN(-1, 7) as before (CHOOSE inside)
-patch=2,EE,000E212C,word,8FA50024 // lw a1, 0x24(sp)
-patch=2,EE,000E2130,word,10400003 // beq v0, zero, 0x000E2140  ; spawn failed: keep the pins for the next press
-patch=2,EE,000E2134,word,0040802D // daddu s0, v0, zero
-patch=2,EE,000E2138,word,0C0387D3 // jal 0x000E1F4C  ; release pins no W4P-added player uses (other Warrior chosen, or clone after a timeout)
-patch=2,EE,000E213C,word,00000000 // nop
-patch=2,EE,000E2140,word,24020002 // js_pre: addiu v0, zero, 2
-patch=2,EE,000E2144,word,16620006 // bne s3, v0, 0x000E2160
-patch=2,EE,000E2148,word,3C0A000E // lui t2, 0x000E
-patch=2,EE,000E214C,word,8D421C44 // lw v0, 0x1C44(t2)  ; PRELOAD_AT3
-patch=2,EE,000E2150,word,10400003 // beq v0, zero, 0x000E2160
-patch=2,EE,000E2154,word,00000000 // nop
-patch=2,EE,000E2158,word,0C038601 // jal 0x000E1804  ; 3rd player spawned: start the 4th player's Warrior now (second slot)
+patch=2,EE,000E20C4,word,0C038865 // gt_refuse: jal 0x000E2194  ; still loading: re-pin it if it is older than KICK_MS (M12 first-pin stall, m6_chooser.md 2.6)
+patch=2,EE,000E20C8,word,00000000 // nop
+patch=2,EE,000E20CC,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E20D0,word,10400004 // beq v0, zero, 0x000E20E4
+patch=2,EE,000E20D4,word,24090005 // addiu t1, zero, 5  ; code 5: go after a re-pin (the model became resident, or nothing to wait for)
+patch=2,EE,000E20D8,word,AD491C14 // sw t1, 0x1C14(t2)
+patch=2,EE,000E20DC,word,10000007 // beq zero, zero, 0x000E20FC
+patch=2,EE,000E20E0,word,24020001 // addiu v0, zero, 1
+patch=2,EE,000E20E4,word,8D421C24 // gt_ref2: lw v0, 0x1C24(t2)
+patch=2,EE,000E20E8,word,24420001 // addiu v0, v0, 1
+patch=2,EE,000E20EC,word,AD421C24 // sw v0, 0x1C24(t2)  ; N_REFUSE
+patch=2,EE,000E20F0,word,24090003 // addiu t1, zero, 3  ; code 3: refused, model still streaming
+patch=2,EE,000E20F4,word,AD491C14 // sw t1, 0x1C14(t2)
+patch=2,EE,000E20F8,word,0000102D // daddu v0, zero, zero
+patch=2,EE,000E20FC,word,DFBF0000 // gt_out: ld ra, 0x0(sp)
+patch=2,EE,000E2100,word,03E00008 // jr ra
+patch=2,EE,000E2104,word,27BD0010 // addiu sp, sp, 16
+patch=2,EE,000E2108,word,27BDFFD0 // JS: addiu sp, sp, -48  ; JS(char, prio): SPAWNPICK's spawn call; s3 = count at UpdateJoin entry (2 or 3)
+patch=2,EE,000E210C,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E2110,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E2114,word,AFA40020 // sw a0, 0x20(sp)
+patch=2,EE,000E2118,word,AFA50024 // sw a1, 0x24(sp)
+patch=2,EE,000E211C,word,24020003 // addiu v0, zero, 3
+patch=2,EE,000E2120,word,12620004 // beq s3, v0, 0x000E2134  ; the 4th player: gate on his model
+patch=2,EE,000E2124,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2128,word,8D421C4C // lw v0, 0x1C4C(t2)  ; OWN3 (X10): the 3rd player gets his own model too
+patch=2,EE,000E212C,word,10400005 // beq v0, zero, 0x000E2144
+patch=2,EE,000E2130,word,00000000 // nop
+patch=2,EE,000E2134,word,0C03880A // js_gate: jal 0x000E2028
+patch=2,EE,000E2138,word,00000000 // nop
+patch=2,EE,000E213C,word,10400010 // beq v0, zero, 0x000E2180  ; refuse this press: v0 = 0 = nobody to join
+patch=2,EE,000E2140,word,0000802D // daddu s0, zero, zero
+patch=2,EE,000E2144,word,8FA40020 // js_spawn: lw a0, 0x20(sp)
+patch=2,EE,000E2148,word,0C038420 // jal 0x000E1080  ; SPAWN(-1, 7) as before (CHOOSE inside)
+patch=2,EE,000E214C,word,8FA50024 // lw a1, 0x24(sp)
+patch=2,EE,000E2150,word,10400003 // beq v0, zero, 0x000E2160  ; spawn failed: keep the pins for the next press
+patch=2,EE,000E2154,word,0040802D // daddu s0, v0, zero
+patch=2,EE,000E2158,word,0C0387D3 // jal 0x000E1F4C  ; release pins no W4P-added player uses (other Warrior chosen, or clone after a timeout)
 patch=2,EE,000E215C,word,00000000 // nop
-patch=2,EE,000E2160,word,0200102D // js_out: daddu v0, s0, zero
-patch=2,EE,000E2164,word,DFBF0000 // ld ra, 0x0(sp)
-patch=2,EE,000E2168,word,7BB00010 // lq s0, 0x10(sp)
-patch=2,EE,000E216C,word,03E00008 // jr ra
-patch=2,EE,000E2170,word,27BD0030 // addiu sp, sp, 48
+patch=2,EE,000E2160,word,24020002 // js_pre: addiu v0, zero, 2
+patch=2,EE,000E2164,word,16620006 // bne s3, v0, 0x000E2180
+patch=2,EE,000E2168,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E216C,word,8D421C44 // lw v0, 0x1C44(t2)  ; PRELOAD_AT3
+patch=2,EE,000E2170,word,10400003 // beq v0, zero, 0x000E2180
+patch=2,EE,000E2174,word,00000000 // nop
+patch=2,EE,000E2178,word,0C038601 // jal 0x000E1804  ; 3rd player spawned: start the 4th player's Warrior now (second slot)
+patch=2,EE,000E217C,word,00000000 // nop
+patch=2,EE,000E2180,word,0200102D // js_out: daddu v0, s0, zero
+patch=2,EE,000E2184,word,DFBF0000 // ld ra, 0x0(sp)
+patch=2,EE,000E2188,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E218C,word,03E00008 // jr ra
+patch=2,EE,000E2190,word,27BD0030 // addiu sp, sp, 48
+patch=2,EE,000E2194,word,27BDFFE0 // KICK: addiu sp, sp, -32  ; KICK(): refused press, pin EN_SLOT still loading: if KICK_MS != 0, the pin is at least KICK_MS old and the last re-pin at least KICK_MS ago, release and pin again (ENSURE) keeping the first T0; v0 = ENSURE's result (1/2 = go), 0 = refuse
+patch=2,EE,000E2198,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E219C,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E21A0,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E21A4,word,8D482300 // lw t0, 0x2300(t2)  ; KICK_MS (config, 0 = off)
+patch=2,EE,000E21A8,word,1100001E // beq t0, zero, 0x000E2224
+patch=2,EE,000E21AC,word,3C010051 // lui at, 0x0051
+patch=2,EE,000E21B0,word,8C23B734 // lw v1, -0x48CC(at)  ; timer object *(0x0050B734)
+patch=2,EE,000E21B4,word,1060001B // beq v1, zero, 0x000E2224
+patch=2,EE,000E21B8,word,00000000 // nop
+patch=2,EE,000E21BC,word,8C630038 // lw v1, 0x38(v1)  ; game clock (ms)
+patch=2,EE,000E21C0,word,8D492304 // lw t1, 0x2304(t2)  ; KICK_T: clock of the last re-pin
+patch=2,EE,000E21C4,word,00694823 // subu t1, v1, t1
+patch=2,EE,000E21C8,word,0128482B // sltu t1, t1, t0
+patch=2,EE,000E21CC,word,15200015 // bne t1, zero, 0x000E2224  ; re-pinned less than KICK_MS ago
+patch=2,EE,000E21D0,word,8D491C18 // lw t1, 0x1C18(t2)  ; GT_T: ms since this pin (GATE stored it just before)
+patch=2,EE,000E21D4,word,0128482B // sltu t1, t1, t0
+patch=2,EE,000E21D8,word,15200012 // bne t1, zero, 0x000E2224  ; pin younger than KICK_MS
+patch=2,EE,000E21DC,word,00000000 // nop
+patch=2,EE,000E21E0,word,AD432304 // sw v1, 0x2304(t2)  ; KICK_T = now
+patch=2,EE,000E21E4,word,8D422308 // lw v0, 0x2308(t2)
+patch=2,EE,000E21E8,word,24420001 // addiu v0, v0, 1
+patch=2,EE,000E21EC,word,AD422308 // sw v0, 0x2308(t2)  ; N_KICK
+patch=2,EE,000E21F0,word,0C0387A0 // jal 0x000E1E80
+patch=2,EE,000E21F4,word,8D441C3C // lw a0, 0x1C3C(t2)  ; EN_SLOT
+patch=2,EE,000E21F8,word,8C50000C // lw s0, 0xC(v0)  ; first T0 of this pin: the timeout keeps counting from it
+patch=2,EE,000E21FC,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2200,word,0C0385A8 // jal 0x000E16A0  ; unpin
+patch=2,EE,000E2204,word,8D441C3C // lw a0, 0x1C3C(t2)
+patch=2,EE,000E2208,word,0C038601 // jal 0x000E1804  ; pin again (resident now -> 1; else a new pin and POKE -> 0)
+patch=2,EE,000E220C,word,00000000 // nop
+patch=2,EE,000E2210,word,14400005 // bne v0, zero, 0x000E2228  ; 1 or 2: GATE lets this press join
+patch=2,EE,000E2214,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2218,word,0C0387A0 // jal 0x000E1E80
+patch=2,EE,000E221C,word,8D441C3C // lw a0, 0x1C3C(t2)  ; the slot ENSURE pinned into
+patch=2,EE,000E2220,word,AC50000C // sw s0, 0xC(v0)  ; keep the first T0 (bounded wait: TIMEOUT_MS from the first pin)
+patch=2,EE,000E2224,word,0000102D // kk_no: daddu v0, zero, zero
+patch=2,EE,000E2228,word,DFBF0000 // kk_out: ld ra, 0x0(sp)
+patch=2,EE,000E222C,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E2230,word,03E00008 // jr ra
+patch=2,EE,000E2234,word,27BD0020 // addiu sp, sp, 32
+// KICK data (m6_chooser.md 2.6): a refused join press whose pin is at least KICK_MS old (and the last re-pin at least
+// KICK_MS ago) releases and pins that Warrior again; the timeout still counts from the first pin.
+patch=0,EE,000E2300,word,00000000 // KICK_MS: config: re-pin a stalled pin after this many ms (0 = off, default: off - tested, did not help in M12; PINSVC below fixes the stall) (startup only)
+patch=0,EE,000E2304,word,00000000 // KICK_T: game clock (ms) of the last re-pin (startup only)
+patch=0,EE,000E2308,word,00000000 // N_KICK: re-pins made (startup only)
+patch=0,EE,000E230C,word,00000000 // SVC_T: game clock (ms) of the last pin service (startup only)
+patch=0,EE,000E2310,word,00000000 // N_FIX: pin instances built by PINFIX (startup only)
+// PINSVC/PINFIX (m6_chooser.md 2.6, M12 runs chs_m12d/chs_m12k): a pinned model whose three parts arrive is
+// unreferenced until the streamer builds the pin's instance, and the scheduler does not call the streamer for pins
+// alone (H1), so busy levels evict the parts again (LRU). Once per frame (game-clock tick) PINFIX builds the missing
+// instance of our pins as soon as the model is resident (the streamer's own call FUN_00177B80).
+patch=2,EE,000E2320,word,27BDFFF0 // PINSVC: addiu sp, sp, -16  ; PINSVC(f12, dict, human): replaces the human update's model request call 0x0023D6BC (FUN_0018A430, every human every frame)
+patch=2,EE,000E2324,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E2328,word,0C06290C // jal 0x0018A430  ; the replaced call (f12, a0, a1 unchanged; it returns nothing)
+patch=2,EE,000E232C,word,00000000 // nop
+patch=2,EE,000E2330,word,3C010051 // lui at, 0x0051
+patch=2,EE,000E2334,word,8C23B734 // lw v1, -0x48CC(at)  ; timer object *(0x0050B734)
+patch=2,EE,000E2338,word,1060000B // beq v1, zero, 0x000E2368
+patch=2,EE,000E233C,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2340,word,8C630038 // lw v1, 0x38(v1)  ; game clock (ms)
+patch=2,EE,000E2344,word,8D48230C // lw t0, 0x230C(t2)  ; SVC_T: clock of the last service
+patch=2,EE,000E2348,word,10680007 // beq v1, t0, 0x000E2368  ; once per clock value (per frame), not per human
+patch=2,EE,000E234C,word,8D481C00 // lw t0, 0x1C00(t2)  ; slot 0 ID
+patch=2,EE,000E2350,word,8D491C50 // lw t1, 0x1C50(t2)  ; slot 1 ID
+patch=2,EE,000E2354,word,01094025 // or t0, t0, t1
+patch=2,EE,000E2358,word,11000003 // beq t0, zero, 0x000E2368  ; no pin of ours
+patch=2,EE,000E235C,word,AD43230C // sw v1, 0x230C(t2)  ; SVC_T = now
+patch=2,EE,000E2360,word,0C0388DD // jal 0x000E2374
+patch=2,EE,000E2364,word,00000000 // nop
+patch=2,EE,000E2368,word,DFBF0000 // ps_out: ld ra, 0x0(sp)
+patch=2,EE,000E236C,word,03E00008 // jr ra
+patch=2,EE,000E2370,word,27BD0010 // addiu sp, sp, 16
+patch=2,EE,000E2374,word,27BDFFC0 // PINFIX: addiu sp, sp, -64  ; PINFIX(): for each pin slot whose pin-list entry has no instance: if its model is resident, build the instance as the streamer does (FUN_00177B80), so the loaded data is referenced before LRU eviction removes it again
+patch=2,EE,000E2378,word,FFBF0000 // sd ra, 0x0(sp)
+patch=2,EE,000E237C,word,7FB00010 // sq s0, 0x10(sp)
+patch=2,EE,000E2380,word,7FB10020 // sq s1, 0x20(sp)
+patch=2,EE,000E2384,word,0000802D // daddu s0, zero, zero  ; pin slot 0, 1
+patch=2,EE,000E2388,word,0C0387A0 // pf_loop: jal 0x000E1E80
+patch=2,EE,000E238C,word,0200202D // daddu a0, s0, zero
+patch=2,EE,000E2390,word,8C480000 // lw t0, 0x0(v0)  ; ID
+patch=2,EE,000E2394,word,11000021 // beq t0, zero, 0x000E241C
+patch=2,EE,000E2398,word,8C450008 // lw a1, 0x8(v0)  ; MI
+patch=2,EE,000E239C,word,3C010051 // lui at, 0x0051
+patch=2,EE,000E23A0,word,8C24CD4C // lw a0, -0x32B4(at)  ; dict *(0x0050CD4C)
+patch=2,EE,000E23A4,word,10800021 // beq a0, zero, 0x000E242C
+patch=2,EE,000E23A8,word,249100B4 // addiu s1, a0, 180  ; pin list dict+0xB4, stride 8
+patch=2,EE,000E23AC,word,24090020 // addiu t1, zero, 32
+patch=2,EE,000E23B0,word,8E2A0000 // pf_find: lw t2, 0x0(s1)
+patch=2,EE,000E23B4,word,11450005 // beq t2, a1, 0x000E23CC
+patch=2,EE,000E23B8,word,2529FFFF // addiu t1, t1, -1
+patch=2,EE,000E23BC,word,1520FFFC // bne t1, zero, 0x000E23B0
+patch=2,EE,000E23C0,word,26310008 // addiu s1, s1, 8
+patch=2,EE,000E23C4,word,10000015 // beq zero, zero, 0x000E241C  ; not in the list (ENSURE forgets it at the next join)
+patch=2,EE,000E23C8,word,00000000 // nop
+patch=2,EE,000E23CC,word,8E2A0004 // pf_hit: lw t2, 0x4(s1)  ; instance
+patch=2,EE,000E23D0,word,15400012 // bne t2, zero, 0x000E241C  ; built already
+patch=2,EE,000E23D4,word,8C8B0088 // lw t3, 0x88(a0)  ; dictionary entries
+patch=2,EE,000E23D8,word,00056140 // sll t4, a1, 5
+patch=2,EE,000E23DC,word,016C2821 // addu a1, t3, t4  ; entry = FUN_001780D8(dict, mi)
+patch=2,EE,000E23E0,word,AFA50030 // sw a1, 0x30(sp)
+patch=2,EE,000E23E4,word,0000302D // daddu a2, zero, zero
+patch=2,EE,000E23E8,word,0C05DD34 // jal 0x001774D0  ; all three parts resident? (the streamer's and CHOOSE's test)
+patch=2,EE,000E23EC,word,0000382D // daddu a3, zero, zero
+patch=2,EE,000E23F0,word,1040000A // beq v0, zero, 0x000E241C  ; still loading
+patch=2,EE,000E23F4,word,3C010051 // lui at, 0x0051
+patch=2,EE,000E23F8,word,8C24CD4C // lw a0, -0x32B4(at)  ; dict
+patch=2,EE,000E23FC,word,8FA50030 // lw a1, 0x30(sp)
+patch=2,EE,000E2400,word,0C05DEE0 // jal 0x00177B80  ; instance (the streamer's own call for a resident pin)
+patch=2,EE,000E2404,word,0000302D // daddu a2, zero, zero
+patch=2,EE,000E2408,word,AE220004 // sw v0, 0x4(s1)  ; pin-list entry instance: the model data is referenced from now on
+patch=2,EE,000E240C,word,3C0A000E // lui t2, 0x000E
+patch=2,EE,000E2410,word,8D432310 // lw v1, 0x2310(t2)
+patch=2,EE,000E2414,word,24630001 // addiu v1, v1, 1
+patch=2,EE,000E2418,word,AD432310 // sw v1, 0x2310(t2)  ; N_FIX
+patch=2,EE,000E241C,word,26100001 // pf_next: addiu s0, s0, 1
+patch=2,EE,000E2420,word,2A080002 // slti t0, s0, 2
+patch=2,EE,000E2424,word,1500FFD8 // bne t0, zero, 0x000E2388
+patch=2,EE,000E2428,word,00000000 // nop
+patch=2,EE,000E242C,word,DFBF0000 // pf_out: ld ra, 0x0(sp)
+patch=2,EE,000E2430,word,7BB00010 // lq s0, 0x10(sp)
+patch=2,EE,000E2434,word,7BB10020 // lq s1, 0x20(sp)
+patch=2,EE,000E2438,word,03E00008 // jr ra
+patch=2,EE,000E243C,word,27BD0040 // addiu sp, sp, 64
