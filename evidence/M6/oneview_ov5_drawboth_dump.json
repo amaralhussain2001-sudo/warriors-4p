@@ -1,0 +1,521 @@
+{
+ "tag": "ov5_drawboth_dump",
+ "environment": "SINGLE-PC, 2 instances, loopback, bots, MTVU off",
+ "seconds": 303,
+ "oneview_slots": [
+  0,
+  1
+ ],
+ "mission": 13,
+ "hash_interval": 567,
+ "state": {
+  "0": {
+   "poll": 7577,
+   "players": 2,
+   "handles": [
+    "0x162",
+    "0x10167",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 2,
+   "cameras": 2,
+   "render": [
+    "0xcc6000",
+    "0xcf8800",
+    "0x0",
+    "0x0"
+   ],
+   "active": [
+    "0xcc6000",
+    "0xcf8800",
+    "0x0",
+    "0x0"
+   ],
+   "shadow_views": 0,
+   "shadow": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  },
+  "1": {
+   "poll": 7592,
+   "players": 2,
+   "handles": [
+    "0x162",
+    "0x10167",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 2,
+   "cameras": 2,
+   "render": [
+    "0xcc6000",
+    "0xcf8800",
+    "0x0",
+    "0x0"
+   ],
+   "active": [
+    "0xcc6000",
+    "0xcf8800",
+    "0x0",
+    "0x0"
+   ],
+   "shadow_views": 0,
+   "shadow": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 7403, polls 7404, waits 1, wait total 0.2 ms, max 0.2 ms, hashes 13, mismatches 13, kernel-only differences 0, mtvu off (flag events 0), thread use ee 36% gs 6% vu 0%",
+   "desync_lines": 13,
+   "first_desync": "DESYNC: poll 568 (rel 567) game hash mine 20fe3957e2b9e058 slot1 b1e6919a99fc79a8; kernel mine 827d2df0ddf5a7b3 slot1 827d2df0ddf5a7b3",
+   "dumps": [
+    "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m6\\oneview\\ov5_drawboth_dump\\w4p_slot0_t5104.bin"
+   ],
+   "calls": 34
+  },
+  "1": {
+   "last": "poll 7401, polls 7402, waits 535, wait total 8907.2 ms, max 199.8 ms, hashes 13, mismatches 13, kernel-only differences 0, mtvu off (flag events 0), thread use ee 35% gs 5% vu 0%",
+   "desync_lines": 13,
+   "first_desync": "DESYNC: poll 568 (rel 567) game hash mine b1e6919a99fc79a8 slot0 20fe3957e2b9e058; kernel mine 827d2df0ddf5a7b3 slot0 827d2df0ddf5a7b3",
+   "dumps": [
+    "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m6\\oneview\\ov5_drawboth_dump\\w4p_slot1_t5104.bin"
+   ],
+   "calls": 34
+  }
+ },
+ "tlb_misses": {
+  "2": 0,
+  "3": 0
+ },
+ "snapshots_compared": 27,
+ "snapshots_identical": 2,
+ "first_divergence": {
+  "snap": 5038,
+  "poll": 5038,
+  "polls_equal": true,
+  "differs": [
+   "hash_brains",
+   "hash_humanpool_full"
+  ]
+ },
+ "rows": [
+  {
+   "snap": 5004,
+   "poll": 5004,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 5011,
+   "poll": 5011,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 5038,
+   "poll": 5038,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5041,
+   "poll": 5041,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5051,
+   "poll": 5051,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5061,
+   "poll": 5061,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5071,
+   "poll": 5071,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5081,
+   "poll": 5081,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5091,
+   "poll": 5091,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5101,
+   "poll": 5101,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5111,
+   "poll": 5111,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5121,
+   "poll": 5121,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5131,
+   "poll": 5131,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5141,
+   "poll": 5141,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5151,
+   "poll": 5151,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5161,
+   "poll": 5161,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full"
+   ]
+  },
+  {
+   "snap": 5171,
+   "poll": 5171,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full",
+    "hash_cam0"
+   ]
+  },
+  {
+   "snap": 5181,
+   "poll": 5181,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full",
+    "hash_cam0"
+   ]
+  },
+  {
+   "snap": 5191,
+   "poll": 5191,
+   "polls_equal": true,
+   "differs": [
+    "hash_brains",
+    "hash_humanpool_full",
+    "hash_cam0"
+   ]
+  },
+  {
+   "snap": 5401,
+   "poll": 5401,
+   "polls_equal": true,
+   "differs": [
+    "hash_humans",
+    "hash_brains",
+    "human6",
+    "hash_humanpool_full",
+    "hash_cam0",
+    "hash_714b00"
+   ]
+  },
+  {
+   "snap": 5701,
+   "poll": 5701,
+   "polls_equal": true,
+   "differs": [
+    "rng_obj",
+    "p0_x",
+    "p0_y",
+    "p1_x",
+    "p1_y",
+    "p1_z",
+    "hash_humans",
+    "hash_brains",
+    "human0",
+    "human1",
+    "human2",
+    "human6",
+    "hash_humanpool_full",
+    "camvec0_0",
+    "camvec0_1",
+    "camvec0_2",
+    "camvec0_3",
+    "camvec1_0",
+    "camvec1_1",
+    "camvec1_2",
+    "camvec1_3",
+    "hash_cam0",
+    "hash_cam1",
+    "hash_714b00"
+   ]
+  },
+  {
+   "snap": 6001,
+   "poll": 6001,
+   "polls_equal": true,
+   "differs": [
+    "rng_obj",
+    "p0_x",
+    "p0_y",
+    "p0_z",
+    "p1_x",
+    "p1_y",
+    "p1_z",
+    "hash_humans",
+    "hash_brains",
+    "human0",
+    "human1",
+    "human2",
+    "human6",
+    "hash_humanpool_full",
+    "camvec0_0",
+    "camvec0_1",
+    "camvec0_2",
+    "camvec0_3",
+    "camvec1_0",
+    "camvec1_1",
+    "camvec1_2",
+    "camvec1_3",
+    "hash_cam0",
+    "hash_cam1",
+    "hash_714b00"
+   ]
+  },
+  {
+   "snap": 6301,
+   "poll": 6301,
+   "polls_equal": true,
+   "differs": [
+    "rng_obj",
+    "p0_x",
+    "p0_y",
+    "p0_z",
+    "p1_x",
+    "p1_y",
+    "p1_z",
+    "hash_humans",
+    "hash_brains",
+    "human0",
+    "human1",
+    "human2",
+    "hash_humanpool_full",
+    "camvec0_0",
+    "camvec0_1",
+    "camvec0_2",
+    "camvec0_3",
+    "camvec1_0",
+    "camvec1_1",
+    "camvec1_2",
+    "camvec1_3",
+    "hash_cam0",
+    "hash_cam1",
+    "hash_714b00"
+   ]
+  },
+  {
+   "snap": 6601,
+   "poll": 6601,
+   "polls_equal": true,
+   "differs": [
+    "rng_obj",
+    "p0_x",
+    "p0_y",
+    "p0_z",
+    "p1_x",
+    "p1_y",
+    "p1_z",
+    "hash_humans",
+    "hash_brains",
+    "human0",
+    "human1",
+    "human2",
+    "human6",
+    "hash_humanpool_full",
+    "camvec0_0",
+    "camvec0_1",
+    "camvec0_2",
+    "camvec0_3",
+    "camvec1_0",
+    "camvec1_1",
+    "camvec1_2",
+    "camvec1_3",
+    "hash_cam0",
+    "hash_cam1",
+    "hash_714b00"
+   ]
+  },
+  {
+   "snap": 6901,
+   "poll": 6901,
+   "polls_equal": true,
+   "differs": [
+    "rand_state",
+    "rng_obj",
+    "p0_x",
+    "p0_y",
+    "p0_z",
+    "p1_x",
+    "p1_y",
+    "p1_z",
+    "hash_humans",
+    "hash_brains",
+    "human0",
+    "human1",
+    "human2",
+    "human6",
+    "human9",
+    "hash_humanpool_full",
+    "camvec0_0",
+    "camvec0_1",
+    "camvec0_2",
+    "camvec0_3",
+    "camvec1_0",
+    "camvec1_1",
+    "camvec1_2",
+    "camvec1_3",
+    "hash_cam0",
+    "hash_cam1",
+    "hash_714b00"
+   ]
+  },
+  {
+   "snap": 7201,
+   "poll": 7201,
+   "polls_equal": true,
+   "differs": [
+    "rand_state",
+    "rng_obj",
+    "p0_x",
+    "p0_y",
+    "p0_z",
+    "p1_x",
+    "p1_y",
+    "p1_z",
+    "hash_humans",
+    "hash_brains",
+    "human0",
+    "human1",
+    "human2",
+    "human6",
+    "human9",
+    "hash_humanpool_full",
+    "camvec0_0",
+    "camvec0_1",
+    "camvec0_2",
+    "camvec0_3",
+    "camvec1_0",
+    "camvec1_1",
+    "camvec1_2",
+    "camvec1_3",
+    "hash_cam0",
+    "hash_cam1",
+    "hash_714b00"
+   ]
+  },
+  {
+   "snap": 7501,
+   "poll": 7501,
+   "polls_equal": true,
+   "differs": [
+    "rand_state",
+    "rng_obj",
+    "p0_x",
+    "p0_y",
+    "p0_z",
+    "p1_x",
+    "p1_y",
+    "p1_z",
+    "hash_humans",
+    "hash_brains",
+    "human0",
+    "human1",
+    "human2",
+    "human6",
+    "human9",
+    "hash_humanpool_full",
+    "camvec0_0",
+    "camvec0_1",
+    "camvec0_2",
+    "camvec0_3",
+    "camvec1_0",
+    "camvec1_1",
+    "camvec1_2",
+    "camvec1_3",
+    "hash_cam0",
+    "hash_cam1",
+    "hash_714b00"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,373 @@
+{
+ "tag": "ov0_ctrl",
+ "environment": "SINGLE-PC, 2 instances, loopback, bots, MTVU off",
+ "seconds": 664,
+ "oneview_slots": [],
+ "mission": 13,
+ "hash_interval": 1000,
+ "state": {
+  "0": {
+   "poll": 18405,
+   "players": 2,
+   "handles": [
+    "0x162",
+    "0x10167",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 2,
+   "cameras": 2,
+   "render": [
+    "0xcc6000",
+    "0xcf8800",
+    "0x0",
+    "0x0"
+   ],
+   "active": [
+    "0xcc6000",
+    "0xcf8800",
+    "0x0",
+    "0x0"
+   ],
+   "shadow_views": 0,
+   "shadow": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  },
+  "1": {
+   "poll": 18419,
+   "players": 2,
+   "handles": [
+    "0x162",
+    "0x10167",
+    "0xffffffff",
+    "0xffffffff"
+   ],
+   "views": 2,
+   "cameras": 2,
+   "render": [
+    "0xcc6000",
+    "0xcf8800",
+    "0x0",
+    "0x0"
+   ],
+   "active": [
+    "0xcc6000",
+    "0xcf8800",
+    "0x0",
+    "0x0"
+   ],
+   "shadow_views": 0,
+   "shadow": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x0"
+   ]
+  }
+ },
+ "stats": {
+  "0": {
+   "last": "poll 18211, polls 18212, waits 0, wait total 0.0 ms, max 0.0 ms, hashes 18, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 43% gs 6% vu 0%",
+   "desync_lines": 0,
+   "first_desync": null,
+   "dumps": [],
+   "calls": 49
+  },
+  "1": {
+   "last": "poll 18206, polls 18207, waits 3903, wait total 23070.2 ms, max 186.1 ms, hashes 18, mismatches 0, kernel-only differences 0, mtvu off (flag events 0), thread use ee 43% gs 6% vu 0%",
+   "desync_lines": 0,
+   "first_desync": null,
+   "dumps": [],
+   "calls": 49
+  }
+ },
+ "tlb_misses": {
+  "4": 0,
+  "5": 0
+ },
+ "snapshots_compared": 46,
+ "snapshots_identical": 46,
+ "first_divergence": null,
+ "rows": [
+  {
+   "snap": 5004,
+   "poll": 5004,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 5101,
+   "poll": 5101,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 5401,
+   "poll": 5401,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 5701,
+   "poll": 5701,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 6001,
+   "poll": 6001,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 6301,
+   "poll": 6301,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 6601,
+   "poll": 6601,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 6901,
+   "poll": 6901,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 7201,
+   "poll": 7201,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 7501,
+   "poll": 7501,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 7801,
+   "poll": 7801,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 8101,
+   "poll": 8101,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 8401,
+   "poll": 8401,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 8701,
+   "poll": 8701,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 9001,
+   "poll": 9001,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 9301,
+   "poll": 9301,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 9601,
+   "poll": 9601,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 9901,
+   "poll": 9901,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 10201,
+   "poll": 10201,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 10501,
+   "poll": 10501,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 10801,
+   "poll": 10801,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 11101,
+   "poll": 11101,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 11401,
+   "poll": 11401,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 11701,
+   "poll": 11701,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 12001,
+   "poll": 12001,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 12301,
+   "poll": 12301,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 12601,
+   "poll": 12601,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 12901,
+   "poll": 12901,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 13201,
+   "poll": 13201,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 13501,
+   "poll": 13501,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 13801,
+   "poll": 13801,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 14101,
+   "poll": 14101,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 14401,
+   "poll": 14401,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 14701,
+   "poll": 14701,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 15001,
+   "poll": 15001,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 15301,
+   "poll": 15301,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 15601,
+   "poll": 15601,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 15901,
+   "poll": 15901,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 16201,
+   "poll": 16201,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 16501,
+   "poll": 16501,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 16801,
+   "poll": 16801,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 17101,
+   "poll": 17101,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 17401,
+   "poll": 17401,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 17701,
+   "poll": 17701,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 18001,
+   "poll": 18001,
+   "polls_equal": true,
+   "differs": []
+  },
+  {
+   "snap": 18301,
+   "poll": 18301,
+   "polls_equal": true,
+   "differs": []
+  }
+ ]
+}
