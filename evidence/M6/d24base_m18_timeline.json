@@ -1,0 +1,832 @@
+{
+"tag": "d24base_m18",
+"note": "state changes of the PINE samples of the second instance (tests/m6/chase4p_run.py); full samples in local/m2/<tag>/chase_samples.json",
+"rows": [
+{
+"t": 25,
+"poll": 651,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": null,
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 40,
+"poll": 1108,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e57e0",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 46,
+"poll": 1419,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e5810",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 49,
+"poll": 1466,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e5d90",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 52,
+"poll": 1485,
+"checkpoint": 1,
+"count": 0,
+"views": 1,
+"mode_top": "0x5e5d90",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 61,
+"poll": 1583,
+"checkpoint": 1,
+"count": 0,
+"views": 1,
+"mode_top": "0x5e65c0",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 122,
+"poll": 3391,
+"checkpoint": 1,
+"count": 0,
+"views": 1,
+"mode_top": "0x5e5810",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 128,
+"poll": 3506,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e5d90",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 131,
+"poll": 3526,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 134,
+"poll": 3558,
+"checkpoint": 1,
+"count": 1,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": null,
+"char": 32,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+}
+}
+},
+{
+"t": 140,
+"poll": 3584,
+"checkpoint": 1,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": null,
+"char": 32,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+},
+"2": {
+"name": null,
+"char": 40,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+}
+}
+},
+{
+"t": 236,
+"poll": 6446,
+"checkpoint": 1,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e5d90",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": null,
+"char": 32,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+},
+"2": {
+"name": null,
+"char": 40,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+}
+}
+},
+{
+"t": 239,
+"poll": 6481,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 245,
+"poll": 6535,
+"checkpoint": 1,
+"count": 1,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+}
+}
+},
+{
+"t": 254,
+"poll": 6596,
+"checkpoint": 1,
+"count": 2,
+"views": 2,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 1,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow",
+"char": 33,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 264,
+"poll": 6700,
+"checkpoint": 1,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 3,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow",
+"char": 33,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 288,
+"poll": 7408,
+"checkpoint": 1,
+"count": 2,
+"views": 2,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 1,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow",
+"char": 33,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 291,
+"poll": 7494,
+"checkpoint": 1,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 3,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow",
+"char": 33,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 318,
+"poll": 8286,
+"checkpoint": 2,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan(chase)",
+"char": 9,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow(chase)",
+"char": 36,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 324,
+"poll": 8467,
+"checkpoint": 2,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan(chase)",
+"char": 9,
+"pidx": 0,
+"tap": true,
+"flag_idx": 3,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow(chase)",
+"char": 36,
+"pidx": 1,
+"tap": true,
+"flag_idx": 3,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 330,
+"poll": 8649,
+"checkpoint": 2,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan(chase)",
+"char": 9,
+"pidx": 0,
+"tap": true,
+"flag_idx": 4,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow(chase)",
+"char": 36,
+"pidx": 1,
+"tap": true,
+"flag_idx": 4,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 333,
+"poll": 8739,
+"checkpoint": 2,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan(chase)",
+"char": 9,
+"pidx": 0,
+"tap": true,
+"flag_idx": 5,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow(chase)",
+"char": 36,
+"pidx": 1,
+"tap": false,
+"flag_idx": 5,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 336,
+"poll": 8830,
+"checkpoint": 2,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan(chase)",
+"char": 9,
+"pidx": 0,
+"tap": false,
+"flag_idx": 6,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow(chase)",
+"char": 36,
+"pidx": 1,
+"tap": false,
+"flag_idx": 5,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 342,
+"poll": 8972,
+"checkpoint": 3,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 0,
+"cin_410": 1,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"2": {
+"name": "Snow",
+"char": 33,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1080
+}
+}
+},
+{
+"t": 491,
+"poll": 13334,
+"checkpoint": 3,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 3,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1118
+},
+"2": {
+"name": "Snow",
+"char": 33,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 640
+}
+}
+},
+{
+"t": 503,
+"poll": 13681,
+"checkpoint": 3,
+"count": 4,
+"views": 4,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1118
+},
+"2": {
+"name": "Snow",
+"char": 33,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 640
+},
+"3": {
+"name": "Swan",
+"char": 5,
+"pidx": 2,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"4": {
+"name": "Swan",
+"char": 5,
+"pidx": 3,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+}
+}
+},
+{
+"t": 521,
+"poll": 14044,
+"checkpoint": 3,
+"count": 4,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1118
+},
+"2": {
+"name": "Snow",
+"char": 33,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 640
+},
+"3": {
+"name": "Swan",
+"char": 5,
+"pidx": 2,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"4": {
+"name": "Swan",
+"char": 5,
+"pidx": 3,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+}
+}
+},
+{
+"t": 527,
+"poll": 14209,
+"checkpoint": 3,
+"count": 4,
+"views": 4,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Swan",
+"char": 5,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1118
+},
+"2": {
+"name": "Snow",
+"char": 33,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 640
+},
+"3": {
+"name": "Swan",
+"char": 5,
+"pidx": 2,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"4": {
+"name": "Swan",
+"char": 5,
+"pidx": 3,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+}
+}
+}
+]
+}

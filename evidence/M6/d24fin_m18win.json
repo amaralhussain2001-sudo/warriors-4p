@@ -1,0 +1,92 @@
+{
+ "tag": "d24fin_m18win",
+ "environment": "SINGLE-PC, 4 instances in lockstep, loopback, scripted tapping bots, no impairment",
+ "mission": 18,
+ "start_checkpoint": 1,
+ "tap_slots": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "tap_from": 8000,
+ "tap_stop": {},
+ "tap_gaps": {},
+ "tap_buttons": [
+  "TRI",
+  "CIR",
+  "X",
+  "SQ"
+ ],
+ "policies": true,
+ "seconds": 911,
+ "hash_points": 491,
+ "mismatches": 0,
+ "first_mismatch": null,
+ "tlb_misses": {
+  "15": 0,
+  "16": 0,
+  "17": 0,
+  "18": 0
+ },
+ "checkpoints_seen": [
+  [
+   621,
+   1
+  ],
+  [
+   8020,
+   2
+  ],
+  [
+   8731,
+   3
+  ]
+ ],
+ "player_counts_seen": [
+  0,
+  1,
+  2,
+  4
+ ],
+ "max_tap_flag_index_by_player": {
+  "1": 4,
+  "2": 4,
+  "3": 5,
+  "4": 5
+ },
+ "last_poll_with_n_tapping": {
+  "0": 14570,
+  "4": 8427,
+  "2": 8512
+ },
+ "end_state": {
+  "0": "TimeoutError('timed out')",
+  "1": "TimeoutError('timed out')",
+  "2": {
+   "poll": 14745,
+   "players": 4,
+   "handles": [
+    "0x600be",
+    "0x500b9",
+    "0x908bb",
+    "0xa08c3"
+   ],
+   "views": 4,
+   "cameras": 4
+  },
+  "3": {
+   "poll": 14751,
+   "players": 4,
+   "handles": [
+    "0x600be",
+    "0x500b9",
+    "0x908bb",
+    "0xa08c3"
+   ],
+   "views": 4,
+   "cameras": 4
+  }
+ },
+ "samples": 284
+}

@@ -14,7 +14,7 @@ import inv_tests as it
 
 LUARUN = 0x000E79A0
 BUF, BUF_SIZE = 0x000EF000, 0x1000
-LC_RUNS, LC_N, LC_LOG, LC_TAB = 0x000E7AF8, 0x000E7AFC, 0x000E7B00, 0x000E7F00
+LC_RUNS, LC_N, LC_LOG, LC_TAB = 0x000E7AF8, 0x000E7AFC, 0x000E7B00, 0x000EEE00  # LC_TAB moved by D24 (was 0x000E7F00)
 UPDATE_JOIN = 0x0041A460        # UpdateJoin(GameMgr, pad): the game's drop-in join (what W4P X11 calls in sessions)
 PAD_OWNER = 0x005DD810          # s16 owner at +pad*0x50+0x42
 FOLLOW_CAMS, RENDER_CAMS, RAIL_CAMS = 0x000F0820, 0x000F0810, 0x000F0830   # relocated per-view arrays (4p group)

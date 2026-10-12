@@ -535,7 +535,7 @@ patch=2,EE,000E1AB8,word,27BD0070 // addiu sp, sp, 112
 patch=2,EE,000E1B38,word,27BDFFE0 // PX: addiu sp, sp, -32  ; PX(gang, 0)
 patch=2,EE,000E1B3C,word,FFBF0000 // sd ra, 0x0(sp)
 patch=2,EE,000E1B40,word,7FB00010 // sq s0, 0x10(sp)
-patch=2,EE,000E1B44,word,0C038718 // jal 0x000E1C60  ; X2SEL (X2 picker; player 2 / level start: original PickJoinCompanion)
+patch=2,EE,000E1B44,word,0C038960 // jal 0x000E2580  ; X2W (D24: the human W4P_JoinAs wants), else X2SEL (X2 picker; player 2 / level start: original PickJoinCompanion)
 patch=2,EE,000E1B48,word,00000000 // nop
 patch=2,EE,000E1B4C,word,0040802D // daddu s0, v0, zero
 patch=2,EE,000E1B50,word,12000011 // beq s0, zero, 0x000E1B98  ; nobody: SPAWNPICK goes on to JS
@@ -1143,3 +1143,12 @@ patch=2,EE,000E2570,word,25294B00 // addiu t1, t1, 19200  ; position table 0x007
 patch=2,EE,000E2574,word,01094021 // addu t0, t0, t1
 patch=2,EE,000E2578,word,03E00008 // jr ra
 patch=2,EE,000E257C,word,8D030000 // lw v1, 0x0(t0)
+// D24 (docs/research/m6_chase4p.md): X2W runs before X2SEL: while the D24 Lua function W4P_JoinAs ([warriors-4p
+//    missions], 0x000ED040) joins a pad, WANT holds the human it wants and PX takes exactly him; WANT = 0 -> X2SEL.
+patch=2,EE,000E2580,word,3C08000E // X2W: lui t0, 0x000E  ; X2W(gang, 0): PX's picker call; D24 W4P_JoinAs's wanted human first
+patch=2,EE,000E2584,word,8D0225A0 // lw v0, 0x25A0(t0)  ; WANT
+patch=2,EE,000E2588,word,1040FDB5 // beq v0, zero, 0x000E1C60  ; none: X2SEL as before (returns to PX)
+patch=2,EE,000E258C,word,00000000 // nop
+patch=2,EE,000E2590,word,03E00008 // jr ra  ; take exactly this human
+patch=2,EE,000E2594,word,00000000 // nop
+patch=0,EE,000E25A0,word,00000000 // D24 WANT: human that W4P_JoinAs wants PX to take (0 = none; set and cleared inside one call) (startup only)

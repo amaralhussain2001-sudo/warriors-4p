@@ -1,0 +1,1926 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "chase_probe.state@6300": {
+  "poll": 6301,
+  "checkpoint": 2,
+  "level": "level84",
+  "count": 4,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x6449d0",
+    "char": 9,
+    "name": "Swan(chase)",
+    "pidx": 0,
+    "hud": 0,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 2,
+    "c674": 0,
+    "flag_idx": 3,
+    "pos": [
+     -36.89,
+     -102.41,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0x900ca"
+   },
+   "2": {
+    "obj": "0x6450a0",
+    "char": 36,
+    "name": "Snow(chase)",
+    "pidx": 1,
+    "hud": 1,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1080,
+    "c670": 2,
+    "c674": 0,
+    "flag_idx": 3,
+    "pos": [
+     -40.8,
+     -103.81,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xa00cf"
+   },
+   "3": {
+    "obj": "0x645770",
+    "char": 16,
+    "name": "Cochise",
+    "pidx": 2,
+    "hud": 2,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 990,
+    "c670": 2,
+    "c674": 0,
+    "flag_idx": 3,
+    "pos": [
+     -43.98,
+     -102.42,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xb00d4"
+   },
+   "4": {
+    "obj": "0x645e40",
+    "char": 27,
+    "name": "Vermin",
+    "pidx": 3,
+    "hud": 3,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1170,
+    "c670": 2,
+    "c674": 0,
+    "flag_idx": 3,
+    "pos": [
+     -39.58,
+     -103.56,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xc00d9"
+   }
+  },
+  "lc_names": [
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua",
+   "config_normal.lua"
+  ]
+ },
+ "chase_probe.state@6450": {
+  "poll": 6455,
+  "checkpoint": 2,
+  "level": "level84",
+  "count": 4,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x6449d0",
+    "char": 9,
+    "name": "Swan(chase)",
+    "pidx": 0,
+    "hud": 0,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 2,
+    "c674": 1,
+    "flag_idx": 4,
+    "pos": [
+     24.71,
+     -102.24,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0x900ca"
+   },
+   "2": {
+    "obj": "0x6450a0",
+    "char": 36,
+    "name": "Snow(chase)",
+    "pidx": 1,
+    "hud": 1,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1080,
+    "c670": 2,
+    "c674": 1,
+    "flag_idx": 4,
+    "pos": [
+     20.6,
+     -103.55,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xa00cf"
+   },
+   "3": {
+    "obj": "0x645770",
+    "char": 16,
+    "name": "Cochise",
+    "pidx": 2,
+    "hud": 2,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 990,
+    "c670": 2,
+    "c674": 1,
+    "flag_idx": 3,
+    "pos": [
+     8.62,
+     -102.4,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xb00d4"
+   },
+   "4": {
+    "obj": "0x645e40",
+    "char": 27,
+    "name": "Vermin",
+    "pidx": 3,
+    "hud": 3,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1170,
+    "c670": 2,
+    "c674": 1,
+    "flag_idx": 4,
+    "pos": [
+     14.2,
+     -103.68,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xc00d9"
+   }
+  },
+  "lc_names": [
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua",
+   "config_normal.lua"
+  ]
+ },
+ "chase_probe.lua_markers@6500": {
+  "poll": 6505,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 110
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.m18c) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.m8c) and 1 or 0)"
+ },
+ "chase_probe.state@6600": {
+  "poll": 6606,
+  "checkpoint": 2,
+  "level": "level84",
+  "count": 4,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x6449d0",
+    "char": 9,
+    "name": "Swan(chase)",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 2,
+    "c674": 0,
+    "flag_idx": 5,
+    "pos": [
+     72.74,
+     -111.21,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0x900ca"
+   },
+   "2": {
+    "obj": "0x6450a0",
+    "char": 36,
+    "name": "Snow(chase)",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1080,
+    "c670": 2,
+    "c674": 1,
+    "flag_idx": 5,
+    "pos": [
+     72.11,
+     -110.81,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xa00cf"
+   },
+   "3": {
+    "obj": "0x645770",
+    "char": 16,
+    "name": "Cochise",
+    "pidx": 2,
+    "hud": 2,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 990,
+    "c670": 2,
+    "c674": 2,
+    "flag_idx": 5,
+    "pos": [
+     60.18,
+     -102.23,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xb00d4"
+   },
+   "4": {
+    "obj": "0x645e40",
+    "char": 27,
+    "name": "Vermin",
+    "pidx": 3,
+    "hud": 3,
+    "tap": true,
+    "down": false,
+    "dead": false,
+    "hp": 1170,
+    "c670": 2,
+    "c674": 2,
+    "flag_idx": 5,
+    "pos": [
+     65.76,
+     -102.81,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xc00d9"
+   }
+  },
+  "lc_names": [
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua",
+   "config_normal.lua"
+  ]
+ },
+ "chase_probe.state@6750": {
+  "poll": 6751,
+  "checkpoint": 2,
+  "level": "level84",
+  "count": 4,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x6449d0",
+    "char": 9,
+    "name": "Swan(chase)",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 2,
+    "c674": 0,
+    "flag_idx": 5,
+    "pos": [
+     72.9,
+     -111.21,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0x900ca"
+   },
+   "2": {
+    "obj": "0x6450a0",
+    "char": 36,
+    "name": "Snow(chase)",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1080,
+    "c670": 2,
+    "c674": 1,
+    "flag_idx": 5,
+    "pos": [
+     72.27,
+     -110.86,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xa00cf"
+   },
+   "3": {
+    "obj": "0x645770",
+    "char": 16,
+    "name": "Cochise",
+    "pidx": 2,
+    "hud": 2,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 990,
+    "c670": 2,
+    "c674": 2,
+    "flag_idx": 5,
+    "pos": [
+     71.59,
+     -110.51,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xb00d4"
+   },
+   "4": {
+    "obj": "0x645e40",
+    "char": 27,
+    "name": "Vermin",
+    "pidx": 3,
+    "hud": 3,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1170,
+    "c670": 2,
+    "c674": 2,
+    "flag_idx": 5,
+    "pos": [
+     72.55,
+     -109.6,
+     -0.4
+    ],
+    "gang": "0x5e8450",
+    "handle": "0xc00d9"
+   }
+  },
+  "lc_names": [
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua",
+   "config_normal.lua"
+  ]
+ },
+ "chase_probe.state@6900": {
+  "poll": 6906,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 3,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -393.09,
+     -84.77,
+     -20.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1080,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -391.18,
+     -84.34,
+     -20.5
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@7050": {
+  "poll": 7056,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.16,
+     -220.51,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1080,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.66,
+     -219.34,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@7200": {
+  "poll": 7202,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -337.88,
+     -219.38,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 948,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.52,
+     -219.02,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.lua_runners@7200": {
+  "cochise": {
+   "poll": 7207,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 101
+   },
+   "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN[1]) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN.t1) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN.d1) and 1 or 0)"
+  },
+  "vermin": {
+   "poll": 7211,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 101
+   },
+   "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN[2]) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN.t2) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN.d2) and 1 or 0)"
+  }
+ },
+ "chase_probe.state@7350": {
+  "poll": 7357,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1350,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -336.79,
+     -218.86,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 626,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -337.63,
+     -218.88,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@7500": {
+  "poll": 7500,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1147,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -336.83,
+     -219.94,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 573,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -336.88,
+     -218.91,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@7650": {
+  "poll": 7654,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1137,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -337.09,
+     -220.12,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 573,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -336.79,
+     -219.2,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@7800": {
+  "poll": 7807,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1137,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -337.59,
+     -219.49,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 443,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -337.68,
+     -220.35,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@7950": {
+  "poll": 7953,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 1127,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.19,
+     -218.28,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 433,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -336.93,
+     -220.09,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.lua_runners@8000": {
+  "cochise": {
+   "poll": 8010,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 101
+   },
+   "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN[1]) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN.t1) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN.d1) and 1 or 0)"
+  },
+  "vermin": {
+   "poll": 8015,
+   "status": 0,
+   "done": 1,
+   "values": {
+    "W4P_R": 101
+   },
+   "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN[2]) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN.t2) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_RN and W4P_RN.d2) and 1 or 0)"
+  }
+ },
+ "chase_probe.state@8100": {
+  "poll": 8101,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 992,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -337.54,
+     -217.41,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 433,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -337.86,
+     -219.75,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@8250": {
+  "poll": 8251,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 826,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.88,
+     -219.13,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 433,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -337.78,
+     -219.57,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@8400": {
+  "poll": 8404,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 826,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -339.43,
+     -218.61,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 413,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -339.35,
+     -219.33,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@8550": {
+  "poll": 8550,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 806,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -339.85,
+     -218.87,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 413,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -339.25,
+     -220.28,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@8700": {
+  "poll": 8703,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 686,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.74,
+     -217.65,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 313,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.36,
+     -220.74,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@8850": {
+  "poll": 8856,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 531,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -339.24,
+     -218.01,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 313,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.83,
+     -221.29,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@9000": {
+  "poll": 9002,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 421,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.29,
+     -217.2,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 313,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -339.06,
+     -222.12,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@9150": {
+  "poll": 9153,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 251,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -340.68,
+     -218.43,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 313,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -339.58,
+     -222.56,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@9300": {
+  "poll": 9306,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 251,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -340.39,
+     -218.47,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 313,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -339.87,
+     -223.49,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@9450": {
+  "poll": 9451,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 251,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -339.63,
+     -218.66,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 313,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -340.33,
+     -223.86,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ },
+ "chase_probe.state@9600": {
+  "poll": 9604,
+  "checkpoint": 3,
+  "level": "level84",
+  "count": 2,
+  "join_flag": 0,
+  "cin_410": 0,
+  "gm_14c": 0,
+  "views": 1,
+  "mode_top": "0x5e56b8",
+  "joinas": [
+   2,
+   2,
+   2
+  ],
+  "want": "0x0",
+  "pads": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "players": {
+   "1": {
+    "obj": "0x640c80",
+    "char": 5,
+    "name": "Swan",
+    "pidx": 0,
+    "hud": 0,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 251,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -338.72,
+     -220.09,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0xa3"
+   },
+   "2": {
+    "obj": "0x641350",
+    "char": 33,
+    "name": "Snow",
+    "pidx": 1,
+    "hud": 1,
+    "tap": false,
+    "down": false,
+    "dead": false,
+    "hp": 313,
+    "c670": 0,
+    "c674": 0,
+    "flag_idx": 0,
+    "pos": [
+     -340.63,
+     -224.77,
+     -0.24
+    ],
+    "gang": "0x5e6e30",
+    "handle": "0x100a8"
+   }
+  },
+  "lc_names": [
+   "level84_final.lua",
+   "level84_chase.lua",
+   "level84.lua",
+   "global.lua"
+  ]
+ }
+}

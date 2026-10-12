@@ -25,3 +25,32 @@ patch=2,EE,000F0BE0,word,0804A10D // j 0x00128434             (original fall-thr
 patch=2,EE,000F0BE4,word,00000000 // nop
 patch=2,EE,000F0BE8,word,0804A11A // isfalse: j 0x00128468
 patch=2,EE,000F0BEC,word,3C020051 // lui v0,0x51              (original delay slot, needed at 0x00128468)
+// RAILTGT (D24, docs/research/m6_chase4p.md; design m6_camera_parity.md 2.4): the rail camera's target picker
+//    FUN_0013B7B8 collects targets from tracked-list entries 0-1 only and keeps slot [player index] only if index < count
+//    (0x0013B948), so a rail camera on view 3/4 had no target (x4x6b g5 'empty subway', d24dev2 beach views 3-4). For a
+//    rail of player index 2/3 the target is now that player's own human (GameMgr+0x228+4*index), like the follow-camera
+//    fix above; views 1-2 run the original instructions.
+patch=2,EE,0013B944,word,0803C250 // was 8E030348 lw v1,0x348(s0) -> j 0x000F0940 RAILTGT (v0 = rail camera's player index)
+patch=2,EE,0013B948,word,00000000 // was 0043102A slt v0,v0,v1 -> nop (delay slot; the compare moved into the cave)
+patch=2,EE,000F0940,word,28480002 // RAILTGT: slti t0, v0, 2  ; RAILTGT (from 0x0013B944 in the rail target picker FUN_0013B7B8): v0 = the rail camera's player index (vtable +0x27C), s0 = camera
+patch=2,EE,000F0944,word,1100000A // beq t0, zero, 0x000F0970
+patch=2,EE,000F0948,word,00000000 // nop
+patch=2,EE,000F094C,word,8E030348 // lw v1, 0x348(s0)  ; original 0x0013B944: targets collected from tracked-list entries 0-1
+patch=2,EE,000F0950,word,0043102A // slt v0, v0, v1  ; original 0x0013B948
+patch=2,EE,000F0954,word,10400003 // beq v0, zero, 0x000F0964  ; original 0x0013B94C beql v0,zero,0x0013B984 (its delay slot only when taken)
+patch=2,EE,000F0958,word,00000000 // nop
+patch=2,EE,000F095C,word,0804EE55 // j 0x0013B954  ; original path: keep slot [index] as the one target
+patch=2,EE,000F0960,word,00000000 // nop
+patch=2,EE,000F0964,word,AE000340 // rt_none: sw zero, 0x340(s0)  ; original delay slot of the beql
+patch=2,EE,000F0968,word,0804EE61 // j 0x0013B984
+patch=2,EE,000F096C,word,00000000 // nop
+patch=2,EE,000F0970,word,00024880 // rt_34: sll t1, v0, 2  ; views 3-4: target = that player's own human (as the follow-camera fix camtarget.txt)
+patch=2,EE,000F0974,word,3C0A0051 // lui t2, 0x0051
+patch=2,EE,000F0978,word,8D44489C // lw a0, 0x489C(t2)  ; GameMgr
+patch=2,EE,000F097C,word,00892021 // addu a0, a0, t1
+patch=2,EE,000F0980,word,0C0E409A // jal 0x00390268  ; handle -> human (0 = none)
+patch=2,EE,000F0984,word,24840228 // addiu a0, a0, 552  ; &GameMgr.handle[index] (+0x228)
+patch=2,EE,000F0988,word,AE020340 // sw v0, 0x340(s0)  ; the one target
+patch=2,EE,000F098C,word,0002582B // sltu t3, zero, v0
+patch=2,EE,000F0990,word,0804EE62 // j 0x0013B988  ; count = 1 (0 without a human), then the original tail
+patch=2,EE,000F0994,word,AE0B0348 // sw t3, 0x348(s0)

@@ -1,0 +1,492 @@
+{
+"tag": "d24fin_m8",
+"note": "state changes of the PINE samples of the second instance (tests/m6/chase4p_run.py); full samples in local/m2/<tag>/chase_samples.json",
+"rows": [
+{
+"t": 25,
+"poll": 134,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": null,
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 79,
+"poll": 1108,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e57e0",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 91,
+"poll": 1399,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e5810",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 94,
+"poll": 1454,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e5d90",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 100,
+"poll": 1504,
+"checkpoint": 1,
+"count": 0,
+"views": 1,
+"mode_top": "0x5e5d90",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 112,
+"poll": 1557,
+"checkpoint": 1,
+"count": 0,
+"views": 1,
+"mode_top": "0x5e65c0",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 272,
+"poll": 3372,
+"checkpoint": 1,
+"count": 0,
+"views": 1,
+"mode_top": "0x5e5810",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 287,
+"poll": 3517,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 293,
+"poll": 3540,
+"checkpoint": 1,
+"count": 1,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": null,
+"char": 32,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+}
+}
+},
+{
+"t": 315,
+"poll": 3584,
+"checkpoint": 1,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": null,
+"char": 32,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+},
+"2": {
+"name": null,
+"char": 40,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+}
+}
+},
+{
+"t": 417,
+"poll": 4409,
+"checkpoint": 1,
+"count": 2,
+"views": 1,
+"mode_top": "0x5e5d90",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": null,
+"char": 32,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+},
+"2": {
+"name": null,
+"char": 40,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 900
+}
+}
+},
+{
+"t": 423,
+"poll": 4437,
+"checkpoint": 1,
+"count": 0,
+"views": 0,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {}
+},
+{
+"t": 435,
+"poll": 4474,
+"checkpoint": 1,
+"count": 1,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Cleon",
+"char": 1,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+}
+}
+},
+{
+"t": 463,
+"poll": 4539,
+"checkpoint": 1,
+"count": 2,
+"views": 2,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Cleon",
+"char": 1,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+},
+"2": {
+"name": "Swan",
+"char": 5,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+}
+}
+},
+{
+"t": 466,
+"poll": 4554,
+"checkpoint": 1,
+"count": 3,
+"views": 3,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 3,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Cleon",
+"char": 1,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+},
+"2": {
+"name": "Swan",
+"char": 5,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"3": {
+"name": "Ajax",
+"char": 11,
+"pidx": 2,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+}
+}
+},
+{
+"t": 484,
+"poll": 4574,
+"checkpoint": 1,
+"count": 3,
+"views": 1,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 3,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Cleon",
+"char": 1,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+},
+"2": {
+"name": "Swan",
+"char": 5,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"3": {
+"name": "Ajax",
+"char": 11,
+"pidx": 2,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+}
+}
+},
+{
+"t": 490,
+"poll": 4624,
+"checkpoint": 1,
+"count": 3,
+"views": 3,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Cleon",
+"char": 1,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+},
+"2": {
+"name": "Swan",
+"char": 5,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"3": {
+"name": "Ajax",
+"char": 11,
+"pidx": 2,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+}
+}
+},
+{
+"t": 499,
+"poll": 4658,
+"checkpoint": 1,
+"count": 4,
+"views": 4,
+"mode_top": "0x5e56b8",
+"join_flag": 1,
+"cin_410": 0,
+"joinas": [
+0,
+0,
+0
+],
+"players": {
+"1": {
+"name": "Cleon",
+"char": 1,
+"pidx": 0,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+},
+"2": {
+"name": "Swan",
+"char": 5,
+"pidx": 1,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1350
+},
+"3": {
+"name": "Ajax",
+"char": 11,
+"pidx": 2,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1530
+},
+"4": {
+"name": null,
+"char": 26,
+"pidx": 3,
+"tap": false,
+"flag_idx": 0,
+"down": false,
+"hp": 1170
+}
+}
+}
+]
+}

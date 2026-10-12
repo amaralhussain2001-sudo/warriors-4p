@@ -8,6 +8,8 @@ Usage: python -I tests/m2/m2_run4.py <tag> [--seconds 420] [--bots-from 4700] [-
        [--peer-base 46100]  (peers through the w4p-net helpers; start them first)
        [--sample-every 10]  (PINE state of slot 0 every N s -> samples.json)
        [--leaver N]  (slot that leaves: the summary also compares the other slots after his last hash point)
+       [--inst-base 6]  (sandbox instances base..base+3, ports 41200 + 4*(base-6) + slot: a second group can run
+       beside a running one, e.g. --inst-base 15)  [--patch file.pnach]  (default mod/w4p_m1.pnach)
 --polls: length of every input file (the files wrap around after it, so runs longer than about polls/28 s need more).
 --script-bots-from: slots with a --scriptN file play seeded random bot input from poll N on, plus a Start press every
 300 polls so that players 3-4 re-join after a mission restart (Start does not pause for them).
@@ -34,8 +36,9 @@ import nav_probe  # noqa: E402
 import sandbox  # noqa: E402
 from pine import Pine  # noqa: E402
 
-INSTS = {0: 6, 1: 7, 2: 8, 3: 9}
-PORTS = {s: 41200 + s for s in INSTS}
+_BASE = int(sys.argv[sys.argv.index("--inst-base") + 1]) if "--inst-base" in sys.argv else 6
+INSTS = {s: _BASE + s for s in range(4)}
+PORTS = {s: 41200 + 4 * (_BASE - 6) + s for s in INSTS}
 GROUPS = ["warriors-4p M1", "warriors-4p own view", "warriors-4p hud", "warriors-4p 4p", "warriors-4p test call"]
 # session-relative polls (session starts at guest poll 1): MakePlayer, camera, layout (no join script event: the
 # mission join scripts are written for player 2, m2_black_screen.md)
@@ -92,7 +95,7 @@ def main():
             shutil.rmtree(d)
         sandbox.make(n, "default", pad2=True)
         extra_groups = [g for g in opt("--groups", "", str).split(";") if g]
-        sandbox.install_patch(n, m1_run.PATCH, GROUPS + (["warriors-4p test force split"] if "--force-split" in sys.argv else []) + extra_groups)
+        sandbox.install_patch(n, opt("--patch", m1_run.PATCH, str), GROUPS + (["warriors-4p test force split"] if "--force-split" in sys.argv else []) + extra_groups)
         for item in [a for i, a in enumerate(sys.argv) if i and sys.argv[i - 1] == "--ini"]:  # Section/Key=Value
             sec_key, val = item.split("=", 1)
             sec, key = sec_key.rsplit("/", 1)

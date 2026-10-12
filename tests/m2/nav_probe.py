@@ -31,6 +31,7 @@ PROJ = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, os.path.join(PROJ, "tools"))
 sys.path.insert(0, os.path.join(PROJ, "tests", "m1"))
 sys.path.insert(0, HERE)
+sys.path.insert(1, os.path.join(PROJ, "tests", "m6"))  # probe modules may also live in tests/m6 (D24 chase_probe)
 import m1_run  # noqa: E402
 import sandbox  # noqa: E402
 from pine import Pine  # noqa: E402

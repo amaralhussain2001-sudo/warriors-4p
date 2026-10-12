@@ -1,0 +1,4298 @@
+{
+ "errors": [
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')",
+  "RuntimeError('PINE error code 255')"
+ ],
+ "chase_probe.lua_markers@6200": {
+  "poll": 6206,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 100
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.m18c) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.m8c) and 1 or 0)"
+ },
+ "x6fix_probe.markers_m18@6250": {
+  "poll": 6256,
+  "status": 0,
+  "done": 1,
+  "values": {
+   "W4P_R": 11
+  },
+  "src": "W4P_R = 0 W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.h) and 1 or 0) W4P_R = W4P_R * 10 + ((W4P_O and W4P_O.m18 and W4P_O.mi ~= C5.MoveInFOV and W4P_O.mo ~= C5.MoveOUTFOV) and 1 or 0)"
+ },
+ "x6fix_probe.join34@6300": {
+  "poll": 6312,
+  "before": {
+   "0": 0,
+   "1": -1,
+   "2": -1,
+   "4": 1
+  },
+  "count_before": 2,
+  "calls": [
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x1",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 6314
+   },
+   {
+    "fn": "0x41a460",
+    "args": [
+     "0x1fd8400",
+     "0x2",
+     "0x0",
+     "0x0"
+    ],
+    "done": 1,
+    "v0": 0,
+    "poll": 6315
+   }
+  ],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@6450": {
+  "poll": 6455,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -337.828,
+     -219.699,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -338.57,
+     -219.904,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -335.967,
+     -221.657,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -338.049,
+     -221.52,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@6600": {
+  "poll": 6603,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@6750": {
+  "poll": 6751,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -337.563,
+     -219.771,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -337.182,
+     -220.843,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -335.979,
+     -221.819,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -338.174,
+     -221.27,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@6900": {
+  "poll": 6907,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@7050": {
+  "poll": 7057,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -337.669,
+     -219.786,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -336.634,
+     -220.506,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -336.118,
+     -222.091,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -337.173,
+     -221.376,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@7200": {
+  "poll": 7204,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@7350": {
+  "poll": 7352,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -337.044,
+     -219.411,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -336.563,
+     -220.623,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -336.095,
+     -222.06,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -337.172,
+     -221.379,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@7500": {
+  "poll": 7500,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@7650": {
+  "poll": 7655,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -337.174,
+     -218.765,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -336.534,
+     -220.604,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -336.104,
+     -222.097,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -337.109,
+     -221.365,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@7800": {
+  "poll": 7805,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@7950": {
+  "poll": 7952,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -335.932,
+     -218.501,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -336.89,
+     -219.536,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -336.095,
+     -222.093,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -337.109,
+     -221.369,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@8100": {
+  "poll": 8100,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@8250": {
+  "poll": 8254,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -338.255,
+     -218.367,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -336.487,
+     -218.225,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -336.089,
+     -222.102,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -336.862,
+     -221.285,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@8400": {
+  "poll": 8401,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@8550": {
+  "poll": 8550,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -338.602,
+     -219.254,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -337.757,
+     -218.616,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -336.087,
+     -222.118,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -336.876,
+     -221.292,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@8700": {
+  "poll": 8705,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@8850": {
+  "poll": 8851,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -338.674,
+     -218.818,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -336.897,
+     -220.016,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -335.962,
+     -221.87,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -336.853,
+     -221.287,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@9000": {
+  "poll": 9005,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@9150": {
+  "poll": 9152,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -338.46,
+     -218.817,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -336.659,
+     -220.647,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -335.935,
+     -221.824,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -336.823,
+     -221.36,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@9300": {
+  "poll": 9303,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@9450": {
+  "poll": 9451,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -338.608,
+     -219.189,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -337.556,
+     -220.502,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -335.932,
+     -221.828,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -336.826,
+     -221.366,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@9600": {
+  "poll": 9606,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@9750": {
+  "poll": 9753,
+  "checkpoint": 3,
+  "views": 1,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0x0",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3a7fd9d",
+     "0xc35af839",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806df",
+     "0xc35ae4c2",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0x0",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8d007",
+     "0xc35b4a71",
+     "0x3f94ae84",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0x0",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a8e0d9",
+     "0xc35b6fd5",
+     "0x3f94ae85",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -339.638,
+     -220.412,
+     -0.238
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -338.826,
+     -221.635,
+     -0.238
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -335.93,
+     -221.835,
+     -0.238
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -339.158,
+     -221.021,
+     -0.238
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@9900": {
+  "poll": 9917,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@10050": {
+  "poll": 10051,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee1d0b",
+     "0xc35f2b7b",
+     "0x3f98eeb2",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee1d00",
+     "0xc35f325e",
+     "0x3f98eeb2",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -475.519,
+     -221.959,
+     -0.207
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -476.227,
+     -223.197,
+     -0.205
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -476.317,
+     -225.981,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.613,
+     -224.219,
+     -0.203
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@10200": {
+  "poll": 10200,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@10350": {
+  "poll": 10354,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3a806e1",
+     "0xc35ae4bf",
+     "0x3f926e97",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee1d0b",
+     "0xc35f2b7b",
+     "0x3f98eeb2",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee1d00",
+     "0xc35f325e",
+     "0x3f98eeb2",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -475.83,
+     -222.485,
+     -0.206
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -477.212,
+     -222.697,
+     -0.207
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.983,
+     -225.891,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.292,
+     -224.84,
+     -0.201
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@10500": {
+  "poll": 10510,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@10650": {
+  "poll": 10654,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.34,
+     -222.226,
+     -0.207
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -477.59,
+     -222.624,
+     -0.207
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.902,
+     -225.537,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -474.909,
+     -224.103,
+     -0.203
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@10800": {
+  "poll": 10804,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@10950": {
+  "poll": 10954,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.566,
+     -222.561,
+     -0.207
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -479.152,
+     -222.869,
+     -0.206
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -475.03,
+     -225.285,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.333,
+     -224.355,
+     -0.202
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@11100": {
+  "poll": 11113,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@11250": {
+  "poll": 11250,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.601,
+     -222.354,
+     -0.207
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -480.555,
+     -223.086,
+     -0.205
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.726,
+     -225.47,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.566,
+     -223.592,
+     -0.204
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@11400": {
+  "poll": 11401,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@11550": {
+  "poll": 11556,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.512,
+     -222.875,
+     -0.206
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -482.217,
+     -223.797,
+     -0.204
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -475.354,
+     -225.391,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.928,
+     -223.727,
+     -0.204
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@11700": {
+  "poll": 11716,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@11850": {
+  "poll": 11852,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.784,
+     -222.941,
+     -0.206
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -483.69,
+     -224.063,
+     -0.188
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -475.312,
+     -225.11,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.43,
+     -224.12,
+     -0.203
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@12000": {
+  "poll": 12002,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@12150": {
+  "poll": 12156,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.227,
+     -223.221,
+     -0.205
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -485.093,
+     -224.127,
+     -0.171
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -475.775,
+     -225.519,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.27,
+     -224.234,
+     -0.203
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@12300": {
+  "poll": 12304,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@12450": {
+  "poll": 12452,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -475.856,
+     -222.167,
+     -0.207
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -486.553,
+     -224.475,
+     -0.167
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.932,
+     -226.25,
+     -0.202
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.582,
+     -223.748,
+     -0.204
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@12600": {
+  "poll": 12603,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@12750": {
+  "poll": 12752,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.193,
+     -222.074,
+     -0.207
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -486.752,
+     -224.998,
+     -0.164
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.718,
+     -225.966,
+     -0.202
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.713,
+     -224.439,
+     -0.202
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@12900": {
+  "poll": 12905,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@13050": {
+  "poll": 13055,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.422,
+     -222.2,
+     -0.207
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -486.758,
+     -225.445,
+     -0.162
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.748,
+     -225.702,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.406,
+     -224.716,
+     -0.202
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@13200": {
+  "poll": 13206,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@13350": {
+  "poll": 13350,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.193,
+     -221.804,
+     -0.208
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -486.757,
+     -225.644,
+     -0.161
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.436,
+     -226.112,
+     -0.202
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.155,
+     -223.645,
+     -0.204
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@13500": {
+  "poll": 13500,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@13650": {
+  "poll": 13654,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.74,
+     -222.098,
+     -0.208
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -486.699,
+     -225.847,
+     -0.161
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.438,
+     -225.189,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -475.785,
+     -223.446,
+     -0.204
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@13800": {
+  "poll": 13804,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@13950": {
+  "poll": 13955,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.908,
+     -222.391,
+     -0.207
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -486.758,
+     -226.12,
+     -0.16
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.692,
+     -225.004,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -476.151,
+     -223.701,
+     -0.204
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@14100": {
+  "poll": 14105,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@14250": {
+  "poll": 14257,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -477.485,
+     -222.623,
+     -0.207
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -486.692,
+     -225.859,
+     -0.161
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -475.003,
+     -224.902,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -476.155,
+     -223.913,
+     -0.204
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@14400": {
+  "poll": 14403,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@14550": {
+  "poll": 14551,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -477.173,
+     -223.509,
+     -0.205
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -486.694,
+     -225.871,
+     -0.16
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -475.491,
+     -225.742,
+     -0.201
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -476.31,
+     -223.485,
+     -0.205
+    ]
+   }
+  }
+ },
+ "x6fix_probe.join34@14700": {
+  "poll": 14704,
+  "before": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_before": 4,
+  "calls": [],
+  "cinematic_410": 0,
+  "gm_14c": 0,
+  "join_flag_56e8": 1,
+  "after": {
+   "0": 0,
+   "1": 2,
+   "2": 3,
+   "4": 1
+  },
+  "count_after": 4
+ },
+ "chase_probe.cams@14850": {
+  "poll": 14863,
+  "checkpoint": 3,
+  "views": 4,
+  "join_flag": 1,
+  "count": 4,
+  "cams": {
+   "0": {
+    "render": "0xce6000",
+    "follow": "0xca9c00",
+    "rail": "0xce6000",
+    "follow_240": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edaa4a",
+     "0xc35e9fe7",
+     "0x3f98dae5",
+     "0x3f800000"
+    ]
+   },
+   "1": {
+    "render": "0xce6400",
+    "follow": "0xce2000",
+    "rail": "0xce6400",
+    "follow_240": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee98bd",
+     "0xc35ea601",
+     "0x3f98b87d",
+     "0x3f800000"
+    ]
+   },
+   "2": {
+    "render": "0xcf4800",
+    "follow": "0xcf4000",
+    "rail": "0xcf4800",
+    "follow_240": [
+     "0xc3ee278a",
+     "0xc361eed5",
+     "0x3f996f48",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3ee2895",
+     "0xc361fb07",
+     "0x3f996f48",
+     "0x3f800000"
+    ]
+   },
+   "3": {
+    "render": "0xcf6c00",
+    "follow": "0xcf6400",
+    "rail": "0xcf6c00",
+    "follow_240": [
+     "0xc3eddc21",
+     "0xc3601573",
+     "0x3f9d3e59",
+     "0x3f800000"
+    ],
+    "follow_270": [
+     "0xc3edce82",
+     "0xc3603823",
+     "0x3f993cd3",
+     "0x3f800000"
+    ]
+   }
+  },
+  "players": {
+   "count": 4,
+   "1": {
+    "handle": "0x500b9",
+    "obj": "0x642e90",
+    "hud_slot": 0,
+    "pidx": 0,
+    "pos": [
+     -476.798,
+     -223.357,
+     -0.205
+    ]
+   },
+   "2": {
+    "handle": "0x300af",
+    "obj": "0x6420f0",
+    "hud_slot": 1,
+    "pidx": 1,
+    "pos": [
+     -486.758,
+     -226.042,
+     -0.16
+    ]
+   },
+   "3": {
+    "handle": "0xe0174",
+    "obj": "0x646be0",
+    "hud_slot": 2,
+    "pidx": 2,
+    "pos": [
+     -474.656,
+     -226.046,
+     -0.202
+    ]
+   },
+   "4": {
+    "handle": "0xf017f",
+    "obj": "0x6472b0",
+    "hud_slot": 3,
+    "pidx": 3,
+    "pos": [
+     -476.248,
+     -224.069,
+     -0.204
+    ]
+   }
+  }
+ }
+}
