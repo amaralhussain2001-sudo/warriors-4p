@@ -78,5 +78,6 @@ User message 2026-10-11 (verbatim): "U1 A U2 A U3 A, B A, C A, continue"
 | D19 | U3: skipping a chain of cutscenes | A: a completed vote skips only the current scene (injected Cross); every scene of a chain is voted on separately | user, 2026-10-11 |
 | D20 | B: automatic router port opening (UPnP/PCP) | A: off; connections use ICE + STUN + join/reply codes only (m5_connection_design.md 7) | user, 2026-10-11 |
 | D21 | C: public message service (ntfy.sh) to remove the reply-code step | A: not now; reply codes stay | user, 2026-10-11 |
+| D22 | How players 3-4 appear on the radar (the game has only 1P/2P icons; F-0194 recoloured '2P') | Real '3P' and '4P' icons in the game's style, built at runtime from the game's own graphics, and keep the different colours (player 2 yellow, 3 red, 4 green) | user, 2026-10-12 ("can't we make it P3 P4? even if they different colors") |
 
 Open from the same list: D (dates for the LAN test with the second PC and the internet test with friends) - not answered yet.
