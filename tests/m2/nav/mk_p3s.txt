@@ -1,0 +1,15 @@
+# markers test C (m6_markers_map.md): join like cal_p3, walk left, later Select presses (health ring test)
+7000 START:4
+7300 START:4
+7600 START:4
+7900 START:4
+8200 START:4
+8500 START:4
+8800 START:4
+9000 LLEFT:45
+9150 LUP:30
+10700 SELECT:4
+10780 SELECT:4
+10860 SELECT:4
+10940 SELECT:4
+11020 SELECT:4

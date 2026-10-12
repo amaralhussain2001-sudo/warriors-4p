@@ -228,6 +228,7 @@ def main():
             "description=Experimental: interim HUD guards (no HUD for players 3-4). Use either this or 4p hud B1.", ""] + hud_a
     for name, title, desc in (("hud_b1.txt", "4p hud B1", "players 3-4 PlayerHUD and radar (m2_hud_full.md)"),
                               ("hud_b2.txt", "4p hud B2", "per-view HUD at single-player size (m2_hud_full.md)"),
+                              ("markers34.txt", "4p markers", "radar icons drawn on their own radar disc (B2 copied them into every quarter as floating 1P/2P/W labels), radars 3-4 get the same icons as radar 2, players 3-4 coloured red/green with the original 1P/2P label rule, no stale 2P label on players 3-4 after a merged view, Select health ring of players 3-4 from own per-view sprites; needs hud, 4p, 4p hud B1 and B2 (m6_markers_map.md)"),
                               ("spawn.txt", "4p spawn", "spawn a Warrior when no companion is free for player 3-4 (m2_spawn_companion.md)"),
                               ("spawn_leave.txt", "4p spawn leave", "delete an added Warrior when its player leaves (m2_spawn_companion.md)"),
                               ("inventory.txt", "4p inventory", "items, money and Flash revives for players 3-4; needs 4p and 4p hud B1 (m2_inventory34.md)"),
@@ -236,6 +237,11 @@ def main():
                               ("session.txt", "session", "session policies - movie flag, pause by a downed player 1, no Player 2 drop-out in Quit, LEAVE(index); needs 4p spawn and spawn leave (session_policies.md)"),
                               ("missions.txt", "missions", "M6 mission fixes - X1 delete guard (LEAVE player 3/4 before a script deletes his human), X3 HuChangePlayerGang wrapper, X7 starting items for players 3-4 (owed again after a forced leave), X4 teleport follow, X6 Lua fixes after each script file (LUACH; M13 subway camera guard); needs session, 4p spawn and spawn leave (m6_fixes.md, m6_chooser.md, m6_x4_x6.md)")):
         lines = [l.rstrip() for l in open(os.path.join(HERE, "m2", name), encoding="utf-8") if l.startswith("patch=")]
+        # Guard (F-0192): required game hooks of a fragment; a rewrite once dropped the session hooks silently.
+        required = {"session.txt": ("0042A580", "00158F50", "001DEADC", "001DF658")}.get(name, ())
+        missing = [r for r in required if not any(l.split(",")[2].upper() == r for l in lines)]
+        if missing:
+            sys.exit(f"{name}: required hooks missing: {missing}")
         out += ["", f"[warriors-4p {title}]", "author=warriors-4p", f"description=Experimental: {desc}.", ""] + lines
     # TEST ONLY (M2 engine tests in Mission 1): PickJoinCompanion (FUN_0022A770) skips its gang-wide search in level 99,
     # where player 1's squad holds only players 1 and 2; this lets players 3-4 take over other Warriors there.

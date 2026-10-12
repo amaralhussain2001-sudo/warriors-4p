@@ -1,0 +1,10 @@
+# markers test (m6_markers_map.md): join like cal_p4 (Start every 300 polls up to 8650), then walk right and stand
+7150 START:4
+7450 START:4
+7750 START:4
+8050 START:4
+8350 START:4
+8650 START:4
+8950 START:4
+9050 LRIGHT:45
+9200 LDOWN:30
