@@ -1,4 +1,4 @@
-# Project state (handoff, updated 2026-10-12 ~15:05)
+# Project state (handoff, updated 2026-10-12 ~16:30, written before a chat reset)
 
 **Stage:** 2 (approved 2026-10-10; decisions D1-D21 in `docs/DECISIONS.md`).
 **Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5** (session policies + transport):
@@ -9,6 +9,61 @@ Fork: **w4p-m6-3** = patches 0001-0020 (fork commit b81b4cc; waiting players see
 auto re-join every 60 polls). Protocol version 3.
 Package: `dist/warriors-4p-coop.zip` id **b94e4b5caed8** (w4p-m6-2, pnach 5666 incl. RARC) passed its self-test
 (F-0207) but is NOT yet given to the user: it will be rebuilt with w4p-m6-3.
+
+## READ FIRST: handoff for the next chat (2026-10-12 ~16:30)
+The user cleared the chat. Everything needed to continue is in this file, `docs/FINDINGS.md` (up to F-0210),
+`docs/DECISIONS.md` (up to D24) and the research docs named below. The user said "do not stop until you finish
+everything": keep working without pauses; stop only for things that need the user. Explain in plain English with
+examples; give lettered options with a recommendation.
+
+### Work that was running when the chat was cleared (may have been stopped by the reset - check first)
+- **D24 agent** (background agent of the old chat): players 3-4 play the 2-player chases.
+  - M18 car escape (09110): players 3-4 join at the escape start **as Cochise and Vermin** and tap like players 1-2.
+    User's final choices: **one shared tap button for everybody** (original rule: one random C1.chaser for all,
+    changes when any runner enters VCarChaseTrig[10..12]) and **exactly ONE tap icon on screen, identical on every
+    PC** (no emulator overlay, no HUD 2/3 icons). Same fail rule as 2-player (caught = group fails); restart path
+    must revive/teleport players 3-4 too.
+  - M8 cp3 cart chase (08838): players 3-4 join **as Snow and Ajax** (cart is pumped by players 1-2 only).
+  - Also asked of it: M18 beach-fight (09112 main_25..31) wide rail cameras for players 3-4 with view index 2/3 (user
+    saw "2 good screens and 2 zoomed-in screens"); the **RAILTGT** engine patch (rail target picker FUN_0013B7B8 reads
+    list entries 0-1 only, bound 0x0013B8A8, index check 0x0013B948; design in `docs/research/m6_camera_parity.md`
+    2.4); C1.CAMChange (09110:346-361: a player 3/4 at VCarChaseTrig[5] stops player 2's tapping); the tap turn-off
+    2-player assumption in FUN_00234318 (all_02.c ~60535: `count == 2` -> otherwise command 45 removed for everyone);
+    a growable LUACH table (only 5 free rows).
+  - Its files (uncommitted, in progress at reset): `docs/research/m6_chase4p.md`, `tests/m6/chase4p_run.py`,
+    `tests/m6/chase_probe.py`, changes in `tests/m2/nav_probe.py` and `tests/m2/x6fix_probe.py`, evidence
+    `evidence/M2/d24base_m18.json`, `evidence/M6/d24base_m18.json`, runs `local/m2/d24*`. Possibly also
+    `mod/m2/*.txt` / `mod/make_pnach.py` later. **Next chat: run `git status`, read m6_chase4p.md, check whether
+    pcsx2 processes still run (`tasklist | grep -ci pcsx2`; never kill instances you did not start unless they are
+    clearly orphaned from the old chat), then continue D24 from where the files show it stopped.** Its findings were
+    to be numbered from **F-0211**.
+  - Already known from its baseline run d24base_m18 (4 instances, players 1-2 with scripted tapping, players 3-4
+    waiting): the 2-player escape was WON with 4 PCs connected (checkpoint 2 -> 3 at poll 8972, chase about 23 s),
+    players 3-4 joined in the beach fight round 2 (4 players / 4 views from poll ~13700). Bot tapping that works: all
+    four face buttons every 3 polls (`TRI:2 CIR:2 X:2 SQ:2`) from poll ~4200; tap research summary in the D24 brief
+    (speed from press gap: 2-3 ticks = 100 %, stick not read in tap mode).
+- After D24: **camera parity** for players 3-4 in the other missions (next steps 2).
+
+### Answers already given to the user in the last chat (do not re-ask)
+- All four quarters are the same size and zoom (CropFor in W4P.cpp = exact quarters with the same inset; fov4fix: all
+  four cameras FOV 65 / window 0.637 x 0.478). Only the monitor size and the chosen picture quality differ per PC.
+- Mission walkthroughs for M16 (shared chase shots, rail cameras for players 1-2 only, Ajax park switch) and M18
+  (intro, 2-player car escape, beach rounds, credits as Riffs).
+- Why runtime patches instead of an edited disc (plan section 14: legal, sync check, original stays clean, technical
+  cost, same behaviour); other games (network/lockstep generic, ~35 Warriors addresses in W4P + the whole pnach are
+  game-specific); how professional mods split inside/outside; scope = 18 main-story missions + hideout interludes,
+  optional content only at original player count (BRIEF 4.1).
+- 2-player-only stretches (players 3-4 wait): every mission start until the first quiet moment, hideout (host only),
+  M2 intro/tutorial, M8 cp3 chase, M18 cp1-2 + beach round 1; after a restart also M2 Fox scene, M11 Birdie fight,
+  M14 cp6-7 chases. D24 turns the two chases into 4-player parts.
+- Join timing before/after the 2-second auto-join (F-0209).
+
+### Still open with the user
+- Q1 (E6 2-player package: recommended skip), D (dates for the LAN test and the internet test with friends), the
+  cut-off message "and the person got..." (offered: smaller character from FOVFIX / disappears / other), exact
+  single-player zoom 54 deg instead of 65 (optional).
+- The friend package must be rebuilt after D24 (+ camera fixes if they are quick); `dist/warriors-4p-coop.zip`
+  b94e4b5caed8 (F-0207) is superseded - tell the user not to send it.
 
 ## Waiting on the user
 - **E6 2-PC test** with `dist/warriors-4p-test.zip` (2-player package, old build w4p-m3-7). Do NOT rebuild that zip
