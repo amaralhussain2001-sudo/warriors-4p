@@ -3,7 +3,7 @@
 **Stage:** 2 (approved 2026-10-10; decisions D1-D21 in `docs/DECISIONS.md`).
 **Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5** (session policies + transport):
 every SINGLE-PC criterion met, 4-player package built; LAN/INTERNET parts need the user. **M6** (missions) in progress:
-exit criteria `docs/plan/M6.md`. **M7** criteria written (`docs/plan/M7.md`); regression done (F-0193). Findings up to **F-0197**. The user said "do not stop until you finish everything"
+exit criteria `docs/plan/M6.md`. **M7** criteria written (`docs/plan/M7.md`); regression done (F-0193). Findings up to **F-0200**. The user said "do not stop until you finish everything"
 (2026-10-12): keep going without pauses; stop only for things that need the user.
 Fork: binary **w4p-m6-1** (+ Esc/sit-out changes, built 06:59); source **w4p-m6-2** = patches 0001-0019 (only the
 OSD text and build tag differ from the binary; rebuild after smoke3). Protocol version 3.
@@ -64,7 +64,7 @@ OSD text and build tag differ from the binary; rebuild after smoke3). Protocol v
   `git format-patch -1 HEAD --start-number N -o ../patches`. Do not build while any instance runs (the exe is locked);
   ask agents to pause runs first.
 - Patch file: edit `mod/m2/*.txt` or `mod/make_pnach.py`, then `python -I mod/make_pnach.py > mod/w4p_m1.pnach` and
-  `python -I tools/note_patches.py check mod/w4p_m1.pnach` (expected: **4257 addresses, 6 problems** = the known
+  `python -I tools/note_patches.py check mod/w4p_m1.pnach` (expected: **5651 addresses, 6 problems** = the known
   `[4p hud A]` vs `[4p hud B1]` alternatives). Never regenerate it while a batch that uses it is starting runs.
 - Full 4-player group list: `warriors-4p M1; own view; hud; 4p; 4p hud B1; 4p hud B2; 4p spawn; 4p spawn leave;
   4p inventory; 4p fx; 4p markers; session; missions; session call` (prefix every name with `warriors-4p `; tests add
@@ -111,8 +111,10 @@ OSD text and build tag differ from the binary; rebuild after smoke3). Protocol v
   0x000E4000-0x000E502B (inventory incl. X8); 0x000E5800-0x000E5C3F (fx); 0x000E7000-0x000E72F7 (session S1-S5,
   LEAVE 0x000E7100); 0x000E7400-0x000E7BFF + 0x000E7E00-0x000E7F7F (missions X1/X3/X7/X4/X6, LUACH table
   0x000E7F00; 0x000E7C00-0x000E7DFF test buffer); 0x000E8000-0x000E80B3 (RHALF radar); 0x000E8100-0x000E8A07
-  (4p markers); 0x000F0000-0x000F0FFF (M1/hud/4p/test call, mailbox 0x000F0300). Free (check first):
-  0x00096000-0x0009FFFF, 0x000E2580-0x000E2FFF, 0x000E5D10-0x000E6FFF, 0x000E8A10-0x000EFFFF.
+  (4p markers; 0x000E8180-0x000E82BF free again) + 0x000E8A10-0x000E9793 (3P/4P labels, PICON 0x000E8DE0);
+  0x000EC000-0x000ECA53 (X6 LUACH names and Lua sources; LUACH rows 0x000E7F08-0x000E7F50, 5 free rows to 0x000E7F7F);
+  0x000F0000-0x000F0FFF (M1/hud/4p/test call, mailbox 0x000F0300). Free (check first): 0x00096000-0x0009FFFF,
+  0x000E2580-0x000E2FFF, 0x000E5D10-0x000E6FFF, 0x000E9800-0x000EBFFF, 0x000ECA60-0x000EFFFF.
 
 ## Result line for the last runs of this session
 - esc2 (M13, 4 instances): Esc -> 3 pause/resume cycles on all PCs, 443 hash points, 0 mismatches (F-0196). smoke2
