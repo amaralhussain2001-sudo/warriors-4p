@@ -40,6 +40,7 @@ in PCSX2's bundled `resources/RedumpDatabase.yaml` (line 67412). Finding F-0001.
 |---|---|---|---|
 | 2026-10-10 | baseline | baseline | initial hashing |
 | 2026-10-10 (end of M1) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-10_m1.json`; 20 files compared, 0 changed |
+| 2026-10-12 (~04:10, M5/M6 interim) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-12_m6.json`; 20 files compared with inputs_2026-10-11_m2b.json, 0 changed |
 | 2026-10-11 (M2 progress) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-11_m2.json`; 20 files compared, 0 changed |
 | 2026-10-11 evening (M2, ~19:20) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-11_m2b.json`; 20 files compared, 0 changed |
 | 2026-10-11 (M3 interim) | yes | yes (all 4 BIOS sets) | `evidence/hashes/inputs_2026-10-11_m3.json`; 20 files compared, 0 changed |

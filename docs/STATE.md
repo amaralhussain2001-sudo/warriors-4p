@@ -1,116 +1,116 @@
-# Project state (handoff, updated 2026-10-11 late night)
+# Project state (handoff, updated 2026-10-12 ~04:15)
 
-**Stage:** 2 (approved 2026-10-10; decisions D1-D16 in `docs/DECISIONS.md`).
-**Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5 (session policies + transport) in
-progress**: exit criteria `docs/plan/M5.md`. Findings up to **F-0175**. The user continues without stopping between
-milestones (D12). Fork build **w4p-m5-1** (fork commit 76f7c1d, patch `emulator/patches/0014`; protocol version 3).
+**Stage:** 2 (approved 2026-10-10; decisions D1-D21 in `docs/DECISIONS.md`).
+**Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5** (session policies + transport):
+every SINGLE-PC criterion met, 4-player package built; LAN/INTERNET parts need the user. **M6** (missions) in progress:
+exit criteria `docs/plan/M6.md`. Findings up to **F-0185**. The user said "do not stop until you finish everything"
+(2026-10-12): keep going without pauses; stop only for things that need the user.
+Fork build **w4p-m6-1** (patches `emulator/patches/0001-0018`; protocol version 3).
 
 ## Waiting on the user
-- **E6 2-PC test** with `dist/warriors-4p-test.zip` (2-player package, old build w4p-m3-7). Ask for the `logs` folder
-  from both PCs, each PC's CPU/GPU, how controls and 60 fps felt. Do NOT rebuild that zip unless asked.
-- **Session-policy details (implemented with the recommended option A, to confirm):** U1 a non-host who paused may only
-  resume (Start); U2 Esc in a session = pause request instead of an emulator pause; U3 a completed skip vote skips only
-  the current scene (each scene of a chain votes again).
-- **Network questions (m5_connection_design.md section 7):** B automatic router port opening (UPnP) - recommended off;
-  C public message service ntfy.sh to remove the reply code - recommended no; D when the LAN test (second PC) and the
-  internet test with friends can happen (T2-T4). (A: helper process - taken as recommended, within the approved plan.)
+- **E6 2-PC test** with `dist/warriors-4p-test.zip` (2-player package, old build w4p-m3-7). Do NOT rebuild that zip.
+  WARNING (FAILED TEST in the 4-player package, `docs/research/m5_package4.md` section 4): at 60 fps the title screen
+  ignored Start in every W4P run; E6 also defaults to 60 fps -> probably affected (HYPOTHESIS). A 60 fps agent is
+  investigating (cause found statically: front-end fixed-step clock gives two logic ticks per frame and the second pad
+  read loses the Start edge; fix being tested -> `docs/research/m6_sixty_title.md`). Tell the user to answer "no" to
+  60 fps until fixed.
+- **D (open):** dates for the LAN test (second PC) and the internet test with friends (T2-T4, M6 criterion 4).
+- Answered with the recommended default until the user says otherwise: X9 A (no Cleon after his story death),
+  X10 A (player 3 also gets his own model), X13 A (players 3-4 wait in 2-player-only stretches), X7 b (starting items
+  given again after a script-forced leave).
+- Open small decisions (chooser, `docs/research/m6_chooser.md`): Fox-from-M16 and post-game hub rows (HYPOTHESIS),
+  Ajax rows after his arrest (agent checking scripts), M12 first-pin stall (agent implementing re-pin after 8 s).
 
 ## M5 status (all SINGLE-PC, 4 instances on loopback unless noted)
 | # | Criterion | Status | Evidence |
 |---|---|---|---|
-| 1 | Pause | **met**: any player's Start -> pause on all at the same poll, "Paused by Player N", only pauser/host resumes; Esc request not tested | F-0171 |
-| 2 | Cutscene skip | **partly**: "k/N want to skip", skip only after the last vote (F-0171); **defect**: votes are not reset per cutscene (a vote from an earlier scene still counts), W4P apparently does not see the S1 movie flag (F-0175) | F-0171, F-0175 |
-| 3 | Disconnect, back in time | **met** (20 s outage, 0 mismatches); countdown visible on screen | F-0164, F-0167 |
-| 4 | Timeout choice | **met** for a dropped player 3/4 (continue without, restart); **defect for a dropped player 2**: after LEAVE(1) Fox is bound to the dropped pad 4 and his own pad 2 becomes free, so his next Start re-joins him as a new character (F-0174) | F-0165, F-0169, F-0170, F-0174 |
-| 5 | Host leaving | **met** ("host left, session over", no hang) | F-0167 |
-| 6 | Join only in the lobby | open (launcher/lobby not built) | - |
-| 7 | Saving (co-op save separate, identical at start) | open | - |
-| 8 | Connection | w4p-net helper built; loopback tests T1a-T1e pass; 4 emulators through the helpers in sync (T1f); LAN/internet need the user | F-0172, F-0173 |
-| 9 | Originals unchanged | checked at M2 end (20 files); re-check at M5 end | HASHES.md |
+| 1 | Pause | **met** (Start); Esc -> pause request (D18) implemented, not tested with a real key | F-0171 |
+| 2 | Cutscene skip | **met** | F-0171, F-0177 |
+| 3 | Disconnect, back in time | **met** | F-0164, F-0167 |
+| 4 | Timeout choice | **met** for players 2, 3, 4 | F-0169, F-0170, F-0176, F-0178 |
+| 5 | Host leaving | **met** | F-0167 |
+| 6 | Join only in the lobby | **met** in the 4-player package (late joiner refused, running game unaffected) | m5_package4.md |
+| 7 | Saving | copy / hash / compare of co-op saves tested; the game never wrote a save in the runs -> partly | m5_package4.md |
+| 8 | Connection | loopback + package (codes and Join by IP) pass; LAN/internet need the user | F-0172, F-0173, m5_package4.md |
+| 9 | Originals unchanged | **met** 2026-10-12 (20 files, 0 changed) | HASHES.md |
+
+## M6 status (`docs/plan/M6.md`)
+| # | Criterion | Status |
+|---|---|---|
+| 1 | Smoke per mission | first batch (F-0181): 16/17 in sync, M17 crash -> fixed (F-0184); players 3-4 blocked in M2/M5/M16/M18 -> X11 (F-0183) fixes M5/M16; M2/M18 by script design. **Re-test batch smoke2 running** (all 18 missions, policies on, X11, missions group, FXCAM, chooser v2) |
+| 2 | Per-mission fixes | X1, X2, X3, X5, X7(b), X8 (F-0180), chooser v2 (F-0182), X11 (F-0183), FXCAM (F-0184), X12 (F-0185). Open: X4 teleport follow, X6 Lua patches, M12 pin |
+| 3 | Restart/checkpoint per mission | not yet per mission (M2 tests R8 in M13 only) |
+| 4 | Completion with humans | needs the user (D) |
+| 5 | Hub interludes | X12 verified with a level jump (F-0185); a real hub after a finished mission untested |
+| 6 | Mission status table | not yet written in MISSIONS.md |
 
 ## Next steps (in this order)
-1. **F-0174 (dropped player 2):** find who re-binds pad 4 to index 1 after LEAVE(1) (2-entry HUD menu-controller records,
-   FUN_001AE8D8; compare single-instance C3 without the unplugged pad); fix in the LEAVE cave (`mod/m2/session.txt`,
-   0x000E7100) or in W4P; re-test d5b (`m2_run4 ... --w4p-slot1 TestDrop=9300:0 --sample-every 10 --leaver 1`).
-2. **F-0175 (skip votes):** probe at W4P's hook during L9_IN: 0x000E70F0 and the scene slot table 0x006EBA18; then make
-   the cutscene identity reliable (e.g. ignore scene slots whose data belongs to the previous level, read the S1 flag
-   where W4P can see it); re-test p4 (`--script1..4 tests/m2/nav/pol_p1..4.txt --w4p SessionPolicies=true`).
-3. Not yet tested: Esc as pause request; restart with a dropped player 2 (`RestartCalls = 0:00419AC0:GM:0,2:00160D78:GM+0x124`).
-4. Launcher + lobby (Start-Coop for 2-4 players): host/join with w4p-net codes, slot list, version check, input delay,
-   session INI (`SessionPolicies = true`, `LeaveCalls = 0:000E7100:P`, `RestartCalls = 0:00160D78:GM+0x124`, groups incl.
-   `[warriors-4p session]` and the call mailbox), join only in the lobby (criterion 6).
-5. Saving policy (criterion 7); T1g and impairment through the helpers; then the 4-player test package (LAN first, T2),
-   then internet with friends (T3/T4) - needs the user.
-6. M6: all story missions (companions, starting items for players 3-4, extra-model memory R-28, pocket clearing R-29,
-   money bank F-0158, GAME OVER menu input F-0155). Optional: R-31 / R-22.
+1. Running: smoke2 batch (`local/m6_smoke2_console.txt`, ~04:03-07:30, instances 6-9); chooser agent (M12 re-pin,
+   Ajax rows, instances 10-11); 60 fps agent (title-screen Start, instances 15-19). Integrate their results: regenerate
+   `mod/w4p_m1.pnach` only when no 4-instance batch is using it.
+2. Record smoke2 (finding + `evidence/M6/smoke2_*`); fix what it finds; write the per-mission status table in
+   `docs/MISSIONS.md` (labels NOT YET TESTED / IN PROGRESS until humans finish them).
+3. Rebuild the 4-player package after the 60 fps fix: `python -I mod/make_pnach.py > local/m5/pkg4/w4p_pkg.pnach`,
+   `python -I tools/make_package4.py --pnach local/m5/pkg4/w4p_pkg.pnach` (no `--reuse-emulator`), run
+   `tests/m5/package4_selftest.py` (4 players and a 60 fps title run).
+4. Test Esc as pause request (D18) with a real key press (`tools/winkeys.ps1`); T1g (outage through w4p-net);
+   restart/checkpoint per mission (M6 criterion 3).
+5. Give the user the package + LAN steps (m5_package4.md section "Steps for the user's 2-PC LAN test").
+6. M7 robustness (long sessions, regressions 1P / original 2P), M8 packaging, legal review, final report.
 
 ## How to run things (quick reference)
-- Build the fork: `powershell -File emulator\build.ps1` (log `local/logs/build_Release.log`). Build tag now
-  **w4p-m5-1**; fork commits are exported to `emulator/patches/0001..0014` (author `warriors-4p <w4p@localhost>`).
-  Do not build while a test instance runs (the exe is locked).
+- Build the fork: `powershell -File emulator\build.ps1` (log `local/logs/build_Release.log`). Build tag **w4p-m6-1**;
+  commit in `emulator/pcsx2` with author/committer `warriors-4p <w4p@localhost>`, export with
+  `git format-patch -1 HEAD --start-number N -o ../patches`. Do not build while any instance runs (the exe is locked);
+  ask agents to pause runs first.
 - Patch file: edit `mod/m2/*.txt` or `mod/make_pnach.py`, then `python -I mod/make_pnach.py > mod/w4p_m1.pnach` and
-  `python -I tools/note_patches.py check mod/w4p_m1.pnach` (expected: **2810 addresses, 6 problems** = the known `[4p hud A]` vs
-  `[4p hud B1]` alternatives; anything more is new).
-- Groups for a full 4-player test: `warriors-4p own view;warriors-4p hud;warriors-4p 4p;warriors-4p 4p hud B1;
-  warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;
-  warriors-4p test call` (+ optional `warriors-4p 4p fx fog`, untested). Never combine `4p hud A` with `4p hud B1`.
-- One instance, Mission 13, players 3-4 joining (deterministic):
-  `python -I tests/m2/nav_probe.py <tag> tests/m2/nav/boot_to_m1_2p.txt --inst 10 --players 4 --script2
-  tests/m2/nav/p2_join.txt --script3 tests/m2/nav/cal_p3.txt --script4 tests/m2/nav/cal_p4.txt --groups "<groups>"
-  --ini EmuCore/Speedhacks/vuThread=false --callat "4000:0041ABC0:1,4010:00160D78:0x01FD9F9C" --seconds 420`
-  - Use `--callat` (exact polls) for the level jump, not `--call` (PINE timing shifts the join windows).
-  - Joins: player 3 at about poll 8356 (Start at 8200), player 4 at about 8508 (Start at 8350); repeated Start
-    presses every 300 polls are harmless after joining (no pause menu).
-  - `--fight 8900` (tests/m2/fightlib.py, report: `python -I tests/m2/fight_report.py <tag>`),
-    `--probe module:function:poll` (read-only or test-write helpers in tests/m2: inv_probe, spawn_survey,
-    gameover_probe, cam_probe, join_probe, results in `local/m2/<tag>/probes.json`), `--hud-diag <poll>`,
-    `--peek addr:words`, `--poke poll:addr:value`.
-  - Only one PINE client per instance: add reads as `--probe` functions, not as a second script.
-- Four instances in lockstep: `python -I tests/m2/m2_run4.py <tag> --seconds 900 --bots-from 9000 --crop --calls
-  "3999:0041ABC0:1,4009:00160D78:0x01FD9F9C" --groups "warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p
-  spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx" --script3 tests/m2/nav/m13_p3.txt
-  --script4 tests/m2/nav/m13_p4.txt --ini EmuCore/Speedhacks/vuThread=false` -> `evidence/M2/<tag>.json`.
-  For 30-min runs add `--polls 70000 --script-bots-from 14000 --shot-slots 0,1,2,3` (input files wrap after
-  --polls; players 3-4 random + Start every 300 polls after their script; screenshots of all four windows).
-  Copy `local/pcsx2/inst6..9/PCSX2/logs/emulog.txt` after the run (crashes show as `TLB Miss` there, not in w4p logs).
-- Frame rate from a log: `python -I tests/m2/fps_windows.py local/m2/<tag>/w4p.log <from_poll>`.
-- Game buttons (from the game's own texts): grab = Circle, attack = Square/Triangle, **Flash = D-pad Right**, **revive a downed partner = D-pad Left** (within 3 units, clear line, F-0157).
-- Useful addresses: GameMgr `*(0x0051489C)` (= 0x01FD8400 in all M2 runs), player handles GameMgr+0x228,
-  objects `0x006EBD38 + 8*(h>>16)` (serial check at +4), human stats `*(human+0xD4)` health +0x144 / max +0x146,
-  HUD slot human+0x380, inventory GameMgr+0x480 (count of item k, slot s: +0x24+s*0x3F4+k*0x2C; item 1 = Flash),
-  views 0x0050B198, merge flags 0x0050B1E8/EC, ScreenEffects mirror 0x000F0890, poll counter 0x000F0500.
-
-- New nav_probe options: `--patch file.pnach` (A/B with an older patch, e.g. `local/m2/pnach_prefrag.pnach` = commit
-  64a235c minus the extra-model fragment, i.e. bdb2c52 + view fix, no R8), `--state file.p2s` (start from a savestate),
-  `--random-bots` (seeded random input on all slots). Probe modules in tests/m2: `down_probe` (down one player, view
-  state), `gameover_probe`, `p4_identity` (char ids, extra-model words, `force_panels` test aid), `extra_survey`
-  (model pool), `inv_tests` (+ `inv_t2b`, `inv_t2c`, `revive_probe`), `statesave` (save state to local/m2/states/),
-  `sixty_probe`. Only one nav_probe per --inst; the next run deletes that sandbox (copy emulog.txt first).
-- M5 tests (4 instances): `m2_run4.py ... --w4p DisconnectTimeoutS=15 --w4p-slot3 TestDrop=9300:0 --w4p-slot0
-  TestHostChoice=continue --w4p "LeaveCalls=0:000E7100:P" --leaver 3` (groups + `warriors-4p session`); pause/skip:
-  `--script1..4 tests/m2/nav/pol_p1..4.txt --w4p SessionPolicies=true`; through w4p-net: start
-  `python -I net/w4p-net/tests/local4.py --emu-ports 41200,41201,41202,41203 --stop-file local/m5/stop_helpers`, wait
-  for HELPERS READY, then `m2_run4.py ... --peer-base 46100`, then create the stop file. w4p-net build:
-  `powershell -File net\w4p-net\build.ps1` (README in net/w4p-net). `--shot-every 5` for OSD screenshots.
-- Rebuilding the fork while other agents run emulators: ask them to pause runs first (the exe is locked).
-- 4-player Mission 13 savestate (made with pnach_prefrag + the 10 groups, EE 100 %): `local/m2/states/m13_4p_state.p2s`.
-  60 fps measurement: `nav_probe.py sx2_60 tests/m2/nav/empty.txt --inst 10 --players 4 --random-bots --state <state>
-  --groups "<10 groups>;warriors-4p 60fps" --patch local/m2/pnach_prefrag.pnach --ee 2 --seconds 200`.
-- Scratch disassembler (not in the repo): write one when needed; the ELF is `local/disc/SLUS_212.15`.
+  `python -I tools/note_patches.py check mod/w4p_m1.pnach` (expected: **3347 addresses, 6 problems** = the known
+  `[4p hud A]` vs `[4p hud B1]` alternatives). Never regenerate it while a batch that uses it is starting runs.
+- Full 4-player group list: `warriors-4p M1; own view; hud; 4p; 4p hud B1; 4p hud B2; 4p spawn; 4p spawn leave;
+  4p inventory; 4p fx; session; missions; session call` (prefix every name with `warriors-4p `; tests add `test call`).
+  Never combine `4p hud A` with `4p hud B1`.
+- Mission smoke: `python -I tests/m6/mission_smoke.py --missions 1,2,... --seconds 600 --tag <tag> [--policies]
+  [--force-join 5500,7000] [--calls-extra ...] [--groups-extra ...]` -> `evidence/M6/<tag>_mNN.json` + summary. With
+  `--policies` players 3-4 never press Start (they join only through X11). Level jump: CallAt
+  `3999:0041ABC0:1,4009:00160D78:<entry>`, entry = 0x01FD996C + (mission-1)*0x84; hub = 0x01FDA7DC.
+- Hub test: `sh tests/m6/hub_test.sh <tag> 600`.
+- One instance with probes: `python -I tests/m2/nav_probe.py <tag> tests/m2/nav/boot_to_m1_2p.txt --inst 13
+  --players 4 --script2 tests/m2/nav/p2_join.txt --script3 tests/m2/nav/m13_p3.txt --script4 tests/m2/nav/m13_p4.txt
+  --groups "<groups without M1>" --ini EmuCore/Speedhacks/vuThread=false --callat "<calls>" --probe module:func:poll
+  --seconds 480` (probe modules live in tests/m2; only one PINE client per instance; a probe may block, e.g.
+  `fx_crash_probe:after_stall`).
+- Four instances: `tests/m2/m2_run4.py` (see its docstring; `--w4p KEY=VALUE`, `--w4p-slotN`, `--leaver`, `--peer-base`,
+  `--sample-every`). Copy `local/pcsx2/inst6..9/PCSX2/logs/emulog.txt` after a run (crashes = `TLB Miss` there).
+- M5 tests: disconnect `--w4p DisconnectTimeoutS=15 --w4p-slot3 TestDrop=9300:0 --w4p-slot0 TestHostChoice=continue
+  --w4p "LeaveCalls=0:000E7100:P" --leaver 3`; policies `--w4p SessionPolicies=true`; through w4p-net:
+  `python -I net/w4p-net/tests/local4.py --emu-ports 41200,41201,41202,41203 --stop-file local/m5/stop_helpers`, then
+  `m2_run4.py ... --peer-base 46100`. w4p-net build: `powershell -File net\w4p-net\build.ps1`.
+- 4-player package: `tools/make_package4.py`, self-test `tests/m5/package4_selftest.py <tag> --preset ... --players N`.
+- Frame rate: `python -I tests/m2/fps_windows.py local/m2/<tag>/w4p.log <from_poll>`.
+- Scratch disassembler (not in the repo): scratchpad `mydis.py <elf> <start hex> <count> [pnach]`; ELF
+  `local/disc/SLUS_212.15`; decompile `local/analysis/all/all_0N.c`.
+- Game buttons: grab Circle, attack Square/Triangle, Flash D-pad Right, revive D-pad Left.
+- Useful addresses: GameMgr `*(0x0051489C)` (= 0x01FD8400), handles +0x228, count +0x224, join flag +0x56E8,
+  cinematic +0x410, level end +0x14C, mode +0x158, checkpoint u16 +0x33A, level index u16 +0x56DC (level number =
+  `*(GM+0x14D4+idx*0x84+4)`); pad owner s16 0x005DD810+pad*0x50+0x42; views 0x0050B198; render cameras (relocated)
+  0x000F0810+4*i; ScreenEffects mirror 0x000F0890[4]; mode stack top 0x0050C784 / 0x005E66A0; poll counter 0x000F0500.
 
 ## Important settings and rules
 - MTVU (`vuThread`) is OFF in the package and in every session (F-0120, F-0150). Never switch it on.
-- Never launch the original PCSX2; the user's own PCSX2 may be running. Sandboxes live in `local/pcsx2/instN`.
-- Files are CRLF: edit with Python (normalise, edit, write back CRLF). `mod/w4p_m1.pnach` is generated with
-  `python -I mod/make_pnach.py > mod/w4p_m1.pnach` from Git Bash, which gives CR CR LF lines - that is how it is stored
-  in git, keep it that way (a "fixed" CRLF file shows as a whole-file diff).
-- Killing emulator processes from the shell was refused by the permission system this session; let runs end on their own.
-- Low RAM map: HUD objects 0x000A0000+; caves/tables 0x000E0000-0x000E0CC7 (B1/B2), 0x000E1000-0x000E15F3 (spawn +
-  chooser), 0x000E1600-0x000E1C4B (extra model), 0x000E3000-0x000E3123 (combat C3), 0x000E4000-0x000E501B (inventory),
-  0x000E5800-0x000E5C3F (fx), 0x000F0000-0x000F0FFF (M1/hud/4p/test call). Test scratch: 0x000E5D00 (inv_t2b/t2c).
-  Free: 0x00096000-0x0009FFFF, 0x000E1C50-0x000E2FFF, 0x000E5020-0x000E57FF, 0x000E5D10-0x000EFFFF (grep the pnach first).
-- Sandbox windows may start with the Arabic keyboard layout; `tools/winkeys.ps1` switches the window to en-US.
+- Never launch the original PCSX2. Sandboxes live in `local/pcsx2/instN` (6-9 four-instance runs, 10-14 agents,
+  15-19 the 60 fps agent).
+- Files are CRLF: edit with Python. `mod/w4p_m1.pnach` is generated from Git Bash with CR CR LF lines - keep it so.
+- Killing emulator processes from the shell is refused by the permission system; let runs end on their own.
+- The fork's `emulator/pcsx2/AGENTS.md` forbids AI-written contributions to the PCSX2 project: our patches stay in this
+  project and are never submitted upstream.
+- Low RAM map (grep the pnach before using new space): HUD objects 0x000A0000+; 0x000E0000-0x000E0CC7 (B1/B2);
+  0x000E1000-0x000E2173 (spawn + chooser v2 incl. pins 0x000E1C00/0x000E1C50, XC table 0x000E1E10, XCHK 0x000E1FA8);
+  0x000E1600-0x000E1C4B (extra model, inside the spawn range); 0x000E3000-0x000E3123 (combat C3);
+  0x000E4000-0x000E502B (inventory incl. X8); 0x000E5800-0x000E5C3F (fx); 0x000E7000-0x000E72F7 (session S1-S5,
+  LEAVE 0x000E7100); 0x000E7400-0x000E7813 (missions X1/X3/X7, LVOWE 0x000E7790); 0x000F0000-0x000F0FFF
+  (M1/hud/4p/test call, mailbox 0x000F0300). Free (check first): 0x00096000-0x0009FFFF, 0x000E2180-0x000E2FFF,
+  0x000E5D10-0x000E6FFF, 0x000E7820-0x000EFFFF.
 
-## Result line for the last run of this session
-- last runs: p4_policies (vote reset still wrong, F-0175), d5b_p2leave (F-0174). Before that, t1f_helpers (4 instances through 4 w4p-net helpers on loopback, Mission 13, M2 groups, MTVU off, build w4p-m5-1, 605 s):
-  **549 common hash points, 0 mismatches, 4 players / 4 views** (F-0173).
+## Result line for the last runs of this session
+- hub_cp2 (X12, 4 instances, 607 s): 530 hash points, 0 mismatches, 0 TLB (F-0185). fxfix_m17 (1 instance): M17 with
+  4 players to poll 12843, 0 TLB (F-0184). x11_m05 / x11_m16 / x11f_m02: 0 mismatches, 4 players (F-0183).
