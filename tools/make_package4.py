@@ -83,6 +83,14 @@ def processes_in_package():
     return [line for line in out.splitlines() if line.strip()]
 
 
+def build_tag():
+    """The W4P build tag compiled into the emulator (kBuildTag in the fork source)."""
+    import re
+    src = open(os.path.join(PROJ, "emulator", "pcsx2", "pcsx2", "W4P", "W4P.cpp"), encoding="utf-8", errors="replace").read()
+    m = re.search(r'kBuildTag\[\] = "([^"]+)"', src)
+    return m.group(1) if m else "unknown"
+
+
 def main():
     assert os.path.commonpath([DEST, PROJ]) == PROJ and os.path.basename(DEST) == NAME
     busy = processes_in_package()
@@ -204,7 +212,7 @@ def main():
     write_text(os.path.join(DEST, "VERSION.txt"), "\n".join([
         f"id={pid}",
         f"warriors-4p co-op test package (2-4 players), built {stamp}",
-        f"emulator build tag w4p-m5-1, pcsx2-qtx64.exe SHA-256 {exe_hash}, fork commit {commit}"
+        f"emulator build tag {build_tag()}, pcsx2-qtx64.exe SHA-256 {exe_hash}, fork commit {commit}"
         + (" + uncommitted changes" if diff.strip() else ""),
         f"w4p-net.exe SHA-256 {sha256(net_exe)}",
         f"game patch w4p.pnach SHA-256 {sha256(os.path.join(DEST, 'game', 'w4p.pnach'))}",

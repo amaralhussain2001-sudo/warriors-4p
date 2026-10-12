@@ -50,9 +50,8 @@ The host chooses 1 (Host a game) and answers:
 - Which co-op save: a name for your group of friends, for example "main". A new name starts the story from the
   beginning. (Step 9 explains co-op saves.)
 - 60 fps and widescreen: the host decides for everybody (both "yes" is the default).
-  IMPORTANT for this test version: in our own tests the title screen ("PRESS THE START BUTTON") did not react to
-  Start in 60 fps mode. Please answer "no" to 60 fps first. If you want to try 60 fps and the title screen ignores
-  Start, close the games and host again with 60 fps "no" - and tell us.
+  60 fps needs a stronger PC on every player's side. If the game runs slowly or stutters for anyone, close the games
+  and host again with 60 fps "no" (30 fps, like the original game). Please tell us how 60 fps felt.
 With a join code: the window shows a JOIN CODE that starts with W4P1- (for example W4P1-24B78-SJYMR-...) and it is
 already copied. Paste it into your group chat (WhatsApp, Discord, e-mail, ...).
 
