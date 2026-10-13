@@ -65,6 +65,10 @@ The user puts the second PC (nothing installed) on a mobile network to test INTE
   settings, logs, data of the Desktop kit deleted (user: test data only; the 5 host logs of 2026-10-13 are gone).
   Desktop kit, HOME-PC and Desktop/WARRIORS-UPDATE are on 374e315aedb0.
 
+### Features for later
+`docs/plan/LATER.md`: positional voice chat through Mumble Link (agreed for later, ~1 day, server
+question open), plus smaller ideas waiting for a decision.
+
 ### If the user sends logs or reports
 Logs land in `logs\<date>_<time>_<role>\` of each PC's package folder: w4p.log (hashes, DESYNC lines, waits),
 connection-log.txt / connection-stats.json (helper), lobby log. Compare with PROTOCOL.md sections 5-6.
