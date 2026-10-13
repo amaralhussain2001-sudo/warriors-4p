@@ -62,7 +62,7 @@ The user puts the second PC (nothing installed) on a mobile network to test INTE
   files + kit scripts for updating the other PC (copy contents over its folder, Replace).
 - Both save features DONE in package **374e315aedb0** (F-0236/F-0237, current): save list (N/D, _deleted), host sends its
   save in the lobby (SAVEOFFER/SAVEDATA/SAVEACK, launcher only). Desktop kit cleaned on the user's request: saves,
-  settings, logs, data of the Desktop kit moved to `local/desktop-kit-backup-20261013/` (save 'book', 5 host logs).
+  settings, logs, data of the Desktop kit deleted (user: test data only; the 5 host logs of 2026-10-13 are gone).
   Desktop kit, HOME-PC and Desktop/WARRIORS-UPDATE are on 374e315aedb0.
 
 ### If the user sends logs or reports
