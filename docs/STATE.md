@@ -1,4 +1,4 @@
-# Project state (handoff, updated 2026-10-13 ~00:35)
+# Project state (handoff, updated 2026-10-13, second-PC kit)
 
 **Stage:** 2 (approved 2026-10-10; decisions D1-D21 in `docs/DECISIONS.md`).
 **Milestones:** M2 complete (report `docs/reports/M2_report.md`, tag `m2`). **M5** (session policies + transport):
@@ -33,6 +33,21 @@ or his decisions. Read `docs/reports/FINAL_status.md` first, then `docs/reports/
 2. Dates for the LAN test and the internet sessions; then the play-throughs (USER_TESTS.md tests A-D).
 3. Older open items: Q1 (E6 2-player package: recommended skip), the cut-off message "and the person got...", optional
    54 deg single-player zoom.
+
+### Second-PC internet test over a mobile network (prepared 2026-10-13, user asked for it)
+The user puts the second PC (nothing installed) on a mobile network to test INTERNET play; home PC = host.
+- Kit `local/SECOND-PC/` (~4.4 GB, never commit/share): `1-READ-ME-FIRST.txt` (all steps, firewall Private AND Public,
+  2-minute lobby check, outage tests 20/45/90 s + optional phone-data-off case), `START-HERE.bat/.ps1` (checks hashes,
+  unzips, copies the BIOS to `bios-in-use\`, writes my-settings.txt: 30 fps, window, save `mobiletest`), CHECK-FILES,
+  the package zip 26748ee9ec13 and the user's own ISO + SCPH-90001 BIOS (hashes = originals). Dry run of START-HERE OK.
+- Home PC prepared: `local/HOME-PC/warriors-4p-coop/` (my-settings.txt: original ISO path read-only, own BIOS copy in
+  `local/HOME-PC/YOUR-OWN-BIOS (never share)/`, quality 8, 30 fps, window, save `mobiletest`).
+- Returned logs go to `local/from-second-pc/`; home logs are in `local/HOME-PC/warriors-4p-coop/logs/`.
+- Note: this PC's Ethernet profile is **Public** and it has global IPv6; the README's "Private networks" firewall
+  advice is not enough here (kit says tick both). HYPOTHESIS: mobile CGNAT may block direct ICE (no relay, D5 A);
+  IPv6 on both sides would likely connect. If it fails: options (overlay VPN / own relay) need the user's approval.
+- TODO at the next package rebuild (e.g. with L2): package4 README/QUICK-START firewall text -> tick "Private" AND
+  "Public networks" (hotspots and some home networks are Public). Not changed now: the kit must keep the same zip.
 
 ### If the user sends logs or reports
 Logs land in `logs\<date>_<time>_<role>\` of each PC's package folder: w4p.log (hashes, DESYNC lines, waits),
