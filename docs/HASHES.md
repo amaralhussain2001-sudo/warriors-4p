@@ -73,3 +73,9 @@ Built by `tools/make_package.py`; `dist/warriors-4p-test/MANIFEST.txt` lists the
 | dist/warriors-4p-coop.zip (id 26748ee9ec13) | 9cc3ac7f3c249289384918bcf13bcd78957dd6f945a3525e651c830899e85c8c |
 | dist/warriors-4p-coop-source.zip (fork b81b4cc + w4p-net + mod sources) | 7580dc44f638a9ab393a9603a30e60711ad0ce8184765a135f3025fa0b26a1a4 |
 | emulator pcsx2-qtx64.exe (w4p-m6-3) | 3a4a6ee1619162f6fc0963263e09e88f3e5176d9939aa59d6b3bb064ad53b0e0 |
+
+## Package be2810f79a1d (2026-10-13, F-0235)
+| File | SHA-256 |
+|---|---|
+| dist/warriors-4p-coop.zip (id be2810f79a1d; M1 training own cameras F-0234, firewall text) | cfacbc01536568f79085062a1737de8019b298958a18aff1bf210dccd32559f0 |
+| emulator pcsx2-qtx64.exe (w4p-m6-3, unchanged) | 3a4a6ee1619162f6fc0963263e09e88f3e5176d9939aa59d6b3bb064ad53b0e0 |

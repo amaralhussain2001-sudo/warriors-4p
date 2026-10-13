@@ -73,8 +73,9 @@ The host chooses 1 (Host a game), then 2 (by IP address). The host's window show
 Windows Firewall
 ----------------
 The first time, Windows may ask whether a program may use the network: "w4p-net" (with codes), or "Windows
-PowerShell" and "pcsx2-qtx64" (Join by IP address). Tick "Private networks" and click "Allow access". Do this on every
-PC, otherwise the PCs cannot reach each other. Nothing in this package changes your firewall or router by itself.
+PowerShell" and "pcsx2-qtx64" (Join by IP address). Tick BOTH "Private networks" and "Public networks" and click
+"Allow access" (phone hotspots and some home networks count as "Public"). Do this on every PC, otherwise the PCs
+cannot reach each other. Nothing in this package changes your firewall or router by itself.
 
 Step 6 - The lobby and the start
 --------------------------------

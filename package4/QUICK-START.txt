@@ -30,7 +30,7 @@ EACH FRIEND
 2. Start-Coop.bat -> 2 (Join a game) -> the code is read from the clipboard.
 3. Wait about 10 seconds for "Connected. You are Player N".
    If instead a REPLY CODE appears: it is already copied - paste it into the chat for the host (host presses R).
-4. If Windows asks about "w4p-net": tick "Private networks", click "Allow access".
+4. If Windows asks about "w4p-net": tick "Private networks" AND "Public networks", click "Allow access".
 5. Wait until the host presses S - your game starts by itself.
 6. Player 2: press Start to join, as in the original game.
    Players 3 and 4: you join by yourselves when the mission allows it. Until then you see a waiting message

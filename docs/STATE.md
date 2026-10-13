@@ -52,6 +52,17 @@ The user puts the second PC (nothing installed) on a mobile network to test INTE
 - TODO at the next package rebuild (e.g. with L2): package4 README/QUICK-START firewall text -> tick "Private" AND
   "Public networks" (hotspots and some home networks are Public). Not changed now: the kit must keep the same zip.
 
+### Package be2810f79a1d (2026-10-13) - current
+- Fix F-0234 (user report: in the Mission 1 training every player's camera input moved one shared camera): LUACH
+  row 26 `m1t` re-allows split after `P1.SetupCombat`; self-tests F-0235 pk4j_m1 (2P) / pk4j_m13 (4P) 0 mismatches.
+  README/QUICK-START firewall text now says Private AND Public. Superseded: 26748ee9ec13.
+- Updated in place (program files only, user data kept): Desktop `WARRIORS-SECOND-PC` (the user hosts from it on
+  this PC: my-settings.txt with this PC's paths, save `book`, logs of 5 host sessions 2026-10-13 08:19-11:18 where
+  Player 2 joined from another PC - not yet analysed) and `local/HOME-PC`. `Desktop/WARRIORS-UPDATE` = program
+  files + kit scripts for updating the other PC (copy contents over its folder, Replace).
+- Waiting for the user's go: (1) saves as a numbered list in the host menu (choose/new/delete), ~1 h; (2) host sends
+  its co-op save to joiners in the lobby automatically (helper + launcher), ~3-4 h. User said: later, when asked.
+
 ### If the user sends logs or reports
 Logs land in `logs\<date>_<time>_<role>\` of each PC's package folder: w4p.log (hashes, DESYNC lines, waits),
 connection-log.txt / connection-stats.json (helper), lobby log. Compare with PROTOCOL.md sections 5-6.

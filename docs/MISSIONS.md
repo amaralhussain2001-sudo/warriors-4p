@@ -93,7 +93,7 @@ spawn chooser and own models (F-0182, F-0197), X11 auto re-join (F-0183, F-0209)
 
 | M | Level | Name | Mission-specific fixes | smoke4 | Open (needs) |
 |---|---|---|---|---|---|
-| 1 | 99 | New Blood | X3/X4 tutorial, M1 cp3 Vermin framing for players 3-4 (F-0227) | 0/0, 4P | human play-through |
+| 1 | 99 | New Blood | X3/X4 tutorial, own camera per player in the cp1 training pen (F-0234), M1 cp3 Vermin framing for players 3-4 (F-0227) | 0/0, 4P | human play-through |
 | 2 | 80 | Real Live Bunch | X1, X2; intro/tutorial join off by the script (X13, players 3-4 see the waiting screen) | 0/0, 2P by design | human play-through |
 | 3 | 87 | Payback | X1, X7, own spray for tags (F-0199), cp5 stealth-tutorial camera (F-0228) | 0/0, 4P | human play-through |
 | 4 | 34 | Blackout | pin/fit fallback | 0/0, 4P | human play-through |
