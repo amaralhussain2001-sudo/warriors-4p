@@ -36,10 +36,13 @@ or his decisions. Read `docs/reports/FINAL_status.md` first, then `docs/reports/
 
 ### Second-PC internet test over a mobile network (prepared 2026-10-13, user asked for it)
 The user puts the second PC (nothing installed) on a mobile network to test INTERNET play; home PC = host.
-- Kit `local/SECOND-PC/` (~4.4 GB, never commit/share): `1-READ-ME-FIRST.txt` (all steps, firewall Private AND Public,
-  2-minute lobby check, outage tests 20/45/90 s + optional phone-data-off case), `START-HERE.bat/.ps1` (checks hashes,
-  unzips, copies the BIOS to `bios-in-use\`, writes my-settings.txt: 30 fps, window, save `mobiletest`), CHECK-FILES,
-  the package zip 26748ee9ec13 and the user's own ISO + SCPH-90001 BIOS (hashes = originals). Dry run of START-HERE OK.
+- Kit (user asked for ONE folder on the Desktop): `C:\Users\PC FORCE\Desktop\WARRIORS-SECOND-PC` (4.16 GB, outside the
+  repo, never commit/share): package 26748ee9ec13 already unzipped + `MY-GAME-AND-BIOS (never share)/` (own ISO +
+  SCPH-90001 set, hashes = originals) + `START-HERE.bat/.ps1` (first time: CHECK-FILES.ps1 over all 307 files, copies
+  the BIOS to `bios-in-use\`, writes my-settings.txt: 30 fps, window, save `mobiletest`; stops on USB stick / OneDrive /
+  too-long path) + `1-READ-ME-FIRST.txt` (copy to C:\, firewall Private AND Public, 2-minute lobby wait, outage tests
+  20/45/90 s). Trial run on a hard-linked copy: 307/307 OK, settings correct. The old `local/SECOND-PC` was removed.
+  The user asked me NOT to run anything there: the user runs it on their own to learn it.
 - Home PC prepared: `local/HOME-PC/warriors-4p-coop/` (my-settings.txt: original ISO path read-only, own BIOS copy in
   `local/HOME-PC/YOUR-OWN-BIOS (never share)/`, quality 8, 30 fps, window, save `mobiletest`).
 - Returned logs go to `local/from-second-pc/`; home logs are in `local/HOME-PC/warriors-4p-coop/logs/`.
