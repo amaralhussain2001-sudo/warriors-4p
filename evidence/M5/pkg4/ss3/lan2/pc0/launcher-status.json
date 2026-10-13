@@ -1,0 +1,23 @@
+{
+    "phase":  "start-ok",
+    "mode":  "lanhost",
+    "slot":  0,
+    "players":  2,
+    "group":  "ss",
+    "saveHash":  "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33",
+    "delay":  2,
+    "fps60":  false,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\ss3\\lan2\\pc0\\logs\\20261013_163840_lanhost",
+    "package":  "9d752fc9e692",
+    "sid":  "598b26819d49",
+    "maxRttMs":  18.284,
+    "problems":  {
+
+                 },
+    "helperError":  "",
+    "events":  [
+                   "lan joined 1",
+                   "start 598b26819d49"
+               ]
+}

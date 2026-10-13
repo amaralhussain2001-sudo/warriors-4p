@@ -1,0 +1,16 @@
+16:57:22      0.1  warriors-4p co-op launcher, package 374e315aedb0, mode lanhost, pnach a5fc2198458c586fa93f9b4b1adb605500479e8cdaa7333ecddf7d90302fcaf8
+16:57:22      0.2  host: 2 players, co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33, 60 fps False, widescreen True
+16:57:22      0.2  lobby socket on 127.0.0.1:47050
+16:57:22      0.3  lobby: slot 0, players 2, helper ready False, peers [], problems [2=waiting], delay 2
+16:57:23      1.2  message: Player 2 joined (from 127.0.0.1).
+16:57:23      1.2  lobby: slot 0, players 2, helper ready False, peers [1:up], problems [2=connecting], delay 2
+16:57:24      2.3  co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 packed for sending: 16875 bytes, 24 pieces
+16:57:24      2.3  sending the co-op save to player 2 (24 pieces)
+16:57:24      2.3  message: Player 2 has a different co-op save: sending yours...
+16:57:24      2.5  co-op save sent to player 2 in 0.2 s
+16:57:24      2.5  message: Player 2 now has your co-op save.
+16:57:28      6.4  ping to player 2: median 17.1 ms, p90 17.1 ms (3 samples); reported by him: 0:21
+16:57:28      6.4  start: session e515acd5a5b1, 2 players, input delay 2, co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33, 60 fps False, widescreen True, slowest ping 17.1 ms
+16:57:28      6.4  lobby: slot 0, players 2, helper ready False, peers [1:up], problems [2=], delay 2
+16:57:28      6.5  start: every player answered
+16:57:28      6.5  lobby ended: start

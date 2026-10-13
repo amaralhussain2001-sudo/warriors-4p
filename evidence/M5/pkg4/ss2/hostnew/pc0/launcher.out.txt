@@ -1,0 +1,28 @@
+16:36:59      0.1  warriors-4p co-op launcher, package f8a44ab8f0f6, mode host, pnach a5fc2198458c586fa93f9b4b1adb605500479e8cdaa7333ecddf7d90302fcaf8
+16:36:59      0.1  host: 2 players, co-op save 'ss' new, 60 fps False, widescreen True
+16:36:59      0.2  connection helper started: w4p-net host --players 2 --emu-port 47000 --slot-ports 47100 --ice-port 47400 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss2\hostnew\pc0\logs\20261013_163659_host\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss2\hostnew\pc0\logs\20261013_163659_host\connection-stats.json --no-stun --bind 127.0.0.1
+16:36:59      0.2  lobby socket on 127.0.0.1:47000
+16:36:59      0.2  @listen 47400
+16:36:59      0.2  join code issued
+16:36:59      0.3  lobby: slot 0, players 2, helper ready False, peers [], problems [2=waiting], delay 2
+16:37:01      2.0  @path b 1
+16:37:01      2.6  helper: Player 2 joined (path b; connected -322955300.8 ms after the agent started).
+16:37:01      2.6  message: Player 2 joined.
+16:37:01      2.6  @joined 1 b 531.1
+16:37:01      2.6  @link 1 connected 563.0 1 b
+16:37:02      3.1  @ready 2850.5
+16:37:02      3.1  message: All 2 players are connected. (Press Start in the launcher.)
+16:37:02      3.3  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=connecting], delay 2
+16:37:03      4.1  co-op save 'ss' new packed for sending: 26 bytes, 1 pieces
+16:37:03      4.1  sending the co-op save to player 2 (1 pieces)
+16:37:03      4.1  message: Player 2 has a different co-op save: sending yours...
+16:37:03      4.1  co-op save sent to player 2 in 0.0 s
+16:37:03      4.1  message: Player 2 now has your co-op save.
+16:37:07      8.4  ping to player 2: median 4.1 ms, p90 4.1 ms (3 samples); reported by him: 0:32
+16:37:07      8.4  start: session 0337d3b75077, 2 players, input delay 2, co-op save 'ss' new, 60 fps False, widescreen True, slowest ping 4.1 ms
+16:37:07      8.4  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=], delay 2
+16:37:07      8.4  message: Lobby closed: no new players.
+16:37:07      8.4  start: every player answered
+16:37:07      8.4  lobby ended: start
+16:37:10     11.6  @stats (see connection-stats.json)
+16:37:10     11.6  connection helper stopped (exit code 0)

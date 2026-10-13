@@ -1,0 +1,34 @@
+{
+    "phase":  "start-ok",
+    "mode":  "host",
+    "slot":  0,
+    "players":  4,
+    "group":  "ss",
+    "saveHash":  "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33",
+    "delay":  2,
+    "fps60":  false,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\ss3\\code4\\pc0\\logs\\20261013_163824_host",
+    "package":  "9d752fc9e692",
+    "sid":  "070e1c80bc5b",
+    "maxRttMs":  9.382,
+    "problems":  {
+
+                 },
+    "helperError":  "",
+    "events":  [
+                   "@listen 47400",
+                   "@code join \u003ccode\u003e",
+                   "@path b 1",
+                   "@joined 1 b 527.2",
+                   "@link 1 connected 558.5 1 b",
+                   "@path b 2",
+                   "@joined 2 b 526.2",
+                   "@link 2 connected 557.3 1 b",
+                   "@path b 3",
+                   "@joined 3 b 527.9",
+                   "@link 3 connected 559.8 1 b",
+                   "@ready 5049.8",
+                   "start 070e1c80bc5b"
+               ]
+}

@@ -1,0 +1,28 @@
+{
+    "phase":  "start-ok",
+    "mode":  "join",
+    "slot":  1,
+    "players":  2,
+    "group":  "ss",
+    "saveHash":  "new",
+    "delay":  2,
+    "fps60":  false,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\ss3\\hostnew\\pc1\\logs\\20261013_163854_join",
+    "package":  "9d752fc9e692",
+    "sid":  "07289d108236",
+    "maxRttMs":  0,
+    "problems":  {
+                     "own-save":  "different from the host\u0027s"
+                 },
+    "helperError":  "",
+    "events":  [
+                   "@listen 47401",
+                   "@code reply \u003ccode\u003e",
+                   "@link 0 connected 514.7 1 j",
+                   "@slot 1",
+                   "@ready 673.7",
+                   "start 07289d108236",
+                   "@host_left"
+               ]
+}

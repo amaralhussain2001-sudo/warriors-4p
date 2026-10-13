@@ -1,0 +1,27 @@
+16:38:28      0.4  warriors-4p co-op launcher, package 9d752fc9e692, mode join, pnach a5fc2198458c586fa93f9b4b1adb605500479e8cdaa7333ecddf7d90302fcaf8
+16:38:28      0.5  connection helper started: w4p-net join <code> --emu-port 47003 --slot-ports 47130 --ice-port 47403 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss3\code4\pc3\logs\20261013_163828_join\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss3\code4\pc3\logs\20261013_163828_join\connection-stats.json --no-stun --bind 127.0.0.1
+16:38:28      0.5  lobby socket on 127.0.0.1:47003
+16:38:28      0.5  @listen 47403
+16:38:28      0.5  reply code issued
+16:38:29      0.6  lobby: slot -1, players 0, helper ready False, peers [], problems [], delay 2
+16:38:29      1.0  @link 0 connected 509.3 1 j
+16:38:29      1.0  message: Connected to the host (509.3 ms).
+16:38:29      1.2  @slot 3
+16:38:29      1.2  message: Connected to the host. You are Player 4.
+16:38:29      1.4  @link 1 connected 0.2 1 i
+16:38:29      1.4  @link 2 connected 0.1 1 i
+16:38:29      1.4  @ready 868.5
+16:38:30      1.6  lobby: slot 3, players 0, helper ready True, peers [], problems [], delay 2
+16:38:31      2.6  lobby: slot 3, players 4, helper ready True, peers [0:up], problems [0=own save DIFFERENT], delay 2
+16:38:31      2.6  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)
+16:38:31      2.6  message: Your co-op save is different from the host's: receiving the host's save...
+16:38:31      2.7  host's co-op save installed: 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33, previous files in backup
+16:38:31      2.7  message: Got the host's co-op save. Your old one is kept in coop-saves\ss\backup.
+16:38:32      3.6  lobby: slot 3, players 4, helper ready True, peers [0:up 1:up 2:up], problems [0=own save same], delay 2
+16:38:35      6.9  start received: session 070e1c80bc5b, 4 players, input delay 2, co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33
+16:38:35      6.9  message: The host started the game. Starting...
+16:38:37      8.9  lobby ended: start
+16:38:40     11.9  message: The host closed the game.
+16:38:40     12.0  @host_left
+16:38:40     12.1  @stats (see connection-stats.json)
+16:38:40     12.1  connection helper stopped (exit code 0)

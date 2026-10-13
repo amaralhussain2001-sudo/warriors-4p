@@ -1,0 +1,30 @@
+16:36:34      0.4  warriors-4p co-op launcher, package f8a44ab8f0f6, mode join, pnach a5fc2198458c586fa93f9b4b1adb605500479e8cdaa7333ecddf7d90302fcaf8
+16:36:34      0.5  connection helper started: w4p-net join <code> --emu-port 47002 --slot-ports 47120 --ice-port 47402 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss2\code4\pc2\logs\20261013_163634_join\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss2\code4\pc2\logs\20261013_163634_join\connection-stats.json --no-stun --bind 127.0.0.1
+16:36:34      0.5  lobby socket on 127.0.0.1:47002
+16:36:34      0.5  @listen 47402
+16:36:34      0.5  reply code issued
+16:36:34      0.6  lobby: slot -1, players 0, helper ready False, peers [], problems [], delay 2
+16:36:35      1.0  @link 0 connected 515.0 1 j
+16:36:35      1.1  message: Connected to the host (515.0 ms).
+16:36:35      1.2  @slot 2
+16:36:35      1.2  message: Connected to the host. You are Player 3.
+16:36:35      1.4  @link 1 connected 0.4 1 i
+16:36:35      1.4  @ready 861.8
+16:36:35      1.5  lobby: slot 2, players 0, helper ready True, peers [], problems [], delay 2
+16:36:36      2.1  @notready
+16:36:36      2.5  @link 3 connected 314.6 1 i
+16:36:36      2.5  @ready 1942.5
+16:36:36      2.6  lobby: slot 2, players 4, helper ready True, peers [0:up], problems [0=own save DIFFERENT], delay 2
+16:36:36      2.6  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)
+16:36:36      2.6  message: Your co-op save is different from the host's: receiving the host's save...
+16:36:36      2.7  host's co-op save installed: 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33, previous files in backup
+16:36:36      2.7  message: Got the host's co-op save. Your old one is kept in coop-saves\ss\backup.
+16:36:37      3.6  lobby: slot 2, players 4, helper ready True, peers [0:up 1:up], problems [0=own save same], delay 2
+16:36:38      4.6  lobby: slot 2, players 4, helper ready True, peers [0:up 1:up 3:up], problems [0=own save same], delay 2
+16:36:41      7.9  start received: session e7ca07e317d4, 4 players, input delay 2, co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33
+16:36:41      7.9  message: The host started the game. Starting...
+16:36:43      9.9  lobby ended: start
+16:36:46     12.9  message: The host closed the game.
+16:36:46     12.9  @host_left
+16:36:47     13.0  @stats (see connection-stats.json)
+16:36:47     13.0  connection helper stopped (exit code 0)

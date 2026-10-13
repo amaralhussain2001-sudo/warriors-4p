@@ -1,0 +1,29 @@
+{
+    "phase":  "lobby-hostleft",
+    "mode":  "join",
+    "slot":  3,
+    "players":  4,
+    "group":  "ss",
+    "saveHash":  "0a4dfe8b5574374ed3091d77022332b32b7fa5bc6c382741a908dc48c1a22efd",
+    "delay":  2,
+    "fps60":  false,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\ss1\\code4\\pc3\\logs\\20261013_162828_join",
+    "package":  "d69a5885c060",
+    "sid":  "",
+    "maxRttMs":  0,
+    "problems":  {
+                     "own-save":  "different from the host\u0027s"
+                 },
+    "helperError":  "",
+    "events":  [
+                   "@listen 47403",
+                   "@code reply \u003ccode\u003e",
+                   "@link 0 connected 507.6 1 j",
+                   "@slot 3",
+                   "@link 1 connected 0.5 1 i",
+                   "@link 2 connected 0.3 1 i",
+                   "@ready 867.7",
+                   "@host_left"
+               ]
+}

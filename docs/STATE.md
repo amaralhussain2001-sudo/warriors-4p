@@ -52,7 +52,7 @@ The user puts the second PC (nothing installed) on a mobile network to test INTE
 - TODO at the next package rebuild (e.g. with L2): package4 README/QUICK-START firewall text -> tick "Private" AND
   "Public networks" (hotspots and some home networks are Public). Not changed now: the kit must keep the same zip.
 
-### Package be2810f79a1d (2026-10-13) - current
+### Package be2810f79a1d (2026-10-13) - superseded by 374e315aedb0 (below)
 - Fix F-0234 (user report: in the Mission 1 training every player's camera input moved one shared camera): LUACH
   row 26 `m1t` re-allows split after `P1.SetupCombat`; self-tests F-0235 pk4j_m1 (2P) / pk4j_m13 (4P) 0 mismatches.
   README/QUICK-START firewall text now says Private AND Public. Superseded: 26748ee9ec13.
@@ -60,8 +60,10 @@ The user puts the second PC (nothing installed) on a mobile network to test INTE
   this PC: my-settings.txt with this PC's paths, save `book`, logs of 5 host sessions 2026-10-13 08:19-11:18 where
   Player 2 joined from another PC - not yet analysed) and `local/HOME-PC`. `Desktop/WARRIORS-UPDATE` = program
   files + kit scripts for updating the other PC (copy contents over its folder, Replace).
-- Waiting for the user's go: (1) saves as a numbered list in the host menu (choose/new/delete), ~1 h; (2) host sends
-  its co-op save to joiners in the lobby automatically (helper + launcher), ~3-4 h. User said: later, when asked.
+- Both save features DONE in package **374e315aedb0** (F-0236/F-0237, current): save list (N/D, _deleted), host sends its
+  save in the lobby (SAVEOFFER/SAVEDATA/SAVEACK, launcher only). Desktop kit cleaned on the user's request: saves,
+  settings, logs, data of the Desktop kit moved to `local/desktop-kit-backup-20261013/` (save 'book', 5 host logs).
+  Desktop kit, HOME-PC and Desktop/WARRIORS-UPDATE are on 374e315aedb0.
 
 ### If the user sends logs or reports
 Logs land in `logs\<date>_<time>_<role>\` of each PC's package folder: w4p.log (hashes, DESYNC lines, waits),

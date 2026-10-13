@@ -9,7 +9,10 @@ Usage:
   python -I tests/m5/package4_selftest.py <tag> --preset m13 --players 4 --seconds 720 [--late-joiner]
   python -I tests/m5/package4_selftest.py <tag> --preset m1_60 --players 2 --seconds 420 [--late-joiner]
   python -I tests/m5/package4_selftest.py <tag> --preset m1_30 --players 2 --seconds 240 --lan    (Join by IP mode)
-  python -I tests/m5/package4_selftest.py <tag> --mismatch        (lobby only: different co-op saves, then fixed)
+  python -I tests/m5/package4_selftest.py <tag> --mismatch        (lobby only: different co-op saves, then fixed;
+        written for packages before the save transfer - since then phase A ends with the joiner holding the host's save)
+  python -I tests/m5/package4_selftest.py <tag> --sendsave [--save-from DIR]   (lobby only: the host sends its co-op save
+        to joiners with no / different saves; cases code4, lan2, hostnew; DIR = a real co-op save folder for the host)
   --title-keys: slot 0 gets NO bot input; the harness posts real key presses (Enter = Start) to player 1's game window
         with tools/winkeys.ps1 at 150-330 s after his emulator started (60 fps title-screen probe).
   --groups-2p: test-only isolation: base patch groups of the 2-player package (M1, own view, hud) instead of the 12.
@@ -288,6 +291,97 @@ def run_mismatch(tag, work, settings_common):
     return res
 
 
+def file_hashes(d):
+    out = {}
+    for m in ("Mcd001.ps2", "Mcd002.ps2"):
+        q = os.path.join(d, m)
+        if os.path.exists(q):
+            out[m] = hashlib.sha256(open(q, "rb").read()).hexdigest()
+    return out
+
+
+def run_sendsave(tag, work, settings_common, save_from):
+    """Lobby only (stopBeforeGame: no emulator). The host's co-op save is sent to the other players in the lobby.
+    code4: 4 players with join codes; host = real save (save_from), pc1 none, pc2 a different Mcd001, pc3 different
+    Mcd001+Mcd002; pc2 ignores every 3rd piece it receives (testDropSaveEvery, resend check). lan2: 2 players Join by IP; host real save, pc1 different. hostnew: host has no save, pc1 has files.
+    Pass: every PC reaches start-ok, every PC's files equal the host's, the old files of pc1-3 are in their backup folder."""
+    cases = {"code4": (4, False, True, {1: None, 2: {"Mcd001.ps2": 0x5A}, 3: {"Mcd001.ps2": 0x11, "Mcd002.ps2": 0x22}}),
+             "lan2": (2, True, True, {1: {"Mcd001.ps2": 0x33}}),
+             "hostnew": (2, False, False, {1: {"Mcd001.ps2": 0x44, "Mcd002.ps2": 0x55}})}
+    res = {}
+    for case, (players, lan, host_save, others) in cases.items():
+        cw = os.path.join(work, case)
+        group = "ss"
+        pcs = [make_pc(cw, k, settings_common, None) for k in range(players)]
+        gdir = [os.path.join(pc["saves"], group) for pc in pcs]
+        if host_save:
+            os.makedirs(gdir[0], exist_ok=True)
+            for m in ("Mcd001.ps2", "Mcd002.ps2"):
+                if os.path.exists(os.path.join(save_from, m)):
+                    shutil.copy2(os.path.join(save_from, m), os.path.join(gdir[0], m))
+        for k, files in others.items():
+            if files:
+                os.makedirs(gdir[k], exist_ok=True)
+                for m, b in files.items():
+                    open(os.path.join(gdir[k], m), "wb").write(bytes([b]) * 65536)
+        before = {f"pc{k}": file_hashes(gdir[k]) for k in range(players)}
+        code_file = os.path.join(cw, "joincode.txt")
+        for pc in pcs:
+            k = pc["k"]
+            ans = {"mode": ("lanhost" if k == 0 else "lanjoin") if lan else ("host" if k == 0 else "join"),
+                   "players": players, "group": group, "fps60": False, "wide": True, "codeFile": code_file,
+                   "helperArgs": HELPER_ARGS, "emuPort": 47000 + k, "slotPorts": 47100 + 10 * k, "icePort": 47400 + k,
+                   "lanPort": 47050 + k, "lanBind": "127.0.0.1", "hostIp": "127.0.0.1", "hostPort": 47050,
+                   "autoStart": k == 0, "startAfterSec": 3, "lobbyTimeoutSec": 150, "stopBeforeGame": True}
+            if case == "code4" and k == 2:
+                ans["testDropSaveEvery"] = 3   # test-only: pc2 ignores every 3rd piece it receives (resend check)
+            launch(pc, ans)
+            if k == 0 and not lan:
+                t0 = time.time()
+                while not os.path.exists(code_file) and time.time() - t0 < 60:
+                    time.sleep(0.5)
+            time.sleep(1)
+        for pc in pcs:
+            pc["proc"].wait(timeout=400)
+        st = {f"pc{pc['k']}": read_status(pc) or {} for pc in pcs}
+        after = {f"pc{k}": file_hashes(gdir[k]) for k in range(players)}
+        backups = {}
+        for k in range(1, players):
+            bdir = os.path.join(gdir[k], "backup")
+            found = []
+            if os.path.isdir(bdir):
+                for d in sorted(os.listdir(bdir)):
+                    found.append({"dir": d, "files": file_hashes(os.path.join(bdir, d))})
+            backups[f"pc{k}"] = found
+        for pc in pcs:
+            copy_small(pc, os.path.join(PROJ, "evidence", "M5", "pkg4", tag, case, f"pc{pc['k']}"))
+        lobby_lines = {}
+        for pc in pcs:
+            lg = (st[f"pc{pc['k']}"].get("logDir") or "")
+            q = os.path.join(lg, "lobby-log.txt")
+            if os.path.exists(q):
+                lobby_lines[f"pc{pc['k']}"] = [ln.strip() for ln in open(q, encoding="utf-8", errors="replace")
+                                               if "co-op save" in ln and ("send" in ln or "receiv" in ln or "install" in ln
+                                                                          or "packed" in ln or "sent" in ln)][:8]
+        host_files = before["pc0"]
+        verdict = {
+            "all_started": all(st[f"pc{k}"].get("phase") == "start-ok" for k in range(players)),
+            "all_files_equal_host": all(after[f"pc{k}"] == host_files for k in range(players)),
+            "all_save_hash_equal": len({st[f"pc{k}"].get("saveHash") for k in range(players)}) == 1,
+            "old_files_in_backup": all(
+                (not before[f"pc{k}"]) or any(b["files"] == before[f"pc{k}"] for b in backups[f"pc{k}"])
+                for k in range(1, players)),
+        }
+        verdict["pass"] = all(verdict.values())
+        res[case] = {"players": players, "lan": lan, "host_save": host_save, "before": before, "after": after,
+                     "backups": backups, "phases": {k: v.get("phase") for k, v in st.items()},
+                     "save_hash": {k: v.get("saveHash") for k, v in st.items()}, "lobby_log": lobby_lines,
+                     "verdict": verdict}
+        print(case, json.dumps(verdict), flush=True)
+    res["verdict"] = {c: res[c]["verdict"]["pass"] for c in cases}
+    return res
+
+
 def main():
     tag = sys.argv[1]
     if not os.path.exists(os.path.join(PKG, "Start-Coop.ps1")):
@@ -306,6 +400,16 @@ def main():
     vf = open(os.path.join(PKG, "VERSION.txt"), encoding="utf-8").read()
     summary = {"tag": tag, "package": re.search(r"id=(\S+)", vf).group(1), "args": sys.argv[2:],
                "environment": "SINGLE-PC, package launcher in test mode, loopback, fresh memory cards, bots, no impairment"}
+    if "--sendsave" in sys.argv:
+        summary["environment"] = "SINGLE-PC, lobby only (no emulator), loopback helpers / Join by IP on loopback"
+        src = os.path.abspath(opt("--save-from", ""))
+        assert os.path.isdir(src), "--save-from DIR (a co-op save folder with Mcd001.ps2/Mcd002.ps2) is needed"
+        summary["save_from"] = {"dir": os.path.relpath(src, PROJ), "files": file_hashes(src)}
+        summary.update(run_sendsave(tag, work, settings_common, src))
+        os.makedirs(os.path.join(PROJ, "evidence", "M5"), exist_ok=True)
+        json.dump(summary, open(os.path.join(PROJ, "evidence", "M5", f"{tag}.json"), "w"), indent=1)
+        print(json.dumps(summary["verdict"], indent=1))
+        return
     if "--mismatch" in sys.argv:
         summary["environment"] = "SINGLE-PC, lobby only (no emulator), loopback helpers, dummy co-op save files"
         summary.update(run_mismatch(tag, work, settings_common))

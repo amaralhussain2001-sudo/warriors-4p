@@ -1,0 +1,1884 @@
+---- 0.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   waiting for a friend to join...
+  Player 3   waiting for a friend to join...
+  Player 4   waiting for a friend to join...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 3.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   connecting...
+  Player 3   waiting for a friend to join...
+  Player 4   waiting for a friend to join...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+  Messages:
+    Player 2 joined.
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 4.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   connecting...
+  Player 3   connecting...
+  Player 4   waiting for a friend to join...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+  Messages:
+    Player 2 joined.
+    Player 3 joined.
+    Player 2 has a different co-op save: sending yours...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 5.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   connecting...
+  Player 3   connecting...
+  Player 4   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+  Messages:
+    Player 2 has a different co-op save: sending yours...
+    Player 2 now has your co-op save.
+    Player 4 joined.
+    All 4 players are connected. (Press Start in the launcher.)
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 6.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping   22 ms   connecting...
+  Player 3   connecting...
+  Player 4   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (22 ms).
+
+  Messages:
+    Player 4 joined.
+    All 4 players are connected. (Press Start in the launcher.)
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 7.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   connecting...
+  Player 3   ping    5 ms   connecting...
+  Player 4   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (5 ms).
+
+  Messages:
+    Player 4 joined.
+    All 4 players are connected. (Press Start in the launcher.)
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 8.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   ready
+  Player 3   ping    4 ms   connecting...
+  Player 4   ping    4 ms   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (9 ms).
+
+  Messages:
+    Player 4 joined.
+    All 4 players are connected. (Press Start in the launcher.)
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 9.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   ready
+  Player 3   ping    5 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (12 ms).
+
+  Messages:
+    Player 4 joined.
+    All 4 players are connected. (Press Start in the launcher.)
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 10.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    6 ms   ready
+  Player 3   ping    5 ms   sending your co-op save to this player... 99%
+  Player 4   ping    6 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (7 ms).
+
+  Messages:
+    Player 4 joined.
+    All 4 players are connected. (Press Start in the launcher.)
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 11.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    6 ms   ready
+  Player 3   ping    6 ms   sending your co-op save to this player... 99%
+  Player 4   ping    6 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (22 ms).
+
+  Messages:
+    Player 4 joined.
+    All 4 players are connected. (Press Start in the launcher.)
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 12.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    7 ms   ready
+  Player 3   ping    6 ms   sending your co-op save to this player... 99%
+  Player 4   ping    7 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (22 ms).
+
+  Messages:
+    Player 4 joined.
+    All 4 players are connected. (Press Start in the launcher.)
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 13.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    6 ms   ready
+  Player 3   ping    6 ms   sending your co-op save to this player... 99%
+  Player 4   ping    6 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (22 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 14.6 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    6 ms   ready
+  Player 3   ping    5 ms   sending your co-op save to this player... 99%
+  Player 4   ping    6 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (22 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 15.6 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   ready
+  Player 3   ping    5 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (22 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 16.6 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    6 ms   ready
+  Player 3   ping    5 ms   sending your co-op save to this player... 99%
+  Player 4   ping    6 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (22 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 17.6 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   ready
+  Player 3   ping    5 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 18.6 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 19.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 20.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 21.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   ready
+  Player 3   ping    5 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 22.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   ready
+  Player 3   ping    5 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 24.8 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    5 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 25.8 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 29.9 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 30.9 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 37.0 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 38.0 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 39.1 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 43.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 46.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 47.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 52.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 54.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 55.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 57.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 60.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 61.6 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 62.6 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 63.6 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 67.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 68.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 70.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 71.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 78.9 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 79.9 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 83.0 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 85.1 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 86.1 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 87.1 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 88.1 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 95.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    3 ms   ready
+  Player 3   ping    3 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 94%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 96.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 99.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 100.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 102.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 12%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 103.4 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (19 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 108.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 110.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 94%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 111.5 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 118.6 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 94%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 119.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 124.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    3 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 125.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 126.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 94%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (20 ms).
+
+  Messages:
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 127.7 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 132.8 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    3 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 134.8 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    3 ms   sending your co-op save to this player... 94%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 135.8 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    3 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 136.8 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 140.9 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    3 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 141.9 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 142.9 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 94%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 143.9 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (25 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 148.0 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    3 ms   sending your co-op save to this player... 99%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (21 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 149.0 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    3 ms   sending your co-op save to this player... 99%
+  Player 4   ping    3 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (23 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 150.0 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  4 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+  Player 3   ping    4 ms   sending your co-op save to this player... 99%
+  Player 4   ping    4 ms   sending your co-op save to this player... 99%
+
+  Input delay: 2 frames (67 ms), from the slowest connection (23 ms).
+
+  Messages:
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 3 has a different co-op save: sending yours...
+    Player 3 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc2\coop-saves\ss\backup' because it does not exist.). Trying again...
+    Player 4 has a different co-op save: sending yours...
+    Player 4 could not take your co-op save (Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\code4\pc3\coop-saves\ss\backup' because it does not exist.). Trying again...
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.

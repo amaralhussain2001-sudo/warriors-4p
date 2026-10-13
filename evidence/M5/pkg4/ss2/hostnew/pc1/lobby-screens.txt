@@ -1,0 +1,122 @@
+---- 0.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connecting to the host...
+
+Reply code (send it to the host ONLY if you are not connected within 10 seconds):
+  <code>
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 1.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  You are Player 2. Talking to the host...
+
+Reply code (send it to the host ONLY if you are not connected within 10 seconds):
+  <code>
+
+  Messages:
+    Connected to the host (515.6 ms).
+    Connected to the host. You are Player 2.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 2.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code C17E5346, the host's new game, no save yet.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (515.6 ms).
+    Connected to the host. You are Player 2.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 3.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (new game, no save yet).
+
+  Player 1   (host)   connected
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (515.6 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save. Your old one is kept in coop-saves\ss\backup.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 4.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (new game, no save yet).
+
+  Player 1   (host)   connected   ping    5 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (515.6 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save. Your old one is kept in coop-saves\ss\backup.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 5.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (new game, no save yet).
+
+  Player 1   (host)   connected   ping    3 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (515.6 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save. Your old one is kept in coop-saves\ss\backup.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 7.2 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (new game, no save yet).
+
+  Player 1   (host)   connected   ping    3 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (515.6 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save. Your old one is kept in coop-saves\ss\backup.
+    The host started the game. Starting...
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.

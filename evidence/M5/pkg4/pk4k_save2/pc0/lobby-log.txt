@@ -1,0 +1,32 @@
+16:39:17      0.1  warriors-4p co-op launcher, package 9d752fc9e692, mode host, pnach a5fc2198458c586fa93f9b4b1adb605500479e8cdaa7333ecddf7d90302fcaf8
+16:39:17      0.2  host: 2 players, co-op save 'book' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33, 60 fps False, widescreen True
+16:39:17      0.2  connection helper started: w4p-net host --players 2 --emu-port 47000 --slot-ports 47100 --ice-port 47400 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4k_save2\pc0\logs\20261013_163917_host\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\pk4k_save2\pc0\logs\20261013_163917_host\connection-stats.json --no-stun --bind 127.0.0.1
+16:39:17      0.2  lobby socket on 127.0.0.1:47000
+16:39:17      0.2  @listen 47400
+16:39:17      0.2  join code issued
+16:39:18      0.3  lobby: slot 0, players 2, helper ready False, peers [], problems [2=waiting], delay 2
+16:39:18      1.0  @path b 1
+16:39:19      1.5  helper: Player 2 joined (path b; connected -323092771.8 ms after the agent started).
+16:39:19      1.5  message: Player 2 joined.
+16:39:19      1.6  @joined 1 b 532.1
+16:39:19      1.6  @link 1 connected 563.1 1 b
+16:39:19      2.0  @ready 1819.9
+16:39:19      2.0  message: All 2 players are connected. (Press Start in the launcher.)
+16:39:20      2.3  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=connecting], delay 2
+16:39:20      3.2  co-op save 'book' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 packed for sending: 16875 bytes, 24 pieces
+16:39:20      3.2  sending the co-op save to player 2 (24 pieces)
+16:39:20      3.2  message: Player 2 has a different co-op save: sending yours...
+16:39:21      3.4  co-op save sent to player 2 in 0.2 s
+16:39:21      3.4  message: Player 2 now has your co-op save.
+16:39:25      7.4  ping to player 2: median 5.7 ms, p90 5.7 ms (3 samples); reported by him: 0:29
+16:39:25      7.4  start: session 0a1761cf283a, 2 players, input delay 2, co-op save 'book' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33, 60 fps False, widescreen True, slowest ping 5.7 ms
+16:39:25      7.4  lobby: slot 0, players 2, helper ready True, peers [1:up], problems [2=], delay 2
+16:39:25      7.4  message: Lobby closed: no new players.
+16:39:25      7.4  start: every player answered
+16:39:25      7.4  lobby ended: start
+16:39:25      7.5  game starting: slot 0, players 2, delay 2, patch set a5fc2198458c586fa93f9b4b1adb605500479e8cdaa7333ecddf7d90302fcaf8|warriors-4p M1;warriors-4p own view;warriors-4p hud;warriors-4p 4p;warriors-4p 4p hud B1;warriors-4p 4p hud B2;warriors-4p 4p spawn;warriors-4p 4p spawn leave;warriors-4p 4p inventory;warriors-4p 4p fx;warriors-4p 4p markers;warriors-4p session;warriors-4p missions;warriors-4p session call;warriors-4p widescreen|ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33
+16:44:25    307.5  self-test: closing the game window after 300 s
+16:44:25    308.0  game closed: exit code 0, session started True, shutdown line True, mismatches 0, host gone False, differs False
+16:44:25    308.0  co-op save stored in C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\ss_root\pc0\book (ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33)
+16:44:25    308.1  @stats (see connection-stats.json)
+16:44:25    308.1  connection helper stopped (exit code 0)

@@ -1,0 +1,52 @@
+16:36:31      0.1  warriors-4p co-op launcher, package f8a44ab8f0f6, mode host, pnach a5fc2198458c586fa93f9b4b1adb605500479e8cdaa7333ecddf7d90302fcaf8
+16:36:31      0.2  host: 4 players, co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33, 60 fps False, widescreen True
+16:36:31      0.2  connection helper started: w4p-net host --players 4 --emu-port 47000 --slot-ports 47100 --ice-port 47400 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss2\code4\pc0\logs\20261013_163631_host\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss2\code4\pc0\logs\20261013_163631_host\connection-stats.json --no-stun --bind 127.0.0.1
+16:36:31      0.2  lobby socket on 127.0.0.1:47000
+16:36:31      0.3  @listen 47400
+16:36:31      0.3  join code issued
+16:36:31      0.3  lobby: slot 0, players 4, helper ready False, peers [], problems [2=waiting 3=waiting 4=waiting], delay 2
+16:36:33      2.1  @path b 1
+16:36:34      2.6  helper: Player 2 joined (path b; connected -322927589.3 ms after the agent started).
+16:36:34      2.6  message: Player 2 joined.
+16:36:34      2.7  @joined 1 b 529.6
+16:36:34      2.7  @link 1 connected 561.0 1 b
+16:36:34      3.1  @path b 2
+16:36:34      3.3  lobby: slot 0, players 4, helper ready False, peers [1:up], problems [2=connecting 3=waiting 4=waiting], delay 2
+16:36:35      3.7  helper: Player 3 joined (path b; connected -322928603.9 ms after the agent started).
+16:36:35      3.7  message: Player 3 joined.
+16:36:35      3.7  @joined 2 b 532.9
+16:36:35      3.7  @link 2 connected 564.3 1 b
+16:36:35      4.1  @path b 3
+16:36:35      4.3  co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 packed for sending: 16875 bytes, 24 pieces
+16:36:35      4.3  sending the co-op save to player 2 (24 pieces)
+16:36:35      4.3  message: Player 2 has a different co-op save: sending yours...
+16:36:35      4.3  lobby: slot 0, players 4, helper ready False, peers [1:up 2:up], problems [2=connecting 3=connecting 4=waiting], delay 2
+16:36:35      4.5  co-op save sent to player 2 in 0.2 s
+16:36:35      4.5  message: Player 2 now has your co-op save.
+16:36:36      4.7  helper: Player 4 joined (path b; connected -322929608.0 ms after the agent started).
+16:36:36      4.7  message: Player 4 joined.
+16:36:36      4.7  @joined 3 b 530.1
+16:36:36      4.7  @link 3 connected 562.5 1 b
+16:36:36      5.1  @ready 4914.9
+16:36:36      5.2  message: All 4 players are connected. (Press Start in the launcher.)
+16:36:36      5.2  sending the co-op save to player 3 (24 pieces)
+16:36:36      5.2  message: Player 3 has a different co-op save: sending yours...
+16:36:36      5.3  co-op save sent to player 3 in 0.2 s
+16:36:36      5.3  message: Player 3 now has your co-op save.
+16:36:36      5.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2=connecting 3=connecting 4=connecting], delay 2
+16:36:37      6.2  sending the co-op save to player 4 (24 pieces)
+16:36:37      6.2  message: Player 4 has a different co-op save: sending yours...
+16:36:37      6.3  co-op save sent to player 4 in 0.2 s
+16:36:37      6.3  message: Player 4 now has your co-op save.
+16:36:39      8.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2= 3=connecting 4=connecting], delay 2
+16:36:40      9.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2= 3= 4=connecting], delay 2
+16:36:41     10.4  ping to player 2: median 6.1 ms, p90 8.9 ms (5 samples); reported by him: 0:108,2:103,3:66
+16:36:41     10.4  ping to player 3: median 5.6 ms, p90 5.9 ms (4 samples); reported by him: 0:69,1:71,3:61
+16:36:41     10.4  ping to player 4: median 5.4 ms, p90 5.4 ms (3 samples); reported by him: 0:65,1:45,2:48
+16:36:41     10.4  start: session e7ca07e317d4, 4 players, input delay 2, co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33, 60 fps False, widescreen True, slowest ping 10.8 ms
+16:36:41     10.4  lobby: slot 0, players 4, helper ready True, peers [1:up 2:up 3:up], problems [2= 3= 4=], delay 2
+16:36:41     10.4  message: Lobby closed: no new players.
+16:36:41     10.5  start: every player answered
+16:36:41     10.5  lobby ended: start
+16:36:45     13.7  @stats (see connection-stats.json)
+16:36:45     13.7  connection helper stopped (exit code 0)

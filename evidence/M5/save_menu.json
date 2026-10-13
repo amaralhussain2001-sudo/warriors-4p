@@ -1,0 +1,60 @@
+{
+    "test":  "save_menu",
+    "environment":  "SINGLE-PC, launcher functions with scripted answers, temporary folder",
+    "script":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\package4\\Start-Coop.ps1",
+    "pass":  true,
+    "results":  {
+                    "list order (newest first, invalid and _deleted hidden)":  {
+                                                                                   "ok":  true,
+                                                                                   "detail":  "friends,book,zzz"
+                                                                               },
+                    "number 2 picks the 2nd save":  {
+                                                        "ok":  true,
+                                                        "detail":  "book"
+                                                    },
+                    "Enter picks the last used save":  {
+                                                           "ok":  true,
+                                                           "detail":  "book"
+                                                       },
+                    "N makes a new save name":  {
+                                                    "ok":  true,
+                                                    "detail":  "new one"
+                                                },
+                    "N refuses a bad name and asks again":  {
+                                                                "ok":  true,
+                                                                "detail":  "ok2"
+                                                            },
+                    "D then Enter cancels (nothing deleted)":  {
+                                                                   "ok":  true,
+                                                                   "detail":  "friends"
+                                                               },
+                    "D with \u0027no\u0027 keeps the save":  {
+                                                                 "ok":  true,
+                                                                 "detail":  "friends"
+                                                             },
+                    "D + yes moves the save to _deleted (files kept), list moves up":  {
+                                                                                           "ok":  true,
+                                                                                           "detail":  "chose book, moved 1"
+                                                                                       },
+                    "a typed name still works":  {
+                                                     "ok":  true,
+                                                     "detail":  "legacy"
+                                                 },
+                    "a wrong answer asks again":  {
+                                                      "ok":  true,
+                                                      "detail":  "book"
+                                                  },
+                    "Settings \u003e co-op saves: delete":  {
+                                                                "ok":  true,
+                                                                "detail":  "zzz deleted"
+                                                            },
+                    "no saves at all: asks for a name, Enter takes the last name":  {
+                                                                                        "ok":  true,
+                                                                                        "detail":  "book"
+                                                                                    },
+                    "the choice is written to my-settings.txt":  {
+                                                                     "ok":  true,
+                                                                     "detail":  "Group line"
+                                                                 }
+                }
+}

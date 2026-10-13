@@ -1,0 +1,22 @@
+{
+    "phase":  "lobby-timeout",
+    "mode":  "lanjoin",
+    "slot":  1,
+    "players":  2,
+    "group":  "ss",
+    "saveHash":  "8a2d46c9003049d5bc28a0b4e68b648160d4e60b1f84c16e495340d43fab9329",
+    "delay":  2,
+    "fps60":  false,
+    "wide":  true,
+    "logDir":  "C:\\Users\\PC FORCE\\Desktop\\New folder\\warriors-4p\\local\\m5\\pkg4\\ss1\\lan2\\pc1\\logs\\20261013_163055_lanjoin",
+    "package":  "d69a5885c060",
+    "sid":  "",
+    "maxRttMs":  0,
+    "problems":  {
+                     "own-save":  "different from the host\u0027s"
+                 },
+    "helperError":  "",
+    "events":  [
+                   "lan slot 1"
+               ]
+}

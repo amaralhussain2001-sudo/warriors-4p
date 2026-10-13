@@ -1,0 +1,41 @@
+[    0.001] w4p-net (helper protocol 1, libjuice 1.7.4), role host
+[    0.001] STUN: disabled (--no-stun)
+[    0.001] options: players 2, ICE port 47400, bind loopback, emulator port 47000, slot ports 47100-47103, connect window 10 min
+[    0.001] ICE socket: UDP port 47400 (MUX mode, one socket for all links), bind loopback
+[    0.001] @listen 47400
+[    0.001] juice[info]: Changing state to gathering
+[    0.001] juice[info]: Changing state to connecting
+[    0.002] juice[info]: Candidate gathering done
+[    0.002] host candidates gathered in 1.6 ms (gathering done)
+[    0.002] local candidate: host IPv4 loopback port 47400
+[    0.002] join code issued: 48 characters, 1 candidate(s), for 2 players
+[    0.002] emulator bridge: emulator at loopback port 47000, helper slot ports 47100-47103 (W4P Peer<p> = 127.0.0.1:47100+p)
+[    1.839] direct dial from joiner 0692 (address class loopback): reserved slot 1 (path b)
+[    1.839] juice[info]: Changing state to gathering
+[    1.839] juice[info]: Changing state to connecting
+[    1.839] juice[info]: Candidate gathering done
+[    1.839] juice[info]: Connectivity timer started
+[    1.839] link 0 (host-joiner, peer slot 1, controlling): agent #1 started, 0 remote candidate(s)
+[    1.839] @path b 1
+[    1.839] link 0 (peer slot 1): connecting (0.1 ms after agent #1 started)
+[    2.370] Player 2 joined (path b; connected -322955300.8 ms after the agent started).
+[    2.370] @joined 1 b 531.1
+[    2.370]   player 2 candidate: host IPv4 loopback port 47401
+[    2.402] juice[info]: Changing state to connected
+[    2.402] juice[info]: Changing state to completed
+[    2.417] link 0 (peer slot 1): completed (563.1 ms after agent #1 started)
+[    2.417] link 0 connected: 563.0 ms after the first agent start (attempt 1); selected pair: local host IPv4 loopback port 47400, remote prflx IPv4 loopback port 47401
+[    2.417] @link 1 connected 563.0 1 b
+[    2.851] @ready 2850.5
+[    2.851] All 2 players are connected. (Press Start in the launcher.)
+[    8.204] Lobby closed: no new players.
+[   10.014] ---- periodic summary (role host, slot 0) ----
+[   10.014] link 0 host-joiner peer slot 1 path b: state completed, attempts 1, selected local host IPv4 loopback port 47400 / remote prflx IPv4 loopback port 47401; ping RTT n=29 p50=0.178 p95=0.227 max=0.301 ms; sent 84 dgr/4366 B, received 93 dgr/4520 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   10.014] slot 1: emulator data sent 21 (0 through the host, 0 without route), received 25 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   10.014] emulator bridge: from emulator 21, to emulator 25, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   11.387] ---- final summary (role host, slot 0) ----
+[   11.387] link 0 host-joiner peer slot 1 path b: state completed, attempts 1, selected local host IPv4 loopback port 47400 / remote prflx IPv4 loopback port 47401; ping RTT n=34 p50=0.177 p95=0.257 max=0.301 ms; sent 97 dgr/4773 B, received 105 dgr/4917 B, forwarded 0, rejected tag 0 mac 0 src 0, send errors 0
+[   11.387]   ping RTT histogram (ms): <0.5:34 0.5-1:0 1-2:0 2-5:0 5-10:0 10-20:0 20-50:0 50-100:0 100-200:0 >=200:0
+[   11.387] slot 1: emulator data sent 21 (0 through the host, 0 without route), received 25 (0 through the host); probes sent 0 (0 through the host, 0 without route), received 0 unique (+0 dup), echoes 0, echo RTT p50=-1.000 p95=-1.000 p99=-1.000 max=-1.000 ms
+[   11.387] emulator bridge: from emulator 21, to emulator 25, dropped 0, loopback strangers 0; connectivity checks with unknown credentials 0
+[   11.387] exit

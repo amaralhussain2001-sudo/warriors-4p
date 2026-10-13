@@ -1,0 +1,133 @@
+---- 0.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Your friends choose 'Join by IP address' and type one of these addresses:
+  192.168.100.115  (Ethernet, home network)
+  (port 47050)
+
+  Player 1   you (host)
+  Player 2   waiting for a friend to join...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+Keys:  S = start the game   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 1.1 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Your friends choose 'Join by IP address' and type one of these addresses:
+  192.168.100.115  (Ethernet, home network)
+  (port 47050)
+
+  Player 1   you (host)
+  Player 2   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+  Messages:
+    Player 2 joined (from 127.0.0.1).
+
+Keys:  S = start the game   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 2.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Your friends choose 'Join by IP address' and type one of these addresses:
+  192.168.100.115  (Ethernet, home network)
+  (port 47050)
+
+  Player 1   you (host)
+  Player 2   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+  Messages:
+    Player 2 joined (from 127.0.0.1).
+    Player 2 has a different co-op save: sending yours...
+
+Keys:  S = start the game   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 3.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Your friends choose 'Join by IP address' and type one of these addresses:
+  192.168.100.115  (Ethernet, home network)
+  (port 47050)
+
+  Player 1   you (host)
+  Player 2   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+  Messages:
+    Player 2 joined (from 127.0.0.1).
+    Player 2 has a different co-op save: sending yours...
+    Player 2 now has your co-op save.
+
+Keys:  S = start the game   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 4.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Your friends choose 'Join by IP address' and type one of these addresses:
+  192.168.100.115  (Ethernet, home network)
+  (port 47050)
+
+  Player 1   you (host)
+  Player 2   ping   18 ms   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (18 ms).
+
+  Messages:
+    Player 2 joined (from 127.0.0.1).
+    Player 2 has a different co-op save: sending yours...
+    Player 2 now has your co-op save.
+
+Keys:  S = start the game   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 5.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Your friends choose 'Join by IP address' and type one of these addresses:
+  192.168.100.115  (Ethernet, home network)
+  (port 47050)
+
+  Player 1   you (host)
+  Player 2   ping   10 ms   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (10 ms).
+
+  Messages:
+    Player 2 joined (from 127.0.0.1).
+    Player 2 has a different co-op save: sending yours...
+    Player 2 now has your co-op save.
+
+Keys:  S = start the game   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 6.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (check code AC16576D)   60 fps: no   widescreen: yes
+
+Your friends choose 'Join by IP address' and type one of these addresses:
+  192.168.100.115  (Ethernet, home network)
+  (port 47050)
+
+  Player 1   you (host)
+  Player 2   ping   18 ms   ready
+
+  Input delay: 2 frames (67 ms), from the slowest connection (18 ms).
+Starting: waiting for every player to answer...
+
+  Messages:
+    Player 2 joined (from 127.0.0.1).
+    Player 2 has a different co-op save: sending yours...
+    Player 2 now has your co-op save.
+
+Keys:  S = start the game   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.

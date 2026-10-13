@@ -1,0 +1,25 @@
+16:57:35      0.4  warriors-4p co-op launcher, package 374e315aedb0, mode join, pnach a5fc2198458c586fa93f9b4b1adb605500479e8cdaa7333ecddf7d90302fcaf8
+16:57:35      0.5  connection helper started: w4p-net join <code> --emu-port 47001 --slot-ports 47110 --ice-port 47401 --log C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss4\hostnew\pc1\logs\20261013_165735_join\connection-log.txt --stats C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss4\hostnew\pc1\logs\20261013_165735_join\connection-stats.json --no-stun --bind 127.0.0.1
+16:57:35      0.5  lobby socket on 127.0.0.1:47001
+16:57:35      0.5  @listen 47401
+16:57:35      0.5  reply code issued
+16:57:36      0.6  lobby: slot -1, players 0, helper ready False, peers [], problems [], delay 2
+16:57:36      1.0  @link 0 connected 508.9 1 j
+16:57:36      1.0  message: Connected to the host (508.9 ms).
+16:57:36      1.2  @slot 1
+16:57:36      1.2  message: Connected to the host. You are Player 2.
+16:57:36      1.2  @ready 664.4
+16:57:37      1.6  lobby: slot 1, players 0, helper ready True, peers [], problems [], delay 2
+16:57:38      2.6  lobby: slot 1, players 2, helper ready True, peers [0:up], problems [0=own save DIFFERENT], delay 2
+16:57:38      2.6  receiving the host's co-op save 'ss' new (1 pieces)
+16:57:38      2.6  message: Your co-op save is different from the host's: receiving the host's save...
+16:57:38      2.7  host's co-op save installed: 'ss' new, previous files in backup
+16:57:38      2.7  message: Got the host's co-op save. Your old one is kept in coop-saves\ss\backup.
+16:57:39      3.6  lobby: slot 1, players 2, helper ready True, peers [0:up], problems [0=own save same], delay 2
+16:57:42      6.9  start received: session 1f401953aaf0, 2 players, input delay 2, co-op save 'ss' new
+16:57:42      6.9  message: The host started the game. Starting...
+16:57:44      8.9  lobby ended: start
+16:57:47     11.9  message: The host closed the game.
+16:57:47     11.9  @host_left
+16:57:47     12.1  @stats (see connection-stats.json)
+16:57:47     12.1  connection helper stopped (exit code 0)

@@ -47,8 +47,9 @@ The host chooses 1 (Host a game) and answers:
 - How the others connect:
     1 = with a JOIN CODE (works over the internet and in the same house) - recommended.
     2 = by IP ADDRESS (same house only, no codes; see step 5).
-- Which co-op save: a name for your group of friends, for example "main". A new name starts the story from the
-  beginning. (Step 9 explains co-op saves.)
+- Which co-op save: the list shows the saves on your PC (newest first). Type its number (Enter = the one you used
+  last), N for a new save (type a name, for example "main"; the story starts from the beginning) or D to delete one.
+  (Step 9 explains co-op saves.)
 - 60 fps and widescreen: the host decides for everybody (both "yes" is the default).
   60 fps needs a stronger PC on every player's side. If the game runs slowly or stutters for anyone, close the games
   and host again with 60 fps "no" (30 fps, like the original game). Please tell us how 60 fps felt.
@@ -82,7 +83,8 @@ Step 6 - The lobby and the start
 The host's window lists every player: "ready", "connecting...", the ping in milliseconds, or a PROBLEM in plain words:
 - "different package version" or "different game patch file": everybody must use the same zip file.
 - "game file is not The Warriors (USA) v1.03": that PC needs the right game file (Settings).
-- "different co-op save": see step 9.
+- "sending your co-op save to this player... 45%": that player had a different save; the host's PC sends its own
+  save by itself (step 9). It takes a second or two.
 It also shows the input delay it chose from the slowest connection (2 frames is the normal minimum).
 When everybody is "ready", the host presses S. Every PC then starts the game by itself.
 
@@ -132,12 +134,16 @@ Step 9 - Co-op saves (your progress together)
 - Every PC keeps its own copy. It is updated only when the game ended normally (in sync, closed normally).
 - All PCs must start with exactly the same co-op save. The lobby compares them ("check code") and the host cannot
   start while they differ.
-- THE HOST'S SAVE IS THE REFERENCE. If a player's save is different: on the host's PC, open the folder
-  coop-saves\<save name> (Settings, option 7 opens coop-saves). Copy the files Mcd001.ps2 and Mcd002.ps2 (for example
-  with a USB stick, or send them through a chat or a cloud drive). On the other PC, put them into its
-  coop-saves\<save name> folder (create the folder if it is missing) and replace the old files. Then join again.
-- A new save name starts the story from the beginning on every PC (nobody has files yet, so all match).
+- THE HOST'S SAVE IS THE REFERENCE, and the host's PC sends it by itself: in the lobby, a player whose save is
+  different (or missing) gets the host's save automatically through the same connection (a save is small, usually
+  well under 1 MB to send). Before that player's save is replaced, the old files are kept in
+  coop-saves\<save name>\backup\. Nothing to copy by hand. This happens only in the lobby, never during a game, and
+  only the host of that game can send it.
+- So a new player can join a story in the middle: the host picks the story's save, the new player joins and gets it.
+- A new save name starts the story from the beginning on every PC.
 - Older copies are kept in coop-saves\<save name>\backup\ (the last 5).
+- Settings, option 7 lists your co-op saves: D deletes one (it is moved to coop-saves\_deleted, so it can be brought
+  back by moving the folder back), O opens the coop-saves folder.
 
 Step 10 - Send the logs back
 ----------------------------

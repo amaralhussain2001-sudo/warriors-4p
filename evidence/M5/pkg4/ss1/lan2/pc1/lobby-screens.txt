@@ -1,0 +1,310 @@
+---- 0.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connecting to the host...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 1.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host. You are Player 2.
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 2.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 4.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    4 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 5.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    3 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 9.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    2 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 10.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    2 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 18.3 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    2 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 25.4 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    1 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 29.4 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    2 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 38.6 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    1 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 41.6 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    2 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 53.7 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    1 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 54.7 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    2 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 61.8 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 2 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours check code 8A2D46C9, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected   ping    1 ms
+  Player 2   you
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+    Your co-op save is different from the host's: receiving the host's save...
+    The host's co-op save could not be used: Cannot find path 'C:\Users\PC FORCE\Desktop\New folder\warriors-4p\local\m5\pkg4\ss1\lan2\pc1\coop-saves\ss\backup' because it does not exist.. Trying again...
+
+Keys:  Q = leave
+  Only the players in this lobby play. Someone who comes later must wait for the next game.

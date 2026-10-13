@@ -155,7 +155,52 @@ function Save-Label([string]$hash) {
 
 function List-Groups {
     if (-not (Test-Path -LiteralPath $savesRoot)) { return @() }
-    return @(Get-ChildItem -LiteralPath $savesRoot -Directory | ForEach-Object { $_.Name })
+    return @(Get-ChildItem -LiteralPath $savesRoot -Directory | Where-Object { Valid-Group $_.Name } |
+        Sort-Object { Group-Time $_.Name } -Descending | ForEach-Object { $_.Name })
+}
+
+function Group-Time([string]$g) {
+    $t = [datetime]::MinValue
+    foreach ($m in @("Mcd001.ps2", "Mcd002.ps2", "save-info.txt")) {
+        $p = Join-Path (Save-Dir $g) $m
+        if (Test-Path -LiteralPath $p) { $w = (Get-Item -LiteralPath $p).LastWriteTime; if ($w -gt $t) { $t = $w } }
+    }
+    return $t
+}
+
+function Group-Info([string]$g) {
+    $t = Group-Time $g
+    if ($t -eq [datetime]::MinValue) { return "new, not played yet" }
+    return ("last saved " + $t.ToString("yyyy-MM-dd HH:mm", $Inv))
+}
+
+# A deleted save is moved to coop-saves\_deleted\<name>_<time> (nothing is really deleted; move it back to restore it).
+function Remove-Group([string]$g) {
+    $bin = Join-Path $savesRoot "_deleted"
+    New-Item -ItemType Directory -Force -Path $bin | Out-Null
+    $dst = Join-Path $bin ("{0}_{1}" -f $g, (Get-Date).ToString("yyyyMMdd_HHmmss", $Inv))
+    Move-Item -LiteralPath (Save-Dir $g) -Destination $dst
+    return $dst
+}
+
+function Show-Groups([string[]]$groups) {
+    Write-Host "Co-op saves on this PC:" -ForegroundColor Cyan
+    if ($groups.Count -eq 0) { Write-Host "  (none yet)" }
+    for ($i = 0; $i -lt $groups.Count; $i++) {
+        Write-Host ("  {0,2}  {1,-32} {2}" -f ($i + 1), $groups[$i], (Group-Info $groups[$i]))
+    }
+}
+
+# D in the save list: asks which save, asks "are you sure", moves it to coop-saves\_deleted.
+function Delete-GroupDialog([string[]]$groups) {
+    if ($groups.Count -eq 0) { Write-Host "There is no save to delete." -ForegroundColor Yellow; return }
+    $a = Ask "Delete which save? Type its number (Enter = cancel)" ""
+    $n = 0
+    if (-not [int]::TryParse($a, [ref]$n) -or $n -lt 1 -or $n -gt $groups.Count) { Write-Host "Nothing deleted."; return }
+    $g = $groups[$n - 1]
+    if (-not (IsYes (Ask ("Delete the co-op save `"{0}`" ({1})? yes/no" -f $g, (Group-Info $g)) "no"))) { Write-Host "Nothing deleted."; return }
+    $dst = Remove-Group $g
+    Write-Host ("Deleted `"{0}`". (A copy is kept in {1} - move it back to coop-saves to restore it.)" -f $g, $dst) -ForegroundColor Green
 }
 
 # ---------------------------------------------------------------- game file check
@@ -195,6 +240,7 @@ function New-Lobby($s, [string]$mode) {
         emuPort = [int](TV "emuPort" $s["EmuPort"]); slotBase = [int](TV "slotPorts" $s["SlotPorts"])
         icePort = [int](TV "icePort" $s["IcePort"]); lanPort = [int](TV "lanPort" $s["LanPort"])
         lanBind = [string](TV "lanBind" "0.0.0.0"); maxRtt = 0.0; events = (New-Object System.Collections.ArrayList)
+        xfer = @{}; blob = $null; recv = $null; recvDone = ""
     }
     LLog $L ("warriors-4p co-op launcher, package {0}, mode {1}, pnach {2}" -f $pkgId, $mode, $pnachHash)
     return $L
@@ -442,6 +488,9 @@ function Handle-Msg($L, $m, $rep) {
         }
         "START" { if (-not $L.isHost -and $src -eq 0) { Handle-Start $L $m } }
         "ACK" { if ($L.isHost -and $L.starting -and [string]$m["sid"] -eq $L.sid) { $pe.ack = $m } }
+        "SAVEOFFER" { if ($src -eq 0) { Recv-Offer $L $m } }
+        "SAVEDATA" { if ($src -eq 0) { Recv-Data $L $m } }
+        "SAVEACK" { Xfer-HandleAck $L $src $m }
         "BYE" {
             LLog $L ("player {0} left the lobby" -f ($src + 1))
             if ($L.mode -eq "lanhost") { $L.peers.Remove($src) } else { $pe.lastRx = -1e9; $pe.hello = $null }
@@ -576,7 +625,7 @@ function Get-Problems($L) {
             elseif ([string]$h["ver"] -ne $pkgId) { $msg = "version" }
             elseif ([string]$h["pnach"] -ne $pnachHash) { $msg = "patch" }
             elseif ([string]$h["iso"] -ne "ok") { $msg = "iso" }
-            elseif ([string]$h["save"] -ne $L.saveHash) { $msg = "save" }
+            elseif ([string]$h["save"] -ne $L.saveHash) { $msg = $(if ((Xfer-Progress $L $p) -ge 0) { "xfer:" + (Xfer-Progress $L $p) } else { "save" }) }
             else {
                 $seen = @(([string]$h["seen"] -split ",") | Where-Object { $_ -match '^\d$' } | ForEach-Object { [int]$_ })
                 $missing = @()
@@ -598,6 +647,7 @@ function Problem-Text([string]$code) {
         '^patch$' { return "PROBLEM: has a different game patch file. Everybody must use the same zip file." }
         '^iso$' { return "PROBLEM: the game file is not The Warriors (USA) v1.03." }
         '^save$' { return "PROBLEM: different co-op save. The host's save must be copied to this player's PC (README, step 9)." }
+        '^xfer:(\d+)$' { return ("sending your co-op save to this player... {0}%" -f $Matches[1]) }
         '^reach:(.*)$' { return ("cannot reach Player {0} yet..." -f $Matches[1]) }
     }
     return "ready"
@@ -694,6 +744,213 @@ function Handle-Start($L, $m) {
     Add-Msg $L "The host started the game. Starting..."
 }
 
+# ---------------------------------------------------------------- the host's co-op save to the other players (lobby only)
+# The host's save is the reference (README step 9). When a player's save differs, the host sends its Mcd001.ps2 and
+# Mcd002.ps2 (gzip, in pieces of 720 bytes) as lobby messages: SAVEOFFER (what), SAVEDATA (piece i of n), SAVEACK
+# (the receiver's next missing piece). With join codes they travel through w4p-net like every lobby message (only the
+# real host of this session can send them); with Join by IP only the host's address is accepted. The receiver checks
+# the SHA-256 of the data and the save hash, keeps its old files in backup\, and only then replaces its save.
+$SaveChunk = 720
+$SaveWindow = 24
+$SaveMaxPieces = 40000          # about 28 MB compressed
+$SaveMaxFile = 32MB
+$SaveTestDrop = [int](TV "testDropSaveEvery" 0)   # self-test only: the receiver ignores every Nth piece (proves the resend)
+$script:saveDropN = 0
+
+function Build-SaveBlob([string]$dir) {
+    $ms = New-Object System.IO.MemoryStream
+    $gz = New-Object System.IO.Compression.GZipStream($ms, [System.IO.Compression.CompressionMode]::Compress, $true)
+    $bw = New-Object System.IO.BinaryWriter($gz)
+    $bw.Write([System.Text.Encoding]::ASCII.GetBytes("W4PS1"))
+    foreach ($i in @(1, 2)) {
+        $p = Join-Path $dir ("Mcd00{0}.ps2" -f $i)
+        if (Test-Path -LiteralPath $p) {
+            $b = [System.IO.File]::ReadAllBytes($p)
+            $bw.Write([byte]$i); $bw.Write([int]$b.Length); $bw.Write($b)
+        }
+    }
+    $bw.Write([byte]0)
+    $bw.Flush(); $gz.Dispose()
+    return $ms.ToArray()
+}
+
+function Read-SaveBlob([byte[]]$blob) {
+    $gz = New-Object System.IO.Compression.GZipStream((New-Object System.IO.MemoryStream(, $blob)), [System.IO.Compression.CompressionMode]::Decompress)
+    $br = New-Object System.IO.BinaryReader($gz)
+    $magic = [System.Text.Encoding]::ASCII.GetString($br.ReadBytes(5))
+    if ($magic -ne "W4PS1") { throw "not a co-op save" }
+    $files = @{}
+    while ($true) {
+        $i = [int]$br.ReadByte()
+        if ($i -eq 0) { break }
+        if ($i -ne 1 -and $i -ne 2 -or $files.ContainsKey($i)) { throw "bad co-op save data" }
+        $len = $br.ReadInt32()
+        if ($len -lt 0 -or $len -gt $SaveMaxFile) { throw "co-op save file too big" }
+        $b = $br.ReadBytes($len)
+        if ($b.Length -ne $len) { throw "co-op save data cut off" }
+        $files[$i] = $b
+    }
+    $gz.Dispose()
+    return $files
+}
+
+function Sha256Hex([byte[]]$b) {
+    $sha = [System.Security.Cryptography.SHA256]::Create()
+    return ([System.BitConverter]::ToString($sha.ComputeHash($b)) -replace "-", "").ToLower()
+}
+
+# host: what is sent (built once per lobby; the save does not change while the lobby is open)
+function Get-Blob($L) {
+    if ($null -eq $L.blob -or $L.blob.save -ne $L.saveHash) {
+        $b = Build-SaveBlob (Save-Dir $L.group)
+        $pieces = New-Object System.Collections.ArrayList
+        for ($o = 0; $o -lt $b.Length; $o += $SaveChunk) {
+            [void]$pieces.Add([System.Convert]::ToBase64String($b, $o, [Math]::Min($SaveChunk, $b.Length - $o)))
+        }
+        if ($pieces.Count -eq 0) { [void]$pieces.Add("") }
+        $L.blob = @{ save = $L.saveHash; sha = (Sha256Hex $b); size = $b.Length; pieces = $pieces }
+        LLog $L ("co-op save '{0}' {1} packed for sending: {2} bytes, {3} pieces" -f $L.group, $L.saveHash, $b.Length, $pieces.Count)
+    }
+    return $L.blob
+}
+
+function Xfer-Begin($L, [int]$p) {
+    $bl = Get-Blob $L
+    $L.xfer[$p] = @{ x = ([guid]::NewGuid().ToString("N")).Substring(0, 8); save = $bl.save; n = $bl.pieces.Count; next = 0
+        sentUpTo = 0; lastSend = -1e9; lastOffer = -1e9; done = $false; ok = $false; doneAt = 0; t0 = (NowMs) }
+    LLog $L ("sending the co-op save to player {0} ({1} pieces)" -f ($p + 1), $bl.pieces.Count)
+    Add-Msg $L ("Player {0} has a different co-op save: sending yours..." -f ($p + 1))
+}
+
+# host, every loop pass: start transfers where a save differs, send offers and pieces, resend after 300 ms
+function Xfer-Step($L) {
+    if (-not $L.isHost -or $L.starting -or $L.slot -lt 0) { return }
+    $now = NowMs
+    for ($p = 1; $p -lt $L.players; $p++) {
+        if (-not $L.peers.ContainsKey($p)) { continue }
+        $pe = $L.peers[$p]
+        $h = $pe.hello
+        $st = $(if ($L.xfer.ContainsKey($p)) { $L.xfer[$p] } else { $null })
+        $differs = $pe.connected -and $null -ne $h -and $now - $pe.lastRx -lt 4000 -and [string]$h["save"] -ne "" -and
+            [string]$h["save"] -ne $L.saveHash -and [string]$h["ver"] -eq $pkgId
+        if (-not $differs) { continue }
+        if ($null -eq $st -or $st.save -ne $L.saveHash -or ($st.done -and $now - $st.doneAt -gt 8000)) { Xfer-Begin $L $p; $st = $L.xfer[$p] }
+        if ($st.done) { continue }
+        $bl = Get-Blob $L
+        if ($now - $st.lastOffer -ge 1000) {
+            $st.lastOffer = $now
+            Send-Slot $L $p ("SAVEOFFER|slot=0|to={0}|x={1}|group={2}|save={3}|n={4}|size={5}|sha={6}" -f $p, $st.x, $L.group, $st.save,
+                $st.n, $bl.size, $bl.sha)
+        }
+        if ($now - $st.lastSend -gt 300) { $st.sentUpTo = $st.next }
+        $end = [Math]::Min($st.n, $st.next + $SaveWindow)
+        while ($st.sentUpTo -lt $end) {
+            $i = $st.sentUpTo
+            Send-Slot $L $p ("SAVEDATA|slot=0|to={0}|x={1}|i={2}|d={3}" -f $p, $st.x, $i, $bl.pieces[$i])
+            $st.sentUpTo++
+            $st.lastSend = $now
+        }
+    }
+}
+
+function Xfer-HandleAck($L, [int]$src, $m) {
+    if (-not $L.isHost -or -not $L.xfer.ContainsKey($src)) { return }
+    $st = $L.xfer[$src]
+    if ([string]$m["x"] -ne $st.x -or $st.done) { return }
+    $nx = 0
+    if ([int]::TryParse([string]$m["next"], [ref]$nx) -and $nx -gt $st.next) { $st.next = [Math]::Min($nx, $st.n) }
+    if ([string]$m["done"] -eq "1") {
+        $st.done = $true; $st.doneAt = NowMs; $st.ok = ([string]$m["ok"] -eq "1")
+        if ($st.ok) {
+            LLog $L ("co-op save sent to player {0} in {1} s" -f ($src + 1), (Fmt1 (((NowMs) - $st.t0) / 1000.0)))
+            Add-Msg $L ("Player {0} now has your co-op save." -f ($src + 1))
+        } else {
+            LLog $L ("player {0} could not use the co-op save: {1}" -f ($src + 1), $m["why"])
+            Add-Msg $L ("Player {0} could not take your co-op save ({1}). Trying again..." -f ($src + 1), $m["why"])
+        }
+    }
+}
+
+function Xfer-Progress($L, [int]$p) {
+    if (-not $L.xfer.ContainsKey($p)) { return -1 }
+    $st = $L.xfer[$p]
+    if ($st.done -and $st.ok) { return 100 }
+    if ($st.n -le 0) { return 0 }
+    return [int][Math]::Floor(99.0 * $st.next / $st.n)
+}
+
+# receiver (not the host): SAVEOFFER / SAVEDATA from the host (Source-Slot already checked that it is the host)
+function Recv-Offer($L, $m) {
+    if ($L.isHost -or $L.started -or [string]$m["to"] -ne [string]$L.slot) { return }
+    $g = [string]$m["group"]; $save = [string]$m["save"]; $x = [string]$m["x"]
+    $n = 0; [void][int]::TryParse([string]$m["n"], [ref]$n)
+    if (-not (Valid-Group $g) -or $g -ne $L.group -or $n -lt 1 -or $n -gt $SaveMaxPieces -or $save -notmatch '^(new|[0-9a-f]{64})$' -or
+        [string]$m["sha"] -notmatch '^[0-9a-f]{64}$') { return }
+    if ($save -eq $L.saveHash) { Send-Slot $L 0 ("SAVEACK|slot={0}|x={1}|next={2}|done=1|ok=1" -f $L.slot, $x, $n); return }
+    if ($null -ne $L.recv -and $L.recv.x -eq $x) { Send-Slot $L 0 ("SAVEACK|slot={0}|x={1}|next={2}" -f $L.slot, $x, $L.recv.next); return }
+    $L.recv = @{ x = $x; group = $g; save = $save; n = $n; sha = [string]$m["sha"]; parts = (New-Object 'string[]' $n); next = 0; got = 0 }
+    LLog $L ("receiving the host's co-op save '{0}' {1} ({2} pieces)" -f $g, $save, $n)
+    Add-Msg $L "Your co-op save is different from the host's: receiving the host's save..."
+    Send-Slot $L 0 ("SAVEACK|slot={0}|x={1}|next=0" -f $L.slot, $x)
+}
+
+function Recv-Data($L, $m) {
+    $r = $L.recv
+    if ($L.isHost -or $L.started -or $null -eq $r -or [string]$m["x"] -ne $r.x -or [string]$m["to"] -ne [string]$L.slot) { return }
+    $i = -1
+    if (-not [int]::TryParse([string]$m["i"], [ref]$i) -or $i -lt 0 -or $i -ge $r.n) { return }
+    if ($SaveTestDrop -gt 0) { $script:saveDropN++; if ($script:saveDropN % $SaveTestDrop -eq 0) { return } }
+    if ($null -eq $r.parts[$i]) { $r.parts[$i] = [string]$m["d"]; $r.got++ }
+    while ($r.next -lt $r.n -and $null -ne $r.parts[$r.next]) { $r.next++ }
+    if ($r.next -lt $r.n) { Send-Slot $L 0 ("SAVEACK|slot={0}|x={1}|next={2}" -f $L.slot, $r.x, $r.next); return }
+    $ok = "0"; $why = ""
+    try {
+        $ms = New-Object System.IO.MemoryStream
+        foreach ($pt in $r.parts) { $b = [System.Convert]::FromBase64String($pt); $ms.Write($b, 0, $b.Length) }
+        $blob = $ms.ToArray()
+        if ((Sha256Hex $blob) -ne $r.sha) { throw "the data arrived damaged" }
+        Install-HostSave $L $r (Read-SaveBlob $blob)
+        $ok = "1"
+    } catch { $why = ($_.Exception.Message -replace '[|=]', ' ') }
+    Send-Slot $L 0 ("SAVEACK|slot={0}|x={1}|next={2}|done=1|ok={3}|why={4}" -f $L.slot, $r.x, $r.n, $ok, $why)
+    $L.recv = $null
+    if ($ok -ne "1") { LLog $L ("host's co-op save not used: " + $why); Add-Msg $L ("The host's co-op save could not be used: " + $why + ". Trying again...") }
+}
+
+# check first, then keep the old files in backup\, then replace (a "new" host save = no files: the old ones go to backup)
+function Install-HostSave($L, $r, $files) {
+    $parts = @()
+    foreach ($i in @(1, 2)) { if ($files.ContainsKey($i)) { $parts += ("Mcd00{0}.ps2={1}" -f $i, (Sha256Hex $files[$i])) } }
+    $h = $(if ($parts.Count -eq 0) { "new" } else { Sha256Hex ([System.Text.Encoding]::ASCII.GetBytes(($parts -join ";"))) })
+    if ($h -ne $r.save) { throw "the save does not match the host's check code" }
+    $dst = Save-Dir $r.group
+    New-Item -ItemType Directory -Force -Path $dst | Out-Null
+    $old = @(foreach ($mn in @("Mcd001.ps2", "Mcd002.ps2")) { $q = Join-Path $dst $mn; if (Test-Path -LiteralPath $q) { $q } })
+    $bk = ""
+    if ($old.Count -gt 0) {
+        $bk = Join-Path $dst ("backup\" + (Get-Date).ToString("yyyyMMdd_HHmmss", $Inv) + "_before-host-save")
+        New-Item -ItemType Directory -Force -Path $bk | Out-Null
+        foreach ($q in $old) { Copy-Item -Force -LiteralPath $q -Destination $bk }
+        Get-ChildItem -LiteralPath (Join-Path $dst "backup") -Directory | Sort-Object Name -Descending | Select-Object -Skip 5 |
+            Remove-Item -Recurse -Force
+    }
+    foreach ($i in @(1, 2)) {
+        $q = Join-Path $dst ("Mcd00{0}.ps2" -f $i)
+        if ($files.ContainsKey($i)) { [System.IO.File]::WriteAllBytes($q, $files[$i]) }
+        elseif (Test-Path -LiteralPath $q) { Remove-Item -Force -LiteralPath $q }
+    }
+    $now = Get-DirSaveHash $dst
+    if ($now -ne $r.save) { throw "writing the save failed" }
+    $info = @("warriors-4p co-op save `"$($r.group)`"", "received from the host: $((Get-Date).ToString('yyyy-MM-dd HH:mm:ss', $Inv))",
+        "save check code: $(Save-Label $now)", "full hash: $now")
+    if ($bk -ne "") { $info += "your previous files: $bk" }
+    [System.IO.File]::WriteAllText((Join-Path $dst "save-info.txt"), (($info -join "`r`n") + "`r`n"), $utf8)
+    $L.saveHash = $now; $L.saveAt = NowMs
+    $L.recvDone = $(if ($bk -ne "") { "Got the host's co-op save. Your old one is kept in coop-saves\{0}\backup." -f $r.group } else { "Got the host's co-op save." })
+    LLog $L ("host's co-op save installed: '{0}' {1}{2}" -f $r.group, $now, $(if ($bk -ne "") { ", previous files in backup" } else { "" }))
+    Add-Msg $L $L.recvDone
+}
+
 # ---------------------------------------------------------------- lobby screen
 function Lobby-Lines($L) {
     $o = New-Object System.Collections.ArrayList
@@ -722,7 +979,7 @@ function Lobby-Lines($L) {
             $ping = ""
             if ($L.peers.ContainsKey($p)) { $r = Pct $L.peers[$p].rtt 0.5; if ($r -ge 0) { $ping = "ping {0,4} ms   " -f [int][Math]::Round($r) } }
             $line = ("  Player {0}   {1}{2}" -f ($p + 1), $ping, $txt)
-            if ($pr[$p] -ne "" -and $pr[$p] -ne "waiting" -and $pr[$p] -ne "connecting") { $line = "!" + $line }
+            if ($pr[$p] -ne "" -and $pr[$p] -ne "waiting" -and $pr[$p] -ne "connecting" -and $pr[$p] -notmatch '^xfer') { $line = "!" + $line }
             [void]$o.Add($line)
         }
         [void]$o.Add("")
@@ -748,9 +1005,12 @@ function Lobby-Lines($L) {
                     $L.players, $L.group, (YesNo $L.fps60), (YesNo $L.wide), $L.delay))
             $hh = [string]$L.peers[0].hello["save"]
             if ($hh -eq $L.saveHash) { [void]$o.Add(("  Your co-op save matches the host's ({0})." -f (Save-Label $L.saveHash))) }
-            else {
+            elseif ($null -ne $L.recv) {
+                [void]$o.Add(("  Receiving the host's co-op save... {0}% (your old save is kept in backup)" -f
+                        [int][Math]::Floor(99.0 * $L.recv.next / [Math]::Max(1, $L.recv.n))))
+            } else {
                 [void]$o.Add(("!  Your co-op save is DIFFERENT: yours {0}, the host's {1}." -f (Save-Label $L.saveHash), (Save-Label $hh)))
-                [void]$o.Add("!  Copy the host's save folder to this PC (README, step 9). The game cannot start until they match.")
+                [void]$o.Add("!  Waiting for the host's PC to send its save (it does this by itself)...")
             }
             if ([string]$L.peers[0].hello["ver"] -ne $pkgId) { [void]$o.Add("!  The host uses a different package version. Everybody must use the same zip file.") }
             [void]$o.Add("")
@@ -859,6 +1119,7 @@ function Run-Lobby($L) {
         if (-not $L.isHost -and $L.started -and ($L.hostLeft -or $now - $L.startAt -gt 2000)) { return "start" }
         if ($L.hostLeft) { return "hostleft" }
         if ($L.isHost -and $L.starting) { Host-StartStep $L; if ($L.go) { return "start" } }
+        Xfer-Step $L
         if ($now -ge $nextTick) {
             $nextTick = $now + 1000.0
             if ($L.mode -eq "lanjoin" -and $L.slot -lt 0 -and $L.refused -eq "") {
@@ -1176,20 +1437,53 @@ function Run-Session($s, [string]$mode, $opt) {
 }
 
 # ---------------------------------------------------------------- menus
-function Choose-Group($s) {
-    $groups = @(List-Groups)
-    $last = $(if ($s.ContainsKey("Group") -and (Valid-Group $s["Group"])) { $s["Group"] } else { "main" })
-    Write-Host ""
-    Write-Host "Co-op save: each group of friends has its own save (a story played together)."
-    if ($groups.Count -gt 0) { Write-Host ("Saves on this PC: " + ($groups -join ", ")) }
+function Ask-NewGroup([string]$default) {
     while ($true) {
-        $g = Ask "Which co-op save? Type a name (a new name starts the story from the beginning)" $last
-        if (Valid-Group $g) { break }
-        Write-Host "Use letters, digits, spaces, - or _ (at most 32 characters)." -ForegroundColor Yellow
+        $g = Ask "Name of the new co-op save (letters, digits, spaces, - or _)" $default
+        if (Valid-Group $g) { return $g }
+        Write-Host "Use letters, digits, spaces, - or _ (at most 32 characters, starting with a letter or digit)." -ForegroundColor Yellow
+    }
+}
+
+function Choose-Group($s) {
+    $last = $(if ($s.ContainsKey("Group") -and (Valid-Group $s["Group"])) { $s["Group"] } else { "" })
+    while ($true) {
+        $groups = @(List-Groups)
+        Write-Host ""
+        Write-Host "Co-op save: each group of friends has its own save (a story played together). The host's save is used"
+        Write-Host "by everybody: the other players get it automatically in the lobby."
+        Show-Groups $groups
+        Write-Host "   N  new save (the story starts from the beginning)"
+        if ($groups.Count -gt 0) { Write-Host "   D  delete a save" }
+        if ($groups.Count -eq 0) {
+            $g = Ask-NewGroup $(if ($last -ne "") { $last } else { "main" })
+            break
+        }
+        $def = [Math]::Max(0, [Array]::IndexOf($groups, $last)) + 1
+        $a = Ask "Choose a number, N or D" $def
+        $n = 0
+        if ([int]::TryParse($a, [ref]$n) -and $n -ge 1 -and $n -le $groups.Count) { $g = $groups[$n - 1]; break }
+        if ($a -match '^[nN]$') { $g = Ask-NewGroup ""; break }
+        if ($a -match '^[dD]$') { Delete-GroupDialog $groups; continue }
+        if ((Valid-Group $a) -and $a.Length -gt 1) { $g = $a; break }   # a typed name works as before
+        Write-Host "Type one of the numbers, N or D." -ForegroundColor Yellow
     }
     $s["Group"] = $g
     Write-Settings $s
     return $g
+}
+
+function Menu-Saves {
+    while ($true) {
+        $groups = @(List-Groups)
+        Write-Host ""
+        Show-Groups $groups
+        Write-Host "   D  delete a save    O  open the co-op save folder    Enter  back"
+        $a = Ask "Choose" ""
+        if ($a -match '^[dD]$') { Delete-GroupDialog $groups; continue }
+        if ($a -match '^[oO]$') { New-Item -ItemType Directory -Force -Path $savesRoot | Out-Null; Start-Process explorer.exe -ArgumentList ('"' + $savesRoot + '"'); continue }
+        return
+    }
 }
 
 function Menu-Host($s) {
@@ -1247,7 +1541,7 @@ function Menu-Settings($s) {
         Write-Host "  4  Full screen:      $($s['Fullscreen'])"
         Write-Host "  5  60 fps when you host:      $($s['Fps60'])"
         Write-Host "  6  Widescreen when you host:  $($s['Widescreen'])"
-        Write-Host "  7  Open the co-op save folder"
+        Write-Host "  7  Co-op saves (list, delete, open the folder)"
         Write-Host "  8  Back"
         $c = Ask "Choose" "8"
         switch ($c) {
@@ -1257,7 +1551,7 @@ function Menu-Settings($s) {
             "4" { $s["Fullscreen"] = YesNo (IsYes (Ask "Full screen? yes/no" $s["Fullscreen"])); Write-Settings $s }
             "5" { $s["Fps60"] = YesNo (IsYes (Ask "60 fps? yes/no" $s["Fps60"])); Write-Settings $s }
             "6" { $s["Widescreen"] = YesNo (IsYes (Ask "Widescreen? yes/no" $s["Widescreen"])); Write-Settings $s }
-            "7" { New-Item -ItemType Directory -Force -Path $savesRoot | Out-Null; Start-Process explorer.exe -ArgumentList ('"' + $savesRoot + '"') }
+            "7" { Menu-Saves }
             default { return }
         }
     }

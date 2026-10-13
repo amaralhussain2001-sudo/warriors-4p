@@ -1,0 +1,119 @@
+---- 0.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (new game, no save yet)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   waiting for a friend to join...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 3.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (new game, no save yet)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+  Messages:
+    Player 2 joined.
+    All 2 players are connected. (Press Start in the launcher.)
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 4.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (new game, no save yet)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (0 ms).
+
+  Messages:
+    Player 2 joined.
+    All 2 players are connected. (Press Start in the launcher.)
+    Player 2 has a different co-op save: sending yours...
+    Player 2 now has your co-op save.
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 6.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (new game, no save yet)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (5 ms).
+
+  Messages:
+    Player 2 joined.
+    All 2 players are connected. (Press Start in the launcher.)
+    Player 2 has a different co-op save: sending yours...
+    Player 2 now has your co-op save.
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 7.2 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (new game, no save yet)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   connecting...
+
+  Input delay: 2 frames (67 ms), from the slowest connection (4 ms).
+
+  Messages:
+    Player 2 joined.
+    All 2 players are connected. (Press Start in the launcher.)
+    Player 2 has a different co-op save: sending yours...
+    Player 2 now has your co-op save.
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 8.3 s
+warriors-4p online co-op (TEST) - you are the HOST (Player 1)
+  2 players   co-op save: "ss" (new game, no save yet)   60 fps: no   widescreen: yes
+
+Join code (already copied - paste it into your group chat):
+  <code>
+  Your friends choose 'Join a game' and paste it.
+
+  Player 1   you (host)
+  Player 2   ping    4 ms   ready
+
+  Input delay: 2 frames (67 ms), from the slowest connection (4 ms).
+Starting: waiting for every player to answer...
+
+  Messages:
+    Player 2 joined.
+    All 2 players are connected. (Press Start in the launcher.)
+    Player 2 has a different co-op save: sending yours...
+    Player 2 now has your co-op save.
+
+Keys:  S = start the game   R = paste a reply code (copy it first)   Q = quit
+  Only the players in this lobby play. Someone who comes later must wait for the next game.

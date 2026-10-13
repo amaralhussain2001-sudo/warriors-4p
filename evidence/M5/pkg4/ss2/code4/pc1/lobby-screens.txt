@@ -1,0 +1,221 @@
+---- 0.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connecting to the host...
+
+Reply code (send it to the host ONLY if you are not connected within 10 seconds):
+  <code>
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 1.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  You are Player 2. Talking to the host...
+
+Reply code (send it to the host ONLY if you are not connected within 10 seconds):
+  <code>
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 2.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 4 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save is DIFFERENT: yours new game, no save yet, the host's check code AC16576D.
+  Waiting for the host's PC to send its save (it does this by itself)...
+
+  Player 1   (host)   connected
+  Player 2   you
+  Player 3   waiting...
+  Player 4   waiting...
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 3.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 4 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (check code AC16576D).
+
+  Player 1   (host)   connected
+  Player 2   you
+  Player 3   connected
+  Player 4   waiting...
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 4.1 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 4 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (check code AC16576D).
+
+  Player 1   (host)   connected   ping   12 ms
+  Player 2   you
+  Player 3   connected
+  Player 4   waiting...
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 5.2 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 4 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (check code AC16576D).
+
+  Player 1   (host)   connected   ping    6 ms
+  Player 2   you
+  Player 3   connected
+  Player 4   connected
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 6.2 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 4 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (check code AC16576D).
+
+  Player 1   (host)   connected   ping   11 ms
+  Player 2   you
+  Player 3   connected   ping   12 ms
+  Player 4   connected
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 7.2 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 4 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (check code AC16576D).
+
+  Player 1   (host)   connected   ping    6 ms
+  Player 2   you
+  Player 3   connected   ping   10 ms
+  Player 4   connected   ping   12 ms
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 8.2 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 4 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (check code AC16576D).
+
+  Player 1   (host)   connected   ping    6 ms
+  Player 2   you
+  Player 3   connected   ping   10 ms
+  Player 4   connected   ping    7 ms
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save.
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 9.2 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 4 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (check code AC16576D).
+
+  Player 1   (host)   connected   ping    6 ms
+  Player 2   you
+  Player 3   connected   ping   10 ms
+  Player 4   connected   ping   12 ms
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save.
+    The host started the game. Starting...
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.
+---- 10.2 s
+warriors-4p online co-op (TEST) - you JOINED a game
+  Connected. You are Player 2.
+
+  The host chose: 4 players, co-op save "ss", 60 fps: no, widescreen: yes, input delay 2 frames.
+  Your co-op save matches the host's (check code AC16576D).
+
+  Player 1   (host)   connected   ping    6 ms
+  Player 2   you
+  Player 3   connected   ping   12 ms
+  Player 4   connected   ping    7 ms
+
+  Waiting for the host to start the game...
+
+  Messages:
+    Connected to the host (511.2 ms).
+    Connected to the host. You are Player 2.
+    Your co-op save is different from the host's: receiving the host's save...
+    Got the host's co-op save.
+    The host started the game. Starting...
+
+Keys:  Q = leave   C = copy the reply code again
+  Only the players in this lobby play. Someone who comes later must wait for the next game.

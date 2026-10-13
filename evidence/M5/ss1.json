@@ -1,0 +1,241 @@
+{
+ "tag": "ss1",
+ "package": "d69a5885c060",
+ "args": [
+  "--sendsave",
+  "--save-from",
+  "local/desktop-kit-backup-20261013/coop-saves/book"
+ ],
+ "environment": "SINGLE-PC, lobby only (no emulator), loopback helpers / Join by IP on loopback",
+ "save_from": {
+  "dir": "local\\desktop-kit-backup-20261013\\coop-saves\\book",
+  "files": {
+   "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+   "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+  }
+ },
+ "code4": {
+  "players": 4,
+  "lan": false,
+  "host_save": true,
+  "before": {
+   "pc0": {
+    "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+    "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+   },
+   "pc1": {},
+   "pc2": {
+    "Mcd001.ps2": "944044fe482bc4e91085c15c5a923a1b9e02eac98d3bce04997d6dbecd2a5b8d"
+   },
+   "pc3": {
+    "Mcd001.ps2": "2dc4424addd6f849f68402090e7d0d19018adf629de600210d807575932f2e2d",
+    "Mcd002.ps2": "340693c442e3b90c375bc0896d7bbee8fa763a33a3960b36aeb426329dd52251"
+   }
+  },
+  "after": {
+   "pc0": {
+    "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+    "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+   },
+   "pc1": {
+    "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+    "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+   },
+   "pc2": {
+    "Mcd001.ps2": "944044fe482bc4e91085c15c5a923a1b9e02eac98d3bce04997d6dbecd2a5b8d"
+   },
+   "pc3": {
+    "Mcd001.ps2": "2dc4424addd6f849f68402090e7d0d19018adf629de600210d807575932f2e2d",
+    "Mcd002.ps2": "340693c442e3b90c375bc0896d7bbee8fa763a33a3960b36aeb426329dd52251"
+   }
+  },
+  "backups": {
+   "pc1": [],
+   "pc2": [],
+   "pc3": []
+  },
+  "phases": {
+   "pc0": "lobby-timeout",
+   "pc1": "lobby-hostleft",
+   "pc2": "lobby-hostleft",
+   "pc3": "lobby-hostleft"
+  },
+  "save_hash": {
+   "pc0": "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33",
+   "pc1": "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33",
+   "pc2": "3472d3c1cf082b53d66eb6cf67a2ca9f10b8235e64b9f5dc4d59c65c91e7fb38",
+   "pc3": "0a4dfe8b5574374ed3091d77022332b32b7fa5bc6c382741a908dc48c1a22efd"
+  },
+  "lobby_log": {
+   "pc0": [
+    "16:28:28      4.5  co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 packed for sending: 16875 bytes, 24 pieces",
+    "16:28:28      4.5  sending the co-op save to player 2 (24 pieces)",
+    "16:28:28      4.5  message: Player 2 has a different co-op save: sending yours...",
+    "16:28:28      4.6  co-op save sent to player 2 in 0.1 s",
+    "16:28:29      5.3  sending the co-op save to player 3 (24 pieces)",
+    "16:28:29      5.3  message: Player 3 has a different co-op save: sending yours...",
+    "16:28:30      6.3  sending the co-op save to player 4 (24 pieces)",
+    "16:28:30      6.3  message: Player 4 has a different co-op save: sending yours..."
+   ],
+   "pc1": [
+    "16:28:28      2.7  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:28:28      2.7  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:28:28      2.9  host's co-op save installed: 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33"
+   ],
+   "pc2": [
+    "16:28:29      2.6  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:28:29      2.6  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:28:37     10.7  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:28:37     10.7  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:28:45     18.8  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:28:45     18.8  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:28:53     26.9  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:28:53     26.9  message: Your co-op save is different from the host's: receiving the host's save..."
+   ],
+   "pc3": [
+    "16:28:30      2.6  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:28:30      2.6  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:28:38     10.7  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:28:38     10.7  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:28:46     18.8  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:28:46     18.8  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:28:54     26.9  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:28:54     26.9  message: Your co-op save is different from the host's: receiving the host's save..."
+   ]
+  },
+  "verdict": {
+   "all_started": false,
+   "all_files_equal_host": false,
+   "all_save_hash_equal": false,
+   "old_files_in_backup": false,
+   "pass": false
+  }
+ },
+ "lan2": {
+  "players": 2,
+  "lan": true,
+  "host_save": true,
+  "before": {
+   "pc0": {
+    "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+    "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+   },
+   "pc1": {
+    "Mcd001.ps2": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+   }
+  },
+  "after": {
+   "pc0": {
+    "Mcd001.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358",
+    "Mcd002.ps2": "47ebe237a3987f843fc19b0f801ce1edc1690768ef6b18e4b03a12ca6b298358"
+   },
+   "pc1": {
+    "Mcd001.ps2": "9e9c1dddb8787259606e29a6fe515a3df88249ed84331d7ac49f51759ba175a5"
+   }
+  },
+  "backups": {
+   "pc1": []
+  },
+  "phases": {
+   "pc0": "lobby-timeout",
+   "pc1": "lobby-timeout"
+  },
+  "save_hash": {
+   "pc0": "ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33",
+   "pc1": "8a2d46c9003049d5bc28a0b4e68b648160d4e60b1f84c16e495340d43fab9329"
+  },
+  "lobby_log": {
+   "pc0": [
+    "16:30:56      2.4  co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 packed for sending: 16875 bytes, 24 pieces",
+    "16:30:56      2.4  sending the co-op save to player 2 (24 pieces)",
+    "16:30:56      2.4  message: Player 2 has a different co-op save: sending yours...",
+    "16:31:05     10.5  sending the co-op save to player 2 (24 pieces)",
+    "16:31:05     10.5  message: Player 2 has a different co-op save: sending yours...",
+    "16:31:13     18.6  sending the co-op save to player 2 (24 pieces)",
+    "16:31:13     18.6  message: Player 2 has a different co-op save: sending yours...",
+    "16:31:21     26.7  sending the co-op save to player 2 (24 pieces)"
+   ],
+   "pc1": [
+    "16:30:56      1.3  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:30:56      1.3  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:31:05      9.5  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:31:05      9.5  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:31:13     17.6  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:31:13     17.6  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:31:21     25.7  receiving the host's co-op save 'ss' ac16576d2f286fb978a35e43007181b05863f4edec2638458c32fec2e992ca33 (24 pieces)",
+    "16:31:21     25.7  message: Your co-op save is different from the host's: receiving the host's save..."
+   ]
+  },
+  "verdict": {
+   "all_started": false,
+   "all_files_equal_host": false,
+   "all_save_hash_equal": false,
+   "old_files_in_backup": false,
+   "pass": false
+  }
+ },
+ "hostnew": {
+  "players": 2,
+  "lan": false,
+  "host_save": false,
+  "before": {
+   "pc0": {},
+   "pc1": {
+    "Mcd001.ps2": "dcb3cceeb89595b15abac3233c5871a9dc8d5e4af56443c0c5085386c9b50439",
+    "Mcd002.ps2": "db989ac2e6b4fc23e94e829d5720b1ecae06fce62b0e33c861a10cee750a0585"
+   }
+  },
+  "after": {
+   "pc0": {},
+   "pc1": {
+    "Mcd001.ps2": "dcb3cceeb89595b15abac3233c5871a9dc8d5e4af56443c0c5085386c9b50439",
+    "Mcd002.ps2": "db989ac2e6b4fc23e94e829d5720b1ecae06fce62b0e33c861a10cee750a0585"
+   }
+  },
+  "backups": {
+   "pc1": []
+  },
+  "phases": {
+   "pc0": "lobby-timeout",
+   "pc1": "lobby-hostleft"
+  },
+  "save_hash": {
+   "pc0": "new",
+   "pc1": "c17e5346c34f70fc5444c49a6ae9a85d81163c8f96a777c3d289f93437d9d594"
+  },
+  "lobby_log": {
+   "pc0": [
+    "16:33:29      4.1  co-op save 'ss' new packed for sending: 26 bytes, 1 pieces",
+    "16:33:29      4.1  sending the co-op save to player 2 (1 pieces)",
+    "16:33:29      4.1  message: Player 2 has a different co-op save: sending yours...",
+    "16:33:38     12.2  sending the co-op save to player 2 (1 pieces)",
+    "16:33:38     12.2  message: Player 2 has a different co-op save: sending yours...",
+    "16:33:46     20.2  sending the co-op save to player 2 (1 pieces)",
+    "16:33:46     20.2  message: Player 2 has a different co-op save: sending yours...",
+    "16:33:54     28.2  sending the co-op save to player 2 (1 pieces)"
+   ],
+   "pc1": [
+    "16:33:30      2.6  receiving the host's co-op save 'ss' new (1 pieces)",
+    "16:33:30      2.6  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:33:38     10.6  receiving the host's co-op save 'ss' new (1 pieces)",
+    "16:33:38     10.6  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:33:46     18.7  receiving the host's co-op save 'ss' new (1 pieces)",
+    "16:33:46     18.7  message: Your co-op save is different from the host's: receiving the host's save...",
+    "16:33:54     26.7  receiving the host's co-op save 'ss' new (1 pieces)",
+    "16:33:54     26.7  message: Your co-op save is different from the host's: receiving the host's save..."
+   ]
+  },
+  "verdict": {
+   "all_started": false,
+   "all_files_equal_host": false,
+   "all_save_hash_equal": false,
+   "old_files_in_backup": false,
+   "pass": false
+  }
+ },
+ "verdict": {
+  "code4": false,
+  "lan2": false,
+  "hostnew": false
+ }
+}

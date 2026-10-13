@@ -18,7 +18,8 @@ THE HOST (one player - he creates the game; the host's PC should be the stronges
 1. Start-Coop.bat -> 1 (Host a game)
 2. How many players: 2, 3 or 4
 3. How friends connect: 1 (join code) - works over the internet and in the same house
-4. Save name: for example "friends". Next time use the SAME name to continue the story together.
+4. Co-op save: pick one from the list by its number, or N for a new one (for example "friends"). Next time pick
+   the SAME save to continue the story together. Friends get your save automatically in the lobby.
 5. 60 fps: yes (choose no if any PC is slow)   Widescreen: yes
 6. The JOIN CODE (starts with W4P1-) is now copied: paste it into your group chat.
 7. If a friend sends you a REPLY CODE: copy it and press R in your window.
